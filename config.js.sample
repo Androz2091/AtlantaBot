@@ -1,0 +1,15 @@
+module.exports = {
+	token:"xxxxxxxx", // The bot token
+	support:{
+		id:"xxxxxxxx", // The id of the support server
+		logs:"xxxxxxxx" // The servers logs channel
+	},
+	prefix:"*", // the bot's prefix
+	embed:{
+		color:"#0091fc", // the default color of the embeds
+		footer:"Atlanta | Open Source" // the footer of the embeds
+	},
+	default_language:"fr", // The default language of the new guilds
+	owner:"xxxxxxxx", // The owner of the bot,
+	anidiots:"xxxxxxxx" // your dev.anidtios.guide key
+}
