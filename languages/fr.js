@@ -23,6 +23,8 @@ module.exports = class {
 			TLEVEL: `Niveau`,
 			TREP: `Réputation`,
 			TCREDITS: `Crédits`,
+			WIN: `Victoire`,
+			LOOSE: `Perdu`,
 
 			// ERROR MESSAGE
 			INHIBITOR_MISSING_BOT_PERMS: (perms) => `${error} | J'ai besoin des permissions suivantes pour effectuer cette commande : ${perms}`,
@@ -42,6 +44,7 @@ module.exports = class {
 			IS_A_BOT: `${error} | Cet utilisateur est un bot !`,
 			NAN: (nan) => `${error} | \`${nan}\` n'est pas un nombre valide !`,
 			INVALID_ID: `${error} | Veuillez entrer une ID valide !`,
+			PLEASE_WAIT: `${loading} | Veuillez patienter...`,
 			
 			// PING COMMAND
 			PING_DESCRIPTION: 'Affiche la latence du bot',
@@ -222,11 +225,18 @@ module.exports = class {
 			WEEDING_TIMEOUT: (member) => `${error} | ${member} n'a pas répondu... Attendez qu'il/elle soit connecté(e) puis réessayez !`,
 			WEEDING_SUCCESS: (author, member) => `${success} | ${author}, j'ai une bonne nouvelle... ${member} a accepté votre demande en mariage !`,
 			WEEDING_DENIED: (author, member) => `${error} | ${author}, j'ai une mauvaise nouvelle... ${member} a refusé votre demande en mariage.`,
+			WEEDING_SELF: `${error} | Vous ne pouvez pas vous épouser vous-même !`,
 
 			// Divorce command
 			DIVORCE_DESCRIPTION: `Divorcez avec la personne avec qui vous êtes actuellement marié(e) !`,
 			DIVORCE_NOT_WEEDED: `${error} | Vous n'êtes actuellement pas marié(e) !`,
-			DIVORCE_SUCCESS: (username) => `${success} | Vous venez de divorcer avec **${username}** !`
+			DIVORCE_SUCCESS: (username) => `${success} | Vous venez de divorcer avec **${username}** !`,
+
+			// Slots command
+			SLOTS_DESCRIPTION: `Un équivalent au Casino !`,
+			SLOTS_TOO_HIGH: (credits) => `${error} | Vous ne disposez pas de ${credits} crédit(s).`,
+			SLOTS_LOOSE: (amount, username) => `**${username}** a utilisé ${amount} crédit(s) et a tout perdu.`,
+			SLOTS_WIN: (text, amount, won, username) => `${text}**${username}** a utilisé ${amount} crédit(s) et a gagné ${won} crédit(s) !`,
         }
     }
 

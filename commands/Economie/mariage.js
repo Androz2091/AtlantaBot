@@ -34,6 +34,9 @@ class Weegind extends Command {
         // if the member is already wedded
         if(membersdata[1].partner !== 'false') return message.channel.send(message.language.get('WEEDING_MEMBER_ALREADY', member.user.username));
 
+        if(member.user.bot) return message.channel.send(message.language.get('IS_A_BOT'));
+        if(member.id === message.author.id) return message.channel.send(message.language.get('WEEDING_SELF'));
+
         for(var requester in pendings){
 
             var receiver = pendings[requester];
