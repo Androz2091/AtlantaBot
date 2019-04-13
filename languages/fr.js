@@ -41,6 +41,7 @@ module.exports = class {
 			MENTION_EVERYONE: `${error} | Vous n'avez pas l'autorisation de mentionner everyone ou here dans les commandes.`,
 			IS_A_BOT: `${error} | Cet utilisateur est un bot !`,
 			NAN: (nan) => `${error} | \`${nan}\` n'est pas un nombre valide !`,
+			INVALID_ID: `${error} | Veuillez entrer une ID valide !`,
 			
 			// PING COMMAND
 			PING_DESCRIPTION: 'Affiche la latence du bot',
@@ -162,7 +163,16 @@ module.exports = class {
 
 			// Eval
 			EVAL_DESCRIPTION: `Exécute le code`,
-			
+
+			// Get conf command
+			GETCONF_DESCRIPTION: `Récupère la configuration d'un serveur !`,
+			GETCONF_NO_CONF: `${error} | Ce serveur ne possède pas de configuration car il n'a jamais ajouté ${botname} !`,
+
+			// Get invite command
+			GETINVITE_DESCRIPTION: `Génère une invitation vers le serveur en question. Veillez à faire bon usage de cette commande.`,
+			GETINVITE_ERROR: `${error} | Je ne peux pas créer d'invitations sur ce serveur !`,
+			GETINVITE_NO_GUILD: `${error} | Je ne suis pas sur ce serveur !`,
+
 			// Rep command
 			REP_DESCRIPTION: `Donnez un point de réputation à un membre !`,
 			REP_COOLDOWN: (delai) => `${error} | Vous devez attendre ${delai} avant de pouvoir de nouveau donner un point de réputation !`,
