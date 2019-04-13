@@ -54,13 +54,13 @@ class Welcome extends Command {
         collector.on('collect', msg => {
 
             if(welcome.message !== 'unknow'){
-                if(msg.content.toLowerCase() == message.language.get('YES')){
+                if(msg.content.toLowerCase() == message.language.get('YES').toLowerCase()){
                     welcome.withImage = 'true';
                     message.channel.send(message.language.get('WELCOME_SUCCESS', welcome.channel, guild_data.prefix));
                     // Updates db
                     this.client.databases[1].set(`${message.guild.id}.welcome`, welcome);
                     collector.stop();
-                } else if(msg.content.toLowerCase() == 'non'){
+                } else if(msg.content.toLowerCase() == message.language.get('NO').toLowerCase()){
                     welcome.withImage = 'false';
                     message.channel.send(message.language.get('WELCOME_SUCCESS', welcome.channel, guild_data.prefix));
                     // Updates db
