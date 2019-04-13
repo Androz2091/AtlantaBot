@@ -35,11 +35,12 @@ module.exports = {
             xp:0, // the user's xp
             name:user.username, // The name of the user (when the bot registers it)
             tag:user.discriminator, // The tag #0000 of the user (when the bot registers it)
-            desc:"unknow", // The user's description (which is display on his profile)
+            bio:"unknow", // The user's biography (which is display on his profile)
             birthdate:"unknow", // The birth date of the user
-            partner:"non", // The user boyfriend or girlfriend
-            old_partenaires:[], // The user's previous partners
-            color:client.config.embed.color, // The user's embed color
+            partner:"false", // The user boyfriend or girlfriend
+            old_partners:[], // The user's previous partners
+            color:client.config.embed.color, // The user's embed color,
+            registeredAt:Date.now(), // The date wich the user is registered
             // The user's statistics
             stats:{ "commands":0, "findwords":{ "best-score":"unknow", "wins":0, }, "number":{ "best-score":"false", "wins":0, } }
         });
@@ -70,5 +71,13 @@ module.exports = {
 
         // Return the filled array
         return membersdata;
+    },
+
+    // This function sort an array 
+    sortByKey: function(array, key) {
+        return array.sort(function(a, b) {
+            var x = a[key]; var y = b[key];
+            return ((x < y) ? 1 : ((x > y) ? -1 : 0));
+        });
     }
 }

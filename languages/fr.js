@@ -17,8 +17,12 @@ module.exports = class {
 
 			// Utils
 			PREFIX_INFO: (prefix) => `le préfixe de ce serveur est \`${prefix}\``,
-			YES: 'oui',
-			NO : 'non',
+			YES: 'Oui',
+			NO : 'Non',
+			USER: `Utilisateur`,
+			TLEVEL: `Niveau`,
+			TREP: `Réputation`,
+			TCREDITS: `Crédits`,
 
 			// ERROR MESSAGE
 			INHIBITOR_MISSING_BOT_PERMS: (perms) => `${error} | J'ai besoin des permissions suivantes pour effectuer cette commande : ${perms}`,
@@ -28,12 +32,15 @@ module.exports = class {
 			OWNER_ONLY: `${error} | Seul ${owner} peut effectuer ces commandes !`,
 			MENTION_CHANNEL: `${error} | Veuillez mentionner un salon valide !`,
 			MENTION_ROLE: `${error} | Veuillez mentionner un rôle valide !`,
+			MENTION_MEMBER: `${error} | Veuillez mentionner un membre valide !`,
 			CHANNEL_IGNORED: (channel) => `${error} | Les commandes sont interdites dans ${channel} !`,
 			BAD_PARAMETERS: (cmd, prefix) => `${error} | Veuillez vérifier les paramètres de la commande. Regardez les exemples en tapant \`${prefix}help ${cmd.help.name}\` !`,
 			ROLE_NOT_FOUND: (role) => `${error} | Aucun rôle trouvé avec \`${role}\` !`,
 			YES_OR_NO: `${error} | Vous devez répondre par "oui" ou par "non" !`,
 			INVALID_TIME: `${error} | Vous devez entrer un temps valide ! Unités valides : \`s\`, \`m\`, \`h\`, \`d\`, \`w\`, \`y\``,
 			MENTION_EVERYONE: `${error} | Vous n'avez pas l'autorisation de mentionner everyone ou here dans les commandes.`,
+			IS_A_BOT: `${error} | Cet utilisateur est un bot !`,
+			NAN: (nan) => `${error} | \`${nan}\` n'est pas un nombre valide !`,
 			
 			// PING COMMAND
 			PING_DESCRIPTION: 'Affiche la latence du bot',
@@ -127,6 +134,89 @@ module.exports = class {
 			DELCOMMAND_EXIST: (cmd) => `${error} | La commande ${cmd} n'existe pas !`,
 			DELCOMMAND_SUCCESS: (cmd) => `${success} | La commande ${cmd} a bien été enlevée du serveur !`,
 
+			// ECONOMY
+			MONEY: `💰 Argent`,
+			REP: `🎩 Réputation`,
+			REGISTERED_AT: `📅 Enregistré`,
+			LEVEL: `📊 Niveau`,
+			EXP: `🔮 Expérience`,
+			BIRTHDATE: `🎂 Anniversaire`,
+			COUPLE: `❤️ Marié(e)`,
+			INVITER: `🤵 Inviteur`,
+			PSEUDO: `📝 Pseudo`,
+
+			// Profile command
+			PROFILE_DESCRIPTION: `Affiche le profil du membre mentionné (ou de l'auteur du message)`,
+			PROFILE_HEADING: (username) => `Profil de ${username}`,
+			NO_BIO: `Aucune biographie enregistrée`,
+			DISPLAY_REP: (points) => `**${points}** point(s)`,
+			DISPLAY_CREDITS: (credits) => `**${credits}** crédit(s)`,
+			NO_PARTNER: `Célibataire`,
+			NO_BIRTHDATE: `Indéfini`,
+			
+			// work command
+			WORK_DESCRIPTION: `Travaillez et gagnez de l'argent !`,
+			WORK_COOLDOWN: (delai) => `${error} | Vous devez attendre ${delai} avant de pouvoir de nouveau travailler !`,
+			SALARY_CLAIMED: `Salaire`,
+			SALARY_CLAIMED2: `200 crédits ajoutés à votre compte !`,
+
+			// Eval
+			EVAL_DESCRIPTION: `Exécute le code`,
+			
+			// Rep command
+			REP_DESCRIPTION: `Donnez un point de réputation à un membre !`,
+			REP_COOLDOWN: (delai) => `${error} | Vous devez attendre ${delai} avant de pouvoir de nouveau donner un point de réputation !`,
+			REP_BOT: `${error} | Vous ne pouvez pas donner un point de réputation à un bot !`,
+			REP_SELF: `${error} | Vous ne pouvez pas vous donner vous-même un point de réputation !`,
+			REP_SUCCESS: (tag) => `${success} | Vous avez bien donné un point de réputation à **${tag}** !`,
+
+			// Setbio command
+			SETBIO_DESCRIPTION: `Changez la description qui apparaitra sur votre profil !`,
+			SETBIO_MISSING_DESCRIPTION : `${error} | Veuillez entrer une description valide !`,
+			SETBIO_100: `${error} | Votre biographie ne doit pas excéder les 100 caractères !`,
+			SETBIO_SUCCESS: `${success} | Votre biographie vient d'être modifiée !`,
+
+			// credits command
+			CREDITS_DESCRIPTION: `Affiche vos crédits`,
+			CREDITS_HEADING: (username) => `Crédits de ${username}`,
+			CREDITS_CONTENT: (credits, username) => `Actuellement **${credits}** crédits sur le compte de **${username}** !`,
+
+			// leaderboard command
+			LEADERBOARD_DESCRIPTION: `Affiche les utilisateurs qui dispose du plus de crédits, de niveaux ou de points de réputation !`,
+			LEADERBOARD_TYPE: `${error} | Veuillez entrer un type de leaderboard ! (\`credits\`, \`levels\` ou \`rep\`)`,
+
+			// Pay command
+			PAY_DESCRIPTION: `Payez un membre avec des crédits !`,
+			PAY_SELF: `${error} | Vous ne payez pas vous payez vous-même !`,
+			PAY_AMOUNT: (username) => `${error} | Vous devez entrer un montant à verser à **${username}** !`,
+			PAY_AMOUNT_TO_HIGH: (amount, username) => `${error} | Vous ne disposez pas d\'assez de crédits pour verser ${amount} crédits à ${username} !`,
+			PAY_SUCCESS: (amount, username) => `${success} | Vous avez versé ${amount} crédits à ${username} !`,
+
+			// Birthdate command
+			BIRTHDATE_DESCRIPTION: `Définissez la date de votre anniversaire (qui apparaitre sur votre profil)`,
+			BIRTHDATE_VALID_DATE: `${error} | Veuillez entrer une date valide ! Par exemple 01/12/2000`,
+			BIRTHDATE_INVALID_DATE2: `${error} | Vous avez entrer une date invalide. Rappel : le format de la date doit être : Jour/Mois/Année. Par exemple, 01/12/2000 pour le premier décembre 2000.`,
+			BIRTHDATE_INVALID_DATE3: `${error} |  Vous avez entrer une date invalide (ou la date indiquée n'existe pas). Rappel : le format de la date doit être : Jour/Mois/Année. Par exemple, 01/12/2000 pour le premier décembre 2000.`,
+			BIRTHDATE_SUCCESS: (date) => `${success} | Votre date d'anniversaire a été définie sur le ${date} !`,
+			BIRTHDATE_TOO_HIGH: `${error} | Vous ne pouvez pas ne pas encore être né !`,
+			
+			// Weegind command
+			WEDDING_DESCRIPTION: `Mariez-vous avec la personne de votre choix !`,
+			WEEDING_AUTHOR_ALREADY: (prefix) => `${error} | Vous êtes déjà marié(e) ! Utilisez d'abord \`${prefix}divorce\` pour divorcer`,
+			WEEDING_MEMBER_ALREADY: (username) => `${error} | La place est prise compagnon ! **${username}** est déjà marié(e) !`,
+			WEEDING_AUTHOR_PENDING: (username) => `${error} | Vous avez déjà une demande en cours auprès de **${username}** !`,
+			WEEDING_AUTHOR_PENDING2: (username) => `${error} | **${username}** vous a déjà envoyé une demande ! Veuillez la refuser ou l'accepter (ou attendre qu'elle expire dans quelques minutes).`,
+			WEEDING_MEMBER_PENDING: (username1, username2) => `${error} | **${username2}** a déjà une demande envoyé une demande auprès de **${username1}** !`,
+			WEEDING_MEMBER_PENDING2: (username1, username2) => `${error} | **${username1}** a déjà envoyé une demande auprès de **${username2}** ! Attendez que **${username2}** accepte ou refuse la demande de **${username1}** ou que celle-ci expire puis réessayez !`,
+			WEEDING_REQUEST: (member, author) => `${warn} | ${member}, acceptez-vous d'épouser ${author} ? Répondez par "${yes}" ou "${no}" !`,
+			WEEDING_TIMEOUT: (member) => `${error} | ${member} n'a pas répondu... Attendez qu'il/elle soit connecté(e) puis réessayez !`,
+			WEEDING_SUCCESS: (author, member) => `${success} | ${author}, j'ai une bonne nouvelle... ${member} a accepté votre demande en mariage !`,
+			WEEDING_DENIED: (author, member) => `${error} | ${author}, j'ai une mauvaise nouvelle... ${member} a refusé votre demande en mariage.`,
+
+			// Divorce command
+			DIVORCE_DESCRIPTION: `Divorcez avec la personne avec qui vous êtes actuellement marié(e) !`,
+			DIVORCE_NOT_WEEDED: `${error} | Vous n'êtes actuellement pas marié(e) !`,
+			DIVORCE_SUCCESS: (username) => `${success} | Vous venez de divorcer avec **${username}** !`
         }
     }
 
@@ -146,6 +236,25 @@ module.exports = class {
 		}
 	}
 
+	printDate(pdate, isLongDate){
+        var monthNames = [
+            "janvier", "février", "mars",
+            "avril", "mai", "juin", "juillet",
+            "août", "septembre", "octobre",
+            "novembre", "décembre"
+        ];
+
+        var day = pdate.getDate();
+        var monthIndex = pdate.getMonth();
+        var year = pdate.getFullYear();
+        var hour = pdate.getHours();
+        var minute = pdate.getMinutes();
+
+		var thedate = (isLongDate) ? day + ' ' + monthNames[monthIndex] + ' ' + year + " à " + hour + "h" + minute 
+		: thedate = day + ' ' + monthNames[monthIndex] + ' ' + year;
+        return thedate;
+	}
+	
 	convertMs(ms){
 		var d, h, m, s;
 		s = Math.floor(ms / 1000);

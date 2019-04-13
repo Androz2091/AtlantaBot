@@ -23,7 +23,12 @@ class Atlanta extends Client {
     this.functions = require('./utils/functions.js'); // Load the functions file
     this.databases = [ // Create tables (quick.db)
       new quickdb.table('usersdata'),
-      new quickdb.table('serversdata')
+      new quickdb.table('serversdata'),
+      { 
+        work: new quickdb.table('work'), 
+        rep: new quickdb.table('rep'),
+        xp: new quickdb.table('xp')
+      }
     ];
   }
 
