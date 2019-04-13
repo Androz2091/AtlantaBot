@@ -79,5 +79,23 @@ module.exports = {
             var x = a[key]; var y = b[key];
             return ((x < y) ? 1 : ((x > y) ? -1 : 0));
         });
+    },
+
+    // This function return a shuffled array
+    shuffle: function(pArray) {
+        var array = [];
+        pArray.forEach(element => array.push(element));
+        var currentIndex = array.length, temporaryValue, randomIndex;
+        // While there remain elements to shuffle...
+        while (0 !== currentIndex) {
+            // Pick a remaining element...
+            randomIndex = Math.floor(Math.random() * currentIndex);
+            currentIndex -= 1;
+            // And swap it with the current element.
+            temporaryValue = array[currentIndex];
+            array[currentIndex] = array[randomIndex];
+            array[randomIndex] = temporaryValue;
+        }
+        return array;
     }
 }
