@@ -15,7 +15,12 @@ stats = [
 	"<:version:566983129370460170>",
 	"<:online:566984813278527508>",
 	"<:lien:566985712399024131>"
-];
+],
+invite = [
+	'<:add:566991586182037525>',
+	'<:vote:566991799898472450>',
+	'<:help:566993906902761483>'
+]
 
 // This class is used to store languages strings
 
@@ -362,7 +367,15 @@ module.exports = class {
 			],
 			STATS_STATS: (serv, users) => `\`Serveurs : ${serv}\`\n\`Utilisateurs : ${users}\``,
 			STATS_ONLINE: (time) => `Depuis ${time}`,
-			STATS_LINKS: (url) => `[Github](https://github.com/Androz2091) | [Inviter Atlanta](https://discordapp.com/oauth2/authorize?client_id=563420709423153152&scope=bot&permissions=2146958847) | [Support](${url}) | [Don](https://paypal.me/andr0z)`
+			STATS_LINKS: (url) => `[Github](https://github.com/Androz2091) | [Inviter Atlanta](https://discordapp.com/oauth2/authorize?client_id=563420709423153152&scope=bot&permissions=2146958847) | [Support](${url}) | [Don](https://paypal.me/andr0z)`,
+
+			// invite commands
+			INVITE_DESCRIPTION: `Affiche les liens d'${botname} !`,
+			INVITE_HEADING: `Liens principaux`,
+			INVITE_DESC: (prefix) => `Tapez \`${prefix}invite copy\` pour pouvoir copier le lien !`,
+			INVITE_FIELD1: `${invite[0]} Inviter ${botname}`,
+			INVITE_FIELD2: `${invite[1]} Voter pour ${botname}`,
+			INVITE_FIELD3: `${invite[2]} Support`
         }
     }
 
