@@ -28,7 +28,7 @@ class Help extends Command {
             let cmd = this.client.commands.get(args[0]) || this.client.commands.get(this.client.aliases.get(args[0]));
             if(!cmd && guild_data.commands[args[0]]){
                 return message.channel.send(message.language.get('HELP_CUSTOMIZED'), args[0]);
-            } else return message.channel.send(message.language.get('HELP_COMMAND_NOT_FOUND', args[0]));
+            } else if(!cmd) return message.channel.send(message.language.get('HELP_COMMAND_NOT_FOUND', args[0]));
 
             // Replace $ caract with the server prefix
             var examples = cmd.help.examples.replace(/[$_]/g,guild_data.prefix);
@@ -40,6 +40,7 @@ class Help extends Command {
                 .addField(message.language.get('HELP_EXAMPLES'), examples)
                 .addField(message.language.get('HELP_GROUP'), cmd.help.category)
                 .addField(message.language.get('HELP_DESC'), cmd.help.description(message.language))
+                .addField(message.language.get('HELP_ALIASES'), cmd.conf.aliases.length > 0 ? cmd.conf.aliases.map(a => '`'+a+'`').join('\n') : message.language.get('HELP_NO_ALIASES'))
                 .setColor(data.embed.color)
                 .setFooter(data.embed.footer)
 

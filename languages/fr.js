@@ -8,7 +8,14 @@ var owner = "`Androz#2091`";
 yes = 'oui',
 no = 'non',
 botname = 'Atlanta',
-lang= 'fr'
+lang = 'fr',
+stats = [ 
+	"<:stats:566982702704754715>",
+	"<:ram:566979302076448828>",
+	"<:version:566983129370460170>",
+	"<:online:566984813278527508>",
+	"<:lien:566985712399024131>"
+];
 
 // This class is used to store languages strings
 
@@ -48,6 +55,7 @@ module.exports = class {
 			PLEASE_WAIT: `${loading} | Veuillez patienter...`,
 			GAME_ALREADY_LAUNCHED: `${error} | Une partie est déjà en cours sur ce serveur !`,
 			A_GAME_ALREADY_LAUNCHED: `${error} | A cause des lags et bugs dus au findwords et au number, il est impossible de lancer deux parties en même temps, même si elles sont sur deux serveurs différents.\nIl y a une partie actuellement en cours sur un autre serveur, veuillez donc patientez quelques minutes puis réessayer.\nNous sommes désolés, mais des personnes abusaient de cette commande en la spammant sur pleins de serveurs.`,
+			AN_ERROR_OCCURENCED: `${error} | Une erreur est survenue, veuillez réessayez dans quelques minutes.`,
 			
 			// PING COMMAND
 			PING_DESCRIPTION: 'Affiche la latence du bot',
@@ -65,8 +73,10 @@ module.exports = class {
 			HELP_EXAMPLES: `Exemples :`,
 			HELP_GROUP: `Groupe :`,
 			HELP_DESC: `Description :`,
+			HELP_ALIASES: `Alias :`,
 			HELP_PERMISSIONS: `Permissions :`,
 			HELP_CUSTOMIZED: (cmd) => `${error} | La commande ${cmd} ne dispose pas d'aide car elle est personnalisée.`,
+			HELP_NO_ALIASES: `Aucun alias.`,
 
 			// Conf command
 			CONFIGURATION_DESCRIPTION:'Affiche la configuration du serveur',
@@ -332,7 +342,27 @@ module.exports = class {
 
 			// qrcode
 			QRCODE_DESCRIPTION: `Affiche un QR Code avec votre mot !`,
-			QRCODE_TEXT: `${error} | Vous devez entrer un texte !`
+			QRCODE_TEXT: `${error} | Vous devez entrer un texte !`,
+
+			// hastebin command
+			HASTEBIN_DESCRIPTION: `Upload votre texte sur hastebin !`,
+			HASTEBIN_TEXT: `${error} | Vous devez entrer un texte !`,
+			HASTEBIN_SUCCESS: (url) => `${success} | Votre texte a été uploadé sur hastebin ! Voici votre lien : ${url}`,
+
+			// stats command
+			STATS_DESCRIPTION: `Affiche les stats du bot !`,
+			STATS_HEADING: `Stats d'${botname}`,
+			STATS_DESC: `${botname} est un bot open source développé par ${owner} !`,
+			STATS_HEADERS:[
+				`${stats[0]} • __Statistiques__`,
+				`${stats[1]} • __RAM__`,
+				`${stats[2]} • __Version__`,
+				`${stats[3]} • __En ligne__`,
+				`${stats[4]} • __Liens__`
+			],
+			STATS_STATS: (serv, users) => `\`Serveurs : ${serv}\`\n\`Utilisateurs : ${users}\``,
+			STATS_ONLINE: (time) => `Depuis ${time}`,
+			STATS_LINKS: (url) => `[Github](https://github.com/Androz2091) | [Inviter Atlanta](https://discordapp.com/oauth2/authorize?client_id=563420709423153152&scope=bot&permissions=2146958847) | [Support](${url}) | [Don](https://paypal.me/andr0z)`
         }
     }
 
