@@ -306,8 +306,14 @@ module.exports = class {
 			NUMBER_SMALLER: (number, author) => `${author} | Le nombre est plus **petit** que \`${number}\` !`,
 			NUMBER_GG2: (member) => `<@${member}> a gagné 10 crédits !`,
 			NUMBER_GG1: (user, number, time, nb, members) => `:tada: | ${user} a trouvé le nombre ! C\'était __**${number}**__ !\n\n**Stats de la partie :**\n__**Temps**__: ${time}\n__**Nombre de participants**__ : ${nb}\n__**Participants**__ : \n${members}`,
-			NUMBER_LOOSE: (number) => `${error} | Personne n'a réussi à trouver le nombre ! C'était ${number} !`
-			
+			NUMBER_LOOSE: (number) => `${error} | Personne n'a réussi à trouver le nombre ! C'était ${number} !`,
+
+			// Random command
+			RANDOM_DESCRIPTION: `Tire aléatoirement un des choix que vous me donner !`,
+			RANDOM_2_CHOICES: `${error} | Vous devez entrer plus de deux choix !`,
+			RANDOM_CHOOSED: `${success} | Voici mon choix :`,
+			RANDOM_WAIT: `${loading} | Choix en cours...`,
+			RANDOM_BLANK: `${error} | Un de vos choix semble être vide... Veuillez réessayer !`
         }
     }
 
