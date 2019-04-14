@@ -14,7 +14,7 @@ class FindWords extends Command {
             dirname: __dirname,
             usage: "findwords",
             enabled: true,
-            guildOnly: false,
+            guildOnly: true,
             aliases: [],
             permission: false,
             botpermissions: [ "SEND_MESSAGES" ],
@@ -28,11 +28,11 @@ class FindWords extends Command {
 
         // if a game is already started
         if(cgame){
-            if(cgame === message.guild.id) return message.channel.send(message.language.get('FINDWORDS_GAME_ALREADY_LAUNCHED'));
+            if(cgame === message.guild.id) return message.channel.send(message.language.get('GAME_ALREADY_LAUNCHED'));
             else {
                 var embed = new Discord.RichEmbed()
                     .setAuthor('Hi, '+message.author.username, message.author.displayAvatarURL)
-                    .setDescription(message.language.get('FINDWORDS_A_GAME_ALREADY_LAUNCHED'))
+                    .setDescription(message.language.get('A_GAME_ALREADY_LAUNCHED'))
                     .setColor(data.embed.color)
                     .setFooter(data.embed.footer)
                 return message.channel.send(embed);
@@ -50,7 +50,7 @@ class FindWords extends Command {
         var client = this.client;
 
         // Store the date wich the game has started
-        var create_date = Date.now(); // 20929038303
+        var creation_date = Date.now(); // 20929038303
     
         // Get four random words
         var results = [
@@ -108,7 +108,7 @@ class FindWords extends Command {
                         if(gagnants.length < 1) return message.channel.send(message.language.get('FINDWORDS_NOBODY2'));
                         var winner_data = getWinner(participants, message);
                         console.log(winner_data);
-                        var time = message.language.convertMs(Date.now() - create_date);
+                        var time = message.language.convertMs(Date.now() - creation_date);
                         message.channel.send(message.language.get('FINDWORDS_GG2', winner_data[0], winner_data[1], nbgames, time, participants.length, participants.map(p => '<@'+p+'>').join('\n')));
                         if(participants.length > 1){
                             // Add 15 credits to the winner

@@ -11,7 +11,7 @@ class Lovecalc extends Command {
             dirname: __dirname,
             usage: "lovecalc [@member1] [@member2]",
             enabled: true,
-            guildOnly: false,
+            guildOnly: true,
             aliases: [],
             permission: false,
             botpermissions: [ "SEND_MESSAGES" ],
