@@ -148,6 +148,7 @@ module.exports = class {
 			COUPLE: `❤️ Marié(e)`,
 			INVITER: `🤵 Inviteur`,
 			PSEUDO: `📝 Pseudo`,
+			BADGES: `🔥 Badges`,
 
 			// Profile command
 			PROFILE_DESCRIPTION: `Affiche le profil du membre mentionné (ou de l'auteur du message)`,
@@ -157,6 +158,7 @@ module.exports = class {
 			DISPLAY_CREDITS: (credits) => `**${credits}** crédit(s)`,
 			NO_PARTNER: `Célibataire`,
 			NO_BIRTHDATE: `Indéfini`,
+			NO_BADGE: `Aucun badge.`,
 			
 			// work command
 			WORK_DESCRIPTION: `Travaillez et gagnez de l'argent !`,
@@ -237,6 +239,47 @@ module.exports = class {
 			SLOTS_TOO_HIGH: (credits) => `${error} | Vous ne disposez pas de ${credits} crédit(s).`,
 			SLOTS_LOOSE: (amount, username) => `**${username}** a utilisé ${amount} crédit(s) et a tout perdu.`,
 			SLOTS_WIN: (text, amount, won, username) => `${text}**${username}** a utilisé ${amount} crédit(s) et a gagné ${won} crédit(s) !`,
+
+			// 8 ball command
+			EIGHTBALL_DESCRIPTION: `Je vous dis la vérité`,
+			EIGHTBALL_QUESTION: `${error} | Veuillez entrer une question valide !`,
+			EIGHTBALL_QUESTIONS: [
+				"j'en suis certain.",
+				"c'est décidément sur.",
+				"sans aucun doute.",
+				"oui, j'en suis sur et certain !",
+				"probablement...",
+				"oui !",
+				"non !",
+				"des signes me font dire oui...",
+				"demandez à nouveau plus tard :\\",
+				"mieux vaut ne pas te le dire maintenant...",
+				"je ne peux pas prédire maintenant.",
+				"concentrez-vous et demandez à nouveau !",
+				"ne compte pas la dessus.",
+				"ma réponse est non.",
+				"mes sources disent que non...",
+				"oh... J'en doute !"
+			],
+
+			// ascii command
+			ASCII_DESCRIPTION: `Transforme votre texte en caractères ascii !`,
+			ASCII_TEXT: `${error} | Veuillez entrer un texte valide (inférieur à 20 caractères) !`,
+
+			// badge command
+			BADGE_DESCRIPTION: `Achetez des badges qui apparaîtront sur votre profil !`,
+			BADGE_HEADING: `Badges Atlanta`,
+			BADGE_DESCRIPTION: (prefix) => `Pour acheter un badge, tapez \`${prefix}badge [nom-du-badge]\``,
+			BADGE_FORMAT: (badge) => `Badge : ${badge.str}\nNom : ${badge.name}\nPrix : ${badge.price} crédits\n--------\n`,
+			BADGE_FORMAT_ALREADY: (badge) => `Badge : ${badge.str}\nNom : ${badge.name}\nDéjà acheté (${badge.price} crédits)\n--------\n`,
+			BADGE_GAMES: `Jeux`,
+			BADGE_FLAGS: `Pays`,
+			BADGE_OTHERS: `Autre`,
+			BADGE_404: (text) => `${error} | Aucun badge trouvé pour \`${text}\``,
+			BADGE_SUCCESS: (badge) => `${success} | Vous venez d'acheter le badge ${badge.name} (${badge.str}) pour ${badge.price} crédits !`,
+			BADGE_PRICE: `${error} | Vous n'avez pas assez de crédits pour acheter ce badge !`,
+			BADGE_ALREADY: `${error} | Vous possédez déjà ce badge !`,
+			
         }
     }
 

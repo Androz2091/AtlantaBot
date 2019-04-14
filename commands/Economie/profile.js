@@ -56,6 +56,8 @@ class Profile extends Command {
             .addField(message.language.get('INVITER'), `${(this.client.guilds.some(g => g.ownerID === member.id)) ? message.language.get('YES') : message.language.get('NO')}`, true)
             // Display the member partner
             .addField(message.language.get('COUPLE'), `${member_data.partner === 'false' ? message.language.get('NO_PARTNER') : this.client.users.get(member_data.partner).username}`, true)
+            // Display the badges of the member
+            .addField(message.language.get('BADGES'), (member_data.badges.length > 0) ? '=> '+member_data.badges.map(b => b.str).join(', ') : message.language.get('NO_BADGE'))
             .setColor(data.embed.color) // Sets the color of the embed
             .setFooter(data.embed.footer) // Sets the footer of the embed
             .setTimestamp();

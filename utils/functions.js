@@ -39,6 +39,7 @@ module.exports = {
             birthdate:"unknow", // The birth date of the user
             partner:"false", // The user boyfriend or girlfriend
             old_partners:[], // The user's previous partners
+            badges:[], // the badges of the member
             color:client.config.embed.color, // The user's embed color,
             registeredAt:Date.now(), // The date wich the user is registered
             // The user's statistics
