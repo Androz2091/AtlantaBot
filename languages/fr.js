@@ -292,7 +292,12 @@ module.exports = class {
 			FINDWORDS_GG: (winner) => `${success} | Bravo <@${winner}> ! Ton mot est valide et tu as été le plus rapide !`,
 			FINDWORDS_NOBODY2: `${warn} | Je ne peux définir aucun gagnant car aucun mot n'a été trouvé de toutes les parties !`,
 			FINDWORDS_GG2: (user, games, total_games, time, number, members) => `:tada: | ${user} a gagné la partie !\nManche Gagnées : ${games}/${total_games}\n\n**Stats de la partie :**\n__**Temps**__: ${time}\n__**Nombre de participants**__ : ${number}\n__**Participants**__ : \n${members}`,
-			FINDWORDS_END: (member) => `${member} gagne 15 crédits ! :tada:`
+			FINDWORDS_END: (member) => `${member} gagne 15 crédits ! :tada:`,
+
+			// Lovecalc
+			LOVECALC_DESCRIPTION: `Combien d'amour y a t'il entre deux personnes ? *Ceci est une commande fun, a ne pas prendre au sérieux*`,
+			LOVECALC_MENTIONS: `${error} | Vous devez mentionner deux membres !`,
+			LOVECALC_TEXT: (percent, username1, username2) => `Il y a **${percent}%** d'amour entre **${username1}** et **${username2}** !`
 			
         }
     }
