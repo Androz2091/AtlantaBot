@@ -98,5 +98,10 @@ module.exports = {
             array[randomIndex] = temporaryValue;
         }
         return array;
+    },
+
+    // This function return a random number between min and max
+    randomNum : function(min, max) {
+        return Math.floor(Math.random() * (max - min)) + min;
     }
 }

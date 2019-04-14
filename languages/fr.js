@@ -28,7 +28,7 @@ module.exports = class {
 			LOOSE: `Perdu`,
 
 			// ERROR MESSAGE
-			INHIBITOR_MISSING_BOT_PERMS: (perms) => `${error} | J'ai besoin des permissions suivantes pour effectuer cette commande : ${perms}`,
+			INHIBITOR_MISSING_BOT_PERMS: (perms) => `${error} | J'ai besoin des permissions suivantes pour effectuer cette commande : \`${perms}\``,
 			INHIBITOR_NSFW: `${error} | Vous devez vous rendre dans un salon qui autorise le NSFW pour taper cette commande !`,
 			INHIBITOR_PERMISSIONS:(perm) => `${error} | Vous n'avez pas les permissions nécessaires pour effectuer cette commande (\`${perm}\`)`,
 			COMMAND_DISABLED: `${error} | Cette commande est actuellement désactivée !`,
@@ -108,7 +108,7 @@ module.exports = class {
 			WELCOME_SUCCESS: (channel, prefix) => `${success} | Messages de bienvenue activés dans <#${channel}> ! Tapez \`${prefix}welcome test\` pour tester le message de bienvenue !`,
 			WELCOME_TIMEOUT: `${error} | Temps écoulé ! Veuillez retaper la commande !`,
 			WELCOME_CARACT: `${error} | Votre message ne doit pas excéder les 1500 caractères !`,
-			WELCOME_IMG: (name) => `Sur ${name} !`,
+			WELCOME_IMG: (name) => `Bienvenue sur ${name} !`,
 
 			// Leave cmd
 			LEAVE_DESCRIPTION: `Envoie un message d'au revoir dans un salon défini au préalable !`,
@@ -313,7 +313,26 @@ module.exports = class {
 			RANDOM_2_CHOICES: `${error} | Vous devez entrer plus de deux choix !`,
 			RANDOM_CHOOSED: `${success} | Voici mon choix :`,
 			RANDOM_WAIT: `${loading} | Choix en cours...`,
-			RANDOM_BLANK: `${error} | Un de vos choix semble être vide... Veuillez réessayer !`
+			RANDOM_BLANK: `${error} | Un de vos choix semble être vide... Veuillez réessayer !`,
+
+			// Lmg command
+			LMG_DESCRIPTION: `Renvoie un lien lmgtfy pour la recherche indiquée !`,
+			LMG_SEARCH: `${error} | Vous devez préciser une recherche !`,
+
+			// flip command
+			FLIP_DESCRIPTION: `Je lance les dés pour vous !`,
+			FLIP_PILE: `:game_die: | C'est **pile** !`,
+			FLIP_FACE: `:game_die: | C'est **face** !`,
+
+			// tweet command
+			TWEET_DESCRIPTION: `Génère un tweet d'une personne de votre choix sur Twitter grâce à l'api nekobot !`,
+			TWEET_USERNAME: `${error} | Vous devez entrer le pseudo twitter de quelqu'un !`,
+			TWEET_TEXT: `${error} | Vous devez entrer un message !`,
+			TWEET_TXT: (user) => `Nouveau tweet publié par ${user} :`,
+
+			// qrcode
+			QRCODE_DESCRIPTION: `Affiche un QR Code avec votre mot !`,
+			QRCODE_TEXT: `${error} | Vous devez entrer un texte !`
         }
     }
 
