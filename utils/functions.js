@@ -74,6 +74,20 @@ module.exports = {
         return membersdata;
     },
 
+    // This function return a valid link to the support server
+    supportLink: async function(client){
+        return new Promise(function(resolve, reject) {
+            var guild = client.guilds.get(client.config.support.id);
+            var channel = guild.channels.filter(ch => ch.type === 'text').first();
+            if(channel){
+                var options = {maxAge:0};
+                channel.createInvite(options).then(i => {
+                    resolve(i.url);
+                });
+            }
+        });
+    },
+
     // This function sort an array 
     sortByKey: function(array, key) {
         return array.sort(function(a, b) {
