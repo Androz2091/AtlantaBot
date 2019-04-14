@@ -11,5 +11,6 @@ module.exports = {
 	},
 	default_language:"fr", // The default language of the new guilds
 	owner:"xxxxxxxx", // The owner of the bot,
-	anidiots:"xxxxxxxx" // your dev.anidtios.guide key
+	anidiots:"xxxxxxxx", // your dev.anidtios.guide key
+	yandex:"xxxxxxxx" // get your yandex key at https://translate.yandex.com/developers/keys
 }

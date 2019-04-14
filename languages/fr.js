@@ -38,6 +38,15 @@ module.exports = class {
 			TCREDITS: `Crédits`,
 			WIN: `Victoire`,
 			LOOSE: `Perdu`,
+			PAGE: `Page`,
+			TOTAL_SERVERS: `Total serveurs`,
+			MEMBERS: `Membres`,
+			STATUS: {
+				"dnd":"Ne pas déranger",
+				"idle":"AFK (idle)",
+				"offline":"Déconnecté",
+				"online":"En ligne"
+			},
 
 			// ERROR MESSAGE
 			INHIBITOR_MISSING_BOT_PERMS: (perms) => `${error} | J'ai besoin des permissions suivantes pour effectuer cette commande : \`${perms}\``,
@@ -369,13 +378,46 @@ module.exports = class {
 			STATS_ONLINE: (time) => `Depuis ${time}`,
 			STATS_LINKS: (url) => `[Github](https://github.com/Androz2091) | [Inviter Atlanta](https://discordapp.com/oauth2/authorize?client_id=563420709423153152&scope=bot&permissions=2146958847) | [Support](${url}) | [Don](https://paypal.me/andr0z)`,
 
-			// invite commands
+			// invite command
 			INVITE_DESCRIPTION: `Affiche les liens d'${botname} !`,
 			INVITE_HEADING: `Liens principaux`,
 			INVITE_DESC: (prefix) => `Tapez \`${prefix}invite copy\` pour pouvoir copier le lien !`,
 			INVITE_FIELD1: `${invite[0]} Inviter ${botname}`,
 			INVITE_FIELD2: `${invite[1]} Voter pour ${botname}`,
-			INVITE_FIELD3: `${invite[2]} Support`
+			INVITE_FIELD3: `${invite[2]} Support`,
+
+			// translate command
+			TRANSLATE_DESCRIPTION: `Je traduis votre texte !`,
+			TRANSLATE_LANG: (prefix) => `${error} | Veuillez entrer une langue ! Pour afficher la liste des langues, tapez \`${prefix}translate langs-list\` !`,
+			TRANSLATE_LANG1: (prefix, lang) => `${error} | La langue \`${lang}\` n'existe pas ! Pour afficher la liste des langues, tapez \`${prefix}translate langs-list\` !`,
+			TRANSLATE_LANGS: `${success} | La liste des langues vient de vous être envoyé par messages privés !`,
+			TRANSLATE_MSG: `${error} | Veuillez entrer un texte à traduire !`,
+
+			// servers list command
+			SERVERS_LIST_DESCRIPTION: `Affiche mes serveurs !`,
+
+			// userinfo command
+			USERINFO_DESCRIPTION: `Affiche des informations sur l'utilisateur !`,
+			USERINFO_ID: (id) => `${error} | Aucun utilisateur sur Discord ne possède l'ID \`${id}\` !`,
+			USERINFO_FIELDS: [
+				"<:username:567018125938130951> Pseudo",
+				"<:discriminator:567017866856103950> Discriminateur",
+				"<:bdg_IAMABOT:566892351570706432> Robot",
+				"<:avatar:567020705728692271> Avatar",
+				"<:calendar:567019405767213096> Création",
+				"<:games:567019785620029529> Jeu",
+				"<:online:567020241427890195> Statut",
+				// member infos
+				"<:up:567024250364493933> Rôle",
+				"<:calendar2:567025420508200970> Arrivée",
+				"<:pencil:567029174955671552> Surnom",
+				"<:roles:567028552256454657> Rôles",
+				"<:color:567030657545404446> Couleur"
+			],
+			USERINFO_NO_GAME: `Pas de jeu`,
+			USERINFO_NO_ROLE: `Aucun rôle`,
+			USERINFO_MORE_ROLES: (nb) => ` et ${nb} autres rôles`,
+			USERINFO_NO_NICKNAME: `Pas de surnom`
         }
     }
 
