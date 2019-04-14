@@ -46,6 +46,8 @@ module.exports = class {
 			NAN: (nan) => `${error} | \`${nan}\` n'est pas un nombre valide !`,
 			INVALID_ID: `${error} | Veuillez entrer une ID valide !`,
 			PLEASE_WAIT: `${loading} | Veuillez patienter...`,
+			GAME_ALREADY_LAUNCHED: `${error} | Une partie est déjà en cours sur ce serveur !`,
+			A_GAME_ALREADY_LAUNCHED: `${error} | A cause des lags et bugs dus au findwords et au number, il est impossible de lancer deux parties en même temps, même si elles sont sur deux serveurs différents.\nIl y a une partie actuellement en cours sur un autre serveur, veuillez donc patientez quelques minutes puis réessayer.\nNous sommes désolés, mais des personnes abusaient de cette commande en la spammant sur pleins de serveurs.`,
 			
 			// PING COMMAND
 			PING_DESCRIPTION: 'Affiche la latence du bot',
@@ -283,8 +285,6 @@ module.exports = class {
 
 			// findwords command
 			FINDWORDS_DESCRIPTION: `Lance une partie de findwords, un jeu ou vous devez trouver des mots !`,
-			FINDWORDS_GAME_ALREADY_LAUNCHED: `${error} | Une partie est déjà en cours sur ce serveur !`,
-			FINDWORDS_A_GAME_ALREADY_LAUNCHED: `${error} | A cause des lags et bugs dus au findwords et au number, il est impossible de lancer deux parties en même temps, même si elles sont sur deux serveurs différents.\nIl y a une partie actuellement en cours sur un autre serveur, veuillez donc patientez quelques minutes puis réessayer.\nNous sommes désolés, mais des personnes abusaient de cette commande en la spammant sur pleins de serveurs.`,
 			FINDWORDS_TIMER: `${warn} | La partie commence dans 10 secondes !`,
 			FINDWORDS_20S: (word) => `${warn} | 20 secondes pour trouver un mot contenant "**${word}**" !`,
 			FINWORDS_INVALID_WORD: (member) => `${error} | ${member} ton mot est invalide !`,
@@ -297,7 +297,16 @@ module.exports = class {
 			// Lovecalc
 			LOVECALC_DESCRIPTION: `Combien d'amour y a t'il entre deux personnes ? *Ceci est une commande fun, a ne pas prendre au sérieux*`,
 			LOVECALC_MENTIONS: `${error} | Vous devez mentionner deux membres !`,
-			LOVECALC_TEXT: (percent, username1, username2) => `Il y a **${percent}%** d'amour entre **${username1}** et **${username2}** !`
+			LOVECALC_TEXT: (percent, username1, username2) => `Il y a **${percent}%** d'amour entre **${username1}** et **${username2}** !`,
+
+			// Number command
+			NUMBER_DESCRIPTION: `Trouvez le nombre que j'ai choisi !`,
+			NUMBER_START: `${warn} | Nombre déterminé, vous pouvez commencer !`,
+			NUMBER_HIGHER: (number, author) => `${author} | Le nombre est plus **grand** que \`${number}\` !`,
+			NUMBER_SMALLER: (number, author) => `${author} | Le nombre est plus **petit** que \`${number}\` !`,
+			NUMBER_GG2: (member) => `<@${member}> a gagné 10 crédits !`,
+			NUMBER_GG1: (user, number, time, nb, members) => `:tada: | ${user} a trouvé le nombre ! C\'était __**${number}**__ !\n\n**Stats de la partie :**\n__**Temps**__: ${time}\n__**Nombre de participants**__ : ${nb}\n__**Participants**__ : \n${members}`,
+			NUMBER_LOOSE: (number) => `${error} | Personne n'a réussi à trouver le nombre ! C'était ${number} !`
 			
         }
     }
