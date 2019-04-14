@@ -7,7 +7,8 @@ loading = "<a:atlanta_loading:565214530121105418>"
 var owner = "`Androz#2091`";
 yes = 'oui',
 no = 'non',
-botname = 'Atlanta'
+botname = 'Atlanta',
+lang= 'fr'
 
 // This class is used to store languages strings
 
@@ -279,6 +280,19 @@ module.exports = class {
 			BADGE_SUCCESS: (badge) => `${success} | Vous venez d'acheter le badge ${badge.name} (${badge.str}) pour ${badge.price} crédits !`,
 			BADGE_PRICE: `${error} | Vous n'avez pas assez de crédits pour acheter ce badge !`,
 			BADGE_ALREADY: `${error} | Vous possédez déjà ce badge !`,
+
+			// findwords command
+			FINDWORDS_DESCRIPTION: `Lance une partie de findwords, un jeu ou vous devez trouver des mots !`,
+			FINDWORDS_GAME_ALREADY_LAUNCHED: `${error} | Une partie est déjà en cours sur ce serveur !`,
+			FINDWORDS_A_GAME_ALREADY_LAUNCHED: `${error} | A cause des lags et bugs dus au findwords et au number, il est impossible de lancer deux parties en même temps, même si elles sont sur deux serveurs différents.\nIl y a une partie actuellement en cours sur un autre serveur, veuillez donc patientez quelques minutes puis réessayer.\nNous sommes désolés, mais des personnes abusaient de cette commande en la spammant sur pleins de serveurs.`,
+			FINDWORDS_TIMER: `${warn} | La partie commence dans 10 secondes !`,
+			FINDWORDS_20S: (word) => `${warn} | 20 secondes pour trouver un mot contenant "**${word}**" !`,
+			FINWORDS_INVALID_WORD: (member) => `${error} | ${member} ton mot est invalide !`,
+			FINDWORDS_NOBODY: `${error} | Personne n'a réussi à trouver de mots !`,
+			FINDWORDS_GG: (winner) => `${success} | Bravo <@${winner}> ! Ton mot est valide et tu as été le plus rapide !`,
+			FINDWORDS_NOBODY2: `${warn} | Je ne peux définir aucun gagnant car aucun mot n'a été trouvé de toutes les parties !`,
+			FINDWORDS_GG2: (user, games, total_games, time, number, members) => `:tada: | ${user} a gagné la partie !\nManche Gagnées : ${games}/${total_games}\n\n**Stats de la partie :**\n__**Temps**__: ${time}\n__**Nombre de participants**__ : ${number}\n__**Participants**__ : \n${members}`,
+			FINDWORDS_END: (member) => `${member} gagne 15 crédits ! :tada:`
 			
         }
     }
@@ -297,6 +311,10 @@ module.exports = class {
 			case 'function': return value(...args);
 			default: return value;
 		}
+	}
+
+	getLang(){
+		return lang;
 	}
 
 	printDate(pdate, isLongDate){
