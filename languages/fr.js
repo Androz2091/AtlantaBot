@@ -14,7 +14,9 @@ stats = [
 	"<:ram:566979302076448828>",
 	"<:version:566983129370460170>",
 	"<:online:566984813278527508>",
-	"<:lien:566985712399024131>"
+	"<:lien:566985712399024131>",
+	"<:voice:567393244741107745>",
+	"<:love:567394342168166416>"
 ],
 invite = [
 	'<:add:566991586182037525>',
@@ -372,10 +374,14 @@ module.exports = class {
 				`${stats[1]} • __RAM__`,
 				`${stats[2]} • __Version__`,
 				`${stats[3]} • __En ligne__`,
-				`${stats[4]} • __Liens__`
+				`${stats[4]} • __Liens__`,
+				`${stats[5]} • __Musique__`,
+				`${stats[6]} • __Remerciements & crédits__`,
 			],
 			STATS_STATS: (serv, users) => `\`Serveurs : ${serv}\`\n\`Utilisateurs : ${users}\``,
 			STATS_ONLINE: (time) => `Depuis ${time}`,
+			STATS_VC: (nb) => `Musique en cours sur \`${nb}\` serveurs`,
+			STATS_CREDITS: `Merci à \`https://icones8.fr/icons/\`, tous les emojis (ou presque) viennent de ce site !`,
 			STATS_LINKS: (url) => `[Github](https://github.com/Androz2091) | [Inviter Atlanta](https://discordapp.com/oauth2/authorize?client_id=563420709423153152&scope=bot&permissions=2146958847) | [Support](${url}) | [Don](https://paypal.me/andr0z)`,
 
 			// invite command
@@ -417,7 +423,54 @@ module.exports = class {
 			USERINFO_NO_GAME: `Pas de jeu`,
 			USERINFO_NO_ROLE: `Aucun rôle`,
 			USERINFO_MORE_ROLES: (nb) => ` et ${nb} autres rôles`,
-			USERINFO_NO_NICKNAME: `Pas de surnom`
+			USERINFO_NO_NICKNAME: `Pas de surnom`,
+
+			// play command
+			PLAY_DESCRIPTION: `Joue de la musique !`,
+			PLAY_CANT_JOIN: `${error} | Je ne peux pas rentrer dans le salon vocal !`,
+			PLAY_ADDED_TO_QUEUE: (title) => `<:add:566991586182037525> | ${title} a été ajouté à la queue !`,
+			PLAY_NO_SONG: `${error} | Plus aucune musique dans la queue !`,
+			PLAY_PLAYING: `Lecture en cours`,
+			PLAY_UTILS: [
+				"<:title:567363421776117778> Titre",
+				"<:rap:567363851922833409> Chanteur",
+				"<:time:567364870887178261> Durée",
+				"<:search:567372154006536193> Recherche",
+				"<:calendar:567019405767213096> Création",
+				"<:desc:567390492845801473> Description"
+			],
+			PLAY_SEARCH: "Veuillez indiquer une valeur pour sélectionner l'un des résultats de recherche compris entre 1 et 10.",
+			PLAY_PROVIDE_A_NAME: `${error} | Veuillez entrer un nom de vidéo à chercher !`,
+			PLAY_VOICE_CHANNEL: `${error} | Vous devez être connecté dans un salon vocal !`,
+			PLAY_PERMS: `${error} | Une erreur s'est produite. Soit je ne peux pas me connecter dans votre salon, soit je ne peux pas parler dans votre salon. Vérifiez mes permissions et réessayez.`,
+			PLAY_TIMEOUT: `${error} | Temps écoulé ! Veuillez retaper la commande !`,
+			PLAY_404: `${error} | Aucun résultat sur Youtube !`,
+			PLAY_NOT_PLAYING: `${error} | Aucune musique en cours !`,
+
+			// stop command
+			STOP_DESCRIPTION: `Arrête la musique en cours !`,
+			STOP_SUCCESS: `${success} | Je viens d'arrêter la musique !`,
+
+			// queue command
+			QUEUE_DESCRIPTION: `Affiche la queue`,
+			QUEUE_HEADER: `<:queue:567387470837317662> Playlist`,
+
+			// np command 
+			NP_DESCRIPTION: `Affiche la musique actuelle !`,
+
+			// pause command 
+			PAUSE_DESCRIPTION: `Met votre musique en pause !`,
+			PAUSE_ALREADY: `${error} | La musique est déjà en pause !`,
+			PAUSE_SUCCESS: (prefix) => `${success} | La musique est sur pause (utilise \`${prefix}resume\` pour la relancer)`,
+
+			// resume command
+			RESUME_DESCRIPTION: `Met votre musique sur play !`,
+			RESUME_NOT_PAUSED: `${error} | La musique n'est pas sur pause !`,
+			RESUME_SUCCESS: `${success} | La musique est de nouveau en cours de lecture !`,
+
+			// skip command
+			SKIP_DESCRIPTION: `Passe à la chanson suivante !`,
+			SKIP_SUCCESS: `${success} | Je viens de changer la chanson !`
         }
     }
 

@@ -29,7 +29,8 @@ class Atlanta extends Client {
         rep: new quickdb.table('rep'),
         xp: new quickdb.table('xp')
       }
-    ];
+    ],
+    this.queues = new Collection(); // This collection will be used for the music
   }
 
   // This function is used to load a command and add it to the collection
