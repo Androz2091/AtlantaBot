@@ -35,6 +35,8 @@ class Stats extends Command {
             .addField(stats_headers[2], `\`Discord.js : v${version}\`\n\`Nodejs : v${process.versions.node}\``, true)
             .addField(stats_headers[1], `\`${(process.memoryUsage().heapUsed / 1024 / 1024).toFixed(2)}MB\``, true)
             .addField(stats_headers[3], message.language.get('STATS_ONLINE', message.language.convertMs(this.client.uptime)))
+            .addField(stats_headers[5], message.language.get('STATS_VC', this.client.voiceConnections.size))
+            .addField(stats_headers[6], message.language.get('STATS_CREDITS'))
 
         this.client.functions.supportLink(this.client).then(url => {
             embed.addField(stats_headers[4], message.language.get('STATS_LINKS', url));
