@@ -22,15 +22,13 @@ class Autorole extends Command {
 
     async run (message, args, membersdata, guild_data, data) {
 
-        if(!args[0]) return message.channel.send(message.language.get('MENTION_ROLE'));
-
         var statut = args[0];
-        if(statut !== "on" && statut !== "off") return message.language.get('BAD_PARAMETERS', (cmd, guild_data.prefix));
+        if(statut !== "on" && statut !== "off") return message.channel.send(message.language.get('BAD_PARAMETERS', (data.cmd.help.name, guild_data.prefix)));
         
         if(statut === "on"){
 
             // Gets the role
-            if(!args[1]) return message.language.get('BAD_PARAMETERS', (data.cmd));
+            if(!args[1]) return message.channel.send(message.language.get('BAD_PARAMETERS', (data.cmd.help.name, guild_data.prefix)));
             var role = message.mentions.roles.first();
             if(!role){
                 role = message.guild.roles.find(r => r.name === args.slice(1).join(' '));

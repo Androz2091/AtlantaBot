@@ -60,7 +60,7 @@ module.exports = class {
 			MENTION_ROLE: `${error} | Veuillez mentionner un rôle valide !`,
 			MENTION_MEMBER: `${error} | Veuillez mentionner un membre valide !`,
 			CHANNEL_IGNORED: (channel) => `${error} | Les commandes sont interdites dans ${channel} !`,
-			BAD_PARAMETERS: (cmd, prefix) => `${error} | Veuillez vérifier les paramètres de la commande. Regardez les exemples en tapant \`${prefix}help ${cmd.help.name}\` !`,
+			BAD_PARAMETERS: (cmd, prefix) => `${error} | Veuillez vérifier les paramètres de la commande. Regardez les exemples en tapant \`${prefix}help ${cmd}\` !`,
 			ROLE_NOT_FOUND: (role) => `${error} | Aucun rôle trouvé avec \`${role}\` !`,
 			YES_OR_NO: `${error} | Vous devez répondre par "oui" ou par "non" !`,
 			INVALID_TIME: `${error} | Vous devez entrer un temps valide ! Unités valides : \`s\`, \`m\`, \`h\`, \`d\`, \`w\`, \`y\``,
