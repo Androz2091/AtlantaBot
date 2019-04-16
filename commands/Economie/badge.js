@@ -124,7 +124,7 @@ class Badge extends Command {
             // if the badges is not found
             if(!badge) return message.channel.send(message.language.get('BADGE_404', badge_name));
             // if the member has already the badge
-            if(membersdata[0].badges.includes(badge)) return message.channel.send(message.language.get('BADGE_ALREADY'));
+            if(membersdata[0].badges.some(g => g.str === badge.str)) return message.channel.send(message.language.get('BADGE_ALREADY'));
             // if the member doesn't have enough credits
             if(membersdata[0].credits < badge.price) return message.channel.send(message.language.get('BADGE_PRICE'));
             // Updates databases
@@ -147,7 +147,7 @@ class Badge extends Command {
             var str = '';
             var tbadges = badges[type];
             tbadges.forEach(gb => {
-                if(!author_badges.includes(gb.str)) str += message.language.get('BADGE_FORMAT', gb);
+                if(!author_badges.some(g => g.str === gb.str)) str += message.language.get('BADGE_FORMAT', gb);
                 else str += message.language.get('BADGE_FORMAT_ALREADY', gb);
             });
             embed.addField(message.language.get(type.toUpperCase()), str.substr(0, str.length-10), true);
