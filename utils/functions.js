@@ -1,5 +1,6 @@
-module.exports = {
+const Discord = require('discord.js');
 
+module.exports = {
 
     // With quick.db, it's not possible to records boolean (like false, true or null)
 
@@ -10,7 +11,6 @@ module.exports = {
             lang:"fr", // The language of the guild
             prefix:client.config.prefix, // the prefix of the guild
             commands:{}, // the guild's custom commands
-            logs:{ status:"disabled", channel:"unknow" }, // Logs plugin
             welcome:{ status:"disabled", message:"unknow", channel:"unknow" }, // Welcome messages plugin
             welcome_mp:{ status:"disabled", message:"unknow" }, // Welcome messages in DM plugin
             leave:{ status:"disabled", message:"unknow", channel:"unknow" }, // Goodbye messages plugin
@@ -19,7 +19,11 @@ module.exports = {
             ignored_channels:[], // The channels wich are ignored by the bot
             slowmode:{}, // An object like that : { "channelid":"slowmodetime", "channelid2", "slowmodetime2"}
             userslowmode:{}, // Used to store users data
-            warns_sanctions:{} // Used to store users guild sanctions
+            warns_sanctions:{}, // Used to store users guild sanctions
+            channels:{ modlogs: 'false', suggestion: 'false' }, // Used to store channels guild settings
+            case: 0, // Used to store number of mod case
+            automod_warns: {}, // Used to store mod settings
+            muted: {} // This object is used to store muted member 
         });
         // Log in the console
         client.logger.log(`New server ${guild.name} - (${guild.id}) [${guild.memberCount} members]`, 'log');
@@ -72,6 +76,12 @@ module.exports = {
 
         // Return the filled array
         return membersdata;
+    },
+
+    vote: async function(data, client){
+        var user = await client.fetchUser(data.user);
+        client.channels.get(client.config.votes.channel).send(`:arrow_up: **${user.tag}** \`(${user.id})\` voted for **Atlanta**, thanks !\nhttps://discordbots.org/bot/557445719892688897/vote`);
+        user.send(`Hello ${user}, thanks for voting !`);
     },
 
     // This function return a valid link to the support server
