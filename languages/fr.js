@@ -634,7 +634,14 @@ module.exports = class {
 
 			// setsuggests command
 			SETSUGGESTS_DESCRIPTION: `Définissez le salon des suggestions !`,
-			SETSUGGESTS_SUCCESS: (channel) => `${success} | Le salon des suggestions est maintenant ${channel} !`
+			SETSUGGESTS_SUCCESS: (channel) => `${success} | Le salon des suggestions est maintenant ${channel} !`,
+
+			// addemote command
+			ADDEMOTE_DESCRIPTION: `Ajout un émoji au serveur !`,
+			ADDEMOTE_NAME: `${error} | Veuillez indiquer le nom de l'émoji !`,
+			ADDEMOTE_URL: `${error} | Veuillez indiquer l'url de l'émoji !`,
+			ADDEMOTE_SUCCESS: (emote) => `${success} | Émoji ${emote.name} ajouté au serveur !`,
+			ADDEMOTE_ERROR: `${error} | L'URL vers l'image est invalide ou vous n'avez plus de place sur votre Discord !`
 
         }
     }
