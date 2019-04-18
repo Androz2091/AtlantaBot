@@ -24,12 +24,21 @@ class Userinfo extends Command {
         
         var displayPresence = true;
 
+        var isID = !isNaN(args[0]);
+
         var user;
         if(!args[0]) user = message.author;
-        else user = this.client.users.get(args[0]);
-        if(!user) (user = await this.client.fetchUser(args[0])) && (displayPresence = false);
-        if(!user) return message.channel.send(message.language.get('USERINFO_ID', args[0]));
+        if(message.mentions.members.first()) user = message.mentions.members.first().user;
+        if(isID && !user){
+            user = this.client.users.get(args[0]);
+            if(!user){
+                user = await this.client.fetchUser(args[0]);
+                displayPresence = false
+            }
+        }
         
+        if(!user) return message.channel.send(message.language.get('USERINFO_ID', args[0]));
+
         var member = await message.guild.fetchMember(user).catch(err => {console.log(err)});
 
         var embed = new Discord.RichEmbed()
