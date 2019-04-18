@@ -31,8 +31,8 @@ class Suggest extends Command {
         var embed = new Discord.RichEmbed()
             .setAuthor(message.language.get('SUGGEST_HEADER', message.author), message.author.displayAvatarURL)
             .addField(message.language.get('SUGGEST_HEADERS')[0], `\`${message.author.username}#${message.author.discriminator}\``, true)
-            .addField(message.language.get('SUGGEST_HEADERS')[1], functions.printDate(new Date(Date.now()), true), true)
-            .addField(message.language.get('SUGGEST_HEADERS')[2], '**'+suggestion+'**')
+            .addField(message.language.get('SUGGEST_HEADERS')[1], message.language.printDate(new Date(Date.now()), true), true)
+            .addField(message.language.get('SUGGEST_HEADERS')[2], '**'+sugg+'**')
             .setColor(data.embed.color)
             .setFooter(data.embed.footer);
 
