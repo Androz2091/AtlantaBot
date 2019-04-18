@@ -13,5 +13,10 @@ module.exports = {
 	owner:"xxxxxxxx", // The owner of the bot,
 	anidiots:"xxxxxxxx", // your dev.anidtios.guide key
 	yandex:"xxxxxxxx", // get your yandex key at https://translate.yandex.com/developers/keys
-	simple_youtube_api:"xxxxxxxx" // your simple youtube api key (https://console.developers.google.com)
+	simple_youtube_api:"xxxxxxxx", // your simple youtube api key (https://console.developers.google.com)
+	votes:{
+		port:8080, // the port used for vote webhook
+		auth:'xxxxxxx', // the password of the vote webhook
+		channel:'xxxxxxxx' // the id for the vote messages
+	}
 }

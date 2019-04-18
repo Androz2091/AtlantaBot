@@ -49,6 +49,8 @@ module.exports = class {
 				"offline":"Déconnecté",
 				"online":"En ligne"
 			},
+			NO_REASON_PROVIDED: `pas de raison donnée`,
+			UNDEFINED: `Indéfini`,
 
 			// ERROR MESSAGE
 			INHIBITOR_MISSING_BOT_PERMS: (perms) => `${error} | J'ai besoin des permissions suivantes pour effectuer cette commande : \`${perms}\``,
@@ -72,6 +74,7 @@ module.exports = class {
 			GAME_ALREADY_LAUNCHED: `${error} | Une partie est déjà en cours sur ce serveur !`,
 			A_GAME_ALREADY_LAUNCHED: `${error} | A cause des lags et bugs dus au findwords et au number, il est impossible de lancer deux parties en même temps, même si elles sont sur deux serveurs différents.\nIl y a une partie actuellement en cours sur un autre serveur, veuillez donc patientez quelques minutes puis réessayer.\nNous sommes désolés, mais des personnes abusaient de cette commande en la spammant sur pleins de serveurs.`,
 			AN_ERROR_OCCURENCED: `${error} | Une erreur est survenue, veuillez réessayez dans quelques minutes.`,
+			NUMBER_1_10: `${error} Veuillez indiquer un nombre valide entre 1 et 10 !`,
 			
 			// PING COMMAND
 			PING_DESCRIPTION: 'Affiche la latence du bot',
@@ -108,6 +111,11 @@ module.exports = class {
 			CONFIGURATION_LEAVE_ENABLED: (data) => `Statut : **Activé**\nSalon : <#${data.channel}>\nImage : ${(data.withImage == 'true') ? 'Oui' : 'Non'}`,
 			SLOWMODE: 'Slowmode',
 			NO_SLOWMODE: `Aucun salon avec slowmode`,
+			CHANNELS: `Salons`,
+			CONF_LOGS: (data) => `Logs : ${data.channels.modlogs === 'false' ? 'Indéfini' : `<#${data.channels.modlogs}>`}\n`,
+			CONF_SUGG: (data) => `Suggestions : ${data.channels.suggestion === 'false' ? 'Indéfini' : `<#${data.channels.suggestion}>`}\n`,
+			CONF_WARNS: `Avertissements (warns)`,
+			CONF_WARNS_MESSAGE: (data) => ``,
 
 			// Ignore command
 			IGNORE_DESCRIPTION: 'Désactive ou active les commandes dans le salon mentionné',
@@ -470,7 +478,164 @@ module.exports = class {
 
 			// skip command
 			SKIP_DESCRIPTION: `Passe à la chanson suivante !`,
-			SKIP_SUCCESS: `${success} | Je viens de changer la chanson !`
+			SKIP_SUCCESS: `${success} | Je viens de changer la chanson !`,
+
+			// ban command
+			BAN_DESCRIPTION: `Banni le membre mentionné !`,
+			BAN_ID: (id) => `${error} | Aucun utilisateur sur Discord ne possède l'ID \`${id}\` !`,
+			BAN_ALREADY_BANNED: (user) => `${error} | **${user.username}** est déjà banni !`,
+			BAN_ERROR: `${error} | Une erreur est survenue... vérifiez que j'ai bien les permissions de bannir ce membre est réessayez !`,
+			BAN_DM: (user, msg, reason) => `${error} | Bonjour <@${user.id}>,\nVous venez d'être banni de **${msg.guild.name}** par **${msg.author.tag}** pour **${reason}** !`,
+			BAN_SUCCESS: (user, msg, reason) => `${success} | **${user.username}** vient d'être banni de **${msg.guild.name}** par **${msg.author.tag}** pour **${reason}** !`,
+
+			// mod logs embed
+			MODLOGS_HEADERS: (cas) => [
+				`Ban | Cas #${cas}`,
+				`Kick | Cas #${cas}`,
+				`Unban | Cas #${cas}`,
+				`Avertissement | Cas #${cas}`,
+				`Mute | Cas #${cas}`,
+				`Unmute | Cas #${cas}`
+			],
+			MODLOGS_UTILS: [
+				`Membre`,
+				`Modérateur`,
+				`Raison`,
+				`Temps`
+			],
+
+			// setlogs command
+			SETLOGS_DESCRIPTION: `Définissez le salon des logs !`,
+			SETLOGS_SUCCESS: (id) => `${success} | Salon des logs défini sur <#${id}> !`,
+
+			// kick command
+			KICK_DESCRIPTION: `Expulse le membre mentionné !`,
+			KICK_ERROR:  `${error} | Une erreur est survenue... vérifiez que j'ai bien les permissions d'expulser ce membre est réessayez !`,
+			KICK_DM: (user, msg, reason) => `${error} | Bonjour <@${user.id}>,\nVous venez d'être expulsé de **${msg.guild.name}** par **${msg.author.tag}** pour **${reason}** !`,
+			KICK_SUCCESS: (user, msg, reason) => `${success} | **${user.username}** vient d'être expulsé de **${msg.guild.name}** par **${msg.author.tag}** pour **${reason}** !`,
+
+			// Unban command
+			UNBAN_DESCRIPTION: `Unban l'utilisateur du serveur !`,
+			UNBAN_ID: (id) => `${error} | Aucun utilisateur sur Discord ne possède l'ID \`${id}\` !`,
+			UNBAN_NOT_BANNED: (user) => `${error} | **${user.username}** n'est pas banni !`,
+			UNBAN_SUCCESS: (user, msg) => `${success} | **${user.username}** vient d'être débanni de **${msg.guild.name}** !`,
+
+			// clear command
+			CLEAR_DESCRIPTION: `Supprime un nombre de message très rapidement !`,
+			CLEAR_AMOUNT: `${error} | Vous devez préciser un nombre de messages à supprimer !`,
+			CLEAR_CLEANED1: (amount, member) => `${success} | **${amount}** messages de **${member.user.tag}** supprimés !`,
+			CLEAR_CLEANED2: (amount) => `${success} | **${amount}** messages supprimés !`,
+
+			// Checkinvites command
+			CHECKINVITES_DESCRIPTION: `Vérifie le jeu de chaque membre pour voir s'il n'y a pas une publicité dedans !`,
+			CHECKINVITES_NOBODY: `Après une vérification intense, personne ne semble posséder d'invitations discord dans son jeu !`,
+
+			// setwarns command
+			SETWARNS_DESCRIPTION: `Définissez les sanctions qu'obtiendront les membres au bout d'un certain nombre de warns !`,
+			SETWARNS_USAGE: (prefix) => `${error} | Utilisation : ${prefix}setwarns 4 kick <= quand un membre atteindra les 4 warns, il sera kick.\n${prefix}setwarns 4 reset <= reset la sanction définie lorsqu'un membre atteint les 4 warns.`,
+			SETWARNS_ALREADY_A_SANCTION: (prefix, sanction, number) => `${error} | Une sanction (${sanction}) est déjà définie lorsqu\'un membre atteint les ${number} warns. Veuillez d\'abord taper \`${prefix}setwarns ${number} reset\` puis réessayez.`,
+			SETWARNS_SUCCESS: (prefix, sanction, number) => `${success} | Configuration enregistrée ! Lorsqu\'un membre aura atteint les ${number} warns, il sera ${sanction}. Tapez \`${prefix}configuration\` pour voir votre nouvelle configuration !`,
+			SETWARNS_SANCTION_ALREADY_USED: (prefix, sanction, number) => `${error} | La sanction ${sanction} est déjà prévue pour les ${number} warns. Tapez \`${prefix}setwarns ${number} reset\` puis réessayez.`,
+			SETWARNS_NO_SANCTION: (number) => `Aucune sanction ne correspondait à ${number} warns !`,
+			SETWARNS_SUCCESS_DELETE: (prefix, sanction, number) => `${success} | La sanction correspondant à ${number} warns (${sanction}) vient d'être supprimée ! Tapez \`${prefix}configuration\` pour voir votre nouvelle configuration !`,
+
+			// warn command
+			WARN_DESCRIPTION: `Averti un membre en messages privés !`,
+			WARN_REASON: `${error} | Veuillez entrer une raison !`,
+			WARN_AUTOBAN: (member, number) => `${success} | **${member.user.tag}** a été banni automatiquement car il avait plus de **${number}** warns !`,
+			WARN_AUTOKICK: (member, number) => `${success} | **${member.user.tag}** a été expulsé automatiquement car il avait plus de **${number}** warns !`,
+			WARN_DM: (msg, reason) => `${error} | Vous venez d'être averti sur **${msg.guild.name}** par **${msg.author.tag}** pour **${reason}** !`,
+			WARN_SUCCESS: (member, reason) => `${success} | **${member.user.tag}** a été averti par messages privés pour **${reason}** !`,
+
+			// seewwarns command
+			SEEWARNS_DESCRIPTION: `Affiche les avertissements (warns) d'un membre !`,
+			SEEWARNS_NO_WARN: `Aucun avertissement enregistré.`,
+			SEEWARNS_HEADER: (tcase) => `Cas #${tcase}`,
+			SEEWARNS_MODERATOR: (warn) => `**Modérateur** : <@${warn.moderator}>`,
+			SEEWARNS_REASON: (warn) => `**Raison** : ${warn.reason}`,
+
+			// mute command
+			MUTE_DESCRIPTION: `Empêche le membre de parler pendant un certain temps !`,
+			MUTE_SUCCESS: (member, time, reason) => `${success} | **${member.user.tag}** est mute pendant **${time}** pour **${reason}** !`,
+			MUTE_DM: (message, time, reason) => `${error} | Vous êtes mute sur **${message.guild.name}** pendant **${time}** pour **${reason}** !`,
+
+			// sondage command
+			POLL_DESCRIPTION: `Envoie un sondage !`,
+			POLL_QUESTION: `${error} | Vous devez entrer une question !`,
+			POLL_MENTION: `Souhaitez-vous ajouter une mention à votre message ? Répondez par "${yes}" ou "${no}" !`,
+			POLL_MENTION2: `Tapez une des réponses suivantes : \`every\` (pour une mention @ everyone) ou \`here\` (pour une mention @ here) !`,
+			POLL_TIMEOUT: `${error} | Temps écoulé ! Veuillez retaper la commande !`,
+			POLL_REACT: `Réagissez avec ${success} ou ${error} !`,
+			POLL_HEADING: `📊 Sondage :`,
+
+			// setafk command
+			SETAFK_DESCRIPTION: `Devenez AFK (les membres qui vous mentionneront recevront un message)`,
+			SETAFK_REASON: `${error} | Veuillez préciser la raison de votre afk !`,
+			SETAFK_SUCCESS: (reason) => `${success} | Vous êtes passé afk (raison : ${reason})`,
+			
+			// afk command
+			AFK_DELETED: (user) => `${user}, votre AFK vient d'être retiré !`,
+			AFK_IS_AFK: (member, reason) => `**${member.user.tag}** est actuellement afk pour \`${reason}\``,
+
+			// guildinfo command
+			GUILDINFO_DESCRIPTION: `Affiche des informations sur le serveur !`,
+			GUILDINFO_FIELDS:[
+				"<:title:567363421776117778> Nom",
+				"<:calendar:567019405767213096> Création",
+				"<:users:568121122391064606> Membres",
+				"<:channels:568121595227406337> Salons",
+				"<:afk:568121945477087232> Salon AFK",
+				"<:id:568122139291680789> ID",
+				"<:founder:568122623599443978> Fondateur"
+			],
+			GUILDINFO_MEMBERCOUNT: (members) => `${members.filter(m => m.user.bot).size} membres | ${members.filter(m => !m.user.bot).size} bots`,
+			GUILDINFO_NO_AFK: `Aucun salon AFK`,
+			GUILDINFO_CHANNELS: (channels) => `${channels.filter(ch => ch.type === 'voice').size} vocaux | ${channels.filter(ch => ch.type === 'text').size} textuels | ${channels.filter(ch => ch.type === 'category').size} catégories`,
+
+			// invitations command
+			INVITATIONS_DESCRIPTION: `Affiche le nombre de personnes que vous avez invitées sur le serveur !`,
+			INVITATIONS_NOBODY: `${error} | Vous n'avez invité personne sur le serveur !`,
+			INVITATIONS_CODE: (invite) => `**${invite.code}** (${invite.uses} utilisations) | ${invite.channel}\n`,
+			INVITATIONS_HEADING: (member, msg) => `Informations sur les invitations de ${member} sur ${msg.guild.name}`,
+			INVITATIONS_FIELDS: [
+				'👥 Personnes Invitées',
+				'🔑 Codes',
+				'membres'
+			],
+
+			// remind me
+			REMINDME_DESCRIPTION: `Définissez un rappel !`,
+			REMINDME_MESSAGE: `${error} | Vous devez entrer un message qui vous sera envoyé à la fin du temps !`,
+			REMINDME_SAVED: `${success} | Rappel correctement enregistré, vous recevrez un message à la fin du temps !`,
+
+			// someone command
+			SOMEONE_DESCRIPTION: `Tire un membre aléatoire sur le serveur !`,
+
+			// unmute command
+			UNMUTE_DESCRIPTION: `Unmute un membre !`,
+			UNMUTE_SUCCESS: (member) => `${success} | ${member} a maintenant les permissions d'écrire.`,
+
+			//minimize command
+			MINIMIZE_DESCRIPTION: `Raccourci votre lien !`,
+			MINIMIZE_ERROR: `${error} | URL incompatible avec le raccourcisseur d'URL.`,
+			MINIMIZE_URL: `${error} | Veuillez entrer une URL !`,
+
+			// Suggestion command
+			SUGGEST_DESCRIPTION: `Envoie votre suggestion dans le salon défini pour ça !`,
+			SUGGEST_NO_CHANNEL: `${error} | Aucun salon de suggestion défini !`,
+			SUGGEST_SUGG: `${error} | Veuillez entrer une suggestion !`,
+			SUGGEST_HEADER: (user) => `Suggestion - ${user.tag}`,
+			SUGGEST_HEADERS: [
+				"Auteur",
+				"Date",
+				"Contenu"
+			],
+			SUGGEST_SUCCESS: (channel) => `${success} | Votre suggestion est en cours de vote dans ${channel} !`,
+
+			// setsuggests command
+			SETSUGGESTS_DESCRIPTION: `Définissez le salon des suggestions !`,
+			SETSUGGESTS_SUCCESS: (channel) => `${success} | Le salon des suggestions est maintenant ${channel} !`
+
         }
     }
 

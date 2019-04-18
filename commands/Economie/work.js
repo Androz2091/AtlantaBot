@@ -35,7 +35,7 @@ class Work extends Command {
         }
 
         // Records in the database the time when the member will be able to execute the command again (in 6 hours)
-        var towait = Date.now() + ms('6h');
+        var towait = Date.now() + ms('24h');
         cooldowns.work.set(message.author.id, towait);
 
         var embed = new Discord.RichEmbed() // Creates a new rich embed

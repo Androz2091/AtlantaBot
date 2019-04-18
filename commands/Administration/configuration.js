@@ -50,6 +50,13 @@ class Configuration extends Command {
             .addField(message.language.get('SLOWMODE'),
                 (Object.keys(guild_data.slowmode).length > 0) ? getSlowmodes(guild_data.slowmode) : message.language.get('NO_SLOWMODE')
             )
+            .addField(message.language.get('CHANNELS'),
+                message.language.get('CONF_LOGS', guild_data)+
+                message.language.get('CONF_SUGG', guild_data)
+            )
+            .addField(message.language.get('CONF_WARNS'),
+                getWarns()
+            )
             .setColor(data.embed.color)
             .setFooter(data.embed.footer)
         
@@ -62,6 +69,13 @@ class Configuration extends Command {
                 var time = obj[id];
                 str += `<#${id}> | ${message.language.convertMs(time)}\n`;
             }
+            return str;
+        }
+        
+        function getWarns(){
+            var str = '';
+            str += `Kick : ${guild_data.automod_warns['kick'] ? `**${guild_data.automod_warns['kick']}** warns` : message.language.get('UNDEFINED')}\n`;
+            str += `Ban : ${guild_data.automod_warns['ban'] ? `**${guild_data.automod_warns['ban']}** warns` : message.language.get('UNDEFINED')}\n`;
             return str;
         }
     }

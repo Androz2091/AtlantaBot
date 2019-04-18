@@ -48,7 +48,7 @@ class Rep extends Command {
         if(member.id === message.author.id) return message.channel.send(message.language.get('REP_SELF'));
 
         // Records in the database the time when the member will be able to execute the command again (in 6 hours)
-        var towait = Date.now() + ms('6h');
+        var towait = Date.now() + ms('12h');
         cooldowns.rep.set(message.author.id, towait);
 
         // Update member data 

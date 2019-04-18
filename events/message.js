@@ -62,9 +62,28 @@ module.exports = class {
             return message.reply(message.language.get('PREFIX_INFO', guild_data.prefix));
         }
 
+        /* DETECT AFK MEMBERS */
+        let afk_reason = this.client.databases[0].get(`afk.${message.author.id}`);
+        if(afk_reason){
+            var afk_members = this.client.databases[0].get(`afk`);
+            delete afk_members[message.author.id];
+            this.client.databases[0].set(`afk`, afk_members);
+            message.channel.send(message.language.get('AFK_DELETED', message.author));
+        };
+
+        // For each members mentionned
+        message.mentions.members.forEach(m => {
+            let afk_reason = this.client.databases[0].get(`afk.${m.id}`);
+            if(afk_reason) message.channel.send(message.language.get('AFK_IS_AFK', m, afk_reason));
+        });
         
+
         // Update user xp
         updateXp(message, membersdata[0], this.client.databases[0], this.client.databases[2].xp);
+
+        if(message.content === '@someone'){
+            return this.client.commands.get('someone').run(message, null, membersdata, guild_data, data);
+        }
 
         // If the message doesn't starts with the prefix
         if (message.content.indexOf(guild_data.prefix) !== 0) return;
@@ -100,7 +119,7 @@ module.exports = class {
         if(guild_data.ignored_channels.includes(message.channel.id)) return (message.delete()) && (message.author.send(message.language.get('CHANNEL_IGNORED', (message.channel))));
         if(cmd.conf.nsfw && !message.channel.nsfw) return message.channel.send(message.language.get('INHIBITOR_NSFW'))
         if(cmd.conf.permission){
-            if(!message.member.hasPermission(cmd.permission)) return message.channel.send(message.language.get('INHIBITOR_PERMISSIONS', cmd.permission));
+            if(!message.member.hasPermission(cmd.conf.permission)) return message.channel.send(message.language.get('INHIBITOR_PERMISSIONS', cmd.conf.permission));
         }
         if(!cmd.conf.enabled) return message.channel.send(message.language.get('COMMAND_DISABLED'));
         if(cmd.conf.owner && message.author.id !== this.client.config.owner) return message.channel.send(message.language.get('OWNER_ONLY'));
