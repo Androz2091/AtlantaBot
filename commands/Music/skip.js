@@ -33,7 +33,7 @@ class Skip extends Command {
         if(!queue) return message.channel.send(message.language.get('PLAY_NOT_PLAYING'));
 
         // Stop the dispatcher
-        sQueue.connection.dispatcher.end();
+        queue.connection.dispatcher.end();
 
         // Send a success message
         message.channel.send(message.language.get('SKIP_SUCCESS'))
