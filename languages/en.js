@@ -326,7 +326,7 @@ module.exports = class {
 			FINDWORDS_NOBODY: `${error} | No one was able to find words!`,
 			FINDWORDS_GG: (winner) => `${success} | Well done <@${winner}> ! Your word is valid and you were the fastest!`,
 			FINDWORDS_NOBODY2: `${warn} | I can't define any winners because no words have been found from all sides!`,
-			FINDWORDS_GG2: (user, games, total_games, time, number, members) => `:tada: | ${user} won the game !\nManche Won : ${games}/${total_games}\n\n\n**Stats of the game :**\n__**Time**__: ${time}\n__**Number of participants**__ : ${number}{n__****Participants**__: \n${members}`,
+			FINDWORDS_GG2: (user, games, total_games, time, number, members) => `:tada: | ${user} won the game !\nManche Won : ${games}/${total_games}\n\n\n**Stats of the game :**\n__**Time**__: ${time}\n__**Number of participants**__ : ${number}\n__**Participants**__: \n${members}`,
 			FINDWORDS_END: (member) => `${member} wins 15 credits! :tada:`,
 
 			// Lovecalc
