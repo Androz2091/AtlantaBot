@@ -4,29 +4,7 @@ Discord = require('discord.js');
 const ytdl = require("ytdl-core"); // ytdl core, to get the music
 const Youtube = require("simple-youtube-api"); // simple youtube api to get the url of a song
 
-// Create new music class to facilitate the use of music
-class Music {
-    constructor(discordUser, vde) {
-        this.discordUser = discordUser,
-        this.title = vde.title, // the video title
-        this.raw = vde.raw, // the other informations of the video
-        this.channel = vde.raw.snippet.channelTitle, // the channel of the video
-        this.url = `https://www.youtube.com/watch?v=${vde.id}`, // the url of the video
-        this.ms = ((vde.duration.hours*3600)+(vde.duration.minutes*60)+(vde.duration.seconds)) * 1000
-    }
-}
-
-// Create new guild class to facilitate the use of music
-class GuildMusic {
-    constructor(text, voice) {
-        this.text = text,
-        this.voice = voice,
-        this.connection = null,
-        this.songs = [],
-        this.volume = 100,
-        this.playing = true
-    }
-}
+const Music = require("../../base/Music.js");
 
 async function handleVideo (client, vde, msg, voice, data) {
     
@@ -34,13 +12,13 @@ async function handleVideo (client, vde, msg, voice, data) {
     var queue = client.queues.get(msg.guild.id);
     
     // Create new song with the video parameter
-    var song = new Music(msg.author, vde);
+    var song = new Music.Song(msg.author, vde);
     
     // If there is no queue
     if(!queue){
 
         // Create new guild music
-        var music = new GuildMusic(msg.channel, voice);
+        var music = new Music.Guild(msg.channel, voice);
 
         // Save the queue in the discord collection
         client.queues.set(msg.guild.id, music);
