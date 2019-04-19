@@ -12,7 +12,7 @@ class Suggest extends Command {
             enabled: true,
             guildOnly: true,
             aliases: [],
-            permission: "MANAGE_MESSAGES",
+            permission: false,
             botpermissions: [ "SEND_MESSAGES", "EMBED_LINKS" ],
             nsfw: false,
             examples: "$suggestion A new channel",
@@ -38,8 +38,8 @@ class Suggest extends Command {
 
         // Gets the emote
         var emotes = [
-            client.emojis.find(e => e.name === 'atlanta_success'),
-            client.emojis.find(e => e.name === 'atlanta_error')
+            this.client.emojis.find(e => e.name === 'atlanta_success'),
+            this.client.emojis.find(e => e.name === 'atlanta_error')
         ];
 
         sugg_channel.send(embed).then(async m => {
