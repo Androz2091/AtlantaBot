@@ -115,7 +115,8 @@ module.exports = class {
 			CONF_LOGS: (data) => `Logs : ${data.channels.modlogs === 'false' ? 'Indéfini' : `<#${data.channels.modlogs}>`}\n`,
 			CONF_SUGG: (data) => `Suggestions : ${data.channels.suggestion === 'false' ? 'Indéfini' : `<#${data.channels.suggestion}>`}\n`,
 			CONF_WARNS: `Avertissements (warns)`,
-			CONF_WARNS_MESSAGE: (data) => ``,
+			CONF_DI: `Auto Modération`,
+			CONF_DI_MSG:(data) => `**Statut** : ${data.deleteinvite.status === 'enabled' ? 'Activé' : 'Désactivé'}\n**Salons ignorés** :\n${data.deleteinvite.channels.length > 0 ? data.deleteinvite.channels.map(ch => `<#${ch}>`) : `Aucun salon ignoré.`}`,
 
 			// Ignore command
 			IGNORE_DESCRIPTION: 'Désactive ou active les commandes dans le salon mentionné',
@@ -588,7 +589,7 @@ module.exports = class {
 				"<:id:568122139291680789> ID",
 				"<:founder:568122623599443978> Fondateur"
 			],
-			GUILDINFO_MEMBERCOUNT: (members) => `${members.filter(m => m.user.bot).size} membres | ${members.filter(m => !m.user.bot).size} bots`,
+			GUILDINFO_MEMBERCOUNT: (members) => `${members.filter(m => !m.user.bot).size} membres | ${members.filter(m => m.user.bot).size} bots`,
 			GUILDINFO_NO_AFK: `Aucun salon AFK`,
 			GUILDINFO_CHANNELS: (channels) => `${channels.filter(ch => ch.type === 'voice').size} vocaux | ${channels.filter(ch => ch.type === 'text').size} textuels | ${channels.filter(ch => ch.type === 'category').size} catégories`,
 
@@ -641,7 +642,18 @@ module.exports = class {
 			ADDEMOTE_NAME: `${error} | Veuillez indiquer le nom de l'émoji !`,
 			ADDEMOTE_URL: `${error} | Veuillez indiquer l'url de l'émoji !`,
 			ADDEMOTE_SUCCESS: (emote) => `${success} | Émoji ${emote.name} ajouté au serveur !`,
-			ADDEMOTE_ERROR: `${error} | L'URL vers l'image est invalide ou vous n'avez plus de place sur votre Discord !`
+			ADDEMOTE_ERROR: `${error} | L'URL vers l'image est invalide ou vous n'avez plus de place sur votre Discord !`,
+			
+			// automod command
+			AUTOMOD_DESCRIPTION: `Active ou désactive la suppression automatique des invitations discord`,
+			AUTOMOD_STATUS: `${error} | Veuillez entrer un statut valide ! (\`on\` ou \`off\`) !`,
+			AUTOMOD_SUCCESS: (prefix) => `${success} | Les invitations Discord seront automatiquement supprimées ! Si vous souhaitez ignorer un salon, tapez simplement \`${prefix}automod off #channel\` ! Cela désactivera l'auto modération dans le salon mentionné !`,
+			AUTOMOD_SUCCESS1: (channel) => `${success} | L'auto modération ne sera plus effectuée dans le salon ${channel} !`,
+			AUTOMOD_SUCCESS2: `${success} | Très bien ! L'auto modération n'est plus effective sur ce serveur !`,
+			AUTOMOD_MSG: (msg) => `${msg.author} | Votre message contenait une invitation Discord, il a donc était supprimé. Si c'était involontaire, vous pouvez rééditer votre message, il vous a été envoyé en message privé !`,
+
+			SETLANG_DESCRIPTION: `Change la langue du serveur!`,
+			SETLANG_LANG: `${error} | Veuillez entrer une langue valide (\`fr\` ou \`en\`) !`
 
         }
     }
