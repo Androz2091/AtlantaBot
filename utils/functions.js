@@ -15,7 +15,7 @@ module.exports = {
             welcome_mp:{ status:"disabled", message:"unknow" }, // Welcome messages in DM plugin
             leave:{ status:"disabled", message:"unknow", channel:"unknow" }, // Goodbye messages plugin
             autorole:{ status:"disabled", role:"unknow" }, // Autorole plugin
-            deleteinvite:"disabled", // Auto delete invites links
+            deleteinvite:{status:"disabled",channels:[]}, // Auto delete invites links
             ignored_channels:[], // The channels wich are ignored by the bot
             slowmode:{}, // An object like that : { "channelid":"slowmodetime", "channelid2", "slowmodetime2"}
             userslowmode:{}, // Used to store users data

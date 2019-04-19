@@ -57,6 +57,9 @@ class Configuration extends Command {
             .addField(message.language.get('CONF_WARNS'),
                 getWarns()
             )
+            .addField(message.language.get('CONF_DI'),
+                message.language.get('CONF_DI_MSG', guild_data)
+            )
             .setColor(data.embed.color)
             .setFooter(data.embed.footer)
         

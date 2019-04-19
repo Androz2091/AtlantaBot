@@ -85,6 +85,17 @@ module.exports = class {
             return this.client.commands.get('someone').run(message, null, membersdata, guild_data, data);
         }
 
+        /* Automod */
+        if(guild_data.deleteinvite.status === 'enabled' && !guild_data.deleteinvite.channels.includes(message.channel.id)){
+            if(/(discord\.(gg|io|me|li)\/.+|discordapp\.com\/invite\/.+)/i.test(message.content)){
+                if(!message.member.hasPermission('MANAGE_MESSAGES')){
+                    message.delete();
+                    message.author.send('```'+message.content+'```');
+                    return message.channel.send(message.language.get('AUTOMOD_MSG', message));
+                }
+            }
+        }
+
         // If the message doesn't starts with the prefix
         if (message.content.indexOf(guild_data.prefix) !== 0) return;
 
