@@ -653,7 +653,22 @@ module.exports = class {
             AUTOMOD_MSG: (msg) => `${msg.author} | Your message contained a Discord invitation, so it was deleted. If it was unintentional, you can edit your message again, it was sent to you as a private message!`,
 
             SETLANG_DESCRIPTION: `Change the guild language!`,
-			SETLANG_LANG: `${error} | Please enter a valid language (\`fr\` or \`en\`) !`
+            SETLANG_LANG: `${error} | Please enter a valid language (\`fr\` or \`en\`) !`,
+            
+            MINECRAFT_DESCRIPTION: `Displays information about the Minecraft server!`,
+			MINECRAFT_IP: `${error} | Please enter an IP !`,
+			MINECRAFT_ERR1: `${error} | An error occurred during the request to the API...`,
+			MINECRAFT_IS_OFFLINE: `${error} | This server is offline or blocking access. Reminder: MCPE servers are not supported!`,
+			MINECRAFT_ONLINE: `Online`,
+			MINECRAFT_OFFLINE: `Offline`,
+			MINECRAFT_UTILS: (ip) => [
+				`Information on ${ip}`,
+				`<:version:566983129370460170> Version`,
+				`<:mc:569057345598914560> Currently connected`,
+				`<:users:568121122391064606> Maximum`,
+				`<:online:567020241427890195> Status`
+			],
+			MINECRAFT_PLAYERS: (nb) => `${nb} player(s)`
 
         }
     }
