@@ -85,7 +85,7 @@ module.exports = class {
 			HELP_COMMAND_NOT_FOUND: (cmd) => `${error} | Command ${cmd} not found!`,
 			HELP_DISABLED: `This command is currently disabled`,
 			HELP_OWNER_ONLY: `Only ${owner} can do this command!`,
-			HELP_REMINDER: (prefix) => `To get help on an order type \`${prefix}help <command>\` !`,
+			HELP_REMINDER: (prefix) => `To get help on an command type \`${prefix}help <command>\` !`,
 			HELP_HEADING_2:(nb) => `List of commands - (${nb})`,
 			HELP_HEADING: `Help :`,
 			HELP_USAGE: `Usage :`,
@@ -119,7 +119,7 @@ module.exports = class {
 			CONF_DI_MSG:(data) => `**Status** : ${data.deleteinvite.status === 'enabled' ? 'Enabled' : 'Disabled'}\n**Ignored channels** :\n${data.deleteinvite.channels.length > 0 ? data.deleteinvite.channels.map(ch => `<#${ch}>`) : `No channel ignored.`}`,
 
 			// Ignore command
-			IGNORE_DESCRIPTION: 'Disables or activates orders in the mentioned channel',
+			IGNORE_DESCRIPTION: 'Disables or activates commands in the mentioned channel',
 			UNIGNORE_SUCESS: (channel) => `${success} | Commands are now allowed in ${channel} !`,
 			IGNORE_SUCESS: (channel) => `${warn} | Commands are now prohibited in ${channel} !`,
 
@@ -171,7 +171,7 @@ module.exports = class {
 			ADDCOMMAND_SUCCESS: (cmd) => `${success} | The command ${cmd} has been added to the guild!`,
 
 			// Del command
-			DELCOMMAND_DESCRIPTION: `Remove a custom order from the guild!`,
+			DELCOMMAND_DESCRIPTION: `Remove a custom command from the guild!`,
 			ADDCOMMAND_NAME: `${error} | Please enter the name of the command you wish to delete!`,
 			DELCOMMAND_EXIST: (cmd) => `${error} | The command ${cmd} does not exist!`,
 			DELCOMMAND_SUCCESS: (cmd) => `${success} | The ${cmd} command has been removed from the guild!`,
