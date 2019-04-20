@@ -668,8 +668,37 @@ module.exports = class {
 				`<:users:568121122391064606> Maximum`,
 				`<:online:567020241427890195> Status`
 			],
-			MINECRAFT_PLAYERS: (nb) => `${nb} player(s)`
-
+            MINECRAFT_PLAYERS: (nb) => `${nb} player(s)`,
+            
+            FORTNITE_DESCRIPTION: `Displays a player's Fortnite stats!`,
+			FORTNITE_PLATFORM: `${error} | Enter a valid platform: \`psn\`, \`pc\` or \`xbl\` !`,
+			FORTNITE_USERNAME: `${error} | Enter a valid pseudo epic game!`,
+			FORTNITE_404: (platform, username) => `${error} | Player \`${username}\` not found on the platform \`${platform}\` !`,
+			FORTNITE_DESC: (platform, username) => `${username} plays on ${platform} !`,
+			FORTNITE_SOLO_STATS: (data) => `
+				<:score:569087927783522334> K/D : ${data.stats.solo.kd}
+				<:games:567019785620029529> Games : ${data.stats.solo.matches}
+				<:mort:569080340145111060> Kills : ${data.stats.solo.kills}
+				<:founder:568122623599443978> Win(s) : ${data.stats.solo.wins}
+			`,
+			FORTNITE_DUO_STATS: (data) => `
+				<:score:569087927783522334> K/D : ${data.stats.duo.kd}
+				<:games:567019785620029529> Games : ${data.stats.duo.matches}
+				<:mort:569080340145111060> Kills : ${data.stats.duo.kills}
+				<:founder:568122623599443978> Win(s) : ${data.stats.duo.wins}
+			`,
+			FORTNITE_SQUAD_STATS: (data) => `
+				<:score:569087927783522334> K/D : ${data.stats.squad.kd}
+				<:games:567019785620029529> Games : ${data.stats.squad.matches}
+				<:mort:569080340145111060> Kills : ${data.stats.squad.kills}
+				<:founder:568122623599443978> Win(s) : ${data.stats.squad.wins}
+			`,
+			FORTNITE_LIFETIME_STATS: (data) => `
+				<:score:569087927783522334>	K/D : ${data.stats.lifetime.kd}
+				<:games:567019785620029529> Games : ${data.stats.lifetime.matches}
+				<:mort:569080340145111060> Kills : ${data.stats.lifetime.kills}
+				<:founder:568122623599443978> Win(s) : ${data.stats.lifetime.wins}
+			`
         }
     }
 

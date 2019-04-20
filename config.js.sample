@@ -18,5 +18,6 @@ module.exports = {
 		port:8080, // the port used for vote webhook
 		auth:'xxxxxxx', // the password of the vote webhook
 		channel:'xxxxxxxx' // the id for the vote messages
-	}
+	},
+	fortnite: "xxxxxxx" // your fortnite api key (https://fortnitetracker.com/site-api)
 }
