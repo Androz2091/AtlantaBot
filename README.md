@@ -30,7 +30,8 @@ module.exports = {
 		port:8080, // the port to use for the express server (for discordbots.org)
 		auth:"", // the password for the discordbots.org webhook
 		channel:"" // the channel for vote messages
-	}
+	}, 
+ fortnite:"" // your fortnite tracker API key
 }
 ```
 
