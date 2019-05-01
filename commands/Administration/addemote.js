@@ -11,7 +11,7 @@ class Addemote extends Command {
             usage: "addemote [link]",
             enabled: true,
             guildOnly: true,
-            aliases: ["add"],
+            aliases: [],
             permission: false,
             botpermissions: [ "SEND_MESSAGES", "EMBED_LINKS", "MANAGE_EMOJIS" ],
             nsfw: false,
