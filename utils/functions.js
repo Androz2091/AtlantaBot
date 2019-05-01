@@ -81,7 +81,8 @@ module.exports = {
     vote: async function(data, client){
         var user = await client.fetchUser(data.user);
         client.channels.get(client.config.votes.channel).send(`:arrow_up: **${user.tag}** \`(${user.id})\` voted for **Atlanta**, thanks !\nhttps://discordbots.org/bot/557445719892688897/vote`);
-        user.send(`Hello ${user}, thanks for voting !`);
+        client.databases[0].add(`${data.user}.credits`, 30);
+        user.send(`Hello ${user}, thanks for voting !\nYour reward : 30 :credit_card:`);
     },
 
     // This function return a valid link to the support server
