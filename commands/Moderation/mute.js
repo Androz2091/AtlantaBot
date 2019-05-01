@@ -36,7 +36,7 @@ class Mute extends Command {
         if(!reason) reason = message.language.get('NO_REASON_PROVIDED');
 
         // Mute the member by editing all guild channels
-        message.guild.channels.forEach(ch => ch.overwritePermissions(member.user, {SEND_MESSAGES:false}));
+        message.guild.channels.forEach(ch => ch.overwritePermissions(member.user, {SEND_MESSAGES:false,ADD_REACTIONS:false}));
 
         // THen send a success message
         message.channel.send(message.language.get('MUTE_SUCCESS', member, time, reason));
