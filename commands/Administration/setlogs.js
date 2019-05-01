@@ -23,7 +23,7 @@ class Setlogs extends Command {
     async run (message, args, membersdata, guild_data, data) {
         
         // Update database
-        this.client.databases[1].set(`${message.guild.id}.channels.suggestion`, message.channel.id);
+        this.client.databases[1].set(`${message.guild.id}.channels.modlogs`, message.channel.id);
 
         // Send success message
         message.channel.send(message.language.get('SETLOGS_SUCCESS', message.channel.id));
