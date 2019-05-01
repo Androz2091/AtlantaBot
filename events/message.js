@@ -22,12 +22,16 @@ module.exports = class {
 
         // If the command is run is DM
         if(message.channel.type === 'dm'){
+            // Utils variables
             const args = message.content.trim().split(/ +/g);
             const command = args.shift().toLowerCase();
+            message.language = new(require('../languages/'+this.client.config.default_language+'.js'));
+            // Gets the command
             let cmd = this.client.commands.get(command) || this.client.commands.get(this.client.aliases.get(command));
             if(!cmd) return message.channel.send(message.author.username+', no command found with name `'+command+'`.');
-            if (cmd && cmd.conf.guildOnly) return message.channel.send("This command is unavailable via private message. Please run this command in a guild.");
-            message.language = new(require('../languages/'+this.client.config.default_language+'.js'));
+            // Checking for permissions
+            if ((cmd && cmd.conf.guildOnly) || (cmd && cmd.conf.permissions)) return message.channel.send("This command is unavailable via private message. Please run this command in a guild.");
+            if(cmd.conf.owner && message.author.id !== this.client.config.owner) return message.channel.send(message.language.get('OWNER_ONLY'));
             data.cmd = cmd;
             // If the command exists, run it
             this.client.logger.log(`${message.author.username} (${message.author.id}) ran command ${cmd.help.name} in DM`, "cmd");
