@@ -41,7 +41,15 @@ class Leaderboard extends Command {
             });
         });
 
-        if(!args[0]) return message.channel.send(message.language.get('LEADERBOARD_TYPE'));
+        var validArgs = [
+            "credits",
+            "rep",
+            "reputation",
+            "level",
+            "lvl",
+            "crédits"
+        ]
+        if(!args[0] || !validArgs.includes(args[0])) return message.channel.send(message.language.get('LEADERBOARD_TYPE'));
 
         // Creates a new ascii table and set the heading
         var table = new asciitable('LEADERBOARD');
