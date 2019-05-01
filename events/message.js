@@ -136,8 +136,7 @@ module.exports = class {
 
         // Check bot permissions :
         var neededPermission = [];
-        var botmember = await message.guild.fetchMember(this.client.user);
-        cmd.conf.botpermissions.forEach(perm => { if(!botmember.hasPermission(perm)) neededPermission.push(perm); });
+        cmd.conf.botpermissions.forEach(perm => { if(!message.channel.permissionsFor(message.guild.me).has(perm)) neededPermission.push(perm); });
         if(neededPermission.length > 0) return message.channel.send(message.language.get('INHIBITOR_MISSING_BOT_PERMS', neededPermission.map(p => p).join(', ')));
 
         // checks if the command can be launched
