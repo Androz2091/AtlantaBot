@@ -45,7 +45,7 @@ module.exports = class {
                         var user = client.users.get(userID); // Gets the user to unmute
                         if(user && time < Date.now()){ // if the user must be unmute
                             // Unmute the member
-                            guild.channels.forEach(ch => ch.overwritePermissions(user, {SEND_MESSAGES:null}));
+                            guild.channels.forEach(ch => ch.permissionOverwrites.get(userID).delete());
                             delete data.muted[userID];
                             client.databases[1].set(`${guild.id}.muted`, data.muted);
                             if(guild.members.get(user.id)){
