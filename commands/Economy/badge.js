@@ -112,13 +112,13 @@ class Badge extends Command {
         // If the member wants to buy
         if(args[0]){
             // Gets the name of the badge
-            var badge_name = args.join(' ');
+            var badge_name = args.join(' ').toLowerCase();
             // Search the badge
             var badge = null;
             for(var type in badges){
                 var tbadges = badges[type];
                 tbadges.forEach(gb => {
-                    if(gb.name === badge_name) badge = gb;
+                    if(gb.name.toLowerCase() === badge_name) badge = gb;
                 });
             }
             // if the badges is not found
