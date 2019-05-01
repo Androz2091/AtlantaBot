@@ -34,7 +34,7 @@ class Clear extends Command {
         // Gets the messages to delete
         var messages = await message.channel.fetchMessages({limit:100}); // Fetch the last 100 messages in the channel
         messages = messages.array(); // Convert the discord collection to an array
-        if(member) messages.filter(m => m.author.id === member.id); // if a member was mentionned, just get his message
+        if(member) messages = messages.filter(m => m.author.id === member.id); // if a member was mentionned, just get his message
         if(messages.length > amount) messages.length = parseInt(amount); // resize the array of messages
 
         // Delete the messages
