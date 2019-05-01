@@ -62,9 +62,7 @@ module.exports = class {
 
         // Checks if the bot was mentioned, with no message after it, returns the prefix.
         const prefixMention = new RegExp(`^<@!?${this.client.user.id}>( |)$`);
-            if (message.content.match(prefixMention)) {
-            return message.reply(message.language.get('PREFIX_INFO', guild_data.prefix));
-        }
+        if(message.content.match(prefixMention)) return message.reply(message.language.get('PREFIX_INFO', guild_data.prefix));
 
         /* DETECT AFK MEMBERS */
         let afk_reason = this.client.databases[0].get(`afk.${message.author.id}`);
@@ -100,11 +98,23 @@ module.exports = class {
             }
         }
 
-        // If the message doesn't starts with the prefix
-        if (message.content.indexOf(guild_data.prefix) !== 0) return;
+        var validPrefixes = [
+            guild_data.prefix,
+            'atlanta',
+            `<@${this.client.user.id}> `,
+            `<@!${this.client.user.id}> `,
+            `<@?${this.client.user.id}> `
+        ];
+
+        var prefix = null;
+        validPrefixes.forEach(p => {
+            if(message.content.startsWith(p)) prefix = p;
+        });
+        if(!prefix) return;
+        
 
         // If the message content is "/pay @Androz 10", the args will be : [ "pay", "@Androz", "10" ]
-        const args = message.content.slice(guild_data.prefix.length).trim().split(/ +/g);
+        const args = message.content.slice(prefix.length).trim().split(/ +/g);
         // The command will be : "pay" and the args : [ "@Androz", "10" ]
         const command = args.shift().toLowerCase();
 
