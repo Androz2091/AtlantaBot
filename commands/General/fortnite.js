@@ -36,7 +36,6 @@ class Fortnite extends Command {
         // All methods
         fortniteClient.user(user, platform).then(tdata => {
             if(tdata.code === 404) return message.channel.send(message.language.get('FORTNITE_404', platform, user));
-            console.log(tdata)
             var embed = new Discord.RichEmbed()
                 .setTitle(tdata.username)
                 .setURL(tdata.url)
