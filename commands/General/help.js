@@ -71,7 +71,10 @@ class Help extends Command {
         // Gets an array of all categories
         var categories = [];
         this.client.commands.forEach(cmd => {
-            if(!categories.includes(cmd.help.category)) categories.push(cmd.help.category); 
+            if(!categories.includes(cmd.help.category)){
+                if(cmd.help.category === 'Owner' && message.author.id !== this.client.config.owner) return;
+                categories.push(cmd.help.category); 
+            }
         });
 
         // for each categroy, create a string and then add a field to the embed
