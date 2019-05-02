@@ -4,16 +4,16 @@ Discord = require('discord.js');
 const ytdl = require("ytdl-core"); // ytdl core, to get the music
 const Youtube = require("simple-youtube-api"); // simple youtube api to get the url of a song
 
-const Music = require("../../base/Music.js");
+const Music = require('../../base/Music.js');
 
 async function handleVideo (client, vde, msg, voice, data) {
-    
+
     // Get the queue in the discord collection
     var queue = client.queues.get(msg.guild.id);
-    
+
     // Create new song with the video parameter
     var song = new Music.Song(msg.author, vde);
-    
+
     // If there is no queue
     if(!queue){
 
@@ -22,13 +22,13 @@ async function handleVideo (client, vde, msg, voice, data) {
 
         // Save the queue in the discord collection
         client.queues.set(msg.guild.id, music);
-        
+
         // Update the queue
         queue = music;
 
         // Update the queue songs 
         queue.songs.push(song);
-        
+
         // Join the channel
         voice.join().then(c => {
             // Update connection
@@ -36,6 +36,7 @@ async function handleVideo (client, vde, msg, voice, data) {
             // Play the music
             play(client, msg, song, data);
         }).catch(err => {
+            console.log(err)
             // if there is an error, display an error message
             msg.channel.send(msg.language.get('PLAY_CANT_JOIN'));
             // Update discord guild queue
@@ -53,7 +54,7 @@ function play (client, msg, song, data, stop) {
 
     // Get the queue in the discord collection
     var queue = client.queues.get(msg.guild.id);
-    
+
     // If there is no song in the queue
     if(!song){
         if(!stop) msg.channel.send(msg.language.get('PLAY_NO_SONG'));
@@ -75,8 +76,8 @@ function play (client, msg, song, data, stop) {
             .addField(msg.language.get('PLAY_UTILS')[1], song.channel, true)
             .addField(msg.language.get('PLAY_UTILS')[2], msg.language.convertMs(song.ms), true);
         msg.channel.send(music_embed);
-    
-        // Play the music in the channel
+
+        /// Play the music in the channel
         var opt = {filter:`audioonly`};
         queue.connection.playStream(ytdl(song.url, opt))
             // When the music ended
@@ -91,6 +92,7 @@ function play (client, msg, song, data, stop) {
                 // then log the error
                 client.logger.log(err, 'error');
             }).setVolumeLogarithmic(queue.volume / 200); // Sets the volume
+
     }
 }
 
@@ -122,18 +124,18 @@ class Play extends Command {
         // Gets the video name
         var name = args.join(' ');
         if(!name) return message.channel.send(message.language.get('PLAY_PROVIDE_A_NAME'));
-        
+
         // Get the url link (if there is one)
         var url = args[0].replace(/<(.+)>/g, "$1");
-        
+
         // Gets the member voice channel
         var voice = message.member.voiceChannel;
         if(!voice) return message.channel.send(message.language.get('PLAY_VOICE_CHANNEL'));
-        
+
         // Check my permissions
         var perms = voice.permissionsFor(client.user);
-        if(!perms.has('CONNECT') || !perms.has('SPEAK')) return message.channel.send(message.language.get('PLAY_PERMS'))
-        
+        if(!perms.has('CONNECT') || !perms.has('SPEAK')) return message.channel.send(message.language.get('PLAY_PERMS'))
+
         // Gets the video
         var video = null;
         // Try to get video from args[0]
@@ -180,4 +182,4 @@ class Play extends Command {
 
 }
 
-module.exports = Play;
+module.exports = Play; 
