@@ -2,18 +2,6 @@
 
 Atlanta est un bot Discord open source très complet développé par Androz!
 
-## Table des matières
-
-- [AtlantaBot](#atlantabot)
-  - [Table des matières](#table-des-matieres)
-  - [Fonctionnalités](#fonctionnalites)
-  - [Installation](#installation)
-    - [Node modules](#node-modules)
-    - [Fichier de configuration](#fichier-de-configuration)
-    - [Lancer le bot](#lancer-le-bot)
-    - [Inviter le bot](#inviter-le-bot)
-  - [Support](#support)
-
 ## Fonctionnalités
 
 Atlanta est un bot Discord open source développé par Androz2091. Si vous souhaitez réutiliser du code venant de ce bot, veuillez mettre une **star** au git.
