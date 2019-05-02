@@ -35,7 +35,7 @@ Pour installer les node modules, tapez `npm install`. Puis, il vous faudra modif
  `cd node_modules/quick.db/bin`
 - Supprimez l'ancien fichier handler.js  
 `rm -rf handler.js`
-- Téléchargez le nouveau fichier handler.js
+- Téléchargez le nouveau fichier handler.js  
 `wget https://raw.githubusercontent.com/Androz2091/quick.db/glitch/bin/handler.js`
 
 Une fois cela fait, félicitations, vous avez correctement installé les node modules !
