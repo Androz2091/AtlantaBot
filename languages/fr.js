@@ -16,7 +16,7 @@ stats = [
 	"<:online:566984813278527508>",
 	"<:lien:566985712399024131>",
 	"<:voice:567393244741107745>",
-	"<:love:567394342168166416>"
+	":heart:"
 ],
 invite = [
 	'<:add:566991586182037525>',
@@ -415,7 +415,7 @@ module.exports = class {
 			USERINFO_DESCRIPTION: `Affiche des informations sur l'utilisateur !`,
 			USERINFO_ID: (id) => `${error} | Aucun utilisateur sur Discord ne possède l'ID \`${id}\` !`,
 			USERINFO_FIELDS: [
-				"<:username:567018125938130951> Pseudo",
+				":man: Pseudo",
 				"<:discriminator:567017866856103950> Discriminateur",
 				"<:bdg_IAMABOT:566892351570706432> Robot",
 				"<:avatar:567020705728692271> Avatar",
@@ -675,20 +675,17 @@ module.exports = class {
 			FORTNITE_USERNAME: `${error} | Entrez un pseudo epic games valide !`,
 			FORTNITE_404: (platform, username) => `${error} | Joueur \`${username}\` introuvable sur la plateforme \`${platform}\` !`,
 			FORTNITE_DESC: (platform, username) => `${username} joue sur ${platform} !`,
-			FORTNITE_SOLO_STATS: (data) => `
-				<:score:569087927783522334> K/D : ${data.stats.solo.kd}
+			FORTNITE_SOLO_STATS: (data) => `<:score:569087927783522334> K/D : ${data.stats.solo.kd}
 				<:games:567019785620029529> Parties : ${data.stats.solo.matches}
 				<:mort:569080340145111060> Kills : ${data.stats.solo.kills}
 				<:founder:568122623599443978> Victoire(s) : ${data.stats.solo.wins}
 			`,
-			FORTNITE_DUO_STATS: (data) => `
-				<:score:569087927783522334> K/D : ${data.stats.duo.kd}
+			FORTNITE_DUO_STATS: (data) => `<:score:569087927783522334> K/D : ${data.stats.duo.kd}
 				<:games:567019785620029529> Parties : ${data.stats.duo.matches}
 				<:mort:569080340145111060> Kills : ${data.stats.duo.kills}
 				<:founder:568122623599443978> Victoire(s) : ${data.stats.duo.wins}
 			`,
-			FORTNITE_SQUAD_STATS: (data) => `
-				<:score:569087927783522334> K/D : ${data.stats.squad.kd}
+			FORTNITE_SQUAD_STATS: (data) => `<:score:569087927783522334> K/D : ${data.stats.squad.kd}
 				<:games:567019785620029529> Parties : ${data.stats.squad.matches}
 				<:mort:569080340145111060> Kills : ${data.stats.squad.kills}
 				<:founder:568122623599443978> Victoire(s) : ${data.stats.squad.wins}
@@ -698,7 +695,13 @@ module.exports = class {
 				<:games:567019785620029529> Parties : ${data.stats.lifetime.matches}
 				<:mort:569080340145111060> Kills : ${data.stats.lifetime.kills}
 				<:founder:568122623599443978> Victoire(s) : ${data.stats.lifetime.wins}
-			`
+			`,
+
+			QUOTE_DESCRIPTION: `Citez un message dans le salon !`,
+			QUOTE_404: `${error} | Aucun message ne possède cet ID.`,
+			QUOTE_404_1: (channel) => `${error} | Aucun salon trouvé avec l'ID ${channel} !`,
+
+			JOKE_DESCRIPTION: `Envoie une blague aléatoire !`
 
         }
     }

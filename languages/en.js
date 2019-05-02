@@ -16,7 +16,7 @@ stats = [
 	"<:online:566984813278527508>",
 	"<:lien:566985712399024131>",
 	"<:voice:567393244741107745>",
-	"<:love:567394342168166416>"
+	":heart:"
 ],
 invite = [
 	'<:add:566991586182037525>',
@@ -415,7 +415,7 @@ module.exports = class {
 			USERINFO_DESCRIPTION: `Displays user information!`,
 			USERINFO_ID: (id) => `${error} | No user on Discord has the ID \`${id}\` !`,
 			USERINFO_FIELDS: [
-				"<:username:567018125938130951> Username",
+				":man: Username",
 				"<:discriminator:567017866856103950> Discriminator",
 				"<:bdg_IAMABOT:566892351570706432> Robot",
 				"<:avatar:567020705728692271> Avatar",
@@ -557,7 +557,7 @@ module.exports = class {
 
 			// mute command
 			MUTE_DESCRIPTION: `Prevents the member from speaking for a while!`,
-			MUTE_SUCCESS: (member, time, reason) => `${success} | **${member.user.tag}** is mutated during **${time}** for **${reason}** !`,
+			MUTE_SUCCESS: (member, time, reason) => `${success} | **${member.user.tag}** is muted during **${time}** for **${reason}** !`,
 			MUTE_DM: (message, time, reason) => `${error} | You're mute from **${message.guild.name}** during **${time}** for **${reason}** !`,
 
 			// sondage command
@@ -675,30 +675,32 @@ module.exports = class {
 			FORTNITE_USERNAME: `${error} | Enter a valid pseudo epic game!`,
 			FORTNITE_404: (platform, username) => `${error} | Player \`${username}\` not found on the platform \`${platform}\` !`,
 			FORTNITE_DESC: (platform, username) => `${username} plays on ${platform} !`,
-			FORTNITE_SOLO_STATS: (data) => `
-				<:score:569087927783522334> K/D : ${data.stats.solo.kd}
+			FORTNITE_SOLO_STATS: (data) => `<:score:569087927783522334> K/D : ${data.stats.solo.kd}
 				<:games:567019785620029529> Games : ${data.stats.solo.matches}
 				<:mort:569080340145111060> Kills : ${data.stats.solo.kills}
 				<:founder:568122623599443978> Win(s) : ${data.stats.solo.wins}
 			`,
-			FORTNITE_DUO_STATS: (data) => `
-				<:score:569087927783522334> K/D : ${data.stats.duo.kd}
+			FORTNITE_DUO_STATS: (data) => `<:score:569087927783522334> K/D : ${data.stats.duo.kd}
 				<:games:567019785620029529> Games : ${data.stats.duo.matches}
 				<:mort:569080340145111060> Kills : ${data.stats.duo.kills}
 				<:founder:568122623599443978> Win(s) : ${data.stats.duo.wins}
 			`,
-			FORTNITE_SQUAD_STATS: (data) => `
-				<:score:569087927783522334> K/D : ${data.stats.squad.kd}
+			FORTNITE_SQUAD_STATS: (data) => `<:score:569087927783522334> K/D : ${data.stats.squad.kd}
 				<:games:567019785620029529> Games : ${data.stats.squad.matches}
 				<:mort:569080340145111060> Kills : ${data.stats.squad.kills}
 				<:founder:568122623599443978> Win(s) : ${data.stats.squad.wins}
 			`,
-			FORTNITE_LIFETIME_STATS: (data) => `
-				<:score:569087927783522334>	K/D : ${data.stats.lifetime.kd}
+			FORTNITE_LIFETIME_STATS: (data) => `<:score:569087927783522334>	K/D : ${data.stats.lifetime.kd}
 				<:games:567019785620029529> Games : ${data.stats.lifetime.matches}
 				<:mort:569080340145111060> Kills : ${data.stats.lifetime.kills}
 				<:founder:568122623599443978> Win(s) : ${data.stats.lifetime.wins}
-			`
+			`,
+
+			QUOTE_DESCRIPTION: `Quote a message in the channel`,
+			QUOTE_404: `${error} | No message has this ID.`,
+			QUOTE_404_1: (channel) => `${error} | No channel found with ${channel}.`,
+
+			JOKE_DESCRIPTION: `Send a random joke !`
         }
     }
 
