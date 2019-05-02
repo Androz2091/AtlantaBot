@@ -36,7 +36,7 @@ class Minecraft extends Command {
         request(url, { json: true }, async function (error, response, body) {
             if(error) return message.channel.send(message.language.get('MINECRAFT_ERR1'));
             if(body.error.length > 1){
-                if(body.error === "invalid hostname or port") return message.channel.send(message.language.get('MINECRAFT_IS_OFFLINE'));
+                if(body.error === "invalid hostname or port" || !body.online) return message.channel.send(message.language.get('MINECRAFT_IS_OFFLINE'));
                 else return message.channel.send(message.language.get('AN_ERROR_OCCURENCED'));
             }
 
