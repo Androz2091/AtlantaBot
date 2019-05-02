@@ -18,19 +18,29 @@
   "homepage": "https://github.com/Androz2091/AtlantaBot#readme",
   "dependencies": {
     "ascii-table": "0.0.9",
+    "body-parser": "^1.19.0",
     "chalk": "^2.4.2",
-    "discord.js": "^11.4.2",
+    "cookie-parser": "^1.4.4",
+    "discord.js": "github:discordjs/discord.js#11.4-dev",
     "express": "^4.16.4",
+    "express-session": "^1.16.1",
+    "express-useragent": "^1.0.12",
+    "ffmpeg": "0.0.4",
     "ffmpeg-binaries": "^4.0.0",
+    "fluent-ffmpeg": "^2.1.2",
     "fortnite": "^4.3.2",
+    "http": "0.0.0",
     "klaw": "^3.0.0",
     "md5": "^2.2.1",
     "moment": "^2.24.0",
+    "morgan": "^1.9.1",
     "node-superfetch": "^0.1.9",
     "opusscript": "0.0.6",
+    "prism-media": "^1.0.2",
     "quick.db": "^7.0.0-b22",
     "request": "^2.88.0",
     "simple-youtube-api": "^5.1.1",
-    "ytdl-core": "^0.29.1"
+    "ytdl-core": "^0.29.1",
+    "ytdl-core-discord": "^1.0.3"
   }
 }
