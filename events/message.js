@@ -12,12 +12,15 @@ module.exports = class {
         if(!this.client.databases[4].get('message')) this.client.databases[4].set('message', []);
         if(!this.client.databases[4].get('commands')) this.client.databases[4].set('commands', []);
 
-        // to display the user's stats
-        this.client.databases[4].push('message', {
+        var m = {
             date:Date.now(), 
             author:message.author.id, 
-            data:{length:message.content.length,channel:{id:message.channel.id,name:message.channel.name},guild:{id:message.guild.id,name:message.guild.name}}
-        });
+            data:{length:message.content.length,channel:{id:message.channel.id,name:message.channel.name}}
+        };
+        if(message.channel.type !== 'dm') m.data.guild = {id:message.guild.id,name:message.guild.name};
+
+        // to display the user's stats
+        this.client.databases[4].push('message', m);
 
         var ms = require('ms');
 
