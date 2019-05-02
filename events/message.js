@@ -9,6 +9,16 @@ module.exports = class {
 
     async run (message) {
 
+        if(!this.client.databases[4].get('message')) this.client.databases[4].set('message', []);
+        if(!this.client.databases[4].get('commands')) this.client.databases[4].set('commands', []);
+
+        // to display the user's stats
+        this.client.databases[4].push('message', {
+            date:Date.now(), 
+            author:message.author.id, 
+            data:{length:message.content.length,channel:{id:message.channel.id,name:message.channel.name},guild:{id:message.guild.id,name:message.guild.name}}
+        });
+
         var ms = require('ms');
 
         // If the messagr author is a bot
@@ -149,6 +159,13 @@ module.exports = class {
         if(cmd.conf.owner && message.author.id !== this.client.config.owner) return message.channel.send(message.language.get('OWNER_ONLY'));
 
         data.cmd = cmd;
+
+        // to display the user's stats
+        this.client.databases[4].push('commands', {
+            date:Date.now(), 
+            author:message.author.id, 
+            data:{command:cmd,channel:{id:message.channel.id,name:message.channel.name},guild:{id:message.guild.id,name:message.guild.name}}
+        });
 
         // If the command exists, **AND** the user has permission, run it.
         this.client.logger.log(`${message.author.username} (${message.author.id}) ran command ${cmd.help.name}`, "cmd");
