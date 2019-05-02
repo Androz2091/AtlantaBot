@@ -164,7 +164,7 @@ module.exports = class {
         this.client.databases[4].push('commands', {
             date:Date.now(), 
             author:message.author.id, 
-            data:{command:cmd,channel:{id:message.channel.id,name:message.channel.name},guild:{id:message.guild.id,name:message.guild.name}}
+            data:{command:cmd.help.name,channel:{id:message.channel.id,name:message.channel.name},guild:{id:message.guild.id,name:message.guild.name}}
         });
 
         // If the command exists, **AND** the user has permission, run it.
