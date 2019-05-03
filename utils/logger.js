@@ -1,10 +1,10 @@
 /*
 Logger class for easy and aesthetically pleasing console logging
 */
-const chalk = require("chalk");
+const { bgBlue, bgRed, green, black } = require("chalk");
 const moment = require("moment");
 
-class Logger {
+module.exports = class Logger {
   static log (content, type = "log") {
     const timestamp = `[${moment().format("YYYY-MM-DD HH:mm:ss")}]:`;
     switch (type) {
@@ -28,24 +28,22 @@ class Logger {
         return console.log(`${timestamp} ${chalk.black.bgGreen(type.toUpperCase())} ${content}`);
       } 
       default: throw new TypeError("Logger type must be either warn, debug, log, ready, cmd or error.");
-    } 
-  }
+    };
+  };
   
   static error (content) {
     return this.log(content, "error");
-  }
+  };
   
   static warn (content) {
     return this.log(content, "warn");
-  }
+  };
   
   static debug (content) {
     return this.log(content, "debug");
-  } 
+  };
   
   static cmd (content) {
     return this.log(content, "cmd");
-  }
-}
-
-module.exports = Logger;
+  };
+};
