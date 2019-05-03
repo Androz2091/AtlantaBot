@@ -62,6 +62,7 @@ Vous devez renommer le fichier `config.json.example` en `config.json` et le comp
 >   - `auth` : le mot de passe du webhook (qui doit être configuré dans les paramètres sur discordbots.org)
 >   - `channel` : le salon dans lequel sera envoyé les messages de votes
 > - `fortnite` : votre clé d'api [Fortnite Tracker](https://fortnitetracker.com/site-api)
+> - `dbl` : votre clé d'api [DiscordBots](https://discordbots.org/api/docs#mybots)
 
 ### Lancer le bot
 

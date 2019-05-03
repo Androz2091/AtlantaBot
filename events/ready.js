@@ -12,6 +12,11 @@ module.exports = class {
         this.client.logger.log(`Loading a total of ${this.client.commands.size} command(s).`, 'log');
         this.client.logger.log(`${this.client.user.tag}, ready to serve ${this.client.users.size} users in ${this.client.guilds.size} servers.`, "ready");
         
+        // Post DBL stats
+        const DBL = require("dblapi.js");
+        const dbl = new DBL(this.client.config.dbl, this.client);
+        dbl.postStats(this.client.guilds.size)
+
         // Inits stats table
         if(!this.client.databases[4].get('commands')) this.client.databases[4].set('commands', []);
 

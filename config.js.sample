@@ -19,5 +19,6 @@ module.exports = {
 		auth:'xxxxxxx', // the password of the vote webhook
 		channel:'xxxxxxxx' // the id for the vote messages
 	},
-	fortnite: "xxxxxxx" // your fortnite api key (https://fortnitetracker.com/site-api)
+	fortnite: "xxxxxxx", // your fortnite api key (https://fortnitetracker.com/site-api)
+	dbl: "xxxxxxxx" // your discordbots.org API key
 }
