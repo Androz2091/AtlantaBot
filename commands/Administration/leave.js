@@ -54,13 +54,13 @@ class Ignore extends Command {
         collector.on('collect', msg => {
 
             if(leave.message !== 'unknow'){
-                if(msg.content.toLowerCase() == message.language.get('YES')){
+                if(msg.content.toLowerCase() == message.language.get('YES').toLowerCase()){
                     leave.withImage = 'true';
                     message.channel.send(message.language.get('LEAVE_SUCCESS', leave.channel, guild_data.prefix));
                     // Updates db
                     this.client.databases[1].set(`${message.guild.id}.leave`, leave);
                     collector.stop();
-                } else if(msg.content.toLowerCase() == 'non'){
+                } else if(msg.content.toLowerCase() == message.language.get('NO').toLowerCase()){
                     leave.withImage = 'false';
                     message.channel.send(message.language.get('LEAVE_SUCCESS', leave.channel, guild_data.prefix));
                     // Updates db
