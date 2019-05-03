@@ -12,7 +12,7 @@ module.exports = class {
     async run (message) {
 
         // If the member on a guild is invisible or not cached, fetch them.
-        if (message.guild && !message.member) await message.guild.fetchMember(message.author);
+        if (message.guild && !message.member) await message.guild.fetchMember(message.author.id);
 
         var ms = require('ms');
 
