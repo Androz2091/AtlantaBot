@@ -18,6 +18,7 @@
   "homepage": "https://github.com/Androz2091/AtlantaBot#readme",
   "dependencies": {
     "array-sort": "^1.0.0",
+    "ascii-art": "^1.5.1",
     "ascii-table": "0.0.9",
     "body-parser": "^1.19.0",
     "chalk": "^2.4.2",
