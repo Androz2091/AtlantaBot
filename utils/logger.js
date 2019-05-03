@@ -16,7 +16,7 @@ module.exports = class Logger {
         return console.log(`${timestamp} ${black.bgYellow(type.toUpperCase())} ${content} `);
       }
       case "error": {
-        return console.log(`${timestamp} ${bgRed(type.toUpperCase())} ${content} `);
+        return console.log(`${timestamp} ${black.bgRed(type.toUpperCase())} ${content} `);
       }
       case "debug": {
         return console.log(`${timestamp} ${green(type.toUpperCase())} ${content} `);
