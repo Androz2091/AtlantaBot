@@ -54,7 +54,7 @@ class Slowmode extends Command {
             var new_slowmode = {};
             for(var id in guild_data.slowmode){
                 if(id !== channel.id){
-                    var _time = guild_data.slowmde[id];
+                    var _time = guild_data.slowmode[id];
                     new_slowmode[id] = _time;
                 }
             }
