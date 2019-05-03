@@ -7,7 +7,15 @@ module.exports = class {
         
         // Loads discord lib
         var Discord = require('discord.js');
-        
+
+        if(this.client.databases[5].get(`guilds.${guild.id}`)){
+            guild.owner.send(`Ce serveur (**${guild.name}**) est blacklist d'Atlanta pour la raison suivante : \`${this.client.databases[5].get(`guilds.${guild.id}`)}\``).then(() => {
+                guild.leave();
+            }).catch(err => {
+                guild.leave();
+            });
+        }
+
         // Inits guild data 
         this.client.functions.createGuild(this.client, guild);
 

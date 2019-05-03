@@ -27,6 +27,10 @@ module.exports = class {
 
         // If the command is run is DM
         if(message.channel.type === 'dm'){
+            var bl = this.client.databases[5].get(`users.${message.author.id}`)
+            if(bl){
+                return message.channel.send(message.language.get(`BLACKLIST_BANNED_USER`, bl))
+            }
             // Utils variables
             const args = message.content.trim().split(/ +/g);
             const command = args.shift().toLowerCase();
@@ -133,6 +137,10 @@ module.exports = class {
         // If no command found, return;
         if (!cmd) return;
 
+        if(this.client.databases[5].get(`users.${message.author.id}`)){
+            return message.channel.send(message.language.get(`BLACKLIST_BANNED_USER`, this.client.databases[5].get(`users.${message.author.id}`)))
+        }
+        
         // Fix everyone mention
         if(!message.member.hasPermission('MENTION_EVERYONE') && message.mentions.everyone) return message.channel.send(message.language.get('MENTION_EVERYONE'));
 

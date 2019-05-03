@@ -30,7 +30,8 @@ class Atlanta extends Client {
                 xp: new quickdb.table('xp')
             },
             new quickdb.table('remindme'),
-            new quickdb.table('stats')
+            new quickdb.table('stats'),
+            new quickdb.table('blacklist')
         ],
         this.queues = new Collection(); // This collection will be used for the music
     }

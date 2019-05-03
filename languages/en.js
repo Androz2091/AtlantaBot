@@ -700,7 +700,14 @@ module.exports = class {
 			QUOTE_404: `${error} | No message has this ID.`,
 			QUOTE_404_1: (channel) => `${error} | No channel found with ${channel}.`,
 
-			JOKE_DESCRIPTION: `Send a random joke !`
+			JOKE_DESCRIPTION: `Send a random joke !`,
+
+			BLACKLIST_DESC: `Ban a guild or a user from Atlanta!`,
+			BLACKLIST_ARGS: `${error} | You must enter a type and an ID!`,
+			BLACKLIST_GUILD: (id) => `${success} | The guild ${id} is now blacklist!`,
+			BLACKLIST_ID: (id) => `${error} | No user on Discord has the ID \`${id}\` !`,
+			BLACKLIST_USER: (id) => `${success} | User **${id}** blacklist!`,
+			BLACKLIST_BANNED_USER: (reason) => `${error} | You are blacklisted from Atlanta for the following reason: \`${reason}\``,
         }
     }
 

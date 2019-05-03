@@ -701,7 +701,14 @@ module.exports = class {
 			QUOTE_404: `${error} | Aucun message ne possède cet ID.`,
 			QUOTE_404_1: (channel) => `${error} | Aucun salon trouvé avec l'ID ${channel} !`,
 
-			JOKE_DESCRIPTION: `Envoie une blague aléatoire !`
+			JOKE_DESCRIPTION: `Envoie une blague aléatoire !`,
+
+			BLACKLIST_DESC: `Ban un serv ou un utilisateur d'Atlanta !`,
+			BLACKLIST_ARGS: `${error} | Vous devez entrer un type et une ID !`,
+			BLACKLIST_GUILD: (id) => `${success} | Le serveur ${id} est maintenant blacklist !`,
+			BLACKLIST_ID: (id) => `${error} | Aucun utilisateur sur Discord ne possède l'ID \`${id}\` !`,
+			BLACKLIST_USER: (id) => `${success} | Utilisateur **${id}** blacklist !`,
+			BLACKLIST_BANNED_USER: (reason) => `${error} | Vous êtes blacklist d'Atlanta pour la raison suivante : \`${reason}\``
 
         }
     }
