@@ -3,10 +3,9 @@
 const { Client, Collection } = require("discord.js");
 // We also load the rest of the things we need in this file:
 const { promisify } = require("util"),
-fs = require('fs'),
+{ readdir } = require('fs'),
 klaw = require("klaw"),
 path = require("path"),
-readdir = promisify(require("fs").readdir),
 quickdb = require('quick.db');
 quickdb.init('./data/atlanta.sqlite');
 
