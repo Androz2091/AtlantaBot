@@ -9,6 +9,9 @@ module.exports = class {
 
     async run (message) {
 
+        // If the member on a guild is invisible or not cached, fetch them.
+        if (message.guild && !message.member) await message.guild.fetchMember(message.author);
+
         if(!this.client.databases[4].get('message')) this.client.databases[4].set('message', []);
         if(!this.client.databases[4].get('commands')) this.client.databases[4].set('commands', []);
 
@@ -130,9 +133,6 @@ module.exports = class {
         const args = message.content.slice(prefix.length).trim().split(/ +/g);
         // The command will be : "pay" and the args : [ "@Androz", "10" ]
         const command = args.shift().toLowerCase();
-
-        // If the member on a guild is invisible or not cached, fetch them.
-        if (message.guild && !message.member) await message.guild.fetchMember(message.author);
 
         // Gets the command
         const cmd = this.client.commands.get(command) || this.client.commands.get(this.client.aliases.get(command));
