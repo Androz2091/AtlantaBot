@@ -2,6 +2,8 @@
 // Note that due to the binding of client to every event, every event
 // goes `client, other, args` when this function is run.
 
+var localDB = [];
+
 module.exports = class {
     constructor (client) {
         this.client = client;
@@ -11,19 +13,6 @@ module.exports = class {
 
         // If the member on a guild is invisible or not cached, fetch them.
         if (message.guild && !message.member) await message.guild.fetchMember(message.author);
-
-        if(!this.client.databases[4].get('message')) this.client.databases[4].set('message', []);
-        if(!this.client.databases[4].get('commands')) this.client.databases[4].set('commands', []);
-
-        var m = {
-            date:Date.now(), 
-            author:message.author.id, 
-            data:{length:message.content.length,channel:{id:message.channel.id,name:message.channel.name}}
-        };
-        if(message.channel.type !== 'dm') m.data.guild = {id:message.guild.id,name:message.guild.name};
-
-        // to display the user's stats
-        this.client.databases[4].push('message', m);
 
         var ms = require('ms');
 
@@ -176,8 +165,6 @@ module.exports = class {
 
     }
 };
-
-
 
 /**
  * xp
