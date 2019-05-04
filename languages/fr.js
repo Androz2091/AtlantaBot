@@ -714,7 +714,16 @@ module.exports = class {
 			PURGE_DAYS: `${error} | Veuillez préciser un nombre de jours !`,
 			PURGE_CONFIRMATION: (members) => `${warn} | ${members} membres seront expulsés ! Pour confirmer, tapez \`confirm\` !`,
 			PURGE_TIMEOUT: `${error} | Temps écoulé ! Veuillez retaper la commande !`,
-			PURGE_SUCCESS: (members) => `${success} | ${members} membres expulsés !`
+			PURGE_SUCCESS: (members) => `${success} | ${members} membres expulsés !`,
+
+			GITHUB_DESCRIPTION: `Affiche les informations du github d'Atlanta !`,
+			GITHUB_DESC: `[Cliquez ici pour accéder au github d'Atlanta](https://github.com/Androz2091/AtlantaBot)`,
+			GITHUB_HEADERS: [
+				"Stars :star:",
+				"Forks :tools:",
+				"Language :computer:",
+				"Fondateur :crown:"
+			]
 
         }
     }

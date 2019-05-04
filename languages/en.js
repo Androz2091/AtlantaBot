@@ -713,7 +713,16 @@ module.exports = class {
 			PURGE_DAYS: `${error} | Please specify a number of days!`,
 			PURGE_CONFIRMATION: `${warn} | ${members} members will be kicked! To confirm, type \`confirm\`!`,
 			PURGE_TIMEOUT: `${error} | Time's up! Please retype the command!`,
-			PURGE_SUCCESS: (members) => `${success} | ${members} members kicked!`
+			PURGE_SUCCESS: (members) => `${success} | ${members} members kicked!`,
+
+			GITHUB_DESCRIPTION: `Display the Atlanta github information!`,
+			GITHUB_DESC: `[Click here to access the Atlanta github](https://github.com/Androz2091/AtlantaBot)`,
+			GITHUB_HEADERS: [
+				"Stars :star:",
+				"Forks :tools:",
+				"Language :computer:",
+				"Founder :crown:"
+			]
         }
     }
 
