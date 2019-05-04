@@ -711,7 +711,7 @@ module.exports = class {
 
 			PURGE_DESCRIPTION: `Kick inactive members!`,
 			PURGE_DAYS: `${error} | Please specify a number of days!`,
-			PURGE_CONFIRMATION: `${warn} | ${members} members will be kicked! To confirm, type \`confirm\`!`,
+			PURGE_CONFIRMATION: (members) =>`${warn} | ${members} members will be kicked! To confirm, type \`confirm\`!`,
 			PURGE_TIMEOUT: `${error} | Time's up! Please retype the command!`,
 			PURGE_SUCCESS: (members) => `${success} | ${members} members kicked!`,
 
