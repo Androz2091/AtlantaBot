@@ -36,7 +36,7 @@ class Pay extends Command {
         // gets the amount of credits to send
         var amount_to_pay = args[1];
         // if the member has not entered a valid amount, display an error message
-        if(!amount_to_pay) return message.channel.send(message.language.get('PAY_AMOUNT', member.user.username));
+        if(!amount_to_pay || parseInt(amount_to_pay) < 0) return message.channel.send(message.language.get('PAY_AMOUNT', member.user.username));
         if(isNaN(amount_to_pay)) return message.channel.send(message.language.get('NAN', amount_to_pay));
         // if the member does not have enough credits
         if(amount_to_pay > membersdata[0].credits) return message.channel.send(message.language.get('PAY_AMOUNT_TO_HIGH', amount_to_pay, member.user.username));
