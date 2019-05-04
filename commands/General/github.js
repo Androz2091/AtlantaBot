@@ -35,7 +35,7 @@ class Github extends Command {
             .addField(message.language.get("GITHUB_HEADERS")[0], tdata.stargazers_count, true)
             .addField(message.language.get("GITHUB_HEADERS")[1], tdata.forks_count, true)
             .addField(message.language.get("GITHUB_HEADERS")[2], tdata.language, true)
-            .addField(message.language.get("GITHUB_HEADERS")[3], "["+tdata.owner.login+"]("+tdata.owner.url+")")
+            .addField(message.language.get("GITHUB_HEADERS")[3], "["+tdata.owner.login+"]("+tdata.owner.html_url+")")
             .setImage(tdata.owner.avatar_url)
             .setColor(data.embed.color)
             .setFooter(data.embed.footer);
