@@ -42,7 +42,7 @@ Une fois cela fait, félicitations, vous avez correctement installé les node mo
 
 ### Fichier de configuration
 
-Vous devez renommer le fichier `config.json.example` en `config.json` et le compléter avec vos informations :
+Vous devez renommer le fichier `config.js.example` en `config.js` et le compléter avec vos informations :
 
 > - `token` : le token de votre bot Discord
 > - **Support**
