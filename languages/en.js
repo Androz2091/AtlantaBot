@@ -708,6 +708,12 @@ module.exports = class {
 			BLACKLIST_ID: (id) => `${error} | No user on Discord has the ID \`${id}\` !`,
 			BLACKLIST_USER: (id) => `${success} | User **${id}** blacklist!`,
 			BLACKLIST_BANNED_USER: (reason) => `${error} | You are blacklisted from Atlanta for the following reason: \`${reason}\``,
+
+			PURGE_DESCRIPTION: `Kick inactive members!`,
+			PURGE_DAYS: `${error} | Please specify a number of days!`,
+			PURGE_CONFIRMATION: `${warn} | ${members} members will be kicked! To confirm, type \`confirm\`!`,
+			PURGE_TIMEOUT: `${error} | Time's up! Please retype the command!`,
+			PURGE_SUCCESS: (members) => `${success} | ${members} members kicked!`
         }
     }
 

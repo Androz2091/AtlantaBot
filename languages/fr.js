@@ -708,7 +708,13 @@ module.exports = class {
 			BLACKLIST_GUILD: (id) => `${success} | Le serveur ${id} est maintenant blacklist !`,
 			BLACKLIST_ID: (id) => `${error} | Aucun utilisateur sur Discord ne possède l'ID \`${id}\` !`,
 			BLACKLIST_USER: (id) => `${success} | Utilisateur **${id}** blacklist !`,
-			BLACKLIST_BANNED_USER: (reason) => `${error} | Vous êtes blacklist d'Atlanta pour la raison suivante : \`${reason}\``
+			BLACKLIST_BANNED_USER: (reason) => `${error} | Vous êtes blacklist d'Atlanta pour la raison suivante : \`${reason}\``,
+
+			PURGE_DESCRIPTION: `Expulse les membres inactifs !`,
+			PURGE_DAYS: `${error} | Veuillez préciser un nombre de jours !`,
+			PURGE_CONFIRMATION: (members) => `${warn} | ${members} membres seront expulsés ! Pour confirmer, tapez \`confirm\` !`,
+			PURGE_TIMEOUT: `${error} | Temps écoulé ! Veuillez retaper la commande !`,
+			PURGE_SUCCESS: (members) => `${success} | ${members} membres expulsés !`
 
         }
     }
