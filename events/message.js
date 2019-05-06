@@ -3,6 +3,7 @@
 // goes `client, other, args` when this function is run.
 
 var localDB = [];
+var Discord = require("discord.js");
 
 module.exports = class {
     constructor (client) {
@@ -11,12 +12,41 @@ module.exports = class {
 
     async run (message) {
 
+        // An array of client mention
+        var clientMentions = [
+            `<@${this.client.user.id}> `,
+            `<@!${this.client.user.id}> `,
+            `<@?${this.client.user.id}> `
+        ];
+
         // If the messagr author is a bot
         if (message.author.bot) return;
 
         // If the member on a guild is invisible or not cached, fetch them.
         if (message.guild && !message.member) await message.guild.fetchMember(message.author.id);
+        
+        // Check if Alanta is mentionned
+        var isMentionned = false;
+        clientMentions.forEach(cm => {
+            if(message.content.startsWith(cm) && (message.content.length > cm[0].length)){
+                isMentionned = true;
+            }
+        });
 
+        // if Atlanta is mentionned
+        if(isMentionned){
+            // Creates new array with users mentions
+            var withoutAtlanta = message.mentions.users.array();
+            // Delete first item from the array (atlanta)
+            withoutAtlanta.shift();
+            // Creates new empty collection
+            var newUsersMentions = new Discord.Collection();
+            // For each user, add it to the ollection
+            withoutAtlanta.forEach(u => newUsersMentions.set(u.id, u));
+            // Update usersMentions variable
+            message.mentions.users = newUsersMentions;
+        }
+        
         var ms = require('ms');
 
         // gets the data of the users
@@ -109,11 +139,8 @@ module.exports = class {
 
         var validPrefixes = [
             guild_data.prefix,
-            'atlanta',
-            `<@${this.client.user.id}> `,
-            `<@!${this.client.user.id}> `,
-            `<@?${this.client.user.id}> `
-        ];
+            'atlanta'
+        ].concat(clientMentions);
 
         var prefix = null;
         validPrefixes.forEach(p => {
