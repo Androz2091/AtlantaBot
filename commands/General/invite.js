@@ -11,7 +11,7 @@ class Invite extends Command {
             usage: "invite",
             enabled: true,
             guildOnly: false,
-            aliases: [],
+            aliases: ["vote","add","support"],
             permission: false,
             botpermissions: [ "SEND_MESSAGES", "EMBED_LINKS" ],
             nsfw: false,
