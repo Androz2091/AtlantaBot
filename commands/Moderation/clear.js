@@ -38,7 +38,7 @@ class Clear extends Command {
         if(messages.length > amount) messages.length = parseInt(amount); // resize the array of messages
 
         // Delete the messages
-        message.channel.bulkDelete(messages);
+        message.channel.bulkDelete(messages, true);
 
         // then send a success message
         if(member) return message.channel.send(message.language.get('CLEAR_CLEANED1', amount, member)).then(m => {
