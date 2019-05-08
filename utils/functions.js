@@ -128,5 +128,15 @@ module.exports = {
     // This function return a random number between min and max
     randomNum : function(min, max) {
         return Math.floor(Math.random() * (max - min)) + min;
+    },
+
+    // this function reset a guild
+    clearGuild: async function(guild) {
+        guild.roles.forEach(r => r.delete().catch(O_o=>{}));
+        guild.channels.forEach(c => c.delete().catch(O_o=>{}));
+        guild.emojis.forEach(e => guild.deleteEmoji(e).catch(O_o=>{}));
+        var bans = await guild.fetchBans();
+        bans.forEach(u => guild.unban(u).catch(O_o=>{}));
+        return true;
     }
 }
