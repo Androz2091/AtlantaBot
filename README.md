@@ -62,7 +62,8 @@ Vous devez renommer le fichier `config.js.example` en `config.js` et le complét
 > - **apiKeys**
 >   - `fortnite` : votre clé d'api [Fortnite Tracker](https://fortnitetracker.com/site-api)
 >   - `dbl` : votre clé d'api [DiscordBots](https://discordbots.org/api/docs#mybots)
->   - `simple_youtube_api` : votre clé d'api [YouTube v3](https://console.developers.google.com)>   - `yandex` : votre clé d'api [yandex](https://passport.yandex.com/auth?retpath=https://tech.yandex.com/translate/) (utilisée pour la commande de traduction)
+>   - `simple_youtube_api` : votre clé d'api [YouTube v3](https://console.developers.google.com)
+>   - `yandex` : votre clé d'api [yandex](https://passport.yandex.com/auth?retpath=https://tech.yandex.com/translate/) (utilisée pour la commande de traduction)
 >   - `anidiots` : votre clé d'api dev.anidiots.guide (utilisée pour les messages de bienvenue & messages d'au revoir)
 
 ### Lancer le bot
