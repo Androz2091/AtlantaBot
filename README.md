@@ -54,15 +54,16 @@ Vous devez renommer le fichier `config.js.example` en `config.js` et le complét
 >   - `footer` : le texte qui s'affiche en bas des embeds
 > - `default_language` : le language par défaut des nouveaux Discord (`en` ou `fr`)
 > - `owner` : l'identifiant Discord du propriétaire du bot
-> - `anidiots` : votre clé d'api dev.anidiots.guide (utilisée pour les messages de bienvenue & messages d'au revoir)
-> - `yandex` : votre clé d'api [yandex](https://passport.yandex.com/auth?retpath=https://tech.yandex.com/translate/) (utilisée pour la commande de traduction)
-> - `simple_youtube_api` : votre clé d'api [YouTube v3](https://console.developers.google.com)
-> - **Votes**
->   - `port` : le port du serveur express utilisé pour les votes DBL
->   - `auth` : le mot de passe du webhook (qui doit être configuré dans les paramètres sur discordbots.org)
->   - `channel` : le salon dans lequel sera envoyé les messages de votes
-> - `fortnite` : votre clé d'api [Fortnite Tracker](https://fortnitetracker.com/site-api)
-> - `dbl` : votre clé d'api [DiscordBots](https://discordbots.org/api/docs#mybots)
+> - **Server**
+>   - `port` : le port du serveur express
+>   - **Votes**
+>       - `auth` : le mot de passe du webhook (qui doit être configuré dans les paramètres sur discordbots.org)
+>       - `channel` : le salon dans lequel seront envoyés les messages de votes
+> - **apiKeys**
+>   - `fortnite` : votre clé d'api [Fortnite Tracker](https://fortnitetracker.com/site-api)
+>   - `dbl` : votre clé d'api [DiscordBots](https://discordbots.org/api/docs#mybots)
+>   - `simple_youtube_api` : votre clé d'api [YouTube v3](https://console.developers.google.com)>   - `yandex` : votre clé d'api [yandex](https://passport.yandex.com/auth?retpath=https://tech.yandex.com/translate/) (utilisée pour la commande de traduction)
+>   - `anidiots` : votre clé d'api dev.anidiots.guide (utilisée pour les messages de bienvenue & messages d'au revoir)
 
 ### Lancer le bot
 
