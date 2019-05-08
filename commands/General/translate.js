@@ -28,7 +28,7 @@ class Translate extends Command {
         var Langs = [];
 
         message.channel.send(message.language.get('PLEASE_WAIT')).then(m => {
-            request(`https://translate.yandex.net/api/v1.5/tr.json/getLangs?key=${this.client.config.yandex}`, { json: true }, function (error, response, body) {
+            request(`https://translate.yandex.net/api/v1.5/tr.json/getLangs?key=${this.client.config.apiKeys.yandex}`, { json: true }, function (error, response, body) {
             
                 Langs = body.dirs;
         
@@ -59,7 +59,7 @@ class Translate extends Command {
         
                 if (!Langs.includes(language)) return m.edit(message.language.get('TRANSLATE_LANG1', guild_data.prefix, language));
         
-                request(`https://translate.yandex.net/api/v1.5/tr.json/translate?key=${client.config.yandex}&text=${to_translate}&lang=${language}&format=plain`, { json: true }, function (error, response, body) {
+                request(`https://translate.yandex.net/api/v1.5/tr.json/translate?key=${client.config.apiKeys.yandex}&text=${to_translate}&lang=${language}&format=plain`, { json: true }, function (error, response, body) {
                     const embed = new Discord.RichEmbed()
                         .setAuthor('Translator', client.user.displayAvatarURL)
                         .addField(`${language.split('-')[0]}`, `\`\`\`${to_translate}\`\`\``)

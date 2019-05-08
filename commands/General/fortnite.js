@@ -25,7 +25,7 @@ class Fortnite extends Command {
     async run (message, args, membersdata, guild_data, data) {
         
         // Create an instance of the client with your API Key
-        const fortniteClient = new fortnite(this.client.config.fortnite);
+        const fortniteClient = new fortnite(this.client.config.apiKeys.fortnite);
         
         var platform = args[0];
         if(!platform || (platform !== 'pc' && platform !== 'xbl' && platform !== 'psn')) return message.channel.send(message.language.get('FORTNITE_PLATFORM'));

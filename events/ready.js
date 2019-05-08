@@ -12,9 +12,12 @@ module.exports = class {
         this.client.logger.log(`Loading a total of ${this.client.commands.size} command(s).`, 'log');
         this.client.logger.log(`${this.client.user.tag}, ready to serve ${this.client.users.size} users in ${this.client.guilds.size} servers.`, "ready");
         
+        // Inits the dashboard
+        this.client.dashboard.init(this.client);
+
         // Post DBL stats
         const DBL = require("dblapi.js");
-        const dbl = new DBL(this.client.config.dbl, this.client);
+        const dbl = new DBL(this.client.config.apiKeys.dbl, this.client);
         dbl.postStats(this.client.guilds.size)
 
         // Inits stats table
