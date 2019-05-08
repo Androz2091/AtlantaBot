@@ -21,6 +21,7 @@ class Atlanta extends Client {
         this.logger = require("./utils/logger.js"); // Load the logger file
         this.wait = require("util").promisify(setTimeout); // client.wait(1000) - Wait 1 second
         this.functions = require('./utils/functions.js'); // Load the functions file
+        this.dashboard = require('./website/dashboard/app.js'); // Load the dashboard
         this.databases = [ // Create tables (quick.db)
             new quickdb.table('usersdata'),
             new quickdb.table('serversdata'),
@@ -120,29 +121,4 @@ client.on("disconnect", () => client.logger.warn("Bot is disconnecting..."))
 // if there is an unhandledRejection, log them
 process.on("unhandledRejection", err => {
     console.error("Uncaught Promise Error: ", err);
-});
-
-
-// Gets vote webhook
-const express = require('express');
-const app = express();
-
-var server = require('http').createServer(app);
-server.listen(client.config.votes.port, () => console.log(`Atlanta listening on port ${client.config.votes.port}!`));
-
-var bodyParser = require('body-parser');
-app.use(bodyParser.urlencoded({ extended: true }));
-
-app.use(express.json());       // to support JSON-encoded bodies
-
-app.post('/votes', (req, res) => {
-    console.log('[VOTES] Receiving a request...')
-    if (req.headers.authorization !== client.config.votes.auth) {
-        console.log('[VOTES] Rejected Post Request, Details Below\n', req.headers)
-        res.status(401).send('Unauthorized');
-    } else {
-        console.log(`[VOTES] New vote post, user_id: ${req.body.user}, isWeekend: ${req.body.isWeekend}.`)
-        client.functions.vote({user:req.body.user, isWeekend:req.body.isWeekend}, client);
-        res.send('Sucess');
-    }
 });
