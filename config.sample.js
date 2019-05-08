@@ -13,9 +13,14 @@ module.exports = {
 	owner:"xxxxxxxxxx",
 	server:{
 		port:8080,
+		sessionPassword:"xxxxxxxxxx",
 		votes:{
 			auth:"xxxxxxxxxx",
 			channel:"xxxxxxxxxx"
+		},
+		oAuth2:{
+			secret:"xxxxxxxxxx",
+			websiteURL:"xxxxxxxxxx"
 		}
 	},
 	apiKeys:{

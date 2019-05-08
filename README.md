@@ -56,9 +56,13 @@ Vous devez renommer le fichier `config.js.example` en `config.js` et le complét
 > - `owner` : l'identifiant Discord du propriétaire du bot
 > - **Server**
 >   - `port` : le port du serveur express
+>   - `sessionPassword` : le mot de passe utilisé pour les sessions express
 >   - **Votes**
 >       - `auth` : le mot de passe du webhook (qui doit être configuré dans les paramètres sur discordbots.org)
 >       - `channel` : le salon dans lequel seront envoyés les messages de votes
+>   - **oAuth2**
+>       - `secret` : le "client secret" qui se trouve dans la page de gestion de votre bot, general informations
+>       - `websiteURL` : la page d'accueil du site (par exemple : `http://localhost:30000`)
 > - **apiKeys**
 >   - `fortnite` : votre clé d'api [Fortnite Tracker](https://fortnitetracker.com/site-api)
 >   - `dbl` : votre clé d'api [DiscordBots](https://discordbots.org/api/docs#mybots)
