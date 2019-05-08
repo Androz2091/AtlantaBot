@@ -13,6 +13,9 @@ module.exports.init = async(client) => {
     // To handle votes
     var votesRouter = require("./routes/votes");
 
+    // Panel 
+    var panelRouter = require("./routes/panel");
+
     app.use(bodyParser.json())
     .use(bodyParser.urlencoded({ extended: true }))
     .engine("html", require("ejs").renderFile)
@@ -29,6 +32,7 @@ module.exports.init = async(client) => {
 
     // Redirect
     app.use("/votes", votesRouter)
+    .use("/panel", panelRouter)
     .use("/", indexRouter);
 
     // Listen on the port 
