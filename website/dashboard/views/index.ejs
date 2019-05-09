@@ -10,7 +10,6 @@
   <link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.min.css">
   <!-- Font Awesome -->
   <link rel="stylesheet" href="/bower_components/font-awesome/css/font-awesome.min.css">
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
   <!-- Ionicons -->
   <link rel="stylesheet" href="/bower_components/Ionicons/css/ionicons.min.css">
   <!-- Theme style -->
@@ -44,7 +43,7 @@
 
   <header class="main-header">
     <!-- Logo -->
-    <a href="index2.html" class="logo">
+    <a href="/panel/selector" class="logo">
       <!-- mini logo for sidebar mini 50x50 pixels -->
       <span class="logo-mini"><b>A</b></span>
       <!-- logo for regular state and mobile devices -->
@@ -77,7 +76,7 @@
               <!-- Menu Footer-->
               <li class="user-footer">
                 <div class="pull-right">
-                  <a href="api/discord/logout" class="btn btn-default btn-flat">Sign out</a>
+                  <a href="/api/discord/logout" class="btn btn-default btn-flat">Sign out</a>
                 </div>
               </li>
             </ul>
@@ -97,14 +96,14 @@
         </div>
         <div class="pull-left info">
           <p><%=user.tag%></p>
-          <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
+          <i class="fa fa-circle text-success"></i> Online
         </div>
       </div>
       <!-- sidebar menu: : style can be found in sidebar.less -->
       <ul class="sidebar-menu" data-widget="tree">
         <li class="header">MANAGE YOUR SERVERS</li>
         <li class="active treeview">
-          <a href="#">
+          <a href="/panel/selector">
             <i class="fa fa-dashboard"></i> <span>Select your server</span>
           </a>
       </ul>
@@ -138,10 +137,10 @@
                   </div>
                   <!-- /.box-header -->
                   <div class="box-body">
-                      <img src="<%=guild.url%>" alt="..." class="margin">
+                      <img src="<%=guild.url%>" style="border-radius:100%" alt="..." class="margin">
                   </div>
                   <div>
-                      <button type="button" class="btn btn-block btn-info">manage</button>
+                      <a href="/panel/guild/<%= guild.id %>"><button type="button" class="btn btn-block btn-info">Manage <i class="fa fa-arrow-circle-right"></i></i></button></a>
                   </div>
                   <!-- /.box-body -->
                 </div>

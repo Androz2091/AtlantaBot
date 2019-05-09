@@ -9,9 +9,10 @@ router.get("/selector", (req, res) => {
     req.user.guilds.forEach(guild => {
         if(!guild.owner) return
         guilds.push({
-            url: (guild.icon ? "https://cdn.discordapp.com/icons/"+guild.id+"/"+guild.icon+".png?size=128" : "dist/img/discordcry.png"),
+            url: (guild.icon ? "https://cdn.discordapp.com/icons/"+guild.id+"/"+guild.icon+".png?size=128" : "/dist/img/discordcry.png"),
             name: guild.name,
-            inviteURL: "https://discordapp.com/oauth2/authorize?client_id="+req.client.user.id+"&scope=bot&permissions=2146958847&guild_id="+guild.id
+            inviteURL: "https://discordapp.com/oauth2/authorize?client_id="+req.client.user.id+"&scope=bot&permissions=2146958847&guild_id="+guild.id,
+            id: guild.id
         });
         
     });
