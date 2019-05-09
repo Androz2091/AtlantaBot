@@ -53,11 +53,16 @@ module.exports = class {
                 if(Object.keys(data.muted) > 0){ // If there are members to check
                     for(var userID in data.muted){ // for each member
                         var time = data.muted[userID]; // Gets the unmute date
+                        if(time) return;
                         var user = client.users.get(userID); // Gets the user to unmute
                         if(user && time < Date.now()){ // if the user must be unmute
                             // Unmute the member
                             guild.channels.forEach(ch => ch.permissionOverwrites.get(userID).delete());
-                            delete data.muted[userID];
+                            try {
+                                delete data.muted[userID];
+                            } catch(e) {
+                                console.log(data);
+                            }
                             client.databases[1].set(`${guild.id}.muted`, data.muted);
                             if(guild.members.get(user.id)){
                                 var language = new(require('../languages/'+data.lang+'.js'));
