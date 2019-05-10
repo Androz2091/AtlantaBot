@@ -4,7 +4,7 @@ const passport = require("passport");
 
 // Gets login page
 router.get("/login", passport.authenticate("discord", { failureRedirect: "/login" }), function(req, res) {
-    res.redirect("/panel/selector");
+    res.redirect("/panel/dashboard");
 });
 
 router.get("/", function(req, res){
