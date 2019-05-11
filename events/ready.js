@@ -53,11 +53,18 @@ module.exports = class {
                 if(Object.keys(data.muted) > 0){ // If there are members to check
                     for(var userID in data.muted){ // for each member
                         var time = data.muted[userID]; // Gets the unmute date
-                        if(time) return;
+                        if(!time) return;
                         var user = client.users.get(userID); // Gets the user to unmute
-                        if(user && time < Date.now()){ // if the user must be unmute
+                        if(user && (data.muted[userID]<Date.now())){ // if the user must be unmute
                             // Unmute the member
-                            guild.channels.forEach(ch => ch.permissionOverwrites.get(userID).delete());
+                            guild.channels.forEach(ch => {
+                                if(ch.permissionOverwrites.get(userID)){
+                                    ch.permissionOverwrites.get(userID).delete();
+                                } else {
+                                    delete data.muted[userID];
+                                    return client.databases[1].set(`${guild.id}.muted`, data.muted);
+                                }
+                            });
                             try {
                                 delete data.muted[userID];
                             } catch(e) {
