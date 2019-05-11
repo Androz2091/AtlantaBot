@@ -254,7 +254,7 @@ module.exports = class {
 			BIRTHDATE_TOO_HIGH: `${error} | Vous ne pouvez pas ne pas encore être né !`,
 			
 			// Weegind command
-			WEDDING_DESCRIPTION: `Mariez-vous avec la personne de votre choix !`,
+			WEEDING_DESCRIPTION: `Mariez-vous avec la personne de votre choix !`,
 			WEEDING_AUTHOR_ALREADY: (prefix) => `${error} | Vous êtes déjà marié(e) ! Utilisez d'abord \`${prefix}divorce\` pour divorcer`,
 			WEEDING_MEMBER_ALREADY: (username) => `${error} | La place est prise compagnon ! **${username}** est déjà marié(e) !`,
 			WEEDING_AUTHOR_PENDING: (username) => `${error} | Vous avez déjà une demande en cours auprès de **${username}** !`,
