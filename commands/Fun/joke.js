@@ -28,7 +28,7 @@ class Joke extends Command {
         var data = await snekfetch.get('https://blague.xyz/joke/random');
         
         var embed = new Discord.RichEmbed()
-            .setDescription(`${data.body.question}\n\n||${data.body.reponse}||`)
+            .setDescription(`${data.body.jokequestion}\n\n||${data.body.jokereponse}||`)
             .setFooter('Using blague.xyz api | By • Skiz •#0001')
             .setColor(tdata.embed.color)
 
