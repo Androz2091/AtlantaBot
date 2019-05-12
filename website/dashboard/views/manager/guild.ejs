@@ -94,14 +94,12 @@
                <!-- sidebar menu: : style can be found in sidebar.less -->
                <ul class="sidebar-menu" data-widget="tree">
                   <li class="header">DASHBOARD</li>
-                  <li class="active treeview">
-                     <a href="dashboard">
-                        <i class="fa fa-dashboard"></i> <span>Dashboard</span>
-                     </a>
-                  </li>
+                    <li>
+                        <a href="/panel/dashboard"><i class="fa fa-dashboard"></i> Dashboard</a>
+                    </li>
                   <li class="header">SERVERS MANAGEMENT</li>
-                  <li><a href="selector"><i class="fa fa-mouse-pointer"></i> <span>Selector</span></a></li>
-                  <li class="treeview">
+                  <li><a href="/panel/selector"><i class="fa fa-mouse-pointer"></i> <span>Selector</span></a></li>
+                  <li class="treeview active">
                       <a href="">
                           <i class="fa fa-list"></i> <span>Servers list</span>
                           <span class="pull-right-container">
@@ -109,9 +107,13 @@
                         </span>
                       </a>
                       <ul class="treeview-menu">
-                        <% guilds.forEach(guild => { %>
-                          <% if(guild.perm !== "unknow" && guild.perm){ %>
-                            <li><a href="guild/<%= guild.id %>"><i class="fa fa-circle-o text-aqua"></i> <%= guild.name %></a></li>
+                        <% guilds.forEach(g => { %>
+                          <% if(g.perm !== "unknow" && g.perm){ %>
+                            <% if(guild.guild.id === g.id){ %>
+                              <li class="active"><a href="/panel/guild/<%= g.id %>"><i class="fa fa-circle-o text-aqua"></i> <%= g.name %></a></li>
+                            <% } else { %>
+                              <li><a href="/panel/guild/<%= g.id %>"><i class="fa fa-circle-o text-aqua"></i> <%= g.name %></a></li>
+                            <% } %>
                           <% } %>
                         <% }) %>
                       </ul>
@@ -126,7 +128,7 @@
             <section class="content-header">
                <h1>
                   Dashboard
-                  <small>Your stats</small>
+                  <small>Control panel</small>
                </h1>
                <ol class="breadcrumb">
                   <li><a href="dashboard"><i class="fa fa-dashboard"></i> Dashboard</a></li>
@@ -140,7 +142,7 @@
                      <!-- small box -->
                      <div class="small-box bg-aqua">
                         <div class="inner">
-                           <h3><%= user.stats.commands %></h3>
+                           <h3><%= guild.stats.commands %></h3>
                            <p>Commands sent</p>
                         </div>
                         <div class="icon">
@@ -152,70 +154,186 @@
                       <!-- small box -->
                       <div class="small-box bg-yellow">
                          <div class="inner">
-                            <h3><%= user.stats.credits %></h3>
-                            <p>Credits</p>
+                            <h3><%= guild.stats.memberCount %></h3>
+                            <p>Members</p>
                          </div>
                          <div class="icon">
-                            <i class="fa fa-money"></i>
+                            <i class="fa fa-users"></i>
                          </div>
                       </div>
                   </div>
                   <div class="col-lg-3 col-xs-6">
-                      <!-- small box -->
-                      <div class="small-box bg-red">
-                         <div class="inner">
-                            <h3><%= user.stats.rep %></h3>
-                            <p>Reputation points</p>
-                         </div>
-                         <div class="icon">
-                            <i class="fa fa-thumbs-up"></i>
-                         </div>
-                      </div>
-                  </div>
-                  <div class="col-lg-3 col-xs-6">
-                      <!-- small box -->
-                      <div class="small-box bg-green">
-                         <div class="inner">
-                            <h3><%= user.stats.level %></h3>
-                            <p>Level</p>
-                         </div>
-                         <div class="icon">
-                            <i class="fa fa-area-chart"></i>
-                         </div>
-                      </div>
-                  </div>
+                    <!-- small box -->
+                    <div class="small-box bg-red">
+                       <div class="inner">
+                          <h3><%= guild.conf.case %></h3>
+                          <p>Sanctions</p>
+                       </div>
+                       <div class="icon">
+                          <i class="fa fa-warning"></i>
+                       </div>
+                    </div>
+                </div>
                   <!-- ./col -->
                </div>
                <!-- /.row -->
                <!-- Main row -->
                <div class="row">
                   <div class="col-md-6">
-                      <!-- AREA CHART -->
-                      <div class="box box-primary">
-                        <div class="box-header with-border">
-                          <h3 class="box-title">Commands</h3>
-            
-                          <div class="box-tools pull-right">
-                            <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
-                            </button>
-                            <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
-                          </div>
+                    <!-- AREA CHART -->
+                    <div class="box box-primary">
+                      <div class="box-header with-border">
+                        <h3 class="box-title">Guild stats - Commands sent</h3>
+                        <div class="box-tools pull-right">
+                          <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                          </button>
+                          <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
                         </div>
-                        <div class="box-body">
-                          <div class="chart">
-                            <canvas id="stats" style="height:250px"></canvas>
-                          </div>
-                          <div>
-                              <span style="background-color:#d2d6de"> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</span> Global Stats
-                              <br>
-                              <span style="background-color:#3c8dbc"> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</span> Your Stats
-                          </div>
-                        </div>
-                        <!-- /.box-body -->
                       </div>
+                      <div class="box-body">
+                        <% if(guild.stats.commands < 1) { %>
+                          <div>
+                            <p>No commands sent.</p>
+                          </div>
+
+                        <% } else { %>
+                        <div class="chart">
+                          <canvas id="stats" style="height:250px"></canvas>
+                        </div>
+                        <% } %>
+                      </div>
+                      <!-- /.box-body -->
                     </div>
                   </div>
+                  <!-- right col -->
+                  <div class="col-md-6">
+                    <div class="box box-primary">
+                        <div class="box-header with-border">
+                        <h3 class="box-title">Guild Stats - Most used commands</h3>
+                        <div class="box-tools pull-right">
+                          <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                          </button>
+                          <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                        </div>
+                      </div>
+                      <!-- /.box-header -->
+                      <div class="box-body">
+                          <% if(guild.stats.commands < 1) { %>
+                            <div>
+                              <p>No commands sent.</p>
+                            </div>
+  
+                          <% } else { %>
+                            <table class="table table-condensed">
+                                <tr>
+                                  <th style="width: 10px">#</th>
+                                  <th>Command</th>
+                                  <th style="width: 40px">Count</th>
+                                </tr>
+                                <% var i = 0; guild.stats.topCommands.forEach(cmd => { i++; %>
+                                  <tr>
+                                    <td><%= i %>.</td>
+                                    <td><%= cmd.command.charAt(0).toUpperCase()+cmd.command.substr(1, cmd.command.length) %></td>
+                                    <td><span class="badge bg-red"><%= cmd.count %></span></td>
+                                  </tr>
+                                <% }) %>
+                              </table>
+                          <% } %>
+                        
+                      </div>
+                      <!-- /.box-body -->
+                    </div>
+                    <!-- /.box -->
                </div>
+               <!-- /.row (main row) -->
+               
+               <form action="/panel/guild/<%=guild.guild.id%>" method='post' id="editConf">
+                <div class="col-md-6">
+                  <!-- SELECT2 EXAMPLE -->
+                  <div class="box box-warning">
+                      <div class="box-header with-border">
+                        <h3 class="box-title">Basic Configuration</h3>
+                        <div class="box-tools pull-right">
+                          <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                          <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-remove"></i></button>
+                        </div>
+                      </div>
+                      <!-- /.box-header -->
+                      <div class="box-body">
+                        <div class="row">
+                          <div class="col-md-6">
+                            <div class="form-group">
+                              <label>Suggestions</label>
+                              <select class="form-control select2" style="width: 100%;" name="suggestions">
+                                <% var selected = client.channels.get(guild.conf.channels.suggestion) %>
+                                <% if(selected){ %> 
+                                  <option selected="selected"><%= selected.name %></option>
+                                <% } else { %>
+                                  <option selected="selected">No channel</option>
+                                <% } %>
+                                <% guild.guild.channels.filter(ch => ch.type === "text").forEach(ch => { %>
+                                  <% if(selected && ch.id === selected.id){ return;} else { %>
+                                    <option><%= ch.name %></option>
+                                  <% } %>
+                                <% }) %>
+                              </select>
+                            </div>
+                          </div>
+                          <!-- /.col -->
+                          <div class="col-md-6">
+                              <div class="form-group">
+                                  <label>ModLogs</label>
+                                  <select class="form-control select2" style="width: 100%;" name="modlogs">
+                                    <% var selected = client.channels.get(guild.conf.channels.modlogs) %>
+                                    <% if(selected){ %> 
+                                      <option selected="selected"><%= selected.name %></option>
+                                    <% } else { %>
+                                      <option selected="selected">No channel</option>
+                                    <% } %>
+                                    <% guild.guild.channels.filter(ch => ch.type === "text").forEach(ch => { %>
+                                      <% if(selected && ch.id === selected.id){ return;} else { %>
+                                        <option><%= ch.name %></option>
+                                      <% } %>
+                                    <% }) %>
+                                  </select>
+                              </div>
+                            </div>
+                            <!-- /.col -->
+                            <div>
+                                <div class="col-md-6">
+                                  <div class="form-group">
+                                      <label>Prefix</label>
+                                      <input type="text" class="form-control" placeholder="<%= guild.conf.prefix %>" name="prefix">
+                                    </div>
+                                  </div>
+                            </div>
+                            <div>
+                              <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Language</label>
+                                    <select class="form-control select2" style="width: 100%;" name="language">
+                                      <% if(guild.conf.lang === 'fr'){ %>
+                                        <option selected="selected">French</option>
+                                        <option>English</option>
+                                      <% } else { %>
+                                        <option selected="selected">English</option>
+                                        <option>French</option>
+                                      <% } %>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- /.row -->
+                      </div>
+                      <!-- /.box-body -->
+                      <div class="box-footer">
+                          <button type="submit" id="update" class="btn btn-info pull-right">Update</button>
+                      </div>
+                    </div>
+                    <!-- /.box -->
+                </div>
+               </form>
+              </div>
             </section>
             <!-- /.content -->
          </div>
@@ -269,6 +387,8 @@
       <script src="/dist/js/demo.js"></script>
       <!-- ChartJS -->
       <script src="../../bower_components/chart.js/Chart.js"></script>
+      <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+      
       <script>
         $(function () {
           /* ChartJS
@@ -279,45 +399,22 @@
           //- AREA CHART -
           //--------------
           // Get context with jQuery - using jQuery's .get() method.
-          var areaChartCanvas = $('#stats').get(0).getContext('2d')
+          var areaChartCanvas = $('#stats').get(0).getContext('2d');
+          if(!areaChartCanvas) return;
           // This will get the first returned node in the jQuery collection.
           var areaChart       = new Chart(areaChartCanvas);
-          var stats = JSON.parse('<%- JSON.stringify(user.stats.commandsSent) %>');
+          var stats = JSON.parse('<%- JSON.stringify(guild.stats.commandsSent) %>');
           
-          var globalStats = JSON.parse('<%- JSON.stringify(globalStats) %>');
-          var dates = [];
-          var data = [];
-          for(var date in globalStats){
-            dates.push(date);
-            data.push(globalStats[date]);
-          }
-
-          
-          
-          var areaChartData = {
-            labels  : dates,
-            datasets: [
-              {
-                label               : 'Stats',
-                fillColor           : 'rgba(210, 214, 222, 1)',
-                strokeColor         : 'rgba(210, 214, 222, 1)',
-                pointColor          : 'rgba(210, 214, 222, 1)',
-                pointStrokeColor    : '#c1c7d1',
-                pointHighlightFill  : '#fff',
-                pointHighlightStroke: 'rgba(220,220,220,1)',
-                data                : data
-              }
-            ]
-          };
-
           var dates = [];
           var data = [];
           for(var date in stats){
             dates.push(date);
             data.push(stats[date]);
           }
-          
-          areaChartData.datasets.push({
+          var areaChartData = {
+            labels  : dates,
+            datasets: [
+              {
                 label               : 'Stats',
                 fillColor           : 'rgba(60,141,188,0.9)',
                 strokeColor         : 'rgba(60,141,188,0.8)',
@@ -326,8 +423,9 @@
                 pointHighlightFill  : '#fff',
                 pointHighlightStroke: 'rgba(60,141,188,1)',
                 data                : data
-          });
-
+              }
+            ]
+          }
           var areaChartOptions = {
             //Boolean - If we should show the scale at all
             showScale               : true,
@@ -367,9 +465,7 @@
           }
           //Create the line chart
           areaChart.Line(areaChartData, areaChartOptions);
-
-          
-        })
+        });
       </script>
    </body>
 </html>
