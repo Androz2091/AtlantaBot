@@ -200,7 +200,7 @@ module.exports = class {
 			
 			// work command
 			WORK_DESCRIPTION: `Work and earn money!`,
-			WORK_COOLDOWN: (delai) => `${error} | You have to wait ${delay} before you can work again!`,
+			WORK_COOLDOWN: (delay) => `${error} | You have to wait ${delay} before you can work again!`,
 			SALARY_CLAIMED: `Salary`,
 			SALARY_CLAIMED2: `200 credits added to your account!`,
 
