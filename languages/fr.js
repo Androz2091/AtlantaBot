@@ -4,7 +4,7 @@ error = "<:atlanta_error:565212755804684318>",
 success = "<:atlanta_success:565212709591973896>",
 loading = "<a:atlanta_loading:565214530121105418>"
 
-var owner = "`Androz#2091`";
+var owner = "`Androz#2091`",
 yes = 'oui',
 no = 'non',
 botname = 'Atlanta',
@@ -172,7 +172,7 @@ module.exports = class {
 
 			// Del command
 			DELCOMMAND_DESCRIPTION: `Enlevez une commande personnalisée du serveur !`,
-			ADDCOMMAND_NAME: `${error} | Veuillez entrer le nom de la commande que vous souhaitez supprimer !`,
+			DELCOMMAND_NAME: `${error} | Veuillez entrer le nom de la commande que vous souhaitez supprimer !`,
 			DELCOMMAND_EXIST: (cmd) => `${error} | La commande ${cmd} n'existe pas !`,
 			DELCOMMAND_SUCCESS: (cmd) => `${success} | La commande ${cmd} a bien été enlevée du serveur !`,
 

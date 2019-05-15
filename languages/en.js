@@ -172,7 +172,7 @@ module.exports = class {
 
 			// Del command
 			DELCOMMAND_DESCRIPTION: `Remove a custom command from the guild!`,
-			ADDCOMMAND_NAME: `${error} | Please enter the name of the command you wish to delete!`,
+			DELCOMMAND_NAME: `${error} | Please enter the name of the command you wish to delete!`,
 			DELCOMMAND_EXIST: (cmd) => `${error} | The command ${cmd} does not exist!`,
 			DELCOMMAND_SUCCESS: (cmd) => `${success} | The ${cmd} command has been removed from the guild!`,
 
