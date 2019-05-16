@@ -26,7 +26,7 @@ module.exports = class {
         // Update the game every 20s
         var games = [
             {
-                name:`@Atlanta help on ${this.client.guilds.size} guilds`,
+                name:`@Atlanta help on {servs} guilds`,
                 type:`LISTENING`
             },
             {
@@ -41,7 +41,7 @@ module.exports = class {
         var client = this.client;
         var i = 0;
         setInterval(function(){
-            client.user.setActivity(games[i].name, {type: games[i].type});
+            client.user.setActivity(games[i].name.replace("{servs}", client.guilds.size), {type: games[i].type});
             if(games[parseInt(i + 1)]) i++;
             else i = 0;
         }, 20000);
