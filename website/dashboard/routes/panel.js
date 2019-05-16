@@ -295,6 +295,53 @@ router.get("/stats/global", async (req, res) => {
     });
 }); 
 
+// Gets stats pages
+router.get("/stats/guild/:guildID", async (req, res) => {
+    // if the user is not authenticated
+    if(!req.isAuthenticated()) return res.redirect("/api/discord/login");
+    // Gets the guilds of the user
+    var guildID = req.params.guildID;
+    var guild = req.client.guilds.get(guildID);
+
+    if(!guild){
+        res.redirect("https://discordapp.com/oauth2/authorize?client_id="+req.client.user.id+"&scope=bot&permissions=2146958847&guild_id="+guildID);
+    }
+
+    // Gets user guilds
+    var guilds = getGuilds(req.user.guilds, req.client, req.user.id);
+
+    // gets guild stats
+    var guildStats = getGuildStats(req.client, guildID);
+
+    // Gets the most used commands
+    var topCommands = getMostUsedCommands(req.client, guildID);
+
+    // gets guild conf
+    var guildConf = req.client.databases[1].get(guildID) || req.client.functions.createGuild(req.client, guild);
+
+    res.render("stats/guild", {
+        user:{
+            avatarURL: (req.user.avatar ? "https://cdn.discordapp.com/avatars/"+req.user.id+"/"+req.user.avatar : "https://discordapp.com/assets/dd4dbc0016779df1378e7812eabaa04d.png"),
+            tag: req.user.username+"#"+req.user.discriminator,
+            ID: req.user.id,
+            client: req.client
+        },
+        guilds: guilds,
+        guild: {
+            stats: {
+                commands: guildStats.total,
+                memberCount: guild.memberCount,
+                commandsSent: guildStats.graph,
+                topCommands: topCommands
+            },
+            guild: guild,
+            conf: guildConf
+        },
+        client: req.client
+    });
+
+}); 
+
 function formatDate(date){
     var dd = date.getDate();
     var mm = date.getMonth()+1;
