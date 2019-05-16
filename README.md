@@ -48,6 +48,12 @@ Vous devez renommer le fichier `config.js.example` en `config.js` et le complét
 > - **Support**
 >   - `id` : l'identifiant du serveur support de votre bot
 >   - `logs` : l'identifiant du salon des logs (lorsqu'un serveur est rejoint)
+>   - **Roles**
+>       - `donator` : le rôle donateurs du serveur support
+>       - `staff` : le rôle staff du serveur support
+>       - `moderator` : le rôle donateurs du serveur support
+>       - `contributors` : le rôle contributeurs du serveur support
+>       - `friends` : le rôle amis du serveur support
 > - `Préfixe` : le préfixe du bot
 > - **Embed**
 >   - `color` : la couleur du liserai des embeds (doit être hexadécimale)

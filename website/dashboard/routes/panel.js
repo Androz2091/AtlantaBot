@@ -6,20 +6,25 @@ router.get("/", (req, res) => {
 });
 
 // Gets dashboard home page
-router.get("/dashboard", (req, res) => {
+router.get("/dashboard", async (req, res) => {
 
     // if the user is not authenticated
     if(!req.isAuthenticated()) return res.redirect("/api/discord/login");
 
     // Gets the user data
-    var uData = req.client.databases[0].get(req.user.id) || req.client.functions.createUser(req.user);
+    var uData = req.client.databases[0].get(req.user.id) || req.client.functions.createUser(req.client, req.user);
 
     // Gets the stats (global and for the user)
-    var globalStats = getGlobalStats(req.client);
+    var globalStats = await getGlobalStats(req.client);
     var userStats = getUserStats(req.client, req.user.id);
 
     // Gets the guilds of the user
     var guilds = getGuilds(req.user.guilds, req.client, req.user.id);
+
+    // Update some variables
+    if(uData.birthdate !== "unknow") uData.birthdate = printDate(new Date(uData.birthdate));
+
+    var membership = await getMemberShip(req.client, req.user.id);
 
     // Render 
     res.render("dashboard", {
@@ -27,13 +32,66 @@ router.get("/dashboard", (req, res) => {
             avatarURL: (req.user.avatar ? "https://cdn.discordapp.com/avatars/"+req.user.id+"/"+req.user.avatar : "https://discordapp.com/assets/dd4dbc0016779df1378e7812eabaa04d.png"),
             tag: req.user.username+"#"+req.user.discriminator,
             ID: req.user.id,
-            stats: {
+            stats: {...{
                 commands: userStats.total,
-                credits: uData.credits,
-                rep: uData.rep,
-                level: uData.level,
-                commandsSent: userStats.graph
-            }
+                commandsSent: userStats.graph,
+                membership: membership
+            }, ...uData}
+        },
+        guilds: guilds,
+        globalStats: globalStats,
+        client: req.client
+    });
+});
+
+// Gets dashboard home page
+router.post("/dashboard", async (req, res) => {
+
+    // if the user is not authenticated
+    if(!req.isAuthenticated()) return res.redirect("/api/discord/login");
+
+    if(req.body.bio){
+        if(req.body.bio.length > 1970) req.body.bio = req.body.bio.substr(0, 1970);
+        req.client.databases[0].set(req.user.id+".bio", req.body.bio);
+    }
+    if(req.body.date){
+        // Gets the string of the date
+        let match = req.body.date.match(/\d+/g);
+        if (!match) throw new SyntaxError('Date must be in format "(d)d.(m)m.(yy)yy"'); 
+        let tday = +match[0], tmonth = +match[1] - 1, tyear = +match[2];
+        if (tyear < 100) tyear += tyear < 50 ? 2000 : 1900;
+        let d = new Date(tyear, tmonth, tday);
+        if(d.getTime() < Date.now()){
+            req.client.databases[0].set(req.user.id+".birthdate", d);
+        }
+    }
+
+    // Gets the user data
+    var uData = req.client.databases[0].get(req.user.id) || req.client.functions.createUser(req.client, req.user);
+
+    // Gets the stats (global and for the user)
+    var globalStats = await getGlobalStats(req.client);
+    var userStats = getUserStats(req.client, req.user.id);
+
+    // Gets the guilds of the user
+    var guilds = getGuilds(req.user.guilds, req.client, req.user.id);
+
+    // Update some variables
+    if(uData.birthdate !== "unknow") uData.birthdate = printDate(new Date(uData.birthdate));
+
+    var membership = await getMemberShip(req.client, req.user.id);
+
+    // Render 
+    res.render("dashboard", {
+        user:{
+            avatarURL: (req.user.avatar ? "https://cdn.discordapp.com/avatars/"+req.user.id+"/"+req.user.avatar : "https://discordapp.com/assets/dd4dbc0016779df1378e7812eabaa04d.png"),
+            tag: req.user.username+"#"+req.user.discriminator,
+            ID: req.user.id,
+            stats: {...{
+                commands: userStats.total,
+                commandsSent: userStats.graph,
+                membership: membership
+            }, ...uData}
         },
         guilds: guilds,
         globalStats: globalStats,
@@ -86,7 +144,7 @@ router.get("/guild/:GuildID", (req, res) => {
     var topCommands = getMostUsedCommands(req.client, guildID);
 
     // gets guild conf
-    var guildConf = req.client.databases[1].get(guildID) || req.client.functions.createGuild(guild);
+    var guildConf = req.client.databases[1].get(guildID) || req.client.functions.createGuild(req.client, guild);
 
     res.render("manager/guild", {
         user:{
@@ -110,7 +168,6 @@ router.get("/guild/:GuildID", (req, res) => {
     });
 
 });
-
 
 // Gets guild page
 router.post("/guild/:GuildID", (req, res) => {
@@ -137,7 +194,7 @@ router.post("/guild/:GuildID", (req, res) => {
     var topCommands = getMostUsedCommands(req.client, guildID);
 
     // gets guild conf
-    var guildConf = req.client.databases[1].get(guildID) || req.client.functions.createGuild(guild);
+    var guildConf = req.client.databases[1].get(guildID) || req.client.functions.createGuild(req.client, guild);
 
     res.render("manager/guild", {
         user:{
@@ -160,6 +217,82 @@ router.post("/guild/:GuildID", (req, res) => {
         client: req.client
     });
 
+});
+
+// Gets stats pages
+router.get("/stats/me", async (req, res) => {
+    // if the user is not authenticated
+    if(!req.isAuthenticated()) return res.redirect("/api/discord/login");
+
+    // Gets the user data
+    var uData = req.client.databases[0].get(req.user.id) || req.client.functions.createUser(req.client, req.user);
+
+    // Gets the stats (global and for the user)
+    var globalStats = await getGlobalStats(req.client);
+    var userStats = getUserStats(req.client, req.user.id);
+
+    // Gets the guilds of the user
+    var guilds = getGuilds(req.user.guilds, req.client, req.user.id);
+
+    // Update some variables
+    if(uData.birthdate !== "unknow") uData.birthdate = printDate(new Date(uData.birthdate));
+
+    var membership = await getMemberShip(req.client, req.user.id);
+
+    // Render 
+    res.render("stats/me", {
+        user:{
+            avatarURL: (req.user.avatar ? "https://cdn.discordapp.com/avatars/"+req.user.id+"/"+req.user.avatar : "https://discordapp.com/assets/dd4dbc0016779df1378e7812eabaa04d.png"),
+            tag: req.user.username+"#"+req.user.discriminator,
+            ID: req.user.id,
+            stats: {...{
+                commands: userStats.total,
+                commandsSent: userStats.graph,
+                membership: membership
+            }, ...uData}
+        },
+        guilds: guilds,
+        globalStats: globalStats,
+        client: req.client
+    });
+});
+
+// Gets stats pages
+router.get("/stats/global", async (req, res) => {
+    // if the user is not authenticated
+    if(!req.isAuthenticated()) return res.redirect("/api/discord/login");
+
+    // Gets the user data
+    var uData = req.client.databases[0].get(req.user.id) || req.client.functions.createUser(req.client, req.user);
+
+    // Gets the stats (global and for the user)
+    var globalStats = await getGlobalStats(req.client);
+    var userStats = getUserStats(req.client, req.user.id);
+
+    // Gets the guilds of the user
+    var guilds = getGuilds(req.user.guilds, req.client, req.user.id);
+
+    // Update some variables
+    if(uData.birthdate !== "unknow") uData.birthdate = printDate(new Date(uData.birthdate));
+
+    var membership = await getMemberShip(req.client, req.user.id);
+
+    // Render 
+    res.render("stats/global", {
+        user:{
+            avatarURL: (req.user.avatar ? "https://cdn.discordapp.com/avatars/"+req.user.id+"/"+req.user.avatar : "https://discordapp.com/assets/dd4dbc0016779df1378e7812eabaa04d.png"),
+            tag: req.user.username+"#"+req.user.discriminator,
+            ID: req.user.id,
+            stats: {...{
+                commands: userStats.total,
+                commandsSent: userStats.graph,
+                membership: membership
+            }, ...uData}
+        },
+        guilds: guilds,
+        globalStats: globalStats,
+        client: req.client
+    });
 }); 
 
 function formatDate(date){
@@ -187,7 +320,7 @@ function getGuilds(guilds, client, userID){
     return tguilds;
 }
 
-function getGlobalStats(client){
+async function getGlobalStats(client){
     let commands = client.databases[4].get("commands");
     let aDateCommand = {};
     commands.forEach(cmd => {
@@ -198,7 +331,19 @@ function getGlobalStats(client){
             aDateCommand[tDate] = 1;
         }
     });
-    return aDateCommand;
+    let db = client.databases[0].fetchAll();
+    var credits = 0;
+    var rep = 0;
+    var lvl = 0;
+    db.forEach((user) => {
+        if(typeof user.data !== 'object') user.data = JSON.parse(user.data);
+        if(isNaN(user.data.credits) || isNaN(user.data.rep) || isNaN(user.data.level)) return;
+        credits+=user.data.credits;
+        rep+=user.data.rep;
+        lvl+=user.data.level;
+    });
+    console.log(credits, rep, lvl);
+    return {graph:aDateCommand, total:commands.length, dataStats:[credits, rep, lvl]};
 }
 
 function getUserStats(client, userID){
@@ -277,6 +422,34 @@ function updateConf(client, guildID, data){
 
     return;
 
+}
+
+function printDate(date) {
+    var monthNames = [
+        "January", "February", "March",
+        "April", "May", "June", "July",
+        "August", "September", "October",
+        "November", "December"
+    ];
+
+    var day = date.getDate();
+    var monthIndex = date.getMonth();
+    var year = date.getFullYear();
+
+    return day + " " + monthNames[monthIndex] + " " + year;
+}
+
+async function getMemberShip(client, userID){
+    var rolesID = client.config.support.roles;
+    var member = await client.guilds.get(client.config.support.id).fetchMember(userID);
+    if(!member) return [];
+    var membership = [];
+    if(member.roles.has(rolesID.donators)) membership.push({name:"Donator", label:"warning"});
+    if(member.roles.has(rolesID.staff)) membership.push({name:"Staff", label:"primary"});
+    if(member.roles.has(rolesID.moderator)) membership.push({name:"Moderator", label:"success"});
+    if(member.roles.has(rolesID.contributors)) membership.push({name:"Contributor", label:"warning"});
+    if(member.roles.has(rolesID.friends)) membership.push({name:"Friend", label:"info"});
+    return membership;
 }
 
 module.exports = router;

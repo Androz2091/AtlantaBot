@@ -94,13 +94,13 @@
                <!-- sidebar menu: : style can be found in sidebar.less -->
                <ul class="sidebar-menu" data-widget="tree">
                   <li class="header">DASHBOARD</li>
-                  <li class="active treeview">
-                     <a href="dashboard">
+                  <li>
+                     <a href="/panel/dashboard">
                         <i class="fa fa-dashboard"></i> <span>Dashboard</span>
                      </a>
                   </li>
                   <li class="header">SERVERS MANAGEMENT</li>
-                  <li><a href="selector"><i class="fa fa-mouse-pointer"></i> <span>Selector</span></a></li>
+                  <li><a href="/panel/selector"><i class="fa fa-mouse-pointer"></i> <span>Selector</span></a></li>
                   <li class="treeview">
                       <a href="">
                           <i class="fa fa-list"></i> <span>Servers list</span>
@@ -111,14 +111,14 @@
                       <ul class="treeview-menu">
                         <% guilds.forEach(guild => { %>
                           <% if(guild.perm !== "unknow" && guild.perm){ %>
-                            <li><a href="guild/<%= guild.id %>"><i class="fa fa-circle-o text-aqua"></i> <%= guild.name %></a></li>
+                            <li><a href="/panel/guild/<%= guild.id %>"><i class="fa fa-circle-o text-aqua"></i> <%= guild.name %></a></li>
                           <% } %>
                         <% }) %>
                       </ul>
                     </li>
                   <li class="header">STATISTICS</li>
-                  <li><a href="stats/me"><i class="fa fa-area-chart"></i> <span>My stats</span></a></li>
-                  <li><a href="stats/global"><i class="fa fa-globe"></i> <span>Global stats</span></a></li>
+                  <li class="active"><a href="me"><i class="fa fa-area-chart"></i> <span>My stats</span></a></li>
+                  <li><a href="global"><i class="fa fa-globe"></i> <span>Global stats</span></a></li>
                   <li class="treeview">
                       <a href="">
                           <i class="fa fa-list"></i> <span>Server stats</span>
@@ -129,7 +129,7 @@
                       <ul class="treeview-menu">
                         <% guilds.forEach(guild => { %>
                           <% if(guild.perm !== "unknow"){ %>
-                            <li><a href="stats/guild/<%= guild.id %>"><i class="fa fa-circle-o text-aqua"></i> <%= guild.name %></a></li>
+                            <li><a href="guild/<%= guild.id %>"><i class="fa fa-circle-o text-aqua"></i> <%= guild.name %></a></li>
                           <% } %>
                         <% }) %>
                       </ul>
@@ -144,7 +144,7 @@
             <section class="content-header">
                <h1>
                   Dashboard
-                  <small>Your profile</small>
+                  <small>Your stats</small>
                </h1>
                <ol class="breadcrumb">
                   <li><a href="dashboard"><i class="fa fa-dashboard"></i> Dashboard</a></li>
@@ -152,132 +152,81 @@
             </section>
             <!-- Main content -->
             <section class="content">
-
-              <div class="row">
-                <div class="col-md-3">
-
-                  <!-- Profile Image -->
-                  <div class="box box-primary">
-                    <div class="box-body box-profile">
-                      <img class="profile-user-img img-responsive img-circle" src="<%= user.avatarURL %>" alt="User profile picture">
-
-                      <h3 class="profile-username text-center"><%= user.tag %></h3>
-
-                      <p class="text-muted text-center"><%= user.memberShip %></p>
-
-                      <ul class="list-group list-group-unbordered">
-                        <li class="list-group-item">
-                          <b>Credits</b> <a class="pull-right"><%= user.stats.credits %></a>
-                        </li>
-                        <li class="list-group-item">
-                          <b>Reputation points</b> <a class="pull-right"><%= user.stats.rep %></a>
-                        </li>
-                        <li class="list-group-item">
-                          <b>Commands</b> <a class="pull-right"><%= user.stats.commands %></a>
-                        </li>
-                      </ul>
-                    </div>
-                    <!-- /.box-body -->
-                  </div>
-                  <!-- /.box -->
-
-                  <!-- About Me Box -->
-                  <div class="box box-primary">
-                    <div class="box-header with-border">
-                      <h3 class="box-title">About You</h3>
-                    </div>
-                    <!-- /.box-header -->
-                    <div class="box-body">
-                      <strong><i class="fa fa-book margin-r-5"></i>Biography</strong>
-
-                      <p class="text-muted">
-                        <% if(user.stats.bio !== "unknow"){ %>
-                          <%= user.stats.bio %>
-                        <% } else { %>
-                          No biography set
-                        <% } %>
-                      </p>
-
-                      <hr>
-
-                      <strong><i class="fa fa-birthday-cake margin-r-5"></i> Birthdate</strong>
-
-                      <p class="text-muted">
-                          <% if(user.stats.birthdate !== "unknow"){ %>
-                            <%= user.stats.birthdate %>
-                          <% } else { %>
-                            No birthdate set
-                          <% } %>
-                      </p>
-
-                      <hr>
-
-                      <strong><i class="fa fa-user"></i> Membership</strong>
-
-                      <p>
-                        <% if(user.stats.membership.length > 0){ %>
-                          <% user.stats.membership.forEach(m => { %>
-                            <span class="label label-<%= m.label %>"><%= m.name %></span>
-                          <% }); %>
-                        <% } %>
-                      </p>
-                    </div>
-                    <!-- /.box-body -->
-                  </div>
-                  <!-- /.box -->
-                </div>
-                <!-- /.col -->
-                <div class="col-md-9">
-                  <div class="nav-tabs-custom">
-                    <ul class="nav nav-tabs">
-                      <li class="active"><a href="#settings" data-toggle="tab">Settings</a></li>
-                    </ul>
-                    <div class="tab-content">
-                      <div class="active tab-pane" id="settings">
-                        <form class="form-horizontal" style="margin-right: 20px !important" action="dashboard" method="post">
-                          <div class="form-group">
-                            <label for="inputExperience" class="col-sm-2 control-label">Biography</label>
-                            <div class="input-group col-sm-10">
-                              <textarea name="bio" class="form-control" id="inputExperience" placeholder="Experience"></textarea>
+                <div class="row">
+                    <div class="col-lg-3 col-xs-6">
+                        <!-- small box -->
+                        <div class="small-box bg-aqua">
+                            <div class="inner">
+                                <h3><%= user.stats.commands %></h3>
+                                <p>Commands sent</p>
                             </div>
-                          </div>
-                          <div class="form-group">
-                              <label for="datePicker" class="col-sm-2 control-label">Birthdate</label>
-                              <div class="input-group date">
-                                <div class="input-group-addon"> <i class="fa fa-calendar"></i> </div>
-                                <input name="date" type="text" class="form-control" id="datepicker"></input>
-                              </div>
-                          </div>
-                          <div class="form-group">
-                            <div class="col-sm-offset-2 col-sm-10">
-                              <button type="submit" class="btn btn-danger">Update</button>
+                            <div class="icon">
+                                <i class="fa fa-send"></i>
                             </div>
-                          </div>
-                        </form>
-                      </div>
-                      <!-- /.tab-pane -->
+                        </div>
                     </div>
-                    <!-- /.tab-content -->
-                  </div>
-                  <!-- /.nav-tabs-custom -->
+                    <div class="col-lg-3 col-xs-6">
+                        <!-- small box -->
+                        <div class="small-box bg-yellow">
+                            <div class="inner">
+                                <h3><%= user.stats.credits %></h3>
+                                <p>Credits</p>
+                            </div>
+                            <div class="icon">
+                                <i class="fa fa-money"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-xs-6">
+                        <!-- small box -->
+                        <div class="small-box bg-red">
+                            <div class="inner">
+                                <h3><%= user.stats.rep %></h3>
+                                <p>Reputation points</p>
+                            </div>
+                            <div class="icon">
+                                <i class="fa fa-thumbs-up"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-xs-6">
+                        <!-- small box -->
+                        <div class="small-box bg-green">
+                            <div class="inner">
+                                <h3><%= user.stats.level %></h3>
+                                <p>Levels</p>
+                            </div>
+                            <div class="icon">
+                                <i class="fa fa-area-chart"></i>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <!-- /.col -->
-                <div class="col-md-6">
-                    <div class="box box-solid">
-                      <div class="box-header with-border">
-                        <h3 class="box-title">Achievements</h3>
-                      </div>
-                      <!-- /.box-header -->
-                      <div class="box-body">
-                        <p>Unavailable, we're working on it!</p>
-                      <!-- /.box-body -->
+                <div class="row">
+                    <div class="col-md-6">
+                        <!-- AREA CHART -->
+                        <div class="box box-primary">
+                            <div class="box-header with-border">
+                                <h3 class="box-title">Commands sent each day</h3>
+                                <div class="box-tools pull-right">
+                                    <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                                    </button>
+                                    <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                                </div>
+                            </div>
+                            <div class="box-body">
+                                <div class="chart">
+                                    <canvas id="commandsChart" style="height:250px"></canvas>
+                                </div>
+                                <div>
+                                    <span style="background-color:#d2d6de"> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</span><strong> Global Stats</strong>
+                                    <br>
+                                    <span style="background-color:#3c8dbc"> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</span><strong> Your Stats</strong>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <!-- /.box -->
-                  </div>
-                  <!-- /.col (right) -->
-              </div>
-              <!-- /.row -->
-
+                </div>
             </section>
             <!-- /.content -->
          </div>
@@ -335,6 +284,78 @@
         //Date picker
         $('#datepicker').datepicker({
           autoclose: true
+        })
+        $(function () {
+            
+          var areaChartCanvas = $('#commandsChart').get(0).getContext('2d');
+          var areaChart = new Chart(areaChartCanvas);
+
+          // gets user stats
+          var stats = JSON.parse('<%- JSON.stringify(user.stats.commandsSent) %>');
+          var globalStats = JSON.parse('<%- JSON.stringify(globalStats.graph) %>');
+
+          var dates = [], data = [];
+          for(var date in globalStats){
+            dates.push(date);
+            data.push(globalStats[date]);
+          };
+          
+          var areaChartData = {
+            labels  : dates,
+            datasets: [
+              {
+                label               : 'Stats',
+                fillColor           : 'rgba(210, 214, 222, 1)',
+                strokeColor         : 'rgba(210, 214, 222, 1)',
+                pointColor          : 'rgba(210, 214, 222, 1)',
+                pointStrokeColor    : '#c1c7d1',
+                pointHighlightFill  : '#fff',
+                pointHighlightStroke: 'rgba(220,220,220,1)',
+                data                : data
+              }
+            ]
+          };
+
+          dates = [], data = [];
+          for(var date in stats){
+            dates.push(date);
+            data.push(stats[date]);
+          }
+          
+          areaChartData.datasets.push({
+                label               : 'Stats',
+                fillColor           : 'rgba(60,141,188,0.9)',
+                strokeColor         : 'rgba(60,141,188,0.8)',
+                pointColor          : '#3b8bba',
+                pointStrokeColor    : 'rgba(60,141,188,1)',
+                pointHighlightFill  : '#fff',
+                pointHighlightStroke: 'rgba(60,141,188,1)',
+                data                : data
+          });
+
+          var areaChartOptions = {
+            showScale               : true,
+            scaleShowGridLines      : false,
+            scaleGridLineColor      : 'rgba(0,0,0,.05)',
+            scaleGridLineWidth      : 1,
+            scaleShowHorizontalLines: true,
+            scaleShowVerticalLines  : true,
+            bezierCurve             : true,
+            bezierCurveTension      : 0.3,
+            pointDot                : false,
+            pointDotRadius          : 4,
+            pointDotStrokeWidth     : 1,
+            pointHitDetectionRadius : 20,
+            datasetStroke           : true,
+            datasetStrokeWidth      : 2,
+            datasetFill             : true,
+            maintainAspectRatio     : true,
+            responsive              : true
+          };
+
+          //Create the line chart
+          areaChart.Line(areaChartData, areaChartOptions);
+          
         });
       </script>
    </body>

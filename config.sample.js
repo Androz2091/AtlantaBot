@@ -2,7 +2,14 @@ module.exports = {
 	token:"xxxxxxxxxx",
 	support:{
 		id:"xxxxxxxxxx",
-		logs:"xxxxxxxxxx"
+		logs:"xxxxxxxxxx",
+		roles:{
+			donator:"xxxxxxxxxx",
+			staff:"xxxxxxxxxx",
+			moderator:"xxxxxxxxxx",
+			contributors:"xxxxxxxxxx",
+			friends:"xxxxxxxxxx"
+		}
 	},
 	prefix:"*",
 	embed:{
