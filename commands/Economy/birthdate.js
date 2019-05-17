@@ -41,6 +41,7 @@ class Birthdate extends Command {
         if (tyear < 100) tyear += tyear < 50 ? 2000 : 1900;
         let d = new Date(tyear, tmonth, tday);
         if(d.getTime() > Date.now()) return message.channel.send(message.language.get('BIRTHDATE_TOO_HIGH'));
+        if(d.getTime() < (Date.now()-2522880000000)) return message.channel.send(message.language.get('BIRTHDATE_TOO_LOW'));
 
         // Updates db
         this.client.databases[0].set(`${message.author.id}.birthdate`, d);

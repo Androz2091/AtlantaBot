@@ -252,6 +252,7 @@ module.exports = class {
 			BIRTHDATE_INVALID_DATE3: `${error} |  Vous avez entrer une date invalide (ou la date indiquée n'existe pas). Rappel : le format de la date doit être : Jour/Mois/Année. Par exemple, 01/12/2000 pour le premier décembre 2000.`,
 			BIRTHDATE_SUCCESS: (date) => `${success} | Votre date d'anniversaire a été définie sur le ${date} !`,
 			BIRTHDATE_TOO_HIGH: `${error} | Vous ne pouvez pas ne pas encore être né !`,
+			BIRTHDATE_TOO_LOW: `${error} | Plus de 80 ans ? :eyes:`,
 			
 			// Weegind command
 			WEEDING_DESCRIPTION: `Mariez-vous avec la personne de votre choix !`,

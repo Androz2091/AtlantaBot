@@ -252,6 +252,7 @@ module.exports = class {
 			BIRTHDATE_INVALID_DATE3: `${error} |  You have entered an invalid date (or the indicated date does not exist). Reminder: the date format must be: Day/Month/Year. For example, 01/12/2000 for December 1, 2000.`,
 			BIRTHDATE_SUCCESS: (date) => `${success} | Your birthday has been set to ${date} !`,
 			BIRTHDATE_TOO_HIGH: `${error} | You can't not have been born yet!`,
+			BIRTHDATE_TOO_LOW: `${error} | More than 80 years old? :eyes:`,
 			
 			// Weegind command
 			WEDDING_DESCRIPTION: `Marry the person of your choice!`,
