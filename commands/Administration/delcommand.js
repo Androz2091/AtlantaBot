@@ -12,7 +12,7 @@ class Delcommand extends Command {
             enabled: true,
             guildOnly: true,
             aliases: ["pong",],
-            permission: false,
+            permission: "MANAGE_GUILD",
             botpermissions: [ "SEND_MESSAGES" ],
             nsfw: false,
             examples: "$delcommand ip",
