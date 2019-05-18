@@ -12,7 +12,7 @@ class Addemote extends Command {
             enabled: true,
             guildOnly: true,
             aliases: [],
-            permission: false,
+            permission: "MANAGE_EMOJIS",
             botpermissions: [ "SEND_MESSAGES", "EMBED_LINKS", "MANAGE_EMOJIS" ],
             nsfw: false,
             examples: "$addemote https://image.com",
@@ -26,10 +26,10 @@ class Addemote extends Command {
         var url = args[0];
         // Gets the name of the emote
         var name = args[1];
-     
+
         if(!url) return message.channel.send(message.language.get('ADDEMOTE_URL'));
         if(!name) return message.channel.send(message.language.get('ADDEMOTE_NAME'));
-     
+
         // Add the emote
         message.guild.createEmoji(url, name).then(emote => {
             // send success message
