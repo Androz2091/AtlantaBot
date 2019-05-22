@@ -21,11 +21,11 @@ class Unmute extends Command {
     }
 
     async run (message, args, membersdata, guild_data, data) {
-        
+
         // Gets the first mentionned member
         var member = message.mentions.members.first();
         if(!member) return message.channel.send(message.language.get('MENTION_MEMBER'));
-        
+
         // update db
         if(guild_data.muted[member.id]){
             guild_data.muted[member.id] = Date.now()+1000;

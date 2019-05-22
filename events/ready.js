@@ -50,7 +50,7 @@ module.exports = class {
         setInterval(function(){
             client.guilds.forEach(guild => {
                 var data = client.databases[1].get(guild.id) || client.functions.createGuild(client, guild);
-                if(Object.keys(data.muted) > 0){ // If there are members to check
+                if(Object.keys(data.muted).length > 0){ // If there are members to check
                     for(var userID in data.muted){ // for each member
                         var time = data.muted[userID]; // Gets the unmute date
                         if(!time) return;
