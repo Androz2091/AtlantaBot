@@ -12,12 +12,12 @@ Atlanta propose :
 - la traduction en anglais 🇬🇧
 - la gestion des rewards via les votes sur DBL grâce à un serveur express
 - les commandes en messages privés
+- un superbe dashboard web très complet !
 - et bien plus !
 
 Fonctionnalités à venir :
 
 - Ajout des shards
-- Ajout d'un dashboard web
 - Ajout des menus de rôles
 - Ajout des sauvegardes de serveurs
 
