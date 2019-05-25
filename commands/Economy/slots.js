@@ -37,8 +37,9 @@ class Slots extends Command {
 
         // Gets the amount provided
         var amount = args[0];
-        if(!amount || isNaN(amount)) amount = 1;
+        if(!amount || isNaN(amount) || amount < 1) amount = 1;
         if(amount > membersdata[0].credits) return message.channel.send(message.language.get('SLOTS_TOO_HIGH', amount));
+        amount = Math.round(amount);
         
         message.channel.send(message.language.get('PLEASE_WAIT')).then(m => {
             tmsg = m;

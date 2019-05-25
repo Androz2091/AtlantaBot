@@ -12,7 +12,7 @@ class Addcommand extends Command {
             enabled: true,
             guildOnly: true,
             aliases: ["pong",],
-            permission: false,
+            permission: "MANAGE_GUILD",
             botpermissions: [ "SEND_MESSAGES" ],
             nsfw: false,
             examples: "$addcommand ip 192.168.1.1",

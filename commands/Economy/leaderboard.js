@@ -15,7 +15,7 @@ class Leaderboard extends Command {
             permission: false,
             botpermissions: [ "SEND_MESSAGES" ],
             nsfw: false,
-            examples: "$credits\n$credits @Androz#2091",
+            examples: "$leaderboard credits",
             owner: false
         });
     }

@@ -4,7 +4,7 @@ error = "<:atlanta_error:565212755804684318>",
 success = "<:atlanta_success:565212709591973896>",
 loading = "<a:atlanta_loading:565214530121105418>"
 
-var owner = "`Androz#2091`";
+var owner = "`Androz#2091`",
 yes = 'oui',
 no = 'non',
 botname = 'Atlanta',
@@ -172,7 +172,7 @@ module.exports = class {
 
 			// Del command
 			DELCOMMAND_DESCRIPTION: `Enlevez une commande personnalisée du serveur !`,
-			ADDCOMMAND_NAME: `${error} | Veuillez entrer le nom de la commande que vous souhaitez supprimer !`,
+			DELCOMMAND_NAME: `${error} | Veuillez entrer le nom de la commande que vous souhaitez supprimer !`,
 			DELCOMMAND_EXIST: (cmd) => `${error} | La commande ${cmd} n'existe pas !`,
 			DELCOMMAND_SUCCESS: (cmd) => `${success} | La commande ${cmd} a bien été enlevée du serveur !`,
 
@@ -200,7 +200,7 @@ module.exports = class {
 			
 			// work command
 			WORK_DESCRIPTION: `Travaillez et gagnez de l'argent !`,
-			WORK_COOLDOWN: (delai) => `${error} | Vous devez attendre ${delai} avant de pouvoir de nouveau travailler !`,
+			WORK_COOLDOWN: (delay) => `${error} | Vous devez attendre ${delay} avant de pouvoir de nouveau travailler !`,
 			SALARY_CLAIMED: `Salaire`,
 			SALARY_CLAIMED2: `200 crédits ajoutés à votre compte !`,
 
@@ -252,9 +252,10 @@ module.exports = class {
 			BIRTHDATE_INVALID_DATE3: `${error} |  Vous avez entrer une date invalide (ou la date indiquée n'existe pas). Rappel : le format de la date doit être : Jour/Mois/Année. Par exemple, 01/12/2000 pour le premier décembre 2000.`,
 			BIRTHDATE_SUCCESS: (date) => `${success} | Votre date d'anniversaire a été définie sur le ${date} !`,
 			BIRTHDATE_TOO_HIGH: `${error} | Vous ne pouvez pas ne pas encore être né !`,
+			BIRTHDATE_TOO_LOW: `${error} | Plus de 80 ans ? :eyes:`,
 			
 			// Weegind command
-			WEDDING_DESCRIPTION: `Mariez-vous avec la personne de votre choix !`,
+			WEEDING_DESCRIPTION: `Mariez-vous avec la personne de votre choix !`,
 			WEEDING_AUTHOR_ALREADY: (prefix) => `${error} | Vous êtes déjà marié(e) ! Utilisez d'abord \`${prefix}divorce\` pour divorcer`,
 			WEEDING_MEMBER_ALREADY: (username) => `${error} | La place est prise compagnon ! **${username}** est déjà marié(e) !`,
 			WEEDING_AUTHOR_PENDING: (username) => `${error} | Vous avez déjà une demande en cours auprès de **${username}** !`,

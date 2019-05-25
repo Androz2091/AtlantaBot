@@ -118,7 +118,7 @@ class Play extends Command {
     async run (message, args, membersdata, guild_data, data) {
 
         // Log with the simple youtube api key
-        const ytb = new Youtube(this.client.config.simple_youtube_api);
+        const ytb = new Youtube(this.client.config.apiKeys.simple_youtube_api);
         const client = this.client;
 
         // Gets the video name

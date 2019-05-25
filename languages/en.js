@@ -172,7 +172,7 @@ module.exports = class {
 
 			// Del command
 			DELCOMMAND_DESCRIPTION: `Remove a custom command from the guild!`,
-			ADDCOMMAND_NAME: `${error} | Please enter the name of the command you wish to delete!`,
+			DELCOMMAND_NAME: `${error} | Please enter the name of the command you wish to delete!`,
 			DELCOMMAND_EXIST: (cmd) => `${error} | The command ${cmd} does not exist!`,
 			DELCOMMAND_SUCCESS: (cmd) => `${success} | The ${cmd} command has been removed from the guild!`,
 
@@ -200,7 +200,7 @@ module.exports = class {
 			
 			// work command
 			WORK_DESCRIPTION: `Work and earn money!`,
-			WORK_COOLDOWN: (delai) => `${error} | You have to wait ${delay} before you can work again!`,
+			WORK_COOLDOWN: (delay) => `${error} | You have to wait ${delay} before you can work again!`,
 			SALARY_CLAIMED: `Salary`,
 			SALARY_CLAIMED2: `200 credits added to your account!`,
 
@@ -252,6 +252,7 @@ module.exports = class {
 			BIRTHDATE_INVALID_DATE3: `${error} |  You have entered an invalid date (or the indicated date does not exist). Reminder: the date format must be: Day/Month/Year. For example, 01/12/2000 for December 1, 2000.`,
 			BIRTHDATE_SUCCESS: (date) => `${success} | Your birthday has been set to ${date} !`,
 			BIRTHDATE_TOO_HIGH: `${error} | You can't not have been born yet!`,
+			BIRTHDATE_TOO_LOW: `${error} | More than 80 years old? :eyes:`,
 			
 			// Weegind command
 			WEDDING_DESCRIPTION: `Marry the person of your choice!`,

@@ -15,7 +15,7 @@ class Setwarns extends Command {
             permission: false,
             botpermissions: [ "SEND_MESSAGES" ],
             nsfw: false,
-            examples: "$checkinvites",
+            examples: "$setwarns 4 kick",
             owner: false
         });
     }

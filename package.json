@@ -41,6 +41,8 @@
     "morgan": "^1.9.1",
     "node-superfetch": "^0.1.9",
     "opusscript": "0.0.6",
+    "passport": "^0.4.0",
+    "passport-discord": "^0.1.3",
     "prism-media": "^1.0.2",
     "quick.db": "^7.0.0-b22",
     "request": "^2.88.0",

@@ -32,16 +32,8 @@ module.exports = class {
             owner.send(embed).catch(err => this.client.logger.log(`I can't send message of thanks to the founder of ${guild.id}`, 'error'))
 
             // Sends log embed in the logs channel
-            var log_embed = new Discord.RichEmbed()
-                .setAuthor(guild.name, guild.iconURL)
-                .setDescription('Merci au staff du serveur `'+guild.name+'` de m\'avoir ajouté !')
-                .addField('ID', guild.id, true)
-                .addField('Membres', `${parseInt(guild.memberCount - guild.members.filter(m => m.user.bot).size)} membres | ${guild.members.filter(m => m.user.bot).size} bots`)
-                .addField('Salons', `${guild.channels.filter(ch => ch.type === 'text').size} textuels | ${guild.channels.filter(ch => ch.type === 'voice').size} ${(guild.channels.filter(ch => ch.type === 'voice').size > 1) ? 'vocaux' : 'vocal'} | ${guild.channels.filter(ch => ch.type === 'category').size} catégories`)
-                .addField('Fondateur', `${owner.username}#${owner.discriminator}`)
-                .setColor(this.client.config.embed.color)
-                .setFooter(this.client.config.embed.footer)
-            this.client.channels.get(this.client.config.support.logs).send(log_embed);
+            var embed = new Discord.RichEmbed().setAuthor(guild.name, guild.iconURL).setColor("#32CD32").setDescription("J'ai rejoint **"+guild.name+"**, avec **"+guild.members.filter((m) => !m.user.bot).size+"** membres (et "+guild.members.filter((m) => m.user.bot).size+" bots)");
+            this.client.channels.get(this.client.config.support.logs).send(embed);
         });
     }
 }  

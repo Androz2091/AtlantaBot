@@ -19,7 +19,7 @@ class FindWords extends Command {
             permission: false,
             botpermissions: [ "SEND_MESSAGES" ],
             nsfw: false,
-            examples: "$ascii Hello World !",
+            examples: "$findwords",
             owner: false
         });
     }

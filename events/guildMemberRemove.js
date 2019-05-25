@@ -24,7 +24,7 @@ module.exports = class {
                 if(guild_data.leave.withImage === 'true'){
                     var lang = new(require('../languages/'+guild_data.lang+'.js'));
                     var text = lang.get('LEAVE_IMG', member.guild.name);
-                    const { body } = await require('snekfetch').get(encodeURI(`https://dev.anidiots.guide/greetings/unified?type=goodbye&version=gearz&message=${text}&bot=${member.user.bot}&avatar=${member.user.displayAvatarURL}&username=${member.user.username}&discriminator=${member.user.discriminator}&guildName=${member.guild.name}&memberCount=${member.guild.memberCount}`)).set("Authorization", this.client.config.anidiots);
+                    const { body } = await require('snekfetch').get(encodeURI(`https://dev.anidiots.guide/greetings/unified?type=goodbye&version=gearz&message=${text}&bot=${member.user.bot}&avatar=${member.user.displayAvatarURL}&username=${member.user.username}&discriminator=${member.user.discriminator}&guildName=${member.guild.name}&memberCount=${member.guild.memberCount}`)).set("Authorization", this.client.config.apiKeys.anidiots);
                     channel.send(message, {
                         files: [{
                             attachment: Buffer.from(body.data),
