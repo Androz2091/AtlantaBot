@@ -30,7 +30,7 @@ class Fortnite extends Command {
         var platform = args[0];
         if(!platform || (platform !== 'pc' && platform !== 'xbl' && platform !== 'psn')) return message.channel.send(message.language.get('FORTNITE_PLATFORM'));
 
-        var user = args[1];
+        var user = args.slice(1).join(" ");
         if(!user) return message.channel.send(message.language.get('FORTNITE_USERNAME'));
 
         // All methods
@@ -38,7 +38,7 @@ class Fortnite extends Command {
             if(tdata.code === 404) return message.channel.send(message.language.get('FORTNITE_404', platform, user));
             var embed = new Discord.RichEmbed()
                 .setTitle(tdata.username)
-                .setURL(tdata.url)
+                .setURL(tdata.url.replace(new RegExp(" ", "g"), "%20"))
                 .setDescription(message.language.get('FORTNITE_DESC', platform, user)+'\nID: '+tdata.id)
                 if(tdata.stats.solo) embed.addField('Solo', message.language.get('FORTNITE_SOLO_STATS', tdata), true);
                 if(tdata.stats.duo) embed.addField('Duo', message.language.get('FORTNITE_DUO_STATS', tdata), true);
