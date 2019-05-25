@@ -24,7 +24,7 @@ module.exports = class {
 
         // If the member on a guild is invisible or not cached, fetch them.
         if (message.guild && !message.member) await message.guild.fetchMember(message.author.id);
-        
+
         // Check if Alanta is mentionned
         var isMentionned = false;
         clientMentions.forEach(cm => {
@@ -46,7 +46,7 @@ module.exports = class {
             // Update usersMentions variable
             message.mentions.users = newUsersMentions;
         }
-        
+
         var ms = require('ms');
 
         // gets the data of the users
@@ -117,7 +117,7 @@ module.exports = class {
             let afk_reason = this.client.databases[0].get(`afk.${m.id}`);
             if(afk_reason) message.channel.send(message.language.get('AFK_IS_AFK', m, afk_reason));
         });
-        
+
 
         // Update user xp
         updateXp(message, membersdata[0], this.client.databases[0], this.client.databases[2].xp);
@@ -147,19 +147,21 @@ module.exports = class {
             if(message.content.startsWith(p)) prefix = p;
         });
         if(!prefix) return;
-        
+
 
         // If the message content is "/pay @Androz 10", the args will be : [ "pay", "@Androz", "10" ]
-        const args = message.content.slice(prefix.length).trim().split(/ +/g);
+        var args = message.content.slice(prefix.length).trim().split(/ +/g);
         // The command will be : "pay" and the args : [ "@Androz", "10" ]
-        const command = args.shift().toLowerCase();
-
-        // Gets the command
-        const cmd = this.client.commands.get(command) || this.client.commands.get(this.client.aliases.get(command));
+        var command = args.shift();
 
         if(guild_data.commands[command]){
             return message.channel.send(guild_data.commands[command]);
         }
+
+        command = command.toLowerCase();
+
+        // Gets the command
+        const cmd = this.client.commands.get(command) || this.client.commands.get(this.client.aliases.get(command));
 
         // If no command found, return;
         if (!cmd) return;

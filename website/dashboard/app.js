@@ -35,7 +35,7 @@ module.exports.init = async(client) => {
         saveUninitialized: false
     }))
     .use(passport.initialize())
-    .use(passport.session())
+    .use(passport.session());
     
     // Add client variable to request
     app.use(function(req,res,next){
@@ -49,6 +49,23 @@ module.exports.init = async(client) => {
     .use("/api/discord/", discordRouter)
     .use("/", indexRouter);
 
+    // catch 404 and forward to error handler
+    app.use(function(req, res, next) {
+        res.status(404);
+        return res.render("errors/error", {
+            status:404, 
+            message:"Not Found..."
+        });
+    });
+    // catch 404 and forward to error handler
+    app.use(function(req, res, next) {
+        res.status(500);
+        return res.render("errors/error", {
+            status:500, 
+            message:"Something went wrong..."
+        });
+    });
+  
     // Listen on the port 
     app.listen(app.get('port'), (err) => {
         if (err) throw err;
@@ -73,6 +90,5 @@ module.exports.init = async(client) => {
             return done(null, profile);
         });
     }));
-    
 
 };

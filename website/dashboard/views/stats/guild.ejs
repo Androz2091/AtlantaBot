@@ -34,7 +34,7 @@
       <div class="wrapper">
          <header class="main-header">
             <!-- Logo -->
-            <a href="dashboard" class="logo">
+            <a href="/dashboard" class="logo">
                <!-- mini logo for sidebar mini 50x50 pixels -->
                <span class="logo-mini"><b>A</b></span>
                <!-- logo for regular state and mobile devices -->
@@ -65,7 +65,7 @@
                            <!-- Menu Footer-->
                            <li class="user-footer">
                               <div class="pull-left">
-                                 <a href="dashboard" class="btn btn-default btn-flat">Back to Dashboard</a>
+                                 <a href="/dashboard" class="btn btn-default btn-flat">Back to Dashboard</a>
                               </div>
                               <div class="pull-right">
                                  <a href="/api/discord/logout" class="btn btn-default btn-flat">Logout</a>
@@ -117,8 +117,8 @@
                       </ul>
                     </li>
                   <li class="header">STATISTICS</li>
-                  <li><a href="me"><i class="fa fa-area-chart"></i> <span>My stats</span></a></li>
-                  <li><a href="global"><i class="fa fa-globe"></i> <span>Global stats</span></a></li>
+                  <li><a href="/panel/stats/me"><i class="fa fa-area-chart"></i> <span>My stats</span></a></li>
+                  <li><a href="/panel/stats/global"><i class="fa fa-globe"></i> <span>Global stats</span></a></li>
                   <li class="active treeview">
                       <a href="">
                           <i class="fa fa-list"></i> <span>Server stats</span>
@@ -149,7 +149,7 @@
                   <small>Global stats (all servers and users)</small>
                </h1>
                <ol class="breadcrumb">
-                  <li><a href="dashboard"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+                  <li><a href="/dashboard"><i class="fa fa-dashboard"></i> Dashboard</a></li>
                </ol>
             </section>
             <!-- Main content -->
@@ -167,7 +167,30 @@
                             </div>
                         </div>
                     </div>
-                    
+                    <div class="col-lg-3 col-xs-6">
+                      <!-- small box -->
+                      <div class="small-box bg-yellow">
+                          <div class="inner">
+                              <h3><%= guild.stats.memberCount %></h3>
+                              <p>Members</p>
+                          </div>
+                          <div class="icon">
+                              <i class="fa fa-users"></i>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="col-lg-3 col-xs-6">
+                    <!-- small box -->
+                    <div class="small-box bg-red">
+                        <div class="inner">
+                            <h3><%= guild.conf.case %></h3>
+                            <p>Sanctions</p>
+                        </div>
+                        <div class="icon">
+                            <i class="fa fa-users"></i>
+                        </div>
+                    </div>
+                  </div>
                 </div>
                 <div class="row">
                     <div class="col-md-6">
@@ -188,6 +211,45 @@
                             </div>
                         </div>
                     </div>
+                    <div class="col-md-6">
+                      <div class="box box-primary">
+                          <div class="box-header with-border">
+                          <h3 class="box-title">Guild Stats - Most used commands</h3>
+                          <div class="box-tools pull-right">
+                            <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                            </button>
+                            <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                          </div>
+                        </div>
+                        <!-- /.box-header -->
+                        <div class="box-body">
+                            <% if(guild.stats.commands < 1) { %>
+                              <div>
+                                <p>No commands sent.</p>
+                              </div>
+    
+                            <% } else { %>
+                              <table class="table table-condensed">
+                                  <tr>
+                                    <th style="width: 10px">#</th>
+                                    <th>Command</th>
+                                    <th style="width: 40px">Count</th>
+                                  </tr>
+                                  <% var i = 0; guild.stats.topCommands.forEach(cmd => { i++; %>
+                                    <tr>
+                                      <td><%= i %>.</td>
+                                      <td><%= cmd.command.charAt(0).toUpperCase()+cmd.command.substr(1, cmd.command.length) %></td>
+                                      <td><span class="badge bg-red"><%= cmd.count %></span></td>
+                                    </tr>
+                                  <% }) %>
+                                </table>
+                            <% } %>
+                          
+                        </div>
+                        <!-- /.box-body -->
+                      </div>
+                      <!-- /.box -->
+                 </div>
                 </div>
             </section>
             <!-- /.content -->

@@ -34,7 +34,7 @@
       <div class="wrapper">
          <header class="main-header">
             <!-- Logo -->
-            <a href="dashboard" class="logo">
+            <a href="/dashboard" class="logo">
                <!-- mini logo for sidebar mini 50x50 pixels -->
                <span class="logo-mini"><b>A</b></span>
                <!-- logo for regular state and mobile devices -->
@@ -65,7 +65,7 @@
                            <!-- Menu Footer-->
                            <li class="user-footer">
                               <div class="pull-left">
-                                 <a href="dashboard" class="btn btn-default btn-flat">Back to Dashboard</a>
+                                 <a href="/dashboard" class="btn btn-default btn-flat">Back to Dashboard</a>
                               </div>
                               <div class="pull-right">
                                  <a href="/api/discord/logout" class="btn btn-default btn-flat">Logout</a>
@@ -94,12 +94,14 @@
                <!-- sidebar menu: : style can be found in sidebar.less -->
                <ul class="sidebar-menu" data-widget="tree">
                   <li class="header">DASHBOARD</li>
-                    <li>
-                        <a href="/panel/dashboard"><i class="fa fa-dashboard"></i> Dashboard</a>
-                    </li>
+                  <li>
+                     <a href="/panel/dashboard">
+                        <i class="fa fa-dashboard"></i> <span>Dashboard</span>
+                     </a>
+                  </li>
                   <li class="header">SERVERS MANAGEMENT</li>
                   <li><a href="/panel/selector"><i class="fa fa-mouse-pointer"></i> <span>Selector</span></a></li>
-                  <li class="treeview active">
+                  <li class="active treeview">
                       <a href="">
                           <i class="fa fa-list"></i> <span>Servers list</span>
                           <span class="pull-right-container">
@@ -107,13 +109,33 @@
                         </span>
                       </a>
                       <ul class="treeview-menu">
-                        <% guilds.forEach(g => { %>
-                          <% if(g.perm !== "unknow" && g.perm){ %>
-                            <% if(guild.guild.id === g.id){ %>
-                              <li class="active"><a href="/panel/guild/<%= g.id %>"><i class="fa fa-circle-o text-aqua"></i> <%= g.name %></a></li>
-                            <% } else { %>
-                              <li><a href="/panel/guild/<%= g.id %>"><i class="fa fa-circle-o text-aqua"></i> <%= g.name %></a></li>
+                          <% guilds.forEach(g => { %>
+                            <% if(g.perm !== "unknow" && g.perm){ %>
+                              <% if(guild.guild.id === g.id){ %>
+                                <li class="active"><a href="/panel/guild/<%= g.id %>"><i class="fa fa-circle-o text-aqua"></i> <%= g.name %></a></li>
+                              <% } else { %>
+                                <li><a href="/panel/guild/<%= g.id %>"><i class="fa fa-circle-o text-aqua"></i> <%= g.name %></a></li>
+                              <% } %>
                             <% } %>
+                          <% }) %>
+                      </ul>
+                    </li>
+                  <li class="header">STATISTICS</li>
+                  <li><a href="/panel/stats/me"><i class="fa fa-area-chart"></i> <span>My stats</span></a></li>
+                  <li><a href="/panel/stats/global"><i class="fa fa-globe"></i> <span>Global stats</span></a></li>
+                  <li class="treeview">
+                      <a href="">
+                          <i class="fa fa-list"></i> <span>Server stats</span>
+                          <span class="pull-right-container">
+                          <i class="fa fa-angle-left pull-right"></i>
+                        </span>
+                      </a>
+                      <ul class="treeview-menu">
+                        <% guilds.forEach(tguild => { %>
+                          <% if(tguild.perm !== "unknow" && guild.guild.id !== tguild.id){ %>
+                            <li><a href="/panel/stats/guild/<%= tguild.id %>"><i class="fa fa-circle-o text-aqua"></i> <%= tguild.name %></a></li>
+                          <% } else if(tguild.perm !== "unknow") { %>
+                            <li><a href="/panel/guild/<%= tguild.id %>"><i class="fa fa-circle-o text-aqua"></i> <%= tguild.name %></a></li>
                           <% } %>
                         <% }) %>
                       </ul>
@@ -131,7 +153,7 @@
                   <small>Control panel</small>
                </h1>
                <ol class="breadcrumb">
-                  <li><a href="dashboard"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+                  <li><a href="/dashboard"><i class="fa fa-dashboard"></i> Dashboard</a></li>
                </ol>
             </section>
             <!-- Main content -->
@@ -177,75 +199,6 @@
                   <!-- ./col -->
                </div>
                <!-- /.row -->
-               <!-- Main row -->
-               <div class="row">
-                  <div class="col-md-6">
-                    <!-- AREA CHART -->
-                    <div class="box box-primary">
-                      <div class="box-header with-border">
-                        <h3 class="box-title">Guild stats - Commands sent</h3>
-                        <div class="box-tools pull-right">
-                          <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
-                          </button>
-                          <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
-                        </div>
-                      </div>
-                      <div class="box-body">
-                        <% if(guild.stats.commands < 1) { %>
-                          <div>
-                            <p>No commands sent.</p>
-                          </div>
-
-                        <% } else { %>
-                        <div class="chart">
-                          <canvas id="stats" style="height:250px"></canvas>
-                        </div>
-                        <% } %>
-                      </div>
-                      <!-- /.box-body -->
-                    </div>
-                  </div>
-                  <!-- right col -->
-                  <div class="col-md-6">
-                    <div class="box box-primary">
-                        <div class="box-header with-border">
-                        <h3 class="box-title">Guild Stats - Most used commands</h3>
-                        <div class="box-tools pull-right">
-                          <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
-                          </button>
-                          <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
-                        </div>
-                      </div>
-                      <!-- /.box-header -->
-                      <div class="box-body">
-                          <% if(guild.stats.commands < 1) { %>
-                            <div>
-                              <p>No commands sent.</p>
-                            </div>
-  
-                          <% } else { %>
-                            <table class="table table-condensed">
-                                <tr>
-                                  <th style="width: 10px">#</th>
-                                  <th>Command</th>
-                                  <th style="width: 40px">Count</th>
-                                </tr>
-                                <% var i = 0; guild.stats.topCommands.forEach(cmd => { i++; %>
-                                  <tr>
-                                    <td><%= i %>.</td>
-                                    <td><%= cmd.command.charAt(0).toUpperCase()+cmd.command.substr(1, cmd.command.length) %></td>
-                                    <td><span class="badge bg-red"><%= cmd.count %></span></td>
-                                  </tr>
-                                <% }) %>
-                              </table>
-                          <% } %>
-                        
-                      </div>
-                      <!-- /.box-body -->
-                    </div>
-                    <!-- /.box -->
-               </div>
-               <!-- /.row (main row) -->
                
                <form action="/panel/guild/<%=guild.guild.id%>" method='post' id="editConf">
                 <div class="col-md-6">

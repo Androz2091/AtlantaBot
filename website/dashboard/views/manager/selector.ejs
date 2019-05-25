@@ -34,7 +34,7 @@
       <div class="wrapper">
          <header class="main-header">
             <!-- Logo -->
-            <a href="dashboard" class="logo">
+            <a href="/dashboard" class="logo">
                <!-- mini logo for sidebar mini 50x50 pixels -->
                <span class="logo-mini"><b>A</b></span>
                <!-- logo for regular state and mobile devices -->
@@ -65,7 +65,7 @@
                            <!-- Menu Footer-->
                            <li class="user-footer">
                               <div class="pull-left">
-                                 <a href="dashboard" class="btn btn-default btn-flat">Back to Dashboard</a>
+                                 <a href="/dashboard" class="btn btn-default btn-flat">Back to Dashboard</a>
                               </div>
                               <div class="pull-right">
                                  <a href="/api/discord/logout" class="btn btn-default btn-flat">Logout</a>
@@ -81,43 +81,63 @@
          <aside class="main-sidebar">
             <!-- sidebar: style can be found in sidebar.less -->
             <section class="sidebar">
-               <!-- Sidebar user panel -->
-               <div class="user-panel">
-                  <div class="pull-left image">
-                     <img src="<%= user.avatarURL %>" class="img-circle" alt="User Image">
-                  </div>
-                  <div class="pull-left info">
-                     <p><%= user.tag %></p>
-                     <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
-                  </div>
-               </div>
-               <!-- sidebar menu: : style can be found in sidebar.less -->
-               <ul class="sidebar-menu" data-widget="tree">
-                  <li class="header">DASHBOARD</li>
+                <!-- Sidebar user panel -->
+                <div class="user-panel">
+                    <div class="pull-left image">
+                        <img src="<%= user.avatarURL %>" class="img-circle" alt="User Image">
+                    </div>
+                    <div class="pull-left info">
+                        <p><%= user.tag %></p>
+                        <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
+                    </div>
+                </div>
+                <!-- sidebar menu: : style can be found in sidebar.less -->
+                <ul class="sidebar-menu" data-widget="tree">
+                    <li class="header">DASHBOARD</li>
                     <li>
-                        <a href="dashboard"><i class="fa fa-dashboard"></i> Dashboard</a>
+                        <a href="/panel/dashboard">
+                        <i class="fa fa-dashboard"></i> <span>Dashboard</span>
+                        </a>
                     </li>
-                  <li class="header">SERVERS MANAGEMENT</li>
-                  <li class="active treeview"><a href="selector"><i class="fa fa-mouse-pointer"></i> <span>Selector</span></a></li>
-                  <li class="treeview">
-                      <a href="">
-                          <i class="fa fa-list"></i> <span>Servers list</span>
-                          <span class="pull-right-container">
-                          <i class="fa fa-angle-left pull-right"></i>
+                    <li class="header">SERVERS MANAGEMENT</li>
+                    <li class="active"><a href="/panel/selector"><i class="fa fa-mouse-pointer"></i> <span>Selector</span></a></li>
+                    <li class="treeview">
+                        <a href="">
+                            <i class="fa fa-list"></i> <span>Servers list</span>
+                            <span class="pull-right-container">
+                            <i class="fa fa-angle-left pull-right"></i>
                         </span>
-                      </a>
-                      <ul class="treeview-menu">
+                        </a>
+                        <ul class="treeview-menu">
                         <% guilds.forEach(guild => { %>
-                          <% if(guild.perm !== "unknow" && guild.perm){ %>
-                            <li><a href="guild/<%= guild.id %>"><i class="fa fa-circle-o text-aqua"></i> <%= guild.name %></a></li>
-                          <% } %>
+                            <% if(guild.perm !== "unknow" && guild.perm){ %>
+                            <li><a href="/panel/guild/<%= guild.id %>"><i class="fa fa-circle-o text-aqua"></i> <%= guild.name %></a></li>
+                            <% } %>
                         <% }) %>
-                      </ul>
+                        </ul>
                     </li>
-               </ul>
+                    <li class="header">STATISTICS</li>
+                    <li><a href="/panel/stats/me"><i class="fa fa-area-chart"></i> <span>My stats</span></a></li>
+                    <li><a href="/panel/stats/global"><i class="fa fa-globe"></i> <span>Global stats</span></a></li>
+                    <li class="treeview">
+                        <a href="">
+                            <i class="fa fa-list"></i> <span>Server stats</span>
+                            <span class="pull-right-container">
+                            <i class="fa fa-angle-left pull-right"></i>
+                        </span>
+                        </a>
+                        <ul class="treeview-menu">
+                            <% guilds.forEach(guild => { %>
+                            <% if(guild.perm !== "unknow"){ %>
+                                <li><a href="stats/guild/<%= guild.id %>"><i class="fa fa-circle-o text-aqua"></i> <%= guild.name %></a></li>
+                            <% } %>
+                            <% }) %>
+                        </ul>
+                    </li>
+                </ul>
             </section>
             <!-- /.sidebar -->
-         </aside>
+            </aside>
          <!-- Content Wrapper. Contains page content -->
          <div class="content-wrapper">
             <!-- Content Header (Page header) -->
