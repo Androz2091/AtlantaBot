@@ -7,8 +7,8 @@ fs = require('fs'),
 klaw = require("klaw"),
 path = require("path"),
 readdir = promisify(require("fs").readdir),
-quickdb = require('quick.db');
-quickdb.init('./data/atlanta.sqlite');
+Quickdb = require('quick.db');
+Quickdb.init('./data/atlanta.sqlite');
 
 // Creates new class
 class Atlanta extends Client {
@@ -23,16 +23,16 @@ class Atlanta extends Client {
         this.functions = require('./utils/functions.js'); // Load the functions file
         this.dashboard = require('./website/dashboard/app.js'); // Load the dashboard
         this.databases = [ // Create tables (quick.db)
-            new quickdb.table('usersdata'),
-            new quickdb.table('serversdata'),
+            new Quickdb.Table('usersdata'),
+            new Quickdb.Table('serversdata'),
             { 
-                work: new quickdb.table('work'), 
-                rep: new quickdb.table('rep'),
-                xp: new quickdb.table('xp')
+                work: new Quickdb.Table('work'), 
+                rep: new Quickdb.Table('rep'),
+                xp: new Quickdb.Table('xp')
             },
-            new quickdb.table('remindme'),
-            new quickdb.table('stats'),
-            new quickdb.table('blacklist')
+            new Quickdb.Table('remindme'),
+            new Quickdb.Table('stats'),
+            new Quickdb.Table('blacklist')
         ],
         this.queues = new Collection(); // This collection will be used for the music
     }
