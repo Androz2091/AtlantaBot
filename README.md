@@ -29,16 +29,7 @@ Il est possible de lancer Atlanta depuis votre propre serveur. Pour qu'Atlanta f
 
 ### Node modules
 
-Pour installer les node modules, tapez `npm install`. Puis, il vous faudra modifier le module quick.db, pour ajouter la fonction `quickdb#init()` :
-
-- Allez jusqu'au dossier quickdb  
- `cd node_modules/quick.db/bin`
-- Supprimez l'ancien fichier handler.js  
-`rm -rf handler.js`
-- Téléchargez le nouveau fichier handler.js  
-`wget https://raw.githubusercontent.com/Androz2091/quick.db/glitch/bin/handler.js`
-
-Une fois cela fait, félicitations, vous avez correctement installé les node modules !
+Pour installer les node modules, tapez `npm install`. Une fois cela fait, si vous n'avez pas d'erreur, félicitations, vous avez correctement installé les node modules !
 
 ### Fichier de configuration
 
