@@ -2,14 +2,13 @@ var
 warn = "<:atlanta_warn:565212996565991425>",
 error = "<:atlanta_error:565212755804684318>",
 success = "<:atlanta_success:565212709591973896>",
-loading = "<a:atlanta_loading:565214530121105418>"
-
-var owner = "`Androz#2091`",
-yes = 'oui',
-no = 'non',
-botname = 'Atlanta',
-lang = 'fr',
-stats = [ 
+loading = "<a:atlanta_loading:565214530121105418>",
+owner = "`Androz#2091`",
+yes = "oui",
+no = "non",
+botname = "Atlanta",
+lang = "fr",
+stats = [
 	"<:stats:566982702704754715>",
 	"<:ram:566979302076448828>",
 	"<:version:566983129370460170>",
@@ -19,10 +18,10 @@ stats = [
 	":heart:"
 ],
 invite = [
-	'<:add:566991586182037525>',
-	'<:vote:566991799898472450>',
-	'<:help:566993906902761483>'
-]
+	"<:add:566991586182037525>",
+	"<:vote:566991799898472450>",
+	"<:help:566993906902761483>"
+];
 
 // This class is used to store languages strings
 
@@ -32,25 +31,25 @@ module.exports = class {
 
 			// Utils
 			PREFIX_INFO: (prefix) => `le préfixe de ce serveur est \`${prefix}\``,
-			YES: 'Oui',
-			NO : 'Non',
-			USER: `Utilisateur`,
-			TLEVEL: `Niveau`,
-			TREP: `Réputation`,
-			TCREDITS: `Crédits`,
-			WIN: `Victoire`,
-			LOOSE: `Perdu`,
-			PAGE: `Page`,
-			TOTAL_SERVERS: `Total serveurs`,
-			MEMBERS: `Membres`,
+			YES: "Oui",
+			NO : "Non",
+			USER: "Utilisateur",
+			TLEVEL: "Niveau",
+			TREP: "Réputation",
+			TCREDITS: "Crédits",
+			WIN: "Victoire",
+			LOOSE: "Perdu",
+			PAGE: "Page",
+			TOTAL_SERVERS: "Total serveurs",
+			MEMBERS: "Membres",
 			STATUS: {
 				"dnd":"Ne pas déranger",
 				"idle":"AFK (idle)",
 				"offline":"Déconnecté",
 				"online":"En ligne"
 			},
-			NO_REASON_PROVIDED: `pas de raison donnée`,
-			UNDEFINED: `Indéfini`,
+			NO_REASON_PROVIDED: "pas de raison donnée",
+			UNDEFINED: "Indéfini",
 
 			// ERROR MESSAGE
 			INHIBITOR_MISSING_BOT_PERMS: (perms) => `${error} | J'ai besoin des permissions suivantes pour effectuer cette commande : \`${perms}\``,
@@ -77,54 +76,54 @@ module.exports = class {
 			NUMBER_1_10: `${error} Veuillez indiquer un nombre valide entre 1 et 10 !`,
 			
 			// PING COMMAND
-			PING_DESCRIPTION: 'Affiche la latence du bot',
+			PING_DESCRIPTION: "Affiche la latence du bot",
 			PING: (ms) => `${success} | Pong ! Ma latence est de \`${ms}\` ms !`,
 
 			// HELP COMMAND
-			HELP_DESCRIPTION: `Affiche l'aide des commandes ou l'aide d'une commande en particulier`,
+			HELP_DESCRIPTION: "Affiche l'aide des commandes ou l'aide d'une commande en particulier",
 			HELP_COMMAND_NOT_FOUND: (cmd) => `${error} | Commande ${cmd} introuvable !`,
-			HELP_DISABLED: `Cette commande est actuellement désactivée`,
+			HELP_DISABLED: "Cette commande est actuellement désactivée",
 			HELP_OWNER_ONLY: `Seul ${owner} peut effectuer cette commande !`,
 			HELP_REMINDER: (prefix) => `Pour avoir de l\'aide sur une commande tapez \`${prefix}help <commande>\` !`,
 			HELP_HEADING_2:(nb) => `Liste des commandes - (${nb})`,
-			HELP_HEADING: `Aide :`,
-			HELP_USAGE: `Utilisation :`,
-			HELP_EXAMPLES: `Exemples :`,
-			HELP_GROUP: `Groupe :`,
-			HELP_DESC: `Description :`,
-			HELP_ALIASES: `Alias :`,
-			HELP_PERMISSIONS: `Permissions :`,
+			HELP_HEADING: "Aide :",
+			HELP_USAGE: "Utilisation :",
+			HELP_EXAMPLES: "Exemples :",
+			HELP_GROUP: "Groupe :",
+			HELP_DESC: "Description :",
+			HELP_ALIASES: "Alias :",
+			HELP_PERMISSIONS: "Permissions :",
 			HELP_CUSTOMIZED: (cmd) => `${error} | La commande ${cmd} ne dispose pas d'aide car elle est personnalisée.`,
-			HELP_NO_ALIASES: `Aucun alias.`,
+			HELP_NO_ALIASES: "Aucun alias.",
 
 			// Conf command
-			CONFIGURATION_DESCRIPTION:'Affiche la configuration du serveur',
+			CONFIGURATION_DESCRIPTION:"Affiche la configuration du serveur",
 			PREFIX: "Préfixe",
 			IGNORED_CHANNELS: "Salons ignorés",
 			NO_IGNORED_CHANNELS: "Aucun salon ignoré",
-			AUTOROLE: 'Autôrole',
-			WELCOME: 'Bienvenue',
+			AUTOROLE: "Autôrole",
+			WELCOME: "Bienvenue",
 			CONFIGURATION_AUTOROLE_ENABLED: (data) => `Statut : **Activé**\nRôle : <@&${data.role}>`,
-			DISABLED_PLUGIN: `Statut : **Désactivé**`,
-			CONFIGURATION_WELCOME_ENABLED: (data) => `Statut : **Activé**\nSalon : <#${data.channel}>\nImage : ${(data.withImage == 'true') ? 'Oui' : 'Non'}`,
-			LEAVE: 'Au revoir',
-			CONFIGURATION_LEAVE_ENABLED: (data) => `Statut : **Activé**\nSalon : <#${data.channel}>\nImage : ${(data.withImage == 'true') ? 'Oui' : 'Non'}`,
-			SLOWMODE: 'Slowmode',
-			NO_SLOWMODE: `Aucun salon avec slowmode`,
-			CHANNELS: `Salons`,
-			CONF_LOGS: (data) => `Logs : ${data.channels.modlogs === 'false' ? 'Indéfini' : `<#${data.channels.modlogs}>`}\n`,
-			CONF_SUGG: (data) => `Suggestions : ${data.channels.suggestion === 'false' ? 'Indéfini' : `<#${data.channels.suggestion}>`}\n`,
-			CONF_WARNS: `Avertissements (warns)`,
-			CONF_DI: `Auto Modération`,
-			CONF_DI_MSG:(data) => `**Statut** : ${data.deleteinvite.status === 'enabled' ? 'Activé' : 'Désactivé'}\n**Salons ignorés** :\n${data.deleteinvite.channels.length > 0 ? data.deleteinvite.channels.map(ch => `<#${ch}>`) : `Aucun salon ignoré.`}`,
+			DISABLED_PLUGIN: "Statut : **Désactivé**",
+			CONFIGURATION_WELCOME_ENABLED: (data) => `Statut : **Activé**\nSalon : <#${data.channel}>\nImage : ${(data.withImage === "true") ? "Oui" : "Non"}`,
+			LEAVE: "Au revoir",
+			CONFIGURATION_LEAVE_ENABLED: (data) => `Statut : **Activé**\nSalon : <#${data.channel}>\nImage : ${(data.withImage === "true") ? "Oui" : "Non"}`,
+			SLOWMODE: "Slowmode",
+			NO_SLOWMODE: "Aucun salon avec slowmode",
+			CHANNELS: "Salons",
+			CONF_LOGS: (data) => `Logs : ${data.channels.modlogs === "false" ? "Indéfini" : `<#${data.channels.modlogs}>`}\n`,
+			CONF_SUGG: (data) => `Suggestions : ${data.channels.suggestion === "false" ? "Indéfini" : `<#${data.channels.suggestion}>`}\n`,
+			CONF_WARNS: "Avertissements (warns)",
+			CONF_DI: "Auto Modération",
+			CONF_DI_MSG:(data) => `**Statut** : ${data.deleteinvite.status === "enabled" ? "Activé" : "Désactivé"}\n**Salons ignorés** :\n${data.deleteinvite.channels.length > 0 ? data.deleteinvite.channels.map(ch => `<#${ch}>`) : `Aucun salon ignoré.`}`,
 
 			// Ignore command
-			IGNORE_DESCRIPTION: 'Désactive ou active les commandes dans le salon mentionné',
+			IGNORE_DESCRIPTION: "Désactive ou active les commandes dans le salon mentionné",
 			UNIGNORE_SUCESS: (channel) => `${success} | Les commandes sont maintenant autorisées dans ${channel} !`,
 			IGNORE_SUCESS: (channel) => `${warn} | Les commandes sont maintenant interdites dans ${channel} !`,
 
 			// Set prefix 
-			SETPREFIX_DESCRIPTION: 'Change le préfixe du serveur',
+			SETPREFIX_DESCRIPTION: "Change le préfixe du serveur",
 			VALID_PREFIX: `${error} | Veuillez entrer un préfixe valide !`,
 			PREFIX_CHARACTERS: `${error} | Le préfixe ne doit pas excéder les 5 caractères !`,
 			PREFIX_SUCCESS: (prefix) => `${success} | Le préfixe a bien été modifié ! Tapez \`${prefix}help\` pour voir la liste des commandes !`,
@@ -146,7 +145,7 @@ module.exports = class {
 			WELCOME_IMG: (name) => `Bienvenue sur ${name} !`,
 
 			// Leave cmd
-			LEAVE_DESCRIPTION: `Envoie un message d'au revoir dans un salon défini au préalable !`,
+			LEAVE_DESCRIPTION: "Envoie un message d'au revoir dans un salon défini au préalable !",
 			LEAVE_DISABLED: (prefix) => `${success} | Les messages d'au revoir viennent d'être désactivés ! Tapez \`${prefix}configuration\` pour voir la configuration actuelle !`,
 			LEAVE_TEST: `${success} | Test effectué !`,
 			LEAVE1: (author) => `Bonjour ${author} ! Dans quel salon s'enverra le message d'au revoir ? (mentionnez un salon)`,
@@ -158,95 +157,95 @@ module.exports = class {
 			LEAVE_IMG: (name) => `Départ de ${name}`,
 
 			// Slowmode
-			SLOWMODE_DESCRIPTION: `Définissez un cooldown dans un salon`,
+			SLOWMODE_DESCRIPTION: "Définissez un cooldown dans un salon",
 			SLOWMODE_DISABLED: (channel) => `${success} | Le slowmode a été désactivé dans le salon <#${channel}> !`,
 			SLOWMODE_ENABLED: (channel, time) => `${success} | Slowmode activé dans <#${channel}> avec un temps de ${time} !`,
 			SLOWMODE_PLEASE_WAIT: (time, channel) => `${error} | Le salon ${channel} est en slowmode ! Veuillez attendre ${time} pour pouvoir poster un nouveau message !`,
 
 			// Add command
-			ADDCOMMAND_DESCRIPTION: `Ajoutez une commande personnalisée au serveur !`,
+			ADDCOMMAND_DESCRIPTION: "Ajoutez une commande personnalisée au serveur !",
 			ADDCOMMAND_NAME: `${error} | Veuillez entrer un nom et une réponse à la commande !`,
 			ADDCOMMAND_ALREADY: (name) => `${error} | La commande ${name} existe déjà sur ${botname} !`,
 			ADDCOMMAND_ANSWER: `${error} | Veuillez entrer une réponse à cette commande !`,
 			ADDCOMMAND_SUCCESS: (cmd) => `${success} | La commande ${cmd} a bien été ajoutée au serveur !`,
 
 			// Del command
-			DELCOMMAND_DESCRIPTION: `Enlevez une commande personnalisée du serveur !`,
+			DELCOMMAND_DESCRIPTION: "Enlevez une commande personnalisée du serveur !",
 			DELCOMMAND_NAME: `${error} | Veuillez entrer le nom de la commande que vous souhaitez supprimer !`,
 			DELCOMMAND_EXIST: (cmd) => `${error} | La commande ${cmd} n'existe pas !`,
 			DELCOMMAND_SUCCESS: (cmd) => `${success} | La commande ${cmd} a bien été enlevée du serveur !`,
 
 			// ECONOMY
-			MONEY: `💰 Argent`,
-			REP: `🎩 Réputation`,
-			REGISTERED_AT: `📅 Enregistré`,
-			LEVEL: `📊 Niveau`,
-			EXP: `🔮 Expérience`,
-			BIRTHDATE: `🎂 Anniversaire`,
-			COUPLE: `❤️ Marié(e)`,
-			INVITER: `🤵 Inviteur`,
-			PSEUDO: `📝 Pseudo`,
-			BADGES: `🔥 Badges`,
+			MONEY: "💰 Argent",
+			REP: "🎩 Réputation",
+			REGISTERED_AT: "📅 Enregistré",
+			LEVEL: "📊 Niveau",
+			EXP: "🔮 Expérience",
+			BIRTHDATE: "🎂 Anniversaire",
+			COUPLE: "❤️ Marié(e)",
+			INVITER: "🤵 Inviteur",
+			PSEUDO: "📝 Pseudo",
+			BADGES: "🔥 Badges",
 
 			// Profile command
-			PROFILE_DESCRIPTION: `Affiche le profil du membre mentionné (ou de l'auteur du message)`,
+			PROFILE_DESCRIPTION: "Affiche le profil du membre mentionné (ou de l'auteur du message)",
 			PROFILE_HEADING: (username) => `Profil de ${username}`,
-			NO_BIO: `Aucune biographie enregistrée`,
+			NO_BIO: "Aucune biographie enregistrée",
 			DISPLAY_REP: (points) => `**${points}** point(s)`,
 			DISPLAY_CREDITS: (credits) => `**${credits}** crédit(s)`,
-			NO_PARTNER: `Célibataire`,
-			NO_BIRTHDATE: `Indéfini`,
-			NO_BADGE: `Aucun badge.`,
+			NO_PARTNER: "Célibataire",
+			NO_BIRTHDATE: "Indéfini",
+			NO_BADGE: "Aucun badge.",
 			
 			// work command
-			WORK_DESCRIPTION: `Travaillez et gagnez de l'argent !`,
+			WORK_DESCRIPTION: "Travaillez et gagnez de l'argent !",
 			WORK_COOLDOWN: (delay) => `${error} | Vous devez attendre ${delay} avant de pouvoir de nouveau travailler !`,
-			SALARY_CLAIMED: `Salaire`,
-			SALARY_CLAIMED2: `200 crédits ajoutés à votre compte !`,
+			SALARY_CLAIMED: "Salaire",
+			SALARY_CLAIMED2: "200 crédits ajoutés à votre compte !",
 
 			// Eval
-			EVAL_DESCRIPTION: `Exécute le code`,
+			EVAL_DESCRIPTION: "Exécute le code",
 
 			// Get conf command
-			GETCONF_DESCRIPTION: `Récupère la configuration d'un serveur !`,
+			GETCONF_DESCRIPTION: "Récupère la configuration d'un serveur !",
 			GETCONF_NO_CONF: `${error} | Ce serveur ne possède pas de configuration car il n'a jamais ajouté ${botname} !`,
 
 			// Get invite command
-			GETINVITE_DESCRIPTION: `Génère une invitation vers le serveur en question. Veillez à faire bon usage de cette commande.`,
+			GETINVITE_DESCRIPTION: "Génère une invitation vers le serveur en question. Veillez à faire bon usage de cette commande.",
 			GETINVITE_ERROR: `${error} | Je ne peux pas créer d'invitations sur ce serveur !`,
 			GETINVITE_NO_GUILD: `${error} | Je ne suis pas sur ce serveur !`,
 
 			// Rep command
-			REP_DESCRIPTION: `Donnez un point de réputation à un membre !`,
+			REP_DESCRIPTION: "Donnez un point de réputation à un membre !",
 			REP_COOLDOWN: (delai) => `${error} | Vous devez attendre ${delai} avant de pouvoir de nouveau donner un point de réputation !`,
 			REP_BOT: `${error} | Vous ne pouvez pas donner un point de réputation à un bot !`,
 			REP_SELF: `${error} | Vous ne pouvez pas vous donner vous-même un point de réputation !`,
 			REP_SUCCESS: (tag) => `${success} | Vous avez bien donné un point de réputation à **${tag}** !`,
 
 			// Setbio command
-			SETBIO_DESCRIPTION: `Changez la description qui apparaitra sur votre profil !`,
+			SETBIO_DESCRIPTION: "Changez la description qui apparaitra sur votre profil !",
 			SETBIO_MISSING_DESCRIPTION : `${error} | Veuillez entrer une description valide !`,
 			SETBIO_100: `${error} | Votre biographie ne doit pas excéder les 100 caractères !`,
 			SETBIO_SUCCESS: `${success} | Votre biographie vient d'être modifiée !`,
 
 			// credits command
-			CREDITS_DESCRIPTION: `Affiche vos crédits`,
+			CREDITS_DESCRIPTION: "Affiche vos crédits",
 			CREDITS_HEADING: (username) => `Crédits de ${username}`,
 			CREDITS_CONTENT: (credits, username) => `Actuellement **${credits}** crédits sur le compte de **${username}** !`,
 
 			// leaderboard command
-			LEADERBOARD_DESCRIPTION: `Affiche les utilisateurs qui dispose du plus de crédits, de niveaux ou de points de réputation !`,
+			LEADERBOARD_DESCRIPTION: "Affiche les utilisateurs qui dispose du plus de crédits, de niveaux ou de points de réputation !",
 			LEADERBOARD_TYPE: `${error} | Veuillez entrer un type de leaderboard ! (\`credits\`, \`levels\` ou \`rep\`)`,
 
 			// Pay command
-			PAY_DESCRIPTION: `Payez un membre avec des crédits !`,
+			PAY_DESCRIPTION: "Payez un membre avec des crédits !",
 			PAY_SELF: `${error} | Vous ne payez pas vous payez vous-même !`,
 			PAY_AMOUNT: (username) => `${error} | Vous devez entrer un montant à verser à **${username}** !`,
 			PAY_AMOUNT_TO_HIGH: (amount, username) => `${error} | Vous ne disposez pas d\'assez de crédits pour verser ${amount} crédits à ${username} !`,
 			PAY_SUCCESS: (amount, username) => `${success} | Vous avez versé ${amount} crédits à ${username} !`,
 
 			// Birthdate command
-			BIRTHDATE_DESCRIPTION: `Définissez la date de votre anniversaire (qui apparaitre sur votre profil)`,
+			BIRTHDATE_DESCRIPTION: "Définissez la date de votre anniversaire (qui apparaitre sur votre profil)",
 			BIRTHDATE_VALID_DATE: `${error} | Veuillez entrer une date valide ! Par exemple 01/12/2000`,
 			BIRTHDATE_INVALID_DATE2: `${error} | Vous avez entrer une date invalide. Rappel : le format de la date doit être : Jour/Mois/Année. Par exemple, 01/12/2000 pour le premier décembre 2000.`,
 			BIRTHDATE_INVALID_DATE3: `${error} |  Vous avez entrer une date invalide (ou la date indiquée n'existe pas). Rappel : le format de la date doit être : Jour/Mois/Année. Par exemple, 01/12/2000 pour le premier décembre 2000.`,
@@ -255,7 +254,7 @@ module.exports = class {
 			BIRTHDATE_TOO_LOW: `${error} | Plus de 80 ans ? :eyes:`,
 			
 			// Weegind command
-			WEEDING_DESCRIPTION: `Mariez-vous avec la personne de votre choix !`,
+			WEEDING_DESCRIPTION: "Mariez-vous avec la personne de votre choix !",
 			WEEDING_AUTHOR_ALREADY: (prefix) => `${error} | Vous êtes déjà marié(e) ! Utilisez d'abord \`${prefix}divorce\` pour divorcer`,
 			WEEDING_MEMBER_ALREADY: (username) => `${error} | La place est prise compagnon ! **${username}** est déjà marié(e) !`,
 			WEEDING_AUTHOR_PENDING: (username) => `${error} | Vous avez déjà une demande en cours auprès de **${username}** !`,
@@ -269,18 +268,18 @@ module.exports = class {
 			WEEDING_SELF: `${error} | Vous ne pouvez pas vous épouser vous-même !`,
 
 			// Divorce command
-			DIVORCE_DESCRIPTION: `Divorcez avec la personne avec qui vous êtes actuellement marié(e) !`,
+			DIVORCE_DESCRIPTION: "Divorcez avec la personne avec qui vous êtes actuellement marié(e) !",
 			DIVORCE_NOT_WEEDED: `${error} | Vous n'êtes actuellement pas marié(e) !`,
 			DIVORCE_SUCCESS: (username) => `${success} | Vous venez de divorcer avec **${username}** !`,
 
 			// Slots command
-			SLOTS_DESCRIPTION: `Un équivalent au Casino !`,
+			SLOTS_DESCRIPTION: "Un équivalent au Casino !",
 			SLOTS_TOO_HIGH: (credits) => `${error} | Vous ne disposez pas de ${credits} crédit(s).`,
 			SLOTS_LOOSE: (amount, username) => `**${username}** a utilisé ${amount} crédit(s) et a tout perdu.`,
 			SLOTS_WIN: (text, amount, won, username) => `${text}**${username}** a utilisé ${amount} crédit(s) et a gagné ${won} crédit(s) !`,
 
 			// 8 ball command
-			EIGHTBALL_DESCRIPTION: `Je vous dis la vérité`,
+			EIGHTBALL_DESCRIPTION: "Je vous dis la vérité",
 			EIGHTBALL_QUESTION: `${error} | Veuillez entrer une question valide !`,
 			EIGHTBALL_QUESTIONS: [
 				"j'en suis certain.",
@@ -302,25 +301,25 @@ module.exports = class {
 			],
 
 			// ascii command
-			ASCII_DESCRIPTION: `Transforme votre texte en caractères ascii !`,
+			ASCII_DESCRIPTION: "Transforme votre texte en caractères ascii !",
 			ASCII_TEXT: `${error} | Veuillez entrer un texte valide (inférieur à 20 caractères) !`,
 
 			// badge command
-			BADGE_DESCRIPTION: `Achetez des badges qui apparaîtront sur votre profil !`,
-			BADGE_HEADING: `Badges Atlanta`,
+			BADGE_DESCRIPTION: "Achetez des badges qui apparaîtront sur votre profil !",
+			BADGE_HEADING: "Badges Atlanta",
 			BADGE_DESCRIPTION: (prefix) => `Pour acheter un badge, tapez \`${prefix}badge [nom-du-badge]\``,
 			BADGE_FORMAT: (badge) => `Badge : ${badge.str}\nNom : ${badge.name}\nPrix : ${badge.price} crédits\n--------\n`,
 			BADGE_FORMAT_ALREADY: (badge) => `Badge : ${badge.str}\nNom : ${badge.name}\nDéjà acheté (${badge.price} crédits)\n--------\n`,
-			BADGE_GAMES: `Jeux`,
-			BADGE_FLAGS: `Pays`,
-			BADGE_OTHERS: `Autre`,
+			BADGE_GAMES: "Jeux",
+			BADGE_FLAGS: "Pays",
+			BADGE_OTHERS: "Autre",
 			BADGE_404: (text) => `${error} | Aucun badge trouvé pour \`${text}\``,
 			BADGE_SUCCESS: (badge) => `${success} | Vous venez d'acheter le badge ${badge.name} (${badge.str}) pour ${badge.price} crédits !`,
 			BADGE_PRICE: `${error} | Vous n'avez pas assez de crédits pour acheter ce badge !`,
 			BADGE_ALREADY: `${error} | Vous possédez déjà ce badge !`,
 
 			// findwords command
-			FINDWORDS_DESCRIPTION: `Lance une partie de findwords, un jeu ou vous devez trouver des mots !`,
+			FINDWORDS_DESCRIPTION: "Lance une partie de findwords, un jeu ou vous devez trouver des mots !",
 			FINDWORDS_TIMER: `${warn} | La partie commence dans 10 secondes !`,
 			FINDWORDS_20S: (word) => `${warn} | 20 secondes pour trouver un mot contenant "**${word}**" !`,
 			FINWORDS_INVALID_WORD: (member) => `${error} | ${member} ton mot est invalide !`,
@@ -331,12 +330,12 @@ module.exports = class {
 			FINDWORDS_END: (member) => `${member} gagne 15 crédits ! :tada:`,
 
 			// Lovecalc
-			LOVECALC_DESCRIPTION: `Combien d'amour y a t'il entre deux personnes ? *Ceci est une commande fun, a ne pas prendre au sérieux*`,
+			LOVECALC_DESCRIPTION: "Combien d'amour y a t'il entre deux personnes ? *Ceci est une commande fun, a ne pas prendre au sérieux*",
 			LOVECALC_MENTIONS: `${error} | Vous devez mentionner deux membres !`,
 			LOVECALC_TEXT: (percent, username1, username2) => `Il y a **${percent}%** d'amour entre **${username1}** et **${username2}** !`,
 
 			// Number command
-			NUMBER_DESCRIPTION: `Trouvez le nombre que j'ai choisi !`,
+			NUMBER_DESCRIPTION: "Trouvez le nombre que j'ai choisi !",
 			NUMBER_START: `${warn} | Nombre déterminé, vous pouvez commencer !`,
 			NUMBER_HIGHER: (number, author) => `${author} | Le nombre est plus **grand** que \`${number}\` !`,
 			NUMBER_SMALLER: (number, author) => `${author} | Le nombre est plus **petit** que \`${number}\` !`,
@@ -345,38 +344,38 @@ module.exports = class {
 			NUMBER_LOOSE: (number) => `${error} | Personne n'a réussi à trouver le nombre ! C'était ${number} !`,
 
 			// Random command
-			RANDOM_DESCRIPTION: `Tire aléatoirement un des choix que vous me donner !`,
+			RANDOM_DESCRIPTION: "Tire aléatoirement un des choix que vous me donner !",
 			RANDOM_2_CHOICES: `${error} | Vous devez entrer plus de deux choix !`,
 			RANDOM_CHOOSED: `${success} | Voici mon choix :`,
 			RANDOM_WAIT: `${loading} | Choix en cours...`,
 			RANDOM_BLANK: `${error} | Un de vos choix semble être vide... Veuillez réessayer !`,
 
 			// Lmg command
-			LMG_DESCRIPTION: `Renvoie un lien lmgtfy pour la recherche indiquée !`,
+			LMG_DESCRIPTION: "Renvoie un lien lmgtfy pour la recherche indiquée !",
 			LMG_SEARCH: `${error} | Vous devez préciser une recherche !`,
 
 			// flip command
-			FLIP_DESCRIPTION: `Je lance les dés pour vous !`,
-			FLIP_PILE: `:game_die: | C'est **pile** !`,
-			FLIP_FACE: `:game_die: | C'est **face** !`,
+			FLIP_DESCRIPTION: "Je lance les dés pour vous !",
+			FLIP_PILE: ":game_die: | C'est **pile** !",
+			FLIP_FACE: ":game_die: | C'est **face** !",
 
 			// tweet command
-			TWEET_DESCRIPTION: `Génère un tweet d'une personne de votre choix sur Twitter grâce à l'api nekobot !`,
+			TWEET_DESCRIPTION: "Génère un tweet d'une personne de votre choix sur Twitter grâce à l'api nekobot !",
 			TWEET_USERNAME: `${error} | Vous devez entrer le pseudo twitter de quelqu'un !`,
 			TWEET_TEXT: `${error} | Vous devez entrer un message !`,
 			TWEET_TXT: (user) => `Nouveau tweet publié par ${user} :`,
 
 			// qrcode
-			QRCODE_DESCRIPTION: `Affiche un QR Code avec votre mot !`,
+			QRCODE_DESCRIPTION: "Affiche un QR Code avec votre mot !",
 			QRCODE_TEXT: `${error} | Vous devez entrer un texte !`,
 
 			// hastebin command
-			HASTEBIN_DESCRIPTION: `Upload votre texte sur hastebin !`,
+			HASTEBIN_DESCRIPTION: "Upload votre texte sur hastebin !",
 			HASTEBIN_TEXT: `${error} | Vous devez entrer un texte !`,
 			HASTEBIN_SUCCESS: (url) => `${success} | Votre texte a été uploadé sur hastebin ! Voici votre lien : ${url}`,
 
 			// stats command
-			STATS_DESCRIPTION: `Affiche les stats du bot !`,
+			STATS_DESCRIPTION: "Affiche les stats du bot !",
 			STATS_HEADING: `Stats d'${botname}`,
 			STATS_DESC: `${botname} est un bot open source développé par ${owner} !`,
 			STATS_HEADERS:[
@@ -391,29 +390,29 @@ module.exports = class {
 			STATS_STATS: (serv, users) => `\`Serveurs : ${serv}\`\n\`Utilisateurs : ${users}\``,
 			STATS_ONLINE: (time) => `Depuis ${time}`,
 			STATS_VC: (nb) => `Musique en cours sur \`${nb}\` serveurs`,
-			STATS_CREDITS: `Merci à \`https://icones8.fr/icons/\`, tous les emojis (ou presque) viennent de ce site !`,
+			STATS_CREDITS: "Merci à \`https://icones8.fr/icons/\`, tous les emojis (ou presque) viennent de ce site !",
 			STATS_LINKS: (url) => `[Github](https://github.com/Androz2091) | [Inviter Atlanta](https://discordapp.com/oauth2/authorize?client_id=563420709423153152&scope=bot&permissions=2146958847) | [Support](${url}) | [Don](https://paypal.me/andr0z)`,
 
 			// invite command
 			INVITE_DESCRIPTION: `Affiche les liens d'${botname} !`,
-			INVITE_HEADING: `Liens principaux`,
+			INVITE_HEADING: "Liens principaux",
 			INVITE_DESC: (prefix) => `Tapez \`${prefix}invite copy\` pour pouvoir copier le lien !`,
 			INVITE_FIELD1: `${invite[0]} Inviter ${botname}`,
 			INVITE_FIELD2: `${invite[1]} Voter pour ${botname}`,
 			INVITE_FIELD3: `${invite[2]} Support`,
 
 			// translate command
-			TRANSLATE_DESCRIPTION: `Je traduis votre texte !`,
+			TRANSLATE_DESCRIPTION: "Je traduis votre texte !",
 			TRANSLATE_LANG: (prefix) => `${error} | Veuillez entrer une langue ! Pour afficher la liste des langues, tapez \`${prefix}translate langs-list\` !`,
 			TRANSLATE_LANG1: (prefix, lang) => `${error} | La langue \`${lang}\` n'existe pas ! Pour afficher la liste des langues, tapez \`${prefix}translate langs-list\` !`,
 			TRANSLATE_LANGS: `${success} | La liste des langues vient de vous être envoyé par messages privés !`,
 			TRANSLATE_MSG: `${error} | Veuillez entrer un texte à traduire !`,
 
 			// servers list command
-			SERVERS_LIST_DESCRIPTION: `Affiche mes serveurs !`,
+			SERVERS_LIST_DESCRIPTION: "Affiche mes serveurs !",
 
 			// userinfo command
-			USERINFO_DESCRIPTION: `Affiche des informations sur l'utilisateur !`,
+			USERINFO_DESCRIPTION: "Affiche des informations sur l'utilisateur !",
 			USERINFO_ID: (id) => `${error} | Aucun utilisateur sur Discord ne possède l'ID \`${id}\` !`,
 			USERINFO_FIELDS: [
 				":man: Pseudo",
@@ -430,17 +429,17 @@ module.exports = class {
 				"<:roles:567028552256454657> Rôles",
 				"<:color:567030657545404446> Couleur"
 			],
-			USERINFO_NO_GAME: `Pas de jeu`,
-			USERINFO_NO_ROLE: `Aucun rôle`,
+			USERINFO_NO_GAME: "Pas de jeu",
+			USERINFO_NO_ROLE: "Aucun rôle",
 			USERINFO_MORE_ROLES: (nb) => ` et ${nb} autres rôles`,
-			USERINFO_NO_NICKNAME: `Pas de surnom`,
+			USERINFO_NO_NICKNAME: "Pas de surnom",
 
 			// play command
-			PLAY_DESCRIPTION: `Joue de la musique !`,
+			PLAY_DESCRIPTION: "Joue de la musique !",
 			PLAY_CANT_JOIN: `${error} | Je ne peux pas rentrer dans le salon vocal !`,
 			PLAY_ADDED_TO_QUEUE: (title) => `<:add:566991586182037525> | ${title} a été ajouté à la queue !`,
 			PLAY_NO_SONG: `${error} | Plus aucune musique dans la queue !`,
-			PLAY_PLAYING: `Lecture en cours`,
+			PLAY_PLAYING: "Lecture en cours",
 			PLAY_UTILS: [
 				"<:title:567363421776117778> Titre",
 				"<:rap:567363851922833409> Chanteur",
@@ -458,32 +457,32 @@ module.exports = class {
 			PLAY_NOT_PLAYING: `${error} | Aucune musique en cours !`,
 
 			// stop command
-			STOP_DESCRIPTION: `Arrête la musique en cours !`,
+			STOP_DESCRIPTION: "Arrête la musique en cours !",
 			STOP_SUCCESS: `${success} | Je viens d'arrêter la musique !`,
 
 			// queue command
-			QUEUE_DESCRIPTION: `Affiche la queue`,
-			QUEUE_HEADER: `<:queue:567387470837317662> Playlist`,
+			QUEUE_DESCRIPTION: "Affiche la queue",
+			QUEUE_HEADER: "<:queue:567387470837317662> Playlist",
 
 			// np command 
-			NP_DESCRIPTION: `Affiche la musique actuelle !`,
+			NP_DESCRIPTION: "Affiche la musique actuelle !",
 
 			// pause command 
-			PAUSE_DESCRIPTION: `Met votre musique en pause !`,
+			PAUSE_DESCRIPTION: "Met votre musique en pause !",
 			PAUSE_ALREADY: `${error} | La musique est déjà en pause !`,
 			PAUSE_SUCCESS: (prefix) => `${success} | La musique est sur pause (utilise \`${prefix}resume\` pour la relancer)`,
 
 			// resume command
-			RESUME_DESCRIPTION: `Met votre musique sur play !`,
+			RESUME_DESCRIPTION: "Met votre musique sur play !",
 			RESUME_NOT_PAUSED: `${error} | La musique n'est pas sur pause !`,
 			RESUME_SUCCESS: `${success} | La musique est de nouveau en cours de lecture !`,
 
 			// skip command
-			SKIP_DESCRIPTION: `Passe à la chanson suivante !`,
+			SKIP_DESCRIPTION: "Passe à la chanson suivante !",
 			SKIP_SUCCESS: `${success} | Je viens de changer la chanson !`,
 
 			// ban command
-			BAN_DESCRIPTION: `Banni le membre mentionné !`,
+			BAN_DESCRIPTION: "Banni le membre mentionné !",
 			BAN_ID: (id) => `${error} | Aucun utilisateur sur Discord ne possède l'ID \`${id}\` !`,
 			BAN_ALREADY_BANNED: (user) => `${error} | **${user.username}** est déjà banni !`,
 			BAN_ERROR: `${error} | Une erreur est survenue... vérifiez que j'ai bien les permissions de bannir ce membre est réessayez !`,
@@ -500,40 +499,40 @@ module.exports = class {
 				`Unmute | Cas #${cas}`
 			],
 			MODLOGS_UTILS: [
-				`Membre`,
-				`Modérateur`,
-				`Raison`,
-				`Temps`
+				"Membre",
+				"Modérateur",
+				"Raison",
+				"Temps"
 			],
 
 			// setlogs command
-			SETLOGS_DESCRIPTION: `Définissez le salon des logs !`,
+			SETLOGS_DESCRIPTION: "Définissez le salon des logs !",
 			SETLOGS_SUCCESS: (id) => `${success} | Salon des logs défini sur <#${id}> !`,
 
 			// kick command
-			KICK_DESCRIPTION: `Expulse le membre mentionné !`,
+			KICK_DESCRIPTION: "Expulse le membre mentionné !",
 			KICK_ERROR:  `${error} | Une erreur est survenue... vérifiez que j'ai bien les permissions d'expulser ce membre est réessayez !`,
 			KICK_DM: (user, msg, reason) => `${error} | Bonjour <@${user.id}>,\nVous venez d'être expulsé de **${msg.guild.name}** par **${msg.author.tag}** pour **${reason}** !`,
 			KICK_SUCCESS: (user, msg, reason) => `${success} | **${user.username}** vient d'être expulsé de **${msg.guild.name}** par **${msg.author.tag}** pour **${reason}** !`,
 
 			// Unban command
-			UNBAN_DESCRIPTION: `Unban l'utilisateur du serveur !`,
+			UNBAN_DESCRIPTION: "Unban l'utilisateur du serveur !",
 			UNBAN_ID: (id) => `${error} | Aucun utilisateur sur Discord ne possède l'ID \`${id}\` !`,
 			UNBAN_NOT_BANNED: (user) => `${error} | **${user.username}** n'est pas banni !`,
 			UNBAN_SUCCESS: (user, msg) => `${success} | **${user.username}** vient d'être débanni de **${msg.guild.name}** !`,
 
 			// clear command
-			CLEAR_DESCRIPTION: `Supprime un nombre de message très rapidement !`,
+			CLEAR_DESCRIPTION: "Supprime un nombre de message très rapidement !",
 			CLEAR_AMOUNT: `${error} | Vous devez préciser un nombre de messages à supprimer !`,
 			CLEAR_CLEANED1: (amount, member) => `${success} | **${amount}** messages de **${member.user.tag}** supprimés !`,
 			CLEAR_CLEANED2: (amount) => `${success} | **${amount}** messages supprimés !`,
 
 			// Checkinvites command
-			CHECKINVITES_DESCRIPTION: `Vérifie le jeu de chaque membre pour voir s'il n'y a pas une publicité dedans !`,
-			CHECKINVITES_NOBODY: `Après une vérification intense, personne ne semble posséder d'invitations discord dans son jeu !`,
+			CHECKINVITES_DESCRIPTION: "Vérifie le jeu de chaque membre pour voir s'il n'y a pas une publicité dedans !",
+			CHECKINVITES_NOBODY: "Après une vérification intense, personne ne semble posséder d'invitations discord dans son jeu !",
 
 			// setwarns command
-			SETWARNS_DESCRIPTION: `Définissez les sanctions qu'obtiendront les membres au bout d'un certain nombre de warns !`,
+			SETWARNS_DESCRIPTION: "Définissez les sanctions qu'obtiendront les membres au bout d'un certain nombre de warns !",
 			SETWARNS_USAGE: (prefix) => `${error} | Utilisation : ${prefix}setwarns 4 kick <= quand un membre atteindra les 4 warns, il sera kick.\n${prefix}setwarns 4 reset <= reset la sanction définie lorsqu'un membre atteint les 4 warns.`,
 			SETWARNS_ALREADY_A_SANCTION: (prefix, sanction, number) => `${error} | Une sanction (${sanction}) est déjà définie lorsqu\'un membre atteint les ${number} warns. Veuillez d\'abord taper \`${prefix}setwarns ${number} reset\` puis réessayez.`,
 			SETWARNS_SUCCESS: (prefix, sanction, number) => `${success} | Configuration enregistrée ! Lorsqu\'un membre aura atteint les ${number} warns, il sera ${sanction}. Tapez \`${prefix}configuration\` pour voir votre nouvelle configuration !`,
@@ -542,7 +541,7 @@ module.exports = class {
 			SETWARNS_SUCCESS_DELETE: (prefix, sanction, number) => `${success} | La sanction correspondant à ${number} warns (${sanction}) vient d'être supprimée ! Tapez \`${prefix}configuration\` pour voir votre nouvelle configuration !`,
 
 			// warn command
-			WARN_DESCRIPTION: `Averti un membre en messages privés !`,
+			WARN_DESCRIPTION: "Averti un membre en messages privés !",
 			WARN_REASON: `${error} | Veuillez entrer une raison !`,
 			WARN_AUTOBAN: (member, number) => `${success} | **${member.user.tag}** a été banni automatiquement car il avait plus de **${number}** warns !`,
 			WARN_AUTOKICK: (member, number) => `${success} | **${member.user.tag}** a été expulsé automatiquement car il avait plus de **${number}** warns !`,
@@ -550,28 +549,28 @@ module.exports = class {
 			WARN_SUCCESS: (member, reason) => `${success} | **${member.user.tag}** a été averti par messages privés pour **${reason}** !`,
 
 			// seewwarns command
-			SEEWARNS_DESCRIPTION: `Affiche les avertissements (warns) d'un membre !`,
-			SEEWARNS_NO_WARN: `Aucun avertissement enregistré.`,
+			SEEWARNS_DESCRIPTION: "Affiche les avertissements (warns) d'un membre !",
+			SEEWARNS_NO_WARN: "Aucun avertissement enregistré.",
 			SEEWARNS_HEADER: (tcase) => `Cas #${tcase}`,
 			SEEWARNS_MODERATOR: (warn) => `**Modérateur** : <@${warn.moderator}>`,
 			SEEWARNS_REASON: (warn) => `**Raison** : ${warn.reason}`,
 
 			// mute command
-			MUTE_DESCRIPTION: `Empêche le membre de parler pendant un certain temps !`,
+			MUTE_DESCRIPTION: "Empêche le membre de parler pendant un certain temps !",
 			MUTE_SUCCESS: (member, time, reason) => `${success} | **${member.user.tag}** est mute pendant **${time}** pour **${reason}** !`,
 			MUTE_DM: (message, time, reason) => `${error} | Vous êtes mute sur **${message.guild.name}** pendant **${time}** pour **${reason}** !`,
 
 			// sondage command
-			POLL_DESCRIPTION: `Envoie un sondage !`,
+			POLL_DESCRIPTION: "Envoie un sondage !",
 			POLL_QUESTION: `${error} | Vous devez entrer une question !`,
 			POLL_MENTION: `Souhaitez-vous ajouter une mention à votre message ? Répondez par "${yes}" ou "${no}" !`,
-			POLL_MENTION2: `Tapez une des réponses suivantes : \`every\` (pour une mention @ everyone) ou \`here\` (pour une mention @ here) !`,
+			POLL_MENTION2: "Tapez une des réponses suivantes : \`every\` (pour une mention @ everyone) ou \`here\` (pour une mention @ here) !",
 			POLL_TIMEOUT: `${error} | Temps écoulé ! Veuillez retaper la commande !`,
 			POLL_REACT: `Réagissez avec ${success} ou ${error} !`,
-			POLL_HEADING: `📊 Sondage :`,
+			POLL_HEADING: "📊 Sondage :",
 
 			// setafk command
-			SETAFK_DESCRIPTION: `Devenez AFK (les membres qui vous mentionneront recevront un message)`,
+			SETAFK_DESCRIPTION: "Devenez AFK (les membres qui vous mentionneront recevront un message)",
 			SETAFK_REASON: `${error} | Veuillez préciser la raison de votre afk !`,
 			SETAFK_SUCCESS: (reason) => `${success} | Vous êtes passé afk (raison : ${reason})`,
 			
@@ -580,7 +579,7 @@ module.exports = class {
 			AFK_IS_AFK: (member, reason) => `**${member.user.tag}** est actuellement afk pour \`${reason}\``,
 
 			// guildinfo command
-			GUILDINFO_DESCRIPTION: `Affiche des informations sur le serveur !`,
+			GUILDINFO_DESCRIPTION: "Affiche des informations sur le serveur !",
 			GUILDINFO_FIELDS:[
 				"<:title:567363421776117778> Nom",
 				"<:calendar:567019405767213096> Création",
@@ -591,39 +590,39 @@ module.exports = class {
 				"<:founder:568122623599443978> Fondateur"
 			],
 			GUILDINFO_MEMBERCOUNT: (members) => `${members.filter(m => !m.user.bot).size} membres | ${members.filter(m => m.user.bot).size} bots`,
-			GUILDINFO_NO_AFK: `Aucun salon AFK`,
+			GUILDINFO_NO_AFK: "Aucun salon AFK",
 			GUILDINFO_CHANNELS: (channels) => `${channels.filter(ch => ch.type === 'voice').size} vocaux | ${channels.filter(ch => ch.type === 'text').size} textuels | ${channels.filter(ch => ch.type === 'category').size} catégories`,
 
 			// invitations command
-			INVITATIONS_DESCRIPTION: `Affiche le nombre de personnes que vous avez invitées sur le serveur !`,
+			INVITATIONS_DESCRIPTION: "Affiche le nombre de personnes que vous avez invitées sur le serveur !",
 			INVITATIONS_NOBODY: `${error} | Vous n'avez invité personne sur le serveur !`,
 			INVITATIONS_CODE: (invite) => `**${invite.code}** (${invite.uses} utilisations) | ${invite.channel}\n`,
 			INVITATIONS_HEADING: (member, msg) => `Informations sur les invitations de ${member} sur ${msg.guild.name}`,
 			INVITATIONS_FIELDS: [
-				'👥 Personnes Invitées',
-				'🔑 Codes',
-				'membres'
+				"👥 Personnes Invitées",
+				"🔑 Codes",
+				"membres"
 			],
 
 			// remind me
-			REMINDME_DESCRIPTION: `Définissez un rappel !`,
+			REMINDME_DESCRIPTION: "Définissez un rappel !",
 			REMINDME_MESSAGE: `${error} | Vous devez entrer un message qui vous sera envoyé à la fin du temps !`,
 			REMINDME_SAVED: `${success} | Rappel correctement enregistré, vous recevrez un message à la fin du temps !`,
 
 			// someone command
-			SOMEONE_DESCRIPTION: `Tire un membre aléatoire sur le serveur !`,
+			SOMEONE_DESCRIPTION: "Tire un membre aléatoire sur le serveur !",
 
 			// unmute command
-			UNMUTE_DESCRIPTION: `Unmute un membre !`,
+			UNMUTE_DESCRIPTION: "Unmute un membre !",
 			UNMUTE_SUCCESS: (member) => `${success} | ${member} a maintenant les permissions d'écrire.`,
 
 			//minimize command
-			MINIMIZE_DESCRIPTION: `Raccourci votre lien !`,
+			MINIMIZE_DESCRIPTION: "Raccourci votre lien !",
 			MINIMIZE_ERROR: `${error} | URL incompatible avec le raccourcisseur d'URL.`,
 			MINIMIZE_URL: `${error} | Veuillez entrer une URL !`,
 
 			// Suggestion command
-			SUGGEST_DESCRIPTION: `Envoie votre suggestion dans le salon défini pour ça !`,
+			SUGGEST_DESCRIPTION: "Envoie votre suggestion dans le salon défini pour ça !",
 			SUGGEST_NO_CHANNEL: `${error} | Aucun salon de suggestion défini !`,
 			SUGGEST_SUGG: `${error} | Veuillez entrer une suggestion !`,
 			SUGGEST_HEADER: (user) => `Suggestion - ${user.tag}`,
@@ -635,43 +634,43 @@ module.exports = class {
 			SUGGEST_SUCCESS: (channel) => `${success} | Votre suggestion est en cours de vote dans ${channel} !`,
 
 			// setsuggests command
-			SETSUGGESTS_DESCRIPTION: `Définissez le salon des suggestions !`,
+			SETSUGGESTS_DESCRIPTION: "Définissez le salon des suggestions !",
 			SETSUGGESTS_SUCCESS: (channel) => `${success} | Le salon des suggestions est maintenant ${channel} !`,
 
 			// addemote command
-			ADDEMOTE_DESCRIPTION: `Ajout un émoji au serveur !`,
+			ADDEMOTE_DESCRIPTION: "Ajout un émoji au serveur !",
 			ADDEMOTE_NAME: `${error} | Veuillez indiquer le nom de l'émoji !`,
 			ADDEMOTE_URL: `${error} | Veuillez indiquer l'url de l'émoji !`,
 			ADDEMOTE_SUCCESS: (emote) => `${success} | Émoji ${emote.name} ajouté au serveur !`,
 			ADDEMOTE_ERROR: `${error} | L'URL vers l'image est invalide ou vous n'avez plus de place sur votre Discord !`,
 			
 			// automod command
-			AUTOMOD_DESCRIPTION: `Active ou désactive la suppression automatique des invitations discord`,
+			AUTOMOD_DESCRIPTION: "Active ou désactive la suppression automatique des invitations discord",
 			AUTOMOD_STATUS: `${error} | Veuillez entrer un statut valide ! (\`on\` ou \`off\`) !`,
 			AUTOMOD_SUCCESS: (prefix) => `${success} | Les invitations Discord seront automatiquement supprimées ! Si vous souhaitez ignorer un salon, tapez simplement \`${prefix}automod off #channel\` ! Cela désactivera l'auto modération dans le salon mentionné !`,
 			AUTOMOD_SUCCESS1: (channel) => `${success} | L'auto modération ne sera plus effectuée dans le salon ${channel} !`,
 			AUTOMOD_SUCCESS2: `${success} | Très bien ! L'auto modération n'est plus effective sur ce serveur !`,
 			AUTOMOD_MSG: (msg) => `${msg.author} | Votre message contenait une invitation Discord, il a donc était supprimé. Si c'était involontaire, vous pouvez rééditer votre message, il vous a été envoyé en message privé !`,
 
-			SETLANG_DESCRIPTION: `Change la langue du serveur!`,
+			SETLANG_DESCRIPTION: "Change la langue du serveur!",
 			SETLANG_LANG: `${error} | Veuillez entrer une langue valide (\`fr\` ou \`en\`) !`,
 
-			MINECRAFT_DESCRIPTION: `Affiche des informations sur le serveur Minecraft !`,
+			MINECRAFT_DESCRIPTION: "Affiche des informations sur le serveur Minecraft !",
 			MINECRAFT_IP: `${error} | Veuillez entrer une IP !`,
 			MINECRAFT_ERR1: `${error} | Une erreur est survenue lors de la requête à l'api...`,
 			MINECRAFT_IS_OFFLINE: `${error} | Ce serveur est hors ligne ou a bloquer les accès. Rappel : les serveurs MCPE ne sont pas pris en charge !`,
-			MINECRAFT_ONLINE: `En ligne`,
-			MINECRAFT_OFFLINE: `Hors ligne`,
+			MINECRAFT_ONLINE: "En ligne",
+			MINECRAFT_OFFLINE: "Hors ligne",
 			MINECRAFT_UTILS: (ip) => [
 				`Informations sur ${ip}`,
-				`<:version:566983129370460170> Version`,
-				`<:mc:569057345598914560> Actuellement connectés`,
-				`<:users:568121122391064606> Maximum`,
-				`<:online:567020241427890195> Statut`
+				"<:version:566983129370460170> Version",
+				"<:mc:569057345598914560> Actuellement connectés",
+				"<:users:568121122391064606> Maximum",
+				"<:online:567020241427890195> Statut"
 			],
 			MINECRAFT_PLAYERS: (nb) => `${nb} joueur(s)`,
 
-			FORTNITE_DESCRIPTION: `Affiche les stats Fortnite d'un joueur !`,
+			FORTNITE_DESCRIPTION: "Affiche les stats Fortnite d'un joueur !",
 			FORTNITE_PLATFORM: `${error} | Entrez une plateforme valide : \`psn\`, \`pc\` ou \`xbl\` !`,
 			FORTNITE_USERNAME: `${error} | Entrez un pseudo epic games valide !`,
 			FORTNITE_404: (platform, username) => `${error} | Joueur \`${username}\` introuvable sur la plateforme \`${platform}\` !`,
@@ -698,27 +697,27 @@ module.exports = class {
 				<:founder:568122623599443978> Victoire(s) : ${data.stats.lifetime.wins}
 			`,
 
-			QUOTE_DESCRIPTION: `Citez un message dans le salon !`,
+			QUOTE_DESCRIPTION: "Citez un message dans le salon !",
 			QUOTE_404: `${error} | Aucun message ne possède cet ID.`,
 			QUOTE_404_1: (channel) => `${error} | Aucun salon trouvé avec l'ID ${channel} !`,
 
-			JOKE_DESCRIPTION: `Envoie une blague aléatoire !`,
+			JOKE_DESCRIPTION: "Envoie une blague aléatoire !",
 
-			BLACKLIST_DESC: `Ban un serv ou un utilisateur d'Atlanta !`,
+			BLACKLIST_DESC: "Ban un serv ou un utilisateur d'Atlanta !",
 			BLACKLIST_ARGS: `${error} | Vous devez entrer un type et une ID !`,
 			BLACKLIST_GUILD: (id) => `${success} | Le serveur ${id} est maintenant blacklist !`,
 			BLACKLIST_ID: (id) => `${error} | Aucun utilisateur sur Discord ne possède l'ID \`${id}\` !`,
 			BLACKLIST_USER: (id) => `${success} | Utilisateur **${id}** blacklist !`,
 			BLACKLIST_BANNED_USER: (reason) => `${error} | Vous êtes blacklist d'Atlanta pour la raison suivante : \`${reason}\``,
 
-			PURGE_DESCRIPTION: `Expulse les membres inactifs !`,
+			PURGE_DESCRIPTION: "Expulse les membres inactifs !",
 			PURGE_DAYS: `${error} | Veuillez préciser un nombre de jours !`,
 			PURGE_CONFIRMATION: (members) => `${warn} | ${members} membres seront expulsés ! Pour confirmer, tapez \`confirm\` !`,
 			PURGE_TIMEOUT: `${error} | Temps écoulé ! Veuillez retaper la commande !`,
 			PURGE_SUCCESS: (members) => `${success} | ${members} membres expulsés !`,
 
-			GITHUB_DESCRIPTION: `Affiche les informations du github d'Atlanta !`,
-			GITHUB_DESC: `[Cliquez ici pour accéder au github d'Atlanta](https://github.com/Androz2091/AtlantaBot)`,
+			GITHUB_DESCRIPTION: "Affiche les informations du github d'Atlanta !",
+			GITHUB_DESC: "[Cliquez ici pour accéder au github d'Atlanta](https://github.com/Androz2091/AtlantaBot)",
 			GITHUB_HEADERS: [
 				"Stars :star:",
 				"Forks :tools:",
@@ -740,7 +739,7 @@ module.exports = class {
 		const value = this.language[term];
 		/* eslint-disable new-cap */
 		switch (typeof value) {
-			case 'function': return value(...args);
+			case "function": return value(...args);
 			default: return value;
 		}
 	}
@@ -763,8 +762,8 @@ module.exports = class {
         var hour = pdate.getHours();
         var minute = pdate.getMinutes();
 
-		var thedate = (isLongDate) ? day + ' ' + monthNames[monthIndex] + ' ' + year + " à " + hour + "h" + minute 
-		: thedate = day + ' ' + monthNames[monthIndex] + ' ' + year;
+		var thedate = (isLongDate) ? day + " " + monthNames[monthIndex] + " " + year + " à " + hour + "h" + minute 
+		: thedate = day + " " + monthNames[monthIndex] + " " + year;
         return thedate;
 	}
 	
@@ -778,7 +777,7 @@ module.exports = class {
 		d = Math.floor(h / 24);
 		h = h % 24;
 		h += d * 24;
-		return h + ' heure(s) ' + m + ' minute(s) ' + s + ' seconde(s)';
+		return h + " heure(s) " + m + " minute(s) " + s + " seconde(s)";
 	}
 
 }
