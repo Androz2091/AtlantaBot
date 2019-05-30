@@ -155,6 +155,7 @@ module.exports = class {
         var command = args.shift();
 
         if(guild_data.commands[command]){
+            if(guild_data.ignored_channels.includes(message.channel.id)) return (message.delete()) && (message.author.send(message.language.get('CHANNEL_IGNORED', (message.channel))));
             return message.channel.send(guild_data.commands[command]);
         }
 
