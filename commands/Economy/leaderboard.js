@@ -45,7 +45,7 @@ class Leaderboard extends Command {
             "credits",
             "rep",
             "reputation",
-            "level",
+            "levels",
             "lvl",
             "crédits"
         ]
