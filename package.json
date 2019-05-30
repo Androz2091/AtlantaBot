@@ -30,7 +30,6 @@
     "express-session": "^1.16.1",
     "express-useragent": "^1.0.12",
     "ffmpeg": "0.0.4",
-    "ffmpeg-binaries": "^4.0.0",
     "fluent-ffmpeg": "^2.1.2",
     "fortnite": "^4.3.2",
     "generate-password": "^1.4.1",
