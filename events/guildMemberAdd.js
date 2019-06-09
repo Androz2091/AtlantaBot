@@ -28,7 +28,7 @@ async run (member) {
                 const { body } = await require('snekfetch').get(encodeURI(`https://dev.anidiots.guide/greetings/unified?type=welcome&version=gearz&message=${text}&bot=${member.user.bot}&avatar=${member.user.displayAvatarURL}&username=${member.user.username}&discriminator=${member.user.discriminator}&guildName=${member.guild.name}&memberCount=${member.guild.memberCount}`)).set("Authorization", this.client.config.apiKeys.anidiots);
                 channel.send(message, {
                     files: [{
-                        attachment: Buffer.from(body.data),
+                        attachment: Buffer.from(body),
                         name: "wlc.png"
                     }]
                 });
