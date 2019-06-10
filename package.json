@@ -21,6 +21,7 @@
     "ascii-art": "^1.5.1",
     "ascii-table": "0.0.9",
     "body-parser": "^1.19.0",
+    "canvas": "^2.5.0",
     "chalk": "^2.4.2",
     "cookie-parser": "^1.4.4",
     "date-exists": "^1.0.1",
