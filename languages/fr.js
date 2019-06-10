@@ -391,7 +391,7 @@ module.exports = class {
 			STATS_ONLINE: (time) => `Depuis ${time}`,
 			STATS_VC: (nb) => `Musique en cours sur \`${nb}\` serveurs`,
 			STATS_CREDITS: "Merci à \`https://icones8.fr/icons/\`, tous les emojis (ou presque) viennent de ce site !",
-			STATS_LINKS: (url) => `[Github](https://github.com/Androz2091) | [Inviter Atlanta](https://discordapp.com/oauth2/authorize?client_id=563420709423153152&scope=bot&permissions=2146958847) | [Support](${url}) | [Don](https://paypal.me/andr0z)`,
+			STATS_LINKS: (url, id) => `[Github](https://github.com/Androz2091) | [Inviter Atlanta](https://discordapp.com/oauth2/authorize?client_id=${id}&scope=bot&permissions=2146958847) | [Support](${url}) | [Don](https://paypal.me/andr0z)`,
 
 			// invite command
 			INVITE_DESCRIPTION: `Affiche les liens d'${botname} !`,

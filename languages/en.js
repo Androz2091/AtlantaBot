@@ -392,7 +392,7 @@ module.exports = class {
 			STATS_ONLINE: (time) => `From ${time}`,
 			STATS_VC: (nb) => `Music in progress on \`${nb}\` guilds`,
 			STATS_CREDITS: `Thanks to \`https://icones8.fr/icons/\`, all the emojis (or almost) come from this site!`,
-			STATS_LINKS: (url) => `[Github](https://github.com/Androz2091) | [Invite Atlanta](https://discordapp.com/oauth2/authorize?client_id=563420709423153152&scope=bot&permissions=2146958847) | [Support](${url}) | [Donate](https://paypal.me/andr0z)`,
+			STATS_LINKS: (url, id) => `[Github](https://github.com/Androz2091) | [Invite Atlanta](https://discordapp.com/oauth2/authorize?client_id=${id}&scope=bot&permissions=2146958847) | [Support](${url}) | [Donate](https://paypal.me/andr0z)`,
 
 			// invite command
 			INVITE_DESCRIPTION: `Displays the links of ${botname} !`,

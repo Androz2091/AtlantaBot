@@ -39,7 +39,7 @@ class Stats extends Command {
             .addField(stats_headers[6], message.language.get('STATS_CREDITS'))
 
         this.client.functions.supportLink(this.client).then(url => {
-            embed.addField(stats_headers[4], message.language.get('STATS_LINKS', url));
+            embed.addField(stats_headers[4], message.language.get('STATS_LINKS', url, this.client.user.id));
             message.channel.send(embed);
         });
 
