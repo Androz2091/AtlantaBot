@@ -650,7 +650,7 @@ module.exports = class {
 			AUTOMOD_SUCCESS: (prefix) => `${success} | Les invitations Discord seront automatiquement supprimées ! Si vous souhaitez ignorer un salon, tapez simplement \`${prefix}automod off #channel\` ! Cela désactivera l'auto modération dans le salon mentionné !`,
 			AUTOMOD_SUCCESS1: (channel) => `${success} | L'auto modération ne sera plus effectuée dans le salon ${channel} !`,
 			AUTOMOD_SUCCESS2: `${success} | Très bien ! L'auto modération n'est plus effective sur ce serveur !`,
-			AUTOMOD_MSG: (msg) => `${msg.author} | Votre message contenait une invitation Discord, il a donc était supprimé. Si c'était involontaire, vous pouvez rééditer votre message, il vous a été envoyé en message privé !`,
+			AUTOMOD_MSG: (msg) => `${msg.author} | Votre message contenait une invitation Discord, il a donc été supprimé. Si c'était involontaire, vous pouvez rééditer votre message, il vous a été envoyé en message privé !`,
 
 			SETLANG_DESCRIPTION: "Change la langue du serveur!",
 			SETLANG_LANG: `${error} | Veuillez entrer une langue valide (\`fr\` ou \`en\`) !`,
