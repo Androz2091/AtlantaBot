@@ -59,53 +59,86 @@ class Help extends Command {
             return message.channel.send(group_embed);
         }
 
-        // Else if no command is provided
-        var help_embed = new Discord.RichEmbed()
-            .setDescription(message.language.get('HELP_REMINDER', guild_data.prefix))
-            .setColor(data.embed.color)
-            .setFooter(data.embed.footer)
-            .setTimestamp()
+        let client = this.client;
+
+        message.delete();
+
+        let categories = [];
+        client.commands.forEach((command) => {
+            if(!categories.includes(command.help.category)){
+                categories.push(command.help.category);
+            }
+        });
+
+        let embeds = [];
+        categories.forEach((category) => {
+            let commands = client.commands.filter((cmd) => cmd.help.category === category);
+            let embed = new Discord.RichEmbed()
+                .setAuthor(category)
+                .setDescription(commands.sort().map((cmd) => `\`${cmd.help.name}\``).join(", "))
+                .setColor(data.embed.color)
+                .setFooter(data.embed.footer, message.author.displayAvatarURL);
+            embeds.push(embed);
+        });
+
+        let i = 0;
+        var tdata = await message.channel.send(embeds[parseInt(i, 10)]);
         
-        var commands_total = 0;
-
-        // Gets an array of all categories
-        var categories = [];
-        this.client.commands.forEach(cmd => {
-            if(!categories.includes(cmd.help.category)){
-                if(cmd.help.category === 'Owner' && message.author.id !== this.client.config.owner) return;
-                categories.push(cmd.help.category); 
-            }
-        });
-
-        // for each categroy, create a string and then add a field to the embed
-        categories.forEach(cat => {
-            var category = '';
-            var pos = 0;
-            var commands = this.client.commands.filter(cmd => cmd.help.category === cat);
-            commands.forEach(cmd => {
-                category += ' `'+cmd.help.name+'`';
-                pos++
-            });
-            commands_total+=pos;
-            help_embed.addField(cat+' - ('+pos+')', category.replace(/[' '_]/g,', ').substr(1));
-        });
-
-        // Customs commands
-        if(Object.keys(guild_data.commands).length > 0){
-            var custom = '';
-            var pos = 0;
-            for(var cmd in guild_data.commands){
-                custom += ' `'+cmd+'`';
-                pos++
-            }
-            commands_total+=pos;
-            help_embed.addField('Custom - ('+pos+')', custom.replace(/[' '_]/g,', ').substr(1));
+        if(embeds[i-1]){
+            tdata.react("⬅");
         }
+        if(embeds[i+1]){
+            tdata.react("➡");
+        }
+        await tdata.react("❌");
 
-        help_embed.setAuthor(message.language.get('HELP_HEADING_2', commands_total));
+        const reactCollector = tdata.createReactionCollector((reaction, user) => user.id === message.author.id);
 
-        // Send the embed in the current channel
-        message.channel.send(help_embed);
+        setTimeout(function(){
+            reactCollector.stop();
+        }, 60000);
+
+        reactCollector.on("collect", async(reaction, user) => {
+
+            // Remove the reaction when the user react to the message
+            await reaction.remove(message.author.id);
+
+            switch(reaction._emoji.name){
+                case "⬅" :
+                    i--;
+                    tdata = await tdata.edit(embeds[parseInt(i, 10)]);
+                    break;
+                case "➡" :
+                    i++;
+                    tdata = await tdata.edit(embeds[parseInt(i, 10)]);
+                    break;
+                case "❌" :
+                    reactCollector.stop();
+                    break;
+            }
+
+            if(!embeds[i-1]){
+                let r = tdata.reactions.find((r) => r._emoji.name === "⬅");
+                if(r){
+                    r.remove(message.client.user).catch((e) => {});
+                }
+            } else {
+                tdata.react("⬅").catch((e) => {});
+            }
+            if(!embeds[i+1]){
+                let r = tdata.reactions.find((r) => r._emoji.name === "➡");
+                if(r){
+                    r.remove(message.client.user).catch((e) => {});
+                }
+            } else {
+                tdata.react("➡").catch((e) => {});
+            }
+
+        });
+
+        reactCollector.on("end", () => {
+            tdata.delete();
+        });
     }
 
 }
