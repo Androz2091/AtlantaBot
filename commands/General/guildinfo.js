@@ -22,7 +22,7 @@ class Guildinfo extends Command {
 
     async run (message, args, membersdata, guild_data, data) {
         
-        var guild = message.guild;
+        var guild = await message.guild.fetchMembers();
 
         var embed = new Discord.RichEmbed()
             .setAuthor(guild.name, guild.iconURL)
