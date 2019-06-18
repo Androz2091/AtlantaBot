@@ -155,7 +155,7 @@ module.exports = class {
         var command = args.shift();
 
         if(guild_data.commands[command]){
-            if(guild_data.ignored_channels.includes(message.channel.id)) return (message.delete()) && (message.author.send(message.language.get('CHANNEL_IGNORED', (message.channel))));
+            if(guild_data.ignored_channels.includes(message.channel.id) && !message.member.hasPermission("MANAGE_MESSAGES")) return (message.delete()) && (message.author.send(message.language.get('CHANNEL_IGNORED', (message.channel))));
             return message.channel.send(guild_data.commands[command]);
         }
 
@@ -180,7 +180,7 @@ module.exports = class {
         if(neededPermission.length > 0) return message.channel.send(message.language.get('INHIBITOR_MISSING_BOT_PERMS', neededPermission.map(p => p).join(', ')));
 
         // checks if the command can be launched
-        if(guild_data.ignored_channels.includes(message.channel.id)) return (message.delete()) && (message.author.send(message.language.get('CHANNEL_IGNORED', (message.channel))));
+        if(guild_data.ignored_channels.includes(message.channel.id) && !message.member.hasPermission("MANAGE_MESSAGES")) return (message.delete()) && (message.author.send(message.language.get('CHANNEL_IGNORED', (message.channel))));
         if(cmd.conf.nsfw && !message.channel.nsfw) return message.channel.send(message.language.get('INHIBITOR_NSFW'))
         if(cmd.conf.permission){
             if(!message.member.hasPermission(cmd.conf.permission)) return message.channel.send(message.language.get('INHIBITOR_PERMISSIONS', cmd.conf.permission));
