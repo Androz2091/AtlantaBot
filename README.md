@@ -6,24 +6,45 @@ Atlanta est un bot Discord open source très complet développé par Androz!
 
 Atlanta est un bot Discord open source développé par Androz2091. Si vous souhaitez réutiliser du code venant de ce bot, veuillez mettre une **star** au git.
 
-Atlanta propose :
+### Des dizaines de commandes
 
-- plus de 70 commandes faites en class (musique, économie, administration, modération, et +)
-- la traduction en anglais 🇬🇧
-- la gestion des rewards via les votes sur DBL grâce à un serveur express
-- les commandes en messages privés
-- un superbe dashboard web très complet !
-- et bien plus !
+Atlanta propose beaucoup de fonctionnalités, voici quelques exemples :
 
-Fonctionnalités à venir :
+*   Administration : `slowmode`, `welcome`, `addcommand`, `automod`, et plus ! 
+*   Modération : `see-warns`, `setlogs`, `checkinvites`, `poll`, et plus ! 
+*   Musique : `play`, `skip`, `queue`, `skip`, et plus ! 
+*   Économie : `profile`, `work`, `badge`, `slots`, `balance`, `leaderboard`, et plus ! 
+*   Fun : `lmg`, `findwords`, `flip`, `lovecalc`, `random` et plus ! 
+*   Général : `minimize`, `setafk`, `translate`, `remindme`, `hastebin`, `fortnite`, `minecraft` et plus !
 
-- Ajout des shards
-- Ajout des menus de rôles
-- Ajout des sauvegardes de serveurs
+### Un Dashboard puissant
+
+Atlanta a son propre dashboard qui propose lui aussi beaucoup de fonctionnalités ! Le dashboard tourne avec Express et EJS !
+
+#### Gestion des serveurs
+<img src="https://zupimages.net/up/19/26/m3wb.png" height="200" width="350"/>
+
+#### Affichage de statistiques </h3>
+<img src="https://zupimages.net/up/19/26/4mf0.png" height="200" width="350"/>
+
+#### Edition de configuration en ligne </h3>
+<img src="https://zupimages.net/up/19/26/fhh1.png" height="200" width="350"/>
+
+Atlanta ajoute aussi une nouvelle mention comme @everyone et @here, le `@someone`, qui permet de tirer un membre aléatoire du serveur !
+
+#### Et bien plus !
+
+Atlanta supporte par exemple aussi l'anglais, gère les commandes en messages privés, les votes Discordbots.org, etc !
+
+## Fonctionnalités à venir :
+
+*   Ajout des shards
+*   Utilisation de MongoDB
+*   Refonte du code en respectant les règles eslint
 
 ## Installation
 
-Il est possible de lancer Atlanta depuis votre propre serveur. Pour qu'Atlanta fonctionne correctement, veillez à obtenir les bonnes clefs d'API, à installer les node modules, et à modifier le fichier de configuration.
+Il est possible de lancer Atlanta depuis votre propre serveur. Pour qu'Atlanta fonctionne correctement, veillez à obtenir les bonnes clés d'API, à installer les node modules, et à modifier le fichier de configuration.
 
 > Si vous ne comptez pas modifier le bot, une version en ligne en permanence est disponible : [Atlanta sur Discordbots.org](https://discordbots.org/bot/557445719892688897), que vous pouvez inviter sur votre propre Discord.
 
