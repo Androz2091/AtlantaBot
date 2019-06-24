@@ -209,18 +209,6 @@
                             No birthdate set
                           <% } %>
                       </p>
-
-                      <hr>
-
-                      <strong><i class="fa fa-user"></i> Membership</strong>
-
-                      <p>
-                        <% if(user.stats.membership.length > 0){ %>
-                          <% user.stats.membership.forEach(m => { %>
-                            <span class="label label-<%= m.label %>"><%= m.name %></span>
-                          <% }); %>
-                        <% } %>
-                      </p>
                     </div>
                     <!-- /.box-body -->
                   </div>

@@ -24,8 +24,6 @@ router.get("/dashboard", async (req, res) => {
     // Update some variables
     if(uData.birthdate !== "unknow") uData.birthdate = printDate(new Date(uData.birthdate));
 
-    var membership = await getMemberShip(req.client, req.user.id);
-
     // Render 
     res.render("dashboard", {
         user:{
@@ -34,8 +32,7 @@ router.get("/dashboard", async (req, res) => {
             ID: req.user.id,
             stats: {...{
                 commands: userStats.total,
-                commandsSent: userStats.graph,
-                membership: membership
+                commandsSent: userStats.graph
             }, ...uData}
         },
         guilds: guilds,
@@ -79,7 +76,6 @@ router.post("/dashboard", async (req, res) => {
     // Update some variables
     if(uData.birthdate !== "unknow") uData.birthdate = printDate(new Date(uData.birthdate));
 
-    var membership = await getMemberShip(req.client, req.user.id);
 
     // Render 
     res.render("dashboard", {
@@ -89,8 +85,7 @@ router.post("/dashboard", async (req, res) => {
             ID: req.user.id,
             stats: {...{
                 commands: userStats.total,
-                commandsSent: userStats.graph,
-                membership: membership
+                commandsSent: userStats.graph
             }, ...uData}
         },
         guilds: guilds,
@@ -237,8 +232,6 @@ router.get("/stats/me", async (req, res) => {
     // Update some variables
     if(uData.birthdate !== "unknow") uData.birthdate = printDate(new Date(uData.birthdate));
 
-    var membership = await getMemberShip(req.client, req.user.id);
-
     // Render 
     res.render("stats/me", {
         user:{
@@ -247,8 +240,7 @@ router.get("/stats/me", async (req, res) => {
             ID: req.user.id,
             stats: {...{
                 commands: userStats.total,
-                commandsSent: userStats.graph,
-                membership: membership
+                commandsSent: userStats.graph
             }, ...uData}
         },
         guilds: guilds,
@@ -275,8 +267,6 @@ router.get("/stats/global", async (req, res) => {
     // Update some variables
     if(uData.birthdate !== "unknow") uData.birthdate = printDate(new Date(uData.birthdate));
 
-    var membership = await getMemberShip(req.client, req.user.id);
-
     // Render 
     res.render("stats/global", {
         user:{
@@ -285,8 +275,7 @@ router.get("/stats/global", async (req, res) => {
             ID: req.user.id,
             stats: {...{
                 commands: userStats.total,
-                commandsSent: userStats.graph,
-                membership: membership
+                commandsSent: userStats.graph
             }, ...uData}
         },
         guilds: guilds,
@@ -389,7 +378,6 @@ async function getGlobalStats(client){
         rep+=user.data.rep;
         lvl+=user.data.level;
     });
-    console.log(credits, rep, lvl);
     return {graph:aDateCommand, total:commands.length, dataStats:[credits, rep, lvl]};
 }
 
@@ -484,19 +472,6 @@ function printDate(date) {
     var year = date.getFullYear();
 
     return day + " " + monthNames[monthIndex] + " " + year;
-}
-
-async function getMemberShip(client, userID){
-    var rolesID = client.config.support.roles;
-    var member = await client.guilds.get(client.config.support.id).fetchMember(userID);
-    if(!member) return [];
-    var membership = [];
-    if(member.roles.has(rolesID.donators)) membership.push({name:"Donator", label:"warning"});
-    if(member.roles.has(rolesID.staff)) membership.push({name:"Staff", label:"primary"});
-    if(member.roles.has(rolesID.moderator)) membership.push({name:"Moderator", label:"success"});
-    if(member.roles.has(rolesID.contributors)) membership.push({name:"Contributor", label:"warning"});
-    if(member.roles.has(rolesID.friends)) membership.push({name:"Friend", label:"info"});
-    return membership;
 }
 
 module.exports = router;
