@@ -64,7 +64,7 @@ module.exports = class {
             // Utils variables
             const args = message.content.trim().split(/ +/g);
             const command = args.shift().toLowerCase();
-            message.language = new(require('../languages/'+this.client.config.default_language+'.js'));
+            message.language = new(require('../languages/'+this.client.config.defaultLanguage+'.js'));
             // Gets the command
             let cmd = this.client.commands.get(command) || this.client.commands.get(this.client.aliases.get(command));
             if(!cmd) return message.channel.send(message.author.username+', no command found with name `'+command+'`.');
