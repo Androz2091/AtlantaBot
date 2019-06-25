@@ -55,28 +55,84 @@ module.exports = {
         return client.databases[0].get(user.id);
     },
 
-    getUsersData: function(client, message){
-        // Gets the database
-        var users_data = client.databases[0];
-
-        // Init new emty array
-        var membersdata = [];
-        
-        // Get the data of the message's author
-        var author_data = users_data.get(message.author.id) || client.functions.createUser(client, message.author);
-        membersdata.push(author_data);
-
-        // Get the data of the users mentionned
-        if(message.mentions.members && message.mentions.members.size > 0){
-            message.mentions.members.forEach(member => {
-                var memberdata = users_data.get(member.id) || client.functions.createUser(client, member.user);
-                membersdata.push(memberdata);
+    
+    /**
+     * Gets the users data
+     * @param {object} client The discord client
+     * @param {array} users The users to gets data
+     * @returns The users data
+     */
+    async getUsersData(client, users){
+        let usersData = [];
+        users.forEach((u) => {
+            client.usersData.find({id: u.id}, function(err, result){
+                if(result[0]){
+                    usersData.push(result[0]);
+                } else {
+                    let user = new client.usersData({
+                        id: u.id
+                    });
+                    user.save();
+                    usersData.push(user);
+                }
             });
-        }
-
-        // Return the filled array
-        return membersdata;
+        });
+        return usersData;
     },
+
+    /**
+     * Gets message prefix
+     * @param {object} message The Discord message
+     * @returns The prefix
+     */
+    getPrefix(message){
+        if(message.channel.type !== "dm"){
+            const prefixes = [
+                `<@${message.client.user.id}>`,
+                message.config.botname,
+                message.settings.prefix
+            ];
+            let prefix = null;
+            prefixes.forEach((p) => {
+                if(message.content.startsWith(p)){
+                    prefix = p;
+                }
+            });
+            return prefix;
+        } else {
+            return true;
+        }
+    },
+
+    /**
+     * Gets channel settings
+     * @param {object} client The discord client
+     * @param {object} channel The channel object
+     * @returns The channel data
+     */
+    async getSettings(client, channel){
+        return new Promise(async function(resolve, reject){
+            if(channel.guild){
+                client.guildsData.find({id: channel.guild.id}, function (err, result) {
+                    if(result[0]){
+                        resolve(result[0]);
+                    } else {
+                        let guild = new client.guildsData({
+                            id: channel.guild.id
+                        });
+                        guild.save();
+                        resolve(guild);
+                    }
+                });
+            } else {
+                resolve({
+                    prefix: client.config.prefix,
+                    language: client.config.defaultLanguage
+                });
+            }
+        });
+    },
+
 
     vote: async function(data, client){
         var user = await client.fetchUser(data.user);
