@@ -36,12 +36,13 @@ module.exports = class {
 			// ERROR MESSAGE
 			INHIBITOR_MISSING_BOT_PERMS: (perms) => `${e.error} | J'ai besoin des permissions suivantes pour effectuer cette commande : \`${perms}\``,
 			INHIBITOR_NSFW: `${e.error} | Vous devez vous rendre dans un salon qui autorise le NSFW pour taper cette commande !`,
-			INHIBITOR_PERMISSIONS:(perm) => `${e.error} | Vous n'avez pas les permissions nécessaires pour effectuer cette commande (\`${perm}\`)`,
+			INHIBITOR_MISSING_MEMBER_PERMS: (perm) => `${e.error} | Vous n'avez pas les permissions nécessaires pour effectuer cette commande (\`${perm}\`)`,
 			COMMAND_DISABLED: `${e.error} | Cette commande est actuellement désactivée !`,
 			OWNER_ONLY: `${e.error} | Seul ${c.owner.name} peut effectuer ces commandes !`,
 			MENTION_CHANNEL: `${e.error} | Veuillez mentionner un salon valide !`,
 			MENTION_ROLE: `${e.error} | Veuillez mentionner un rôle valide !`,
 			MENTION_MEMBER: `${e.error} | Veuillez mentionner un membre valide !`,
+			ERROR_COMMAND_GUILDONLY: `${e.error} | Cette commande est uniquement disponible sur un serveur !`,
 			CHANNEL_IGNORED: (channel) => `${e.error} | Les commandes sont interdites dans ${channel} !`,
 			BAD_PARAMETERS: (cmd, prefix) => `${e.error} | Veuillez vérifier les paramètres de la commande. Regardez les exemples en tapant \`${prefix}help ${cmd}\` !`,
 			ROLE_NOT_FOUND: (role) => `${e.error} | Aucun rôle trouvé avec \`${role}\` !`,
@@ -61,22 +62,29 @@ module.exports = class {
 			PING_DESCRIPTION: "Affiche la latence du bot",
 			PING: (ms) => `${e.success} | Pong ! Ma latence est de \`${ms}\` ms !`,
 
-			// HELP COMMAND
+			/* HELP COMMAND */
+
+			// Utils
 			HELP_DESCRIPTION: "Affiche l'aide des commandes ou l'aide d'une commande en particulier",
+			HELP_USAGE: "$help (commande)",
+			HELP_EXAMPLES: "$help\n$help ping",
+			// Errors
 			HELP_COMMAND_NOT_FOUND: (cmd) => `${e.error} | Commande ${cmd} introuvable !`,
-			HELP_DISABLED: "Cette commande est actuellement désactivée",
-			HELP_OWNER_ONLY: `Seul ${c.owner.name} peut effectuer cette commande !`,
+			// Others
 			HELP_REMINDER: (prefix) => `Pour avoir de l\'aide sur une commande tapez \`${prefix}help <commande>\` !`,
-			HELP_HEADING_2:(nb) => `Liste des commandes - (${nb})`,
-			HELP_HEADING: "Aide :",
-			HELP_USAGE: "Utilisation :",
-			HELP_EXAMPLES: "Exemples :",
-			HELP_GROUP: "Groupe :",
-			HELP_DESC: "Description :",
-			HELP_ALIASES: "Alias :",
-			HELP_PERMISSIONS: "Permissions :",
+			HELP_TITLE:(nb) => `Liste des commandes - (${nb})`,
 			HELP_CUSTOMIZED: (cmd) => `${e.error} | La commande ${cmd} ne dispose pas d'aide car elle est personnalisée.`,
 			HELP_NO_ALIASES: "Aucun alias.",
+			// Title
+			HELP_HEADINGS: [
+				"Aide :",
+				"Utilisation :",
+				"Exemples :",
+				"Groupe :",
+				"Description :",
+				"Alias :",
+				"Permissions :"
+			],
 
 			// Conf command
 			CONFIGURATION_DESCRIPTION: "Affiche la configuration du serveur",
