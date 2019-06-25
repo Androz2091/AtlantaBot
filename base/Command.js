@@ -1,26 +1,24 @@
 module.exports = class Command {
     constructor(client, {
       name = null,
-      description = false,
+      description = languages.get("NO_DESCRIPTION_PROVIDED"),
+      usage = languages.get("NO_USAGE_PROVIDED"),
+      examples = languages.get("NO_EXAMPLES_PROVIDED"),
       dirname = false,
-      usage = false,
       enabled = true,
       guildOnly = false,
       aliases = new Array(),
-      permission = false,
-      botpermissions = new Array(),
+      permLevel = "User",
+      botPermissions = new Array(),
+      memberPermissions = new Array(),
       nsfw = false,
-      examples = false,
-      owner = false
+      ownerOnly = false,
+      cooldown = 3000
     })
     {
-      var category = 'Other';
-      if(dirname){
-        var folders = dirname.split('/');
-        category = folders[folders.length - 1];
-      };
+      let category = (dirname ? dirname.split("/")[parseInt(dirname.split("/").length-1, 10)] : "Other");
       this.client = client;
-      this.conf = { enabled, guildOnly, aliases, permission, botpermissions, nsfw, owner};
+      this.conf = { enabled, guildOnly, aliases, memberPermissions, botPermissions, nsfw, ownerOnly};
       this.help = { name, description, category, usage, examples };
     };
   };
