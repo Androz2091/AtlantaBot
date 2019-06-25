@@ -1,70 +1,59 @@
 const Command = require("../../base/Command.js"),
-Discord = require('discord.js');
+Discord = require("discord.js");
 
 class Help extends Command {
     constructor (client) {
         super(client, {
             name: "help",
-            description: (language) => language.get('HELP_DESCRIPTION'),
+            description: (language) => language.get("HELP_DESCRIPTION"),
+            usage: (language) => language.get("HELP_USAGE"),
+            examples: (language) => language.get("HELP_EXAMPLES"),
             dirname: __dirname,
-            usage: "help (command)",
             enabled: true,
             guildOnly: false,
             aliases: ["aide"],
-            permission: false,
-            botpermissions: [ "SEND_MESSAGES", "EMBED_LINKS" ],
+            memberPermissions: [],
+            botPermissions: [ "SEND_MESSAGES", "EMBED_LINKS" ],
             nsfw: false,
-            examples: "$help\n$help ping",
-            owner: false
+            ownerOnly: false
         });
     }
 
-    async run (message, args, membersdata, guild_data, data) {
+    async run (message, args) {
 
         // if a command is provided
         if(args[0]){
 
             // if the command doesn't exist, error message
-            let cmd = this.client.commands.get(args[0]) || this.client.commands.get(this.client.aliases.get(args[0]));
-            if(!cmd && guild_data.commands[args[0]]){
-                return message.channel.send(message.language.get('HELP_CUSTOMIZED'), args[0]);
-            } else if(!cmd) return message.channel.send(message.language.get('HELP_COMMAND_NOT_FOUND', args[0]));
+            let cmd = message.client.commands.get(args[0]) || message.client.commands.get(message.client.aliases.get(args[0]));
+            if(!cmd && message.settings.commands[args[0]]){
+                return message.channel.send(message.language.get("HELP_CUSTOMIZED"), args[0]);
+            } else if(!cmd){
+                return message.channel.send(message.language.get("HELP_COMMAND_NOT_FOUND", args[0]));
+            }
 
             // Replace $ caract with the server prefix
-            var examples = cmd.help.examples.replace(/[$_]/g,guild_data.prefix);
+            let examples = cmd.help.examples(message.language).replace(/[$_]/g, settings.prefix);
 
             // Creates the help embed
-            var group_embed = new Discord.RichEmbed()
-                .setAuthor(message.language.get('HELP_HEADING')+' '+cmd.help.name)
-                .addField(message.language.get('HELP_USAGE'), guild_data.prefix+cmd.help.usage)
-                .addField(message.language.get('HELP_EXAMPLES'), examples)
-                .addField(message.language.get('HELP_GROUP'), cmd.help.category)
-                .addField(message.language.get('HELP_DESC'), cmd.help.description(message.language))
-                .addField(message.language.get('HELP_ALIASES'), cmd.conf.aliases.length > 0 ? cmd.conf.aliases.map(a => '`'+a+'`').join('\n') : message.language.get('HELP_NO_ALIASES'))
-                .setColor(data.embed.color)
-                .setFooter(data.embed.footer)
-
-            // Check parameters to display
-            if(cmd.conf.permission){
-                group_embed.addField(message.language.get('HELP_PERMISSIONS'), `\`${cmd.conf.permission}\``);
-            }
-            if(!cmd.conf.enabled){
-                group_embed.setDescription(message.language.get('HELP_DISABLED'));
-            }
-            if(cmd.conf.owner){
-                group_embed.setDescription(message.language.get('HELP_OWNER_ONLY'));
-            }
+            let groupEmbed = new Discord.RichEmbed()
+                .setAuthor(message.language.get("HELP_HEADING")+" "+cmd.help.name)
+                .addField(message.language.get("HELP_USAGE"), settings.prefix+cmd.help.usage(message.language))
+                .addField(message.language.get("HELP_EXAMPLES"), examples)
+                .addField(message.language.get("HELP_GROUP"), cmd.help.category)
+                .addField(message.language.get("HELP_DESC"), cmd.help.description(message.language))
+                .addField(message.language.get("HELP_ALIASES"), cmd.conf.aliases.length > 0 ? cmd.conf.aliases.map((a) => "`"+a+"`").join("\n") : message.language.get("HELP_NO_ALIASES"))
+                .setColor(message.config.embed.color)
+                .setFooter(message.config.embed.footer);
 
             // and send the embed in the current channel
-            return message.channel.send(group_embed);
+            return message.channel.send(groupEmbed);
         }
-
-        let client = this.client;
 
         message.delete();
 
         let categories = [];
-        client.commands.forEach((command) => {
+        message.client.commands.forEach((command) => {
             if(!categories.includes(command.help.category)){
                 categories.push(command.help.category);
             }
@@ -72,17 +61,17 @@ class Help extends Command {
 
         let embeds = [];
         categories.forEach((category) => {
-            let commands = client.commands.filter((cmd) => cmd.help.category === category);
+            let commands = message.client.commands.filter((cmd) => cmd.help.category === category);
             let embed = new Discord.RichEmbed()
                 .setAuthor(category)
                 .setDescription(commands.sort().map((cmd) => `\`${cmd.help.name}\``).join(", "))
-                .setColor(data.embed.color)
-                .setFooter(data.embed.footer, message.author.displayAvatarURL);
+                .setColor(message.config.embed.color)
+                .setFooter(message.config.embed.footer, message.author.displayAvatarURL);
             embeds.push(embed);
         });
 
         let i = 0;
-        var tdata = await message.channel.send(embeds[parseInt(i, 10)]);
+        let tdata = await message.channel.send(embeds[parseInt(i, 10)]);
         
         if(embeds[i-1]){
             tdata.react("⬅");
@@ -92,7 +81,7 @@ class Help extends Command {
         }
         await tdata.react("❌");
 
-        const reactCollector = tdata.createReactionCollector((reaction, user) => user.id === message.author.id);
+        let reactCollector = tdata.createReactionCollector((reaction, user) => user.id === message.author.id);
 
         setTimeout(function(){
             reactCollector.stop();
