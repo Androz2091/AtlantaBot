@@ -6,7 +6,16 @@ fs = require("fs"),
 path = require("path"),
 readdir = util.promisify(fs.readdir),
 Quickdb = require("quick.db");
-Quickdb.init("./data/atlanta.sqlite");
+Quickdb.init("./data/atlanta.sqlite"),
+mongoose = require("mongoose");
+
+// connect to mongoose database
+mongoose.connect("mongodb://localhost:27017/AtlantaBot", { useNewUrlParser: true }, (err) => {
+    if(err){
+        return console.error(err);
+    }
+    console.log("Connected to MongoDB Database");
+});
 
 // Creates new class
 class Atlanta extends Client {
@@ -32,6 +41,8 @@ class Atlanta extends Client {
             new Quickdb.Table("stats"),
             new Quickdb.Table("blacklist")
         ],
+        this.guildsData = require("./base/Guild.js"),
+        this.usersData = require("./base/User.js"),
         this.queues = new Collection(); // This collection will be used for the music
     }
 
