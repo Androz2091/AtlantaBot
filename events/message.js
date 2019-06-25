@@ -33,7 +33,6 @@ module.exports = class {
         // Gets settings
         let settings = await client.functions.getSettings(client, message.channel);
         message.settings = settings;
-        console.log(settings);
 
         // Gets language
         let language = new(require(`../languages/${settings.language}.js`));
