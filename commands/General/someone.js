@@ -27,8 +27,8 @@ class Someone extends Command {
         
         let embed = new Discord.MessageEmbed()
             .addField(message.language.get("SOMEONE_HEADINGS")[0], member.user.username, true)
-            .addField(message.language.get("SOMEONE_HEADINGS")[0], member.user.discriminator, true)
-            .addField(message.language.get("SOMEONE_HEADINGS")[0], member.user.id, true)
+            .addField(message.language.get("SOMEONE_HEADINGS")[1], member.user.discriminator, true)
+            .addField(message.language.get("SOMEONE_HEADINGS")[2], member.user.id, true)
             .setThumbnail(member.user.displayAvatarURL())
             .setColor(message.config.embed.color);
         message.channel.send(embed);
