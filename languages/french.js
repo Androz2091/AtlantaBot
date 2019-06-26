@@ -408,12 +408,18 @@ module.exports = class {
 			INVITE_FIELD2: `${e.vote} Voter pour ${c.botname}`,
 			INVITE_FIELD3: `${e.help} Support`,
 
-			// translate command
+			/* TRANSLATE COMMAND  */
+
+			// Utils
 			TRANSLATE_DESCRIPTION: "Je traduis votre texte !",
-			TRANSLATE_LANG: (prefix) => `${e.error} | Veuillez entrer une langue ! Pour afficher la liste des langues, tapez \`${prefix}translate langs-list\` !`,
-			TRANSLATE_LANG1: (prefix, lang) => `${e.error} | La langue \`${lang}\` n'existe pas ! Pour afficher la liste des langues, tapez \`${prefix}translate langs-list\` !`,
+			TRANSLATE_USAGE: "translate [langues] [message]",
+			TRANSLATE_EXAMPLES: "$translate fr-en Comment allez-vous ?",
+			// Content
 			TRANSLATE_LANGS: `${e.success} | La liste des langues vient de vous être envoyé par messages privés !`,
-			TRANSLATE_MSG: `${e.error} | Veuillez entrer un texte à traduire !`,
+			// Errors
+			TRANSLATE_ERR_LANG: (prefix) => `${e.error} | Veuillez entrer une langue ! Pour afficher la liste des langues, tapez \`${prefix}translate langs-list\` !`,
+			TRANSLATE_ERR_NOT_FOUND: (prefix, lang) => `${e.error} | La langue \`${lang}\` n'existe pas ! Pour afficher la liste des langues, tapez \`${prefix}translate langs-list\` !`,
+			TRANSLATE_ERR_MSG: `${e.error} | Veuillez entrer un texte à traduire !`,
 
 			// servers list command
 			SERVERS_LIST_DESCRIPTION: "Affiche mes serveurs !",
