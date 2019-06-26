@@ -1,53 +1,61 @@
 const Command = require("../../base/Command.js"),
-Discord = require('discord.js');
+Discord = require("discord.js");
 
 class Birthdate extends Command {
 
     constructor (client) {
         super(client, {
             name: "birthdate",
-            description: (language) => language.get('BIRTHDATE_DESCRIPTION'),
+            description: (language) => language.get("BIRTHDATE_DESCRIPTION"),
+            usage: (language) => language.get("BIRTHDATE_USAGE"),
+            examples: (language) => language.get("BIRTHDATE_EXAMPLES"),
             dirname: __dirname,
-            usage: "birthdate [date]",
             enabled: true,
             guildOnly: false,
-            aliases: ["anniv"],
-            permission: false,
-            botpermissions: [ "SEND_MESSAGES" ],
+            aliases: [ "anniversaire" ],
+            memberPermissions: [],
+            botPermissions: [ "SEND_MESSAGES", "EMBED_LINKS" ],
             nsfw: false,
-            examples: "$birthdate 01/12/2000",
-            owner: false
+            ownerOnly: false,
+            cooldown: 1000
         });
     }
 
-    async run (message, args, membersdata, guild_data, data) {
+    async run (message, args, data) {
         
-        var date = args[0];
-        if(!date) return message.channel.send(message.language.get('BIRTHDATE_VALID_DATE'));
+        let date = args[0];
+        if(!date){
+            return message.channel.send(message.language.get("BIRTHDATE_ERR_DATE"));
+        }
 
-        var _args = date.split('/');
-        var [day, month, year] = _args;
-        if(!day || !month || !year) return message.channel.send(message.language.get('BIRTHDATE_INVALID_DATE2'));
+        let tArgs = date.split("/");
+        let [day, month, year] = tArgs;
+        if(!day || !month || !year){
+            return message.channel.send(message.language.get("BIRTHDATE_ERR_DATE_FORMAT"));
+        }
         
-        //Check if the date is valid
-        var dateExists = require('date-exists').dateExists;
-
-        if(!dateExists(date)) return message.channel.send(message.language.get('BIRTHDATE_INVALID_DATE3'));
-
         // Gets the string of the date
         let match = date.match(/\d+/g);
-        if (!match) throw new SyntaxError('Date must be in format "(d)d.(m)m.(yy)yy"'); 
+        if (!match){
+            return message.channel.send(message.language.get("BIRTHDATE_ERR_INVALID_DATE_FORMAT"));
+        }
         let tday = +match[0], tmonth = +match[1] - 1, tyear = +match[2];
         if (tyear < 100) tyear += tyear < 50 ? 2000 : 1900;
         let d = new Date(tyear, tmonth, tday);
-        if(d.getTime() > Date.now()) return message.channel.send(message.language.get('BIRTHDATE_TOO_HIGH'));
-        if(d.getTime() < (Date.now()-2522880000000)) return message.channel.send(message.language.get('BIRTHDATE_TOO_LOW'));
+        if(!(tday == d.getDate() && tmonth == d.getMonth() && tyear == d.getFullYear())){
+            return message.channel.send(message.language.get("BIRTHDATE_ERR_INVALID_DATE_FORMAT"));
+        }
+        if(d.getTime() > Date.now()){
+            return message.channel.send(message.language.get("BIRTHDATE_ERR_TOO_HIGH"));
+        }
+        if(d.getTime() < (Date.now()-2522880000000)){
+            return message.channel.send(message.language.get("BIRTHDATE_ERR_TOO_LOW"));
+        }
 
-        // Updates db
-        this.client.databases[0].set(`${message.author.id}.birthdate`, d);
-
-        // Send success message
-        return message.channel.send(message.language.get('BIRTHDATE_SUCCESS', message.language.printDate(d)));
+        data.users[0].birthdate = d;
+        data.users[0].save();
+        
+        message.channel.send(message.language.get("BIRTHDATE_SUCCESS", message.language.printDate(d)));
 
     }
 

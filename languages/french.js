@@ -269,14 +269,21 @@ module.exports = class {
 			PAY_AMOUNT_TO_HIGH: (amount, username) => `${e.error} | Vous ne disposez pas d\'assez de crédits pour verser ${amount} crédits à ${username} !`,
 			PAY_SUCCESS: (amount, username) => `${e.success} | Vous avez versé ${amount} crédits à ${username} !`,
 
-			// Birthdate command
+			/* BIRTHDATE COMMAND */
+
+			// Utils
 			BIRTHDATE_DESCRIPTION: "Définissez la date de votre anniversaire (qui apparaitre sur votre profil)",
-			BIRTHDATE_VALID_DATE: `${e.error} | Veuillez entrer une date valide ! Par exemple 01/12/2000`,
-			BIRTHDATE_INVALID_DATE2: `${e.error} | Vous avez entrer une date invalide. Rappel : le format de la date doit être : Jour/Mois/Année. Par exemple, 01/12/2000 pour le premier décembre 2000.`,
-			BIRTHDATE_INVALID_DATE3: `${e.error} |  Vous avez entrer une date invalide (ou la date indiquée n'existe pas). Rappel : le format de la date doit être : Jour/Mois/Année. Par exemple, 01/12/2000 pour le premier décembre 2000.`,
+			BIRTHDATE_USAGE: "birthdate (date)",
+			BIRTHDATE_EXAMPLES: "$birthdate 01/12/2000",
+			// Errors
+			BIRTHDATE_ERR_DATE: `${e.error} | Veuillez entrer une date valide ! Par exemple 01/12/2000`,
+			BIRTHDATE_ERR_DATE_FORMAT: `${e.error} | Vous avez entrer une date invalide. Rappel : le format de la date doit être : Jour/Mois/Année. Par exemple, 01/12/2000 pour le premier décembre 2000.`,
+			BIRTHDATE_ERR_INVALID_DATE_FORMAT: `${e.error} |  Vous avez entrer une date invalide (ou la date indiquée n'existe pas). Rappel : le format de la date doit être : Jour/Mois/Année. Par exemple, 01/12/2000 pour le premier décembre 2000.`,
+			BIRTHDATE_ERR_TOO_HIGH: `${e.error} | Vous ne pouvez pas ne pas encore être né !`,
+			BIRTHDATE_ERR_TOO_LOW: `${e.error} | Plus de 80 ans ? :eyes:`,
+			// Content
 			BIRTHDATE_SUCCESS: (date) => `${e.success} | Votre date d'anniversaire a été définie sur le ${date} !`,
-			BIRTHDATE_TOO_HIGH: `${e.error} | Vous ne pouvez pas ne pas encore être né !`,
-			BIRTHDATE_TOO_LOW: `${e.error} | Plus de 80 ans ? :eyes:`,
+			
 			
 			// Weegind command
 			WEEDING_DESCRIPTION: "Mariez-vous avec la personne de votre choix !",
