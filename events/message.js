@@ -69,7 +69,7 @@ module.exports = class {
         }
 
         if(cmd.conf.guildOnly && !message.guild){
-            return message.channel.send(language.get("ERROR_COMMAND_GUILDONLY"));
+            return message.channel.send(language.get("ERR_GUILDONLY"));
         }
 
         if(message.guild){
@@ -83,7 +83,7 @@ module.exports = class {
                 }
             });
             if(neededPermission.length > 0){
-                return message.channel.send(language.get("INHIBITOR_MISSING_BOT_PERMS", neededPermission.map((p) => `\`${p}\``).join(", ")));
+                return message.channel.send(language.get("ERR_MISSING_BOT_PERMS", neededPermission.map((p) => `\`${p}\``).join(", ")));
             }
             neededPermission = [];
             cmd.conf.memberPermissions.forEach((perm) => {
@@ -92,10 +92,10 @@ module.exports = class {
                 }
             });
             if(neededPermission.length > 0){
-                return message.channel.send(language.get("INHIBITOR_MISSING_MEMBER_PERMS", neededPermission.map((p) => `\`${p}\``).join(", ")));
+                return message.channel.send(language.get("ERR_MISSING_MEMBER_PERMS", neededPermission.map((p) => `\`${p}\``).join(", ")));
             }
             if(settings.ignoredChannels.includes(message.channel.id) && !message.member.hasPermission("MANAGE_MESSAGES")){
-                return (message.delete()) && (message.author.send(language.get("CHANNEL_IGNORED", (message.channel))));
+                return (message.delete()) && (message.author.send(language.get("ERR_UNAUTHORIZED_CHANNEL", (message.channel))));
             }
     
             if(cmd.conf.permission){
@@ -104,19 +104,19 @@ module.exports = class {
                 }
             }
             if(!message.member.hasPermission("MENTION_EVERYONE") && message.mentions.everyone){
-                return message.channel.send(language.get("MENTION_EVERYONE"));
+                return message.channel.send(language.get("ERR_EVERYONE"));
             }
             if(!message.channel.nsfw && cmd.conf.nsfw){
-                return message.channel.send(language.get("INHIBITOR_NSFW"));
+                return message.channel.send(language.get("ERR_NOT_NSFW"));
             }
         }
 
         if(!cmd.conf.enabled){
-            return message.channel.send(language.get("COMMAND_DISABLED"));
+            return message.channel.send(language.get("ERR_COMMAND_DISABLED"));
         }
 
-        if(cmd.conf.owner && message.author.id !== client.config.owner.id){
-            return message.channel.send(language.get("OWNER_ONLY"));
+        if(cmd.conf.ownerOnly && message.author.id !== client.config.owner.id){
+            return message.channel.send(language.get("ERR_OWNER_ONLY"));
         }
 
         client.logger.log(`${message.author.username} (${message.author.id}) ran command ${cmd.help.name}`, "cmd");
