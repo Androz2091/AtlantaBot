@@ -236,10 +236,16 @@ module.exports = class {
 			REP_SELF: `${e.error} | Vous ne pouvez pas vous donner vous-même un point de réputation !`,
 			REP_SUCCESS: (tag) => `${e.success} | Vous avez bien donné un point de réputation à **${tag}** !`,
 
-			// Setbio command
+			/* SETBIO COMMAND */
+
+			// Utils
 			SETBIO_DESCRIPTION: "Changez la description qui apparaitra sur votre profil !",
-			SETBIO_MISSING_DESCRIPTION : `${e.error} | Veuillez entrer une description valide !`,
-			SETBIO_100: `${e.error} | Votre biographie ne doit pas excéder les 100 caractères !`,
+			SETBIO_USAGE: "setbio [description]",
+			SETBIO_EXAMPLES: "$setbio Développeur depuis 5 ans en Swift",
+			// Errors
+			SETBIO_ERR_NO_BIO : `${e.error} | Veuillez entrer une description valide !`,
+			SETBIO_ERR_CARACT: `${e.error} | Votre biographie ne doit pas excéder les 100 caractères !`,
+			// Content
 			SETBIO_SUCCESS: `${e.success} | Votre biographie vient d'être modifiée !`,
 
 			// credits command
@@ -286,11 +292,15 @@ module.exports = class {
 			DIVORCE_NOT_WEEDED: `${e.error} | Vous n'êtes actuellement pas marié(e) !`,
 			DIVORCE_SUCCESS: (username) => `${e.success} | Vous venez de divorcer avec **${username}** !`,
 
-			// Slots command
+			/* SLOTS COMMAND */
+
+			// Utils
 			SLOTS_DESCRIPTION: "Un équivalent au Casino !",
-			SLOTS_TOO_HIGH: (credits) => `${e.error} | Vous ne disposez pas de ${credits} crédit(s).`,
-			SLOTS_LOOSE: (amount, username) => `**${username}** a utilisé ${amount} crédit(s) et a tout perdu.`,
-			SLOTS_WIN: (text, amount, won, username) => `${text}**${username}** a utilisé ${amount} crédit(s) et a gagné ${won} crédit(s) !`,
+			// Content
+			SLOTS_DEFEAT: (amount, username) => `**${username}** a utilisé ${amount} crédit(s) et a tout perdu.`,
+			SLOTS_VICTORY: (text, amount, won, username) => `${text}**${username}** a utilisé ${amount} crédit(s) et a gagné ${won} crédit(s) !`,
+			// Errors
+			SLOTS_ERR_TOO_HIGH: (money) => `${e.error} | Vous ne disposez pas de ${money} crédit(s).`,
 
 			// 8 ball command
 			EIGHTBALL_DESCRIPTION: "Je vous dis la vérité",

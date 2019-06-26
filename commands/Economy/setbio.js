@@ -1,37 +1,37 @@
 const Command = require("../../base/Command.js"),
-Discord = require('discord.js');
+Discord = require("discord.js");
 
 class Setbio extends Command {
 
     constructor (client) {
         super(client, {
             name: "setbio",
-            description: (language) => language.get('SETBIO_DESCRIPTION'),
+            description: (language) => language.get("BIOGRAPHY_DESCRIPTION"),
+            usage: (language) => language.get("BIOGRAPHY_USAGE"),
+            examples: (language) => language.get("BIOGRAPHY_EXAMPLES"),
             dirname: __dirname,
-            usage: "setbio [bio]",
             enabled: true,
             guildOnly: false,
-            aliases: [],
-            permission: false,
-            botpermissions: [ "SEND_MESSAGES" ],
+            aliases: [ "biography", "setdesc" ],
+            memberPermissions: [],
+            botPermissions: [ "SEND_MESSAGES", "EMBED_LINKS" ],
             nsfw: false,
-            examples: "$setbio Développeur C++",
-            owner: false
+            ownerOnly: false,
+            cooldown: 5000
         });
     }
 
-    async run (message, args, membersdata, guild_data, data) {
-        var bio = args.join(' '); // Gets the description 
-        // if the member has not entered a description, display an error message
-        if(!bio) return message.channel.send(message.language.get('SETBIO_MISSING_DESCRIPTION'));
-        // if the description is too long, display an error message 
-        if(bio.length > 100) return message.channel.send(message.language.get('SETBIO_100'));
-
-        // save the description in the database
-        this.client.databases[0].set(`${message.author.id}.bio`, bio);
-
-        // Send a success message
-        message.channel.send(message.language.get('SETBIO_SUCCESS'));
+    async run (message, args, data) {
+        let bio = args.join(" ");
+        if(!bio){
+            return message.channel.send(message.language.get("SETBIO_ERR_NO_BIO"));
+        }
+        if(bio.length > 100){
+            return message.channel.send(message.language.get("SETBIO_ERR_CARACT"));
+        }
+        data.users[0].bio = bio;
+        data.users[0].save();
+        message.channel.send(message.language.get("SETBIO_SUCCESS"));
     }
 
 }
