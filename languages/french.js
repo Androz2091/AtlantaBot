@@ -80,13 +80,13 @@ module.exports = class {
 			HELP_USAGE: "help (commande)",
 			HELP_EXAMPLES: "$help\n$help ping",
 			// Errors
-			HELP_COMMAND_NOT_FOUND: (cmd) => `${e.error} | Commande ${cmd} introuvable !`,
-			HELP_CUSTOMIZED: (cmd) => `${e.error} | La commande ${cmd} ne dispose pas d'aide car elle est personnalisée.`,
+			HELP_ERR_NOT_FOUND: (cmd) => `${e.error} | Commande ${cmd} introuvable !`,
+			HELP_ERR_CMD_CUSTOMIZED: (cmd) => `${e.error} | La commande ${cmd} ne dispose pas d'aide car elle est personnalisée.`,
 			// Content
 			HELP_REMINDER: (prefix) => `Pour avoir de l\'aide sur une commande tapez \`${prefix}help <commande>\` !`,
 			HELP_TITLE:(nb) => `Liste des commandes - (${nb})`,
 			HELP_NO_ALIASES: "Aucun alias.",
-			// Title
+			// Headings
 			HELP_HEADINGS: [
 				"Aide :",
 				"Utilisation :",
@@ -375,11 +375,22 @@ module.exports = class {
 			HASTEBIN_TEXT: `${e.error} | Vous devez entrer un texte !`,
 			HASTEBIN_SUCCESS: (url) => `${e.success} | Votre texte a été uploadé sur hastebin ! Voici votre lien : ${url}`,
 
-			// stats command
+			/* STATS COMMAND */
+
+			// Utils
 			STATS_DESCRIPTION: "Affiche les stats du bot !",
-			STATS_HEADING: `Stats`,
+			STATS_USAGE: "stats",
+			STATS_EXAMPLES: "$stats",
+			// Content
+			STATS: (serv, users) => `\`Serveurs : ${serv}\`\n\`Utilisateurs : ${users}\``,
 			STATS_DESC: `${c.botname} est un bot open source développé par ${c.owner.name} !`,
-			STATS_HEADERS:[
+			STATS_ONLINE: (time) => `Depuis ${time}`,
+			STATS_VC: (nb) => `Musique en cours sur \`${nb}\` serveurs`,
+			STATS_CREDITS: "Merci à \`https://icones8.fr/icons/\`, tous les emojis (ou presque) viennent de ce site !",
+			STATS_LINKS: (url, id) => `[Github](${c.others.github}) | [Inviter Atlanta](https://discordapp.com/oauth2/authorize?client_id=${id}&scope=bot&permissions=2146958847) | [Support](${url}) | [Don](${c.others.donate})`,
+			// Headings
+			STATS_HEADINGS:[
+				`Stats`,
 				`${e.stats} • __Statistiques__`,
 				`${e.ram} • __RAM__`,
 				`${e.version} • __Version__`,
@@ -388,12 +399,7 @@ module.exports = class {
 				`${e.voice} • __Musique__`,
 				":heart: • __Remerciements & crédits__",
 			],
-			STATS_STATS: (serv, users) => `\`Serveurs : ${serv}\`\n\`Utilisateurs : ${users}\``,
-			STATS_ONLINE: (time) => `Depuis ${time}`,
-			STATS_VC: (nb) => `Musique en cours sur \`${nb}\` serveurs`,
-			STATS_CREDITS: "Merci à \`https://icones8.fr/icons/\`, tous les emojis (ou presque) viennent de ce site !",
-			STATS_LINKS: (url, id) => `[Github](${c.others.github}) | [Inviter Atlanta](https://discordapp.com/oauth2/authorize?client_id=${id}&scope=bot&permissions=2146958847) | [Support](${url}) | [Don](${c.others.donate})`,
-
+			
 			// invite command
 			INVITE_DESCRIPTION: `Affiche les liens d'${c.botname} !`,
 			INVITE_HEADING: "Liens principaux",

@@ -1,46 +1,45 @@
 const Command = require("../../base/Command.js"),
-Discord = require('discord.js');
+Discord = require("discord.js");
 
 class Stats extends Command {
 
     constructor (client) {
         super(client, {
             name: "stats",
-            description: (language) => language.get('STATS_DESCRIPTION'),
+            description: (language) => language.get("STATS_DESCRIPTION"),
+            usage: (language) => language.get("STATS_USAGE"),
+            examples: (language) => language.get("STATS_EXAMPLES"),
             dirname: __dirname,
-            usage: "stats",
             enabled: true,
             guildOnly: false,
-            aliases: [],
-            permission: false,
-            botpermissions: [ "SEND_MESSAGES", "EMBED_LINKS" ],
+            aliases: [ "statistics", "infobot", "botinfos", "bot-infos", "bot-info", "infos-bot", "info-bot" ],
+            memberPermissions: [],
+            botPermissions: [ "SEND_MESSAGES", "EMBED_LINKS" ],
             nsfw: false,
-            examples: "$stats",
-            owner: false
+            ownerOnly: false,
+            cooldown: 3000
         });
     }
 
-    async run (message, args, membersdata, guild_data, data) {
+    async run (message, args) {
 
-        var stats_headers = message.language.get('STATS_HEADERS', this.client);
+        let statsHeadings = message.language.get("STATS_HEADINGS", message.tclient);
 
-        var { version } = require('discord.js');
+        let statsEmbed = new Discord.MessageEmbed()
+            .setColor(message.config.embed.color)
+            .setFooter(message.config.embed.footer)
+            .setAuthor(message.language.get("STATS_HEADINGS")[0])
+            .setDescription(message.language.get("STATS_DESC"))
+            .addField(statsHeadings[0], message.language.get("STATS", message.tclient.guilds.size, message.tclient.users.size), true)
+            .addField(statsHeadings[2], `\`Discord.js : v${Discord.version}\`\n\`Nodejs : v${process.versions.node}\``, true)
+            .addField(statsHeadings[1], `\`${(process.memoryUsage().heapUsed / 1024 / 1024).toFixed(2)}MB\``, true)
+            .addField(statsHeadings[3], message.language.get("STATS_ONLINE", message.language.convertMs(message.tclient.uptime)))
+            .addField(statsHeadings[5], message.language.get("STATS_VC", message.tclient.voice.connections.size))
+            .addField(statsHeadings[6], message.language.get("STATS_CREDITS"))
 
-        var embed = new Discord.RichEmbed()
-            .setColor(data.embed.color)
-            .setFooter(data.embed.footer)
-            .setAuthor(message.language.get('STATS_HEADING'))
-            .setDescription(message.language.get('STATS_DESC'))
-            .addField(stats_headers[0], message.language.get('STATS_STATS', this.client.guilds.size, this.client.users.size), true)
-            .addField(stats_headers[2], `\`Discord.js : v${version}\`\n\`Nodejs : v${process.versions.node}\``, true)
-            .addField(stats_headers[1], `\`${(process.memoryUsage().heapUsed / 1024 / 1024).toFixed(2)}MB\``, true)
-            .addField(stats_headers[3], message.language.get('STATS_ONLINE', message.language.convertMs(this.client.uptime)))
-            .addField(stats_headers[5], message.language.get('STATS_VC', this.client.voiceConnections.size))
-            .addField(stats_headers[6], message.language.get('STATS_CREDITS'))
-
-        this.client.functions.supportLink(this.client).then(url => {
-            embed.addField(stats_headers[4], message.language.get('STATS_LINKS', url, this.client.user.id));
-            message.channel.send(embed);
+        message.tclient.functions.supportLink(message.tclient).then((url) => {
+            statsEmbed.addField(statsHeadings[4], message.language.get("STATS_LINKS", url, message.tclient.user.id));
+            message.channel.send(statsEmbed);
         });
 
         
