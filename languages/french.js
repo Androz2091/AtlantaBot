@@ -622,8 +622,18 @@ module.exports = class {
 			REMINDME_MESSAGE: `${e.error} | Vous devez entrer un message qui vous sera envoyé à la fin du temps !`,
 			REMINDME_SAVED: `${e.success} | Rappel correctement enregistré, vous recevrez un message à la fin du temps !`,
 
-			// someone command
+			/* SOMEONE COMMAND */
+
+			// Utils
 			SOMEONE_DESCRIPTION: "Tire un membre aléatoire sur le serveur !",
+			SOMEONE_USAGE: "someone",
+			SOMEONE_EXAMPLES: "$someone\n@someone",
+			// Headings
+			SOMEONE_HEADINGS: [
+				"Pseudo",
+				"Discriminant",
+				"ID"
+			],
 
 			// unmute command
 			UNMUTE_DESCRIPTION: "Unmute un membre !",
