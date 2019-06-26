@@ -8,7 +8,6 @@ module.exports = class Command {
       enabled = true,
       guildOnly = false,
       aliases = new Array(),
-      permLevel = "User",
       botPermissions = new Array(),
       memberPermissions = new Array(),
       nsfw = false,
