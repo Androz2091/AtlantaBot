@@ -1,68 +1,62 @@
 const Command = require("../../base/Command.js"),
-Discord = require('discord.js');
+Discord = require("discord.js");
 
 class Profile extends Command {
 
     constructor (client) {
         super(client, {
             name: "profile",
-            description: (language) => language.get('PROFILE_DESCRIPTION'),
+            description: (language) => language.get("PROFILE_DESCRIPTION"),
+            usage: (language) => language.get("PROFILE_USAGE"),
+            examples: (language) => language.get("PROFILE_EXAMPLES"),
             dirname: __dirname,
-            usage: "profile (@membre)",
             enabled: true,
-            guildOnly: true,
-            aliases: ["profil"],
-            permission: false,
-            botpermissions: [ "SEND_MESSAGES", "EMBED_LINKS" ],
+            guildOnly: false,
+            aliases: [ "profil" ],
+            memberPermissions: [],
+            botPermissions: [ "SEND_MESSAGES", "EMBED_LINKS" ],
             nsfw: false,
-            examples: "$profile\$profile @Androz#2091",
-            owner: false
+            ownerOnly: false,
+            cooldown: 3000
         });
     }
 
-    async run (message, args, membersdata, guild_data, data) {
+    async run (message, args) {
 
-        // Gets the guildMember whose profile you want to display
-        var member = message.mentions.members.size > 0 ? message.mentions.members.first() : message.member;
+        // Gets the user whose profile you want to display
+        let user = (message.mentions.users.size > 0 ? message.mentions.users.first() : message.author);
 
-        // Check if the member is a bot
-        if(member.user.bot) return message.channel.send(message.language.get('IS_A_BOT'));
+        // Check if the user is a bot
+        if(user.bot){
+            return message.channel.send(message.language.get("ERR_BOT_USER"));
+        }
 
-        // Gets the data of the guildMember whose profile you want to display
-        var member_data = (message.member === member) ? membersdata[0] : membersdata[1];
+        // Gets the data of the user whose profile you want to display
+        let userData = (message.author === user) ? message.usersData[0] : message.usersData[1];
         
-        // Check if the partner is cached 
-        if(member_data.partner !== 'false' && !this.client.users.get(member_data.partner)) await this.client.fetchUser(member_data.partner);
+        // Check if the lover is cached 
+        if(userData.lover && !message.client.users.get(userData.lover)){
+            await message.client.users.fetch(userData.lover, true);
+        }
 
-        var profile_embed = new Discord.RichEmbed() // Creates a new rich embed (see https://discord.js.org/#/docs/main/stable/class/RichEmbed)
-            .setAuthor(message.language.get('PROFILE_HEADING', member.user.username), member.user.displayAvatarURL) // Sets the heading of the embed
-            // if the member has a description, display them, else display "Aucune description enregistrée !"
-            .setDescription(member_data.bio !== 'unknow' ? member_data.bio : message.language.get('NO_BIO'))
-            // Display the username of the member
-            .addField(message.language.get('PSEUDO'), member.user.username+'#'+member.user.discriminator, true)
-            // Display the amount of credits of the member
-            .addField(message.language.get('MONEY'), message.language.get('DISPLAY_CREDITS', member_data.credits), true)
-            // Display the amount of reputation points of the member
-            .addField(message.language.get('REP'), message.language.get('DISPLAY_REP', member_data.rep), true)
-            // Display the creation date of the member
-            .addField(message.language.get('REGISTERED_AT'), `${message.language.printDate(new Date(member_data.registeredAt))}`, true)
-            // Display the level of the member
-            .addField(message.language.get('LEVEL'), `**${member_data.level}**`, true)
-            // Display the xp of the member
-            .addField(message.language.get('EXP'), `**${member_data.xp}** xp`, true)
-            // Display the birthdate of the member
-            .addField(message.language.get('BIRTHDATE'), `${(member_data.birthdate === 'unknow') ? message.language.get('NO_BIRTHDATE') : message.language.printDate(new Date(member_data.birthdate))}`, true)
-            // Whether the member is the founder of a guild which has Atlanta on it
-            .addField(message.language.get('INVITER'), `${(this.client.guilds.some(g => g.ownerID === member.id)) ? message.language.get('YES') : message.language.get('NO')}`, true)
-            // Display the member partner
-            .addField(message.language.get('COUPLE'), `${member_data.partner === 'false' ? message.language.get('NO_PARTNER') : this.client.users.get(member_data.partner).username}`, true)
-            // Display the badges of the member
-            .addField(message.language.get('BADGES'), (member_data.badges.length > 0) ? '=> '+member_data.badges.map(b => b.str).join(' ') : message.language.get('NO_BADGE'))
-            .setColor(data.embed.color) // Sets the color of the embed
-            .setFooter(data.embed.footer) // Sets the footer of the embed
+        let profileEmbed = new Discord.MessageEmbed()
+            .setAuthor(message.language.get("PROFILE_TITLE", user.username), user.displayAvatarURL())
+            .setDescription(userData.bio ? userData.bio : message.language.get("NO_BIO"))
+            .addField(message.language.get("PROFILE_HEADINGS").PSEUDO, user.tag, true)
+            .addField(message.language.get("PROFILE_HEADINGS").MONEY, message.language.get("DISPLAY_MONEY", userData.money), true)
+            .addField(message.language.get("PROFILE_HEADINGS").REP, message.language.get("DISPLAY_REP", userData.rep), true)
+            .addField(message.language.get("PROFILE_HEADINGS").REGISTERED_AT, message.language.printDate(new Date(userData.registeredAt)), true)
+            .addField(message.language.get("PROFILE_HEADINGS").LEVEL, `**${userData.level}**`, true)
+            .addField(message.language.get("PROFILE_HEADINGS").EXP, `**${userData.exp}** xp`, true)
+            .addField(message.language.get("PROFILE_HEADINGS").BIRTHDATE, (!userData.birthdate ? message.language.get("NO_BIRTHDATE") : message.language.printDate(new Date(userData.birthdate))), true)
+            .addField(message.language.get("PROFILE_HEADINGS").INVITER, (message.client.guilds.some((g) => g.ownerID === user.id) ? message.language.get("UTILS").YES : message.language.get("UTILS").NO), true)
+            .addField(message.language.get("PROFILE_HEADINGS").MARRIED, (!userData.partner ? message.language.get("NO_PARTNER") : message.client.users.get(userData.partner).tag), true)
+            .addField(message.language.get("PROFILE_HEADINGS").BADGES, (userData.badges.length > 0 ? "=> "+userData.badges.map((b) => b.str).join(" ") : message.language.get("NO_BADGE")))
+            .setColor(message.config.embed.color) // Sets the color of the embed
+            .setFooter(message.config.embed.footer) // Sets the footer of the embed
             .setTimestamp();
 
-        message.channel.send(profile_embed); // Send the embed in the current channel
+        message.channel.send(profileEmbed); // Send the embed in the current channel
     }
 
 }

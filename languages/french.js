@@ -176,27 +176,33 @@ module.exports = class {
 			DELCOMMAND_EXIST: (cmd) => `${e.error} | La commande ${cmd} n'existe pas !`,
 			DELCOMMAND_SUCCESS: (cmd) => `${e.success} | La commande ${cmd} a bien été enlevée du serveur !`,
 
-			// ECONOMY
-			MONEY: "💰 Argent",
-			REP: "🎩 Réputation",
-			REGISTERED_AT: "📅 Enregistré",
-			LEVEL: "📊 Niveau",
-			EXP: "🔮 Expérience",
-			BIRTHDATE: "🎂 Anniversaire",
-			COUPLE: "❤️ Marié(e)",
-			INVITER: "🤵 Inviteur",
-			PSEUDO: "📝 Pseudo",
-			BADGES: "🔥 Badges",
+			/* PROFILE COMMAND */
 
-			// Profile command
-			PROFILE_DESCRIPTION: "Affiche le profil du membre mentionné (ou de l'auteur du message)",
-			PROFILE_HEADING: (username) => `Profil de ${username}`,
+			// Utils
+			PROFILE_DESCRIPTION: "Affiche le profil de l'utilisateur mentionné (ou de l'auteur du message)",
+			PROFILE_USAGE: "profile (@user#0000)",
+			PROFILE_EXAMPLES: "$profile\n$profile @Androz#2091",
+			// Content
 			NO_BIO: "Aucune biographie enregistrée",
 			DISPLAY_REP: (points) => `**${points}** point(s)`,
-			DISPLAY_CREDITS: (credits) => `**${credits}** crédit(s)`,
+			DISPLAY_MONEY: (money) => `**${money}** crédit(s)`,
 			NO_PARTNER: "Célibataire",
 			NO_BIRTHDATE: "Indéfini",
 			NO_BADGE: "Aucun badge.",
+			// Headings
+			PROFILE_TITLE: (username) => `Profil de ${username}`,
+			PROFILE_HEADINGS:{
+				MONEY:"💰 Argent",
+				REP: "🎩 Réputation",
+				REGISTERED_AT: "📅 Enregistré",
+				LEVEL:"📊 Niveau",
+				EXP: "🔮 Expérience",
+				BIRTHDATE: "🎂 Anniversaire",
+				MARRIED: "❤️ Marié(e)",
+				INVITER: "🤵 Inviteur",
+				PSEUDO: "📝 Pseudo",
+				BADGES: "🔥 Badges",
+			},
 			
 			// work command
 			WORK_DESCRIPTION: "Travaillez et gagnez de l'argent !",
