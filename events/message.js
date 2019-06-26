@@ -2,7 +2,8 @@
 // Note that due to the binding of client to every event, every event
 // goes `client, other, args` when this function is run.
 
-var Discord = require("discord.js");
+const Discord = require("discord.js"),
+xpCooldown = {};
 
 module.exports = class {
     constructor (client) {
@@ -48,7 +49,12 @@ module.exports = class {
         }
 
         // Gets the data of the users
-        let membersData = await client.functions.getUsersData(client, [message.author].concat(message.mentions.users));
+        let usersData = await client.functions.getUsersData(client, [message.author].concat(message.mentions.users));
+        message.usersData = usersData;
+
+        if(message.guild){
+            updateXp(message);
+        }
 
         // Gets the prefix
         let prefix = client.functions.getPrefix(message);
@@ -129,41 +135,39 @@ module.exports = class {
  * This function update userdata by adding xp
 */
 
-function updateXp(msg, userdata, db, cooldown_db){
-
-    // require ms (to convert minutes to ms)
-    var ms = require('ms');
+async function updateXp(msg){
     
+    let user = msg.usersData[0];
+
     // Gets the user informations
-    var xp = parseInt(userdata.xp);
-    var level = parseInt(userdata.level);
+    let points = parseInt(user.exp);
+    let level = parseInt(user.level);
 
     // if the member is already in the cooldown db
-    var isInCooldown = cooldown_db.get(msg.author.id);
+    let isInCooldown = xpCooldown[msg.author.id];
     if(isInCooldown){
-        /*if the timestamp recorded in the database indicating 
-        when the member will be able to win xp again
-        is greater than the current date, return */
-        if(isInCooldown > Date.now()) return;
+        if(isInCooldown > Date.now()){
+            return;
+        }
     }
     // Records in the database the time when the member will be able to win xp again (3min)
-    var towait = Date.now() + ms('1m');
-    cooldown_db.set(msg.author.id, towait);
+    let toWait = Date.now()+60000;
+    xpCooldown[msg.author.id] = toWait;
     
     // Gets a random number between 10 and 5 
     let won = Math.floor(Math.random() * ( Math.floor(10) - Math.ceil(5))) + Math.ceil(5);
     
-    let newXp = parseInt(xp + won);
-
-    // Update user data
-    db.set(`${msg.author.id}.xp`, newXp);
+    let newXp = parseInt(points+won, 10);
 
     // calculation how many xp it takes for the next new one
-    let needed_xp = 5 * (level * level) + 80 * level + 100;
+    let neededXp = 5 * (level * level) + 80 * level + 100;
 
     // check if the member up to the next level
-    if(newXp > needed_xp) level++;
+    if(newXp > neededXp){
+        user.level = parseInt(level+1, 10);
+    }
 
     // Update user data
-    db.set(`${msg.author.id}.level`, level);
+    user.exp = parseInt(newXp, 10);
+    await user.save();
 }
