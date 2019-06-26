@@ -253,9 +253,14 @@ module.exports = class {
 			CREDITS_HEADING: (username) => `Crédits de ${username}`,
 			CREDITS_CONTENT: (credits, username) => `Actuellement **${credits}** crédits sur le compte de **${username}** !`,
 
-			// leaderboard command
+			/* LEADERBOARD COMMAND */
+
+			// Utils
 			LEADERBOARD_DESCRIPTION: "Affiche les utilisateurs qui dispose du plus de crédits, de niveaux ou de points de réputation !",
-			LEADERBOARD_TYPE: `${e.error} | Veuillez entrer un type de leaderboard ! (\`credits\`, \`levels\` ou \`rep\`)`,
+			LEADERBOARD_USAGE: "leaderboard [rep/levels/credits]",
+			LEADERBOARD_EXAMPLES: "$leaderboard credits\n$leaderboard levels",
+			// Errors
+			LEADERBOARD_TYPE: `${e.error} | Veuillez entrer un type de leaderboard ! (\`credits\`, \`level\` ou \`rep\`)`,
 
 			// Pay command
 			PAY_DESCRIPTION: "Payez un membre avec des crédits !",
