@@ -11,11 +11,12 @@ class Help extends Command {
             dirname: __dirname,
             enabled: true,
             guildOnly: false,
-            aliases: ["aide"],
+            aliases: [ "aide" ],
             memberPermissions: [],
             botPermissions: [ "SEND_MESSAGES", "EMBED_LINKS" ],
             nsfw: false,
-            ownerOnly: false
+            ownerOnly: false,
+            cooldown: 1000
         });
     }
 
@@ -33,16 +34,16 @@ class Help extends Command {
             }
 
             // Replace $ caract with the server prefix
-            let examples = cmd.help.examples(message.language).replace(/[$_]/g, settings.prefix);
+            let examples = cmd.help.examples(message.language).replace(/[$_]/g, message.settings.prefix);
 
             // Creates the help embed
-            let groupEmbed = new Discord.RichEmbed()
-                .setAuthor(message.language.get("HELP_HEADING")+" "+cmd.help.name)
-                .addField(message.language.get("HELP_USAGE"), settings.prefix+cmd.help.usage(message.language))
-                .addField(message.language.get("HELP_EXAMPLES"), examples)
-                .addField(message.language.get("HELP_GROUP"), cmd.help.category)
-                .addField(message.language.get("HELP_DESC"), cmd.help.description(message.language))
-                .addField(message.language.get("HELP_ALIASES"), cmd.conf.aliases.length > 0 ? cmd.conf.aliases.map((a) => "`"+a+"`").join("\n") : message.language.get("HELP_NO_ALIASES"))
+            let groupEmbed = new Discord.MessageEmbed()
+                .setAuthor(message.language.get("HELP_HEADINGS")[0]+" "+cmd.help.name)
+                .addField(message.language.get("HELP_HEADINGS")[1], message.settings.prefix+cmd.help.usage(message.language))
+                .addField(message.language.get("HELP_HEADINGS")[2], examples)
+                .addField(message.language.get("HELP_HEADINGS")[3], cmd.help.category)
+                .addField(message.language.get("HELP_HEADINGS")[4], cmd.help.description(message.language))
+                .addField(message.language.get("HELP_HEADINGS")[5], (cmd.conf.aliases.length > 0) ? cmd.conf.aliases.map((a) => "`"+a+"`").join("\n") : message.language.get("HELP_NO_ALIASES"))
                 .setColor(message.config.embed.color)
                 .setFooter(message.config.embed.footer);
 
@@ -62,7 +63,7 @@ class Help extends Command {
         let embeds = [];
         categories.forEach((category) => {
             let commands = message.client.commands.filter((cmd) => cmd.help.category === category);
-            let embed = new Discord.RichEmbed()
+            let embed = new Discord.MessageEmbed()
                 .setAuthor(category)
                 .setDescription(commands.sort().map((cmd) => `\`${cmd.help.name}\``).join(", "))
                 .setColor(message.config.embed.color)
@@ -90,7 +91,7 @@ class Help extends Command {
         reactCollector.on("collect", async(reaction, user) => {
 
             // Remove the reaction when the user react to the message
-            await reaction.remove(message.author.id);
+            await reaction.users.remove(message.author.id);
 
             switch(reaction._emoji.name){
                 case "⬅" :
@@ -109,7 +110,7 @@ class Help extends Command {
             if(!embeds[i-1]){
                 let r = tdata.reactions.find((r) => r._emoji.name === "⬅");
                 if(r){
-                    r.remove(message.client.user).catch((e) => {});
+                    r.users.remove(message.client.user).catch((e) => {});
                 }
             } else {
                 tdata.react("⬅").catch((e) => {});
@@ -117,7 +118,7 @@ class Help extends Command {
             if(!embeds[i+1]){
                 let r = tdata.reactions.find((r) => r._emoji.name === "➡");
                 if(r){
-                    r.remove(message.client.user).catch((e) => {});
+                    r.users.remove(message.client.user).catch((e) => {});
                 }
             } else {
                 tdata.react("➡").catch((e) => {});
