@@ -64,22 +64,27 @@ module.exports = class {
 			ERR_A_GAME_ALREADY_LAUNCHED: `${e.error} | A cause des lags et bugs dus au findwords et au number, il est impossible de lancer deux parties en même temps, même si elles sont sur deux serveurs différents.\nIl y a une partie actuellement en cours sur un autre serveur, veuillez donc patientez quelques minutes puis réessayer.\nNous sommes désolés, mais des personnes abusaient de cette commande en la spammant sur pleins de serveurs.`,
 			ERR_OCCURENCED: `${e.error} | Une erreur est survenue, veuillez réessayez dans quelques minutes.`,
 			
-			// PING COMMAND
+			/* PING COMMAND */
+
+			// Utils
 			PING_DESCRIPTION: "Affiche la latence du bot",
+			PING_USAGE: "ping",
+			PING_EXAMPLES: "$ping",
+			// Content
 			PING: (ms) => `${e.success} | Pong ! Ma latence est de \`${ms}\` ms !`,
 
 			/* HELP COMMAND */
 
 			// Utils
 			HELP_DESCRIPTION: "Affiche l'aide des commandes ou l'aide d'une commande en particulier",
-			HELP_USAGE: "$help (commande)",
+			HELP_USAGE: "help (commande)",
 			HELP_EXAMPLES: "$help\n$help ping",
 			// Errors
 			HELP_COMMAND_NOT_FOUND: (cmd) => `${e.error} | Commande ${cmd} introuvable !`,
-			// Others
+			HELP_CUSTOMIZED: (cmd) => `${e.error} | La commande ${cmd} ne dispose pas d'aide car elle est personnalisée.`,
+			// Content
 			HELP_REMINDER: (prefix) => `Pour avoir de l\'aide sur une commande tapez \`${prefix}help <commande>\` !`,
 			HELP_TITLE:(nb) => `Liste des commandes - (${nb})`,
-			HELP_CUSTOMIZED: (cmd) => `${e.error} | La commande ${cmd} ne dispose pas d'aide car elle est personnalisée.`,
 			HELP_NO_ALIASES: "Aucun alias.",
 			// Title
 			HELP_HEADINGS: [
