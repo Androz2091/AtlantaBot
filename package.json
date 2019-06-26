@@ -26,7 +26,7 @@
     "cookie-parser": "^1.4.4",
     "date-exists": "^1.0.1",
     "dblapi.js": "^2.3.0",
-    "discord.js": "^11.5",
+    "discord.js": "github:discordjs/discord.js",
     "express": "^4.16.4",
     "express-session": "^1.16.1",
     "express-useragent": "^1.0.12",

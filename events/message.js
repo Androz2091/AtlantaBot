@@ -18,7 +18,7 @@ module.exports = class {
 
         // If the member on a guild is invisible or not cached, fetch them.
         if(message.guild && !message.member){
-            await message.guild.fetchMember(message.author.id);
+            await message.guild.members.fetch(message.author.id);
         }
         
         let client = this.client;
@@ -121,88 +121,6 @@ module.exports = class {
 
         client.logger.log(`${message.author.username} (${message.author.id}) ran command ${cmd.help.name}`, "cmd");
         cmd.run(message, args);
-
-        /* SLOWMODE */
-
-        /*if(!message.member.hasPermission('MANAGE_GUILD')){
-            if(guild_data.slowmode[message.channel.id]){
-                if(guild_data.userslowmode[`${message.channel.id}${message.author.id}`]){
-                    var the_time = guild_data.userslowmode[`${message.channel.id}${message.author.id}`];
-                    if(the_time > Date.now()){
-                        message.delete();
-                        var delai = message.language.convertMs(the_time - Date.now());
-                        return message.author.send(message.language.get('SLOWMODE_PLEASE_WAIT', delai, message.channel));
-                    }
-                }
-                this.client.databases[1].set(`${message.guild.id}.userslowmode.${message.channel.id}${message.author.id}`, Date.now() + guild_data.slowmode[message.channel.id]);
-            }
-        }*/
-
-        /* DETECT AFK MEMBERS */
-        /*let afk_reason = this.client.databases[0].get(`afk.${message.author.id}`);
-        if(afk_reason){
-            var afk_members = this.client.databases[0].get(`afk`);
-            delete afk_members[message.author.id];
-            this.client.databases[0].set(`afk`, afk_members);
-            message.channel.send(message.language.get('AFK_DELETED', message.author));
-        };*/
-
-        // For each members mentionned
-        /*message.mentions.members.forEach(m => {
-            let afk_reason = this.client.databases[0].get(`afk.${m.id}`);
-            if(afk_reason) message.channel.send(message.language.get('AFK_IS_AFK', m, afk_reason));
-        });*/
-
-
-        // Update user xp
-        //updateXp(message, membersdata[0], this.client.databases[0], this.client.databases[2].xp);
-
-        
-
-        /* Automod */
-        /*if(guild_data.deleteinvite.status === 'enabled' && !guild_data.deleteinvite.channels.includes(message.channel.id)){
-            if(/(discord\.(gg|io|me|li)\/.+|discordapp\.com\/invite\/.+)/i.test(message.content)){
-                if(!message.member.hasPermission('MANAGE_MESSAGES')){
-                    message.delete();
-                    message.author.send('```'+message.content+'```');
-                    return message.channel.send(message.language.get('AUTOMOD_MSG', message));
-                }
-            }
-        }*/
-
-        
-        
-        // Fix everyone mention
-        //if(!message.member.hasPermission('MENTION_EVERYONE') && message.mentions.everyone) return message.channel.send(message.language.get('MENTION_EVERYONE'));
-
-        // Check bot permissions :
-        /*var neededPermission = [];
-        cmd.conf.botpermissions.forEach(perm => { if(!message.channel.permissionsFor(message.guild.me).has(perm)) neededPermission.push(perm); });
-        if(neededPermission.length > 0) return message.channel.send(message.language.get('INHIBITOR_MISSING_BOT_PERMS', neededPermission.map(p => p).join(', ')));
-
-        // checks if the command can be launched
-        if(guild_data.ignored_channels.includes(message.channel.id) && !message.member.hasPermission("MANAGE_MESSAGES")) return (message.delete()) && (message.author.send(message.language.get('CHANNEL_IGNORED', (message.channel))));
-        if(cmd.conf.nsfw && !message.channel.nsfw) return message.channel.send(message.language.get('INHIBITOR_NSFW'))
-        if(cmd.conf.permission){
-            if(!message.member.hasPermission(cmd.conf.permission)) return message.channel.send(message.language.get('INHIBITOR_PERMISSIONS', cmd.conf.permission));
-        }
-        if(!cmd.conf.enabled) return message.channel.send(message.language.get('COMMAND_DISABLED'));
-        if(cmd.conf.owner && message.author.id !== this.client.config.owner) return message.channel.send(message.language.get('OWNER_ONLY'));
-
-        data.cmd = cmd;
-
-        // to display the user's stats
-        this.client.databases[4].push('commands', {
-            date:Date.now(), 
-            author:message.author.id, 
-            data:{command:cmd.help.name,channel:{id:message.channel.id,name:message.channel.name},guild:{id:message.guild.id,name:message.guild.name}}
-        });
-
-        // If the command exists, **AND** the user has permission, run it.
-        this.client.logger.log(`${message.author.username} (${message.author.id}) ran command ${cmd.help.name}`, "cmd");
-        cmd.run(message, args, membersdata, guild_data, data);
-
-    }*/
     }
 };
 
