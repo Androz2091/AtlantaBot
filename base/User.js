@@ -4,10 +4,8 @@ module.exports = mongoose.model("User", new mongoose.Schema({
     id: { type: String }, // Discord ID of the user
     money: { type: Number, default: 0 }, // Money of the user
     rep: { type: Number, default: 0 }, // Reputation points of the user
-    exp: { type: Object, default: { // Experience of the user
-        level: 0,
-        points: 0
-    }},
+    exp: { type: Number, default: 0 }, // Exp points of the user
+    level: { type: Number, default: 0 }, // Level of the user
     badges: { type: Array, default: [] }, // Badges of the user
     bio: { type: String }, // Biography of the user
     birthdate: { type: Date }, // Birthdate of the user (the timestamp)

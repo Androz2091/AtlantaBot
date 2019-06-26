@@ -3,7 +3,8 @@
 // goes `client, other, args` when this function is run.
 
 const Discord = require("discord.js"),
-xpCooldown = {};
+xpCooldown = {},
+cmdCooldown = {};
 
 module.exports = class {
     constructor (client) {
@@ -124,6 +125,17 @@ module.exports = class {
         if(cmd.conf.ownerOnly && message.author.id !== client.config.owner.id){
             return message.channel.send(language.get("ERR_OWNER_ONLY"));
         }
+
+        let uCooldown = cmdCooldown[message.author.id];
+        if(!uCooldown){
+            cmdCooldown[message.author.id] = {};
+            uCooldown = cmdCooldown[message.author.id];
+        }
+        let time = uCooldown[cmd.help.name];
+        if(time && (time > Date.now())){
+            return message.channel.send(language.get("ERR_CMD_COOLDOWN", Math.ceil((time-Date.now())/1000)));
+        }
+        cmdCooldown[message.author.id][cmd.help.name] = Date.now() + cmd.conf.cooldown;
 
         client.logger.log(`${message.author.username} (${message.author.id}) ran command ${cmd.help.name}`, "cmd");
         cmd.run(message, args);
