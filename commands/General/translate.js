@@ -22,20 +22,20 @@ class Translate extends Command {
         });
     }
 
-    async run (message, args) {
+    async run (message, args, data) {
 
-        if(!message.tclient.config.apiKeys.yandex || message.tclient.config.apiKeys.yandex.length == ""){
+        if(!data.config.apiKeys.yandex || data.config.apiKeys.yandex.length == ""){
             return message.channel.send(message.language.get("ERR_COMMAND_DISABLED"));
         }
         
         let pWait = await message.channel.send(message.language.get("UTILS").PLEASE_WAIT);
         
-        let langs = await fetch(`https://translate.yandex.net/api/v1.5/tr.json/getLangs?key=${this.client.config.apiKeys.yandex}`);
+        let langs = await fetch(`https://translate.yandex.net/api/v1.5/tr.json/getLangs?key=${data.config.apiKeys.yandex}`);
         let langsJson = await langs.json();
         langs = langsJson.dirs;
 
         if(!args[0]){
-            return pWait.edit(message.language.get("TRANSLATE_ERR_LANG", message.settings.prefix));
+            return pWait.edit(message.language.get("TRANSLATE_ERR_LANG", data.settings.prefix));
         }
 
         // If the user wants the languages list
@@ -67,17 +67,17 @@ class Translate extends Command {
         let toTranslate = args.slice(1).join(" ");
         
         if(!langs.includes(language)){
-            return pWait.edit(message.language.get("TRANSLATE_LANG1", message.settings.prefix, language));
+            return pWait.edit(message.language.get("TRANSLATE_LANG1", data.settings.prefix, language));
         }
         
-        let res = await fetch(`https://translate.yandex.net/api/v1.5/tr.json/translate?key=${message.tclient.config.apiKeys.yandex}&text=${toTranslate}&lang=${language}&format=plain`);
+        let res = await fetch(`https://translate.yandex.net/api/v1.5/tr.json/translate?key=${data.config.apiKeys.yandex}&text=${toTranslate}&lang=${language}&format=plain`);
         let resJson = await res.json();
 
         let resEmbed = new Discord.MessageEmbed()
             .setAuthor("Translator", message.client.user.displayAvatarURL)
             .addField(language.split("-")[0], "```"+toTranslate+"```")
-            .setColor(message.config.embed.color)
-            .setFooter(message.config.embed.footer)
+            .setColor(data.config.embed.color)
+            .setFooter(data.config.embed.footer)
             .addField(language.split("-")[1], "```"+resJson.text[0]+"```");
         return pWait.edit("", { embed: resEmbed });
         

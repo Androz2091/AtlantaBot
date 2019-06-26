@@ -21,7 +21,7 @@ class Someone extends Command {
         });
     }
 
-    async run (message, args, membersdata, guild_data, data) {
+    async run (message, args, data) {
         
         let member = message.guild.members.random(1)[0];
         
@@ -30,7 +30,7 @@ class Someone extends Command {
             .addField(message.language.get("SOMEONE_HEADINGS")[1], member.user.discriminator, true)
             .addField(message.language.get("SOMEONE_HEADINGS")[2], member.user.id, true)
             .setThumbnail(member.user.displayAvatarURL())
-            .setColor(message.config.embed.color);
+            .setColor(data.config.embed.color);
         message.channel.send(embed);
         
     }

@@ -32,12 +32,12 @@ module.exports = {
      * @param {object} message The Discord message
      * @returns The prefix
      */
-    getPrefix(message){
+    getPrefix(message, data){
         if(message.channel.type !== "dm"){
             const prefixes = [
                 `<@${message.client.user.id}>`,
-                message.config.botname,
-                message.settings.prefix
+                data.config.botname,
+                data.settings.prefix
             ];
             let prefix = null;
             prefixes.forEach((p) => {

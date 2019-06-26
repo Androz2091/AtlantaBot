@@ -13,6 +13,8 @@ module.exports = class {
 
     async run (message) {
 
+        const data = {};
+
         // If the messagr author is a bot
         if(message.author.bot){
             return;
@@ -24,8 +26,7 @@ module.exports = class {
         }
         
         let client = this.client;
-        message.config = client.config;
-        message.tclient = client;
+        data.config = client.config;
 
         if(message.content.startsWith("<@"+client.user.id+">")){
             message.mentions.users = message.mentions.users.filter((u) => u.user.id !== client.user.id);
@@ -34,7 +35,7 @@ module.exports = class {
 
         // Gets settings
         let settings = await client.functions.getSettings(client, message.channel);
-        message.settings = settings;
+        data.settings = settings;
 
         // Gets language
         let language = new(require(`../languages/${settings.language}.js`));
@@ -46,19 +47,19 @@ module.exports = class {
         }
 
         if(message.content === "@someone"){
-            return client.commands.get("someone").run(message);
+            return client.commands.get("someone").run(message, null, data);
         }
 
         // Gets the data of the users
-        let usersData = await client.functions.getUsersData(client, [message.author].concat(message.mentions.users));
-        message.usersData = usersData;
+        let usersData = await client.functions.getUsersData(client, [message.author, ...message.mentions.users.values()]);
+        data.users = usersData;
 
         if(message.guild){
-            updateXp(message);
+            await updateXp(message, data);
         }
 
         // Gets the prefix
-        let prefix = client.functions.getPrefix(message);
+        let prefix = client.functions.getPrefix(message, data);
         if(!prefix){
             return;
         }
@@ -138,7 +139,7 @@ module.exports = class {
         cmdCooldown[message.author.id][cmd.help.name] = Date.now() + cmd.conf.cooldown;
 
         client.logger.log(`${message.author.username} (${message.author.id}) ran command ${cmd.help.name}`, "cmd");
-        cmd.run(message, args);
+        cmd.run(message, args, data);
     }
 };
 
@@ -147,9 +148,9 @@ module.exports = class {
  * This function update userdata by adding xp
 */
 
-async function updateXp(msg){
+async function updateXp(msg, data){
     
-    let user = msg.usersData[0];
+    let user = data.users[0];
 
     // Gets the user informations
     let points = parseInt(user.exp);

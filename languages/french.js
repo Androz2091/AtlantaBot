@@ -63,6 +63,7 @@ module.exports = class {
 			ERR_GAME_ALREADY_LAUNCHED: `${e.error} | Une partie est déjà en cours sur ce serveur !`,
 			ERR_A_GAME_ALREADY_LAUNCHED: `${e.error} | A cause des lags et bugs dus au findwords et au number, il est impossible de lancer deux parties en même temps, même si elles sont sur deux serveurs différents.\nIl y a une partie actuellement en cours sur un autre serveur, veuillez donc patientez quelques minutes puis réessayer.\nNous sommes désolés, mais des personnes abusaient de cette commande en la spammant sur pleins de serveurs.`,
 			ERR_OCCURENCED: `${e.error} | Une erreur est survenue, veuillez réessayez dans quelques minutes.`,
+			ERR_CMD_COOLDOWN: (seconds) => `${e.error} | Vous devez attendre **${seconds}** seconde(s) pour pouvoir de nouveau effectuer cette commande !`,
 			
 			/* PING COMMAND */
 
@@ -80,7 +81,7 @@ module.exports = class {
 			HELP_USAGE: "help (commande)",
 			HELP_EXAMPLES: "$help\n$help ping",
 			// Errors
-			HELP_ERR_NOT_FOUND: (cmd) => `${e.error} | Commande ${cmd} introuvable !`,
+			HELP_ERR_NOT_FOUND: (cmd) => `${e.error} | Commande \`${cmd}\` introuvable !`,
 			HELP_ERR_CMD_CUSTOMIZED: (cmd) => `${e.error} | La commande ${cmd} ne dispose pas d'aide car elle est personnalisée.`,
 			// Content
 			HELP_REMINDER: (prefix) => `Pour avoir de l\'aide sur une commande tapez \`${prefix}help <commande>\` !`,
@@ -204,12 +205,18 @@ module.exports = class {
 				BADGES: "🔥 Badges",
 			},
 			
-			// work command
-			WORK_DESCRIPTION: "Travaillez et gagnez de l'argent !",
-			WORK_COOLDOWN: (delay) => `${e.error} | Vous devez attendre ${delay} avant de pouvoir de nouveau travailler !`,
-			SALARY_CLAIMED: "Salaire",
-			SALARY_CLAIMED2: "200 crédits ajoutés à votre compte !",
+			/* WORK COMMAND */
 
+			// Utils
+			WORK_DESCRIPTION: "Travaillez et gagnez de l'argent !",
+			WORK_USAGE: "work",
+			WORK_EXAMPLES: "$work",
+			// Content
+			SALARY_CLAIMED_TITLE: "Salaire",
+			SALARY_CLAIMED_CONTENT: "200 crédits ajoutés à votre compte !",
+			// Errors
+			WORK_COOLDOWN: (delay) => `${e.error} | Vous devez attendre ${delay} avant de pouvoir de nouveau travailler !`,
+			
 			// Eval
 			EVAL_DESCRIPTION: "Exécute le code",
 
@@ -699,32 +706,22 @@ module.exports = class {
 			],
 			MINECRAFT_PLAYERS: (nb) => `${nb} joueur(s)`,
 
+			/* FORTNITE COMMAND */
+			
+			// Utils
 			FORTNITE_DESCRIPTION: "Affiche les stats Fortnite d'un joueur !",
-			FORTNITE_PLATFORM: `${e.error} | Entrez une plateforme valide : \`psn\`, \`pc\` ou \`xbl\` !`,
-			FORTNITE_USERNAME: `${e.error} | Entrez un pseudo epic games valide !`,
-			FORTNITE_404: (platform, username) => `${e.error} | Joueur \`${username}\` introuvable sur la plateforme \`${platform}\` !`,
+			FORTNITE_USAGE: "fortnite [psn/xbl/pc] [pseudo]",
+			FORTNITE_EXAMPLES: "$fortnite pc Ninja",
+			// Errors
+			FORTNITE_ERR_PLATFORM: `${e.error} | Entrez une plateforme valide : \`psn\`, \`pc\` ou \`xbl\` !`,
+			FORTNITE_ERR_USERNAME: `${e.error} | Entrez un pseudo epic games valide !`,
+			FORTNITE_ERR_NOT_FOUND: (platform, username) => `${e.error} | Joueur \`${username}\` introuvable sur la plateforme \`${platform}\` !`,
+			// Content
 			FORTNITE_DESC: (platform, username) => `${username} joue sur ${platform} !`,
-			FORTNITE_SOLO_STATS: (data) => `<:score:569087927783522334> K/D : ${data.stats.solo.kd}
-				<:games:567019785620029529> Parties : ${data.stats.solo.matches}
-				<:mort:569080340145111060> Kills : ${data.stats.solo.kills}
-				<:founder:568122623599443978> Victoire(s) : ${data.stats.solo.wins}
-			`,
-			FORTNITE_DUO_STATS: (data) => `<:score:569087927783522334> K/D : ${data.stats.duo.kd}
-				<:games:567019785620029529> Parties : ${data.stats.duo.matches}
-				<:mort:569080340145111060> Kills : ${data.stats.duo.kills}
-				<:founder:568122623599443978> Victoire(s) : ${data.stats.duo.wins}
-			`,
-			FORTNITE_SQUAD_STATS: (data) => `<:score:569087927783522334> K/D : ${data.stats.squad.kd}
-				<:games:567019785620029529> Parties : ${data.stats.squad.matches}
-				<:mort:569080340145111060> Kills : ${data.stats.squad.kills}
-				<:founder:568122623599443978> Victoire(s) : ${data.stats.squad.wins}
-			`,
-			FORTNITE_LIFETIME_STATS: (data) => `
-				<:score:569087927783522334>	K/D : ${data.stats.lifetime.kd}
-				<:games:567019785620029529> Parties : ${data.stats.lifetime.matches}
-				<:mort:569080340145111060> Kills : ${data.stats.lifetime.kills}
-				<:founder:568122623599443978> Victoire(s) : ${data.stats.lifetime.wins}
-			`,
+			FORTNITE_SOLO_STATS: (data) => `${e.score} K/D : ${data.stats.solo.kd}\n${e.games} Parties : ${data.stats.solo.matches}\n${e.kills} Kills : ${data.stats.solo.kills}\n${e.crown} Victoire(s) : ${data.stats.solo.wins}`,
+			FORTNITE_DUO_STATS: (data) => `${e.score} K/D : ${data.stats.duo.kd}\n${e.games} Parties : ${data.stats.duo.matches}\n${e.kills} Kills : ${data.stats.duo.kills}\n${e.crown} Victoire(s) : ${data.stats.duo.wins}`,
+			FORTNITE_SQUAD_STATS: (data) => `${e.score} K/D : ${data.stats.squad.kd}\n${e.games} Parties : ${data.stats.squad.matches}\n${e.kills} Kills : ${data.stats.squad.kills}\n${e.crown} Victoire(s) : ${data.stats.squad.wins}`,
+			FORTNITE_LIFETIME_STATS: (data) => `${e.score}	K/D : ${data.stats.lifetime.kd}\n${e.games} Parties : ${data.stats.lifetime.matches}\n${e.kills} Kills : ${data.stats.lifetime.kills}\n${e.crown} Victoire(s) : ${data.stats.lifetime.wins}`,
 
 			QUOTE_DESCRIPTION: "Citez un message dans le salon !",
 			QUOTE_404: `${e.error} | Aucun message ne possède cet ID.`,

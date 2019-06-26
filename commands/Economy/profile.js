@@ -21,7 +21,7 @@ class Profile extends Command {
         });
     }
 
-    async run (message, args) {
+    async run (message, args, data) {
 
         // Gets the user whose profile you want to display
         let user = (message.mentions.users.size > 0 ? message.mentions.users.first() : message.author);
@@ -32,7 +32,7 @@ class Profile extends Command {
         }
 
         // Gets the data of the user whose profile you want to display
-        let userData = (message.author === user) ? message.usersData[0] : message.usersData[1];
+        let userData = (message.author === user) ? data.users[0] : data.users[1];
         
         // Check if the lover is cached 
         if(userData.lover && !message.client.users.get(userData.lover)){
@@ -52,8 +52,8 @@ class Profile extends Command {
             .addField(message.language.get("PROFILE_HEADINGS").INVITER, (message.client.guilds.some((g) => g.ownerID === user.id) ? message.language.get("UTILS").YES : message.language.get("UTILS").NO), true)
             .addField(message.language.get("PROFILE_HEADINGS").MARRIED, (!userData.partner ? message.language.get("NO_PARTNER") : message.client.users.get(userData.partner).tag), true)
             .addField(message.language.get("PROFILE_HEADINGS").BADGES, (userData.badges.length > 0 ? "=> "+userData.badges.map((b) => b.str).join(" ") : message.language.get("NO_BADGE")))
-            .setColor(message.config.embed.color) // Sets the color of the embed
-            .setFooter(message.config.embed.footer) // Sets the footer of the embed
+            .setColor(data.config.embed.color) // Sets the color of the embed
+            .setFooter(data.config.embed.footer) // Sets the footer of the embed
             .setTimestamp();
 
         message.channel.send(profileEmbed); // Send the embed in the current channel

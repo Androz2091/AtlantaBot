@@ -16,36 +16,36 @@ class Help extends Command {
             botPermissions: [ "SEND_MESSAGES", "EMBED_LINKS" ],
             nsfw: false,
             ownerOnly: false,
-            cooldown: 1000
+            cooldown: 5000
         });
     }
 
-    async run (message, args) {
+    async run (message, args, data) {
 
         // if a command is provided
         if(args[0]){
 
             // if the command doesn't exist, error message
             let cmd = message.client.commands.get(args[0]) || message.client.commands.get(message.client.aliases.get(args[0]));
-            if(!cmd && message.settings.commands[args[0]]){
+            if(!cmd && data.settings.customCommands[args[0]]){
                 return message.channel.send(message.language.get("HELP_ERR_CMD_CUSTOMIZED"), args[0]);
             } else if(!cmd){
                 return message.channel.send(message.language.get("HELP_ERR_NOT_FOUND", args[0]));
             }
 
             // Replace $ caract with the server prefix
-            let examples = cmd.help.examples(message.language).replace(/[$_]/g, message.settings.prefix);
+            let examples = cmd.help.examples(message.language).replace(/[$_]/g, data.settings.prefix);
 
             // Creates the help embed
             let groupEmbed = new Discord.MessageEmbed()
                 .setAuthor(message.language.get("HELP_HEADINGS")[0]+" "+cmd.help.name)
-                .addField(message.language.get("HELP_HEADINGS")[1], message.settings.prefix+cmd.help.usage(message.language))
+                .addField(message.language.get("HELP_HEADINGS")[1], data.settings.prefix+cmd.help.usage(message.language))
                 .addField(message.language.get("HELP_HEADINGS")[2], examples)
                 .addField(message.language.get("HELP_HEADINGS")[3], cmd.help.category)
                 .addField(message.language.get("HELP_HEADINGS")[4], cmd.help.description(message.language))
                 .addField(message.language.get("HELP_HEADINGS")[5], (cmd.conf.aliases.length > 0) ? cmd.conf.aliases.map((a) => "`"+a+"`").join("\n") : message.language.get("HELP_NO_ALIASES"))
-                .setColor(message.config.embed.color)
-                .setFooter(message.config.embed.footer);
+                .setColor(data.config.embed.color)
+                .setFooter(data.config.embed.footer);
 
             // and send the embed in the current channel
             return message.channel.send(groupEmbed);
@@ -66,8 +66,8 @@ class Help extends Command {
             let embed = new Discord.MessageEmbed()
                 .setAuthor(category)
                 .setDescription(commands.sort().map((cmd) => `\`${cmd.help.name}\``).join(", "))
-                .setColor(message.config.embed.color)
-                .setFooter(message.config.embed.footer, message.author.displayAvatarURL);
+                .setColor(data.config.embed.color)
+                .setFooter(data.config.embed.footer, message.author.displayAvatarURL());
             embeds.push(embed);
         });
 
