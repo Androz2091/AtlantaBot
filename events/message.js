@@ -58,6 +58,16 @@ module.exports = class {
             await updateXp(message, data);
         }
 
+        if(data.settings.plugins.automod.enabled && !data.settings.plugins.automod.ignored.includes(message.channel.id)){
+            if(/(discord\.(gg|io|me|li)\/.+|discordapp\.com\/invite\/.+)/i.test(message.content)){
+                if(!message.channel.permissionsFor(message.member).has("MANAGE_MESSAGES")){
+                    message.delete();
+                    message.author.send("```"+message.content+"```");
+                    return message.channel.send(message.language.get("AUTOMOD_MSG", message));
+                }
+            }
+        }
+
         // Gets the prefix
         let prefix = client.functions.getPrefix(message, data);
         if(!prefix){
@@ -74,10 +84,6 @@ module.exports = class {
                 message.channel.send(customCommand.answer);
             }
             return;
-        }
-
-        if(client.databases[5].get(`users.${message.author.id}`)){
-            return message.channel.send(message.language.get(`BLACKLIST_BANNED_USER`, this.client.databases[5].get(`users.${message.author.id}`)))
         }
 
         if(cmd.conf.guildOnly && !message.guild){

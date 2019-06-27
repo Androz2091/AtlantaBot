@@ -122,7 +122,7 @@ module.exports = class {
 			CONFIGURATION_GOODBYE: (withImage, channelID) => `Salon : <#${channelID}>\nImage : ${withImage ? "Oui" : "Non"}`,
 			CONFIGURATION_MODLOGS: (channelID) => `Logs : ${channelID ? `<#${channelID}>` : "Indéfini"}`,
 			CONFIGURATION_SUGGESTIONS: (channelID) => `Suggestions : ${channelID ? `<#${channelID}>` : "Indéfini" }`,
-			CONFIGURATION_AUTOMOD: (ignoredChannels) => `Salon ignorés : ${ignoredChannels.length > 0 ? ignoredChannels.map((ch) => `<#${ch}>`) : "Aucun salon ignoré."}`,
+			CONFIGURATION_AUTOMOD: (ignoredChannels) => `${ignoredChannels.length > 0 ? `Salon ignorés : ${ignoredChannels.map((ch) => `<#${ch}>`)}` : "Aucun salon ignoré."}`,
 			CONFIGURATION_WARNS: (kick, ban) => `${kick ? `**Expulsion**: au bout de **${kick}** avertissements.` : "**Expulsion**: Non définie."}\n${ban ? `**Bannissement**: au bout de **${ban}** avertissements.` : "**Bannissement**: Non défini."}`,
 
 			// Ignore command
@@ -783,12 +783,18 @@ module.exports = class {
 			// Content
 			ADDEMOTE_SUCCESS: (emote) => `${e.success} | Émoji ${emote.name} ajouté au serveur !`,
 			
-			// automod command
+			/* AUTOMOD COMMAND */
+
+			// Utils
 			AUTOMOD_DESCRIPTION: "Active ou désactive la suppression automatique des invitations discord",
-			AUTOMOD_STATUS: `${e.error} | Veuillez entrer un statut valide ! (\`on\` ou \`off\`) !`,
-			AUTOMOD_SUCCESS: (prefix) => `${e.success} | Les invitations Discord seront automatiquement supprimées ! Si vous souhaitez ignorer un salon, tapez simplement \`${prefix}automod off #channel\` ! Cela désactivera l'auto modération dans le salon mentionné !`,
-			AUTOMOD_SUCCESS1: (channel) => `${e.success} | L'auto modération ne sera plus effectuée dans le salon ${channel} !`,
-			AUTOMOD_SUCCESS2: `${e.success} | Très bien ! L'auto modération n'est plus effective sur ce serveur !`,
+			AUTOMOD_USAGE: "automod [on/off] (#salon)",
+			AUTOMOD_EXAMPLES: "$automod on\n$automod off #general\n$automod off",
+			// Errors
+			AUTOMOD_ERR_STATUS: `${e.error} | Veuillez entrer un statut valide ! (\`on\` ou \`off\`) !`,
+			// Content
+			AUTOMOD_SUCCESS_ENABLED: (prefix) => `${e.success} | Les invitations Discord seront automatiquement supprimées ! Si vous souhaitez ignorer un salon, tapez simplement \`${prefix}automod off #channel\` ! Cela désactivera l'auto modération dans le salon mentionné !`,
+			AUTOMOD_SUCCESS_DISABLED_CHANNEL: (channel) => `${e.success} | L'auto modération ne sera plus effectuée dans le salon ${channel} !`,
+			AUTOMOD_SUCCESS_DISABLED: `${e.success} | Très bien ! L'auto modération n'est plus effective sur ce serveur !`,
 			AUTOMOD_MSG: (msg) => `${msg.author} | Votre message contenait une invitation Discord, il a donc été supprimé. Si c'était involontaire, vous pouvez rééditer votre message, il vous a été envoyé en message privé !`,
 
 			SETLANG_DESCRIPTION: "Change la langue du serveur!",
