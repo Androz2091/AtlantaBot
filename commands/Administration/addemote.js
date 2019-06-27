@@ -1,42 +1,42 @@
 const Command = require("../../base/Command.js"),
-Discord = require('discord.js');
+Discord = require("discord.js");
 
 class Addemote extends Command {
 
     constructor (client) {
         super(client, {
             name: "addemote",
-            description: (language) => language.get('ADDEMOTE_DESCRIPTION'),
+            description: (language) => language.get("ADDEMOTE_DESCRIPTION"),
+            usage: (language) => language.get("ADDEMOTE_USAGE"),
+            examples: (language) => language.get("ADDEMOTE_EXAMPLES"),
             dirname: __dirname,
-            usage: "addemote [link]",
             enabled: true,
             guildOnly: true,
             aliases: [],
-            permission: "MANAGE_EMOJIS",
-            botpermissions: [ "SEND_MESSAGES", "EMBED_LINKS", "MANAGE_EMOJIS" ],
+            memberPermissions: [ "MANAGE_GUILD" ],
+            botPermissions: [ "SEND_MESSAGES", "EMBED_LINKS" ],
             nsfw: false,
-            examples: "$addemote https://image.com",
-            owner: false
+            ownerOnly: false,
+            cooldown: 5000
         });
     }
 
-    async run (message, args, membersdata, guild_data, data) {
+    async run (message, args, data) {
 
-        // Gets the url of the emote
-        var url = args[0];
-        // Gets the name of the emote
-        var name = args[1];
+        let url = args[0];
+        if(!url){
+            return message.channel.send(message.language.get("ADDEMOTE_ERR_URL"));
+        }
 
-        if(!url) return message.channel.send(message.language.get('ADDEMOTE_URL'));
-        if(!name) return message.channel.send(message.language.get('ADDEMOTE_NAME'));
+        let name = args[1];
+        if(!name){
+            return message.channel.send(message.language.get("ADDEMOTE_ERR_NAME"));
+        }
 
-        // Add the emote
-        message.guild.createEmoji(url, name).then(emote => {
-            // send success message
-            message.channel.send(message.language.get('ADDEMOTE_SUCCESS', emote));
-        }).catch(err => {
-            // send error message
-            return message.channel.send(message.language.get('ADDEMOTE_ERROR'));
+        message.guild.emojis.create(url, name).then((emote) => {
+            message.channel.send(message.language.get("ADDEMOTE_SUCCESS", emote));
+        }).catch((err) => {
+            return message.channel.send(message.language.get("ADDEMOTE_ERR_OCCURENCED"));
         });
     }
 

@@ -762,12 +762,18 @@ module.exports = class {
 			SETSUGGESTS_DESCRIPTION: "Définissez le salon des suggestions !",
 			SETSUGGESTS_SUCCESS: (channel) => `${e.success} | Le salon des suggestions est maintenant ${channel} !`,
 
-			// addemote command
+			/* ADDEMOTE COMMAND */
+
+			// Utils
 			ADDEMOTE_DESCRIPTION: "Ajout un émoji au serveur !",
-			ADDEMOTE_NAME: `${e.error} | Veuillez indiquer le nom de l'émoji !`,
-			ADDEMOTE_URL: `${e.error} | Veuillez indiquer l'url de l'émoji !`,
-			ADDEMOTE_SUCCESS: (emote) => `${e.success} | Émoji ${emote.name} ajouté au serveur !`,
+			ADDEMOTE_USAGE: "addemote [URL] [nom]",
+			ADDEMOTE_EXAMPLES: "$addemote https://une-image-de.com/papillon.png papillon",
+			// Errors
+			ADDEMOTE_ERR_NAME: `${e.error} | Veuillez indiquer le nom de l'émoji !`,
+			ADDEMOTE_ERR_URL: `${e.error} | Veuillez indiquer l'url de l'émoji !`,
 			ADDEMOTE_ERROR: `${e.error} | L'URL vers l'image est invalide ou vous n'avez plus de place sur votre Discord !`,
+			// Content
+			ADDEMOTE_SUCCESS: (emote) => `${e.success} | Émoji ${emote.name} ajouté au serveur !`,
 			
 			// automod command
 			AUTOMOD_DESCRIPTION: "Active ou désactive la suppression automatique des invitations discord",
