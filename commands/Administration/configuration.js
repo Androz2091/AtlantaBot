@@ -58,8 +58,8 @@ class Configuration extends Command {
         );
 
         embed.addField(headings[4][0],
-            (Object.keys(data.settings.slowmode.channels).length > 0) ?
-                getSlowmodes(data.settings.slowmode.channels)
+            (settings.slowmode.channels.length > 0) ?
+                settings.slowmode.channels.map((ch) => `<#${ch.id}> (${message.language.convertMs(ch.time)})\n`)
             :   headings[4][1]
         );
 
@@ -80,15 +80,6 @@ class Configuration extends Command {
 
         // Then, send the embed in the current channel
         message.channel.send(embed);
-
-        function getSlowmodes(obj){
-            let str = "";
-            for(let ID in obj){
-                let time = obj[ID];
-                str += `<#${id}> | ${message.language.convertMs(time)}\n`;
-            }
-            return str;
-        }
     }
 
 }

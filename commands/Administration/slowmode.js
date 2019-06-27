@@ -1,68 +1,53 @@
 const Command = require("../../base/Command.js"),
-Discord = require('discord.js');
+Discord = require("discord.js"),
+ms = require("ms");
 
 class Slowmode extends Command {
 
     constructor (client) {
         super(client, {
             name: "slowmode",
-            description: (language) => language.get('SLOWMODE_DESCRIPTION'),
+            description: (language) => language.get("SLOWMODE_DESCRIPTION"),
+            usage: (language) => language.get("SLOWMODE_USAGE"),
+            examples: (language) => language.get("SLOWMODE_EXAMPLES"),
             dirname: __dirname,
-            usage: "slowmode [#channel] (temps)",
             enabled: true,
             guildOnly: true,
-            aliases: ["slow"],
-            permission: "MANAGE_GUILD",
-            botpermissions: [ "SEND_MESSAGES" ],
+            aliases: [ "slowmotion" ],
+            memberPermissions: [ "MANAGE_GUILD" ],
+            botPermissions: [ "SEND_MESSAGES", "EMBED_LINKS" ],
             nsfw: false,
-            examples: "$slowmode #général 10m\n$slowmode #général",
-            owner: false
+            ownerOnly: false,
+            cooldown: 3000
         });
     }
 
-    async run (message, args, membersdata, guild_data, data) {
+    async run (message, args, data) {
 
-        var ms = require('ms');
-
-        var channel = message.mentions.channels.first();
-        if(!channel) return message.channel.send(message.language.get('MENTION_CHANNEL'));
-
-        var time = args[1];
-
+        let channel = message.mentions.channels.first();
+        if(!channel){
+            return message.channel.send(message.language.get("ERR_INVALID_CHANNEL"));
+        }
+        let time = args[1];
         if(!time){
-
-            if(!guild_data.slowmode[channel.id]) return message.channel.send(message.language.get('INVALID_TIME'));
-
-            message.channel.send(message.language.get('SLOWMODE_DISABLED', channel.id));
-
-            // Creates new object without the channel
-            var new_slowmode = {};
-            for(var id in guild_data.slowmode){
-                if(id !== channel.id){
-                    var _time = guild_data.slowmde[id];
-                    new_slowmode[id] = _time;
-                }
+            if(!data.slowmode.channels.find((ch) => ch.id === channel.id)){
+                return message.channel.send(message.language.get("ERR_INVALID_TIME"));
             }
-
-            // Updates the database
-            this.client.databases[1].set(`${message.guild.id}.slowmode`, new_slowmode);
+            data.settings.slowmode.channels = data.settings.slowmode.channels.filter((ch) => ch.id !== channel.id);
+            data.settings.markModified("slowmode.channels");
+            data.settings.save();
+            message.channel.send(message.language.get("SLOWMODE_DISABLED", channel.id));
         } else {
-            if(isNaN(ms(time))) return message.channel.send(message.language.get('INVALID_TIME'));
-            message.channel.send(message.language.get('SLOWMODE_ENABLED', channel.id, time));
-
-            // Creates new object without the channel
-            var new_slowmode = {};
-            for(var id in guild_data.slowmode){
-                if(id !== channel.id){
-                    var _time = guild_data.slowmode[id];
-                    new_slowmode[id] = _time;
-                }
+            if(isNaN(ms(time))){
+                return message.channel.send(message.language.get("ERR_INVALID_TIME"));
             }
-            // Then add the channel
-            new_slowmode[channel.id] = ms(time);
-
-            // Updates the database
-            this.client.databases[1].set(`${message.guild.id}.slowmode`, new_slowmode);
+            data.settings.slowmode.channels.push({
+                id: channel.id,
+                time: ms(time)
+            });
+            data.settings.markModified("slowmode.channels");
+            data.settings.save();
+            message.channel.send(message.language.get("SLOWMODE_ENABLED", channel.id, time));
         }
     }
 }

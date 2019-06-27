@@ -195,11 +195,17 @@ module.exports = class {
 			GOODBYE_ERR_TIMEOUT: `${e.error} | Temps écoulé ! Veuillez retaper la commande !`,
 			GOODBYE_ERR_CARACT: `${e.error} | Votre message ne doit pas excéder les 1500 caractères !`,
 
-			// Slowmode
+			/* SLOWMODE COMMAND */
+
+			// Utils
 			SLOWMODE_DESCRIPTION: "Définissez un cooldown dans un salon",
+			SLOWMODE_USAGE: "slowmode [#salon] (temps)",
+			SLOWMODE_EXAMPELS: "$slowmode #général 10m\n$slowmode #général",
+			// Errors
+			SLOWMODE_PLEASE_WAIT: (time, channel) => `${e.error} | Le salon ${channel} est en slowmode ! Veuillez attendre ${time} pour pouvoir poster un nouveau message !`,
+			// Content
 			SLOWMODE_DISABLED: (channel) => `${e.success} | Le slowmode a été désactivé dans le salon <#${channel}> !`,
 			SLOWMODE_ENABLED: (channel, time) => `${e.success} | Slowmode activé dans <#${channel}> avec un temps de ${time} !`,
-			SLOWMODE_PLEASE_WAIT: (time, channel) => `${e.error} | Le salon ${channel} est en slowmode ! Veuillez attendre ${time} pour pouvoir poster un nouveau message !`,
 
 			/* ADDCOMMAND COMMAND */
 

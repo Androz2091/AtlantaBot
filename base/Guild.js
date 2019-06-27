@@ -35,8 +35,8 @@ module.exports = mongoose.model("Guild", new mongoose.Schema({
         modlogs: false
     }},
     slowmode: { type: Object, default: {
-        users: {},
-        channels: {}
+        users: [],
+        channels: []
     }},
     ignoredChannels: { type: Array, default: [] }, // Channels ignored by the bot
     warns: { type: Object, default: { // Warns data for the guild
