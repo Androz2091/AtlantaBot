@@ -1,59 +1,60 @@
 const Command = require("../../base/Command.js"),
-Discord = require('discord.js');
+Discord = require("discord.js");
 
 class Slots extends Command {
 
     constructor (client) {
         super(client, {
             name: "slots",
-            description: (language) => language.get('SLOTS_DESCRIPTION'),
+            description: (language) => language.get("SLOTS_DESCRIPTION"),
+            usage: (language) => language.get("SLOTS_USAGE"),
+            examples: (language) => language.get("SLOTS_EXAMPLES"),
             dirname: __dirname,
-            usage: "slots [amount]",
             enabled: true,
             guildOnly: false,
-            aliases: [],
-            permission: false,
-            botpermissions: [ "SEND_MESSAGES" ],
+            aliases: [ "casino", "slot" ],
+            memberPermissions: [],
+            botPermissions: [ "SEND_MESSAGES", "EMBED_LINKS" ],
             nsfw: false,
-            examples: "$slots 10",
-            owner: false
+            ownerOnly: false,
+            cooldown: 3000
         });
     }
 
-    async run (message, args, membersdata, guild_data, data) {
+    async run (message, args, data) {
         
-        // Inits some variables
-        var client = this.client;
-        var tmsg = null;
-        var fruits = [ "🍎", "🍐", "🍌", "🍇", "🍉", "🍒", "🍓" ]; // the array of the fruits
-        var i1=0,j1=0,k1=0;
-        var i2=1,j2=1,k2=1;
-        var i3=2,j3=2,k3=2;
+        let fruits = [ "🍎", "🍐", "🍌", "🍇", "🍉", "🍒", "🍓" ];
+
+        let i1=0,j1=0,k1=0,i2=1,j2=1,k2=1,i3=2,j3=2,k3=2;
 
         // Gets three random fruits array
-        var colonne1 = client.functions.shuffle(fruits);
-        var colonne2 = client.functions.shuffle(fruits);
-        var colonne3 = client.functions.shuffle(fruits);
+        let colonne1 = message.client.functions.shuffle(fruits),
+        colonne2 = message.client.functions.shuffle(fruits),
+        colonne3 = message.client.functions.shuffle(fruits);
 
         // Gets the amount provided
-        var amount = args[0];
-        if(!amount || isNaN(amount) || amount < 1) amount = 1;
-        if(amount > membersdata[0].credits) return message.channel.send(message.language.get('SLOTS_TOO_HIGH', amount));
+        let amount = args[0];
+        if(!amount || isNaN(amount) || amount < 1){
+            amount = 1;
+        }
+        if(amount > data.users[0].money){
+            return message.channel.send(message.language.get("SLOTS_ERR_TOO_HIGH", amount));
+        }
         amount = Math.round(amount);
         
-        message.channel.send(message.language.get('PLEASE_WAIT')).then(m => {
-            tmsg = m;
-            editMsg(); // Start to edit the message
-            var interval = setInterval(editMsg, 1000); // every second, edit the message
-            setTimeout(() => {
-                clearInterval(interval); // clear the interval and
-                end(); // then display the result
-            }, (4000));
-        });
+        let tmsg = await message.channel.send(message.language.get("UTILS").PLEASE_WAIT);
+        editMsg();
+        let interval = setInterval(editMsg, 1000);
+        setTimeout(() => {
+            clearInterval(interval);
+            end();
+        }, 4000);
 
 
-        function end(){
-            var msg = '[  :slot_machine: | **SLOTS** ]\n------------------\n';
+        async function end(){
+
+            let msg = "[  :slot_machine: | **SLOTS** ]\n------------------\n";
+
             i1 = (i1 < fruits.length - 1) ? i1 + 1 : 0;
             i2 = (i2 < fruits.length - 1) ? i2 + 1 : 0;
             i3 = (i3 < fruits.length - 1) ? i3 + 1 : 0;
@@ -63,38 +64,44 @@ class Slots extends Command {
             k1 = (k1 < fruits.length - 1) ? k1 + 1 : 0;
             k2 = (k2 < fruits.length - 1) ? k2 + 1 : 0;
             k3 = (k3 < fruits.length - 1) ? k3 + 1 : 0;
-            msg += colonne1[i1] + ' : ' + colonne2[j1] + ' : '+ colonne3[k1] + '\n';
-            msg += colonne1[i2] + ' : ' + colonne2[j2] + ' : '+ colonne3[k2] + ' **<**\n';
-            msg += colonne1[i3] + ' : ' + colonne2[j3] + ' : '+ colonne3[k3] + '\n------------------\n';
+
+            msg += colonne1[i1] + " : " + colonne2[j1] + " : "+ colonne3[k1] + "\n";
+            msg += colonne1[i2] + " : " + colonne2[j2] + " : "+ colonne3[k2] + " **<**\n";
+            msg += colonne1[i3] + " : " + colonne2[j3] + " : "+ colonne3[k3] + "\n------------------\n";
+            
             if((colonne1[i2] == colonne2[j2]) && (colonne2[j2] == colonne3[k2])){
-                // If it's the jackpot (all the fruits are aligned)
-                msg += '| : : :  **'+message.language.get('WIN').toUpperCase()+'**  : : : |';
-                var credits = getCredits(amount, true); // gets the amount of credits to give to the member
-                // Send a congratulatory message
-                message.channel.send(message.language.get('SLOTS_WIN', 'JACKPOT ! ', amount, credits, message.author.username));
-                // Updates member balance
-                client.databases[0].add(`${message.author.id}.credits`, credits);
-                client.databases[0].subtract(`${message.author.id}.credits`, amount);
-            } else if(colonne1[i2] == colonne2[j2] || colonne2[j2] == colonne3[k2] || colonne1[i2] == colonne3[k2]){
-                // if it's just a little win (only two fruits are aligned)
-                var credits = getCredits(amount, false); // gets the amount of credits to give to the member
-                // Send a congratulatory message
-                message.channel.send(message.language.get('SLOTS_WIN', '', amount, credits, message.author.username));
-                // Updates member balance
-                client.databases[0].add(`${message.author.id}.credits`, credits);
-                client.databases[0].subtract(`${message.author.id}.credits`, amount);
-            } else {
-                msg += '| : : :  **'+message.language.get('LOOSE').toUpperCase()+'**  : : : |';
-                // Send a message
-                message.channel.send(message.language.get('SLOTS_LOOSE', amount, message.author.username));
-                // Updates member balance
-                client.databases[0].subtract(`${message.author.id}.credits`, amount);
+                msg += "| : : :  **"+message.language.get("UTILS").VICTORY.toUpperCase()+"**  : : : |";
+                tmsg.edit(msg);
+                let credits = getCredits(amount, true);
+                message.channel.send(message.language.get("SLOTS_VICTORY", "JACKPOT ! ", amount, credits, message.author.username));
+                let toAdd = credits - amount;
+                data.users[0].money = data.users[0].money + toAdd;
+                await data.users[0].save();
+                return;
             }
-            tmsg.edit(msg); // Then edit the message
+            
+            if(colonne1[i2] == colonne2[j2] || colonne2[j2] == colonne3[k2] || colonne1[i2] == colonne3[k2]){
+                msg += "| : : :  **"+message.language.get("UTILS").VICTORY.toUpperCase()+"**  : : : |";
+                tmsg.edit(msg);
+                let credits = getCredits(amount, false);
+                message.channel.send(message.language.get("SLOTS_VICTORY", "", amount, credits, message.author.username));
+                let toAdd = credits - amount;
+                data.users[0].money = data.users[0].money + toAdd;
+                await data.users[0].save();
+                return;
+            }
+            
+            msg += "| : : :  **"+message.language.get("UTILS").DEFEAT.toUpperCase()+"**  : : : |";
+            message.channel.send(message.language.get("SLOTS_DEFEAT", amount, message.author.username));
+            data.users[0].money = data.users[0].money - amount;
+            await data.users[0].save();
+            return;
+
         }
         function editMsg(){
-            // Updates the message
-            var msg = '[  :slot_machine: l SLOTS ]\n------------------\n';
+
+            let msg = "[  :slot_machine: l SLOTS ]\n------------------\n";
+
             i1 = (i1 < fruits.length - 1) ? i1 + 1 : 0;
             i2 = (i2 < fruits.length - 1) ? i2 + 1 : 0;
             i3 = (i3 < fruits.length - 1) ? i3 + 1 : 0;
@@ -104,15 +111,21 @@ class Slots extends Command {
             k1 = (k1 < fruits.length - 1) ? k1 + 1 : 0;
             k2 = (k2 < fruits.length - 1) ? k2 + 1 : 0;
             k3 = (k3 < fruits.length - 1) ? k3 + 1 : 0;
-            msg += colonne1[i1] + ' : ' + colonne2[j1] + ' : '+ colonne3[k1] + '\n';
-            msg += colonne1[i2] + ' : ' + colonne2[j2] + ' : '+ colonne3[k2] + ' **<**\n';
-            msg += colonne1[i3] + ' : ' + colonne2[j3] + ' : '+ colonne3[k3] + '\n';
+
+            msg += colonne1[i1] + " : " + colonne2[j1] + " : "+ colonne3[k1] + "\n";
+            msg += colonne1[i2] + " : " + colonne2[j2] + " : "+ colonne3[k2] + " **<**\n";
+            msg += colonne1[i3] + " : " + colonne2[j3] + " : "+ colonne3[k3] + "\n";
+
             tmsg.edit(msg);
         }
     
         function getCredits(number, isJackpot){
-            if(!isJackpot) number = number*1.5;
-            if(isJackpot) number = number*4;
+            if(!isJackpot){
+                number = number*1.5;
+            }
+            if(isJackpot){
+                number = number*4;
+            }
             return Math.round(number);
         }
     }
