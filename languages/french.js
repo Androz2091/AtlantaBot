@@ -139,17 +139,23 @@ module.exports = class {
 			AUTOROLE_ENABLED: (prefix) => `${e.success} | Autôrole correctement activé ! Pour avoir plus d'informations sur la configuration de votre serveur tapez \`${prefix}configuration\` !`,
 			AUTOROLE_DISABLED: (prefix) => `${e.warn} | Autôrole correctement désactivé ! Pour avoir plus d'informations sur la configuration de votre serveur tapez \`${prefix}configuration\` !`,
 
-			// Welcome cmd
+			/* WELCOME COMMAND */
+
+			// Utils
 			WELCOME_DESCRIPTION: `Envoie un message de bienvenue dans un salon défini au préalable !`,
+			WELCOME_USAGE: "welcome",
+			WELCOME_EXAMPLES: "$welcome",
+			// Content
+			WELCOME_TEST_SUCCESS: `${e.success} | Test effectué !`,
 			WELCOME_DISABLED: (prefix) => `${e.success} | Les messages de bienvenue viennent d'être désactivés ! Tapez \`${prefix}configuration\` pour voir la configuration actuelle !`,
-			WELCOME_TEST: `${e.success} | Test effectué !`,
-			WELCOME1: (author) => `Bonjour ${author} ! Dans quel salon s'enverra le message de bienvenue ? (mentionnez un salon)`,
-			WELCOME2: (channel, msg) => `D'accord ! Les messages s'enverront donc dans ${channel}. Entrez le message de bienvenue ci-dessous : \n\nInfos:\`\`\`\nMention : {user}\nMembres : {membercount}\nServeur : {server}\`\`\`Par exemple, "Bienvenue {user} sur {server} ! Grâce à toi, nous sommes {membercount} !" donnera "Bienvenue ${msg.author} sur ${msg.guild.name} ! Grâce à toi, nous sommes ${msg.guild.memberCount} !".`,
-			WELCOME3: `Ça marche ! Voulez-vous qu'une superbe image de bienvenue soit envoyée en même temps ? Répondez par "${yes}" ou par "${no}" !`,
-			WELCOME_SUCCESS: (channel, prefix) => `${e.success} | Messages de bienvenue activés dans <#${channel}> ! Tapez \`${prefix}welcome test\` pour tester le message de bienvenue !`,
-			WELCOME_TIMEOUT: `${e.error} | Temps écoulé ! Veuillez retaper la commande !`,
-			WELCOME_CARACT: `${e.error} | Votre message ne doit pas excéder les 1500 caractères !`,
+			WELCOME_FORM_CHANNEL: (author) => `Bonjour ${author} ! Dans quel salon s'enverra le message de bienvenue ? (mentionnez un salon)`,
+			WELCOME_FORM_MESSAGE: (channel, msg) => `D'accord ! Les messages s'enverront donc dans ${channel}. Entrez le message de bienvenue ci-dessous : \n\nInfos:\`\`\`\nMention : {user}\nMembres : {membercount}\nServeur : {server}\`\`\`Par exemple, "Bienvenue {user} sur {server} ! Grâce à toi, nous sommes {membercount} !" donnera "Bienvenue ${msg.author} sur ${msg.guild.name} ! Grâce à toi, nous sommes ${msg.guild.memberCount} !".`,
+			WELCOME_FORM_IMAGE: `Ça marche ! Voulez-vous qu'une superbe image de bienvenue soit envoyée en même temps ? Répondez par "${yes}" ou par "${no}" !`,
+			WELCOME_FORM_SUCCESS: (channel, prefix) => `${e.success} | Messages de bienvenue activés dans <#${channel}> ! Tapez \`${prefix}welcome test\` pour tester le message de bienvenue !`,
 			WELCOME_IMG: (name) => `Bienvenue sur ${name} !`,
+			// Errors
+			WELCOME_ERR_TIMEOUT: `${e.error} | Temps écoulé ! Veuillez retaper la commande !`,
+			WELCOME_ERR_CARACT: `${e.error} | Votre message ne doit pas excéder les 1500 caractères !`,
 
 			// Leave cmd
 			LEAVE_DESCRIPTION: "Envoie un message d'au revoir dans un salon défini au préalable !",

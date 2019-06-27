@@ -1,93 +1,102 @@
 const Command = require("../../base/Command.js"),
-Discord = require('discord.js');
+Discord = require("discord.js");
 
 class Welcome extends Command {
 
     constructor (client) {
         super(client, {
             name: "welcome",
-            description: (language) => language.get('WELCOME_DESCRIPTION'),
+            description: (language) => language.get("WELCOME_DESCRIPTION"),
+            usage: (language) => language.get("WELCOME__USAGE"),
+            examples: (language) => language.get("WELCOME_EXAMPLES"),
             dirname: __dirname,
-            usage: "welcome",
             enabled: true,
             guildOnly: true,
-            aliases: [],
-            permission: "MANAGE_GUILD",
-            botpermissions: [ "SEND_MESSAGES" ],
+            aliases: [ "bienvenue" ],
+            memberPermissions: [ "MANAGE_GUILD" ],
+            botPermissions: [ "SEND_MESSAGES", "EMBED_LINKS" ],
             nsfw: false,
-            examples: "$welcome",
-            owner: false
+            ownerOnly: false,
+            cooldown: 3000
         });
     }
 
-    async run (message, args, membersdata, guild_data, data) {
+    async run (message, args, data) {
 
-        if(args[0] === 'test'){
-            this.client.emit('guildMemberAdd', message.member);
-            return message.channel.send(message.language.get('WELCOME_TEST'))
+        if(args[0] === "test"){
+            message.client.emit("guildMemberAdd", message.member);
+            return message.channel.send(message.language.get("WELCOME_TEST_SUCCESS"))
         }
 
-        if(guild_data.welcome.status == 'on'){
-            this.client.databases[1].set(message.guild.id+'.welcome.status', 'off');
-            this.client.databases[1].set(message.guild.id+'.welcome.channel', 'unknow');
-            this.client.databases[1].set(message.guild.id+'.welcome.withImage', 'unknow');
-            this.client.databases[1].set(message.guild.id+'.welcome.message', 'unknow');
-            return message.channel.send(message.language.get('WELCOME_DISABLED', guild_data.prefix));
+        if(data.settings.plugins.welcome.enabled){
+            data.settings.plugins.welcome = {
+                enabled: false,
+                message: null,
+                channel: null,
+                withImage: null
+            };
+            data.settings.save();
+            return message.channel.send(message.language.get("WELCOME_DISABLED", data.settings.prefix));
         }
 
-        message.channel.send(message.language.get('WELCOME1', message.author.username));
-        
-        // Init new welcome object 
-        var welcome = {
-            status:'on',
-            channel:'unknow',
-            withImage:'false',
-            message:'unknow'
+        let welcome = {
+            enabled: true,
+            channel: null,
+            message: null,
+            withImage: null,
         };
 
-        // Creates discordjs message collector
-        const filter = m => m.author.id === message.author.id;
-        const collector = message.channel.createMessageCollector(filter, { time: 120000 }); // 2 min
+        message.channel.send(message.language.get("WELCOME_FORM_CHANNEL", message.author.username));
+        const collector = message.channel.createMessageCollector((m) => m.author.id === message.author.id, { time: 120000 }); // 2 min
 
-        // When a message is received 
+        collector.on("collect", async (msg) => {
 
-        collector.on('collect', msg => {
-
-            if(welcome.message !== 'unknow'){
-                if(msg.content.toLowerCase() == message.language.get('YES').toLowerCase()){
-                    welcome.withImage = 'true';
-                    message.channel.send(message.language.get('WELCOME_SUCCESS', welcome.channel, guild_data.prefix));
-                    // Updates db
-                    this.client.databases[1].set(`${message.guild.id}.welcome`, welcome);
-                    collector.stop();
-                } else if(msg.content.toLowerCase() == message.language.get('NO').toLowerCase()){
-                    welcome.withImage = 'false';
-                    message.channel.send(message.language.get('WELCOME_SUCCESS', welcome.channel, guild_data.prefix));
-                    // Updates db
-                    this.client.databases[1].set(`${message.guild.id}.welcome`, welcome);
-                    collector.stop();
-                } else return message.channel.send(message.language.get('YES_OR_NO')); // if the message is not "yes" and not "no"
+            if(welcome.message){
+                if(msg.content.toLowerCase() == message.language.get("UTILS").YES.toLowerCase()){
+                    welcome.withImage = true;
+                    message.channel.send(message.language.get("WELCOME_FORM_SUCCESS", welcome.channel, data.settings.prefix));
+                    data.settings.plugins.welcome = welcome;
+                    data.settings.markModified("plugins.welcome");
+                    await data.settings.save();
+                    return collector.stop();
+                }
+                if(msg.content.toLowerCase() == message.language.get("UTILS").NO.toLowerCase()){
+                    welcome.withImage = false;
+                    message.channel.send(message.language.get("WELCOME_FORM_SUCCESS", welcome.channel, data.settings.prefix));
+                    data.settings.plugins.welcome = welcome;
+                    await data.settings.save();
+                    return collector.stop();
+                }
+                return message.channel.send(message.language.get("ERR_YES_NO"));
             }
 
-            if(welcome.channel !== 'unknow' && welcome.message === 'unknow'){
+            if(welcome.channel && !welcome.message){
                 if(msg.content.length < 1501){
                     welcome.message = msg.content;
-                    message.channel.send(message.language.get('WELCOME3'));
-                } else return message.channel.send(message.language.get('WELCOME_CARACT'));
+                    return message.channel.send(message.language.get("WELCOME_FORM_IMAGE"));
+                }
+                return message.channel.send(message.language.get("WELCOME_ERR_CARACT"));
             }
 
-            if(welcome.channel === 'unknow'){
-                var channel = msg.mentions.channels.first();
-                if(!channel) return message.channel.send(message.language.get('MENTION_CHANNEL'));
-                else welcome.channel = channel.id;
-                message.channel.send(message.language.get('WELCOME2', channel, message));
+            if(!welcome.channel){
+                let channel = msg.mentions.channels.first();
+                if(!channel){
+                    return message.channel.send(message.language.get("ERR_INVALID_CHANNEL"));
+                }
+                if(channel.guild !== msg.guild){
+                    return;
+                }
+                welcome.channel = channel.id;
+                message.channel.send(message.language.get("WELCOME_FORM_MESSAGE", channel, message));
             }
 
         });
 
         // When the collector is stopped
-        collector.on('end', (collected, reason) => {
-            if(reason === 'time') return message.channel.send(message.language.get('WELCOME_TIMEOUT')); 
+        collector.on("end", (collected, reason) => {
+            if(reason === "time"){
+                return message.channel.send(message.language.get("WELCOME_ERR_TIMEOUT"));
+            }
         });
     }
 
