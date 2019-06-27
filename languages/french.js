@@ -212,10 +212,10 @@ module.exports = class {
 			WORK_USAGE: "work",
 			WORK_EXAMPLES: "$work",
 			// Content
-			SALARY_CLAIMED_TITLE: "Salaire",
-			SALARY_CLAIMED_CONTENT: "200 crédits ajoutés à votre compte !",
+			WORK_CLAIMED_TITLE: "Salaire",
+			WORK_CLAIMED_CONTENT: "200 crédits ajoutés à votre compte !",
 			// Errors
-			WORK_COOLDOWN: (delay) => `${e.error} | Vous devez attendre ${delay} avant de pouvoir de nouveau travailler !`,
+			WORK_ERR_COOLDOWN: (delay) => `${e.error} | Vous devez attendre ${delay} avant de pouvoir de nouveau travailler !`,
 			
 			// Eval
 			EVAL_DESCRIPTION: "Exécute le code",
