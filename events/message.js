@@ -29,8 +29,8 @@ module.exports = class {
         data.config = client.config;
 
         if(message.content.startsWith("<@"+client.user.id+">")){
-            message.mentions.users = message.mentions.users.filter((u) => u.user.id !== client.user.id);
-            message.mentions.members = message.mentions.members.filter((u) => u.user.id !== client.user.id);
+            message.mentions.users.filter((u) => u.id !== client.user.id);
+            message.mentions.members.filter((u) => u.user.id !== client.user.id);
         }
 
         // Gets settings
