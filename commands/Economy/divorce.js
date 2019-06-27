@@ -1,49 +1,46 @@
 const Command = require("../../base/Command.js"),
-Discord = require('discord.js');
+Discord = require("discord.js");
 
 class Divorce extends Command {
 
     constructor (client) {
         super(client, {
             name: "divorce",
-            description: (language) => language.get('DIVORCE_DESCRIPTION'),
+            description: (language) => language.get("DIVORCE_DESCRIPTION"),
+            usage: (language) => language.get("DIVORCE_USAGE"),
+            examples: (language) => language.get("DIVORCE_EXAMPLES"),
             dirname: __dirname,
-            usage: "divorce",
             enabled: true,
             guildOnly: false,
-            aliases: [],
-            permission: false,
-            botpermissions: [ "SEND_MESSAGES" ],
+            aliases: [ "profil" ],
+            memberPermissions: [],
+            botPermissions: [ "SEND_MESSAGES", "EMBED_LINKS" ],
             nsfw: false,
-            examples: "$divorce",
-            owner: false
+            ownerOnly: false,
+            cooldown: 3000
         });
     }
 
-    async run (message, args, membersdata, guild_data, data) {
+    async run (message, args, data) {
         
-        // Check if the message author is weeded
-        if(membersdata[0].partner === 'false') return message.channel.send(message.language.get('DIVORCE_NOT_WEEDED'));
+        // Check if the message author is wedded
+        if(!data.users[0].lover){
+            return message.channel.send(message.language.get("DIVORCE_ERR_NOT_WEDDED"));
+        }
 
         // Updates db
         
-        var old_partner = this.client.users.get(membersdata[0].partner) || await this.client.fetchUser(membersdata[0].partner);
-
-        var author_old_partners = membersdata[0].old_partners;
-        author_old_partners.push(membersdata[0].partner);
-
-        var memberdata = this.client.databases[0].get(membersdata[0].partner) || this.client.functions.createUser(old_partner);
-        var member_old_partners = memberdata.old_partners;
-        member_old_partners.push(message.author.id);
-
-        this.client.databases[0].set(`${message.author.id}.partner`, 'false');
-        this.client.databases[0].set(`${message.author.id}.old_partners`, author_old_partners);
-
-        this.client.databases[0].set(`${membersdata[0].partner}.partner`, 'false');
-        this.client.databases[0].set(`${membersdata[0].partner}.old_partners`, member_old_partners);
+        let user = message.client.users.get(data.users[0].lover) || await message.client.users.fetch(data.users[0].lover);
         
+        data.users[0].lover = null;
+        data.users[0].save();
+
+        let oldLover = await message.client.usersData.findOne({id:user.id});
+        oldLover.lover = null;
+        oldLover.save();
+
         // Send success message 
-        message.channel.send(message.language.get('DIVORCE_SUCCESS', old_partner.username));
+        message.channel.send(message.language.get("DIVORCE_SUCCESS", user.username));
 
     }
 
