@@ -125,10 +125,15 @@ module.exports = class {
 			CONFIGURATION_AUTOMOD: (ignoredChannels) => `${ignoredChannels.length > 0 ? `Salon ignorés : ${ignoredChannels.map((ch) => `<#${ch}>`)}` : "Aucun salon ignoré."}`,
 			CONFIGURATION_WARNS: (kick, ban) => `${kick ? `**Expulsion**: au bout de **${kick}** avertissements.` : "**Expulsion**: Non définie."}\n${ban ? `**Bannissement**: au bout de **${ban}** avertissements.` : "**Bannissement**: Non défini."}`,
 
-			// Ignore command
+			/* IGNORE COMMAND */
+
+			// Utils
 			IGNORE_DESCRIPTION: "Désactive ou active les commandes dans le salon mentionné",
-			UNIGNORE_SUCESS: (channel) => `${e.success} | Les commandes sont maintenant autorisées dans ${channel} !`,
-			IGNORE_SUCESS: (channel) => `${e.warn} | Les commandes sont maintenant interdites dans ${channel} !`,
+			IGNORE_USAGE: "ignore [#channel]",
+			IGNORE_EXAMPLES: "$ignore #général",
+			// Content
+			IGNORE_SUCCESS_DISABLED: (channel) => `${e.success} | Les commandes sont maintenant autorisées dans ${channel} !`,
+			IGNORE_SUCCESS_ENABLED: (channel) => `${e.warn} | Les commandes sont maintenant interdites dans ${channel} !`,
 
 			// Set prefix 
 			SETPREFIX_DESCRIPTION: "Change le préfixe du serveur",

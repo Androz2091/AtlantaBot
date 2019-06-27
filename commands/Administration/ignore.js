@@ -1,50 +1,43 @@
 const Command = require("../../base/Command.js"),
-Discord = require('discord.js');
+Discord = require("discord.js");
 
 class Ignore extends Command {
 
     constructor (client) {
         super(client, {
             name: "ignore",
-            description: (language) => language.get('IGNORE_DESCRIPTION'),
+            description: (language) => language.get("IGNORE_DESCRIPTION"),
+            usage: (language) => language.get("IGNORE_USAGE"),
+            examples: (language) => language.get("IGNORE_EXAMPLES"),
             dirname: __dirname,
-            usage: "ignore [#channel]",
             enabled: true,
             guildOnly: true,
-            aliases: [],
-            permission: "MANAGE_GUILD",
-            botpermissions: [ "SEND_MESSAGES" ],
+            aliases: [ "disableChannel" ],
+            memberPermissions: [ "MANAGE_GUILD" ],
+            botPermissions: [ "SEND_MESSAGES", "EMBED_LINKS" ],
             nsfw: false,
-            examples: "$ignore #général",
-            owner: false
+            ownerOnly: false,
+            cooldown: 3000
         });
     }
 
-    async run (message, args, membersdata, guild_data, data) {
+    async run (message, args, data) {
 
-        // Gets the first mentionned channel
-        var channel = message.mentions.channels.first();
-        if(!channel) return message.channel.send(message.language.get('MENTION_CHANNEL'));
+        let channel = message.mentions.channels.first();
+        if(!channel){
+            return message.channel.send(message.language.get("ERR_INVALID_CHANNEL"));
+        }
 
-        var ignored = guild_data.ignored_channels.includes(channel.id);
+        let ignored = data.settings.ignoredChannels.includes(channel.id);
 
-        // If the channel is already ignored
         if(ignored){
-            var new_channels = [];
-            guild_data.ignored_channels.forEach(element => {
-                if(element !== channel.id) new_channels.push(element);
-            });
-            // Then save the new channels
-            this.client.databases[1].set(`${message.guild.id}.ignored_channels`, new_channels);
-            // Success
-            return message.channel.send(message.language.get('UNIGNORE_SUCESS', (channel)));
+            data.settings.ignoredChannels = data.settings.ignoredChannels.filter((ch) => ch !== channel.id);
+            data.settings.save();
+            return message.channel.send(message.language.get("IGNORE_SUCCESS_DISABLED", channel));
         } else if(!ignored){
-            var new_channels = guild_data.ignored_channels;
-            new_channels.push(channel.id);
-            // Then save the new channels
-            this.client.databases[1].set(`${message.guild.id}.ignored_channels`, new_channels);
-            // Success
-            return message.channel.send(message.language.get('IGNORE_SUCESS', (channel)));
+            data.settings.ignoredChannels.push(channel.id);
+            data.settings.save();
+            return message.channel.send(message.language.get("IGNORE_SUCCESS_ENABLED", channel));
         }
         
     }
