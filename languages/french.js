@@ -229,11 +229,16 @@ module.exports = class {
 			GETINVITE_ERROR: `${e.error} | Je ne peux pas créer d'invitations sur ce serveur !`,
 			GETINVITE_NO_GUILD: `${e.error} | Je ne suis pas sur ce serveur !`,
 
-			// Rep command
+			/* REP COMMAND */
+
+			// Utils
 			REP_DESCRIPTION: "Donnez un point de réputation à un membre !",
-			REP_COOLDOWN: (delai) => `${e.error} | Vous devez attendre ${delai} avant de pouvoir de nouveau donner un point de réputation !`,
-			REP_BOT: `${e.error} | Vous ne pouvez pas donner un point de réputation à un bot !`,
-			REP_SELF: `${e.error} | Vous ne pouvez pas vous donner vous-même un point de réputation !`,
+			REP_USAGE: "rep [@user#0000]",
+			REP_EXAMPLES: "$rep @Androz#2091",
+			// Errors
+			REP_ERR_COOLDOWN: (delai) => `${e.error} | Vous devez attendre ${delai} avant de pouvoir de nouveau donner un point de réputation !`,
+			REP_ERR_YOURSELF: `${e.error} | Vous ne pouvez pas vous donner vous-même un point de réputation !`,
+			// Content
 			REP_SUCCESS: (tag) => `${e.success} | Vous avez bien donné un point de réputation à **${tag}** !`,
 
 			/* SETBIO COMMAND */
@@ -276,7 +281,7 @@ module.exports = class {
 			// Errors
 			PAY_ERR_YOURSELF: `${e.error} | Vous ne payez pas vous payez vous-même !`,
 			PAY_ERR_INVALID_AMOUNT: (username) => `${e.error} | Vous devez entrer un montant à verser à **${username}** !`,
-			PAY_ERR_AMOUNT_TO_HIGH: (amount, username) => `${e.error} | Vous ne disposez pas d\'assez de crédits pour verser ${amount} crédits à ${username} !`,
+			PAY_ERR_AMOUNT_TOO_HIGH: (amount, username) => `${e.error} | Vous ne disposez pas d\'assez de crédits pour verser ${amount} crédits à ${username} !`,
 			// Content
 			PAY_SUCCESS: (amount, username) => `${e.success} | Vous avez versé ${amount} crédits à ${username} !`,
 
