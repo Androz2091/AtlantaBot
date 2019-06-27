@@ -61,11 +61,39 @@ module.exports = {
 		warn: "XXXXXXXXXXX",
 		error: "XXXXXXXXXXX",
 		success: "XXXXXXXXXXX",
-		loading: "XXXXXXXXXXX"
+		loading: "XXXXXXXXXXX",
+		score: "XXXXXXXXXXX",
+		games: "XXXXXXXXXXX",
+		kills: "XXXXXXXXXXX",
+		crown: "XXXXXXXXXXX"
 	},
 	/* The others utils links */
 	others: {
 		github: "https://github.com/Androz2091", // Founder's github account
 		donate: "https://patreon.com/Androz2091" // Donate link
+	},
+	/* The badges for the badges command */
+	badges: {
+		games: [
+			{ name: "Minecraft", emoji: "XXXXXXXXXXX", price: 1200 },
+			{ name: "GTA", emoji: "XXXXXXXXXXX", price: 1200 },
+			{ name: "Fortnite", emoji: "XXXXXXXXXXX", price: 1200 },
+			{ name: "Mario", emoji: "XXXXXXXXXXX", price: 1200 },
+			{ name: "LOL", emoji: "XXXXXXXXXXX", price: 1200 }
+		],
+		flags: [
+			{ name: "France", emoji: "XXXXXXXXXXX", price: 1500 },
+			{ name: "Canada", emoji: "XXXXXXXXXXX", price: 1500 },
+			{ name: "Swiss", emoji: "XXXXXXXXXXX", price: 1500 },
+			{ name: "Great Britain", emoji: "XXXXXXXXXXX", price: 1500 },
+			{ name: "USA", emoji: "XXXXXXXXXXX", price: 1500 }
+		],
+		others: [
+			{ name:"Rich", emoji: "XXXXXXXXXXX", price: 18000 },
+			{ name:"Troll", emoji: "XXXXXXXXXXX", price: 3000 },
+			{ name:"Atlanta", emoji: "XXXXXXXXXXX", price: 1200 },
+			{ name:"IAMABOT", emoji: "XXXXXXXXXXX", price: 1000 },
+			{ name:"Discordien", emoji: "XXXXXXXXXXX", price: 500 }
+		]
 	}
 }

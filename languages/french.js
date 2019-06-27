@@ -368,19 +368,28 @@ module.exports = class {
 			ASCII_DESCRIPTION: "Transforme votre texte en caractères ascii !",
 			ASCII_TEXT: `${e.error} | Veuillez entrer un texte valide (inférieur à 20 caractères) !`,
 
-			// badge command
+			/* BADGE COMMAND */
+
+			// Utils
 			BADGE_DESCRIPTION: "Achetez des badges qui apparaîtront sur votre profil !",
-			BADGE_HEADING: "Badges Atlanta",
+			BADGE_USAGE: "badge (nom-du-badge)",
+			BADGE_EXAMPLES: "badge\nbadge France",
+			// Content
+			BADGE_TITLE: `Badges ${c.botname}`,
 			BADGE_DESCRIPTION: (prefix) => `Pour acheter un badge, tapez \`${prefix}badge [nom-du-badge]\``,
-			BADGE_FORMAT: (badge) => `Badge : ${badge.str}\nNom : ${badge.name}\nPrix : ${badge.price} crédits\n--------\n`,
-			BADGE_FORMAT_ALREADY: (badge) => `Badge : ${badge.str}\nNom : ${badge.name}\nDéjà acheté (${badge.price} crédits)\n--------\n`,
-			BADGE_GAMES: "Jeux",
-			BADGE_FLAGS: "Pays",
-			BADGE_OTHERS: "Autre",
-			BADGE_404: (text) => `${e.error} | Aucun badge trouvé pour \`${text}\``,
-			BADGE_SUCCESS: (badge) => `${e.success} | Vous venez d'acheter le badge ${badge.name} (${badge.str}) pour ${badge.price} crédits !`,
-			BADGE_PRICE: `${e.error} | Vous n'avez pas assez de crédits pour acheter ce badge !`,
-			BADGE_ALREADY: `${e.error} | Vous possédez déjà ce badge !`,
+			BADGE_FORMAT: (badge) => `Badge : ${badge.emoji}\nNom : ${badge.name}\nPrix : ${badge.price} crédits\n--------\n`,
+			BADGE_FORMAT_BOUGHT: (badge) => `Badge : ${badge.emoji}\nNom : ${badge.name}\nDéjà acheté (${badge.price} crédits)\n--------\n`,
+			BADGE_SUCCESS: (badge) => `${e.success} | Vous venez d'acheter le badge ${badge.name} (${badge.emoji}) pour ${badge.price} crédits !`,
+			// Errors
+			BADGE_ERR_NOT_FOUND: (text) => `${e.error} | Aucun badge trouvé pour \`${text}\``,
+			BADGE_ERR_PRICE: `${e.error} | Vous n'avez pas assez de crédits pour acheter ce badge !`,
+			BADGE_ERR_BOUGHT: `${e.error} | Vous possédez déjà ce badge !`,
+			// Headings
+			BADGE_HEADINGS: {
+				flags: "Drapeaux",
+				games: "Jeux",
+				others: "Autres"
+			},
 
 			// findwords command
 			FINDWORDS_DESCRIPTION: "Lance une partie de findwords, un jeu ou vous devez trouver des mots !",
