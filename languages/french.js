@@ -248,9 +248,14 @@ module.exports = class {
 			// Content
 			SETBIO_SUCCESS: `${e.success} | Votre biographie vient d'être modifiée !`,
 
-			// credits command
-			CREDITS_DESCRIPTION: "Affiche vos crédits",
-			CREDITS_HEADING: (username) => `Crédits de ${username}`,
+			/* MONEY COMMAND */
+
+			// Utils
+			MONEY_DESCRIPTION: "Affiche vos crédits",
+			MONEY_USAGE: "money (@membre)",
+			MONEY_EXAMPLES: "$money\n$money @user#0000",
+			// Content
+			CREDITS_TITLE: (username) => `Crédits de ${username}`,
 			CREDITS_CONTENT: (credits, username) => `Actuellement **${credits}** crédits sur le compte de **${username}** !`,
 
 			/* LEADERBOARD COMMAND */
