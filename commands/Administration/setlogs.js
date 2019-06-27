@@ -1,32 +1,35 @@
 const Command = require("../../base/Command.js"),
-Discord = require('discord.js');
+Discord = require("discord.js");
 
 class Setlogs extends Command {
 
     constructor (client) {
         super(client, {
             name: "setlogs",
-            description: (language) => language.get('SETLOGS_DESCRIPTION'),
+            description: (language) => language.get("SETLOGS_DESCRIPTION"),
+            usage: (language) => language.get("SETLOGS_USAGE"),
+            examples: (language) => language.get("SETLOGS_EXAMPLES"),
             dirname: __dirname,
-            usage: "setlogs",
             enabled: true,
             guildOnly: true,
-            aliases: [],
-            permission: "MANAGE_GUILD",
-            botpermissions: [ "SEND_MESSAGES" ],
+            aliases: [ "setmodlogs" ],
+            memberPermissions: [ "MANAGE_GUILD" ],
+            botPermissions: [ "SEND_MESSAGES", "EMBED_LINKS" ],
             nsfw: false,
-            examples: "$setlogs",
-            owner: false
+            ownerOnly: false,
+            cooldown: 3000
         });
     }
 
-    async run (message, args, membersdata, guild_data, data) {
+    async run (message, args, data) {
         
-        // Update database
-        this.client.databases[1].set(`${message.guild.id}.channels.modlogs`, message.channel.id);
+        let channel = message.mentions.channels.first() || message.channel;
+        data.settings.plugins.modlogs = channel.id;
+        data.settings.markModified("plugins.modlogs");
+        data.settings.save();
 
         // Send success message
-        message.channel.send(message.language.get('SETLOGS_SUCCESS', message.channel.id));
+        message.channel.send(message.language.get("SETLOGS_SUCCESS", message.channel.id));
     }
 
 }
