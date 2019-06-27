@@ -7,7 +7,7 @@ class Welcome extends Command {
         super(client, {
             name: "welcome",
             description: (language) => language.get("WELCOME_DESCRIPTION"),
-            usage: (language) => language.get("WELCOME__USAGE"),
+            usage: (language) => language.get("WELCOME_USAGE"),
             examples: (language) => language.get("WELCOME_EXAMPLES"),
             dirname: __dirname,
             enabled: true,
@@ -35,6 +35,7 @@ class Welcome extends Command {
                 channel: null,
                 withImage: null
             };
+            data.settings.markModified("plugins.welcome");
             data.settings.save();
             return message.channel.send(message.language.get("WELCOME_DISABLED", data.settings.prefix));
         }
@@ -64,6 +65,7 @@ class Welcome extends Command {
                     welcome.withImage = false;
                     message.channel.send(message.language.get("WELCOME_FORM_SUCCESS", welcome.channel, data.settings.prefix));
                     data.settings.plugins.welcome = welcome;
+                    data.settings.markModified("plugins.welcome");
                     await data.settings.save();
                     return collector.stop();
                 }
