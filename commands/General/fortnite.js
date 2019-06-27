@@ -1,10 +1,8 @@
 const Command = require("../../base/Command.js"),
-Discord = require("discord.js");
-
-const fortnite = require('fortnite');
-
+Discord = require("discord.js"),
+fortnite = require("fortnite");
+ 
 class Fortnite extends Command {
-
     constructor (client) {
         super(client, {
             name: "fortnite",
@@ -22,15 +20,15 @@ class Fortnite extends Command {
             cooldown: 500
         });
     }
-
+ 
     async run (message, args, data) {
-        
+
         if(!data.config.apiKeys.fortnite || data.config.apiKeys.fortnite.length == ""){
             return message.channel.send(message.language.get("ERR_COMMAND_DISABLED"));
         }
 
         let fortniteClient = new fortnite(data.config.apiKeys.fortnite);
-        
+
         let platform = args[0];
         if(!platform || (platform !== "pc" && platform !== "xbl" && platform !== "psn")){
             return message.channel.send(message.language.get("FORTNITE_ERR_PLATFORM"));
@@ -64,15 +62,14 @@ class Fortnite extends Command {
             if(tdata.stats.lifetime){
                 embed.addField("Lifetime", message.language.get("FORTNITE_LIFETIME_STATS", tdata), true);
             }
-            
+
             embed.setColor(data.config.embed.color)
             .setFooter(data.config.embed.footer);
 
             message.channel.send(embed);
-        });
-        
-    }
 
+        });
+    }
 }
 
 module.exports = Fortnite;
