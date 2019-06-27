@@ -135,11 +135,17 @@ module.exports = class {
 			IGNORE_SUCCESS_DISABLED: (channel) => `${e.success} | Les commandes sont maintenant autorisées dans ${channel} !`,
 			IGNORE_SUCCESS_ENABLED: (channel) => `${e.warn} | Les commandes sont maintenant interdites dans ${channel} !`,
 
-			// Set prefix 
+			/* SETPREFIX COMMAND */
+
+			// Utils
 			SETPREFIX_DESCRIPTION: "Change le préfixe du serveur",
-			VALID_PREFIX: `${e.error} | Veuillez entrer un préfixe valide !`,
-			PREFIX_CHARACTERS: `${e.error} | Le préfixe ne doit pas excéder les 5 caractères !`,
-			PREFIX_SUCCESS: (prefix) => `${e.success} | Le préfixe a bien été modifié ! Tapez \`${prefix}help\` pour voir la liste des commandes !`,
+			SETPREFIX_USAGE: "setprefix [préfixe]",
+			SETPREFIX_EXAMPLES: "$setprefix !",
+			// Errors
+			SETPREFIX_ERR_PREFIX: `${e.error} | Veuillez entrer un préfixe valide !`,
+			SETPREFIX_ERR_CARACT: `${e.error} | Le préfixe ne doit pas excéder les 5 caractères !`,
+			// Content
+			SETPREFIX_SUCCESS: (prefix) => `${e.success} | Le préfixe a bien été modifié ! Tapez \`${prefix}help\` pour voir la liste des commandes !`,
 
 			/* AUTOROLE COMMAND */
 
@@ -633,8 +639,13 @@ module.exports = class {
 				"Temps"
 			],
 
-			// setlogs command
+			/* SETLOGS COMMAND */
+
+			// Utils
 			SETLOGS_DESCRIPTION: "Définissez le salon des logs !",
+			SETLOGS_USAGE: "setlogs (#channel)",
+			SETLOGS_EXAMPLES: "$setlogs #modlogs\n$setlogs",
+			// Content
 			SETLOGS_SUCCESS: (id) => `${e.success} | Salon des logs défini sur <#${id}> !`,
 
 			// kick command

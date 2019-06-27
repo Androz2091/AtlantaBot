@@ -1,36 +1,41 @@
 const Command = require("../../base/Command.js"),
-Discord = require('discord.js');
+Discord = require("discord.js");
 
 class Setprefix extends Command {
 
     constructor (client) {
         super(client, {
             name: "setprefix",
-            description: (language) => language.get('SETPREFIX_DESCRIPTION'),
+            description: (language) => language.get("SETPREFIX_DESCRIPTION"),
+            usage: (language) => language.get("SETPREFIX_USAGE"),
+            examples: (language) => language.get("SETPREFIX_EXAMPLES"),
             dirname: __dirname,
-            usage: "setprefix [préfixe]",
             enabled: true,
             guildOnly: true,
             aliases: [],
-            permission: "MANAGE_GUILD",
-            botpermissions: [ "SEND_MESSAGES" ],
+            memberPermissions: [ "MANAGE_GUILD" ],
+            botPermissions: [ "SEND_MESSAGES", "EMBED_LINKS" ],
             nsfw: false,
-            examples: "$setprefix !",
-            owner: false
+            ownerOnly: false,
+            cooldown: 3000
         });
     }
 
-    async run (message, args, membersdata, guild_data, data) {
+    async run (message, args, data) {
 
-        var prefix = args[0];
-        if(!prefix) return message.channel.send(message.language.get('VALID_PREFIX'));
-        if(prefix.length > 5) return message.channel.send(message.language.get('PREFIX_CHARACTERS'));
-
-        // Update server data 
-        this.client.databases[1].set(`${message.guild.id}.prefix`, prefix);
+        let prefix = args[0];
+        if(!prefix){
+            return message.channel.send(message.language.get("SETPREFIX_ERR_PREFIX"));
+        }
+        if(prefix.length > 5){
+            return message.channel.send(message.language.get("SETPREFIX_ERR_CARACT"));
+        }
+        
+        data.settings.prefix = prefix;
+        data.settings.save();
 
         // Sucess
-        return message.channel.send(message.language.get('PREFIX_SUCCESS', (prefix)));
+        return message.channel.send(message.language.get("SETPREFIX_SUCCESS", prefix));
         
     }
 
