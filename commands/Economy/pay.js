@@ -47,10 +47,10 @@ class Pay extends Command {
             return message.channel.send(message.language.get("PAY_ERR_AMOUNT_TOO_HIGH", toPay, user.username));
         }
 
-        data.users[0].money = data.users[0].money - toPay;
+        data.users[0].money = data.users[0].money - parseInt(toPay);
         data.users[0].save();
 
-        data.users[1].money = data.users[1].money + toPay;
+        data.users[1].money = data.users[1].money + parseIn(toPay);
         data.users[1].save();
 
         // Send a success message
