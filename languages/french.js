@@ -33,7 +33,8 @@ module.exports = class {
 				},
 				NO_REASON_PROVIDED: "pas de raison donnée",
 				UNDEFINED: "Indéfini",
-				PLEASE_WAIT: `${e.loading} | Veuillez patienter...`
+				PLEASE_WAIT: `${e.loading} | Veuillez patienter...`,
+				PREFIX: "Préfixe"
 			},
 			
 
@@ -98,26 +99,30 @@ module.exports = class {
 				"Permissions :"
 			],
 
-			// Conf command
+			/* CONFIGURATION COMMAND */
+
+			// Utils
 			CONFIGURATION_DESCRIPTION: "Affiche la configuration du serveur",
-			PREFIX: "Préfixe",
-			IGNORED_CHANNELS: "Salons ignorés",
-			NO_IGNORED_CHANNELS: "Aucun salon ignoré",
-			AUTOROLE: "Autôrole",
-			WELCOME: "Bienvenue",
-			CONFIGURATION_AUTOROLE_ENABLED: (data) => `Statut : **Activé**\nRôle : <@&${data.role}>`,
-			DISABLED_PLUGIN: "Statut : **Désactivé**",
-			CONFIGURATION_WELCOME_ENABLED: (data) => `Statut : **Activé**\nSalon : <#${data.channel}>\nImage : ${(data.withImage === "true") ? "Oui" : "Non"}`,
-			LEAVE: "Au revoir",
-			CONFIGURATION_LEAVE_ENABLED: (data) => `Statut : **Activé**\nSalon : <#${data.channel}>\nImage : ${(data.withImage === "true") ? "Oui" : "Non"}`,
-			SLOWMODE: "Slowmode",
-			NO_SLOWMODE: "Aucun salon avec slowmode",
-			CHANNELS: "Salons",
-			CONF_LOGS: (data) => `Logs : ${data.channels.modlogs === "false" ? "Indéfini" : `<#${data.channels.modlogs}>`}\n`,
-			CONF_SUGG: (data) => `Suggestions : ${data.channels.suggestion === "false" ? "Indéfini" : `<#${data.channels.suggestion}>`}\n`,
-			CONF_WARNS: "Avertissements (warns)",
-			CONF_DI: "Auto Modération",
-			CONF_DI_MSG:(data) => `**Statut** : ${data.deleteinvite.status === "enabled" ? "Activé" : "Désactivé"}\n**Salons ignorés** :\n${data.deleteinvite.channels.length > 0 ? data.deleteinvite.channels.map(ch => `<#${ch}>`) : `Aucun salon ignoré.`}`,
+			CONFIGURATION_USAGE: "configuration",
+			CONFIGURATION_EXAMPLES: "$configuration",
+			// Headings
+			CONFIGURATION_HEADINGS: [
+				[ "Salon(s) ignoré(s)", "Aucun salon ignoré" ],
+				[ "Autôrole", "Autorôle désactivé" ],
+				[ "Bienvenue", "Messages de bienvenue désactivés" ],
+				[ "Au revoir", "Messages d'au revoir désactivés" ],
+				[ "Slowmode", "Aucun salon avec slowmode" ],
+				[ "Salons" ],
+				[ "Avertissements" ],
+				[ "Automodération", "Automodération désactivée" ]
+			],
+			CONFIGURATION_AUTOROLE: (roleID) => `Rôle : <@&${roleID}>`,
+			CONFIGURATION_WELCOME: (withImage, channelID) => `Salon : <#${channelID}>\nImage : ${withImage ? "Oui" : "Non"}`,
+			CONFIGURATION_LEAVE: (withImage, channelID) => `Salon : <#${channelID}>\nImage : ${withImage ? "Oui" : "Non"}`,
+			CONFIGURATION_MODLOGS: (channelID) => `Logs : ${channelID ? `<#${channelID}>` : "Indéfini"}`,
+			CONFIGURATION_SUGGESTIONS: (channelID) => `Suggestions : ${channelID ? `<#${channelID}>` : "Indéfini" }`,
+			CONFIGURATION_AUTOMOD: (ignoredChannels) => `Salon ignorés : ${ignoredChannels.length > 0 ? ignoredChannels.map((ch) => `<#${ch}>`) : "Aucun salon ignoré."}`,
+			CONFIGURATION_WARNS: (kick, ban) => `${kick ? `**Expulsion**: au bout de **${kick}** avertissements.` : "**Expulsion**: Non définie."}\n${ban ? `**Bannissement**: au bout de **${ban}** avertissements.` : "**Bannissement**: Non défini."}`,
 
 			// Ignore command
 			IGNORE_DESCRIPTION: "Désactive ou active les commandes dans le salon mentionné",

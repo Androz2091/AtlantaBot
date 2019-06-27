@@ -6,79 +6,87 @@ class Configuration extends Command {
     constructor (client) {
         super(client, {
             name: "configuration",
-            description: (language) => language.get('CONFIGURATION_DESCRIPTION'),
+            description: (language) => language.get("CONFIGURATION_DESCRIPTION"),
+            usage: (language) => language.get("CONFIGURATION_USAGE"),
+            examples: (language) => language.get("CONFIGURATION_EXAMPLES"),
             dirname: __dirname,
-            usage: "configuration",
             enabled: true,
             guildOnly: true,
-            aliases: ["conf"],
-            permission: "MANAGE_GUILD",
-            botpermissions: [ "SEND_MESSAGES", "EMBED_LINKS" ],
+            aliases: [ "conf", "config" ],
+            memberPermissions: [ "MANAGE_GUILD" ],
+            botPermissions: [ "SEND_MESSAGES", "EMBED_LINKS" ],
             nsfw: false,
-            examples: "$configuration",
-            owner: false
+            ownerOnly: false,
+            cooldown: 3000
         });
     }
 
-    async run (message, args, membersdata, guild_data, data) {
+    async run (message, args, data) {
 
-        // Creates new discord rich embed to display informations
-        var embed = new Discord.RichEmbed()
-            .setAuthor(message.guild.name, message.guild.iconURL)
-            .addField(message.language.get('PREFIX'), guild_data.prefix)
-            .addField(message.language.get('IGNORED_CHANNELS'),
-                (guild_data.ignored_channels.length > 0) ? 
-                guild_data.ignored_channels.map(ch => '<#'+ch+'>').join(', ')
-                : message.language.get('NO_IGNORED_CHANNELS')
-            )
-            .addField(message.language.get('AUTOROLE'), 
-                (guild_data.autorole.status == 'on') ?
-                    message.language.get('CONFIGURATION_AUTOROLE_ENABLED', guild_data.autorole)
-                :   message.language.get('DISABLED_PLUGIN')
+        const headings = message.language.get("CONFIGURATION_HEADINGS"),
+        settings = data.settings;
 
-            )
-            .addField(message.language.get('WELCOME'),
-                (guild_data.welcome.status == 'on') ?
-                    message.language.get('CONFIGURATION_WELCOME_ENABLED', guild_data.welcome)
-                :   message.language.get('DISABLED_PLUGIN')
-            )
-            .addField(message.language.get('LEAVE'),
-                (guild_data.leave.status == 'on') ?
-                    message.language.get('CONFIGURATION_LEAVE_ENABLED', guild_data.leave)
-                :   message.language.get('DISABLED_PLUGIN')
-            )
-            .addField(message.language.get('SLOWMODE'),
-                (Object.keys(guild_data.slowmode).length > 0) ? getSlowmodes(guild_data.slowmode) : message.language.get('NO_SLOWMODE')
-            )
-            .addField(message.language.get('CHANNELS'),
-                message.language.get('CONF_LOGS', guild_data)+
-                message.language.get('CONF_SUGG', guild_data)
-            )
-            .addField(message.language.get('CONF_WARNS'),
-                getWarns()
-            )
-            .addField(message.language.get('CONF_DI'),
-                message.language.get('CONF_DI_MSG', guild_data)
-            )
-            .setColor(data.embed.color)
-            .setFooter(data.embed.footer)
+        let embed = new Discord.MessageEmbed()
+            .setAuthor(message.guild.name, message.guild.iconURL())
+            .setColor(data.config.embed.color)
+            .setFooter(data.config.embed.footer);
+
+        embed.addField(message.language.get("UTILS").PREFIX, data.settings.prefix);
+
+        embed.addField(headings[0][0],
+            (settings.ignoredChannels.length > 0) ?
+            settings.ignoredChannels.map((ch) => "<#"+ch+">").join(", ")
+            : headings[0][1]
+        );
+    
+        embed.addField(headings[1][0], 
+            (settings.plugins.autorole.enabled) ?
+                message.language.get("CONFIGURATION_AUTOROLE", settings.autorole.role)
+            :   headings[0][1]
+        );
         
+        embed.addField(headings[2][0],
+            (settings.plugins.welcome.enabled) ?
+                message.language.get("CONFIGURATION_WELCOME", settings.plugins.welcome.withImage, settings.plugins.welcome.channel)
+            :   headings[2][1]
+        );
+            
+        embed.addField(headings[3][0],
+            (settings.plugins.goodbye.enabled) ?
+                message.language.get("CONFIGURATION_LEAVE", settings.plugins.goodbye.withImage, settings.plugins.goodbye.channel)
+            :   headings[3][1]
+        );
+
+        /*embed.addField(headings[4][0],
+            (Object.keys(d).length > 0) ?
+                getSlowmodes(slowmodePlugin.channels)
+            :   headings[4][1]
+        );*/
+
+        embed.addField(headings[5][0],
+            message.language.get("CONFIGURATION_MODLOGS", settings.plugins.modlogs)+"\n"+
+            message.language.get("CONFIGURATION_SUGGESTIONS", settings.plugins.suggestions)
+        );
+        
+        embed.addField(headings[6][0],
+            message.language.get("CONFIGURATION_WARNS", settings.plugins.warnsSanctions.kick, settings.plugins.warnsSanctions.ban)
+        );
+        
+        embed.addField(headings[7][0],
+            (settings.plugins.automod.enabled) ?
+                message.language.get("CONFIGURATION_AUTOMOD", settings.plugins.automod.ignored)
+            :   headings[7][1]
+        );
+
         // Then, send the embed in the current channel
         message.channel.send(embed);
 
         function getSlowmodes(obj){
-            var str = '';
-            for(var id in obj){
-                var time = obj[id];
+            let str = "";
+            for(let ID in obj){
+                let time = obj[ID];
                 str += `<#${id}> | ${message.language.convertMs(time)}\n`;
             }
-            return str;
-        }
-        
-        function getWarns(){
-            var str = '';
-            str += `Kick : ${guild_data.automod_warns['kick'] ? `**${guild_data.automod_warns['kick']}** warns` : message.language.get('UNDEFINED')}\n`;
-            str += `Ban : ${guild_data.automod_warns['ban'] ? `**${guild_data.automod_warns['ban']}** warns` : message.language.get('UNDEFINED')}\n`;
             return str;
         }
     }
