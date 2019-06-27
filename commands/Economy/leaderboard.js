@@ -68,11 +68,6 @@ class Leaderboard extends Command {
         if(leaderboard.length > 20){
             leaderboard.length = 20;
         }
-
-        let leaderboardEmbed = new Discord.MessageEmbed()
-            .setAuthor("Leaderboard", this.client.user.displayAvatarURL())
-            .setColor(data.config.embed.color)
-            .setFooter(data.config.embed.footer);
             
         fetchUsers(leaderboard, table, message.client).then((newTable) => {
             message.channel.send("```"+newTable.toString()+"```");
