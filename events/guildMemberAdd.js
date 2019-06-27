@@ -14,9 +14,7 @@ module.exports = class {
 
             // Check if the autorole is enabled
             if(settings.plugins.autorole.enabled){
-                if(role){
-                    member.roles.add(settings.plugins.autorole.role).catch((err) => {});
-                }
+                member.roles.add(settings.plugins.autorole.role).catch((err) => {});
             }
     
             // Check if welcome message is enabled

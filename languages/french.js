@@ -136,7 +136,15 @@ module.exports = class {
 			PREFIX_CHARACTERS: `${e.error} | Le préfixe ne doit pas excéder les 5 caractères !`,
 			PREFIX_SUCCESS: (prefix) => `${e.success} | Le préfixe a bien été modifié ! Tapez \`${prefix}help\` pour voir la liste des commandes !`,
 
-			// Autorole cmd
+			/* AUTOROLE COMMAND */
+
+			// Utils
+			AUTOROLE_DESCRIPTION: "Active ou désactive l'autorôle sur le serveur !",
+			AUTOROLE_USAGE: "autorole [on/off] (role)",
+			AUTOROLE_EXAMPLES: "$autorole on Members\n$autorole off",
+			// Errors
+			AUTOROLE_ERR_STATUS: `${e.error} | Veuillez indiquer \`on\` ou \`off\` et un nom de rôle !`,
+			// Content
 			AUTOROLE_ENABLED: (prefix) => `${e.success} | Autôrole correctement activé ! Pour avoir plus d'informations sur la configuration de votre serveur tapez \`${prefix}configuration\` !`,
 			AUTOROLE_DISABLED: (prefix) => `${e.warn} | Autôrole correctement désactivé ! Pour avoir plus d'informations sur la configuration de votre serveur tapez \`${prefix}configuration\` !`,
 

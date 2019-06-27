@@ -1,55 +1,66 @@
 const Command = require("../../base/Command.js"),
-Discord = require('discord.js');
+Discord = require("discord.js");
 
 class Autorole extends Command {
 
     constructor (client) {
         super(client, {
             name: "autorole",
-            description: (language) => language.get('AUTOROLE_DESCRIPTION'),
+            description: (language) => language.get("AUTOROLE_DESCRIPTION"),
+            usage: (language) => language.get("AUTOROLE_USAGE"),
+            examples: (language) => language.get("AUTOROLE_EXAMPLES"),
             dirname: __dirname,
-            usage: "autorole [on/off] (role)",
             enabled: true,
             guildOnly: true,
-            aliases: [],
-            permission: "MANAGE_GUILD",
-            botpermissions: [ "SEND_MESSAGES" ],
+            aliases: [ "ar" ],
+            memberPermissions: [ "MANAGE_GUILD" ],
+            botPermissions: [ "SEND_MESSAGES", "EMBED_LINKS" ],
             nsfw: false,
-            examples: "$autorole on Communauté\n$autorole off",
-            owner: false
+            ownerOnly: false,
+            cooldown: 5000
         });
     }
 
-    async run (message, args, membersdata, guild_data, data) {
+    async run (message, args, data) {
 
-        var statut = args[0];
-        if(statut !== "on" && statut !== "off") return message.channel.send(message.language.get('BAD_PARAMETERS', data.cmd.help.name, guild_data.prefix));
+        let status = args[0];
+        if(status !== "on" && status !== "off"){
+            return message.channel.send(message.language.get("AUTOROLE_ERR_STATUS"));
+        }
         
-        if(statut === "on"){
+        if(status === "on"){
 
-            // Gets the role
-            if(!args[1]) return message.channel.send(message.language.get('BAD_PARAMETERS', data.cmd.help.name, guild_data.prefix));
-            var role = message.mentions.roles.first();
+            if(!args[1]){
+                return message.channel.send(message.language.get("AUTOROLE_ERR_STATUS"));
+            }
+            let role = message.mentions.roles.first();
             if(!role){
-                role = message.guild.roles.find(r => r.name === args.slice(1).join(' '));
-                if(!role) return message.channel.send(message.language.get('ROLE_NOT_FOUND', args.slice(1).join(' ')));
+                role = message.guild.roles.find((r) => r.name === args.slice(1).join("  "));
+                if(!role){
+                    return message.channel.send(message.language.get("ERR_ROLE_NOT_FOUND", args.slice(1).join(" ")));
+                }
             }
 
-            // Updates db
-            this.client.databases[1].set(message.guild.id+'.autorole.status', 'on');
-            this.client.databases[1].set(message.guild.id+'.autorole.role', role.id);
-            
-            // Success
-            message.channel.send(message.language.get('AUTOROLE_ENABLED', guild_data.prefix));
+            data.settings.plugins.autorole = {
+                enabled: true,
+                role: role.id
+            };
+            data.settings.markModified("plugins.autorole");
+            data.settings.save();
+
+            message.channel.send(message.language.get("AUTOROLE_ENABLED", data.settings.prefix));
         }
-        if(statut === "off"){
 
-             // Updates db
-            this.client.databases[1].set(message.guild.id+'.autorole.status', 'disabled');
-            this.client.databases[1].set(message.guild.id+'.autorole.role', 'unknow');
+        if(status === "off"){
 
-            // Success
-            message.channel.send(message.language.get('AUTOROLE_DISABLED', guild_data.prefix));
+            data.settings.plugins.autorole = {
+                enabled: false,
+                role: null
+            };
+            data.settings.markModified("plugins.autorole");
+            data.settings.save();
+            
+            message.channel.send(message.language.get("AUTOROLE_DISABLED", data.settings.prefix));
 
         }
         
