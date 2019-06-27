@@ -53,7 +53,7 @@ class Configuration extends Command {
             
         embed.addField(headings[3][0],
             (settings.plugins.goodbye.enabled) ?
-                message.language.get("CONFIGURATION_LEAVE", settings.plugins.goodbye.withImage, settings.plugins.goodbye.channel)
+                message.language.get("CONFIGURATION_GOODBYE", settings.plugins.goodbye.withImage, settings.plugins.goodbye.channel)
             :   headings[3][1]
         );
 
