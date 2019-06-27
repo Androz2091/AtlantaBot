@@ -1,32 +1,34 @@
 const Command = require("../../base/Command.js"),
-Discord = require('discord.js');
+Discord = require("discord.js");
 
 class Setsuggests extends Command {
 
     constructor (client) {
         super(client, {
             name: "setsuggests",
-            description: (language) => language.get('SETSUGGESTS_DESCRIPTION'),
+            description: (language) => language.get("SETSUGGESTS_DESCRIPTION"),
+            usage: (language) => language.get("SETSUGGESTS_USAGE"),
+            examples: (language) => language.get("SETSUGGESTS_EXAMPLES"),
             dirname: __dirname,
-            usage: "setsuggests",
             enabled: true,
             guildOnly: true,
-            aliases: [],
-            permission: "MANAGE_GUILD",
-            botpermissions: [ "SEND_MESSAGES" ],
+            aliases: [ "setsuggest", "setsuggestions", "setsuggestion" ],
+            memberPermissions: [ "MANAGE_GUILD" ],
+            botPermissions: [ "SEND_MESSAGES", "EMBED_LINKS" ],
             nsfw: false,
-            examples: "$setsuggests",
-            owner: false
+            ownerOnly: false,
+            cooldown: 3000
         });
     }
 
-    async run (message, args, membersdata, guild_data, data) {
+    async run (message, args, data) {
         
-        // update db
-        this.client.databases[1].set(`${message.guild.id}.channels.suggestion`, message.channel.id);
+        let channel = message.mentions.channels.first() || message.channel;
+        data.settings.plugins.suggestions = channel.id;
+        data.settings.markModified("plugins.suggestions");
+        data.settings.save();
 
-        // send success message
-        message.channel.send(message.language.get('SETSUGGESTS_SUCCESS', message.channel));
+        message.channel.send(message.language.get("SETSUGGESTS_SUCCESS", message.channel));
         
     }
 

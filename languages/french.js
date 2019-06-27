@@ -129,7 +129,7 @@ module.exports = class {
 
 			// Utils
 			IGNORE_DESCRIPTION: "Désactive ou active les commandes dans le salon mentionné",
-			IGNORE_USAGE: "ignore [#channel]",
+			IGNORE_USAGE: "ignore [#salon]",
 			IGNORE_EXAMPLES: "$ignore #général",
 			// Content
 			IGNORE_SUCCESS_DISABLED: (channel) => `${e.success} | Les commandes sont maintenant autorisées dans ${channel} !`,
@@ -643,7 +643,7 @@ module.exports = class {
 
 			// Utils
 			SETLOGS_DESCRIPTION: "Définissez le salon des logs !",
-			SETLOGS_USAGE: "setlogs (#channel)",
+			SETLOGS_USAGE: "setlogs (#salon)",
 			SETLOGS_EXAMPLES: "$setlogs #modlogs\n$setlogs",
 			// Content
 			SETLOGS_SUCCESS: (id) => `${e.success} | Salon des logs défini sur <#${id}> !`,
@@ -782,8 +782,13 @@ module.exports = class {
 			],
 			SUGGEST_SUCCESS: (channel) => `${e.success} | Votre suggestion est en cours de vote dans ${channel} !`,
 
-			// setsuggests command
+			/* SETSUGGESTS COMMAND */
+
+			// Utils
 			SETSUGGESTS_DESCRIPTION: "Définissez le salon des suggestions !",
+			SETSUGGESTS_USAGE: "setsuggests (#salon)",
+			SETSUGGESTS_EXAMPLES: "$setsuggests #général\n$setsuggests",
+			// Content
 			SETSUGGESTS_SUCCESS: (channel) => `${e.success} | Le salon des suggestions est maintenant ${channel} !`,
 
 			/* ADDEMOTE COMMAND */
@@ -808,7 +813,7 @@ module.exports = class {
 			// Errors
 			AUTOMOD_ERR_STATUS: `${e.error} | Veuillez entrer un statut valide ! (\`on\` ou \`off\`) !`,
 			// Content
-			AUTOMOD_SUCCESS_ENABLED: (prefix) => `${e.success} | Les invitations Discord seront automatiquement supprimées ! Si vous souhaitez ignorer un salon, tapez simplement \`${prefix}automod off #channel\` ! Cela désactivera l'auto modération dans le salon mentionné !`,
+			AUTOMOD_SUCCESS_ENABLED: (prefix) => `${e.success} | Les invitations Discord seront automatiquement supprimées ! Si vous souhaitez ignorer un salon, tapez simplement \`${prefix}automod off #salon\` ! Cela désactivera l'auto modération dans le salon mentionné !`,
 			AUTOMOD_SUCCESS_DISABLED_CHANNEL: (channel) => `${e.success} | L'auto modération ne sera plus effectuée dans le salon ${channel} !`,
 			AUTOMOD_SUCCESS_DISABLED: `${e.success} | Très bien ! L'auto modération n'est plus effective sur ce serveur !`,
 			AUTOMOD_MSG: (msg) => `${msg.author} | Votre message contenait une invitation Discord, il a donc été supprimé. Si c'était involontaire, vous pouvez rééditer votre message, il vous a été envoyé en message privé !`,
