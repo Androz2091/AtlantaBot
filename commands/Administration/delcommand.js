@@ -1,45 +1,41 @@
 const Command = require("../../base/Command.js"),
-Discord = require('discord.js');
+Discord = require("discord.js");
 
 class Delcommand extends Command {
 
     constructor (client) {
         super(client, {
             name: "delcommand",
-            description: (language) => language.get('DELCOMMAND_DESCRIPTION'),
+            description: (language) => language.get("DELCOMMAND_DESCRIPTION"),
+            usage: (language) => language.get("DELCOMMAND_USAGE"),
+            examples: (language) => language.get("DELCOMMAND_EXAMPLES"),
             dirname: __dirname,
-            usage: "delcommand [name]",
             enabled: true,
             guildOnly: true,
-            aliases: ["pong",],
-            permission: "MANAGE_GUILD",
-            botpermissions: [ "SEND_MESSAGES" ],
+            aliases: [],
+            memberPermissions: [ "MANAGE_GUILD" ],
+            botPermissions: [ "SEND_MESSAGES", "EMBED_LINKS" ],
             nsfw: false,
-            examples: "$delcommand ip",
-            owner: false
+            ownerOnly: false,
+            cooldown: 3000
         });
     }
 
-    async run (message, args, membersdata, guild_data, data) {
+    async run (message, args, data) {
 
-        // Gets command name
-        var name = args[0];
-        if(!name) return message.channel.send(message.language.get('DELCOMMAND_NAME'));
-
-        // If the command already exist
-        if(!guild_data.commands[name]) return message.channel.send(message.language.get('DELCOMMAND_EXIST', name));
-
-        var commands = {};
-        for(var cmd in guild_data.commands){
-            if(cmd !== name){
-                var rep = guild_data.commands[cmd];
-                commands[cmd] = rep;
-            }
+        let name = args[0];
+        if(!name){
+            return message.channel.send(message.language.get("DELCOMMAND_ERR_NAME"));
         }
 
-        this.client.databases[1].set(`${message.guild.id}.commands`, commands);
+        if(!data.settings.customCommands.find((c) => c.name === name)){
+            return message.channel.send(message.language.get("DELCOMMAND_EXISTS", name));
+        }
+        
+        data.settings.customCommands = data.settings.customCommands.filter((c) => c.name !== name);
+        data.settings.save();
 
-        message.channel.send(message.language.get('DELCOMMAND_SUCCESS', name));
+        message.channel.send(message.language.get("DELCOMMAND_SUCCESS", name));
     }
     
 }

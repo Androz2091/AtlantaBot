@@ -34,7 +34,8 @@ module.exports = class {
 				NO_REASON_PROVIDED: "pas de raison donnée",
 				UNDEFINED: "Indéfini",
 				PLEASE_WAIT: `${e.loading} | Veuillez patienter...`,
-				PREFIX: "Préfixe"
+				PREFIX: "Préfixe",
+				CUSTOM: "Personnalisées"
 			},
 			
 
@@ -181,17 +182,29 @@ module.exports = class {
 			SLOWMODE_ENABLED: (channel, time) => `${e.success} | Slowmode activé dans <#${channel}> avec un temps de ${time} !`,
 			SLOWMODE_PLEASE_WAIT: (time, channel) => `${e.error} | Le salon ${channel} est en slowmode ! Veuillez attendre ${time} pour pouvoir poster un nouveau message !`,
 
-			// Add command
+			/* ADDCOMMAND COMMAND */
+
+			// Utils
 			ADDCOMMAND_DESCRIPTION: "Ajoutez une commande personnalisée au serveur !",
-			ADDCOMMAND_NAME: `${e.error} | Veuillez entrer un nom et une réponse à la commande !`,
-			ADDCOMMAND_ALREADY: (name) => `${e.error} | La commande ${name} existe déjà !`,
-			ADDCOMMAND_ANSWER: `${e.error} | Veuillez entrer une réponse à cette commande !`,
+			ADDCOMMAND_USAGE: "addcommand [nom] [réponse]",
+			ADDCOMMAND_EXAMPLES: "$addcommand salut coucou",
+			// Errors
+			ADDCOMMAND_ERR_NAME: `${e.error} | Veuillez entrer un nom et une réponse à la commande !`,
+			ADDCOMMAND_ERR_EXISTS: (name) => `${e.error} | La commande ${name} existe déjà !`,
+			ADDCOMMAND_ERR_ANSWER: `${e.error} | Veuillez entrer une réponse à cette commande !`,
+			// Content
 			ADDCOMMAND_SUCCESS: (cmd) => `${e.success} | La commande ${cmd} a bien été ajoutée au serveur !`,
 
-			// Del command
+			/* DELCOMMAND COMMAND */
+
+			// Utils
 			DELCOMMAND_DESCRIPTION: "Enlevez une commande personnalisée du serveur !",
-			DELCOMMAND_NAME: `${e.error} | Veuillez entrer le nom de la commande que vous souhaitez supprimer !`,
-			DELCOMMAND_EXIST: (cmd) => `${e.error} | La commande ${cmd} n'existe pas !`,
+			DELCOMMAND_USAGE: "delcommand [nom-de-la-commande]",
+			DELCOMMAND_EXAMPLES: "$delcommand salut",
+			// Errors
+			DELCOMMAND_ERR_NAME: `${e.error} | Veuillez entrer le nom de la commande que vous souhaitez supprimer !`,
+			DELCOMMAND_ERR_EXISTS: (cmd) => `${e.error} | La commande ${cmd} n'existe pas !`,
+			// Content
 			DELCOMMAND_SUCCESS: (cmd) => `${e.success} | La commande ${cmd} a bien été enlevée du serveur !`,
 
 			/* PROFILE COMMAND */
