@@ -1,49 +1,49 @@
 const Command = require("../../base/Command.js"),
-Discord = require('discord.js');
+Discord = require("discord.js");
 
 class Addcommand extends Command {
 
     constructor (client) {
         super(client, {
             name: "addcommand",
-            description: (language) => language.get('ADDCOMMAND_DESCRIPTION'),
+            description: (language) => language.get("ADDCOMMAND_DESCRIPTION"),
+            usage: (language) => language.get("ADDCOMMAND_USAGE"),
+            examples: (language) => language.get("ADDCOMMAND_EXAMPLES"),
             dirname: __dirname,
-            usage: "addcommand [nom] [réponse]",
             enabled: true,
             guildOnly: true,
-            aliases: ["pong",],
-            permission: "MANAGE_GUILD",
-            botpermissions: [ "SEND_MESSAGES" ],
+            aliases: [ "custom-command" ],
+            memberPermissions: [ "MANAGE_GUILD" ],
+            botPermissions: [ "SEND_MESSAGES", "EMBED_LINKS" ],
             nsfw: false,
-            examples: "$addcommand ip 192.168.1.1",
-            owner: false
+            ownerOnly: false,
+            cooldown: 3000
         });
     }
 
-    async run (message, args, membersdata, guild_data, data) {
-
-        // Gets command name
-        var name = args[0];
-        if(!name) return message.channel.send(message.language.get('ADDCOMMAND_NAME'));
-
-        // If the command already exist
-        if(this.client.commands.get(name) || this.client.aliases.get(name) || guild_data.commands[name]) return message.channel.send(message.language.get('ADDCOMMAND_ALREADY', name));
-
-        // Gets the command answer
-        var answer = args.slice(1).join(' ');
-        if(!answer) return message.channel.send(message.language.get('ADDCOMMAND_ANSWER'));
-
-
-        var commands = {};
-        for(var cmd in guild_data.commands){
-            var rep = guild_data.commands[cmd];
-            commands[cmd] = rep;
+    async run (message, args, data) {
+        
+        let name = args[0];
+        if(!name){
+            return message.channel.send(message.language.get("ADDCOMMAND_ERR_NAME"));
         }
-        commands[name] = answer;
 
-        this.client.databases[1].set(`${message.guild.id}.commands`, commands);
+        if(this.client.commands.get(name) || this.client.aliases.get(name) || data.settings.customCommands.find((c) => c.name === name)){
+            return message.channel.send(message.language.get("ADDCOMMAND_ERR_EXISTS", name));
+        }
 
-        message.channel.send(message.language.get('ADDCOMMAND_SUCCESS', name));
+        let answer = args.slice(1).join(" ");
+        if(!answer){
+            return message.channel.send(message.language.get("ADDCOMMAND_ERR_ANSWER"));
+        }
+        
+        data.settings.customCommands.push({
+            name: name,
+            answer: answer
+        });
+        data.settings.save();
+        
+        message.channel.send(message.language.get("ADDCOMMAND_SUCCESS", name));
     }
     
 }
