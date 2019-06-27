@@ -267,11 +267,17 @@ module.exports = class {
 			// Errors
 			LEADERBOARD_ERR_TYPE: `${e.error} | Veuillez entrer un type de leaderboard ! (\`credits\`, \`level\` ou \`rep\`)`,
 
-			// Pay command
+			/* PAY COMMAND */
+
+			// Utils
 			PAY_DESCRIPTION: "Payez un membre avec des crédits !",
-			PAY_SELF: `${e.error} | Vous ne payez pas vous payez vous-même !`,
-			PAY_AMOUNT: (username) => `${e.error} | Vous devez entrer un montant à verser à **${username}** !`,
-			PAY_AMOUNT_TO_HIGH: (amount, username) => `${e.error} | Vous ne disposez pas d\'assez de crédits pour verser ${amount} crédits à ${username} !`,
+			PAY_USAGE: "pay [@user#0000] [montant]",
+			PAY_EXAMPLES: "$pay @Androz#2091 400",
+			// Errors
+			PAY_ERR_YOURSELF: `${e.error} | Vous ne payez pas vous payez vous-même !`,
+			PAY_ERR_INVALID_AMOUNT: (username) => `${e.error} | Vous devez entrer un montant à verser à **${username}** !`,
+			PAY_ERR_AMOUNT_TO_HIGH: (amount, username) => `${e.error} | Vous ne disposez pas d\'assez de crédits pour verser ${amount} crédits à ${username} !`,
+			// Content
 			PAY_SUCCESS: (amount, username) => `${e.success} | Vous avez versé ${amount} crédits à ${username} !`,
 
 			/* BIRTHDATE COMMAND */
@@ -290,23 +296,35 @@ module.exports = class {
 			BIRTHDATE_SUCCESS: (date) => `${e.success} | Votre date d'anniversaire a été définie sur le ${date} !`,
 			
 			
-			// Weegind command
-			WEEDING_DESCRIPTION: "Mariez-vous avec la personne de votre choix !",
-			WEEDING_AUTHOR_ALREADY: (prefix) => `${e.error} | Vous êtes déjà marié(e) ! Utilisez d'abord \`${prefix}divorce\` pour divorcer`,
-			WEEDING_MEMBER_ALREADY: (username) => `${e.error} | La place est prise compagnon ! **${username}** est déjà marié(e) !`,
-			WEEDING_AUTHOR_PENDING: (username) => `${e.error} | Vous avez déjà une demande en cours auprès de **${username}** !`,
-			WEEDING_AUTHOR_PENDING2: (username) => `${e.error} | **${username}** vous a déjà envoyé une demande ! Veuillez la refuser ou l'accepter (ou attendre qu'elle expire dans quelques minutes).`,
-			WEEDING_MEMBER_PENDING: (username1, username2) => `${e.error} | **${username2}** a déjà une demande envoyé une demande auprès de **${username1}** !`,
-			WEEDING_MEMBER_PENDING2: (username1, username2) => `${e.error} | **${username1}** a déjà envoyé une demande auprès de **${username2}** ! Attendez que **${username2}** accepte ou refuse la demande de **${username1}** ou que celle-ci expire puis réessayez !`,
-			WEEDING_REQUEST: (member, author) => `${e.warn} | ${member}, acceptez-vous d'épouser ${author} ? Répondez par "${yes}" ou "${no}" !`,
-			WEEDING_TIMEOUT: (member) => `${e.error} | ${member} n'a pas répondu... Attendez qu'il/elle soit connecté(e) puis réessayez !`,
-			WEEDING_SUCCESS: (author, member) => `${e.success} | ${author}, j'ai une bonne nouvelle... ${member} a accepté votre demande en mariage !`,
-			WEEDING_DENIED: (author, member) => `${e.error} | ${author}, j'ai une mauvaise nouvelle... ${member} a refusé votre demande en mariage.`,
-			WEEDING_SELF: `${e.error} | Vous ne pouvez pas vous épouser vous-même !`,
+			/* WEDDING COMMAND */
 
-			// Divorce command
+			// Utils
+			WEDDING_DESCRIPTION: "Mariez-vous avec la personne de votre choix !",
+			WEDDING_USAGE: "wedding [@user#0000]",
+			WEDDING_EXAMPLES: "$wedding @Androz#2091",
+			// Errors
+			WEDDING_ERR_AUTHOR_MARRIED: (prefix) => `${e.error} | Vous êtes déjà marié(e) ! Utilisez d'abord \`${prefix}divorce\` pour divorcer`,
+			WEDDING_ERR_MEMBER_MARRIED: (username) => `${e.error} | La place est prise compagnon ! **${username}** est déjà marié(e) !`,
+			WEDDING_ERR_AUTHOR_PENDING_REQUESTER: (username) => `${e.error} | Vous avez déjà une demande en cours auprès de **${username}** !`,
+			WEDDING_ERR_AUTHOR_PENDING_RECEIVER: (username) => `${e.error} | **${username}** vous a déjà envoyé une demande ! Veuillez la refuser ou l'accepter (ou attendre qu'elle expire dans quelques minutes).`,
+			WEDDING_ERR_MEMBER_PENDING_REQUESTER: (username1, username2) => `${e.error} | **${username2}** a déjà une demande envoyé une demande auprès de **${username1}** !`,
+			WEDDING_ERR_MEMBER_PENDING_RECEIVER: (username1, username2) => `${e.error} | **${username1}** a déjà envoyé une demande auprès de **${username2}** ! Attendez que **${username2}** accepte ou refuse la demande de **${username1}** ou que celle-ci expire puis réessayez !`,
+			WEDDING_ERR_TIMEOUT: (member) => `${e.error} | ${member} n'a pas répondu... Attendez qu'il/elle soit connecté(e) puis réessayez !`,
+			WEDDING_ERR_DENIED: (author, member) => `${e.error} | ${author}, j'ai une mauvaise nouvelle... ${member} a refusé votre demande en mariage.`,
+			WEDDING_ERR_YOURSELF: `${e.error} | Vous ne pouvez pas vous épouser vous-même !`,
+			// Content
+			WEDDING_REQUEST: (member, author) => `${e.warn} | ${member}, acceptez-vous d'épouser ${author} ? Répondez par "${yes}" ou "${no}" !`,
+			WEDDING_SUCCESS: (author, member) => `${e.success} | ${author}, j'ai une bonne nouvelle... ${member} a accepté votre demande en mariage !`,
+
+			/* DIVORCE COMMAND */
+
+			// Utils
 			DIVORCE_DESCRIPTION: "Divorcez avec la personne avec qui vous êtes actuellement marié(e) !",
-			DIVORCE_NOT_WEEDED: `${e.error} | Vous n'êtes actuellement pas marié(e) !`,
+			DIVORCE_USAGE: "divorce",
+			DIVORCE_EXAMPLES: "divorce",
+			// Errors
+			DIVORCE_ERR_NOT_WEDDED: `${e.error} | Vous n'êtes actuellement pas marié(e) !`,
+			// Content
 			DIVORCE_SUCCESS: (username) => `${e.success} | Vous venez de divorcer avec **${username}** !`,
 
 			/* SLOTS COMMAND */

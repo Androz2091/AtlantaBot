@@ -1,53 +1,60 @@
 const Command = require("../../base/Command.js"),
-Discord = require('discord.js');
+Discord = require("discord.js");
 
 class Pay extends Command {
 
     constructor (client) {
         super(client, {
             name: "pay",
-            description: (language) => language.get('PAY_DESCRIPTION'),
+            description: (language) => language.get("PAY_DESCRIPTION"),
+            usage: (language) => language.get("PAY_USAGE"),
+            examples: (language) => language.get("PAY_EXAMPLES"),
             dirname: __dirname,
-            usage: "pay [@member] [amount]",
             enabled: true,
-            guildOnly: true,
+            guildOnly: false,
             aliases: [],
-            permission: false,
-            botpermissions: [ "SEND_MESSAGES" ],
+            memberPermissions: [],
+            botPermissions: [ "SEND_MESSAGES", "EMBED_LINKS" ],
             nsfw: false,
-            examples: "$pay @Androz#2091 10",
-            owner: false
+            ownerOnly: false,
+            cooldown: 10000
         });
     }
 
-    async run (message, args, membersdata, guild_data, data) {
+    async run (message, args, data) {
         
-        // Gets the first mentionned member
-        var member = message.mentions.members.first();
-        // if doesn't exist, display an error message
-        if(!member) return message.channel.send(message.language.get('MENTION_MEMBER'));
+        let user = message.mentions.users.first();
+        if(!user){
+            return message.channel.send(message.language.get("ERR_INVALID_MEMBER"));
+        }
+        if(user.bot){
+            return message.channel.send(message.language.get("ERR_BOT_USER"));
+        }
 
-        // if the user is a bot, cancel
-        if(member.user.bot) return message.channel.send(message.language.get('IS_A_BOT'));
+        if(user.id === message.author.id){
+            return message.channel.send(message.language.get("PAY_ERR_YOURSELF"));
+        }
 
-        // check if the receiver is the sender
-        if(member.id === message.author.id) return message.channel.send(message.language.get('PAY_SELF'))
+        let toPay = args[1];
+        if(!toPay || parseInt(toPay) <= 0){
+            return message.channel.send(message.language.get("PAY_ERR_INVALID_AMOUNT", user.username));
+        }
+        if(isNaN(toPay)){
+            return message.channel.send(message.language.get("ERR_INVALID_NUMBER", toPay));
+        }
+       
+        if(toPay > data.users[0].money){
+            return message.channel.send(message.language.get("PAY_ERR_AMOUNT_TOO_HIGH", toPay, user.username));
+        }
 
-        // gets the amount of credits to send
-        var amount_to_pay = args[1];
-        // if the member has not entered a valid amount, display an error message
-        if(!amount_to_pay || parseInt(amount_to_pay) < 0) return message.channel.send(message.language.get('PAY_AMOUNT', member.user.username));
-        if(isNaN(amount_to_pay)) return message.channel.send(message.language.get('NAN', amount_to_pay));
-        // if the member does not have enough credits
-        if(amount_to_pay > membersdata[0].credits) return message.channel.send(message.language.get('PAY_AMOUNT_TO_HIGH', amount_to_pay, member.user.username));
+        data.users[0].money = data.users[0].money - toPay;
+        data.users[0].save();
 
-        // Adding credits to the receiver
-        this.client.databases[0].add(`${member.id}.credits`, amount_to_pay);
-        // Removes credits from the sender
-        this.client.databases[0].subtract(`${message.author.id}.credits`, amount_to_pay);
+        data.users[1].money = data.users[1].money + toPay;
+        data.users[1].save();
 
         // Send a success message
-        message.channel.send(message.language.get('PAY_SUCCESS', amount_to_pay, member.user.username))
+        message.channel.send(message.language.get("PAY_SUCCESS", toPay, user.username))
 
     }
 
