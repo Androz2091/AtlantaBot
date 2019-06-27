@@ -25,7 +25,7 @@ class Configuration extends Command {
 
         const headings = message.language.get("CONFIGURATION_HEADINGS"),
         settings = data.settings;
-
+        
         let embed = new Discord.MessageEmbed()
             .setAuthor(message.guild.name, message.guild.iconURL())
             .setColor(data.config.embed.color)
@@ -57,11 +57,11 @@ class Configuration extends Command {
             :   headings[3][1]
         );
 
-        /*embed.addField(headings[4][0],
-            (Object.keys(d).length > 0) ?
-                getSlowmodes(slowmodePlugin.channels)
+        embed.addField(headings[4][0],
+            (Object.keys(data.settings.slowmode.channels).length > 0) ?
+                getSlowmodes(data.settings.slowmode.channels)
             :   headings[4][1]
-        );*/
+        );
 
         embed.addField(headings[5][0],
             message.language.get("CONFIGURATION_MODLOGS", settings.plugins.modlogs)+"\n"+
