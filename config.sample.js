@@ -95,5 +95,16 @@ module.exports = {
 			{ name:"IAMABOT", emoji: "XXXXXXXXXXX", price: 1000 },
 			{ name:"Discordien", emoji: "XXXXXXXXXXX", price: 500 }
 		]
-	}
+	},
+	/* The Bot status */
+	status: [
+		{
+			name: "@Atlanta help on {serversCount} servers",
+			type: "LISTENING"
+		},
+		{
+			name: "my website : atlanta-bot.fr",
+			type: "PLAYING"
+		}
+	]
 }

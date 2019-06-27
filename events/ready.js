@@ -8,45 +8,35 @@ module.exports = class {
 
     async run () {
 
+        let client = this.client;
+
         // Logs some informations using the logger file
-        this.client.logger.log(`Loading a total of ${this.client.commands.size} command(s).`, 'log');
-        this.client.logger.log(`${this.client.user.tag}, ready to serve ${this.client.users.size} users in ${this.client.guilds.size} servers.`, "ready");
+        client.logger.log(`Loading a total of ${client.commands.size} command(s).`, 'log');
+        client.logger.log(`${client.user.tag}, ready to serve ${client.users.size} users in ${client.guilds.size} servers.`, "ready");
         
         // Inits the dashboard
-        this.client.dashboard.init(this.client);
+        client.dashboard.init(client);
 
         // Post DBL stats
-        const DBL = require("dblapi.js");
-        const dbl = new DBL(this.client.config.apiKeys.dbl, this.client);
-        dbl.postStats(this.client.guilds.size)
-
-        // Inits stats table
-        if(!this.client.databases[4].get('commands')) this.client.databases[4].set('commands', []);
+        if(client.config.apiKeys.dbl && client.config.apiKeys.dbl !== ""){
+            let DBL = require("dblapi.js");
+            let dbl = new (client.config.apiKeys.dbl, client);
+            dbl.postStats(client.guilds.size);
+        }
 
         // Update the game every 20s
-        var games = [
-            {
-                name:`@Atlanta help on {servs} guilds`,
-                type:`LISTENING`
-            },
-            {
-                name:`my website : atlanta-bot.fr`,
-                type:`PLAYING`
-            },
-            {
-                name:`add me with ${this.client.config.prefix}invite!`,
-                type:`STREAMING`
-            }
-        ];
-        var client = this.client;
-        var i = 0;
+        const status = require("../config.js").status;
+        let index = 0;
         setInterval(function(){
-            client.user.setActivity(games[i].name.replace("{servs}", client.guilds.size), {type: games[i].type});
-            if(games[parseInt(i + 1)]) i++;
-            else i = 0;
+            client.user.setActivity(status[index].name.replace("{serversCount}", client.guilds.size), {type: status[index].type});
+            if(games[parseInt(index+1, 10)]){
+                i++;
+            } else {
+                i = 0;
+            }
         }, 20000);
 
-        // Unmute members
+        /* Unmute members
         setInterval(function(){
             client.guilds.forEach(guild => {
                 var data = client.databases[1].get(guild.id) || client.functions.createGuild(client, guild);
@@ -108,6 +98,6 @@ module.exports = class {
                     client.fetchUser(author).then(user => user.send(msg));
                 });
             }
-        }, 1000);
+        }, 1000);*/
     }
 }  
