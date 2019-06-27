@@ -50,8 +50,8 @@ class Profile extends Command {
             .addField(message.language.get("PROFILE_HEADINGS").EXP, `**${userData.exp}** xp`, true)
             .addField(message.language.get("PROFILE_HEADINGS").BIRTHDATE, (!userData.birthdate ? message.language.get("NO_BIRTHDATE") : message.language.printDate(new Date(userData.birthdate))), true)
             .addField(message.language.get("PROFILE_HEADINGS").INVITER, (message.client.guilds.some((g) => g.ownerID === user.id) ? message.language.get("UTILS").YES : message.language.get("UTILS").NO), true)
-            .addField(message.language.get("PROFILE_HEADINGS").MARRIED, (!userData.partner ? message.language.get("NO_PARTNER") : message.client.users.get(userData.partner).tag), true)
-            .addField(message.language.get("PROFILE_HEADINGS").BADGES, (userData.badges.length > 0 ? "=> "+userData.badges.map((b) => b.str).join(" ") : message.language.get("NO_BADGE")))
+            .addField(message.language.get("PROFILE_HEADINGS").MARRIED, (!userData.lover ? message.language.get("NO_PARTNER") : message.client.users.get(userData.lover).tag), true)
+            .addField(message.language.get("PROFILE_HEADINGS").BADGES, (userData.badges.length > 0 ? "=> "+userData.badges.map((b) => b.emoji).join(" ") : message.language.get("NO_BADGE")))
             .setColor(data.config.embed.color) // Sets the color of the embed
             .setFooter(data.config.embed.footer) // Sets the footer of the embed
             .setTimestamp();
