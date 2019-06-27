@@ -10,12 +10,14 @@ module.exports = mongoose.model("Guild", new mongoose.Schema({
         welcome: {
             enabled: false,
             message: null,
-            channel: null
+            channel: null,
+            withImage: null
         },
         goodbye: {
             enabled: false,
             message: null,
-            channel: null
+            channel: null,
+            withImage: null
         },
         autorole: {
             enabled: false,
@@ -26,8 +28,12 @@ module.exports = mongoose.model("Guild", new mongoose.Schema({
             ignored: []
         },
         slowmode: {
-            channels: [],
+            channels: {},
             users: {}
+        },
+        warnsSanctions: {
+            kick: false,
+            ban: false
         },
         suggestions: false,
         modlogs: false
@@ -38,5 +44,5 @@ module.exports = mongoose.model("Guild", new mongoose.Schema({
         members: []
     }},
     muted: { type: Array }, // Members that are muted in this guild
-    customCommand: { type: Array } // Custom commands of the guild
+    customCommands: { type: Array } // Custom commands of the guild
 }));
