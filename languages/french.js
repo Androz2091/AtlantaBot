@@ -850,10 +850,17 @@ module.exports = class {
 			BLACKLIST_USER: (id) => `${e.success} | Utilisateur **${id}** blacklist !`,
 			BLACKLIST_BANNED_USER: (reason) => `${e.error} | Vous êtes blacklist d'Atlanta pour la raison suivante : \`${reason}\``,
 
+			/* PURGE COMMAND */
+
+			// Utils
 			PURGE_DESCRIPTION: "Expulse les membres inactifs !",
-			PURGE_DAYS: `${e.error} | Veuillez préciser un nombre de jours !`,
+			PURGE_USAGE: "purge [jours]",
+			PURGE_EXAMPLES: "$purge 10",
+			// Errors
+			PURGE_ERR_DAYS: `${e.error} | Veuillez préciser un nombre de jours !`,
+			PURGE_ERR_TIMEOUT: `${e.error} | Temps écoulé ! Veuillez retaper la commande !`,
+			// Content
 			PURGE_CONFIRMATION: (members) => `${e.warn} | ${members} membres seront expulsés ! Pour confirmer, tapez \`confirm\` !`,
-			PURGE_TIMEOUT: `${e.error} | Temps écoulé ! Veuillez retaper la commande !`,
 			PURGE_SUCCESS: (members) => `${e.success} | ${members} membres expulsés !`,
 
 			GITHUB_DESCRIPTION: "Affiche les informations du github d'Atlanta !",

@@ -1,48 +1,56 @@
 const Command = require("../../base/Command.js"),
-Discord = require('discord.js');
+Discord = require("discord.js");
 
 class Purge extends Command {
 
     constructor (client) {
         super(client, {
             name: "purge",
-            description: (language) => language.get('PURGE_DESCRIPTION'),
+            description: (language) => language.get("PURGE_DESCRIPTION"),
+            usage: (language) => language.get("PURGE_USAGE"),
+            examples: (language) => language.get("PURGE_EXAMPLES"),
             dirname: __dirname,
-            usage: "purge [amount of days]",
             enabled: true,
             guildOnly: true,
-            aliases: [],
-            permission: "KICK_MEMBERS",
-            botpermissions: [ "SEND_MESSAGES", "MANAGE_GUILD", "KICK_MEMBERS" ],
+            aliases: [ "clear-members" ],
+            memberPermissions: [ "MANAGE_GUILD" ],
+            botPermissions: [ "SEND_MESSAGES", "EMBED_LINKS" ],
             nsfw: false,
-            examples: "$purge 10",
-            owner: false
+            ownerOnly: false,
+            cooldown: 5000
         });
     }
 
-    async run (message, args, membersdata, guild_data, data) {
+    async run (message, args, data) {
 
-        var days = args[0];
-        if(!days || isNaN(days)) return message.channel.send(message.language.get("PURGE_DAYS"));
+        let days = args[0];
+        if(!days || isNaN(days)){
+            return message.channel.send(message.language.get("PURGE_ERR_DAYS"));
+        }
         days = parseInt(days, 10);
 
-        var members = await message.guild.pruneMembers(days, true);
-
-        message.channel.send(message.language.get("PURGE_CONFIRMATION", members))
-        .then((m) => {
-            message.channel.awaitMessages(response => (response.content === 'confirm') && (response.author.id === message.author.id), {
-              max: 1,
-              time: 10000,
-              errors: ['time'],
-            })
-            .then((collected) => {
-                message.guild.pruneMembers(days, false).then(() => {
-                    message.channel.send(message.language.get("PURGE_SUCCESS", members))
-                });
-            }).catch(() => {
-                m.edit(message.language.get("PURGE_TIMEOUT"));
+        let members = await message.guild.members.prune({
+            days: days,
+            dry: true
+        });
+        let m = await message.channel.send(message.language.get("PURGE_CONFIRMATION", members));
+        
+        message.channel.awaitMessages((res) => (res.content === "confirm") && (res.author.id === message.author.id), {
+            max: 1,
+            time: 10000,
+            errors: ["time"],
+        })
+        .then(async () => {
+            await message.guild.members.prune({
+                days: days,
+                dry: false
+            }).catch((err) => {
+                return message.channel.send(message.language.get("ERR_OCCURENCED"));
             });
-          });
+            message.channel.send(message.language.get("PURGE_SUCCESS", members));
+        }).catch(() => {
+            m.edit(message.language.get("PURGE_ERR_TIMEOUT"));
+        });
         
     }
 
