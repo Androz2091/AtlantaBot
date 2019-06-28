@@ -614,7 +614,7 @@ module.exports = class {
         let minute = pdate.getMinutes();
 
         let thedate = (isLongDate) ? day + " " + monthNames[monthIndex] + " " + year + " at " + hour + "h" + minute 
-        : thedate = day + " " + monthNames[monthIndex] + " " + year
+        : day + " " + monthNames[monthIndex] + " " + year
         return thedate;
 	}
 	
