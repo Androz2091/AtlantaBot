@@ -153,6 +153,25 @@ module.exports = class {
 			USERINFO_MORE_ROLES: (nb) => ` et ${nb} autres rôles`,
 			USERINFO_NO_NICKNAME: "Pas de surnom",
 
+			/* SUGGEST COMMAND */
+
+			// Utils
+			SUGGEST_DESCRIPTION: "Envoie votre suggestion dans le salon défini pour ça !",
+			SUGGEST_USAGE: "suggest [message]",
+			SUGGEST_EXAMPLES: "$suggest Un nouveau salon #spam !",
+			// Errors
+			SUGGEST_ERR_NO_CHANNEL: `${e.error} | Aucun salon de suggestion défini !`,
+			SUGGEST_ERR_NO_SUGG: `${e.error} | Veuillez entrer une suggestion !`,
+			// Headings
+			SUGGEST_HEADINGS: [
+				"Auteur",
+				"Date",
+				"Contenu"
+			],
+			// Content
+			SUGGEST_TITLE: (user) => `Suggestion - ${user.tag}`,
+			SUGGEST_SUCCESS: (channel) => `${e.success} | Votre suggestion est en cours de vote dans ${channel} !`,
+
 			/* CONFIGURATION COMMAND */
 
 			// Utils

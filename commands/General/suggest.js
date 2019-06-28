@@ -1,53 +1,60 @@
 const Command = require("../../base/Command.js"),
-Discord = require('discord.js');
+Discord = require("discord.js");
 
 class Suggest extends Command {
 
     constructor (client) {
         super(client, {
             name: "suggest",
-            description: (language) => language.get('SUGGEST_DESCRIPTION'),
+            description: (language) => language.get("SUGGEST_DESCRIPTION"),
+            usage: (language) => language.get("SUGGEST_USAGE"),
+            examples: (language) => language.get("SUGGEST_EXAMPLES"),
             dirname: __dirname,
-            usage: "suggest [suggestion]",
             enabled: true,
             guildOnly: true,
-            aliases: [],
-            permission: false,
-            botpermissions: [ "SEND_MESSAGES", "EMBED_LINKS" ],
+            aliases: [ "suggestion", "sugg" ],
+            memberPermissions: [],
+            botPermissions: [ "SEND_MESSAGES", "EMBED_LINKS" ],
             nsfw: false,
-            examples: "$suggestion A new channel",
-            owner: false
+            ownerOnly: false,
+            cooldown: 5000
         });
     }
 
-    async run (message, args, membersdata, guild_data, data) {
+    async run (message, args, data) {
 
-        var sugg_channel = message.guild.channels.get(guild_data.channels.suggestion);
-        if(!sugg_channel) return message.channel.send(message.language.get('SUGGEST_NO_CHANNEL'));
+        let suggChannel = message.guild.channels.get(data.settings.plugins.suggestions);
+        if(!suggChannel){
+            return message.channel.send(message.language.get("SUGGEST_ERR_NO_CHANNEL"));
+        }
 
-        var sugg = args.join(' ');
-        if(!sugg) return message.channel.send(message.language.get('SUGGEST_SUGG'));
+        let sugg = args.join(" ");
+        if(!sugg){
+            return message.channel.send(message.language.get("SUGGEST_ERR_NO_SUGG"));
+        }
 
-        var embed = new Discord.RichEmbed()
-            .setAuthor(message.language.get('SUGGEST_HEADER', message.author), message.author.displayAvatarURL)
-            .addField(message.language.get('SUGGEST_HEADERS')[0], `\`${message.author.username}#${message.author.discriminator}\``, true)
-            .addField(message.language.get('SUGGEST_HEADERS')[1], message.language.printDate(new Date(Date.now()), true), true)
-            .addField(message.language.get('SUGGEST_HEADERS')[2], '**'+sugg+'**')
-            .setColor(data.embed.color)
-            .setFooter(data.embed.footer);
+        let embed = new Discord.MessageEmbed()
+            .setAuthor(message.language.get("SUGGEST_TITLE", message.author), message.author.displayAvatarURL())
+            .addField(message.language.get("SUGGEST_HEADINGS")[0], `\`${message.author.username}#${message.author.discriminator}\``, true)
+            .addField(message.language.get("SUGGEST_HEADINGS")[1], message.language.printDate(new Date(Date.now()), true), true)
+            .addField(message.language.get("SUGGEST_HEADINGS")[2], "**"+sugg+"**")
+            .setColor(data.config.embed.color)
+            .setFooter(data.config.embed.footer);
 
-        // Gets the emote
-        var emotes = [
-            this.client.emojis.find(e => e.name === 'atlanta_success'),
-            this.client.emojis.find(e => e.name === 'atlanta_error')
+        let success = message.client.config.emojis.success.split(":")[1];
+        let error = message.client.config.emojis.error.split(":")[1];
+
+        let emotes = [
+            message.client.emojis.find((e) => e.name === success),
+            message.client.emojis.find((e) => e.name === error)
         ];
 
-        sugg_channel.send(embed).then(async m => {
+        suggChannel.send(embed).then(async (m) => {
             await m.react(emotes[0]);
             await m.react(emotes[1]);
         });
 
-        message.channel.send(message.language.get('SUGGEST_SUCCESS', sugg_channel));
+        message.channel.send(message.language.get("SUGGEST_SUCCESS", suggChannel));
     }
 
 }

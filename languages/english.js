@@ -153,6 +153,25 @@ module.exports = class {
 			USERINFO_MORE_ROLES: (nb) => ` and ${nb} others roles`,
 			USERINFO_NO_NICKNAME: "No nickname",
 
+			/* SUGGEST COMMAND */
+
+			// Utils
+			SUGGEST_DESCRIPTION: "Send your suggestion to the channel defined for this!",
+			SUGGEST_USAGE: "suggest [message]",
+			SUGGEST_EXAMPLES: "$suggest A new channel #spam !",
+			// Errors
+			SUGGEST_ERR_NO_CHANNEL: `${e.error} | No suggestion channel defined!`,
+			SUGGEST_ERR_NO_SUGG: `${e.error} | Please enter a suggestion!`,
+			// Headings
+			SUGGEST_HEADINGS: [
+				"Author",
+				"Date",
+				"Content"
+			],
+			// Content
+			SUGGEST_TITLE: (user) => `Suggestion - ${user.tag}`,
+			SUGGEST_SUCCESS: (channel) => `${e.success} | Your suggestion is being voted on in ${channel} !`,
+
 			/* CONFIGURATION COMMAND */
 
 			// Utils
