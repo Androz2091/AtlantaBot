@@ -39,9 +39,9 @@ module.exports = mongoose.model("Guild", new mongoose.Schema({
         channels: []
     }},
     ignoredChannels: { type: Array, default: [] }, // Channels ignored by the bot
-    warns: { type: Object, default: { // Warns data for the guild
-        case: 0,
-        members: []
+    cases: { type: Object, default: { // Warns data for the guild
+        count: 0,
+        list: []
     }},
     muted: { type: Array }, // Members that are muted in this guild
     customCommands: { type: Array } // Custom commands of the guild
