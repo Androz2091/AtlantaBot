@@ -28,11 +28,6 @@ module.exports = class {
         let client = this.client;
         data.config = client.config;
 
-        if(message.content.startsWith("<@"+client.user.id+">")){
-            message.mentions.users.filter((u) => u.id !== client.user.id);
-            message.mentions.members.filter((u) => u.user.id !== client.user.id);
-        }
-
         // Gets settings
         let settings = await client.functions.getSettings(client, message.channel);
         data.settings = settings;
@@ -55,30 +50,32 @@ module.exports = class {
         data.users = usersData;
 
         if(message.guild){
-            await updateXp(message, data);
-        }
 
-        if(!message.channel.permissionsFor(message.member).has("MANAGE_MESSAGES")){
-            let channelSlowmode = data.settings.slowmode.channels.find((ch) => ch.id === message.channel.id);
-            if(channelSlowmode){
-                let uSlowmode = data.settings.slowmode.users.find((d) => d.id === (message.author.id+message.channel.id));
-                if(uSlowmode){
-                    if(uSlowmode.time > Date.now()){
-                        message.delete();
-                        let delay = message.language.convertMs(Math.ceil((uSlowmode.time - Date.now())));
-                        return message.author.send(message.language.get("SLOWMODE_PLEASE_WAIT", delay, message.channel));
+            await updateXp(message, data);
+
+            if(!message.channel.permissionsFor(message.member).has("MANAGE_MESSAGES")){
+                let channelSlowmode = data.settings.slowmode.channels.find((ch) => ch.id === message.channel.id);
+                if(channelSlowmode){
+                    let uSlowmode = data.settings.slowmode.users.find((d) => d.id === (message.author.id+message.channel.id));
+                    if(uSlowmode){
+                        if(uSlowmode.time > Date.now()){
+                            message.delete();
+                            let delay = message.language.convertMs(Math.ceil((uSlowmode.time - Date.now())));
+                            return message.author.send(message.language.get("SLOWMODE_PLEASE_WAIT", delay, message.channel));
+                        } else {
+                            uSlowmode.time = channelSlowmode.time+Date.now();
+                        }
                     } else {
-                        uSlowmode.time = channelSlowmode.time+Date.now();
+                        data.settings.slowmode.users.push({
+                            id: message.author.id+message.channel.id,
+                            time: channelSlowmode.time+Date.now()
+                        });
                     }
-                } else {
-                    data.settings.slowmode.users.push({
-                        id: message.author.id+message.channel.id,
-                        time: channelSlowmode.time+Date.now()
-                    });
+                    data.settings.markModified("slowmode.users");
+                    data.settings.save();
                 }
-                data.settings.markModified("slowmode.users");
-                data.settings.save();
             }
+            
         }
 
         if(data.settings.plugins.automod.enabled && !data.settings.plugins.automod.ignored.includes(message.channel.id)){
