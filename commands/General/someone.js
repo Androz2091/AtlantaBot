@@ -11,7 +11,7 @@ class Someone extends Command {
             examples: (language) => language.get("SOMEONE_EXAMPLES"),
             dirname: __dirname,
             enabled: true,
-            guildOnly: false,
+            guildOnly: true,
             aliases: [ "somebody", "something" ],
             memberPermissions: [],
             botPermissions: [ "SEND_MESSAGES", "EMBED_LINKS" ],
