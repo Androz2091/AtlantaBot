@@ -46,7 +46,10 @@ class Userinfo extends Command {
             return message.channel.send(message.language.get("USERINFO_ERR_ID", args[0]));
         }
 
-        let member = await message.guild.members.fetch(user).catch((err) => {});
+        let member = null;
+        if(message.guild){
+            member = await message.guild.members.fetch(user).catch((err) => {});
+        }
 
         let embed = new Discord.MessageEmbed()
             .setAuthor(user.tag, user.displayAvatarURL())
