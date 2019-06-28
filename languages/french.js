@@ -490,20 +490,35 @@ module.exports = class {
 			CLEAR_SUCCESS: (amount) => `${e.success} | **${amount}** messages supprimés !`,
 			CLEAR_SUCCESS_USER: (amount, user) => `${e.success} | **${amount}** messages de **${user.tag}** supprimés !`,
 
+			/* MUTE COMMAND */
+
+			// Utils
+			MUTE_DESCRIPTION: "Empêche le membre d'envoyer des messages et de se connecter en vocal pendant un certain temps !",
+			MUTE_USAGE: "mute [@membre] [temps]",
+			MUTE_EXAMPLES: "$mute @Androz#2091 Spam",
+			// Content
+			MUTE_SUCCESS: (member, time, reason) => `${e.success} | **${member.user.tag}** est maintenant mute pendant **${time}** pour **${reason}** !`,
+			MUTE_SUCCESS_DM: (message, time, reason) => `${e.error} | Vous êtes mute sur **${message.guild.name}** pendant **${time}** pour **${reason}** !`,
+
+			/* UNMUTE COMMAND */
+
+			// Content
+			UNMUTE_SUCCESS: (userID, caseNumber) => `<@${userID}> vient d'être unmute ! (cas du mute : #${caseNumber})`,
+
 			/* MODOGS EMBEDS */
 			MODLOGS_TYPES: {
 				BAN: `Ban | Cas #{case}`,
 				KICK: `Kick | Cas #{case}`,
 				UNBAN: `Unban | Cas #{case}`,
 				WARN: `Avertissement | Cas #{case}`,
-				MUTE: `Mute | Cas #{case}`,
-				UNMUTE: `Unmute | Cas #{case}`,
+				MUTE: `Mute | Cas #{case}`
 			},
 			MODLOGS_HEADINGS: [
 				"Utilisateur",
 				"Modérateur",
 				"Raison",
-				"Temps"
+				"Temps",
+				"Expiration"
 			],
 
 			/* SETLOGS COMMAND */

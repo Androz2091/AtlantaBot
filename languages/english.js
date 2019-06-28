@@ -490,6 +490,21 @@ module.exports = class {
 			CLEAR_SUCCESS: (amount) => `${e.success} | **${amount}** messages deleted!`,
 			CLEAR_SUCCESS_USER: (amount, user) => `${e.success} | **${amount}** messages of **${user.tag}** deleted !`,
 
+			/* MUTE COMMAND */
+
+			// Utils
+			MUTE_DESCRIPTION: "Prevents the member from sending messages and connecting by voice for a period of time!",
+			MUTE_USAGE: "mute [@member] [time]",
+			MUTE_EXAMPLES: "$mute @Androz#2091 Spam",
+			// Content
+			MUTE_SUCCESS: (member, time, reason) => `${e.success} | **${member.user.tag} is now muted for **${time}** for **${reason}** !`,
+			MUTE_SUCCESS_DM: (message, time, reason) => `${e.error} | You are muted in **${message.guild.name}** for **${time}** for **${reason}** !`,
+
+			/* UNMUTE COMMAND */
+
+			// Content
+			UNMUTE_SUCCESS: (userID, caseNumber) => `<@${userID}> vient d'être unmute ! (cas du mute : #${caseNumber})`,
+
 			/* MODOGS EMBEDS */
 			MODLOGS_TYPES: {
 				BAN: `Ban | Case #{case}`,

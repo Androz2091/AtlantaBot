@@ -1,4 +1,4 @@
-const Discord = require('discord.js')
+const Discord = require("discord.js");
 
 module.exports = class {
 
@@ -20,71 +20,55 @@ module.exports = class {
         // Post DBL stats
         if(client.config.apiKeys.dbl && client.config.apiKeys.dbl !== ""){
             let DBL = require("dblapi.js");
-            let dbl = new (client.config.apiKeys.dbl, client);
+            let dbl = new DBL(client.config.apiKeys.dbl, client);
             dbl.postStats(client.guilds.size);
         }
 
         // Update the game every 20s
         const status = require("../config.js").status;
-        let index = 0;
+        let i = 0;
         setInterval(function(){
-            client.user.setActivity(status[index].name.replace("{serversCount}", client.guilds.size), {type: status[index].type});
-            if(games[parseInt(index+1, 10)]){
+            client.user.setActivity(status[parseInt(i, 10)].name.replace("{serversCount}", client.guilds.size), {type: status[parseInt(i, 10)].type});
+            if(status[parseInt(i+1, 10)]){
                 i++;
             } else {
                 i = 0;
             }
         }, 20000);
 
-        /* Unmute members
+        /* UNMUTE USERS */
         setInterval(function(){
-            client.guilds.forEach(guild => {
-                var data = client.databases[1].get(guild.id) || client.functions.createGuild(client, guild);
-                if(Object.keys(data.muted).length > 0){ // If there are members to check
-                    for(var userID in data.muted){ // for each member
-                        var time = data.muted[userID]; // Gets the unmute date
-                        if(!time) return;
-                        var user = client.users.get(userID); // Gets the user to unmute
-                        if(user && (data.muted[userID]<Date.now())){ // if the user must be unmute
-                            // Unmute the member
-                            guild.channels.forEach(ch => {
-                                if(ch.permissionOverwrites.get(userID)){
-                                    ch.permissionOverwrites.get(userID).delete();
-                                } else {
-                                    delete data.muted[userID];
-                                    return client.databases[1].set(`${guild.id}.muted`, data.muted);
-                                }
-                            });
-                            try {
-                                delete data.muted[userID];
-                            } catch(e) {
-                                console.log(data);
+            client.guilds.forEach(async (guild) => {
+                let settings = await client.functions.getSettings(guild.client, guild);
+                let muted = settings.muted;
+                if(muted.length < 0) return;
+                let mustBeUnmuted = muted.filter((d) => d.endDate < Date.now());
+                mustBeUnmuted.forEach(async (d) => {
+                    let member = await guild.members.fetch(d.userID);
+                    if(member){
+                        guild.channels.forEach((channel) => {
+                            let permOverwrites = channel.permissionOverwrites.get(member.id);
+                            if(permOverwrites){
+                                permOverwrites.delete();
                             }
-                            client.databases[1].set(`${guild.id}.muted`, data.muted);
-                            if(guild.members.get(user.id)){
-                                var language = new(require('../languages/'+data.lang+'.js'));
-                                // Update cases
-                                client.databases[1].add(`${guild.id}.case`, 1);
-                                // Gets case
-                                var tcase = client.databases[1].get(`${guild.id}.case`);
-                                // Gets the modlogs channel
-                                var modlogs = guild.channels.get(data.channels.modlogs);
-                                if(!modlogs) return;
-                                var modlog_embed = new Discord.RichEmbed()
-                                    .setAuthor(language.get('MODLOGS_HEADERS', tcase)[5], user.avatarURL)
-                                    .addField(language.get('MODLOGS_UTILS')[0], `\`${user.tag}\` (${user})`, true)
-                                    .setColor(`#f44271`)
-                                    .setTimestamp()
-                                    .setFooter(client.config.embed.footer);
-                                return modlogs.send(modlog_embed);
-                            }
-                        }
+                        });
                     }
-                }
+                    settings.muted = settings.muted.filter((d) => d.userID !== member.id);
+                    await settings.save();
+                    let language = new(require(`../languages/${settings.language}`));
+                    let embed = new Discord.MessageEmbed()
+                        .setDescription(language.get("UNMUTE_SUCCESS", member.id, d.caseNumber))
+                        .setColor("#f44271")
+                        .setFooter(guild.client.config.embed.footer);
+                    let channel = guild.channels.get(settings.plugins.modlogs);
+                    if(channel){
+                        channel.send(embed);
+                    }
+                });
             });
-        }, 1000); // every second
+        }, 2500);
 
-        // Remind me
+        /* Remind me
         setInterval(function(){
             var time = Math.floor(Date.now()/1000);
             time = String(time);

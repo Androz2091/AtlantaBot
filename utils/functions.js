@@ -54,21 +54,21 @@ module.exports = {
     /**
      * Gets channel settings
      * @param {object} client The discord client
-     * @param {object} channel The channel object
+     * @param {object} guild The guild object
      * @returns The channel data
      */
-    async getSettings(client, channel){
+    async getSettings(client, guild){
         return new Promise(async function(resolve, reject){
-            if(channel.guild){
-                client.guildsData.find({id: channel.guild.id}, function (err, result) {
+            if(guild){
+                client.guildsData.find({id: guild.id}, function (err, result) {
                     if(result[0]){
                         resolve(result[0]);
                     } else {
-                        let guild = new client.guildsData({
-                            id: channel.guild.id
+                        let Guild = new client.guildsData({
+                            id: guild.id
                         });
-                        guild.save();
-                        resolve(guild);
+                        Guild.save();
+                        resolve(Guild);
                     }
                 });
             } else {

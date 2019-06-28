@@ -1,4 +1,5 @@
-const Discord = require("discord.js");
+const Discord = require("discord.js"),
+ms = require("ms");
 
 module.exports = class {
 
@@ -36,10 +37,8 @@ module.exports = class {
                 break;
             case "mute":
                 embed.setAuthor(language.get("MODLOGS_TYPES").MUTE.replace("{case}", settings.cases.count+1))
-                .setColor("#f44271");
-                break;
-            case "unmute":
-                embed.setAuthor(language.get("MODLOGS_TYPES").UNMUTE.replace("{case}", settings.cases.count+1))
+                .addField(language.get("MODLOGS_HEADINGS")[3], options.time, true)
+                .addField(language.get("MODLOGS_HEADINGS")[4], language.printDate(new Date(Date.now()+ms(options.time)), true), true)
                 .setColor("#f44271");
                 break;
         }
@@ -57,24 +56,25 @@ module.exports = class {
      * @param {object} options The sanction options
      */
     addCase(settings, options){
-        
-        // Add one to guild cases
-        settings.cases.count = settings.cases.count+1;
+        return new Promise(async function(resolve, reject){
+            // Add one to guild cases
+            settings.cases.count = settings.cases.count+1;
 
-        // Save the case
-        settings.cases.list.push({
-            case: settings.cases.count,
-            type: options.type,
-            moderator: options.moderator,
-            date: options.date,
-            channel: options.channel,
-            time: options.time,
-            reason: options.reason
+            // Save the case
+            settings.cases.list.push({
+                case: settings.cases.count,
+                type: options.type,
+                moderator: options.moderator,
+                date: options.date,
+                channel: options.channel,
+                time: options.time,
+                reason: options.reason
+            });
+
+            settings.markModified("cases");
+            await settings.save();
+            resolve(settings);
         });
-
-        settings.markModified("cases");
-        settings.save();
-
     }
 
     /**
