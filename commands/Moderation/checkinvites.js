@@ -1,33 +1,42 @@
 const Command = require("../../base/Command.js"),
-Discord = require('discord.js');
+Discord = require("discord.js");
 
 class Checkinvites extends Command {
 
     constructor (client) {
         super(client, {
             name: "checkinvites",
-            description: (language) => language.get('CHECKINVITES_DESCRIPTION'),
+            description: (language) => language.get("CHECKINVITES_DESCRIPTION"),
+            usage: (language) => language.get("CHECKINVITES_USAGE"),
+            examples: (language) => language.get("CHECKINVITES_EXAMPLES"),
             dirname: __dirname,
-            usage: "checkinvites",
             enabled: true,
             guildOnly: true,
-            aliases: [],
-            permission: false,
-            botpermissions: [ "SEND_MESSAGES" ],
+            aliases: [ "checkinvite", "checki" ],
+            memberPermissions: [],
+            botPermissions: [ "SEND_MESSAGES", "EMBED_LINKS" ],
             nsfw: false,
-            examples: "$checkinvites",
-            owner: false
+            ownerOnly: false,
+            cooldown: 3000
         });
     }
 
-    async run (message, args, membersdata, guild_data, data) {
+    async run (message, args, data) {
         
-        // Gets the member with an ads in their game with RegExp
-        const members = message.guild.members.filter(member => member.user.presence.game && /(discord\.(gg|io|me|li)\/.+|discordapp\.com\/invite\/.+)/i.test(member.user.presence.game.name));
+        let members = message.guild.members;
+        
+        let withInvite = members.filter((m) => m.user.presence.game && /(discord\.(gg|io|me|li)\/.+|discordapp\.com\/invite\/.+)/i.test(m.user.presence.game.name));
 
-        // Send the message in the channel
-        return message.channel.send(members.map(member => `\`${member.id}\` ${member.displayName}`).join("\n") || message.language.get('CHECKINVITES_NOBODY'));
+        let text = (withInvite.length > 0 ?
+            withInvite.map((m) => "`"+m.id+"` ("+m.displayName+") ["+m.user.presence.game.name+"]").join("\n")
+        :   message.language.get("CHECKINVITES_NOT_FOUND"));
 
+        let embed = new Discord.MessageEmbed()
+            .setDescription(text)
+            .setColor(data.config.embed.color)
+            .setFooter(data.config.embed.footer);
+            
+        message.channel.send(embed);
     }
 
 }

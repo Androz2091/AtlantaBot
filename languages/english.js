@@ -469,6 +469,15 @@ module.exports = class {
 			KICK_SUCCESS_DM: (user, msg, reason) => `${e.error} | Hello <@${user.id}>,\nYou have just been kicked out from **${msg.guild.name}** by **${msg.author.tag}** for **${reason}** !`,
 			KICK_SUCCESS_CHANNEL: (user, msg, reason) => `${e.success} | **${user.username}** has just been kicked out from **${msg.guild.name}** by **${msg.author.tag}** for **${reason}** !`,
 
+			/* CHECKINVITES COMMAND */
+
+			// Utils
+			CHECKINVITES_DESCRIPTION: "Check if members do not have an ad for their Discord server in their presence!",
+			CHECKINVITES_USAGE: "checkinvites",
+			CHECKINVITES_EXAMPLES: "$checkinvites",
+			// Content
+			CHECKINVITES_NOT_FOUND: `${e.success} | No member advertises in his game!`,
+
 			/* MODOGS EMBEDS */
 			MODLOGS_TYPES: {
 				BAN: `Ban | Case #{case}`,
