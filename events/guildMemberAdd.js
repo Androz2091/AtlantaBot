@@ -1,4 +1,5 @@
-const fetch = require("node-fetch");
+const fetch = require("node-fetch"),
+Discord = require("discord.js");
 
 module.exports = class {
 
@@ -28,14 +29,11 @@ module.exports = class {
                     if(settings.plugins.welcome.withImage){
                         let lang = new(require(`../languages/${settings.language}.js`));
                         let text = lang.get("WELCOME_IMG", guild.name);
-                        let URL = encodeURI(`https://dev.anidiots.guide/greetings/unified?type=welcome&version=gearz&message=${text}&bot=${member.user.bot}&avatar=${member.user.displayAvatarURL}&username=${member.user.username}&discriminator=${member.user.discriminator}&guildName=${guild.name}&memberCount=${guild.memberCount}`);
+                        let userAvatar = member.user.displayAvatarURL().replace("webp", "png");
+                        let URL = encodeURI(`https://dev.anidiots.guide/greetings/unified?type=welcome&version=gearz&message=${text}&bot=${member.user.bot}&avatar=${userAvatar}&username=${member.user.username}&discriminator=${member.user.discriminator}&guildName=${guild.name}&memberCount=${guild.memberCount}`);
                         let res = await fetch(URL, { headers: { "Authorization": guild.client.config.apiKeys.anidiots } });
-                        channel.send(message, {
-                            files: [{
-                                attachment: res.body,
-                                name: "welcome.png"
-                            }]
-                        });
+                        let attachment = new Discord.MessageAttachment(await res.buffer(), "welcome.png");
+                        channel.send(message, attachment);
                     } else {
                         channel.send(message);
                     }
