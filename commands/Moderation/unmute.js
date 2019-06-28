@@ -1,39 +1,43 @@
 const Command = require("../../base/Command.js"),
-Discord = require('discord.js');
+Discord = require("discord.js");
 
 class Unmute extends Command {
 
     constructor (client) {
         super(client, {
             name: "unmute",
-            description: (language) => language.get('UNMUTE_DESCRIPTION'),
+            description: (language) => language.get("UNMUTE_DESCRIPTION"),
+            usage: (language) => language.get("UNMUTE_USAGE"),
+            examples: (language) => language.get("UNMUTE_EXAMPLES"),
             dirname: __dirname,
-            usage: "unmute [@member]",
             enabled: true,
             guildOnly: true,
             aliases: [],
-            permission: "MANAGE_MESSAGES",
-            botpermissions: [ "SEND_MESSAGES", "MANAGE_CHANNELS" ],
+            memberPermissions: [ "MANAGE_MESSAGES" ],
+            botPermissions: [ "SEND_MESSAGES", "EMBED_LINKS", "MANAGE_CHANNELS" ],
             nsfw: false,
-            examples: "$unmute @Androz#2091",
-            owner: false
+            ownerOnly: false,
+            cooldown: 3000
         });
     }
 
-    async run (message, args, membersdata, guild_data, data) {
+    async run (message, args, data) {
 
-        // Gets the first mentionned member
-        var member = message.mentions.members.first();
-        if(!member) return message.channel.send(message.language.get('MENTION_MEMBER'));
-
-        // update db
-        if(guild_data.muted[member.id]){
-            guild_data.muted[member.id] = Date.now()+1000;
-            this.client.databases[1].set(`${message.guild.id}.muted`, guild_data.muted);
+        let member = message.mentions.members.first();
+        if(!member){
+            return message.channel.send(message.language.get("ERR_INVALID_MEMBER"));
         }
-
-        // Send success message
-        message.channel.send(message.language.get('UNMUTE_SUCCESS', member));
+        
+        let index = data.settings.muted.findIndex((d) => d.userID === member.id);
+        if(index === 0 || index){
+            data.settings.muted[parseInt(index, 10)].endDate = Date.now();
+            data.settings.markModified("muted");
+            data.settings.save();
+            message.channel.send(message.language.get("UNMUTE_SUCCESS_USER", member.user));
+        } else {
+            message.channel.send(message.language.get("UNMUTE_ERR_NOT_MUTED"))
+        }
+        
 
     }
 
