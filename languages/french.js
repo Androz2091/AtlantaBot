@@ -540,6 +540,21 @@ module.exports = class {
 			SETWARNS_SUCCESS_RESET_KICK: (prefix, number) => `${e.success} | Configuration enregistrée ! La sanction kick n'est maintenant plus automatique ! Tapez \`${prefix}configuration\` pour voir votre nouvelle configuration !`,
 			SETWARNS_SUCCESS_RESET_BAN: (prefix, number) => `${e.success} | Configuration enregistrée ! La sanction ban n'est maintenant plus automatique ! Tapez \`${prefix}configuration\` pour voir votre nouvelle configuration !`,
 
+			/* POLL COMMAND */
+
+			// Utils
+			POLL_DESCRIPTION: "Lance un sondage dans le salon actuel !",
+			POLL_USAGE: "poll [question]",
+			POLL_EXAMPLES: "$poll Voulez-vous un nouveau salon ?",
+			// Errors
+			POLL_ERR_QUESTION: `${e.error} | Vous devez entrer une question !`,
+			POLL_ERR_TIMEOUT: `${e.error} | Temps écoulé ! Veuillez retaper la commande !`,
+			// Content
+			POLL_FORM_MENTION: `Souhaitez-vous ajouter une mention à votre message ? Répondez par "oui" ou "non" !`,
+			POLL_FORM_MENTION_HE: "Tapez une des réponses suivantes : \`every\` (pour une mention @ everyone) ou \`here\` (pour une mention @ here) !",
+			POLL_REACT: `Réagissez avec ${e.success} ou ${e.error} !`,
+			POLL_HEADING: "📊 Sondage :",
+
 			/* SANCTIONS COMMAND */
 			
 			// Utils

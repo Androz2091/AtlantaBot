@@ -528,13 +528,41 @@ module.exports = class {
 			WARN_USAGE: "warn [@member] [reason]",
 			WARN_EXAMPLES: "$warn @Androz#2091 Spam",
 			// Errors
-			WARN_REASON: `${e.error} | Please enter a reason!`,
+			WARN_ERR_REASON: `${e.error} | Please enter a reason!`,
 			// Content
 			WARN_AUTOBAN: (member, number) => `${e.success} | **${member.user.tag}** was automatically banned because it had more than **${number}** warns !`,
 			WARN_AUTOKICK: (member, number) => `${e.success} | **${member.user.tag}** was automatically kicked out because he had more than **${number}** warns !`,
 			WARN_SUCCESS_DM: (msg, reason) => `${e.warn} | You've just been warned on **${msg.guild.name}** by **${msg.author.tag}** for **${reason}** !`,
 			WARN_SUCCESS: (member, reason) => `${e.success} | **${member.user.tag}** has been warned by private messages for **${reason}** !`,
 
+			/* SETWARNS COMMAND */
+
+			// Utils
+			SETWARNS_DESCRIPTION: "Define the sanctions that members will get after a certain number of warns!",
+			SETWARNS_USAGE: "setwarns [kick/ban] [number/reset]",
+			SETWARNS_EXAMPLES: "$setwarns kick 10\n$setwarns ban 10\n$setwarns ban reset",
+			// Errors
+			SETWARNS_ERR_SANCTION: `${e.error} | Please indicate a valid sanction type! (\`kick\`, \`ban\`)`,
+			// Content
+			SETWARNS_SUCCESS_KICK: (prefix, number) => `${e.success} | Configuration saved! When a member has reached the ${number} warns, he will be kicked out. Type \`${prefix}configuration\` to see your new configuration!`,
+			SETWARNS_SUCCESS_BAN: (prefix, number) => `${e.success} | Configuration enregistrée ! Lorsqu'un membre aura atteint les ${number} warns, il sera banned. Tapez \`${prefix}configuration\` pour voir votre nouvelle configuration !`,
+			SETWARNS_SUCCESS_RESET_KICK: (prefix, number) => `${e.success} | Configuration saved! The kick sanction is no longer automatic! Type \`${prefix}configuration\` to see your new configuration!`,
+			SETWARNS_SUCCESS_RESET_BAN: (prefix, number) => `${e.success} | Configuration saved! The ban sanction is no longer automatic! Type \`${prefix}configuration\` to see your new configuration!`,
+
+			/* POLL COMMAND */
+
+			// Utils
+			POLL_DESCRIPTION: "Launch a survey in the current channel!",
+			POLL_USAGE: "poll [question]",
+			POLL_EXAMPLES: "$poll Do you want a new channel?",
+			// Errors
+			POLL_ERR_QUESTION: `${e.error} | You must enter a question!`,
+			POLL_ERR_TIMEOUT: `${e.error} | Time's up! Please retype the command!`,
+			// Content
+			POLL_FORM_MENTION: `Would you like to add a mention to your message? Answer "yes" or "no"!`,
+			POLL_FORM_MENTION_HE: "Type one of the following answers: \`every\` (for a mention @ everyone) or \`here\` (for a mention @ here)!",
+			POLL_REACT: `React with ${e.success} or ${e.error}!`,
+			POLL_HEADING: "📊 Survey:",
 
 			/* MODOGS EMBEDS */
 			MODLOGS_TYPES: {
