@@ -1,71 +1,84 @@
 const Command = require("../../base/Command.js"),
-Discord = require('discord.js');
-
-const ms = require('ms');
+Discord = require("discord.js"),
+ms = require("ms");
 
 class Mute extends Command {
 
     constructor (client) {
         super(client, {
             name: "mute",
-            description: (language) => language.get('MUTE_DESCRIPTION'),
+            description: (language) => language.get("MUTE_DESCRIPTION"),
+            usage: (language) => language.get("MUTE_USAGE"),
+            examples: (language) => language.get("MUTE_EXAMPLES"),
             dirname: __dirname,
-            usage: "mute [@member] [time] (reason)",
             enabled: true,
             guildOnly: true,
             aliases: [],
-            permission: "MANAGE_MESSAGES",
-            botpermissions: [ "SEND_MESSAGES", "MANAGE_CHANNELS" ],
+            memberPermissions: [ "MANAGE_MESSAGES" ],
+            botPermissions: [ "SEND_MESSAGES", "EMBED_LINKS", "MANAGE_CHANNELS" ],
             nsfw: false,
-            examples: "$mute @Androz#2091 10m Spam",
-            owner: false
+            ownerOnly: false,
+            cooldown: 3000
         });
     }
 
-    async run (message, args, membersdata, guild_data, data) {
+    async run (message, args, data) {
         
-        // Gets the first mentionned member
-        var member = message.mentions.members.first();
-        if(!member) return message.channel.send(message.language.get('MENTION_MEMBER'));
+        let member = message.mentions.members.first();
+        if(!member){
+            return message.channel.send(message.language.get("ERR_INVALID_MEMBER"));
+        }
 
-        var time = args[1];
-        if(!time || isNaN(ms(time))) return message.channel.send(message.language.get('INVALID_TIME'));
+        let time = args[1];
+        if(!time || isNaN(ms(time))){
+            return message.channel.send(message.language.get("ERR_INVALID_TIME"));
+        }
 
-        // Gets the reason of the mute
-        var reason = args.slice(2).join(' ');
-        if(!reason) reason = message.language.get('NO_REASON_PROVIDED');
+        let reason = args.slice(2).join(" ");
+        if(!reason){
+            reason = message.language.get("UTILS").NO_REASON_PROVIDED;
+        }
 
-        // Mute the member by editing all guild channels
-        message.guild.channels.forEach(ch => ch.overwritePermissions(member.user, {SEND_MESSAGES:false,ADD_REACTIONS:false}));
+        message.guild.channels.forEach((channel) => {
+            channel.overwritePermissions({
+                permissionOverwrites: [
+                    {
+                        id: member.id,
+                        deny: [ "SEND_MESSAGES", "ADD_REACTIONS", "CONNECT" ]
+                    }
+                ]
+            }).catch((err) => {});
+        });
 
-        // THen send a success message
-        message.channel.send(message.language.get('MUTE_SUCCESS', member, time, reason));
+        message.channel.send(message.language.get("MUTE_SUCCESS", member, time, reason));
 
-        // Send a message to the member
-        member.send(message.language.get('MUTE_DM', message, time, reason));
+        member.send(message.language.get("MUTE_SUCCESS_DM", message, time, reason));
+        
+        let caseInfo = {
+            channel: message.channel,
+            moderator: message.author,
+            user: member.user,
+            date: Date.now(),
+            reason: reason,
+            type: "mute",
+            time: time
+        };
 
-        // Update database
-        guild_data.muted[member.id] = Date.now()+ms(time);
-        this.client.databases[1].set(`${message.guild.id}.muted`, guild_data.muted);
+        let Moderator = new(require("../../utils/mod.js"))(this.client);
+        Moderator.log(data.settings, caseInfo, message.language);
+        await Moderator.addCase(data.settings, caseInfo);
+        
+        let isAlreadyMuted = data.settings.muted.find((d) => d.userID === member.id);
+        if(isAlreadyMuted){
+            data.settings.muted = data.settings.muted.filter((d) => d.userID !== member.id);
+        }
 
-        // Update cases
-        this.client.databases[1].add(`${message.guild.id}.case`, 1);
-        // Gets case
-        var tcase = this.client.databases[1].get(`${message.guild.id}.case`);
-
-        // Gets the modlogs channel
-        var modlogs = message.guild.channels.get(guild_data.channels.modlogs);
-        if(!modlogs) return;
-        var modlog_embed = new Discord.RichEmbed()
-            .setAuthor(message.language.get('MODLOGS_HEADERS', tcase)[4], member.user.avatarURL)
-            .addField(message.language.get('MODLOGS_UTILS')[0], `\`${member.user.tag}\` (${member.user})`, true)
-            .addField(message.language.get('MODLOGS_UTILS')[1], `\`${message.author.tag}\` (${message.author})`, true)
-            .addField(message.language.get('MODLOGS_UTILS')[2], `${reason}`, true)
-            .addField(message.language.get('MODLOGS_UTILS')[3], `\`${time}\``)
-            .setTimestamp()
-            .setColor(`#f44271`)
-            .setFooter(data.embed.footer);
-        return modlogs.send(modlog_embed);
+        data.settings.muted.push({
+            userID: member.id,
+            endDate: new Date(Date.now()+ms(time)),
+            caseNumber: data.settings.cases.count
+        });
+        await data.settings.save();
 
     }
 
