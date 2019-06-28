@@ -502,8 +502,29 @@ module.exports = class {
 
 			/* UNMUTE COMMAND */
 
+			// Utils
+			UNMUTE_DESCRIPTION: "Unmute le membre mentionné !",
+			UNMUTE_USAGE: "unmute [@membre]",
+			UNMUTE_EXAMPLES: "$unmute @Androz#2091",
+			// Errors
+			UNMUTE_ERR_NOT_MUTED: `${e.error} | Ce membre n'est pas mute sur ce serveur !`,
 			// Content
 			UNMUTE_SUCCESS: (userID, caseNumber) => `<@${userID}> vient d'être unmute ! (cas du mute : #${caseNumber})`,
+			UNMUTE_SUCCESS_USER: (user) => `${e.success} | ${user.tag} vient d'être unmute !`,
+
+			/* WARN COMMAND */
+
+			// Utils
+			WARN_DESCRIPTION: "Averti un membre en messages privés",
+			WARN_USAGE: "warn [@membre] [raison]",
+			WARN_EXAMPLES: "$warn @Androz#2091 Spam",
+			// Errors
+			WARN_REASON: `${e.error} | Veuillez entrer une raison !`,
+			// Content
+			WARN_AUTOBAN: (member, number) => `${e.success} | **${member.user.tag}** a été banni automatiquement car il avait plus de **${number}** warns !`,
+			WARN_AUTOKICK: (member, number) => `${e.success} | **${member.user.tag}** a été expulsé automatiquement car il avait plus de **${number}** warns !`,
+			WARN_SUCCESS_DM: (msg, reason) => `${e.warn} | Vous venez d'être averti sur **${msg.guild.name}** par **${msg.author.tag}** pour **${reason}** !`,
+			WARN_SUCCESS: (member, reason) => `${e.success} | **${member.user.tag}** a été averti par messages privés pour **${reason}** !`,
 
 			/* SANCTIONS COMMAND */
 			
