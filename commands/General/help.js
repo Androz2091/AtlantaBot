@@ -88,13 +88,15 @@ class Help extends Command {
             embeds.push(embed);
         });
         
-        if(data.settings.customCommands.length > 0){
-            let embed = new Discord.MessageEmbed()
-                .setAuthor(message.language.get("UTILS").CUSTOM)
-                .setDescription(data.settings.customCommands.sort().map((cmd) => `\`${cmd.name}\``).join(", "))
-                .setColor(data.config.embed.color)
-                .setFooter(data.config.embed.footer, message.author.displayAvatarURL());
-            embeds.push(embed);
+        if(message.guild){
+            if(data.settings.customCommands.length > 0){
+                let embed = new Discord.MessageEmbed()
+                    .setAuthor(message.language.get("UTILS").CUSTOM)
+                    .setDescription(data.settings.customCommands.sort().map((cmd) => `\`${cmd.name}\``).join(", "))
+                    .setColor(data.config.embed.color)
+                    .setFooter(data.config.embed.footer, message.author.displayAvatarURL());
+                embeds.push(embed);
+            }
         }
 
         let i = 0;
