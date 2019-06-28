@@ -41,7 +41,7 @@ class Warn extends Command {
         let caseInfo = {
             channel: message.channel,
             moderator: message.author,
-            user: member,
+            user: member.user,
             date: Date.now(),
             reason: reason
         };
