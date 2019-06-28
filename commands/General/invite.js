@@ -1,41 +1,46 @@
 const Command = require("../../base/Command.js"),
-Discord = require('discord.js');
+Discord = require("discord.js");
 
 class Invite extends Command {
 
     constructor (client) {
         super(client, {
             name: "invite",
-            description: (language) => language.get('INVITE_DESCRIPTION'),
+            description: (language) => language.get("INVITE_DESCRIPTION"),
+            usage: (language) => language.get("INVITE_USAGE"),
+            examples: (language) => language.get("INVITE_EXAMPLES"),
             dirname: __dirname,
-            usage: "invite",
             enabled: true,
             guildOnly: false,
-            aliases: ["vote","add","support"],
-            permission: false,
-            botpermissions: [ "SEND_MESSAGES", "EMBED_LINKS" ],
+            aliases: [ "i", "add" ],
+            memberPermissions: [],
+            botPermissions: [ "SEND_MESSAGES", "EMBED_LINKS" ],
             nsfw: false,
-            examples: "$invite",
-            owner: false
+            ownerOnly: false,
+            cooldown: 5000
         });
     }
 
-    async run (message, args, membersdata, guild_data, data) {
+    async run (message, args, data) {
 
-        if(args[0]) return message.channel.send(`https://discordapp.com/oauth2/authorize?client_id=${this.client.user.id}&scope=bot&permissions=2146958847`);
+        let inviteLink = `https://discordapp.com/oauth2/authorize?client_id=${this.client.user.id}&scope=bot&permissions=2146958847`;
+        let voteURL = `https://discordbots.org/bot/${this.client.user.id}/vote`;
+        let supportURL = await message.client.functions.supportLink(message.client);
 
-        var embed = new Discord.RichEmbed()
-            .setAuthor(message.language.get('INVITE_HEADING'))
-            .setDescription(message.language.get('INVITE_DESC', guild_data.prefix))
-            .addField(message.language.get('INVITE_FIELD1'), `https://discordapp.com/oauth2/authorize?client_id=${this.client.user.id}&scope=bot&permissions=2146958847`)
-            .setColor(data.embed.color)
-            .setFooter(data.embed.footer)
-            
-        this.client.functions.supportLink(this.client).then(url => {
-            embed.addField(message.language.get('INVITE_FIELD3'), url)
-            .addField(message.language.get('INVITE_FIELD2'), `https://discordbots.org/bot/${this.client.user.id}/vote`)
-            message.channel.send(embed);
-        });
+        if(args[0]){
+            return message.channel.send(inviteLink);
+        }
+
+        let embed = new Discord.MessageEmbed()
+            .setAuthor(message.language.get("INVITE_TITLE"))
+            .setDescription(message.language.get("INVITE_DESC", data.settings.prefix))
+            .addField(message.language.get("INVITE_HEADINGS")[0], inviteLink)
+            .addField(message.language.get("INVITE_HEADINGS")[1], voteURL)
+            .addField(message.language.get("INVITE_HEADINGS")[2], supportURL)
+            .setColor(data.config.embed.color)
+            .setFooter(data.config.embed.footer);
+        
+        message.channel.send(embed);
            
     }
 

@@ -172,6 +172,21 @@ module.exports = class {
 			SUGGEST_TITLE: (user) => `Suggestion - ${user.tag}`,
 			SUGGEST_SUCCESS: (channel) => `${e.success} | Votre suggestion est en cours de vote dans ${channel} !`,
 
+			/* INVITE COMMAND */
+
+			// Utils
+			INVITE_DESCRIPTION: `Affiche les liens d'${c.botname} !`,
+			INVITE_USAGE: "invite (copy)",
+			INVITE_EXAMPLES: "$invite\n$invite copy",
+			// Content
+			INVITE_TITLE: "Liens principaux",
+			INVITE_DESC: (prefix) => `Tapez \`${prefix}invite copy\` pour pouvoir copier le lien !`,
+			INVITE_HEADINGS: [
+				`${e.add} Inviter ${c.botname}`,
+				`${e.vote} Voter pour ${c.botname}`,
+				`${e.help} Support`
+			],
+
 			/* CONFIGURATION COMMAND */
 
 			// Utils
