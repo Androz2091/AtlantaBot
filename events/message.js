@@ -87,7 +87,7 @@ module.exports = class {
             }
 
         }
-        
+
         // Gets the prefix
         let prefix = client.functions.getPrefix(message, data);
         if(!prefix){
@@ -99,9 +99,11 @@ module.exports = class {
         let cmd = client.commands.get(command) || client.commands.get(client.aliases.get(command));
         
         if(!cmd){
-            let customCommand = data.settings.customCommands.find((c) => c.name === command);
-            if(customCommand){
-                message.channel.send(customCommand.answer);
+            if(message.guild){
+                let customCommand = data.settings.customCommands.find((c) => c.name === command);
+                if(customCommand){
+                    message.channel.send(customCommand.answer);
+                }
             }
             return;
         }
