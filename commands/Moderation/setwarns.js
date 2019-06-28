@@ -1,68 +1,69 @@
 const Command = require("../../base/Command.js"),
-Discord = require('discord.js');
+Discord = require("discord.js");
 
 class Setwarns extends Command {
 
     constructor (client) {
         super(client, {
             name: "setwarns",
-            description: (language) => language.get('SETWARNS_DESCRIPTION'),
+            description: (language) => language.get("SETWARNS_DESCRIPTION"),
+            usage: (language) => language.get("SETWARNS_USAGE"),
+            examples: (language) => language.get("SETWARNS_EXAMPLES"),
             dirname: __dirname,
-            usage: "setwarns [number] [kick/ban/reset]",
             enabled: true,
             guildOnly: true,
             aliases: [],
-            permission: false,
-            botpermissions: [ "SEND_MESSAGES" ],
+            memberPermissions: [ "MANAGE_GUILD" ],
+            botPermissions: [ "SEND_MESSAGES", "EMBED_LINKS", "BAN_MEMBERS", "KICK_MEMBERS" ],
             nsfw: false,
-            examples: "$setwarns 4 kick",
-            owner: false
+            ownerOnly: false,
+            cooldown: 3000
         });
     }
 
-    async run (message, args, membersdata, guild_data, data) {
+    async run (message, args, data) {
         
-        // Gets the number arg
-        var number = args[0];
-        if(!number || isNaN(number)) return message.channel.send(message.language.get('SETWARNS_USAGE', guild_data.prefix));
-        if(number < 1 || number > 10) return message.channel.send(message.language.get('NUMBER_1_10'));
-    
-        // Gets the sanction to update
-        var sanction = args[1];
-        if(!sanction) return message.channel.send(message.language.get('SETWARNS_USAGE', guild_data.prefix));
-
-        if(sanction === 'kick'){
-            // If there is no number sets to kick
-            if(!guild_data.automod_warns['kick']){
-                // Check if the number is not already used
-                for(var sanction in guild_data.automod_warns) if(guild_data.automod_warns[sanction] === number) return message.channel.send(message.language.get('SETWARNS_ALREADY_A_SANCTION', guild_data.prefix, sanction, guild_data.automod_warns[sanction]));
-                // Update database
-                this.client.databases[1].set(`${message.guild.id}.automod_warns.kick`, number);
-                // Send success message
-                return message.channel.send(message.language.get('SETWARNS_SUCCESS', guild_data.prefix, 'kick', number));
-            } else return message.channel.send(message.language.get('SETWARNS_SANCTION_ALREADY_USED', guild_data.prefix, 'kick', guild_data.automod_warns['kick']));
+        let sanction = args[0];
+        if(!sanction || (sanction !== "kick" && sanction !== "ban")){
+            return message.channel.send(message.language.get("SETWARNS_ERR_SANCTION"));
         }
 
-        if(sanction === 'ban'){
-            // If there is no number sets to ban
-            if(!guild_data.automod_warns['ban']){
-                // Check if the number is not already used
-                for(var sanction in guild_data.automod_warns) if(guild_data.automod_warns[sanction] === number) return message.channel.send(message.language.get('SETWARNS_ALREADY_A_SANCTION', guild_data.prefix, sanction, guild_data.automod_warns[sanction]));
-                // Update database
-                this.client.databases[1].set(`${message.guild.id}.automod_warns.ban`, number);
-                // Send success message
-                return message.channel.send(message.language.get('SETWARNS_SUCCESS', guild_data.prefix, 'ban', number));
-            } else return message.channel.send(message.language.get('SETWARNS_SANCTION_ALREADY_USED', guild_data.prefix, 'ban', guild_data.automod_warns['ban']));
-        }
+        let number = args[1];
 
-        if(sanction === 'reset'){
-            for(var sanction in guild_data.automod_warns){
-                if(guild_data.automod_warns[sanction] === number){
-                    this.client.databases[1].delete(`${message.guild.id}.warns_sanctions.${sanction}`);
-                    return message.channel.send(message.language.get('SETWARNS_SUCCESS_DELETE', guild_data.prefix, sanction, number));
-                }
+        if(number === "reset"){
+            if(sanction === "kick"){
+                data.settings.plugins.warnsSanctions.kick = false;
+                data.settings.markModified("plugins.warnsSanctions");
+                data.settings.save();
+                return message.channel.send(message.language.get("SETWARNS_SUCCESS_RESET_KICK", data.settings.prefix, number));
             }
-            return message.channel.send(message.language.get('SETWARNS_NO_SANCTION'));
+            if(sanction === "ban"){
+                data.settings.plugins.warnsSanctions.ban = false;
+                data.settings.markModified("plugins.warnsSanctions");
+                data.settings.save();
+                return message.channel.send(message.language.get("SETWARNS_SUCCESS_RESET_BAN", data.settings.prefix, number));
+            }
+        }
+
+        if(!number || isNaN(number)){
+            return message.channel.send(message.language.get("ERR_INVALID_NUMBER"));
+        }
+        if(number < 1 || number > 10){
+            return message.channel.send(message.language.get("ERR_INVALID_NUMBER_MM", 1, 10));
+        }
+
+        if(sanction === "kick"){
+            data.settings.plugins.warnsSanctions.kick = number;
+            data.settings.markModified("plugins.warnsSanctions");
+            data.settings.save();
+            return message.channel.send(message.language.get("SETWARNS_SUCCESS_KICK", data.settings.prefix, number));
+        }
+
+        if(sanction === "ban"){
+            data.settings.plugins.warnsSanctions.ban = number;
+            data.settings.markModified("plugins.warnsSanctions");
+            data.settings.save();
+            return message.channel.send(message.language.get("SETWARNS_SUCCESS_BAN", data.settings.prefix, number));
         }
 
     }

@@ -519,12 +519,26 @@ module.exports = class {
 			WARN_USAGE: "warn [@membre] [raison]",
 			WARN_EXAMPLES: "$warn @Androz#2091 Spam",
 			// Errors
-			WARN_REASON: `${e.error} | Veuillez entrer une raison !`,
+			WARN_ERR_REASON: `${e.error} | Veuillez entrer une raison !`,
 			// Content
 			WARN_AUTOBAN: (member, number) => `${e.success} | **${member.user.tag}** a été banni automatiquement car il avait plus de **${number}** warns !`,
 			WARN_AUTOKICK: (member, number) => `${e.success} | **${member.user.tag}** a été expulsé automatiquement car il avait plus de **${number}** warns !`,
 			WARN_SUCCESS_DM: (msg, reason) => `${e.warn} | Vous venez d'être averti sur **${msg.guild.name}** par **${msg.author.tag}** pour **${reason}** !`,
 			WARN_SUCCESS: (member, reason) => `${e.success} | **${member.user.tag}** a été averti par messages privés pour **${reason}** !`,
+
+			/* SETWARNS COMMAND */
+
+			// Utils
+			SETWARNS_DESCRIPTION: "Définissez les sanctions qu'obtiendront les membres au bout d'un certain nombre de warns !",
+			SETWARNS_USAGE: "setwarns [kick/ban] [nombre/reset]",
+			SETWARNS_EXAMPLES: "$setwarns kick 10\n$setwarns ban 10\n$setwarns ban reset",
+			// Errors
+			SETWARNS_ERR_SANCTION: `${e.error} | Veuillez indiquer un type de sanction valide ! (\`kick\`, \`ban\`)`,
+			// Content
+			SETWARNS_SUCCESS_KICK: (prefix, number) => `${e.success} | Configuration enregistrée ! Lorsqu'un membre aura atteint les ${number} warns, il sera expulsé. Tapez \`${prefix}configuration\` pour voir votre nouvelle configuration !`,
+			SETWARNS_SUCCESS_BAN: (prefix, number) => `${e.success} | Configuration enregistrée ! Lorsqu'un membre aura atteint les ${number} warns, il sera banni. Tapez \`${prefix}configuration\` pour voir votre nouvelle configuration !`,
+			SETWARNS_SUCCESS_RESET_KICK: (prefix, number) => `${e.success} | Configuration enregistrée ! La sanction kick n'est maintenant plus automatique ! Tapez \`${prefix}configuration\` pour voir votre nouvelle configuration !`,
+			SETWARNS_SUCCESS_RESET_BAN: (prefix, number) => `${e.success} | Configuration enregistrée ! La sanction ban n'est maintenant plus automatique ! Tapez \`${prefix}configuration\` pour voir votre nouvelle configuration !`,
 
 			/* SANCTIONS COMMAND */
 			
