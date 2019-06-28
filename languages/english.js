@@ -505,6 +505,15 @@ module.exports = class {
 			// Content
 			UNMUTE_SUCCESS: (userID, caseNumber) => `<@${userID}> vient d'être unmute ! (cas du mute : #${caseNumber})`,
 
+			/* SANCTIONS COMMAND */
+			
+			// Utils
+			SANCTIONS_DESCRIPTION: "Displays the list of infractions committed by a member!",
+			SANCTIONS_USAGE: "sanctions [@member]",
+			SANCTIONS_EXAMPLE: "$sanctions @Androz#2091",
+			// Errors
+			SANCTIONS_ERR_NOTHING: "This member has not committed any infractions.",
+
 			/* MODOGS EMBEDS */
 			MODLOGS_TYPES: {
 				BAN: `Ban | Case #{case}`,

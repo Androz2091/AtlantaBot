@@ -64,9 +64,10 @@ module.exports = class {
             settings.cases.list.push({
                 case: settings.cases.count,
                 type: options.type,
-                moderator: options.moderator,
+                user: options.user.id,
+                moderator: options.moderator.id,
                 date: options.date,
-                channel: options.channel,
+                channel: options.channel.id,
                 time: options.time,
                 reason: options.reason
             });
@@ -81,10 +82,23 @@ module.exports = class {
      * Fetch user sanctions
      * @param {object} settings The guild settings
      * @param {object} userID The ID of the user to fetch
+     * @param {object} embed The embed to return
+     * @param {object} language The language of the guild
      * @returns The user sanctions
      */
-    fetchUserSanctions(settins, userID){
-        
+    async fetchUserSanctions(settings, userID, embed, language){
+        let sanctions = settings.cases.list.filter((c) => c.user === userID);
+        if(sanctions.length < 1){
+            return false;
+        }
+        sanctions.forEach((sanction) => {
+            let title = language.get("MODLOGS_TYPES")[sanction.type.toUpperCase()].replace("{case}", sanction.case);
+            let content = 
+            "**"+language.get("MODLOGS_HEADINGS")[1]+"**: <@"+sanction.moderator+">\n"+
+            "**"+language.get("MODLOGS_HEADINGS")[2]+"**: `"+sanction.reason+"`\n";
+            embed.addField(title, content, true);
+        });
+        return embed;
     }
 
 }
