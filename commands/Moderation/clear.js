@@ -1,52 +1,60 @@
 const Command = require("../../base/Command.js"),
-Discord = require('discord.js');
+Discord = require("discord.js");
 
 class Clear extends Command {
 
     constructor (client) {
         super(client, {
             name: "clear",
-            description: (language) => language.get('CLEAR_DESCRIPTION'),
+            description: (language) => language.get("CLEAR_DESCRIPTION"),
+            usage: (language) => language.get("CLEAR_USAGE"),
+            examples: (language) => language.get("CLEAR_EXAMPLES"),
             dirname: __dirname,
-            usage: "clear [amount] (@member)",
             enabled: true,
             guildOnly: true,
-            aliases: [],
-            permission: "MANAGE_MESSAGES",
-            botpermissions: [ "SEND_MESSAGES", "MANAGE_MESSAGES" ],
+            aliases: [ "clear", "bulkdelete" ],
+            memberPermissions: [ "MANAGE_MESSAGES" ],
+            botPermissions: [ "SEND_MESSAGES", "EMBED_LINKS" ],
             nsfw: false,
-            examples: "$clear 100\n$clear 100 @Androz#2091",
-            owner: false
+            ownerOnly: false,
+            cooldown: 3000
         });
     }
 
-    async run (message, args, membersdata, guild_data, data) {
+    async run (message, args, data) {
 
-        // Gets the amount of messages to delete
-        var amount = args[0];
-        if(!amount) return message.channel.send(message.language.get('CLEAR_AMOUNT'));
+        let amount = args[0];
+        if(!amount){
+            return message.channel.send(message.language.get("CLEAR_ERR_AMOUNT"));
+        }
 
-        message.delete();
+        await message.delete();
 
-        // Gets the first mentionned member
-        var member = message.mentions.members.first();
+        let user = message.mentions.users.first();
 
-        // Gets the messages to delete
-        var messages = await message.channel.fetchMessages({limit:100}); // Fetch the last 100 messages in the channel
-        messages = messages.array(); // Convert the discord collection to an array
-        if(member) messages = messages.filter(m => m.author.id === member.id); // if a member was mentionned, just get his message
-        if(messages.length > amount) messages.length = parseInt(amount); // resize the array of messages
+        let messages = await message.channel.messages.fetch({limit:100});
+        messages = messages.array();
+        if(user){
+            messages = messages.filter((m) => m.author.id === user.id);
+        }
+        if(messages.length > amount){
+            messages.length = parseInt(amount);
+        }
+        amount++;
 
-        // Delete the messages
         message.channel.bulkDelete(messages, true);
 
-        // then send a success message
-        if(member) return message.channel.send(message.language.get('CLEAR_CLEANED1', amount, member)).then(m => {
-            setTimeout(function(){m.delete()},(2000)); // Delete the message after 2 second
-        });
-        else return message.channel.send(message.language.get('CLEAR_CLEANED2', amount)).then(m => {
-            setTimeout(function(){m.delete()},(2000)); // Delete the message after 2 second
-        });
+        let toDelete = null;
+
+        if(user){
+            toDelete = await message.channel.send(message.language.get("CLEAR_SUCCESS_USER", --amount, user));
+        } else {
+            toDelete = await message.channel.send(message.language.get("CLEAR_SUCCESS", --amount));
+        }
+
+        setTimeout(function(){
+            toDelete.delete();
+        }, 2000);
         
     }
 

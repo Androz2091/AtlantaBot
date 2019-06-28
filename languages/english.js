@@ -478,6 +478,18 @@ module.exports = class {
 			// Content
 			CHECKINVITES_NOT_FOUND: `${e.success} | No member advertises in his game!`,
 
+			/* CLEAR COMMAND */
+
+			// Utils
+			CLEAR_DESCRIPTION: "Deletes messages very quickly!",
+			CLEAR_USAGE: "clear[number-of-messages] (@member)",
+			CLEAR_EXAMPLES: "$clear 10\n$clear 10 @Androz#2091",
+			// Errors
+			CLEAR_ERR_AMOUNT: `${e.error} | You must specify a number of messages to delete!`,
+			// Content
+			CLEAR_SUCCESS: (amount) => `${e.success} | **${amount}** messages deleted!`,
+			CLEAR_SUCCESS_USER: (amount, user) => `${e.success} | **${amount}** messages of **${user.tag}** deleted !`,
+
 			/* MODOGS EMBEDS */
 			MODLOGS_TYPES: {
 				BAN: `Ban | Case #{case}`,

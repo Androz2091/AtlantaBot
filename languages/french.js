@@ -478,6 +478,18 @@ module.exports = class {
 			// Content
 			CHECKINVITES_NOT_FOUND: `${e.success} | Aucun membre ne fait de la publicité dans son jeu !`,
 
+			/* CLEAR COMMAND */
+
+			// Utils
+			CLEAR_DESCRIPTION: "Supprime des messages très rapidement !",
+			CLEAR_USAGE: "clear [nombre-de-messages] (@membre)",
+			CLEAR_EXAMPLES: "$clear 10\n$clear 10 @Androz#2091",
+			// Errors
+			CLEAR_ERR_AMOUNT: `${e.error} | Vous devez préciser un nombre de messages à supprimer !`,
+			// Content
+			CLEAR_SUCCESS: (amount) => `${e.success} | **${amount}** messages supprimés !`,
+			CLEAR_SUCCESS_USER: (amount, user) => `${e.success} | **${amount}** messages de **${user.tag}** supprimés !`,
+
 			/* MODOGS EMBEDS */
 			MODLOGS_TYPES: {
 				BAN: `Ban | Cas #{case}`,
