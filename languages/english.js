@@ -187,6 +187,15 @@ module.exports = class {
 				`${e.help} Support`
 			],
 
+			/* MINIMIZE COMMAND */
+
+			// Utils
+			MINIMIZE_DESCRIPTION: "Shorten your link!",
+			MINIMIZE_USAGE: "minimize [url]",
+			MINIMIZE_EXAMPLES: "$minimize https://google.fr",
+			// Errors
+			MINIMIZE_ERR_INVALID_URL: `${e.error} | Please enter a valid URL!`,
+
 			/* CONFIGURATION COMMAND */
 
 			// Utils

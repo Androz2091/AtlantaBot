@@ -1,41 +1,45 @@
 const Command = require("../../base/Command.js"),
-Discord = require('discord.js');
-
-var request = require('request');
+Discord = require("discord.js"),
+fetch = require("node-fetch");
 
 class Minimize extends Command {
 
     constructor (client) {
         super(client, {
             name: "minimize",
-            description: (language) => language.get('MINIMIZE_DESCRIPTION'),
+            description: (language) => language.get("MINIMIZE_DESCRIPTION"),
+            usage: (language) => language.get("MINIMIZE_USAGE"),
+            examples: (language) => language.get("MINIMIZE_EXAMPLES"),
             dirname: __dirname,
-            usage: "minimize [link]",
             enabled: true,
-            guildOnly: true,
-            aliases: [],
-            permission: "MANAGE_MESSAGES",
-            botpermissions: [ "SEND_MESSAGES", "EMBED_LINKS" ],
+            guildOnly: false,
+            aliases: [ "short" ],
+            memberPermissions: [],
+            botPermissions: [ "SEND_MESSAGES", "EMBED_LINKS" ],
             nsfw: false,
-            examples: "$minimize https://google.fr",
-            owner: false
+            ownerOnly: false,
+            cooldown: 5000
         });
     }
 
-    async run (message, args, membersdata, guild_data, data) {
+    async run (message, args, data) {
     
-        var url = args[0];
-        if(!url) return message.channel.send(message.language.get('MINIMIZE_URL'));
+        let url = args[0];
+        if(!url){
+            return message.channel.send(message.language.get("MINIMIZE_ERR_INVALID_URL"));
+        }
 
-        request(`https://is.gd/create.php?format=simple&url=${encodeURI(url)}`, { json: true }, (err, res, fbody) => {
-            if(fbody === 'Error: Please enter a valid URL to shorten') return message.channel.send(message.language.get('MINIMIZE_ERROR'))
-            var tnew_url = fbody;
-            var embed = new Discord.RichEmbed()
-                .setColor(data.embed.color)
-                .setFooter(data.embed.footer)
-                .addField('URL Minimizer', tnew_url)
-            message.channel.send(embed);
-        });
+        let res = await fetch(`https://is.gd/create.php?format=simple&url=${encodeURI(url)}`);
+
+        if(res.body === "Error: Please enter a valid URL to shorten"){
+            return message.channel.send(message.language.get("MINIMIZE_ERR_INVALID_URL"));
+        }
+
+        let embed = new Discord.MessageEmbed()
+            .setColor(data.config.embed.color)
+            .setFooter(data.config.embed.footer)
+            .setDescription(await res.text());
+        message.channel.send(embed);
 
     }
 
