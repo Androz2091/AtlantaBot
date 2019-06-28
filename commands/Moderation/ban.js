@@ -13,7 +13,7 @@ class Ban extends Command {
             enabled: true,
             guildOnly: true,
             aliases: [],
-            memberPermissions: [ "MANAGE_GUILD" ],
+            memberPermissions: [ "MANAGE_GUILD", "BAN_MEMBERS" ],
             botPermissions: [ "SEND_MESSAGES", "EMBED_LINKS" ],
             nsfw: false,
             ownerOnly: false,
@@ -44,7 +44,7 @@ class Ban extends Command {
         await user.send(message.language.get("BAN_SUCCESS_DM", user, message, reason)).catch((err) => {});
 
         // Ban the user
-        message.guild.members.fetch(user).then(() => {
+        message.guild.members.ban(user).then(() => {
 
             // Send a success message in the current channel
             message.channel.send(message.language.get("BAN_SUCCESS_CHANNEL", user, message, reason));
