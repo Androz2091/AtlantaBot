@@ -24,10 +24,10 @@ class Kick extends Command {
     async run (message, args, data) {
 
         let member = message.mentions.members.first();
-        
         if(!member){
             return message.channel.send(message.language.get("ERR_INVALID_MEMBER"));
         }
+        let user = member.user;
         
         // Gets the kcik reason
         let reason = args.slice(1).join(" ");
@@ -38,7 +38,7 @@ class Kick extends Command {
         await user.send(message.language.get("KICK_SUCCESS_DM", user, message, reason)).catch((err) => {});
 
         // Kick the user
-        message.guild.members.kick(user).then(() => {
+        member.kick().then(() => {
 
             // Send a success message in the current channel
             message.channel.send(message.language.get("KICK_SUCCESS_CHANNEL", user, message, reason));
