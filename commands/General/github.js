@@ -1,44 +1,42 @@
 const Command = require("../../base/Command.js"),
-Discord = require('discord.js');
-
-var fetch = require('node-fetch');
+Discord = require("discord.js"),
+fetch = require("node-fetch");
 
 class Github extends Command {
 
     constructor (client) {
         super(client, {
             name: "github",
-            description: (language) => language.get('GITHUB_DESCRIPTION'),
+            description: (language) => language.get("GITHUB_DESCRIPTION"),
+            usage: (language) => language.get("GITHUB_USAGE"),
+            examples: (language) => language.get("GTIHUB_EXAMPLES"),
             dirname: __dirname,
-            usage: "github",
             enabled: true,
-            guildOnly: true,
-            aliases: ["git"],
-            permission: false,
-            botpermissions: [ "SEND_MESSAGES", "EMBED_LINKS" ],
+            guildOnly: false,
+            aliases: [ "git", "code" ],
+            memberPermissions: [],
+            botPermissions: [ "SEND_MESSAGES", "EMBED_LINKS" ],
             nsfw: false,
-            examples: "$github",
-            owner: false
+            ownerOnly: false,
+            cooldown: 5000
         });
     }
 
-    async run (message, args, membersdata, guild_data, data) {
+    async run (message, args, data) {
         
-        var res = await fetch('https://api.github.com/repos/Androz2091/AtlantaBot');
-        var tdata = await res.json();
+        let res = await fetch("https://api.github.com/repos/Androz2091/AtlantaBot");
+        let json = await res.json();
 
-        var owner = this.client.users.get(this.client.config.owner);
-
-        var embed = new Discord.RichEmbed()
-            .setAuthor(this.client.user.tag, this.client.user.displayAvatarURL)
+        let embed = new Discord.MessageEmbed()
+            .setAuthor(message.client.user.tag, message.client.user.displayAvatarURL())
             .setDescription(message.language.get("GITHUB_DESC"))
-            .addField(message.language.get("GITHUB_HEADERS")[0], tdata.stargazers_count, true)
-            .addField(message.language.get("GITHUB_HEADERS")[1], tdata.forks_count, true)
-            .addField(message.language.get("GITHUB_HEADERS")[2], tdata.language, true)
-            .addField(message.language.get("GITHUB_HEADERS")[3], "["+tdata.owner.login+"]("+tdata.owner.html_url+")")
-            .setImage(tdata.owner.avatar_url)
-            .setColor(data.embed.color)
-            .setFooter(data.embed.footer);
+            .addField(message.language.get("GITHUB_HEADERS")[0], json.stargazers_count, true)
+            .addField(message.language.get("GITHUB_HEADERS")[1], json.forks_count, true)
+            .addField(message.language.get("GITHUB_HEADERS")[2], json.language, true)
+            .addField(message.language.get("GITHUB_HEADERS")[3], "["+json.owner.login+"]("+json.owner.html_url+")")
+            .setImage(json.owner.avatar_url)
+            .setColor(data.config.embed.color)
+            .setFooter(data.config.embed.footer);
 
         message.channel.send(embed);
     }

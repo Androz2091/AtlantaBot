@@ -98,6 +98,22 @@ module.exports = class {
 				"Permissions :"
 			],
 
+			/* GITHUB COMMAND */
+
+			// Utils
+			GITHUB_DESCRIPTION: `Displays the information from the ${c.botname} github!`,
+			GITHUB_USAGE: "github",
+			GITHUB_EXAMPLES: "$github",
+			// Content
+			GITHUB_DESC: `[Click here to access the github of ${c.botname}](https://github.com/Androz2091/AtlantaBot)`,
+			// Headings
+			GITHUB_HEADERS: [
+				"Stars :star:",
+				"Forks :tools:",
+				"Language :computer:",
+				"Founder :crown:"
+			],
+
 			/* CONFIGURATION COMMAND */
 
 			// Utils
