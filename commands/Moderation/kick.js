@@ -13,8 +13,8 @@ class Kick extends Command {
             enabled: true,
             guildOnly: true,
             aliases: [],
-            memberPermissions: [ "MANAGE_GUILD", "KICK_MEMBERS" ],
-            botPermissions: [ "SEND_MESSAGES", "EMBED_LINKS" ],
+            memberPermissions: [ "KICK_MEMBERS" ],
+            botPermissions: [ "SEND_MESSAGES", "EMBED_LINKS", "KICK_MEMBERS" ],
             nsfw: false,
             ownerOnly: false,
             cooldown: 3000
