@@ -24,14 +24,11 @@ module.exports = class {
                     if(settings.plugins.goodbye.withImage){
                         let lang = new(require(`../languages/${settings.language}.js`));
                         let text = lang.get("GOODBYE_IMG", member.guild.name);
-                        let URL = encodeURI(`https://dev.anidiots.guide/greetings/unified?type=goodbye&version=gearz&message=${text}&bot=${member.user.bot}&avatar=${member.user.displayAvatarURL}&username=${member.user.username}&discriminator=${member.user.discriminator}&guildName=${guild.name}&memberCount=${guild.memberCount}`);
+                        let userAvatar = member.user.displayAvatarURL().replace("webp", "png");
+                        let URL = encodeURI(`https://dev.anidiots.guide/greetings/unified?type=goodbye&version=gearz&message=${text}&bot=${member.user.bot}&avatar=${userAvatar}&username=${member.user.username}&discriminator=${member.user.discriminator}&guildName=${guild.name}&memberCount=${guild.memberCount}`);
                         let res = await fetch(URL, { headers: { "Authorization": guild.client.config.apiKeys.anidiots } });
-                        channel.send(message, {
-                            files: [{
-                                attachment: res.body,
-                                name: "goodbye.png"
-                            }]
-                        });
+                        let attachment = new Discord.MessageAttachment(await res.buffer(), "goodbye.png");
+                        channel.send(message, attachment);
                     } else {
                         channel.send(message);
                     }
