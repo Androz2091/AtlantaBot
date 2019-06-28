@@ -75,19 +75,19 @@ module.exports = class {
                     data.settings.save();
                 }
             }
-            
-        }
 
-        if(data.settings.plugins.automod.enabled && !data.settings.plugins.automod.ignored.includes(message.channel.id)){
-            if(/(discord\.(gg|io|me|li)\/.+|discordapp\.com\/invite\/.+)/i.test(message.content)){
-                if(!message.channel.permissionsFor(message.member).has("MANAGE_MESSAGES")){
-                    message.delete();
-                    message.author.send("```"+message.content+"```");
-                    return message.channel.send(message.language.get("AUTOMOD_MSG", message));
+            if(data.settings.plugins.automod.enabled && !data.settings.plugins.automod.ignored.includes(message.channel.id)){
+                if(/(discord\.(gg|io|me|li)\/.+|discordapp\.com\/invite\/.+)/i.test(message.content)){
+                    if(!message.channel.permissionsFor(message.member).has("MANAGE_MESSAGES")){
+                        message.delete();
+                        message.author.send("```"+message.content+"```");
+                        return message.channel.send(message.language.get("AUTOMOD_MSG", message));
+                    }
                 }
             }
-        }
 
+        }
+        
         // Gets the prefix
         let prefix = client.functions.getPrefix(message, data);
         if(!prefix){
