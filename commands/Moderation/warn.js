@@ -34,7 +34,7 @@ class Warn extends Command {
         }
 
         // Gets current member sanctions
-        let sanctionsCount = data.settings.cases.list.filter((d) => d.userID === member.id).length;
+        let sanctionsCount = data.settings.cases.list.filter((d) => d.user === member.id).length;
         let banCount = data.settings.plugins.warnsSanctions.ban;
         let kickCount = data.settings.plugins.warnsSanctions.kick;
         let Moderator = new(require("../../utils/mod.js"))(this.client);
@@ -52,6 +52,7 @@ class Warn extends Command {
                 caseInfo.type = "ban";
                 Moderator.log(data.settings, caseInfo, message.language);
                 Moderator.addCase(data.settings, caseInfo);
+                message.guild.members.ban(member).catch((err) => {});
                 return message.channel.send(message.language.get("WARN_AUTOBAN", member, banCount));
             }
         }
@@ -62,6 +63,7 @@ class Warn extends Command {
                 caseInfo.type = "kick";
                 Moderator.log(data.settings, caseInfo, message.language);
                 Moderator.addCase(data.settings, caseInfo);
+                message.guild.members.kick(member).catch((err) => {});
                 return message.channel.send(message.language.get("WARN_AUTOKICK", member, banCount));
             }
         }
