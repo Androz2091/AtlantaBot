@@ -454,9 +454,20 @@ module.exports = class {
 			BAN_EXAMPLES: "$ban @Androz#2091 Spam",
 			// Errors
 			BAN_ERR_BANNED: (user) => `${e.error} | **${user.username}** est déjà banni !`,
-			BAN_ERR_PERMISSIONS: `${e.error} | Une erreur est survenue... vérifiez que j'ai bien les permissions de bannir ce membre est réessayez !`,
+			BAN_ERR_PERMISSIONS: `${e.error} | Une erreur est survenue... vérifiez que j'ai bien les permissions de bannir ce membre et réessayez !`,
 			BAN_SUCCESS_DM: (user, msg, reason) => `${e.error} | Bonjour <@${user.id}>,\nVous venez d'être banni de **${msg.guild.name}** par **${msg.author.tag}** pour **${reason}** !`,
 			BAN_SUCCESS_CHANNEL: (user, msg, reason) => `${e.success} | **${user.username}** vient d'être banni de **${msg.guild.name}** par **${msg.author.tag}** pour **${reason}** !`,
+
+			/* KICK COMMAND */
+
+			// Utils
+			KICK_DESCRIPTION: "Expulse le membre mentionné !",
+			KICK_USAGE: "kick [@user] (raison)",
+			KICK_EXAMPLES: "$kick @Androz#2091 Spam",
+			// Errors
+			KICK_ERR_PERMISSIONS: `${e.error} | Une erreur est survenue... vérifiez que j'ai bien les permissions d'expulser ce membre et réessayez !`,
+			KICK_SUCCESS_DM: (user, msg, reason) => `${e.error} | Bonjour <@${user.id}>,\nVous venez d'être expulsé de **${msg.guild.name}** par **${msg.author.tag}** pour **${reason}** !`,
+			KICK_SUCCESS_CHANNEL: (user, msg, reason) => `${e.success} | **${user.username}** vient d'être expulsé de **${msg.guild.name}** par **${msg.author.tag}** pour **${reason}** !`,
 
 			/* MODOGS EMBEDS */
 			MODLOGS_TYPES: {
