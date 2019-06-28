@@ -1,36 +1,46 @@
 const Command = require("../../base/Command.js"),
-Discord = require('discord.js');
+Discord = require("discord.js");
 
 class Setlang extends Command {
 
     constructor (client) {
         super(client, {
             name: "setlang",
-            description: (language) => language.get('SETLANG_DESCRIPTION'),
+            description: (language) => language.get("SETLANG_DESCRIPTION"),
+            usage: (language) => language.get("SETLANG_USAGE"),
+            examples: (language) => language.get("SETLANG_EXAMPLES"),
             dirname: __dirname,
-            usage: "setlang [fr/en]",
             enabled: true,
             guildOnly: true,
             aliases: [],
-            permission: "MANAGE_GUILD",
-            botpermissions: [ "SEND_MESSAGES" ],
+            memberPermissions: [ "MANAGE_GUILD" ],
+            botPermissions: [ "SEND_MESSAGES", "EMBED_LINKS" ],
             nsfw: false,
-            examples: "$setlang fr\n$setlang en",
-            owner: false
+            ownerOnly: false,
+            cooldown: 3000
         });
     }
 
-    async run (message, args, membersdata, guild_data, data) {
+    async run (message, args, data) {
 
-        if(!args[0]) return message.channel.send(message.language.get('SETLANG_LANG'));
+        if(!args[0]){
+            return message.channel.send(message.language.get("SETLANG_ERR_LANG"));
+        }
 
-        if(args[0] === 'fr'){
-            message.channel.send(':flag_fr: Langue changée !');
-            this.client.databases[1].set(`${message.guild.id}.lang`, 'fr');
-        } else if(args[0] === 'en'){
-            message.channel.send(':flag_us: Changed language ! :flag_gb:');
-            this.client.databases[1].set(`${message.guild.id}.lang`, 'en');
-        } else return message.channel.send(message.language.get('SETLANG_LANG'));
+        if(args[0] === "french"){
+            data.settings.language = "french";
+            data.settings.save();
+            return message.channel.send(message.language.get("SETLANG_LANGS")[0]);
+        }
+        
+        if(args[0] === "english"){
+            data.settings.language = "english";
+            data.settings.save();
+            return message.channel.send(message.language.get("SETLANG_LANGS")[1]);
+        }
+        
+        return message.channel.send(message.language.get("SETLANG_ERR_LANG"));
+        
     }
 
 }
