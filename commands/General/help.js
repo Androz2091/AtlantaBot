@@ -23,7 +23,7 @@ class Help extends Command {
     async run (message, args, data) {
 
         // if a command is provided
-        if(args[0]){
+        if(args[0] && args[0] !== "-g"){
 
             // if the command doesn't exist, error message
             let cmd = message.client.commands.get(args[0]) || message.client.commands.get(message.client.aliases.get(args[0]));
@@ -51,7 +51,7 @@ class Help extends Command {
             return message.channel.send(groupEmbed);
         }
 
-        message.delete();
+        
 
         let categories = [];
         message.client.commands.forEach((command) => {
@@ -59,6 +59,23 @@ class Help extends Command {
                 categories.push(command.help.category);
             }
         });
+
+        if(args[0] === "-g"){
+            let i = 0;
+            let embed = new Discord.MessageEmbed()
+                .setAuthor(message.language.get("HELP_REMINDER"))
+                .setColor(data.config.embed.color)
+                .setFooter(data.config.embed.footer);
+            categories.forEach((cat) => {
+                let commands = message.client.commands.filter((cmd) => cmd.help.category === cat);
+                embed.addField(cat+" - ("+commands.size+")", commands.map((cmd) => "`"+cmd.help.name+"`").join(", "));
+                i+=commands.size;
+            });
+            embed.setAuthor(message.language.get("HELP_TITLE", i));
+            return message.channel.send(embed);
+        }
+
+        message.delete();
 
         let embeds = [];
         categories.forEach((category) => {
