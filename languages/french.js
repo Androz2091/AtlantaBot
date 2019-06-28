@@ -114,6 +114,45 @@ module.exports = class {
 				"Fondateur :crown:"
 			],
 
+			/* HASTEBIN COMMAND */
+
+			// Utils
+			HASTEBIN_DESCRIPTION: "Upload votre texte sur hastebin !",
+			HASTEBIN_USAGE: "hastebin [texte]",
+			HASTEBIN_EXAMPLES: "$hastebin Hello World !",
+			// Errors
+			HASTEBIN_TEXT: `${e.error} | Vous devez entrer un texte !`,
+			// Content
+			HASTEBIN_SUCCESS: (url) => `${e.success} | Votre texte a été uploadé sur hastebin ! Voici votre lien : ${url}`,
+
+			/* USERINFO COMMAND */
+
+			// Utils
+			USERINFO_DESCRIPTION: "Affiche des informations sur l'utilisateur !",
+			USERINFO_USAGE: "userinfo (@user/userID)",
+			USERINFO_EXAMPLES: "$userinfo\n$userinfo @Androz#2091\n$userinfo 422820341791064085",
+			// Errors
+			USERINFO_ERR_ID: (id) => `${e.error} | Aucun utilisateur sur Discord ne possède l'ID \`${id}\` !`,
+			// Content
+			USERINFO_FIELDS: [
+				":man: Pseudo",
+				`${e.discriminator} Discriminateur`,
+				`${e.bot} Robot`,
+				`${e.avatar} Avatar`,
+				`${e.calendar} Création`,
+				`${e.games} Jeu`,
+				`${e.online} Statut`,
+				`${e.up} Rôle`,
+				`${e.calendar2} Arrivée`,
+				`${e.pencil} Surnom`,
+				`${e.roles} Rôles`,
+				`${e.color} Couleur`
+			],
+			USERINFO_NO_GAME: "Pas de jeu",
+			USERINFO_NO_ROLE: "Aucun rôle",
+			USERINFO_MORE_ROLES: (nb) => ` et ${nb} autres rôles`,
+			USERINFO_NO_NICKNAME: "Pas de surnom",
+
 			/* CONFIGURATION COMMAND */
 
 			// Utils

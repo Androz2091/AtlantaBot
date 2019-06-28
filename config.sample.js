@@ -65,7 +65,16 @@ module.exports = {
 		score: "XXXXXXXXXXX",
 		games: "XXXXXXXXXXX",
 		kills: "XXXXXXXXXXX",
-		crown: "XXXXXXXXXXX"
+		crown: "XXXXXXXXXXX",
+		discriminator: "XXXXXXXXXXX",
+		bot: "XXXXXXXXXXX",
+		avatar: "XXXXXXXXXXX",
+		calendar: "XXXXXXXXXXX",
+		calendar2: "XXXXXXXXXXX",
+		up: "XXXXXXXXXXX",
+		pencil: "XXXXXXXXXXX",
+		roles: "XXXXXXXXXXX",
+		color: "XXXXXXXXXXX"
 	},
 	/* The others utils links */
 	others: {
