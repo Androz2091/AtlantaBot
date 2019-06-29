@@ -1,38 +1,38 @@
 const Command = require("../../base/Command.js"),
-Discord = require('discord.js');
+Discord = require("discord.js"),
+fetch = require("node-fetch");
 
 class Joke extends Command {
 
     constructor (client) {
         super(client, {
             name: "joke",
-            description: (language) => language.get('JOKE_DESCRIPTION'),
+            description: (language) => language.get("JOKE_DESCRIPTION"),
+            usage: (language) => language.get("JOKE_USAGE"),
+            examples: (language) => language.get("JOKE_EXAMPLES"),
             dirname: __dirname,
-            usage: "joke",
             enabled: true,
             guildOnly: false,
-            aliases: [],
-            permission: false,
-            botpermissions: [ "SEND_MESSAGES", "EMBED_LINKS" ],
+            aliases: [ "blague" ],
+            memberPermissions: [],
+            botPermissions: [ "SEND_MESSAGES", "EMBED_LINKS" ],
             nsfw: false,
-            examples: "$joke",
-            owner: false
+            ownerOnly: false,
+            cooldown: 3000
         });
     }
 
-    async run (message, args, membersdata, guild_data, tdata) {
+    async run (message, args, data) {
 
-        var snekfetch = require('snekfetch');
+        let res = await fetch("https://blague.xyz/joke/random");
+        let json = await res.json();
 
-        // gets joke data
-        var data = await snekfetch.get('https://blague.xyz/joke/random');
-        
-        var embed = new Discord.RichEmbed()
-            .setDescription(`${data.body.jokequestion}\n\n||${data.body.jokereponse}||`)
-            .setFooter('Using blague.xyz api | By • Skiz •#0001')
-            .setColor(tdata.embed.color)
+        let embed = new Discord.MessageEmbed()
+            .setDescription(`${json.jokequestion}\n\n||${json.jokereponse}||`)
+            .setFooter(message.language.get("JOKE_FOOTER"))
+            .setColor(data.config.embed.color)
 
-        message.channel.send(embed)
+        message.channel.send(embed);
 
     }
 

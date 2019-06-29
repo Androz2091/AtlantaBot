@@ -218,6 +218,15 @@ module.exports = class {
 				`${e.online} Status`
 			],
 
+			/* JOKE COMMAND */
+
+			// Utils
+			JOKE_DESCRIPTION: "Displays a joke in French",
+			JOKE_USAGE: "joke",
+			JOKE_EXAMPLES: "$joke",
+			// Content
+			JOKE_FOOTER: "blague.xyz | By Skiz#0001",
+
 			/* CONFIGURATION COMMAND */
 
 			// Utils
