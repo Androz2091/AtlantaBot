@@ -196,6 +196,28 @@ module.exports = class {
 			// Errors
 			MINIMIZE_ERR_INVALID_URL: `${e.error} | Please enter a valid URL!`,
 
+			/* MINECRAFT COMMAND */
+
+			// Utils
+			MINECRAFT_DESCRIPTION: "Displays information about the Minecraft server!",
+			MINECRAFT_USAGE: "minecraft [ip]",
+			MINECRAFT_EXAMPLES: "$minecraft mc.hypixel.net",
+			// Errors
+			MINECRAFT_ERR_IP: `${e.error} | Please enter an IP!`,
+			MINECRAFT_ERR_OFFLINE: `${e.error} | This server is offline or blocking access. Reminder: MCPE servers are not supported!`,
+			// Content
+			MINECRAFT_ONLINE: "Online",
+			MINECRAFT_OFFLINE: "Offline",
+			MINECRAFT_PLAYERS: (nb) => `${nb} player(s)`,
+			// Headings
+			MINECRAFT_HEADINGS: (ip) => [
+				`Informations on ${ip}`,
+				`${e.version} Version`,
+				`${e.minecraft} Currently connected`,
+				`${e.users} Maximum`,
+				`${e.online} Status`
+			],
+
 			/* CONFIGURATION COMMAND */
 
 			// Utils
