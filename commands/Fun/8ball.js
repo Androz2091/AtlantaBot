@@ -1,38 +1,37 @@
 const Command = require("../../base/Command.js"),
-Discord = require('discord.js');
+Discord = require("discord.js");
 
 class Eightball extends Command {
 
     constructor (client) {
         super(client, {
             name: "8ball",
-            description: (language) => language.get('EIGHTBALL_DESCRIPTION'),
+            description: (language) => language.get("EIGHTBALL_DESCRIPTION"),
+            usage: (language) => language.get("EIGHTBALL_USAGE"),
+            examples: (language) => language.get("EIGHTBALL_EXAMPLES"),
             dirname: __dirname,
-            usage: "8ball [question]",
             enabled: true,
             guildOnly: false,
-            aliases: [],
-            permission: false,
-            botpermissions: [ "SEND_MESSAGES" ],
+            aliases: [ "eight-ball", "eightball" ],
+            memberPermissions: [],
+            botPermissions: [ "SEND_MESSAGES", "EMBED_LINKS" ],
             nsfw: false,
-            examples: "$8ball Am I beautiful ?",
-            owner: false
+            ownerOnly: false,
+            cooldown: 3000
         });
     }
 
-    async run (message, args, membersdata, guild_data, data) {
-
-        // gets the question
-        if(!args[0]) return message.channel.send(message.language.get('EIGHTBALL_QUESTION'));
-
-        // Gets the list of answers
-        let replies = message.language.get('EIGHTBALL_QUESTIONS');
+    async run (message, args, data) {
         
-        // determines which response will be sent
-        let result = Math.floor((Math.random() * replies.length));
+        if(!args[0] || (!message.content.endsWith("?"))){
+            return message.channel.send(message.language.get("EIGHTBALL_ERR_QUESTION"));
+        }
 
-        // Send the answer
-        message.channel.send(message.author.username+', '+replies[result]);
+        let answers = message.language.get("EIGHTBALL_ANSWERS");
+        
+        let answer = answers[parseInt(Math.floor((Math.random() * answers.length)), 10)];
+
+        message.channel.send(message.author.username+", "+answer);
     }
 
 }

@@ -227,6 +227,34 @@ module.exports = class {
 			// Content
 			JOKE_FOOTER: "blague.xyz | Par Skiz#0001",
 
+			/* 8BALL COMMAND */
+
+			// Utils
+			EIGHTBALL_DESCRIPTION: "Je vous dis la vérité !",
+			EIGHTBALL_USAGE: `${e.error} | Veuillez entrer une question valide !`,
+			EIGHTBALL_EXAMPLES: "$8ball Est-ce qu'Atlanta est le meilleur bot Discord ?",
+			// Errors
+			EIGHTBALL_ERR_QUESTION: `${e.error} | Vous devez entrer une question à me poser !`,
+			// Content
+			EIGHTBALL_ANSWERS: [
+				"j'en suis certain.",
+				"c'est décidément sur.",
+				"sans aucun doute.",
+				"oui, j'en suis sur et certain !",
+				"probablement...",
+				"oui !",
+				"non !",
+				"des signes me font dire oui...",
+				"demandez à nouveau plus tard :\\",
+				"mieux vaut ne pas te le dire maintenant...",
+				"je ne peux pas prédire maintenant.",
+				"concentrez-vous et demandez à nouveau !",
+				"ne compte pas la dessus.",
+				"ma réponse est non.",
+				"mes sources disent que non...",
+				"oh... J'en doute !"
+			],
+
 			/* CONFIGURATION COMMAND */
 
 			// Utils
