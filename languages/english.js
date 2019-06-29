@@ -274,6 +274,15 @@ module.exports = class {
 			FLIP_PILE: ":game_die: | It's **pile** !",
 			FLIP_FACE: ":game_die: | It's **face** !",
 
+			/* LMG COMMAND */
+
+			// Utils
+			LMG_DESCRIPTION: "Returns a link to lmgtfy.com",
+			LMG_USAGE: "lmg [question]",
+			LMG_EXAMPLES: "$lmg How to create your Discord bot?",
+			// Errors
+			LMG_ERR_QUESTION: `${e.error} | You must specify a search!`,
+
 			/* CONFIGURATION COMMAND */
 
 			// Utils
