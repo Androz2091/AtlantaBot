@@ -255,6 +255,15 @@ module.exports = class {
 				"oh.... I doubt it!",
 			],
 
+			/* QRCODE */
+
+			// Utils
+			QRCODE_DESCRIPTION: "Generates a QR Code with your text!",
+			QRCODE_USAGE: "qrcode [text]",
+			QRCODE_EXAMPLES: "$qrcode Hey !",
+			// Errors
+			QRCODE_ERR_TEXT: `${e.error} | You must enter a text!`,
+
 			/* CONFIGURATION COMMAND */
 
 			// Utils

@@ -1,38 +1,40 @@
 const Command = require("../../base/Command.js"),
-Discord = require('discord.js');
+Discord = require("discord.js");
 
 class Qrcode extends Command {
 
     constructor (client) {
         super(client, {
             name: "qrcode",
-            description: (language) => language.get('QRCODE_DESCRIPTION'),
+            description: (language) => language.get("QRCODE_DESCRIPTION"),
+            usage: (language) => language.get("QRCODE_USAGE"),
+            examples: (language) => language.get("QRCODE_EXAMPLES"),
             dirname: __dirname,
-            usage: "qrcode [word]",
             enabled: true,
             guildOnly: false,
-            aliases: [],
-            permission: false,
-            botpermissions: [ "SEND_MESSAGES" ],
+            aliases: [ "qr" ],
+            memberPermissions: [ "MANAGE_MESSAGES" ],
+            botPermissions: [ "SEND_MESSAGES", "EMBED_LINKS" ],
             nsfw: false,
-            examples: "$qrcode Vache",
-            owner: false
+            ownerOnly: false,
+            cooldown: 3000
         });
     }
 
-    async run (message, args, membersdata, guild_data, data) {
+    async run (message, args, data) {
 
-        var word = args[0];
-        if(!word) return message.channel.send(message.language.get('QRCODE_TEXT'));
+        let text = args.join(" ");
+        if(!text){
+            return message.channel.send(message.language.get("QRCODE_ERR_TEXT"));
+        }
     
-        message.channel.send(message.language.get('PLEASE_WAIT')).then(m => {
-            message.channel.send({
-                files: [{
-                  attachment: `https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${word}`,
-                  name: `${word}.png` //.gif si c'est un gif
-                }]
-            }).then( () => m.delete());
-        });
+        let pleaseWait = await message.channel.send(message.language.get("UTILS").PLEASE_WAIT);
+        
+        let embed = new Discord.MessageEmbed()
+            .setImage(`https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${text.replace(new RegExp(" ", "g"), "%20")}`)
+            .setColor(data.config.embed.color);
+
+        message.channel.send(embd);
     
     }
 
