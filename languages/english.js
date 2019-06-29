@@ -283,6 +283,17 @@ module.exports = class {
 			// Errors
 			LMG_ERR_QUESTION: `${e.error} | You must specify a search!`,
 
+			/* LOVECALC COMMAND */
+
+			// Utils
+			LOVECALC_DESCRIPTION: "How much love is there between two people? *This is a fun command, not to be taken seriously*",
+			LOVECALC_USAGE: "lovecalc [@member1] (@member2)",
+			LOVECALC_EXAMPLES: "$lovecalc @Androz#2091\n$lovecalc @Androz#2091 @Atlanta#6770",
+			// Errors
+			LOVECALC_ERR_MENTIONS: `${e.error} | You must mention two members!`,
+			// Content
+			LOVECALC_CONTENT: (percent, username1, username2) => `There's **${percent}%** of love between **${username1}** and **${username2}** !`,
+
 			/* CONFIGURATION COMMAND */
 
 			// Utils

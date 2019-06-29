@@ -283,6 +283,17 @@ module.exports = class {
 			// Errors
 			LMG_ERR_QUESTION: `${e.error} | Vous devez préciser une recherche !`,
 
+			/* LOVECALC COMMAND */
+
+			// Utils
+			LOVECALC_DESCRIPTION: "Combien d'amour y a t'il entre deux personnes ? *Ceci est une commande fun, à ne pas prendre au sérieux*",
+			LOVECALC_USAGE: "lovecalc [@membre1] (@membre2)",
+			LOVECALC_EXAMPLES: "$lovecalc @Androz#2091\n$lovecalc @Androz#2091 @Atlanta#6770",
+			// Errors
+			LOVECALC_ERR_MENTIONS: `${e.error} | Vous devez mentionner deux membres !`,
+			// Content
+			LOVECALC_CONTENT: (percent, username1, username2) => `Il y a **${percent}%** d'amour entre **${username1}** et **${username2}** !`,
+
 			/* CONFIGURATION COMMAND */
 
 			// Utils
