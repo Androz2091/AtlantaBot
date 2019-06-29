@@ -42,7 +42,7 @@ class Configuration extends Command {
         embed.addField(headings[1][0], 
             (settings.plugins.autorole.enabled) ?
                 message.language.get("CONFIGURATION_AUTOROLE", settings.plugins.autorole.role)
-            :   headings[0][1]
+            :   headings[1][1]
         );
         
         embed.addField(headings[2][0],
