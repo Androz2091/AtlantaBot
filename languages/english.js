@@ -294,6 +294,16 @@ module.exports = class {
 			// Content
 			LOVECALC_CONTENT: (percent, username1, username2) => `There's **${percent}%** of love between **${username1}** and **${username2}** !`,
 
+			/* GETCONF COMMAND */
+
+			// Utils
+			GETCONF_DESCRIPTION: "Displays the configuration of a server[OWNER-ONLY]",
+			GETCONF_USAGE: "getconf [server ID]",
+			GETCONF_EXAMPLES: "$getconf 565048515357835264",
+			// Errors
+			GETCONF_ERR_ID: `${e.error} | Please enter a valid ID!`,
+			GETCONF_ERR_GUILD_NOT_FOUND: `${e.error} | No server found!`,
+
 			/* CONFIGURATION COMMAND */
 
 			// Utils
