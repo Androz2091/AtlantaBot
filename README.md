@@ -32,11 +32,11 @@ Atlanta a son propre dashboard qui propose lui aussi beaucoup de fonctionnalité
 
 Atlanta ajoute aussi une nouvelle mention comme @everyone et @here, le `@someone`, qui permet de tirer un membre aléatoire du serveur !
 
-#### Et bien plus !
+#### Et bien plus
 
 Atlanta supporte par exemple aussi l'anglais, gère les commandes en messages privés, les votes Discordbots.org, etc !
 
-## Fonctionnalités à venir :
+## Fonctionnalités à venir
 
 *   Ajout des shards
 *   Utilisation de MongoDB
