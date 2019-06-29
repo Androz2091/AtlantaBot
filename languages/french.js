@@ -304,6 +304,18 @@ module.exports = class {
 			GETCONF_ERR_ID: `${e.error} | Veuillez entrer une ID valide !`,
 			GETCONF_ERR_GUILD_NOT_FOUND: `${e.error} | Aucun serveur trouvé!`,
 
+			/* TWEET COMMAND */
+
+			// Utils
+			TWEET_DESCRIPTION: "Génère un tweet d'une personne de votre choix sur Twitter !",
+			TWEET_USAGE: "tweet [@twitter] [texte]",
+			TWEET_EXAMPLES: "$tweet EmmanuelMacron Bonjour la France !",
+			// Errors
+			TWEET_ERR_USERNAME: `${e.error} | Vous devez entrer le pseudo twitter de quelqu'un !`,
+			TWEET_ERR_TEXT: `${e.error} | Vous devez entrer un message !`,
+			// Content
+			TWEET_CONTENT: (user) => `Nouveau tweet publié par ${user} :`,
+
 			/* CONFIGURATION COMMAND */
 
 			// Utils
