@@ -13,7 +13,7 @@ class Qrcode extends Command {
             enabled: true,
             guildOnly: false,
             aliases: [ "qr" ],
-            memberPermissions: [ "MANAGE_MESSAGES" ],
+            memberPermissions: [],
             botPermissions: [ "SEND_MESSAGES", "EMBED_LINKS" ],
             nsfw: false,
             ownerOnly: false,
