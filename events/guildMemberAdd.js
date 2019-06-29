@@ -11,7 +11,7 @@ module.exports = class {
     
         member.guild.fetch().then(async (guild) => {
 
-            let settings = await this.client.functions.getSettings(this.client, guild.channels.first());
+            let settings = await this.client.functions.getSettings(this.client, guild);
 
             // Check if the autorole is enabled
             if(settings.plugins.autorole.enabled){

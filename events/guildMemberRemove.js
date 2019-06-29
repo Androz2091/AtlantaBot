@@ -10,7 +10,7 @@ module.exports = class {
 
         member.guild.fetch().then(async (guild) => {
 
-            let settings = await this.client.functions.getSettings(this.client, guild.channels.first());
+            let settings = await this.client.functions.getSettings(this.client, guild);
 
             // Check if goodbye message is enabled
             if(settings.plugins.goodbye.enabled){
