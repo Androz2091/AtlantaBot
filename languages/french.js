@@ -263,6 +263,16 @@ module.exports = class {
 			QRCODE_EXAMPLES: "$qrcode Coucou !",
 			// Errors
 			QRCODE_ERR_TEXT: `${e.error} | Vous devez entrer un texte !`,
+			
+			/* FLIP COMMAND */
+
+			// Utils
+			FLIP_DESCRIPTION: "Je lance les dés pour vous !",
+			FLIP_USAGE: "flip",
+			FLIP_EXAMPLES: "$flip",
+			// Content
+			FLIP_PILE: ":game_die: | C'est **pile** !",
+			FLIP_FACE: ":game_die: | C'est **face** !",
 
 			/* CONFIGURATION COMMAND */
 

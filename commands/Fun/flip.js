@@ -6,25 +6,29 @@ class Flip extends Command {
     constructor (client) {
         super(client, {
             name: "flip",
-            description: (language) => language.get('FLIP_DESCRIPTION'),
+            description: (language) => language.get("FLIP_DESCRIPTION"),
+            usage: (language) => language.get("FLIP_USAGE"),
+            examples: (language) => language.get("FLIP_EXAMPLES"),
             dirname: __dirname,
-            usage: "flip",
             enabled: true,
             guildOnly: false,
-            aliases: [],
-            permission: false,
-            botpermissions: [ "SEND_MESSAGES" ],
+            aliases: [ "dice" ],
+            memberPermissions: [],
+            botPermissions: [ "SEND_MESSAGES", "EMBED_LINKS" ],
             nsfw: false,
-            examples: "$flip",
-            owner: false
+            ownerOnly: false,
+            cooldown: 1000
         });
     }
 
-    async run (message, args, membersdata, guild_data, data) {
+    async run (message, args, data) {
 
-        var pile = this.client.functions.randomNum(0, 2) === 1;
-        if(pile) return message.channel.send(message.language.get('FLIP_PILE'))
-        else return message.channel.send(message.language.get('FLIP_FACE'));
+        let isFace = message.client.functions.randomNum(0, 2) === 1;
+        if(isFace){
+            return message.channel.send(message.language.get("FLIP_FACE"))
+        } else {
+            return message.channel.send(message.language.get("FLIP_PILE"));
+        }
 
     }
 
