@@ -38,7 +38,7 @@ class Clear extends Command {
             messages = messages.filter((m) => m.author.id === user.id);
         }
         if(messages.length > amount){
-            messages.length = parseInt(amount);
+            messages.length = parseInt(amount, 10);
         }
         amount++;
 
