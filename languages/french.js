@@ -651,6 +651,35 @@ module.exports = class {
 				":heart: • __Remerciements & crédits__",
 			],
 
+			/* PLAY COMMAND */
+
+			// Utils
+			PLAY_DESCRIPTION: "Joue de la musique !",
+			PLAY_USAGE: "play [titre]",
+			PLAY_EXAMPLES: "$play Despacito",
+			// Errors
+			PLAY_ERR_CANT_JOIN: `${e.error} | Je ne peux pas rentrer dans le salon vocal !`,
+			PLAY_ERR_NO_SONG: `${e.error} | Plus aucune musique dans la queue !`,
+			// Content
+			PLAY_ADDED_TO_QUEUE: (title) => `${e.add} | ${title} a été ajouté à la queue !`,
+			PLAY_SEARCH: "Veuillez indiquer une valeur pour sélectionner l'un des résultats de recherche compris entre 1 et 10.",
+			PLAY_ERR_NO_NAME: `${e.error} | Veuillez entrer un nom de vidéo à chercher !`,
+			PLAY_ERR_VOICE_CHANNEL: `${e.error} | Vous devez être connecté dans un salon vocal !`,
+			PLAY_ERR_PERMS: `${e.error} | Une erreur s'est produite. Soit je ne peux pas me connecter dans votre salon, soit je ne peux pas parler dans votre salon. Vérifiez mes permissions et réessayez.`,
+			PLAY_ERR_TIMEOUT: `${e.error} | Temps écoulé ! Veuillez retaper la commande !`,
+			PLAY_ERR_NOT_FOUND: `${e.error} | Aucun résultat sur Youtube !`,
+			PLAY_ERR_NOT_PLAYING: `${e.error} | Aucune musique en cours !`,
+			// Headings
+			PLAY_PLAYING_TITLE: "Lecture en cours",
+			PLAY_HEADINGS: [
+				`${e.title} Titre`,
+				`${e.singer} Chanteur`,
+				`${e.time} Durée`,
+				`${e.search} Recherche`,
+				`${e.calendar} Création`,
+				`${e.desc} Description`
+			],
+
 			/* TRANSLATE COMMAND  */
 
 			// Utils

@@ -316,6 +316,35 @@ module.exports = class {
 			// Content
 			TWEET_CONTENT: (user) => `New tweet published by ${user}:`,
 
+			/* PLAY COMMAND */
+
+			// Utils
+			PLAY_DESCRIPTION: "Play music!",
+			PLAY_USAGE: "play [title]",
+			PLAY_EXAMPLES: "$play Despacito",
+			// Errors
+			PLAY_ERR_CANT_JOIN: `${e.error} | I can't go into the voice channel!`,
+			PLAY_ERR_NO_SONG: `${e.error} | No more music in the queue!`,
+			// Content
+			PLAY_ADDED_TO_QUEUE: (title) => `${e.add} | ${title} has been added to the queue!`,
+			PLAY_SEARCH: "Please enter a value to select one of the search results from 1 to 10.",
+			PLAY_ERR_NO_NAME: `${e.error} | Please enter a video name to search for!`,
+			PLAY_ERR_VOICE_CHANNEL: `${e.error} | You must be connected in a voice channel!`,
+			PLAY_ERR_PERMS: `${e.error} | An error has occurred. Either I can't connect in your living room or I can't talk in your living room. Check my permissions and try again.`,
+			PLAY_ERR_TIMEOUT: `${e.error} | Time's up! Please retype the command!`,
+			PLAY_ERR_NOT_FOUND: `${e.error} | No results on Youtube!`,
+			PLAY_ERR_NOT_PLAYING: `${e.error} | No music in progress!`,
+			// Headings
+			PLAY_PLAYING_TITLE: "Playing in progress",
+			PLAY_HEADINGS: [
+				`${e.title} Title`,
+				`${e.singer} Singer`,
+				`${e.time} Duration`,
+				`${e.search} Search`,
+				`${e.calendar} Creation`,
+				`${e.desc} Description`
+			],
+
 			/* CONFIGURATION COMMAND */
 
 			// Utils
