@@ -76,7 +76,12 @@ module.exports = {
 		roles: "XXXXXXXXXXX",
 		color: "XXXXXXXXXXX",
 		minecraft: "XXXXXXXXXXX",
-		users: "XXXXXXXXXXX"
+		users: "XXXXXXXXXXX",
+		title: "XXXXXXXXXXX",
+		singer: "XXXXXXXXXXX",
+		time: "XXXXXXXXXXX",
+		search: "XXXXXXXXXXX",
+		desc: "XXXXXXXXXXX"
 	},
 	/* The others utils links */
 	others: {
