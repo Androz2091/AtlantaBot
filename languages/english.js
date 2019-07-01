@@ -354,6 +354,16 @@ module.exports = class {
 			// Content
 			STOP_SUCCESS: `${e.success} | I just stopped the music!`,
 
+			/* SKIP COMMAND */
+
+			// Utils
+			SKIP_DESCRIPTION: "Play the next song!",
+			SKIP_USAGE: "skip",
+			SKIP_EXAMPLES: "$skip",
+			// Content
+			SKIP_SUCCESS: `${e.success} | I just changed the song!`,
+
+
 			/* CONFIGURATION COMMAND */
 
 			// Utils

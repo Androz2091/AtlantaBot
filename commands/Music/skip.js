@@ -1,42 +1,43 @@
 const Command = require("../../base/Command.js"),
-Discord = require('discord.js');
+Discord = require("discord.js");
 
 class Skip extends Command {
 
     constructor (client) {
         super(client, {
             name: "skip",
-            description: (language) => language.get('SKIP_DESCRIPTION'),
+            description: (language) => language.get("SKIP_DESCRIPTION"),
+            usage: (language) => language.get("SKIP_USAGE"),
+            examples: (language) => language.get("SKIP_EXAMPLES"),
             dirname: __dirname,
-            usage: "skip",
             enabled: true,
             guildOnly: true,
-            aliases: [],
-            permission: false,
-            botpermissions: [ "SEND_MESSAGES", "EMBED_LINKS"],
+            aliases: [ "next" ],
+            memberPermissions: [],
+            botPermissions: [ "SEND_MESSAGES", "EMBED_LINKS" ],
             nsfw: false,
-            examples: "$skip",
-            owner: false
+            ownerOnly: false,
+            cooldown: 5000
         });
     }
 
-    async run (message, args, membersdata, guild_data, data) {
+    async run (message, args, data) {
 
-        // Gets the guild queue
-        let queue = this.client.queues.get(message.guild.id);
+        let queue = message.client.queues.get(message.guild.id);
 
-        // Gets the voice channel of the member
-        let voice = message.member.voiceChannel;
-        if (!voice) return message.channel.send(message.language.get('PLAY_VOICE_CHANNEL'));
+        let voice = message.member.voice.channel;
+        if (!voice){
+            return message.channel.send(message.language.get("PLAY_ERR_VOICE_CHANNEL"));
+        }
 
-        // if there is no music in the guild
-        if(!queue) return message.channel.send(message.language.get('PLAY_NOT_PLAYING'));
+        if(!queue){
+            return message.channel.send(message.language.get("PLAY_ERR_NOT_PLAYING"));
+        }
 
-        // Stop the dispatcher
         queue.connection.dispatcher.end();
 
         // Send a success message
-        message.channel.send(message.language.get('SKIP_SUCCESS'))
+        message.channel.send(message.language.get("SKIP_SUCCESS"));
         
     }
 
