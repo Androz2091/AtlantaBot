@@ -25,9 +25,11 @@ class Help extends Command {
         // if a command is provided
         if(args[0] && args[0] !== "-g"){
 
+            let isCustom = (data.settings.customCommands ? data.settings.customCommands.find((c) => c.name === args[0]) : false);
+            
             // if the command doesn't exist, error message
             let cmd = message.client.commands.get(args[0]) || message.client.commands.get(message.client.aliases.get(args[0]));
-            if(!cmd && data.settings.customCommands[args[0]]){
+            if(!cmd && isCustom){
                 return message.channel.send(message.language.get("HELP_ERR_CMD_CUSTOMIZED"), args[0]);
             } else if(!cmd){
                 return message.channel.send(message.language.get("HELP_ERR_NOT_FOUND", args[0]));
