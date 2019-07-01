@@ -16,11 +16,12 @@ class Song {
         this.raw = vde.raw, // the other informations of the video
         this.channel = vde.raw.snippet.channelTitle, // the channel of the video
         this.url = `https://www.youtube.com/watch?v=${vde.id}`, // the url of the video
+        this.thumbnail = vde.raw.snippet.thumbnails.default.url,
         this.ms = ((vde.duration.hours*3600)+(vde.duration.minutes*60)+(vde.duration.seconds)) * 1000
     }
 }
 
 module.exports = {
-    Guild:Guild,
-    Song:Song
+    Guild,
+    Song
 }
