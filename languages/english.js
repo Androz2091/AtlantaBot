@@ -345,6 +345,15 @@ module.exports = class {
 				`${e.desc} Description`
 			],
 
+			/* STOP COMMAND */
+
+			// Utils
+			STOP_DESCRIPTION: "Stop the music in progress!",
+			STOP_USAGE: "stop",
+			STOP_EXAMPLES: "$stop",
+			// Content
+			STOP_SUCCESS: `${e.success} | I just stopped the music!`,
+
 			/* CONFIGURATION COMMAND */
 
 			// Utils

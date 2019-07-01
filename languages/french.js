@@ -680,6 +680,15 @@ module.exports = class {
 				`${e.desc} Description`
 			],
 
+			/* STOP COMMAND */
+
+			// Utils
+			STOP_DESCRIPTION: "Arrête la musique en cours !",
+			STOP_USAGE: "stop",
+			STOP_EXAMPLES: "$stop",
+			// Content
+			STOP_SUCCESS: `${e.success} | Je viens d'arrêter la musique !`,
+
 			/* TRANSLATE COMMAND  */
 
 			// Utils
