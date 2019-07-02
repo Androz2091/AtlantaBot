@@ -58,6 +58,9 @@ class Help extends Command {
         let categories = [];
         message.client.commands.forEach((command) => {
             if(!categories.includes(command.help.category)){
+                if(command.help.category === "Owner" && message.author.id !== message.client.config.owner.id){
+                    return;
+                }
                 categories.push(command.help.category);
             }
         });
