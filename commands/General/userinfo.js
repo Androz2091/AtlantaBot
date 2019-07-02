@@ -69,7 +69,7 @@ class Userinfo extends Command {
             
         
         if(member){
-            embed.addField(message.language.get("USERINFO_FIELDS")[7], (member.highestRole ? member.highestRole : message.language.get("USERINFO_NO_ROLE")), true)
+            embed.addField(message.language.get("USERINFO_FIELDS")[7], (member.roles.highest ? member.roles.highest : message.language.get("USERINFO_NO_ROLE")), true)
             .addField(message.language.get("USERINFO_FIELDS")[8], message.language.printDate(member.joinedAt),true)
             .addField(message.language.get("USERINFO_FIELDS")[11], member.displayHexColor, true)
             .addField(message.language.get("USERINFO_FIELDS")[9], (member.nickname ? member.nickname : message.language.get("USERINFO_NO_NICKNAME")), true)
