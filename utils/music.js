@@ -57,7 +57,7 @@ async function play (client, message, song, data, stop) {
         });
         
         disp.on("error", (err) => {
-            queue.channel.send(message.language.get("ERR_OCCURENCED")); // Send an error message
+            queue.text.send(message.language.get("ERR_OCCURENCED")); // Send an error message
             client.logger.log(err, "error");
         });
 
