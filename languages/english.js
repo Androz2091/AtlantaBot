@@ -691,12 +691,12 @@ module.exports = class {
 			STATS_HEADINGS:[
 				`Stats`,
 				`${e.stats} • __Statistics__`,
-				`${e.ram} • __RAM__`,
 				`${e.version} • __Version__`,
+				`${e.ram} • __RAM__`,
 				`${e.online} • __Online__`,
-				`${e.links} • __Links__`,
 				`${e.voice} • __Music__`,
 				":heart: • __Acknowledgements & credits__",
+				`${e.link} • __Links__`,
 			],
 
 			/* TRANSLATE COMMAND  */

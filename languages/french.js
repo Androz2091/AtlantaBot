@@ -643,12 +643,12 @@ module.exports = class {
 			STATS_HEADINGS:[
 				`Stats`,
 				`${e.stats} • __Statistiques__`,
-				`${e.ram} • __RAM__`,
 				`${e.version} • __Version__`,
+				`${e.ram} • __RAM__`,
 				`${e.online} • __En ligne__`,
-				`${e.links} • __Liens__`,
 				`${e.voice} • __Musique__`,
 				":heart: • __Remerciements & crédits__",
+				`${e.link} • __Liens__`,
 			],
 
 			/* PLAY COMMAND */
