@@ -65,13 +65,15 @@ class Play extends Command {
                 .setColor(data.config.embed.color)
                 .setFooter(data.config.embed.footer);
             message.channel.send(embed);
-            let answers = await message.channel.awaitMessages((m) => m.content > 0 && m.content < 11, { max: 1, time: 20000, errors: ["time"] }).catch(() => {
+            await message.channel.awaitMessages((m) => m.content > 0 && m.content < 11, { max: 1, time: 20000, errors: ["time"] }).then((answers) => {
+                let index = parseInt(answers.first().content, 10);
+                video = await youtube.getVideoByID(videos[index-1].id);
+                return music.handleVideo(message.client, video, message, voice, data);
+            }).catch(() => {
                 return message.channel.send(message.language.get("PLAY_ERR_TIMEOUT"));
             });
-            let index = parseInt(answers.first().content, 10);
-            video = await youtube.getVideoByID(videos[index-1].id);
-            return music.handleVideo(message.client, video, message, voice, data);
         } catch(e){
+            console.log(e);
             return message.channel.send(message.language.get("PLAY_ERR_NOT_FOUND"));
         }
 
