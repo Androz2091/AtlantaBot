@@ -23,12 +23,12 @@ async function handleVideo (client, video, message, voice, data) {
     }
 }
 
-async function play (client, message, song, data, stop) {
+async function play (client, message, song, data) {
 
     let queue = client.queues.get(message.guild.id);
 
     if(!song){
-        if(!stop){
+        if(!queue.stopped){
             message.channel.send(message.language.get("PLAY_ERR_NO_SONG"));
         }
         queue.voice.leave();
@@ -51,9 +51,9 @@ async function play (client, message, song, data, stop) {
         let disp = queue.connection.play(ytdl(song.url, { filter: "audioonly" }));
         disp.setVolumeLogarithmic(queue.volume / 200);
         
-        disp.on("finish", (stop) => {
+        disp.on("finish", () => {
             queue.songs.shift();
-            return play(client, message, queue.songs[0], data, stop);
+            return play(client, message, queue.songs[0], data);
         });
         
         disp.on("error", (err) => {

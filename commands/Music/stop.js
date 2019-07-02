@@ -33,10 +33,11 @@ class Stop extends Command {
         if(!queue){
             return message.channel.send(message.language.get("PLAY_ERR_NOT_PLAYING"));
         }
-        
+
         // Reset song array
         queue.songs = [];
-        queue.connection.dispatcher.end(true);
+        queue.stopped = true;
+        queue.connection.dispatcher.end();
         
         // Send success message
         message.channel.send(message.language.get("STOP_SUCCESS"));
