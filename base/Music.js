@@ -5,6 +5,7 @@ class Guild {
         this.connection = null,
         this.songs = [],
         this.volume = 100,
+        this.stopped = false,
         this.playing = true
     }
 }
