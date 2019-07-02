@@ -13,13 +13,13 @@ async function handleVideo (client, video, message, voice, data) {
         queue.songs.push(song);
         let connection = await voice.join().catch((err) => {
             msg.channel.send(message.language.get("PLAY_ERR_CANT_JOIN"));
-            return client.queues.delete(msg.guild.id);
+            return client.queues.delete(message.guild.id);
         });
         queue.connection = connection;
         play(client, message, song, data);
     } else {
         queue.songs.push(song);
-        return msg.channel.send(msg.language.get("PLAY_ADDED_TO_QUEUE", song.title));
+        return message.channel.send(message.language.get("PLAY_ADDED_TO_QUEUE", song.title));
     }
 }
 
@@ -57,7 +57,7 @@ async function play (client, message, song, data, stop) {
         });
         
         disp.on("error", (err) => {
-            queue.channel.send(msg.language.get("ERR_OCCURENCED")); // Send an error message
+            queue.channel.send(message.language.get("ERR_OCCURENCED")); // Send an error message
             client.logger.log(err, "error");
         });
 
