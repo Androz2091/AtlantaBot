@@ -40,6 +40,7 @@ class Badge extends Command {
                 return message.channel.send(message.language.get("BADGE_ERR_PRICE"));
             }
             data.users[0].badges.push(found);
+            data.users[0].money = data.users[0].money - found.price;
             data.users[0].save();
             return message.channel.send(message.language.get("BADGE_SUCCESS", found));
         }
