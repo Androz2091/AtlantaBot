@@ -1,63 +1,70 @@
 const Command = require("../../base/Command.js"),
-Discord = require('discord.js');
+Discord = require("discord.js");
 
 class Quote extends Command {
 
     constructor (client) {
         super(client, {
             name: "quote",
-            description: (language) => language.get('QUOTE_DESCRIPTION'),
+            description: (language) => language.get("QUOTE_DESCRIPTION"),
+            usage: (language) => language.get("QUOTE_USAGE"),
+            examples: (language) => language.get("QUOTE_EXAMPLES"),
             dirname: __dirname,
-            usage: "quote [message ID] (channel ID)",
             enabled: true,
-            guildOnly: false,
-            aliases: [],
-            permission: false,
-            botpermissions: [ "SEND_MESSAGES", "EMBED_LINKS" ],
+            guildOnly: true,
+            aliases: [ "quoter" ],
+            memberPermissions: [],
+            botPermissions: [ "SEND_MESSAGES", "EMBED_LINKS" ],
             nsfw: false,
-            examples: "$quote 573447254258745365 222081003253006336",
-            owner: false
+            ownerOnly: false,
+            cooldown: 5000
         });
     }
 
-    async run (message, args, membersdata, guild_data, data) {
-        // gets the message ID
-        var msgID = args[0];
-        if(isNaN(msgID)) return message.channel.send(message.language.get('INVALID_ID'));
+    async run (message, args, data) {
 
-        // Gets the channel ID
-        var channelID = args[1];
+        let msgID = args[0];
+        if(isNaN(msgID)){
+            return message.channel.send(message.language.get("ERR_INVALID_ID"));
+        }
 
-        if(!channelID){
-            message.channel.fetchMessage(msgID).catch(err => { 
+        let channel = message.mentions.channels.first();
+        if(args[1] && !channel){
+            channel = message.client.channels.get(args[1]);
+            if(!channel){
+                return message.language.get("QUOTE_ERR_NOT_FOUND_CHANNEL", args[1]);
+            }
+        }
+
+        if(!channel){
+            message.channel.messages.fetch(msgID).catch((err) => { 
                 message.delete();
-                return message.author.send(message.language.get('QUOTE_404'));
-            }).then(msg => {
-                var embed = new Discord.RichEmbed()
-                    .setAuthor(msg.author.tag, msg.author.displayAvatarURL)
-                    .setDescription(msg.content)
-                    .setColor(msg.member.highestRole ? msg.member.highestRole.color : data.embed.color)
-                    .setFooter(msg.guild.name+' | #'+msg.channel.name)
-                    .setTimestamp(msg.createdTimestamp)
-                if(msg.attachments.size > 0) embed.setImage(msg.attachments.first().url)
-                message.channel.send(embed).then(()=> message.delete());
+                return message.author.send(message.language.get("QUOTE_ERR_NOT_FOUND"));
+            }).then((msg) => {
+                message.delete();
+                message.channel.send(embed(msg));
             });
         } else {
-            var channel = this.client.channels.get(args[1]);
-            if(!channel) return message.channel.send(message.language.get('QUOTE_404_1', args[1]));
-            message.channel.fetchMessage(msgID).catch(err => {
+            channel.messages.fetch(msgID).catch((err) => {
                 message.delete();
-                return message.author.send(message.language.get('QUOTE_404'));
-            }).then(msg => {
-                var embed = new Discord.RichEmbed()
-                    .setAuthor(msg.author.tag, msg.author.displayAvatarURL)
-                    .setDescription(msg.content)
-                    .setColor(msg.member.highestRole ? msg.member.highestRole.color : data.embed.color)
-                    .setFooter(msg.guild.name+' | #'+msg.channel.name)
-                    .setTimestamp(msg.createdTimestamp)
-                if(msg.attachments.size > 0) embed.setImage(msg.attachments.first().url)
-                message.channel.send(embed).then(()=> message.delete());
+                return message.author.send(message.language.get("QUOTE_ERR_NOT_FOUND"));
+            }).then((msg) => {
+                message.delete();
+                message.channel.send(embed(msg));
             });
+        }
+
+        function embed(m){
+            let embed = new Discord.MessageEmbed()
+                .setAuthor(m.author.tag, m.author.displayAvatarURL())
+                .setDescription(m.content)
+                .setColor(m.member ? m.member.roles.highest ? m.member.roles.highest.color : data.config.embed.color : data.config.embed.color)
+                .setFooter(m.guild.name+" | #"+m.channel.name)
+                .setTimestamp(m.createdTimestamp);
+            if(m.attachments.size > 0){
+                embed.setImage(m.attachments.first().url);
+            }
+            return embed;
         }
     }
 

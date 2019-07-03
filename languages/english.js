@@ -180,7 +180,17 @@ module.exports = class {
 			RANDOM_ERR_BLANK: `${e.error} | One of your choices seems to be empty.... Please try again!`,
 			// Content
 			RANDOM_CHOOSED: `${e.success} | Here is my choice:`,
-			RANDOM_WAIT: `${e.loading} | Choice in progress....`,
+			RANDOM_WAIT: `${e.loading} | Choice in progress...`,
+
+			/* QUOTE COMMAND */
+
+			// Utils
+			QUOTE_DESCRIPTION: "Quote a message in the channel!",
+			QUOTE_USAGE: "quote [messageID] [channel]",
+			QUOTE_EXAMPLES: "$quote 596018101921906698\n$quote 596018101921906698 573508780520898581\n$quote 596018101921906698 #blabla",
+			// Errors
+			QUOTE_ERR_NOT_FOUND: `${e.error} | No message has this ID.`,
+			QUOTE_ERR_NOT_FOUND_CHANNEL: (channel) => `${e.error} | No channel found with ID ${channel} !`,
 
 			/* USERINFO COMMAND */
 

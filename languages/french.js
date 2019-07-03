@@ -182,6 +182,16 @@ module.exports = class {
 			RANDOM_CHOOSED: `${e.success} | Voici mon choix :`,
 			RANDOM_WAIT: `${e.loading} | Choix en cours...`,
 
+			/* QUOTE COMMAND */
+
+			// Utils
+			QUOTE_DESCRIPTION: "Citez un message dans le salon !",
+			QUOTE_USAGE: "quote [messageID] [salon]",
+			QUOTE_EXAMPLES: "$quote 596018101921906698\n$quote 596018101921906698 573508780520898581\n$quote 596018101921906698 #blabla",
+			// Errors
+			QUOTE_ERR_NOT_FOUND: `${e.error} | Aucun message ne possède cet ID.`,
+			QUOTE_ERR_NOT_FOUND_CHANNEL: (channel) => `${e.error} | Aucun salon trouvé avec l'ID ${channel} !`,
+
 			/* USERINFO COMMAND */
 
 			// Utils
