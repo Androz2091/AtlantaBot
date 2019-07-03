@@ -33,7 +33,8 @@ module.exports = class {
 				UNDEFINED: "Indéfini",
 				PLEASE_WAIT: `${e.loading} | Veuillez patienter...`,
 				PREFIX: "Préfixe",
-				CUSTOM: "Personnalisées"
+				CUSTOM: "Personnalisées",
+				ANDMORE: "**et plus...**"
 			},
 			
 
@@ -677,7 +678,8 @@ module.exports = class {
 				`${e.time} Durée`,
 				`${e.search} Recherche`,
 				`${e.calendar} Création`,
-				`${e.desc} Description`
+				`${e.desc} Description`,
+				`${e.time} Durée`
 			],
 
 			/* STOP COMMAND */
@@ -696,7 +698,21 @@ module.exports = class {
 			SKIP_USAGE: "skip",
 			SKIP_EXAMPLES: "$skip",
 			// Content
+			SKIP_TITLE: "Passer à la chanson suivante",
+			SKIP_CONTENT: (title, voteCount, requiredCount) => `Chanson suivante : ${title}\nVote : ${voteCount}/${requiredCount}\nRéagissez avec 👍 pour passer à la chanson suivante !`,
+			SKIP_CONTENT_COMPLETE: (title) => `Chanson passée ! Maintenant : ${title}`,
 			SKIP_SUCCESS: `${e.success} | Je viens de changer la chanson !`,
+			// Errors
+			SKIP_ERR_NO_SONG: `${e.error} | Aucune chanson suivante !`,
+
+			/* NP COMMAND */
+
+			// Utils
+			NP_DESCRIPTION: "Affiche des informations sur la chanson actuelle !",
+			NP_USAGE: "np",
+			NP_EXAMPLES: "$np",
+			// Errors
+			NP_ERR_NO_DESC: "**Aucune description**",
 
 			/* TRANSLATE COMMAND  */
 

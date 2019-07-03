@@ -1,51 +1,53 @@
 const Command = require("../../base/Command.js"),
-Discord = require('discord.js');
+Discord = require("discord.js");
 
 class Np extends Command {
 
     constructor (client) {
         super(client, {
             name: "np",
-            description: (language) => language.get('NP_DESCRIPTION'),
+            description: (language) => language.get("NP_DESCRIPTION"),
+            usage: (language) => language.get("NP_USAGE"),
+            examples: (language) => language.get("NP_EXAMPLES"),
             dirname: __dirname,
-            usage: "np",
             enabled: true,
             guildOnly: true,
-            aliases: ["now-playing"],
-            permission: false,
-            botpermissions: [ "SEND_MESSAGES", "EMBED_LINKS"],
+            aliases: [ "nowplaying", "now-playing" ],
+            memberPermissions: [],
+            botPermissions: [ "SEND_MESSAGES", "EMBED_LINKS" ],
             nsfw: false,
-            examples: "$np",
-            owner: false
+            ownerOnly: false,
+            cooldown: 5000
         });
     }
 
-    async run (message, args, membersdata, guild_data, data) {
+    async run (message, args, data) {
 
-        // Gets the guild queue
-        let queue = this.client.queues.get(message.guild.id);
+        let queue = message.client.queues.get(message.guild.id);
 
-        // Gets the voice channel of the member
-        let voice = message.member.voiceChannel;
-        if (!voice) return message.channel.send(message.language.get('PLAY_VOICE_CHANNEL'));
+        let voice = message.member.voice.channel;
+        if (!voice){
+            return message.channel.send(message.language.get("PLAY_ERR_VOICE_CHANNEL"));
+        }
 
-        // if there is no music played in the guild
-        if(!queue) return message.channel.send(message.language.get('PLAY_NOT_PLAYING'));
+        if(!queue){
+            return message.channel.send(message.language.get("PLAY_ERR_NOT_PLAYING"));
+        }
 
         // Gets the current song
         let song = queue.songs[0];
 
         // Generate discord embed to display song informations
-        const embed = new Discord.RichEmbed()
-            .setAuthor(message.language.get('PLAY_PLAYING'))
+        const embed = new Discord.MessageEmbed()
+            .setAuthor(message.language.get("PLAY_PLAYING_TITLE"))
             .setThumbnail(song.raw.snippet.thumbnails.default.url)
-            .addField(message.language.get('PLAY_UTILS')[0], song.title, true)
-            .addField(message.language.get('PLAY_UTILS')[1], song.channel, true)
-            .addField(message.language.get('PLAY_UTILS')[4], `${message.language.printDate(new Date(song.raw.snippet.publishedAt))}`, true)
-            .addField(message.language.get('PLAY_UTILS')[5], song.raw.snippet.description ? (song.raw.snippet.description.length > 1024 ? song.raw.snippet.description.substring(0, 1000) + '\n**__etc...__**' : song.raw.snippet.description) : "**Pas de description**", true)
+            .addField(message.language.get("PLAY_HEADINGS")[0], song.title, true)
+            .addField(message.language.get("PLAY_HEADINGS")[1], song.channel, true)
+            .addField(message.language.get("PLAY_HEADINGS")[6], message.language.convertMs(song.ms), true)
+            .addField(message.language.get("PLAY_HEADINGS")[5], song.raw.snippet.description ? (song.raw.snippet.description.substring(0, 150)+"\n"+message.language.get("UTILS").ANDMORE) : message.language.get("NP_ERR_NO_DESC"), true)
             .setTimestamp()
-            .setColor(data.embed.color)
-            .setFooter(data.embed.footer);
+            .setColor(data.config.embed.color)
+            .setFooter(data.config.embed.footer);
         
         // Send the embed in the current channel
         message.channel.send(embed);

@@ -33,7 +33,8 @@ module.exports = class {
 				UNDEFINED: "Undefined",
 				PLEASE_WAIT: `${e.loading} | Please wait...`,
 				PREFIX: "Prefix",
-				CUSTOM: "Custom"
+				CUSTOM: "Custom",
+				ANDMORE: "**and more...**"
 			},
 			
 
@@ -342,7 +343,8 @@ module.exports = class {
 				`${e.time} Duration`,
 				`${e.search} Search`,
 				`${e.calendar} Creation`,
-				`${e.desc} Description`
+				`${e.desc} Description`,
+				`${e.time} Duration`
 			],
 
 			/* STOP COMMAND */
@@ -361,7 +363,21 @@ module.exports = class {
 			SKIP_USAGE: "skip",
 			SKIP_EXAMPLES: "$skip",
 			// Content
+			SKIP_TITLE: "Skip to next song",
+			SKIP_CONTENT: (title, voteCount, requiredCount) => `Next song: ${title}\nVote: ${voteCount}/${requiredCount}\nReact with 👍 to play the next song!`,
+			SKIP_CONTENT_COMPLETE: (title) => `Song passed ! Now: ${title}`,
 			SKIP_SUCCESS: `${e.success} | I just changed the song!`,
+			// Errors
+			SKIP_ERR_NO_SONG: `${e.error} | No next song!`,
+
+			/* NP COMMAND */
+
+			// Utils
+			NP_DESCRIPTION: "Displays information about the current song!",
+			NP_USAGE: "np",
+			NP_EXAMPLES: "$np",
+			// Errors
+			NP_ERR_NO_DESC: "**No description**",
 
 
 			/* CONFIGURATION COMMAND */
