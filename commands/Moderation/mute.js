@@ -40,13 +40,10 @@ class Mute extends Command {
         }
 
         message.guild.channels.forEach((channel) => {
-            channel.overwritePermissions({
-                permissionOverwrites: [
-                    {
-                        id: member.id,
-                        deny: [ "SEND_MESSAGES", "ADD_REACTIONS", "CONNECT" ]
-                    }
-                ]
+            channel.updateOverwrite(member.id, {
+                SEND_MESSAGES: false,
+                ADD_REACTIONS: false,
+                CONNECT: false
             }).catch((err) => {});
         });
 
