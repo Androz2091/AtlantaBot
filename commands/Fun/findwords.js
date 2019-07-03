@@ -45,7 +45,7 @@ class FindWords extends Command {
     
         // Init some utils variables
         let participants = [],
-        gagnants = [],
+        winners = [],
         words = [],
         nbGames = 4;
 
@@ -95,37 +95,38 @@ class FindWords extends Command {
                         message.channel.send(message.language.get("FINDWORDS_ERR_NO_WINNER"));
                     } else {
                         message.channel.send(message.language.get("FINDWORDS_CONGRATS", reason));
-                        gagnants.push(reason);
+                        winners.push(reason);
                     }
                     if(i < nbGames-1) {
                         i++;
                         generegame(words[i]);
                     } else {
                         currentGame = false;
-                        if(gagnants.length < 1){
+                        if(winners.length < 1){
                             return message.channel.send(message.language.get("FINDWORDS_ERR_NO_WINNER_GAME"));
                         }
-                        let winnerID = await getWinner(participants);
+                        let winnerID = await getWinner(winners);
                         let time = message.language.convertMs(Date.now() - createdAt);
                         let user = await message.client.users.fetch(winnerID);
                         message.channel.send(message.language.get("FINDWORDS_STATS", user.username, nbGames, time, participants.length, participants.map((p) => "<@"+p+">").join("\n")));
                         if(participants.length > 1){
                             message.channel.send(message.language.get("FINDWORDS_MONEY", user.username));
-                            data.users[0].money = data.users[0].money + 15;
-                            data.users[0].save();
+                            let userdata = await message.client.usersData.findOne({id: user.id});
+                            userdata.money = userdata.money + 15;
+                            userdata.save();
                         }
                     }
                 });
             }, delay);
         }
 
-        async function getWinner(part){
+        async function getWinner(array){
             return new Promise(function (resolve, reject){
                 let counts = {};
                 let compare = 0;
                 let mostFrequent;
-                for(let i = 0, len = part.length; i < len; i++){
-                    let winner = part[i];
+                for(let i = 0, len = array.length; i < len; i++){
+                    let winner = array[i];
                     if(counts[winner] === undefined){
                         counts[winner] = 1;
                     } else {
@@ -133,7 +134,7 @@ class FindWords extends Command {
                     }
                     if(counts[winner] > compare){
                         compare = counts[winner];
-                        mostFrequent = part[i];
+                        mostFrequent = array[i];
                     }
                 }
                 resolve(mostFrequent);
