@@ -126,7 +126,7 @@ module.exports = class {
 			// Errors
 			HASTEBIN_TEXT: `${e.error} | You must enter a text!`,
 			// Content
-			HASTEBIN_SUCCESS: (url) => `${e.success} | Your text has been uploaded on hastebin! Here is your link: ${url}`,
+			HASTEBIN_TITLE: `Upload complete!`,
 
 			/* USERINFO COMMAND */
 
