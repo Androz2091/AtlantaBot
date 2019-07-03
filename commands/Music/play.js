@@ -58,7 +58,7 @@ class Play extends Command {
         }
 
         try {
-            let videos = await youtube.searchVideos(name, 10);
+            let videos = await youtube.searchVideos(name, 7);
             let i = 0;
             let embed = new Discord.MessageEmbed()
                 .addField(message.language.get("PLAY_HEADINGS")[3], videos.map((v) => `**${++i} -** ${v.title}`).join("\n")+"\n\n\n"+message.language.get("PLAY_SEARCH"))
