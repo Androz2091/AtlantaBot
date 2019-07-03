@@ -49,7 +49,7 @@ class Stop extends Command {
 
             let mustVote = members.size/2+1;
 
-            embed.setDescription(message.language.get("STOP_CONTENT", queue.songs[1].title, 0, mustVote));
+            embed.setDescription(message.language.get("STOP_CONTENT", 0, mustVote));
             m.edit(embed);
     
             let filter = (reaction, user) => {
