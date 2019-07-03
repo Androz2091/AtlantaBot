@@ -356,7 +356,9 @@ module.exports = class {
 			STOP_USAGE: "stop",
 			STOP_EXAMPLES: "$stop",
 			// Content
-			STOP_SUCCESS: `${e.success} | I just stopped the music!`,
+			STOP_TITLE: `Stop the music`,
+			STOP_CONTENT: (voteCount, requiredCount) => `Stop the music\nVote: ${voteCount}/${requiredCount}\nReact with 👍 to stop the music!`,
+			STOP_CONTENT_COMPLETE: "Music correctly stopped!",
 
 			/* SKIP COMMAND */
 

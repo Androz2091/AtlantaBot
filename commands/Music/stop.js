@@ -34,13 +34,71 @@ class Stop extends Command {
             return message.channel.send(message.language.get("PLAY_ERR_NOT_PLAYING"));
         }
 
-        // Reset song array
-        queue.songs = [];
-        queue.stopped = true;
-        queue.connection.dispatcher.end();
+        let members = voice.members.filter((m) => m.id !== message.client.user.id);
+
+        let embed = new Discord.MessageEmbed()
+            .setAuthor(message.language.get("STOP_TITLE"))
+            .setFooter(data.config.embed.footer)
+            .setColor(data.config.embed.color);
+
+        let m = await message.channel.send(embed);
+
+        if(members.size > 1){
+            
+            m.react("👍");
+
+            let mustVote = members.size/2+1;
+
+            embed.setDescription(message.language.get("STOP_CONTENT", queue.songs[1].title, 0, mustVote));
+            m.edit(embed);
+    
+            let filter = (reaction, user) => {
+                let member = message.guild.members.get(user.id);
+                let voiceChannel = member.voice.channel;
+                if(voiceChannel){
+                    if(voiceChannel.id === voice.id){
+                        return true;
+                    } else {
+                        return false;
+                    }
+                }
+            };
+
+            let collector = await m.createReactionCollector(filter, {
+                time: 25000
+            });
+
+            collector.on("collect", (reaction, user) => {
+                let haveVoted = reaction.count-1;
+                if(haveVoted >= mustVote){
+                    stop();
+                    embed.setDescription(message.language.get("STOP_CONTENT_COMPLETE"));
+                    m.edit(embed);
+                    collector.stop(true);
+                } else {
+                    embed.setDescription(message.language.get("STOP_CONTENT", haveVoted, mustVote));
+                    m.edit(embed);
+                }
+            });
+
+            collector.on("end", (collected, isDone) => {
+                if(!isDone){
+                    return message.channel.send(message.language.get("PLAY_ERR_TIMEOUT"));
+                }
+            });
+
+        } else {
+            stop();
+            embed.setDescription(message.language.get("STOP_CONTENT_COMPLETE"));
+            m.edit(embed);
+        }
         
-        // Send success message
-        message.channel.send(message.language.get("STOP_SUCCESS"));
+        function stop(){
+            // Reset song array
+            queue.songs = [];
+            queue.stopped = true;
+            queue.connection.dispatcher.end();
+        }
         
     }
 

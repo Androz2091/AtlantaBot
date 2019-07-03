@@ -691,7 +691,9 @@ module.exports = class {
 			STOP_USAGE: "stop",
 			STOP_EXAMPLES: "$stop",
 			// Content
-			STOP_SUCCESS: `${e.success} | Je viens d'arrêter la musique !`,
+			STOP_TITLE: `Arrêter la musique`,
+			STOP_CONTENT: (voteCount, requiredCount) => `Arrêter la musique\nVote : ${voteCount}/${requiredCount}\nRéagissez avec 👍 pour arrêter la musique !`,
+			STOP_CONTENT_COMPLETE: "Musique correctement arrêtée !",
 
 			/* SKIP COMMAND */
 
@@ -703,7 +705,6 @@ module.exports = class {
 			SKIP_TITLE: "Passer à la chanson suivante",
 			SKIP_CONTENT: (title, voteCount, requiredCount) => `Chanson suivante : ${title}\nVote : ${voteCount}/${requiredCount}\nRéagissez avec 👍 pour passer à la chanson suivante !`,
 			SKIP_CONTENT_COMPLETE: (title) => `Chanson passée ! Maintenant : ${title}`,
-			SKIP_SUCCESS: `${e.success} | Je viens de changer la chanson !`,
 			// Errors
 			SKIP_ERR_NO_SONG: `${e.error} | Aucune chanson suivante !`,
 
