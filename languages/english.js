@@ -169,6 +169,19 @@ module.exports = class {
 			// Errors
 			NUMBER_DEFEAT: (number) => `${e.error} | No one could find the number! It was ${number} !`,
 
+			/* RANDOM COMMAND */
+
+			// Utils
+			RANDOM_DESCRIPTION: "Randomly pick one of the choices you give me!",
+			RANDOM_USAGE: "random [choice1/choice2/etc...]",
+			RANDOM_EXAMPLES: "$random Fire/Wind/Water",
+			// Errors
+			RANDOM_ERR_CHOICES: `${e.error} | You must enter more than two choices!`,
+			RANDOM_ERR_BLANK: `${e.error} | One of your choices seems to be empty.... Please try again!`,
+			// Content
+			RANDOM_CHOOSED: `${e.success} | Here is my choice:`,
+			RANDOM_WAIT: `${e.loading} | Choice in progress....`,
+
 			/* USERINFO COMMAND */
 
 			// Utils
