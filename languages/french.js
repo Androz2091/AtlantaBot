@@ -34,7 +34,9 @@ module.exports = class {
 				PLEASE_WAIT: `${e.loading} | Veuillez patienter...`,
 				PREFIX: "Préfixe",
 				CUSTOM: "Personnalisées",
-				ANDMORE: "**et plus...**"
+				ANDMORE: "**et plus...**",
+				TITLE: "Titre",
+				AUTHOR: "Auteur"
 			},
 			
 
@@ -713,6 +715,15 @@ module.exports = class {
 			NP_EXAMPLES: "$np",
 			// Errors
 			NP_ERR_NO_DESC: "**Aucune description**",
+
+			/* QUEUE COMMAND */
+
+			// Utils
+			QUEUE_DESCRIPTION: "Affiche la queue",
+			QUEUE_USAGE: "queue",
+			QUEUE_EXAMPLES: "$queue",
+			// Content
+			QUEUE_TITLE: `${e.playlist} Playlist`,
 
 			/* TRANSLATE COMMAND  */
 

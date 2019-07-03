@@ -34,7 +34,9 @@ module.exports = class {
 				PLEASE_WAIT: `${e.loading} | Please wait...`,
 				PREFIX: "Prefix",
 				CUSTOM: "Custom",
-				ANDMORE: "**and more...**"
+				ANDMORE: "**and more...**",
+				TITLE: "Titre",
+				AUTHOR: "Auteur"
 			},
 			
 
@@ -379,6 +381,14 @@ module.exports = class {
 			// Errors
 			NP_ERR_NO_DESC: "**No description**",
 
+			/* QUEUE COMMAND */
+
+			// Utils
+			QUEUE_DESCRIPTION: "Displays the queue",
+			QUEUE_USAGE: "queue",
+			QUEUE_EXAMPLES: "$queue",
+			// Content
+			QUEUE_TITLE: `${e.playlist} Playlist`,
 
 			/* CONFIGURATION COMMAND */
 

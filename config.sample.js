@@ -81,7 +81,8 @@ module.exports = {
 		singer: "XXXXXXXXXXX",
 		time: "XXXXXXXXXXX",
 		search: "XXXXXXXXXXX",
-		desc: "XXXXXXXXXXX"
+		desc: "XXXXXXXXXXX",
+		playlist: "XXXXXXXXXXX"
 	},
 	/* The others utils links */
 	others: {
