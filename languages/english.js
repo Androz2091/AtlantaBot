@@ -137,6 +137,23 @@ module.exports = class {
 			// Errors
 			ASCII_ERR_TEXT: `${e.error} | Please enter a valid text (less than 20 characters)!`,
 
+			/* FINDWORDS COMMAND */
+
+			// Utils
+			FINDWORDS_DESCRIPTION: "Start a game of findwords, a game where you have to find words!",
+			FINDWORDS_USAGE: "findwords",
+			FINDWORDS_EXAMPLES: "$findwords",
+			// Errors
+			FINDWORDS_ERR_INVALID_WORD: (member) => `${e.error} | ${member} your word is invalid!`,
+			FINDWORDS_ERR_NO_WINNER: `${e.warn} | I can't define any winners because no words have been found from all sides!`,
+			FINDWORDS_ERR_NO_WINNER_GAME: `${e.error} | No one was able to find words!`,
+			// Content
+			FINDWORDS_TIMER: `${e.warn} | The game starts in 10 seconds!`,
+			FINDWORDS_QUESTION: (word) => `${e.warn} | 20 seconds to find a word containing "**${word}**" !`,
+			FINDWORDS_CONGRATS: (winner) => `${e.success} | Well done <@${winner}> ! Your word is valid and you were the fastest!`,
+			FINDWORDS_STATS: (username, games, time, number, members) => `:tada: | ${username} won the game !\n\n**Stats of the game: **\n__**Time**__: ${time}\n__**Number of participants**__ : ${number}\n__**Participants**__ : \n${members}`,
+			FINDWORDS_MONEY: (member) => `${member} wins 15 credits! :tada:`,
+
 			/* USERINFO COMMAND */
 
 			// Utils
