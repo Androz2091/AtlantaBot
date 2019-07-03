@@ -87,7 +87,7 @@ module.exports = class {
 			HELP_ERR_NOT_FOUND: (cmd) => `${e.error} | Commande \`${cmd}\` introuvable !`,
 			HELP_ERR_CMD_CUSTOMIZED: (cmd) => `${e.error} | La commande ${cmd} ne dispose pas d'aide car elle est personnalisée.`,
 			// Content
-			HELP_REMINDER: (prefix) => `Pour avoir de l\'aide sur une commande tapez \`${prefix}help <commande>\` !`,
+			HELP_REMINDER: (prefix) => `Pour avoir de l'aide sur une commande tapez \`${prefix}help <commande>\` !`,
 			HELP_TITLE:(nb) => `Liste des commandes - (${nb})`,
 			HELP_NO_ALIASES: "Aucun alias.",
 			// Headings
@@ -153,6 +153,21 @@ module.exports = class {
 			FINDWORDS_CONGRATS: (winner) => `${e.success} | Bravo <@${winner}> ! Ton mot est valide et tu as été le plus rapide !`,
 			FINDWORDS_STATS: (username, games, time, number, members) => `:tada: | ${username} a gagné la partie !\n\n**Stats de la partie :**\n__**Temps**__: ${time}\n__**Nombre de participants**__ : ${number}\n__**Participants**__ : \n${members}`,
 			FINDWORDS_MONEY: (member) => `${member} gagne 15 crédits ! :tada:`,
+
+			/* NUMBER COMMAND */
+
+			// Utils
+			NUMBER_DESCRIPTION: "Trouvez le nombre que j'ai choisi !",
+			NUMBER_USAGE: "number",
+			NUMBER_EXAMPLES: "$number",
+			// Content
+			NUMBER_START: `${e.warn} | Nombre déterminé, vous pouvez commencer !`,
+			NUMBER_HIGHER: (number, author) => `${author} | Le nombre est plus **grand** que \`${number}\` !`,
+			NUMBER_SMALLER: (number, author) => `${author} | Le nombre est plus **petit** que \`${number}\` !`,
+			NUMBER_CONGRATS: (member) => `<@${member}> a gagné 10 crédits !`,
+			NUMBER_STATS: (user, number, time, nb, members) => `:tada: | ${user} a trouvé le nombre ! C'était __**${number}**__ !\n\n**Stats de la partie :**\n__**Temps**__: ${time}\n__**Nombre de participants**__ : ${nb}\n__**Participants**__ : \n${members}`,
+			// Errors
+			NUMBER_DEFEAT: (number) => `${e.error} | Personne n'a réussi à trouver le nombre ! C'était ${number} !`,
 
 			/* USERINFO COMMAND */
 
@@ -569,7 +584,7 @@ module.exports = class {
 			// Errors
 			PAY_ERR_YOURSELF: `${e.error} | Vous ne pouvez pas vous payer vous-même !`,
 			PAY_ERR_INVALID_AMOUNT: (username) => `${e.error} | Vous devez entrer un montant à verser à **${username}** !`,
-			PAY_ERR_AMOUNT_TOO_HIGH: (amount, username) => `${e.error} | Vous ne disposez pas d\'assez de crédits pour verser ${amount} crédits à ${username} !`,
+			PAY_ERR_AMOUNT_TOO_HIGH: (amount, username) => `${e.error} | Vous ne disposez pas d'assez de crédits pour verser ${amount} crédits à ${username} !`,
 			// Content
 			PAY_SUCCESS: (amount, username) => `${e.success} | Vous avez versé ${amount} crédits à ${username} !`,
 

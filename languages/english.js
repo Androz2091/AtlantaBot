@@ -154,6 +154,21 @@ module.exports = class {
 			FINDWORDS_STATS: (username, games, time, number, members) => `:tada: | ${username} won the game !\n\n**Stats of the game: **\n__**Time**__: ${time}\n__**Number of participants**__ : ${number}\n__**Participants**__ : \n${members}`,
 			FINDWORDS_MONEY: (member) => `${member} wins 15 credits! :tada:`,
 
+			/* NUMBER COMMAND */
+
+			// Utils
+			NUMBER_DESCRIPTION: "Find the number I chose!",
+			NUMBER_USAGE: "number",
+			NUMBER_EXAMPLES: "$number",
+			// Content
+			NUMBER_START: `${e.warn} | Number determined, you can start!`,
+			NUMBER_HIGHER: (number, author) => `${author} | The number is more **large** than \`${number}\` !`,
+			NUMBER_SMALLER: (number, author) => `${author} | The number is more **small** thane \`${number}\` !`,
+			NUMBER_CONGRATS: (member) => `<@${member}> has won 10 credits!`,
+			NUMBER_STATS: (user, number, time, nb, members) => `:tada: | ${user} found the number! It was __**${number}**__ !\n\n\n**States of the game: **\n__**Time**__: ${time}\n__** Number of participants**__ : ${nb}\n__**Participants**__ : \n${members}`,
+			// Errors
+			NUMBER_DEFEAT: (number) => `${e.error} | No one could find the number! It was ${number} !`,
+
 			/* USERINFO COMMAND */
 
 			// Utils
