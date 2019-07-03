@@ -1,37 +1,38 @@
 const Command = require("../../base/Command.js"),
-Discord = require('discord.js');
+Discord = require("discord.js"),
+ascii = require("ascii-art");
 
 class Ascii extends Command {
 
     constructor (client) {
         super(client, {
             name: "ascii",
-            description: (language) => language.get('ASCII_DESCRIPTION'),
+            description: (language) => language.get("ASCII_DESCRIPTION"),
+            usage: (language) => language.get("ASCII_USAGE"),
+            examples: (language) => language.get("ASCII_EXAMPLES"),
             dirname: __dirname,
-            usage: "ascii [text]",
             enabled: true,
             guildOnly: false,
             aliases: [],
-            permission: false,
-            botpermissions: [ "SEND_MESSAGES" ],
+            memberPermissions: [],
+            botPermissions: [ "SEND_MESSAGES", "EMBED_LINKS" ],
             nsfw: false,
-            examples: "$ascii Hello World !",
-            owner: false
+            ownerOnly: false,
+            cooldown: 5000
         });
     }
 
-    async run (message, args, membersdata, guild_data, data) {
+    async run (message, args, data) {
 
-        // Gets the text 
-        var text = args.join(' ');
-        if(!text || text.length > 20) return message.channel.send(message.language.get('ASCII_TEXT'));
-
-        var Ascii = require('ascii-art');
+        let text = args.join(" ");
+        if(!text || text.length > 20){
+            return message.channel.send(message.language.get("ASCII_ERR_TEXT"));
+        }
     
-        Ascii.font(text, 'Doom', function(rendered){
-            message.channel.send('```'+rendered+'```');
+        ascii.font(text, "Doom", function(rendered){
+            message.channel.send("```"+rendered+"```");
         });
-        
+
     }
 
 }

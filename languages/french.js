@@ -128,6 +128,15 @@ module.exports = class {
 			// Content
 			HASTEBIN_TITLE: `Upload terminé !`,
 
+			/* ASCII COMMAND */
+
+			// Utils
+			ASCII_DESCRIPTION: "Transforme votre texte en caractères ascii !",
+			ASCII_USAGE: "ascii [texte]",
+			ASCII_EXAMPLES: "$ascii Coucou !",
+			// Errors
+			ASCII_ERR_TEXT: `${e.error} | Veuillez entrer un texte valide (inférieur à 20 caractères) !`,
+
 			/* USERINFO COMMAND */
 
 			// Utils
