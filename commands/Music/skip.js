@@ -34,10 +34,73 @@ class Skip extends Command {
             return message.channel.send(message.language.get("PLAY_ERR_NOT_PLAYING"));
         }
 
-        queue.connection.dispatcher.end();
+        if(!queue.songs[1]){
+            return message.channel.send(message.language.get("SKIP_ERR_NO_SONG"));
+        }
 
-        // Send a success message
-        message.channel.send(message.language.get("SKIP_SUCCESS"));
+        let members = voice.members.filter((m) => m.id !== message.client.user.id);
+
+        let embed = new Discord.MessageEmbed()
+            .setAuthor(message.language.get("SKIP_TITLE"))
+            .setThumbnail(queue.songs[1].thumbnail)
+            .setFooter(data.config.embed.footer)
+            .setColor(data.config.embed.color);
+
+        let m = await message.channel.send(embed);
+
+        if(members.size > 1){
+            
+            m.react("👍");
+
+            let mustVote = members.size/2+1;
+
+            embed.setDescription(message.language.get("SKIP_CONTENT", queue.songs[1].title, 0, mustVote));
+            m.edit(embed);
+    
+            let filter = (reaction, user) => {
+                let member = message.guild.members.get(user.id);
+                let voiceChannel = member.voice.channel;
+                if(voiceChannel){
+                    if(voiceChannel.id === voice.id){
+                        return true;
+                    } else {
+                        return false;
+                    }
+                }
+            };
+
+            let collector = await m.createReactionCollector(filter, {
+                time: 25000
+            });
+
+            collector.on("collect", (reaction, user) => {
+                let haveVoted = reaction.count-1;
+                if(haveVoted >= mustVote){
+                    skip();
+                    embed.setDescription(message.language.get("SKIP_CONTENT_COMPLETE", queue.songs[1].title));
+                    m.edit(embed);
+                    collector.stop(true);
+                } else {
+                    embed.setDescription(message.language.get("SKIP_CONTENT", queue.songs[1].title, haveVoted, mustVote));
+                    m.edit(embed);
+                }
+            });
+
+            collector.on("end", (collected, isDone) => {
+                if(!isDone){
+                    return message.channel.send(message.language.get("PLAY_ERR_TIMEOUT"));
+                }
+            });
+
+        } else {
+            skip();
+            embed.setDescription(message.language.get("SKIP_CONTENT_COMPLETE", queue.songs[1].title));
+            m.edit(embed);
+        }
+
+        function skip(){
+            queue.connection.dispatcher.end();
+        }
         
     }
 
