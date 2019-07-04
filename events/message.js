@@ -29,7 +29,7 @@ module.exports = class {
         data.config = client.config;
 
         // Gets settings
-        let settings = await client.functions.getSettings(client, message.channel);
+        let settings = await client.functions.getSettings(client, message.guild);
         data.settings = settings;
 
         // Gets language
@@ -85,6 +85,33 @@ module.exports = class {
                     }
                 }
             }
+
+            if(!data.settings.cases){
+                data.settings.cases = {
+                    count: 0,
+                    list: []
+                };
+                data.settings.save();
+            }
+
+            if(data.settings.warns){
+                delete data.settings.warns;
+                data.settings.save();
+            }
+
+            let afkReason = data.users[0].afk;
+            if(afkReason){
+                data.users[0].afk = null;
+                data.users[0].save();
+                message.channel.send(message.language.get("AFK_DELETED", message.author));
+            }
+
+            message.mentions.users.forEach(async (u) => {
+                let userData = await message.client.usersData.findOne({id: u.id});
+                if(userData.afk){
+                    message.channel.send(message.language.get("AFK_MEMBER", u, userData.afk));
+                }
+            });
 
         }
 
