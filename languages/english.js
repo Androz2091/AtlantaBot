@@ -39,6 +39,10 @@ module.exports = class {
 				AUTHOR: "Auteur"
 			},
 			
+			/* DBL VOTES */
+
+			VOTE_THANKS: (user) => `:arrow_up: Hello ${user.toString()}, thanks for voting !\nYour reward : 40 credits !`,
+			VOTE_LOGS: (user) => `:arrow_up: **${user.tag}** (\`${user.id}\`) voted for **Atlanta** and won **40** credits, thank you!\nhttps://discordbots.org/bot/557445719892688897/vote`,
 
 			// ERROR MESSAGES
 
