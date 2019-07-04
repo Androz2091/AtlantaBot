@@ -293,6 +293,19 @@ module.exports = class {
 			SERVERINFO_NO_AFK: "No AFK channel",
 			SERVERINFO_CHANNELS: (channels) => `${channels.filter((ch) => ch.type === "voice").size} voice | ${channels.filter((ch) => ch.type === "text").size} textual | ${channels.filter((ch) => ch.type === "category").size} categories`,
 
+			/* UNBAN COMMAND */
+
+			// Utils
+			UNBAN_DESCRIPTION: "Unban the user from the server!",
+			UNBAN_USAGE: "unban [userID/user#0000]",
+			UNBAN_EXAMPLES: "$unban 422820341791064085\n$unban Androz#2091",
+			// Errors
+			UNBAN_ERR_ID: (id) => `${e.error} | No user on Discord has the ID \`${id}\` !`,
+			UNBAN_ERR_NOT_BANNED: (user) => `${e.error} | **${user.username}** is not banned!`,
+			// Content
+			UNBAN_SUCCESS: (user, msg) => `${e.success} | **${user.username}** has just been unbanned from **${msg.guild.name}** !`,
+			
+
 			/* SUGGEST COMMAND */
 
 			// Utils
