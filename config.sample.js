@@ -19,15 +19,16 @@ module.exports = {
 		id: "XXXXXXXXXXX", // The ID of the bot's owner
 		name: "Androz#2091" // And the name of the bot's owner
 	},
+	/* DBL votes webhook (optional) */
+	votes: {
+		port: 5000, // The port for the server
+		password: "XXXXXXXXXXX", // The webhook auth that you have defined on discordbots.org
+		channel: "XXXXXXXXXXX" // The ID of the channel that in you want the votes logs
+	},
 	/* For the express server (dashboard and votes) */
 	server: {
 		port: 8080, // The port of the dashboard
 		sessionPassword: "XXXXXXXXXXX", // The password for the express session
-		/* For DBL votes */
-		votes: {
-			auth: "XXXXXXXXXXX", // The auth password that can be define on discordbots.org
-			channel: "XXXXXXXXXXX" // The ID of the channel for the votes logs
-		},
 		/* Oauth2 Dashboard */
 		oauth2: {
 			secret: "XXXXXXXXXXX", // The client secret that can be find on your bot's management page
