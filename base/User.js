@@ -16,6 +16,7 @@ module.exports = mongoose.model("User", new mongoose.Schema({
         findwords: 0,
         number: 0
     }},
+    afk: { type: String, default: null },
     slowmode: { type: Object },
     cooldowns: {
         work: 0,

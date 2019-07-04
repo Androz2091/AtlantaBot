@@ -210,6 +210,20 @@ module.exports = class {
 				`${total} membres`
 			],
 
+			/* SETAFK COMMAND */
+
+			// Utils
+			SETAFK_DESCRIPTION: "Devenez AFK (les membres qui vous mentionneront recevront un message)",
+			SETAFK_USAGE: "setafk [raison]",
+			SETAFK_EXAMPLES: "$setafk Je passe mes examens !",
+			// Errors
+			SETAFK_ERR_REASON: `${e.error} | Veuillez préciser la raison de votre afk !`,
+			// Content
+			SETAFK_SUCCESS: (reason) => `${e.success} | Vous êtes passé afk (raison : ${reason})`,
+			// Others
+			AFK_DELETED: (user) => `${e.warn} | Votre AFK vient d'être supprimé !`,
+			AFK_MEMBER: (user, reason) => `${e.warn} | **${user.tag}** est actuellement AFK pour :\n\`\`\`${reason}\`\`\``,
+
 			/* USERINFO COMMAND */
 
 			// Utils

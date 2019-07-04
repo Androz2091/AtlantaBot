@@ -6,31 +6,32 @@ class Setafk extends Command {
     constructor (client) {
         super(client, {
             name: "setafk",
-            description: (language) => language.get('SETAFK_DESCRIPTION'),
+            description: (language) => language.get("SETAFK_DESCRIPTION"),
+            usage: (language) => language.get("SETAFK_USAGE"),
+            examples: (language) => language.get("SETAFK_EXAMPLES"),
             dirname: __dirname,
-            usage: "setafk [reason]",
             enabled: true,
-            guildOnly: true,
-            aliases: [],
-            permission: false,
-            botpermissions: [ "SEND_MESSAGES", "EMBED_LINKS" ],
+            guildOnly: false,
+            aliases: [ "afk" ],
+            memberPermissions: [],
+            botPermissions: [ "SEND_MESSAGES", "EMBED_LINKS" ],
             nsfw: false,
-            examples: "$setafk sleeping",
-            owner: false
+            ownerOnly: false
         });
     }
 
-    async run (message, args, membersdata, guild_data, data) {
+    async run (message, args, data) {
 
-        // Gets the reason
-        var reason = args.join(' ');
-        if(!reason) return message.channel.send(message.language.get('SETAFK_REASON'));
+        let reason = args.join(" ");
+        if(!reason){
+            return message.channel.send(message.language.get("SETAFK_ERR_REASON"));
+        }
 
         // Send success message
-        message.channel.send(message.language.get('SETAFK_SUCCESS', reason));
+        message.channel.send(message.language.get("SETAFK_SUCCESS", reason));
 
-        // Update db
-        this.client.databases[0].set(`afk.${message.author.id}`, reason);
+        data.users[0].afk = reason;
+        data.users[0].save();
 
     }
 
