@@ -272,6 +272,27 @@ module.exports = class {
 			USERINFO_MORE_ROLES: (nb) => ` and ${nb} others roles`,
 			USERINFO_NO_NICKNAME: "No nickname",
 
+			/* SERVERINFO COMMAND */
+
+			// Utils
+			SERVERINFO_DESCRIPTION: "Displays information about the server!",
+			SERVERINFO_USAGE: "serverinfo [ID/Name]",
+			SERVERINFO_EXAMPLES: "$serverinfo Atlanta\n$serverinfo",
+			// Content
+			// Headings
+			SERVERINFO_HEADINGS:[
+				`${e.title} Name`,
+				`${e.calendar} Creation`,
+				`${e.users} Members`,
+				`${e.channels} Channels`,
+				`${e.afk} AFK channel`,
+				`${e.id} ID`,
+				`${e.crown} Founder`
+			],
+			SERVERINFO_MEMBERCOUNT: (members) => `${members.filter((m) => !m.user.bot).size} members | ${members.filter((m) => m.user.bot).size} bots`,
+			SERVERINFO_NO_AFK: "No AFK channel",
+			SERVERINFO_CHANNELS: (channels) => `${channels.filter((ch) => ch.type === "voice").size} voice | ${channels.filter((ch) => ch.type === "text").size} textual | ${channels.filter((ch) => ch.type === "category").size} categories`,
+
 			/* SUGGEST COMMAND */
 
 			// Utils
@@ -290,6 +311,7 @@ module.exports = class {
 			// Content
 			SUGGEST_TITLE: (user) => `Suggestion - ${user.tag}`,
 			SUGGEST_SUCCESS: (channel) => `${e.success} | Your suggestion is being voted on in ${channel} !`,
+			
 
 			/* INVITE COMMAND */
 

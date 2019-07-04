@@ -271,6 +271,27 @@ module.exports = class {
 			USERINFO_MORE_ROLES: (nb) => ` et ${nb} autres rôles`,
 			USERINFO_NO_NICKNAME: "Pas de surnom",
 
+			/* SERVERINFO COMMAND */
+
+			// Utils
+			SERVERINFO_DESCRIPTION: "Affiche des informations sur le serveur !",
+			SERVERINFO_USAGE: "serverinfo [ID/Nom]",
+			SERVERINFO_EXAMPLES: "$serverinfo Atlanta\n$serverinfo",
+			// Content
+			// Headings
+			SERVERINFO_HEADINGS:[
+				`${e.title} Nom`,
+				`${e.calendar} Création`,
+				`${e.users} Membres`,
+				`${e.channels} Salons`,
+				`${e.afk} Salon AFK`,
+				`${e.id} ID`,
+				`${e.crown} Fondateur`
+			],
+			SERVERINFO_MEMBERCOUNT: (members) => `${members.filter((m) => !m.user.bot).size} membres | ${members.filter((m) => m.user.bot).size} bots`,
+			SERVERINFO_NO_AFK: "Aucun salon AFK",
+			SERVERINFO_CHANNELS: (channels) => `${channels.filter((ch) => ch.type === "voice").size} vocaux | ${channels.filter((ch) => ch.type === "text").size} textuels | ${channels.filter((ch) => ch.type === "category").size} catégories`,
+
 			/* SUGGEST COMMAND */
 
 			// Utils
