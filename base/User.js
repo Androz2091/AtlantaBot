@@ -18,6 +18,7 @@ module.exports = mongoose.model("User", new mongoose.Schema({
         commands: 0
     }},
     afk: { type: String, default: null },
+    reminds: { type: Array, default: [] },
     cooldowns: {
         work: 0,
         rep: 0

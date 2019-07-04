@@ -224,6 +224,22 @@ module.exports = class {
 			AFK_DELETED: (user) => `${e.warn} | Votre AFK vient d'être supprimé !`,
 			AFK_MEMBER: (user, reason) => `${e.warn} | **${user.tag}** est actuellement AFK pour :\n\`\`\`${reason}\`\`\``,
 
+			/* REMINDME COMMAND */
+
+			// Utils
+			REMINDME_DESCRIPTION: "Définissez un rappel !",
+			REMINDME_USAGE: "remindme [raison]",
+			REMINDME_EXAMPLES: "$remindme 24h Commande de work\n$remindme 3m Sortir les pâtes de la casserole !",
+			// Errors
+			REMINDME_ERR_MESSAGE: `${e.error} | Vous devez entrer un message qui vous sera envoyé à la fin du temps !`,
+			// Content
+			REMINDME_SAVED: `${e.success} | Rappel correctement enregistré, vous recevrez un message à la fin du temps !`,
+			REMINDME_TITLE: "Rappel Atlanta",
+			REMINDME_FIELDS: [
+				"Créé il y a",
+				"Message"
+			],
+
 			/* USERINFO COMMAND */
 
 			// Utils
