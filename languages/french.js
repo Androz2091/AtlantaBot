@@ -192,6 +192,24 @@ module.exports = class {
 			QUOTE_ERR_NOT_FOUND: `${e.error} | Aucun message ne possède cet ID.`,
 			QUOTE_ERR_NOT_FOUND_CHANNEL: (channel) => `${e.error} | Aucun salon trouvé avec l'ID ${channel} !`,
 
+			/* INVITATIONS COMMAND */
+
+			// Utils
+			INVITATIONS_DESCRIPTION: "Affiche le nombre de personnes que vous avez invitées sur le serveur !",
+			INVITATIONS_USAGE: "invitations (@membre)",
+			INVITATIONS_EXAMPLES: "$invitations\n$invitations @Androz#2091",
+			// Errors
+			INVITATIONS_ERR_NO_INVITE: (member) => `${e.error} | ${member ? member.user.username + " n'a" : "Vous n'avez"} invité personne sur le serveur !`,
+			// Content
+			INVITATIONS_CODE: (invite) => `**${invite.code}** (${invite.uses} utilisations) | ${invite.channel}`,
+			// Headings
+			INVITATIONS_TITLE: (member, msg) => `Informations sur les invitations de ${member} sur ${msg.guild.name}`,
+			INVITATIONS_FIELDS: (total) => [
+				"👥 Personnes Invitées",
+				"🔑 Codes",
+				`${total} membres`
+			],
+
 			/* USERINFO COMMAND */
 
 			// Utils
