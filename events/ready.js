@@ -20,8 +20,25 @@ module.exports = class {
         // Post DBL stats
         if(client.config.apiKeys.dbl && client.config.apiKeys.dbl !== ""){
             let DBL = require("dblapi.js");
-            let dbl = new DBL(client.config.apiKeys.dbl, client);
-            dbl.postStats(client.guilds.size);
+            let stats = new DBL(client.config.apiKeys.dbl, client);
+            setInterval(function(){
+                stats.postStats(client.guilds.size);
+            }, 60000*10);
+            let dbl = new DBL(client.config.apiKeys.dbl, { webhookPort: client.config.votes.port, webhookAuth: client.config.votes.password });
+            dbl.webhook.on("vote", async (vote) => {
+                let dUser = await client.users.fetch(vote.user);
+                let userData = await client.usersData.findOne({id:vote.user});
+                if(userData){
+                    userData.money = userData.money + 40;
+                    userData.save();
+                }
+                let language = new(require(`../languages/${client.config.defaultLanguage}`));
+                dUser.send(language.get("VOTE_THANKS", dUser)).catch((err) => {});
+                let logsChannel = client.channels.get(client.config.votes.channel);
+                if(logsChannel){
+                    logsChannel.send(language.get("VOTE_LOGS", dUser));
+                }
+            });
         }
 
         // Update the game every 20s
@@ -68,20 +85,33 @@ module.exports = class {
             });
         }, 2500);
 
-        /* Remind me
-        setInterval(function(){
-            var time = Math.floor(Date.now()/1000);
-            time = String(time);
-            var cm = client.databases[3].get(time);
-            if(cm){
-                cm.forEach(remind => {
-                    var language = new(require('../languages/'+client.config.default_language+'.js'));
-                    var author = remind.author;
-                    var ago = language.convertMs(Date.now() - remind.registeredAt);
-                    var msg = new Discord.RichEmbed().setAuthor('Atlanta Reminder', client.user.displayAvatarURL).addField('Enrolled', ago+' ago').addField('Message', remind.msg).setColor(client.config.embed.color).setFooter(client.config.embed.footer).setTimestamp();
-                    client.fetchUser(author).then(user => user.send(msg));
-                });
-            }
-        }, 1000);*/
+        setInterval(async function(){
+            let language = new(require(`../languages/${client.config.defaultLanguage}`));
+            let users = await client.usersData.find({});
+            let dateNow = Date.now();
+            users.forEach((user) => {
+                let dUser = client.users.get(user.id);
+                if(dUser){
+                    let reminds = user.reminds;
+                    if(reminds.length > 0){
+                        let mustSent = reminds.filter((r) => r.sendAt < dateNow);
+                        if(mustSent.length > 0){
+                            mustSent.forEach((r) => {
+                                let embed = new Discord.MessageEmbed()
+                                    .setAuthor(language.get("REMINDME_TITLE"))
+                                    .addField(language.get("REMINDME_FIELDS")[0], language.convertMs(dateNow - r.createdAt))
+                                    .addField(language.get("REMINDME_FIELDS")[1], r.message)
+                                    .setColor(client.config.embed.color)
+                                    .setFooter(client.config.embed.footer);
+                                dUser.send(embed);
+                            });
+                        }
+                        let u = users.find((u) => u.id === user.id);
+                        u.reminds = u.reminds.filter((r) => r.sendAt >= dateNow);
+                        u.save();
+                    }
+                }
+            });
+        }, 3000);
     }
 }  
