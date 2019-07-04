@@ -14,10 +14,10 @@ module.exports = mongoose.model("User", new mongoose.Schema({
     stats: { type: Object, default: { // Game stats for the user
         slots: 0,
         findwords: 0,
-        number: 0
+        number: 0,
+        commands: 0
     }},
     afk: { type: String, default: null },
-    slowmode: { type: Object },
     cooldowns: {
         work: 0,
         rep: 0
