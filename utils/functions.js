@@ -85,10 +85,12 @@ module.exports = {
         return new Promise(async function(resolve, reject) {
             let guild = client.guilds.get(client.config.support.id);
             let member = guild.me;
-            let channel = guild.channels.find((ch) => ch.permissionsFor(member).has("CREATE_INVITE"));
+            let channel = guild.channels.find((ch) => ch.permissionsFor(member.id).has("CREATE_INSTANT_INVITE"));
             if(channel){
                 let invite = await channel.createInvite({maxAge :0});
                 resolve(invite.url);
+            } else {
+                resolve("https://atlanta-bot.fr");
             }
         });
     },
