@@ -23,31 +23,6 @@ class Profile extends Command {
 
     async run (message, args, data) {
 
-        let _userData = message.client.databases[0].get(message.author.id);
-
-        if(args[0] === "migrate"){
-            if(!_userData){
-                return message.react("❌");
-            }
-            let credits = _userData.credits;
-            let rep = _userData.rep;
-            let level = _userData.level;
-            let xp = _userData.xp;
-            let badges = _userData.badges;
-            data.users[0].money = data.users[0].money + credits;
-            data.users[0].rep = data.users[0].rep + rep;
-            data.users[0].level = data.users[0].rep + rep;
-            data.users[0].exp = data.users[0].exp + xp;
-            badges.forEach((badge) => {
-                badge.emoji = badge.str;
-                delete badge.str;
-                data.users[0].badges.push(badge);
-            });
-            data.users[0].save();
-            message.client.databases[0].delete(message.author.id);
-            return message.react("✅");
-        }
-
         // Gets the user whose profile you want to display
         let user = (message.mentions.users.size > 0 ? message.mentions.users.first() : message.author);
 
@@ -81,8 +56,7 @@ class Profile extends Command {
             .setFooter(data.config.embed.footer) // Sets the footer of the embed
             .setTimestamp();
 
-        let text = (_userData ? "Use `"+data.settings.prefix+"profile migrate` to migrate your old profile" : "");
-        message.channel.send(text, profileEmbed); // Send the embed in the current channel
+        message.channel.send(profileEmbed); // Send the embed in the current channel
     }
 
 }
