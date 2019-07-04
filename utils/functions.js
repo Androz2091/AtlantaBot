@@ -80,24 +80,15 @@ module.exports = {
         });
     },
 
-
-    vote: async function(data, client){
-        var user = await client.fetchUser(data.user);
-        client.channels.get(client.config.server.votes.channel).send(`:arrow_up: **${user.tag}** \`(${user.id})\` voted for **Atlanta**, thanks !\nhttps://discordbots.org/bot/557445719892688897/vote`);
-        client.databases[0].add(`${data.user}.credits`, 30);
-        user.send(`Hello ${user}, thanks for voting !\nYour reward : 30 :credit_card:`);
-    },
-
     // This function return a valid link to the support server
     supportLink: async function(client){
-        return new Promise(function(resolve, reject) {
-            var guild = client.guilds.get(client.config.support.id);
-            var channel = guild.channels.filter(ch => ch.type === 'text').first();
+        return new Promise(async function(resolve, reject) {
+            let guild = client.guilds.get(client.config.support.id);
+            let member = guild.me;
+            let channel = guild.channels.find((ch) => ch.permissionsFor(member).has("CREATE_INVITE"));
             if(channel){
-                var options = {maxAge:0};
-                channel.createInvite(options).then(i => {
-                    resolve(i.url);
-                });
+                let invite = await channel.createInvite({maxAge :0});
+                resolve(invite.url);
             }
         });
     },
@@ -131,15 +122,5 @@ module.exports = {
     // This function return a random number between min and max
     randomNum : function(min, max) {
         return Math.floor(Math.random() * (max - min)) + min;
-    },
-
-    // this function reset a guild
-    clearGuild: async function(guild) {
-        guild.roles.forEach(r => r.delete().catch(O_o=>{}));
-        guild.channels.forEach(c => c.delete().catch(O_o=>{}));
-        guild.emojis.forEach(e => guild.deleteEmoji(e).catch(O_o=>{}));
-        var bans = await guild.fetchBans();
-        bans.forEach(u => guild.unban(u).catch(O_o=>{}));
-        return true;
     }
 }
