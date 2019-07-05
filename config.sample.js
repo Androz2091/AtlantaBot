@@ -23,13 +23,14 @@ module.exports = {
 	votes: {
 		port: 5000, // The port for the server
 		password: "XXXXXXXXXXX", // The webhook auth that you have defined on discordbots.org
-		channel: "XXXXXXXXXXX", // The ID of the channel that in you want the votes logs
-		dblToken: "XXXXXXXXXXX" // DBL: https://discordbots.org/api/docs#mybots
+		channel: "XXXXXXXXXXX" // The ID of the channel that in you want the votes logs
 	},
 	/* The API keys that are required for certain commands */
 	apiKeys: {
 		// FORTNITE: https://fortnitetracker.com/site-api 
 		fortnite: "XXXXXXXXXXX",
+		// DBL: https://discordbots.org/api/docs#mybots
+		dbl: "XXXXXXXXXXX",
 		// SIMPLE_YOUTUBE_API: https://console.developers.google.com/
 		simple_youtube_api: "XXXXXXXXXXX",
 		// YANDEX: https://passport.yandex.com/auth?retpath=https://tech.yandex.com/translate/
