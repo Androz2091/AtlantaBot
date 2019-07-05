@@ -6,6 +6,7 @@ module.exports = {
 		id: "XXXXXXXXXXX", // The ID of the support server
 		logs: "XXXXXXXXXXX", // And the ID of the logs channel of your server (new servers for example)
 	},
+	mongoDB: "mongodb://localhost:27017/AtlantaBot", // The URl of the mongodb database
 	prefix: "*", // The default prefix for the bot
 	/* For the embeds (embeded messages) */
 	embed: {

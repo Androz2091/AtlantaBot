@@ -5,17 +5,7 @@ const util = require("util"),
 fs = require("fs"),
 path = require("path"),
 readdir = util.promisify(fs.readdir),
-Quickdb = require("quick.db");
-Quickdb.init("./data/atlanta.sqlite"),
 mongoose = require("mongoose");
-
-// connect to mongoose database
-mongoose.connect("mongodb://localhost:27017/AtlantaBot", { useNewUrlParser: true }, (err) => {
-    if(err){
-        return console.error(err);
-    }
-    console.log("Connected to MongoDB Database");
-});
 
 // Creates new class
 class Atlanta extends Client {
@@ -102,6 +92,13 @@ const init = async () => {
     });
     
     client.login(client.config.token); // Log in to the discord api
+
+    // connect to mongoose database
+    mongoose.connect(client.config.mongoDB, { useNewUrlParser: true }).then(() => {
+        client.logger.log("Connected to the Mongodb database.", "log");
+    }).catch((err) => {
+        client.logger.log("Unable to connect to the Mongodb database. Error:"+err, "error");
+    });
 
 };
 
