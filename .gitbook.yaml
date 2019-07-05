@@ -1,6 +1,6 @@
 root: ./
-title: 'Atlanta',
+title: 'Atlanta'
 description: 'Atlanta is a powerful Discord bot made with NodeJs with a lot of commands!'
 structure:
-  readme: ./README.md
-  summary: ./docs/SUMMARY.md
+    readme: ./README.md
+    summary: ./docs/SUMMARY.md
