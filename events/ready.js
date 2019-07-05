@@ -13,9 +13,6 @@ module.exports = class {
         // Logs some informations using the logger file
         client.logger.log(`Loading a total of ${client.commands.size} command(s).`, 'log');
         client.logger.log(`${client.user.tag}, ready to serve ${client.users.size} users in ${client.guilds.size} servers.`, "ready");
-        
-        // Inits the dashboard
-        client.dashboard.init(client);
 
         // Post DBL stats
         if(client.config.apiKeys.dbl && client.config.apiKeys.dbl !== ""){
