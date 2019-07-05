@@ -23,24 +23,13 @@ module.exports = {
 	votes: {
 		port: 5000, // The port for the server
 		password: "XXXXXXXXXXX", // The webhook auth that you have defined on discordbots.org
-		channel: "XXXXXXXXXXX" // The ID of the channel that in you want the votes logs
-	},
-	/* For the express server (dashboard and votes) */
-	server: {
-		port: 8080, // The port of the dashboard
-		sessionPassword: "XXXXXXXXXXX", // The password for the express session
-		/* Oauth2 Dashboard */
-		oauth2: {
-			secret: "XXXXXXXXXXX", // The client secret that can be find on your bot's management page
-			websiteURL: "https://dashboard.atlanta-bot.fr" // And the website URL for the dashboard
-		}
+		channel: "XXXXXXXXXXX", // The ID of the channel that in you want the votes logs
+		dblToken: "XXXXXXXXXXX" // DBL: https://discordbots.org/api/docs#mybots
 	},
 	/* The API keys that are required for certain commands */
 	apiKeys: {
 		// FORTNITE: https://fortnitetracker.com/site-api 
 		fortnite: "XXXXXXXXXXX",
-		// DBL: https://discordbots.org/api/docs#mybots
-		dbl: "XXXXXXXXXXX",
 		// SIMPLE_YOUTUBE_API: https://console.developers.google.com/
 		simple_youtube_api: "XXXXXXXXXXX",
 		// YANDEX: https://passport.yandex.com/auth?retpath=https://tech.yandex.com/translate/
