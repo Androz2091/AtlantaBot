@@ -28,19 +28,6 @@ class Atlanta extends Client {
         this.logger = require("./utils/logger.js"); // Load the logger file
         this.wait = util.promisify(setTimeout); // client.wait(1000) - Wait 1 second
         this.functions = require("./utils/functions.js"); // Load the functions file
-        this.dashboard = require("./website/dashboard/app.js"); // Load the dashboard
-        this.databases = [ // Create tables (quick.db)
-            new Quickdb.Table("usersdata"),
-            new Quickdb.Table("serversdata"),
-            { 
-                work: new Quickdb.Table("work"), 
-                rep: new Quickdb.Table("rep"),
-                xp: new Quickdb.Table("xp")
-            },
-            new Quickdb.Table("remindme"),
-            new Quickdb.Table("stats"),
-            new Quickdb.Table("blacklist")
-        ],
         this.guildsData = require("./base/Guild.js"),
         this.usersData = require("./base/User.js"),
         this.queues = new Collection(); // This collection will be used for the music
