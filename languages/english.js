@@ -305,6 +305,13 @@ module.exports = class {
 			// Content
 			UNBAN_SUCCESS: (user, msg) => `${e.success} | **${user.username}** has just been unbanned from **${msg.guild.name}** !`,
 			
+			/* EVAL COMMAND */
+
+			// Utils
+			EVAL_DESCRIPTION: "Executes the code",
+			EVAL_USAGE: "eval [code]",
+			EVAL_EXAMPLES: "$eval message.channel.send('Hey');",
+
 
 			/* SUGGEST COMMAND */
 
