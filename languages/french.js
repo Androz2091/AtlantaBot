@@ -311,6 +311,15 @@ module.exports = class {
 			EVAL_USAGE: "eval [code]",
 			EVAL_EXAMPLES: "$eval message.channel.send('Coucou');",
 
+			/* GETINVITE COMMAND */
+
+			// Utils
+			GETINVITE_DESCRIPTION: "Génère une invitation vers le serveur en question. Veillez à faire bon usage de cette commande.",
+			GETINVITE_USAGE: "getinvite [ID/Nom]",
+			GETINVITE_EXAMPLES: "$getinvite Atlanta\n$getinvite 565048515357835264",
+			// Errors
+			GETINVITE_ERR_NO_GUILD: (search) => `${e.error} | Aucun serveur trouvé (recherche: ${search})`,
+
 			/* SUGGEST COMMAND */
 
 			// Utils
