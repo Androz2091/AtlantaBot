@@ -110,5 +110,38 @@ module.exports = class {
                 }
             });
         }, 3000);
+
+        /* AUTO UPDATE DOCS */
+
+        let table = require("markdown-table");
+        let language = new(require("../../languages/"+client.config.defaultLanguage+".js"));
+        let commands = message.client.commands;
+        let categories = [];
+        commands.forEach((cmd) => {
+            if(!categories.includes(cmd.help.category)){
+                categories.push(cmd.help.category);
+            }
+        });
+        let text = "# Commands | Total of "+commands.size+" commands\n\n";
+
+        categories.forEach((cat) => {
+            let arrCat = [
+                [ "Name", "Description", "Usage", "Cooldown" ]
+            ];
+            let cmds = commands.filter((cmd) => cmd.help.category === cat);
+            text += `## ${cat} (${cmds.size} commands)\n\n`;
+            cmds.forEach((cmd) => {
+                arrCat.push([
+                    cmd.help.name,
+                    cmd.help.description(language),
+                    cmd.help.usage(language),
+                    Math.ceil(cmd.conf.cooldown/1000)+" seconds"
+                ]);
+            });
+            text += `${table(c)}\n\n`;
+        });
+        let fs = require("fs");
+        fs.writeFileSync("../docs/commands.md", text);
+
     }
 }  
