@@ -42,7 +42,7 @@ class Purge extends Command {
         })
         .then(async () => {
             await message.guild.members.prune({
-                days: days,
+                days,
                 dry: false
             }).catch((err) => {
                 return message.channel.send(message.language.get("ERR_OCCURENCED"));
