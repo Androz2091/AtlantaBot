@@ -504,6 +504,12 @@ module.exports = class {
 			GETCONF_ERR_ID: `${e.error} | Please enter a valid ID!`,
 			GETCONF_ERR_GUILD_NOT_FOUND: `${e.error} | No server found!`,
 
+			/* SERVERSLIST COMMAND */
+
+			SERVERSLIST_DESCRIPTION: "Displays the list of the servers of the bot!",
+			SERVERSLIST_USAGE: "servers-list",
+			SERVERSLIST_EXAMPLES: "$servers-list",
+
 			/* TWEET COMMAND */
 
 			// Utils

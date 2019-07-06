@@ -476,6 +476,12 @@ module.exports = class {
 			GETCONF_ERR_ID: `${e.error} | Veuillez entrer une ID valide !`,
 			GETCONF_ERR_GUILD_NOT_FOUND: `${e.error} | Aucun serveur trouvé!`,
 
+			/* SERVERSLIST COMMAND */
+
+			SERVERSLIST_DESCRIPTION: "Affiche la liste des serveurs du bot !",
+			SERVERSLIST_USAGE: "servers-list",
+			SERVERSLIST_EXAMPLES: "$servers-list",
+
 			/* BACKUP COMMAND */
 
 			// Utils
