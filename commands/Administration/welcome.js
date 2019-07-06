@@ -25,7 +25,7 @@ class Welcome extends Command {
 
         if(args[0] === "test"){
             message.client.emit("guildMemberAdd", message.member);
-            return message.channel.send(message.language.get("WELCOME_TEST_SUCCESS"))
+            return message.channel.send(message.language.get("WELCOME_TEST_SUCCESS"));
         }
 
         if(data.settings.plugins.welcome.enabled){
@@ -53,7 +53,7 @@ class Welcome extends Command {
         collector.on("collect", async (msg) => {
 
             if(welcome.message){
-                if(msg.content.toLowerCase() == message.language.get("UTILS").YES.toLowerCase()){
+                if(msg.content.toLowerCase() === message.language.get("UTILS").YES.toLowerCase()){
                     welcome.withImage = true;
                     message.channel.send(message.language.get("WELCOME_FORM_SUCCESS", welcome.channel, data.settings.prefix));
                     data.settings.plugins.welcome = welcome;
@@ -61,7 +61,7 @@ class Welcome extends Command {
                     await data.settings.save();
                     return collector.stop();
                 }
-                if(msg.content.toLowerCase() == message.language.get("UTILS").NO.toLowerCase()){
+                if(msg.content.toLowerCase() === message.language.get("UTILS").NO.toLowerCase()){
                     welcome.withImage = false;
                     message.channel.send(message.language.get("WELCOME_FORM_SUCCESS", welcome.channel, data.settings.prefix));
                     data.settings.plugins.welcome = welcome;
