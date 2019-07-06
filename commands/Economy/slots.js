@@ -42,7 +42,7 @@ class Slots extends Command {
         }
         amount = Math.round(amount);
         
-        async function end(){
+        async function end(tmsg){
 
             let msg = "[  :slot_machine: | **SLOTS** ]\n------------------\n";
         
@@ -89,7 +89,7 @@ class Slots extends Command {
             return;
         
         }
-        function editMsg(){
+        function editMsg(tmsg){
         
             let msg = "[  :slot_machine: l SLOTS ]\n------------------\n";
         
@@ -119,13 +119,13 @@ class Slots extends Command {
             }
             return Math.round(number);
         }
-        
+
         let tmsg = await message.channel.send(message.language.get("UTILS").PLEASE_WAIT);
         editMsg();
-        let interval = setInterval(editMsg, 1000);
+        let interval = setInterval(editMsg, 1000, tmsg);
         setTimeout(() => {
             clearInterval(interval);
-            end();
+            end(tmsg);
         }, 4000);
     }
 
