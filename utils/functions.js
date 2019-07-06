@@ -81,7 +81,7 @@ module.exports = {
     },
 
     // This function return a valid link to the support server
-    supportLink: async function(client){
+    async supportLink(client){
         return new Promise(async function(resolve, reject) {
             let guild = client.guilds.get(client.config.support.id);
             let member = guild.me;
@@ -96,7 +96,7 @@ module.exports = {
     },
 
     // This function sort an array 
-    sortByKey: function(array, key) {
+    sortByKey(array, key) {
         return array.sort(function(a, b) {
             var x = a[key]; var y = b[key];
             return ((x < y) ? 1 : ((x > y) ? -1 : 0));
@@ -104,7 +104,7 @@ module.exports = {
     },
 
     // This function return a shuffled array
-    shuffle: function(pArray) {
+    shuffle(pArray) {
         var array = [];
         pArray.forEach(element => array.push(element));
         var currentIndex = array.length, temporaryValue, randomIndex;
@@ -122,7 +122,7 @@ module.exports = {
     },
 
     // This function return a random number between min and max
-    randomNum : function(min, max) {
+    randomNum(min, max) {
         return Math.floor(Math.random() * (max - min)) + min;
     }
-}
+};
