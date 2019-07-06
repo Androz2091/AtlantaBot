@@ -469,7 +469,7 @@ module.exports = class {
 			/* GETCONF COMMAND */
 
 			// Utils
-			GETCONF_DESCRIPTION: "Affiche la configuration d'un serveur [OWNER-ONLY]",
+			GETCONF_DESCRIPTION: "Affiche la configuration d'un serveur",
 			GETCONF_USAGE: "getconf [serveur ID]",
 			GETCONF_EXAMPLES: "$getconf 565048515357835264",
 			// Errors
