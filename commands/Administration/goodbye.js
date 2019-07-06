@@ -25,7 +25,7 @@ class Goodbye extends Command {
 
         if(args[0] === "test"){
             message.client.emit("guildMemberRemove", message.member);
-            return message.channel.send(message.language.get("GOODBYE_TEST_SUCCESS"))
+            return message.channel.send(message.language.get("GOODBYE_TEST_SUCCESS"));
         }
 
         if(data.settings.plugins.goodbye.enabled){
@@ -53,7 +53,7 @@ class Goodbye extends Command {
         collector.on("collect", async (msg) => {
 
             if(goodbye.message){
-                if(msg.content.toLowerCase() == message.language.get("UTILS").YES.toLowerCase()){
+                if(msg.content.toLowerCase() === message.language.get("UTILS").YES.toLowerCase()){
                     goodbye.withImage = true;
                     message.channel.send(message.language.get("GOODBYE_FORM_SUCCESS", goodbye.channel, data.settings.prefix));
                     data.settings.plugins.goodbye = goodbye;
@@ -61,7 +61,7 @@ class Goodbye extends Command {
                     await data.settings.save();
                     return collector.stop();
                 }
-                if(msg.content.toLowerCase() == message.language.get("UTILS").NO.toLowerCase()){
+                if(msg.content.toLowerCase() === message.language.get("UTILS").NO.toLowerCase()){
                     goodbye.withImage = false;
                     message.channel.send(message.language.get("GOODBYE_FORM_SUCCESS", goodbye.channel, data.settings.prefix));
                     data.settings.plugins.goodbye = goodbye;
