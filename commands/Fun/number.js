@@ -59,7 +59,9 @@ class Number extends Command {
             }
         
             // if it's not a number, return
-            if(isNaN(msg.content)) return;
+            if(isNaN(msg.content)){
+                return;
+            }
     
             if(parseInt(msg.content) === number){
                 let time = message.language.convertMs(Date.now() - createdAt);
