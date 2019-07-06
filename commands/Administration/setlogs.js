@@ -23,7 +23,7 @@ class Setlogs extends Command {
 
     async run (message, args, data) {
         
-        let channel = message.mentions.channels.first() || message.channel;
+        let channel = message.mentions.channels.first() || message.channel;
         data.settings.plugins.modlogs = channel.id;
         data.settings.markModified("plugins.modlogs");
         data.settings.save();
