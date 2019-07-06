@@ -67,4 +67,4 @@ async function play (client, message, song, data) {
 module.exports = {
     handleVideo,
     play
-}
+};
