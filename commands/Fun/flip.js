@@ -1,5 +1,5 @@
 const Command = require("../../base/Command.js"),
-Discord = require('discord.js');
+Discord = require("discord.js");
 
 class Flip extends Command {
 
