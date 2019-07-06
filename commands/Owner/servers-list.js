@@ -1,22 +1,23 @@
 const Command = require("../../base/Command.js"),
-Discord = require('discord.js');
+Discord = require("discord.js");
 
 class ServersList extends Command {
 
     constructor (client) {
         super(client, {
             name: "servers-list",
-            description: (language) => language.get('SERVERS_LIST_DESCRIPTION'),
+            description: (language) => language.get("SERVERSLIST_DESCRIPTION"),
+            usage: (language) => language.get("SERVERSLIST_USAGE"),
+            examples: (language) => language.get("SERVERSLIST_EXAMPLES"),
             dirname: __dirname,
-            usage: "servers-list",
             enabled: true,
             guildOnly: false,
-            aliases: [],
-            permission: false,
-            botpermissions: [ "SEND_MESSAGES", "EMBED_LINKS" ],
+            aliases: [ "slist" ],
+            memberPermissions: [],
+            botPermissions: [ "SEND_MESSAGES", "EMBED_LINKS" ],
             nsfw: false,
-            examples: "$servers-list",
-            owner: false
+            ownerOnly: true,
+            cooldown: 5000
         });
     }
 
