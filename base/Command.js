@@ -1,9 +1,9 @@
 module.exports = class Command {
     constructor(client, {
       name = null,
-      description = (language) => languages.get("NO_DESCRIPTION_PROVIDED"),
-      usage = (language) => languages.get("NO_USAGE_PROVIDED"),
-      examples = (language) => languages.get("NO_EXAMPLES_PROVIDED"),
+      description = (language) => language.get("NO_DESCRIPTION_PROVIDED"),
+      usage = (language) => language.get("NO_USAGE_PROVIDED"),
+      examples = (language) => language.get("NO_EXAMPLE_PROVIDED"),
       dirname = false,
       enabled = true,
       guildOnly = false,

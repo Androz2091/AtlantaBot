@@ -43,6 +43,11 @@ module.exports = class {
 			VOTE_THANKS: (user) => `:arrow_up: Bonjour ${user.toString()}, merci de voter !\nVotre récompense : 40 crédits !`,
 			VOTE_LOGS: (user) => `:arrow_up: **${user.tag}** (\`${user.id}\`) a voté pour **Atlanta** et a gagné **40** crédits, merci !\nhttps://discordbots.org/bot/557445719892688897/vote`,
 
+			/* DEFAULT MESSAGES */
+			NO_DESCRIPTION_PROVIDED: "Aucune description donnée",
+			NO_USAGE_PROVIDED: "Aucune utilisation donnée",
+			NO_EXAMPLE_PROVIDED: "Aucun exemple donné",
+
 			// ERROR MESSAGES
 
 			ERR_COMMAND_DISABLED: `${e.error} | Cette commande est actuellement désactivée !`,
