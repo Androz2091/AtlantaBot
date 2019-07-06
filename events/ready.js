@@ -114,8 +114,8 @@ module.exports = class {
         /* AUTO UPDATE DOCS */
 
         let table = require("markdown-table");
-        let language = new(require("../../languages/"+client.config.defaultLanguage+".js"));
-        let commands = message.client.commands;
+        let language = new(require("../languages/"+client.config.defaultLanguage+".js"));
+        let commands = client.commands;
         let categories = [];
         commands.forEach((cmd) => {
             if(!categories.includes(cmd.help.category)){
@@ -138,10 +138,11 @@ module.exports = class {
                     Math.ceil(cmd.conf.cooldown/1000)+" seconds"
                 ]);
             });
-            text += `${table(c)}\n\n`;
+            text += `${table(arrCat)}\n\n`;
         });
         let fs = require("fs");
-        fs.writeFileSync("../docs/commands.md", text);
+        fs.writeFileSync("./docs/commands.md", text);
+        client.logger.log("Docs updated!");
 
     }
 }  
