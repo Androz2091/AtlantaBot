@@ -122,17 +122,22 @@ module.exports = class {
                 categories.push(cmd.help.category);
             }
         });
-        let text = "# Commands | Total of "+commands.size+" commands\n\n";
+        let text = 
+        `Here's the list of Atlanta commands. This one contains more than ${Math.round(commands.size/10)}0 orders in ${categories.length} categories!\n
+        **Name**: The name of the command
+        **Description**: A brief explanation of the purpose of the command
+        **Usage**: The arguments/options that the command takes in parameters
+        **Cooldown**: The time that must elapse between each command so that it can be executed again by the user\n\n`;
 
         categories.forEach((cat) => {
             let arrCat = [
                 [ "Name", "Description", "Usage", "Cooldown" ]
             ];
             let cmds = commands.filter((cmd) => cmd.help.category === cat);
-            text += `## ${cat} (${cmds.size} commands)\n\n`;
+            text += `### ${cat} (${cmds.size} commands)\n\n`;
             cmds.forEach((cmd) => {
                 arrCat.push([
-                    cmd.help.name,
+                    `**${cmd.help.name}**`,
                     cmd.help.description(language),
                     cmd.help.usage(language),
                     Math.ceil(cmd.conf.cooldown/1000)+" seconds"
