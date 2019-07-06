@@ -471,6 +471,32 @@ module.exports = class {
 			GETCONF_ERR_ID: `${e.error} | Veuillez entrer une ID valide !`,
 			GETCONF_ERR_GUILD_NOT_FOUND: `${e.error} | Aucun serveur trouvé!`,
 
+			/* BACKUP COMMAND */
+
+			// Utils
+			BACKUP_DESCRIPTION: "Gérez vos sauvegardes de serveur de manière ergonomique et efficace!",
+			BACKUP_USAGE: "backup [create/load/infos]",
+			BACKUP_EXAMPLES: "$backup create\n$backup load 92N1x\n$backup infos 92N1x",
+			// Errors
+			BACKUP_ERR_STATUS: `${e.error} | Vous devez préciser \`create\`, \`load\` ou \`infos\` !`,
+			BACKUP_ERR_NOT_FOUND: (backupID) => `${e.error} | Aucune sauvegarde trouvée pour \`${backupID}\``,
+			BACKUP_ERR_ID: `${e.error} | Veuillez entrer une ID de sauvegarde !`,
+			BACKUP_ERR_TIMEOUT: `${e.error} | Temps écoulé | Chargement de la sauvegarde annulé !`,
+			// Content
+			BACKUP_CREATE_SUCCESS: `${e.success} | Sauvegarde créée avec succès ! L'ID de la sauvegarde vous a été envoyée en messages privés !`,
+			BACKUP_CREATE_SUCCESS_ID: (backupID) => `${e.success} | Voici l'ID de votre sauvegarde : \`\`\`${backupID}\`\`\``,
+			BACKUP_CONFIRMATION: `${e.warn} | :warning: | Lorsque la sauvegarde sera chargée, tous les salons, rôles, etc... seront remplacés ! Tapez \`-confirm\` pour confirmer !`,
+			BACKUP_START_SAVING: `${e.success} | Démarrage du chargement de la sauvegarde !`,
+			BACKUP_LOAD_SUCCESS: `${e.success} | Sauvegarde chargée avec succès !`,
+			// Headings
+			BACKUP_HEADINGS: [
+				"Informations sur la sauvegarde",
+				"ID",
+				"ID du serveur",
+				"Taille",
+				"Créée le"
+			],
+
 			/* TWEET COMMAND */
 
 			// Utils

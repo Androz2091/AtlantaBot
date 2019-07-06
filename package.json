@@ -25,6 +25,7 @@
     "chalk": "^2.4.2",
     "cookie-parser": "^1.4.4",
     "dblapi.js": "^2.3.0",
+    "discord-backup": "^1.0.4",
     "discord.js": "github:discordjs/discord.js",
     "express": "^4.16.4",
     "express-session": "^1.16.1",

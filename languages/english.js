@@ -463,6 +463,32 @@ module.exports = class {
 			// Content
 			LOVECALC_CONTENT: (percent, username1, username2) => `There's **${percent}%** of love between **${username1}** and **${username2}** !`,
 
+			/* BACKUP COMMAND */
+
+			// Utils
+			BACKUP_DESCRIPTION: "Manage your server backups in an ergonomic and efficient way!",
+			BACKUP_USAGE: "backup [create/load/infos]",
+			BACKUP_EXAMPLES: "$backup create\n$backup load 92N1x\n$backup infos 92N1x",
+			// Errors
+			BACKUP_ERR_STATUS: `${e.error} | You must specify \`create\`, \`load\` or \`infos\`!`,
+			BACKUP_ERR_NOT_FOUND: (backupID) => `${e.error} | No backup found for \`${backupID}\``,
+			BACKUP_ERR_ID: `${e.error} | Please enter a backup ID!`,
+			BACKUP_ERR_TIMEOUT: `${e.error} | TTime's up! Cancelled backup loading!`,
+			// Content
+			BACKUP_CREATE_SUCCESS: `${e.success} | Successfully created backup! The backup ID has been sent to you in private messages!`,
+			BACKUP_CREATE_SUCCESS_ID: (backupID) => `${e.success} | Here is the ID of your backup: \`\`\`${backupID}\`\`\``,
+			BACKUP_CONFIRMATION: `${e.warn} | :warning: | When the backup is loaded, all the channels, roles, etc. will be replaced! Type \`-confirm\` to confirm!`,
+			BACKUP_START_SAVING: `${e.success} | Start loading the backup!`,
+			BACKUP_LOAD_SUCCESS: `${e.success} | Backup successfully loaded!`,
+			// Headings
+			BACKUP_HEADINGS: [
+				"Backup Informations",
+				"ID",
+				"Server ID",
+				"Size",
+				"Created At"
+			],
+
 			/* GETCONF COMMAND */
 
 			// Utils
