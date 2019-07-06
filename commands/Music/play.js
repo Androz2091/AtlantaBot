@@ -27,11 +27,11 @@ class Play extends Command {
 
     async run (message, args, data) {
 
-        if(!data.config.apiKeys.simple_youtube_api || data.config.apiKeys.simple_youtube_api.length == ""){
+        if(!data.config.apiKeys.simpleYoutube || data.config.apiKeys.simpleYoutube.length == ""){
             return message.channel.send(message.language.get("ERR_COMMAND_DISABLED"));
         }
 
-        const youtube = new Youtube(this.client.config.apiKeys.simple_youtube_api);
+        const youtube = new Youtube(this.client.config.apiKeys.simpleYoutube);
 
         let name = args.join(" ");
         if(!name){

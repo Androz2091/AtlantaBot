@@ -32,8 +32,8 @@ module.exports = {
 		fortnite: "XXXXXXXXXXX",
 		// DBL: https://discordbots.org/api/docs#mybots
 		dbl: "XXXXXXXXXXX",
-		// SIMPLE_YOUTUBE_API: https://console.developers.google.com/
-		simple_youtube_api: "XXXXXXXXXXX",
+		// SIMPLE YOUTUBE API: https://console.developers.google.com/
+		simpleYoutube: "XXXXXXXXXXX",
 		// YANDEX: https://passport.yandex.com/auth?retpath=https://tech.yandex.com/translate/
 		yandex: "XXXXXXXXXXX",
 		// ANIDIOTS: https://discord.gg/PgCR8Rg
