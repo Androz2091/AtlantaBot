@@ -24,7 +24,7 @@ class Purge extends Command {
     async run (message, args, data) {
 
         let days = args[0];
-        if(!days || isNaN(days)){
+        if(!days || isNaN(days)){
             return message.channel.send(message.language.get("PURGE_ERR_DAYS"));
         }
         days = parseInt(days, 10);
