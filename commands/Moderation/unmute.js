@@ -35,7 +35,7 @@ class Unmute extends Command {
             data.settings.save();
             message.channel.send(message.language.get("UNMUTE_SUCCESS_USER", member.user));
         } else {
-            message.channel.send(message.language.get("UNMUTE_ERR_NOT_MUTED"))
+            message.channel.send(message.language.get("UNMUTE_ERR_NOT_MUTED"));
         }
         
 
