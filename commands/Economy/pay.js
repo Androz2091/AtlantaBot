@@ -54,7 +54,7 @@ class Pay extends Command {
         data.users[1].save();
 
         // Send a success message
-        message.channel.send(message.language.get("PAY_SUCCESS", toPay, user.username))
+        message.channel.send(message.language.get("PAY_SUCCESS", toPay, user.username));
 
     }
 
