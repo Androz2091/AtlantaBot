@@ -24,7 +24,7 @@ class Translate extends Command {
 
     async run (message, args, data) {
 
-        if(!data.config.apiKeys.yandex || data.config.apiKeys.yandex.length == ""){
+        if(!data.config.apiKeys.yandex || data.config.apiKeys.yandex.length ==== ""){
             return message.channel.send(message.language.get("ERR_COMMAND_DISABLED"));
         }
         

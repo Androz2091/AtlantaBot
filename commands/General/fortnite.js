@@ -23,7 +23,7 @@ class Fortnite extends Command {
  
     async run (message, args, data) {
 
-        if(!data.config.apiKeys.fortnite || data.config.apiKeys.fortnite.length == ""){
+        if(!data.config.apiKeys.fortnite || data.config.apiKeys.fortnite.length === ""){
             return message.channel.send(message.language.get("ERR_COMMAND_DISABLED"));
         }
 
