@@ -43,7 +43,7 @@ class Warn extends Command {
             moderator: message.author,
             user: member.user,
             date: Date.now(),
-            reason: reason
+            reason
         };
 
         if(banCount){
