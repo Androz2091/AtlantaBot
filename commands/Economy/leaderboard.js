@@ -38,7 +38,7 @@ class Leaderboard extends Command {
         });
         
         let type = args[0];
-        if(!type || (type !== "credits" && type !== "rep" && type !== "levels")){
+        if(!type || (type !== "credits" && type !== "rep" && type !== "levels")){
             return message.channel.send(message.language.get("LEADERBOARD_ERR_TYPE"));
         }
 
@@ -47,19 +47,19 @@ class Leaderboard extends Command {
         let order = [];
 
         // Sort the array by money
-        if(args[0].toLowerCase() == "credits"){
+        if(args[0].toLowerCase() === "credits"){
             leaderboard = message.client.functions.sortByKey(leaderboard, "credits");
             table.setHeading("#", message.language.get("UTILS").USER, message.language.get("UTILS").CREDITS, message.language.get("UTILS").LEVEL, message.language.get("UTILS").REP);
             order.push("credits", "level", "rep");
         }
         // Sort the array by reputation
-        if(args[0].toLowerCase() == "rep"){
+        if(args[0].toLowerCase() === "rep"){
             leaderboard = message.client.functions.sortByKey(leaderboard, "rep");
             table.setHeading("#", message.language.get("UTILS").USER, message.language.get("UTILS").REP, message.language.get("UTILS").LEVEL, message.language.get("UTILS").CREDITS);
             order.push("rep", "level", "credits");
         }
         // Sort the array by level
-        if(args[0].toLowerCase() == "levels"){
+        if(args[0].toLowerCase() === "levels"){
             leaderboard = message.client.functions.sortByKey(leaderboard, "level");
             table.setHeading("#", message.language.get("UTILS").USER, message.language.get("UTILS").LEVEL, message.language.get("UTILS").REP, message.language.get("UTILS").CREDITS);
             order.push("level", "rep", "credits");
@@ -68,11 +68,7 @@ class Leaderboard extends Command {
         if(leaderboard.length > 20){
             leaderboard.length = 20;
         }
-            
-        fetchUsers(leaderboard, table, message.client).then((newTable) => {
-            message.channel.send("```"+newTable.toString()+"```");
-        });
-
+        
         async function fetchUsers(array, table, client) {
             return new Promise((resolve, reject) => {
                 let index = 0;
@@ -90,6 +86,10 @@ class Leaderboard extends Command {
                 resolve(table);
             });
         }
+
+        fetchUsers(leaderboard, table, message.client).then((newTable) => {
+            message.channel.send("```"+newTable.toString()+"```");
+        });
     }
 
 }
