@@ -403,7 +403,7 @@ module.exports = class {
 
 			// Utils
 			EIGHTBALL_DESCRIPTION: "Je vous dis la vérité !",
-			EIGHTBALL_USAGE: `${e.error} | Veuillez entrer une question valide !`,
+			EIGHTBALL_USAGE: "8ball [question]",
 			EIGHTBALL_EXAMPLES: "$8ball Est-ce qu'Atlanta est le meilleur bot Discord ?",
 			// Errors
 			EIGHTBALL_ERR_QUESTION: `${e.error} | Vous devez entrer une question à me poser !`,
