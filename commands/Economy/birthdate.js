@@ -40,7 +40,9 @@ class Birthdate extends Command {
             return message.channel.send(message.language.get("BIRTHDATE_ERR_INVALID_DATE_FORMAT"));
         }
         let tday = +match[0], tmonth = +match[1] - 1, tyear = +match[2];
-        if (tyear < 100) tyear += tyear < 50 ? 2000 : 1900;
+        if (tyear < 100){
+            tyear += tyear < 50 ? 2000 : 1900;
+        }
         let d = new Date(tyear, tmonth, tday);
         if(!(tday == d.getDate() && tmonth == d.getMonth() && tyear == d.getFullYear())){
             return message.channel.send(message.language.get("BIRTHDATE_ERR_INVALID_DATE_FORMAT"));
