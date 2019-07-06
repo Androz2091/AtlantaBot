@@ -25,7 +25,7 @@ class Lovecalc extends Command {
     async run (message, args, data) {
 
         let member1 = message.mentions.members.first();
-        let member2 = message.mentions.members.filter((m) => m.id !== member1.id).first() || message.member;
+        let member2 = message.mentions.members.filter((m) => m.id !== member1.id).first() || message.member;
         if(!member1 || !member2){
             return message.channel.send(message.language.get("LOVECALC_ERR_MENTIONS"));
         }
