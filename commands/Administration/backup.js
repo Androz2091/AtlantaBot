@@ -89,6 +89,8 @@ class Backup extends Command {
                 // if the backup wasn't found
                 return message.channel.send(message.language.get("BACKUP_ERR_NOT_FOUND", backupID));
             });
+        } else {
+            return message.channel.send(message.language.get("BACKUP_ERR_STATUS"));
         }
         
     }
