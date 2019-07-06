@@ -46,8 +46,8 @@ class Badge extends Command {
         }
 
         let embed = new Discord.MessageEmbed()
-            .setAuthor(message.language.get("BADGE_TITLE"))
-            .setDescription(message.language.get("BADGE_DESCRIPTION", data.settings.prefix))
+            .setAuthor(message.language.get("BADGE_EMBED_TITLE"))
+            .setDescription(message.language.get("BADGE_EMBED_DESCRIPTION", data.settings.prefix))
             .setColor(data.config.embed.color)
             .setFooter(data.config.embed.footer);
             

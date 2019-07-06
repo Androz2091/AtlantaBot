@@ -878,8 +878,8 @@ module.exports = class {
 			BADGE_USAGE: "badge (name-of-the-badge)",
 			BADGE_EXAMPLES: "badge\nbadge France",
 			// Content
-			BADGE_TITLE: `Badges ${c.botname}`,
-			BADGE_DESCRIPTION: (prefix) => `To buy a badge, type \`${prefix}badge [name-of-the-badge]\``,
+			BADGE_EMBED_TITLE: `Badges ${c.botname}`,
+			BADGE_EMBED_DESCRIPTION: (prefix) => `To buy a badge, type \`${prefix}badge [name-of-the-badge]\``,
 			BADGE_FORMAT: (badge) => `Badge: ${badge.emoji}\Name: ${badge.name}\Price: ${badge.price} credits\n--------\n`,
 			BADGE_FORMAT_BOUGHT: (badge) => `Badge: ${badge.emoji}\nName: ${badge.name}\nAlready purchased (${badge.price} credits)\n--------\n`,
 			BADGE_SUCCESS: (badge) => `${e.success} | You just bought the badge ${badge.name} (${badge.emoji}) for ${badge.price} credits!`,

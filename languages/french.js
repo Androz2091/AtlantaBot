@@ -803,8 +803,8 @@ module.exports = class {
 			BADGE_USAGE: "badge (nom-du-badge)",
 			BADGE_EXAMPLES: "badge\nbadge France",
 			// Content
-			BADGE_TITLE: `Badges ${c.botname}`,
-			BADGE_DESCRIPTION: (prefix) => `Pour acheter un badge, tapez \`${prefix}badge [nom-du-badge]\``,
+			BADGE_EMBED_TITLE: `Badges ${c.botname}`,
+			BADGE_EMBED_DESCRIPTION: (prefix) => `Pour acheter un badge, tapez \`${prefix}badge [nom-du-badge]\``,
 			BADGE_FORMAT: (badge) => `Badge : ${badge.emoji}\nNom : ${badge.name}\nPrix : ${badge.price} crédits\n--------\n`,
 			BADGE_FORMAT_BOUGHT: (badge) => `Badge : ${badge.emoji}\nNom : ${badge.name}\nDéjà acheté (${badge.price} crédits)\n--------\n`,
 			BADGE_SUCCESS: (badge) => `${e.success} | Vous venez d'acheter le badge ${badge.name} (${badge.emoji}) pour ${badge.price} crédits !`,
