@@ -127,7 +127,7 @@ class FindWords extends Command {
                 let mostFrequent;
                 for(let i = 0, len = array.length; i < len; i++){
                     let winner = array[i];
-                    if(counts[winner] === undefined){
+                    if(!counts[winner]){
                         counts[winner] = 1;
                     } else {
                         counts[winner] = counts[winner] + 1;
