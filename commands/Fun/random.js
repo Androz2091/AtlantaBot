@@ -32,13 +32,13 @@ class Random extends Command {
             return message.channel.send(message.language.get("RANDOM_ERR_BLANK"));
         }
 
-        message.channel.send(message.language.get("RANDOM_WAIT")).then((m) =>{
-            setTimeout(function(){
-                m.edit(message.language.get("RANDOM_CHOOSED"));
-                let result = answers[parseInt(message.client.functions.randomNum(0, answers.length) ,10)];
-                message.channel.send("```"+result+"```");
-            }, 1500);
-        });
+        let m = await message.channel.send(message.language.get("RANDOM_WAIT"));
+        
+        setTimeout(function(){
+            m.edit(message.language.get("RANDOM_CHOOSED"));
+            let result = answers[parseInt(message.client.functions.randomNum(0, answers.length) ,10)];
+            message.channel.send("```"+result+"```");
+        }, 1500);
         
     }
 
