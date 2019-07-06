@@ -1,6 +1,84 @@
 const Command = require("../../base/Command.js"),
 Discord = require("discord.js");
 
+async function end(){
+
+    let msg = "[  :slot_machine: | **SLOTS** ]\n------------------\n";
+
+    i1 = (i1 < fruits.length - 1) ? i1 + 1 : 0;
+    i2 = (i2 < fruits.length - 1) ? i2 + 1 : 0;
+    i3 = (i3 < fruits.length - 1) ? i3 + 1 : 0;
+    j1 = (j1 < fruits.length - 1) ? j1 + 1 : 0;
+    j2 = (j2 < fruits.length - 1) ? j2 + 1 : 0;
+    j3 = (j3 < fruits.length - 1) ? j3 + 1 : 0;
+    k1 = (k1 < fruits.length - 1) ? k1 + 1 : 0;
+    k2 = (k2 < fruits.length - 1) ? k2 + 1 : 0;
+    k3 = (k3 < fruits.length - 1) ? k3 + 1 : 0;
+
+    msg += colonne1[i1] + " : " + colonne2[j1] + " : "+ colonne3[k1] + "\n";
+    msg += colonne1[i2] + " : " + colonne2[j2] + " : "+ colonne3[k2] + " **<**\n";
+    msg += colonne1[i3] + " : " + colonne2[j3] + " : "+ colonne3[k3] + "\n------------------\n";
+    
+    if((colonne1[i2] === colonne2[j2]) && (colonne2[j2] === colonne3[k2])){
+        msg += "| : : :  **"+message.language.get("UTILS").VICTORY.toUpperCase()+"**  : : : |";
+        tmsg.edit(msg);
+        let credits = getCredits(amount, true);
+        message.channel.send(message.language.get("SLOTS_VICTORY", "JACKPOT ! ", amount, credits, message.author.username));
+        let toAdd = credits - amount;
+        data.users[0].money = data.users[0].money + toAdd;
+        await data.users[0].save();
+        return;
+    }
+    
+    if(colonne1[i2] === colonne2[j2] || colonne2[j2] === colonne3[k2] || colonne1[i2] === colonne3[k2]){
+        msg += "| : : :  **"+message.language.get("UTILS").VICTORY.toUpperCase()+"**  : : : |";
+        tmsg.edit(msg);
+        let credits = getCredits(amount, false);
+        message.channel.send(message.language.get("SLOTS_VICTORY", "", amount, credits, message.author.username));
+        let toAdd = credits - amount;
+        data.users[0].money = data.users[0].money + toAdd;
+        await data.users[0].save();
+        return;
+    }
+    
+    msg += "| : : :  **"+message.language.get("UTILS").DEFEAT.toUpperCase()+"**  : : : |";
+    message.channel.send(message.language.get("SLOTS_DEFEAT", amount, message.author.username));
+    data.users[0].money = data.users[0].money - amount;
+    await data.users[0].save();
+    return;
+
+}
+function editMsg(){
+
+    let msg = "[  :slot_machine: l SLOTS ]\n------------------\n";
+
+    i1 = (i1 < fruits.length - 1) ? i1 + 1 : 0;
+    i2 = (i2 < fruits.length - 1) ? i2 + 1 : 0;
+    i3 = (i3 < fruits.length - 1) ? i3 + 1 : 0;
+    j1 = (j1 < fruits.length - 1) ? j1 + 1 : 0;
+    j2 = (j2 < fruits.length - 1) ? j2 + 1 : 0;
+    j3 = (j3 < fruits.length - 1) ? j3 + 1 : 0;
+    k1 = (k1 < fruits.length - 1) ? k1 + 1 : 0;
+    k2 = (k2 < fruits.length - 1) ? k2 + 1 : 0;
+    k3 = (k3 < fruits.length - 1) ? k3 + 1 : 0;
+
+    msg += colonne1[i1] + " : " + colonne2[j1] + " : "+ colonne3[k1] + "\n";
+    msg += colonne1[i2] + " : " + colonne2[j2] + " : "+ colonne3[k2] + " **<**\n";
+    msg += colonne1[i3] + " : " + colonne2[j3] + " : "+ colonne3[k3] + "\n";
+
+    tmsg.edit(msg);
+}
+
+function getCredits(number, isJackpot){
+    if(!isJackpot){
+        number = number*1.5;
+    }
+    if(isJackpot){
+        number = number*4;
+    }
+    return Math.round(number);
+}
+
 class Slots extends Command {
 
     constructor (client) {
@@ -49,85 +127,6 @@ class Slots extends Command {
             clearInterval(interval);
             end();
         }, 4000);
-
-
-        async function end(){
-
-            let msg = "[  :slot_machine: | **SLOTS** ]\n------------------\n";
-
-            i1 = (i1 < fruits.length - 1) ? i1 + 1 : 0;
-            i2 = (i2 < fruits.length - 1) ? i2 + 1 : 0;
-            i3 = (i3 < fruits.length - 1) ? i3 + 1 : 0;
-            j1 = (j1 < fruits.length - 1) ? j1 + 1 : 0;
-            j2 = (j2 < fruits.length - 1) ? j2 + 1 : 0;
-            j3 = (j3 < fruits.length - 1) ? j3 + 1 : 0;
-            k1 = (k1 < fruits.length - 1) ? k1 + 1 : 0;
-            k2 = (k2 < fruits.length - 1) ? k2 + 1 : 0;
-            k3 = (k3 < fruits.length - 1) ? k3 + 1 : 0;
-
-            msg += colonne1[i1] + " : " + colonne2[j1] + " : "+ colonne3[k1] + "\n";
-            msg += colonne1[i2] + " : " + colonne2[j2] + " : "+ colonne3[k2] + " **<**\n";
-            msg += colonne1[i3] + " : " + colonne2[j3] + " : "+ colonne3[k3] + "\n------------------\n";
-            
-            if((colonne1[i2] == colonne2[j2]) && (colonne2[j2] == colonne3[k2])){
-                msg += "| : : :  **"+message.language.get("UTILS").VICTORY.toUpperCase()+"**  : : : |";
-                tmsg.edit(msg);
-                let credits = getCredits(amount, true);
-                message.channel.send(message.language.get("SLOTS_VICTORY", "JACKPOT ! ", amount, credits, message.author.username));
-                let toAdd = credits - amount;
-                data.users[0].money = data.users[0].money + toAdd;
-                await data.users[0].save();
-                return;
-            }
-            
-            if(colonne1[i2] == colonne2[j2] || colonne2[j2] == colonne3[k2] || colonne1[i2] == colonne3[k2]){
-                msg += "| : : :  **"+message.language.get("UTILS").VICTORY.toUpperCase()+"**  : : : |";
-                tmsg.edit(msg);
-                let credits = getCredits(amount, false);
-                message.channel.send(message.language.get("SLOTS_VICTORY", "", amount, credits, message.author.username));
-                let toAdd = credits - amount;
-                data.users[0].money = data.users[0].money + toAdd;
-                await data.users[0].save();
-                return;
-            }
-            
-            msg += "| : : :  **"+message.language.get("UTILS").DEFEAT.toUpperCase()+"**  : : : |";
-            message.channel.send(message.language.get("SLOTS_DEFEAT", amount, message.author.username));
-            data.users[0].money = data.users[0].money - amount;
-            await data.users[0].save();
-            return;
-
-        }
-        function editMsg(){
-
-            let msg = "[  :slot_machine: l SLOTS ]\n------------------\n";
-
-            i1 = (i1 < fruits.length - 1) ? i1 + 1 : 0;
-            i2 = (i2 < fruits.length - 1) ? i2 + 1 : 0;
-            i3 = (i3 < fruits.length - 1) ? i3 + 1 : 0;
-            j1 = (j1 < fruits.length - 1) ? j1 + 1 : 0;
-            j2 = (j2 < fruits.length - 1) ? j2 + 1 : 0;
-            j3 = (j3 < fruits.length - 1) ? j3 + 1 : 0;
-            k1 = (k1 < fruits.length - 1) ? k1 + 1 : 0;
-            k2 = (k2 < fruits.length - 1) ? k2 + 1 : 0;
-            k3 = (k3 < fruits.length - 1) ? k3 + 1 : 0;
-
-            msg += colonne1[i1] + " : " + colonne2[j1] + " : "+ colonne3[k1] + "\n";
-            msg += colonne1[i2] + " : " + colonne2[j2] + " : "+ colonne3[k2] + " **<**\n";
-            msg += colonne1[i3] + " : " + colonne2[j3] + " : "+ colonne3[k3] + "\n";
-
-            tmsg.edit(msg);
-        }
-    
-        function getCredits(number, isJackpot){
-            if(!isJackpot){
-                number = number*1.5;
-            }
-            if(isJackpot){
-                number = number*4;
-            }
-            return Math.round(number);
-        }
     }
 
 }
