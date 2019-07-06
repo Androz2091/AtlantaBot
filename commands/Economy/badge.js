@@ -22,6 +22,19 @@ class Badge extends Command {
     }
 
     async run (message, args, data) {
+        
+        function searchBadge(badgeName){
+            let badge = null;
+            for(let type in badges){
+                let tBadges = badges[type];
+                tBadges.forEach((b) => {
+                    if(b.name.toLowerCase() === badgeName){
+                        badge = b;
+                    }
+                });
+            }
+            return badge;
+        }
 
         const badges = require("../../config.js").badges;
         let bought = data.users[0].badges;
@@ -65,18 +78,6 @@ class Badge extends Command {
        
         message.channel.send(embed);
 
-        function searchBadge(badgeName){
-            let badge = null;
-            for(let type in badges){
-                let tBadges = badges[type];
-                tBadges.forEach((b) => {
-                    if(b.name.toLowerCase() === badgeName){
-                        badge = b;
-                    }
-                });
-            }
-            return badge;
-        }
     }
 
 }
