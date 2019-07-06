@@ -1105,7 +1105,7 @@ module.exports = class {
 			ADDEMOTE_ERR_URL: `${e.error} | Veuillez indiquer l'url de l'émoji !`,
 			ADDEMOTE_ERROR: `${e.error} | L'URL vers l'image est invalide ou vous n'avez plus de place sur votre Discord !`,
 			// Content
-			ADDEMOTE_SUCCESS: (emote) => `${e.success} | Émoji ${emote.name} ajouté au serveur !`,
+			ADDEMOTE_SUCCESS: (emote) => `${e.success} | Émoji ${emote.name} ajouté au serveur ! Chaîne : \`${emote.toString()}\``,
 			
 			/* AUTOMOD COMMAND */
 
