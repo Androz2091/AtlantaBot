@@ -36,7 +36,7 @@ class Addemote extends Command {
         message.guild.emojis.create(url, name).then((emote) => {
             message.channel.send(message.language.get("ADDEMOTE_SUCCESS", emote));
         }).catch((err) => {
-            return message.channel.send(message.language.get("ADDEMOTE_ERR_OCCURENCED"));
+            return message.channel.send(message.language.get("ADDEMOTE_ERROR"));
         });
     }
 
