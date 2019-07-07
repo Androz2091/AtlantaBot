@@ -73,9 +73,9 @@ module.exports = {
 		search: "XXXXXXXXXXX",
 		desc: "XXXXXXXXXXX",
 		playlist: "XXXXXXXXXXX",
-		channels: "<:channels:568121595227406337>",
-		afk: "<:afk:568121945477087232>",
-		id: "<:id:568122139291680789>"
+		channels: "XXXXXXXXXXX",
+		afk: "XXXXXXXXXXX",
+		id: "XXXXXXXXXXX"
 	},
 	/* The others utils links */
 	others: {
