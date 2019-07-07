@@ -22,6 +22,7 @@
     "canvas": "^2.5.0",
     "chalk": "^2.4.2",
     "dblapi.js": "^2.3.0",
+    "deepl-scraper": "^1.0.8",
     "discord-backup": "^1.0.4",
     "discord.js": "github:discordjs/discord.js",
     "ffmpeg": "0.0.4",

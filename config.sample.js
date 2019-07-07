@@ -34,8 +34,6 @@ module.exports = {
 		dbl: "XXXXXXXXXXX",
 		// SIMPLE YOUTUBE API: https://console.developers.google.com/
 		simpleYoutube: "XXXXXXXXXXX",
-		// YANDEX: https://passport.yandex.com/auth?retpath=https://tech.yandex.com/translate/
-		yandex: "XXXXXXXXXXX",
 		// ANIDIOTS: https://discord.gg/PgCR8Rg
 		anidiots: "XXXXXXXXXXX"
 	},

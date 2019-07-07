@@ -1,6 +1,6 @@
 const Command = require("../../base/Command.js"),
 Discord = require("discord.js"),
-fetch = require("node-fetch");
+DeepL = require("deepl-scraper"); // Thanks to @Kaki87 :)
 
 class Translate extends Command {
 
@@ -23,17 +23,21 @@ class Translate extends Command {
     }
 
     async run (message, args, data) {
-
-        if(!data.config.apiKeys.yandex || data.config.apiKeys.yandex.length ==== ""){
-            return message.channel.send(message.language.get("ERR_COMMAND_DISABLED"));
-        }
+        
+        let langs = [
+            { name: "en", aliases: [ "english" ] },
+            { name: "de", aliases: [ "german" ] },
+            { name: "fr", aliases: [ "french" ] },
+            { name: "es", aliases: [ "spanish" ] },
+            { name: "pt", aliases: [ "portuguese" ] },
+            { name: "it", aliases: [ "italian" ] },
+            { name: "nl", aliases: [ "dutch" ] },
+            { name: "pl", aliases: [ "polish" ] },
+            { name: "ru", aliases: [ "russian" ] }
+        ];
         
         let pWait = await message.channel.send(message.language.get("UTILS").PLEASE_WAIT);
         
-        let langs = await fetch(`https://translate.yandex.net/api/v1.5/tr.json/getLangs?key=${data.config.apiKeys.yandex}`);
-        let langsJson = await langs.json();
-        langs = langsJson.dirs;
-
         if(!args[0]){
             return pWait.edit(message.language.get("TRANSLATE_ERR_LANG", data.settings.prefix));
         }
@@ -49,7 +53,7 @@ class Translate extends Command {
                     messages.push(current);
                     current = "";
                 }
-                current += `${index++} ${lang}\n`;
+                current += `${index++} ${lang.name} (${lang.aliases.map((lang) => lang).join(", ")})\n`;
             });
             messages.push(current += "\n```");
             messages.forEach((m) => {
@@ -66,19 +70,24 @@ class Translate extends Command {
         let language = args[0].toLowerCase();
         let toTranslate = args.slice(1).join(" ");
         
-        if(!langs.includes(language)){
+        if(!langs.find((lang) => lang.name === language)){
             return pWait.edit(message.language.get("TRANSLATE_LANG1", data.settings.prefix, language));
         }
+
+        let isAlias = langs.find((lang) => lang.aliases.includes(language));
+        if(isAlias){
+            language = isAlias.name;
+        }
         
-        let res = await fetch(`https://translate.yandex.net/api/v1.5/tr.json/translate?key=${data.config.apiKeys.yandex}&text=${toTranslate}&lang=${language}&format=plain`);
-        let resJson = await res.json();
+        let translated = await DeepL.translate(toTranslate, null, language);
 
         let resEmbed = new Discord.MessageEmbed()
             .setAuthor("Translator", message.client.user.displayAvatarURL)
-            .addField(language.split("-")[0], "```"+toTranslate+"```")
+            .addField(langs.find((lang) => lang.name === translated.source.lang).aliases[0], "```"+toTranslate+"```")
+            .addField(langs.find((lang) => lang.name === translated.target.lang).aliases[0], "```"+translated.target.translation+"```")
             .setColor(data.config.embed.color)
-            .setFooter(data.config.embed.footer)
-            .addField(language.split("-")[1], "```"+resJson.text[0]+"```");
+            .setFooter(data.config.embed.footer);
+
         return pWait.edit("", { embed: resEmbed });
         
     }
