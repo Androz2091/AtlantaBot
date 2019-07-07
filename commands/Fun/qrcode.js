@@ -34,7 +34,7 @@ class Qrcode extends Command {
             .setImage(`https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${text.replace(new RegExp(" ", "g"), "%20")}`)
             .setColor(data.config.embed.color);
 
-        message.channel.send(embd);
+        message.channel.send(embed);
     
     }
 
