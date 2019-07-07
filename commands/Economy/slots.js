@@ -42,7 +42,25 @@ class Slots extends Command {
         }
         amount = Math.round(amount);
         
-        async function end(tmsg){
+        function getCredits(number, isJackpot){
+            if(!isJackpot){
+                number = number*1.5;
+            }
+            if(isJackpot){
+                number = number*4;
+            }
+            return Math.round(number);
+        }
+
+        let tmsg = await message.channel.send(message.language.get("UTILS").PLEASE_WAIT);
+        editMsg();
+        let interval = setInterval(editMsg, 1000);
+        setTimeout(() => {
+            clearInterval(interval);
+            end(tmsg);
+        }, 4000);
+
+        async function end(){
 
             let msg = "[  :slot_machine: | **SLOTS** ]\n------------------\n";
         
@@ -89,7 +107,7 @@ class Slots extends Command {
             return;
         
         }
-        function editMsg(tmsg){
+        function editMsg(){
         
             let msg = "[  :slot_machine: l SLOTS ]\n------------------\n";
         
@@ -106,27 +124,9 @@ class Slots extends Command {
             msg += colonne1[i1] + " : " + colonne2[j1] + " : "+ colonne3[k1] + "\n";
             msg += colonne1[i2] + " : " + colonne2[j2] + " : "+ colonne3[k2] + " **<**\n";
             msg += colonne1[i3] + " : " + colonne2[j3] + " : "+ colonne3[k3] + "\n";
-        
+
             tmsg.edit(msg);
         }
-        
-        function getCredits(number, isJackpot){
-            if(!isJackpot){
-                number = number*1.5;
-            }
-            if(isJackpot){
-                number = number*4;
-            }
-            return Math.round(number);
-        }
-
-        let tmsg = await message.channel.send(message.language.get("UTILS").PLEASE_WAIT);
-        editMsg();
-        let interval = setInterval(editMsg, 1000, tmsg);
-        setTimeout(() => {
-            clearInterval(interval);
-            end(tmsg);
-        }, 4000);
     }
 
 }
