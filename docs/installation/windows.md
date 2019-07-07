@@ -21,12 +21,10 @@ If you do not have some API keys, such as the Discordbots key, leave the fields 
 
 ## Install dependencies
 
-1. Run `apt update`.
-2. Run `apt upgrade` to install the latest dependencies of your distribution.
-3. Run `apt install python` to install python.
-4. Run `apt install build-essential` to install build essential.
-5. Run `apt install ffmpeg` to install ffmpeg.
-6. And to install all the others dependencies, run `npm install --production`.
+1. [Follow these instructions to install `ffmpeg`.](http://blog.gregzaal.com/how-to-install-ffmpeg-on-windows/)
+2. Open an **ADMIN** command prompt, or PowerShell.
+3. Run the following command `npm install -g --production windows-build-tools`.
+4. And to install all the others dependencies, run `npm install --production`.
 
 ## Launch the bot
 
