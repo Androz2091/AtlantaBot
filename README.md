@@ -61,12 +61,13 @@ If you don't want to edit the code of the bot, a permanent online version is ava
 ### Customized version
 
 If you want to edit the bot's code and host it on your machine, it's possible!  
-You must follow the [developer documentation](https://atlanta-bot.fr/developers) to properly install it! Don't worry, it's fast and simple if you follow the guide!
+You must follow the [installation guide](https://www.atlanta-bot.fr/installation/) to properly install it! Don't worry, it's fast and simple if you follow the guide!
 
 ## Links
 
-*   [User documentation](https://atlanta-bot.fr/user)
-*   [Developer documentation](https://atlanta-bot.fr/developer)
+*   [Commands List](https://atlanta-bot.fr/commands)
+*   [Installation Guide](https://atlanta-bot.fr/installation)
+*   [F.A.Q](https://www.atlanta-bot.fr/faq/)
 *   [Discord](https://discord.gg/Ntv5bJR)
 *   [Twitter](https://twitter.com/AtlantaBot)
 *   [Github](https://github.com/AtlantaBot)
@@ -74,7 +75,7 @@ You must follow the [developer documentation](https://atlanta-bot.fr/developers)
 
 ## Contributing
 
-Before **creating an issue**, please ensure that it hasn't already been reported/suggested, and double-check the [documentation](https://atlanta-bot.fr/developer).  
+Before **creating an issue**, please ensure that it hasn't already been reported/suggested, and double-check the [F.A.Q](https://atlanta-bot.fr/faq).  
 And if you have a question, please ask it in the [Discord server](https://atlanta-bot.fr/developer) instead of opening an issue.
 If you wish to contribute to the Atlanta codebase or documentation, feel free to fork the repository and submit a pull request!
 
