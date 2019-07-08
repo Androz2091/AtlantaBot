@@ -504,6 +504,15 @@ module.exports = class {
 			GETCONF_ERR_ID: `${e.error} | Please enter a valid ID!`,
 			GETCONF_ERR_GUILD_NOT_FOUND: `${e.error} | No server found!`,
 
+			/* PERMISSIONS COMMAND */
+
+			// Utils
+			PERMISSIONS_DESCRIPTION: "Displays the member's permissions in the channel",
+			PERMISSIONS_USAGE: "permissions (@member)",
+			PERMISSIONS_EXAMPLES: "$permissions\n$permissions @Androz#2091",
+			// Content
+			PERMISSIONS_TITLE: (username, channel) => `Permissions of ${username} in #${channel}`,
+
 			/* SERVERSLIST COMMAND */
 
 			SERVERSLIST_DESCRIPTION: "Displays the list of the servers of the bot!",

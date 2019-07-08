@@ -7,7 +7,7 @@ Here's the list of Atlanta commands. This one contains more than **70 commands**
 **Usage**: The arguments/options that the command takes in parameters  
 **Cooldown**: The time that must elapse between each command so that it can be executed again by the user
 
-### General (18 commands)
+### General (19 commands)
 
 | Name            | Description                                                       | Usage                           | Cooldown  |
 | --------------- | ----------------------------------------------------------------- | ------------------------------- | --------- |
@@ -19,6 +19,7 @@ Here's the list of Atlanta commands. This one contains more than **70 commands**
 | **invite**      | Displays the links of Atlanta!                                    | invite (copy)                   | 5 seconds |
 | **minecraft**   | Displays information about the Minecraft server!                  | minecraft [ip]                  | 3 seconds |
 | **minimize**    | Shorten your link!                                                | minimize [url]                  | 5 seconds |
+| **permissions** | Displays the member's permissions in the channel                  | permissions (@member)           | 1 seconds |
 | **ping**        | Displays bot latency                                              | ping                            | 1 seconds |
 | **quote**       | Quote a message in the channel!                                   | quote [messageID] [channel]     | 5 seconds |
 | **remindme**    | Define a reminder!                                                | remindme [reason]               | 3 seconds |
