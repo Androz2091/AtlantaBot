@@ -2,7 +2,7 @@
 
 # Atlanta
 
-[![](https://img.shields.io/discord/565048515357835264.svg?logo=discord&colorB=7289DA)](https://discord.gg/Ntv5bJR)
+[![](https://img.shields.io/discord/565048515357835264.svg?logo=discord&colorB=7289DA)](https://discord.atlanta-bot.fr)
 [![](https://discordbots.org/api/widget/status/557445719892688897.svg)](https://discordbots.org/bot/557445719892688897)
 [![](https://img.shields.io/badge/discord.js-v12.0.0--dev-blue.svg?logo=npm)](https://github.com/discordjs)
 [![](https://img.shields.io/badge/patreon-donate-orange.svg)](https://www.patreon.com/androz2091)
@@ -37,7 +37,7 @@ Atlanta has a lot of features, with **7 main categories**:
 *   🖨️ **General**: `minimize`, `setafk`, `translate`, `remindme`, `hastebin`, `fortnite`, `minecraft` and **10** more! 
 *   👑 **Owner**: `eval`, `getinvite`, `servers-list` and **2** more!
 
-[See the full commands list](https://atlanta-bot.fr/commands)
+[See the full commands list](https://www.atlanta-bot.fr/commands)
 
 ### A powerful Dashboard
 
@@ -65,18 +65,18 @@ You must follow the [installation guide](https://www.atlanta-bot.fr/installation
 
 ## Links
 
-*   [Commands List](https://atlanta-bot.fr/commands)
-*   [Installation Guide](https://atlanta-bot.fr/installation)
+*   [Commands List](https://www.atlanta-bot.fr/commands)
+*   [Installation Guide](https://www.atlanta-bot.fr/installation)
 *   [F.A.Q](https://www.atlanta-bot.fr/faq/)
-*   [Discord](https://discord.gg/Ntv5bJR)
+*   [Discord](https://discord.atlanta-bot.fr)
 *   [Twitter](https://twitter.com/AtlantaBot)
 *   [Github](https://github.com/AtlantaBot)
 *   [Dashboard](https://dashboard.atlanta-bot.fr)
 
 ## Contributing
 
-Before **creating an issue**, please ensure that it hasn't already been reported/suggested, and double-check the [F.A.Q](https://atlanta-bot.fr/faq).  
-And if you have a question, please ask it in the [Discord server](https://atlanta-bot.fr/developer) instead of opening an issue.
+Before **creating an issue**, please ensure that it hasn't already been reported/suggested, and double-check the [F.A.Q](https://www.atlanta-bot.fr/faq).   
+And if you have a question, please ask it in the [Discord server](https://discord.atlanta-bot.fr/) instead of opening an issue.
 If you wish to contribute to the Atlanta codebase or documentation, feel free to fork the repository and submit a pull request!
 
 ## License
