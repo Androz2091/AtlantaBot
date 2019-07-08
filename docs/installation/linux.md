@@ -1,6 +1,6 @@
 ## Before You Begin
 
-1. Make sure you have installed [Node.js](https://nodejs.org/en/) >=10 and [Git](https://git-scm.com/).
+1. Make sure you have installed [Node.js](https://www.digitalocean.com/community/tutorials/how-to-install-node-js-on-debian-9) v10 or higher, [Git](https://www.linode.com/docs/development/version-control/how-to-install-git-on-linux-mac-and-windows/) and [MongoDB](https://www.digitalocean.com/community/tutorials/how-to-install-mongodb-on-debian-9).
 2. Clone this repository with `git clone https://github.com/Androz2091/AtlantaBot.git`.
 3. Run `cd AtlantaBot` to move in the folder that Git has just created.
 

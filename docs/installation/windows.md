@@ -1,6 +1,6 @@
 ## Before You Begin
 
-1. Make sure you have installed [Node.js](https://nodejs.org/en/) >=10 and [Git](https://git-scm.com/).
+1. Make sure you have installed [Node.js](https://www.guru99.com/download-install-node-js.html) v10 or higher, [Git](https://www.linode.com/docs/development/version-control/how-to-install-git-on-linux-mac-and-windows/) and [MongoDB](https://medium.com/@LondonAppBrewery/how-to-download-install-mongodb-on-windows-4ee4b3493514).
 2. Clone this repository with `git clone https://github.com/Androz2091/AtlantaBot.git`.
 3. Run `cd AtlantaBot` to move in the folder that Git has just created.
 
