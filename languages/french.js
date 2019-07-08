@@ -1054,10 +1054,24 @@ module.exports = class {
 			POLL_ERR_QUESTION: `${e.error} | Vous devez entrer une question !`,
 			POLL_ERR_TIMEOUT: `${e.error} | Temps écoulé ! Veuillez retaper la commande !`,
 			// Content
-			POLL_FORM_MENTION: `Souhaitez-vous ajouter une mention à votre message ? Répondez par "oui" ou "non" !`,
-			POLL_FORM_MENTION_HE: "Tapez une des réponses suivantes : \`every\` (pour une mention @ everyone) ou \`here\` (pour une mention @ here) !",
+			POLL_FORM_MENTION: "Souhaitez-vous ajouter une mention à votre message ? Répondez par \"oui\" ou \"non\" !",
+			POLL_FORM_MENTION_HE: "Tapez une des réponses suivantes : `every` (pour une mention @ everyone) ou `here` (pour une mention @ here) !",
 			POLL_REACT: `Réagissez avec ${e.success} ou ${e.error} !`,
 			POLL_HEADING: "📊 Sondage :",
+
+			/* ANNOUNCEMENT COMMAND */
+
+			// Utils
+			ANNOUNCEMENT_DESCRIPTION: "Envoie une annonce dans le salon actuel !",
+			ANNOUNCEMENT_USAGE: "announcement [annonce]",
+			ANNOUNCEMENT_EXAMPLES: "$announcement Un nouveau salon #spam !",
+			// Errors
+			ANNOUNCEMENT_ERR_TEXT: `${e.error} | Vous devez entrer le texte de l'annonce !`,
+			ANNOUNCEMENT_ERR_TIMEOUT: `${e.error} | Temps écoulé ! Veuillez retaper la commande !`,
+			// Content
+			ANNOUNCEMENT_FORM_MENTION: "Souhaitez-vous ajouter une mention à votre annonce ? Répondez par \"oui\" ou \"non\" !",
+			ANNOUNCEMENT_FORM_MENTION_HE: "Tapez une des réponses suivantes : `every` (pour une mention @ everyone) ou `here` (pour une mention @ here) !",
+			ANNOUNCEMENT_HEADING: "📢 Annonce :",
 
 			/* SANCTIONS COMMAND */
 			

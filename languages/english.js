@@ -1066,10 +1066,24 @@ module.exports = class {
 			POLL_ERR_QUESTION: `${e.error} | You must enter a question!`,
 			POLL_ERR_TIMEOUT: `${e.error} | Time's up! Please retype the command!`,
 			// Content
-			POLL_FORM_MENTION: `Would you like to add a mention to your message? Answer "yes" or "no"!`,
-			POLL_FORM_MENTION_HE: "Type one of the following answers: \`every\` (for a mention @ everyone) or \`here\` (for a mention @ here)!",
+			POLL_FORM_MENTION: "Would you like to add a mention to your message? Answer \"yes\" or \"no\"!",
+			POLL_FORM_MENTION_HE: "Type one of the following answers: `every` (for a mention @ everyone) or `here` (for a mention @ here)!",
 			POLL_REACT: `React with ${e.success} or ${e.error}!`,
 			POLL_HEADING: "📊 Survey:",
+
+			/* ANNOUNCEMENT COMMAND */
+
+			// Utils
+			ANNOUNCEMENT_DESCRIPTION: "Send an announcement in the current channel!",
+			ANNOUNCEMENT_USAGE: "announcement [text]",
+			ANNOUNCEMENT_EXAMPLES: "$announcement A new #spam channel!",
+			// Errors
+			ANNOUNCEMENT_ERR_TEXT: `${e.error} | You must enter the text of the announcement!`,
+			ANNOUNCEMENT_ERR_TIMEOUT: `${e.error} | Time's up! Please retype the command!`,
+			// Content
+			ANNOUNCEMENT_FORM_MENTION: "Would you like to add a mention to your message? Answer \"yes\" or \"no\"!",
+			ANNOUNCEMENT_FORM_MENTION_HE: "Type one of the following answers: `every` (for a mention @ everyone) or `here` (for a mention @ here)!",
+			ANNOUNCEMENT_HEADING: "📢 Announcement :",
 
 			/* MODOGS EMBEDS */
 			MODLOGS_TYPES: {
