@@ -39,15 +39,15 @@ class Tweet extends Command {
 
         try {
             let res = await fetch(encodeURI(`https://nekobot.xyz/api/imagegen?type=tweet&username=${user}&text=${text}`));
-            let attachment = new Discord.MessageAttachment(await res.buffer(), "tweet.png");
+            let json = await res.json();
+            let attachment = new Discord.MessageAttachment(json.message, "tweet.png");
+            await message.channel.send(message.language.get("TWEET_CONTENT", user), attachment);
+            m.delete();
         } catch(e){
-            message.channel.send(message.language.get("ERR_OCCURENCED"));
+            console.log(e)
+            m.edit(message.language.get("ERR_OCCURENCED"));
         }
-        
 
-        await message.channel.send(message.language.get("TWEET_CONTENT"), attachment);
-        m.delete();
-        
     }
 
 }
