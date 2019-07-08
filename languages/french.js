@@ -387,7 +387,8 @@ module.exports = class {
 				`${e.version} Version`,
 				`${e.minecraft} Actuellement connectés`,
 				`${e.users} Maximum`,
-				`${e.online} Statut`
+				`${e.online} Statut`,
+				`${e.ip} IP complète`
 			],
 
 			/* JOKE COMMAND */

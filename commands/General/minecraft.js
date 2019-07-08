@@ -1,6 +1,7 @@
 const Command = require("../../base/Command.js"),
 Discord = require("discord.js"),
-fetch = require("node-fetch");
+fetch = require("node-fetch"),
+gamedig = require("gamedig");
 
 class Minecraft extends Command {
 
@@ -30,41 +31,40 @@ class Minecraft extends Command {
         }
 
         let favicon = `https://eu.mc-api.net/v3/server/favicon/${ip}`;
+        let options = {
+            type: "minecraft",
+            host: ip
+        }
 
-        let url = `https://mcapi.us/server/status?ip=${ip}`;
         if(ip.split(":").length > 1){
-            url = `https://mcapi.us/server/status?ip=${ip.split(":")[0]}&port=${ip.split(":")[1]}`;
+            options = {
+                type: "minecraft",
+                host: ip.split(":")[0],
+                port: ip.split(":")[1]
+            };
         }
 
-        let res = await fetch(url);
-        let json = await res.json();
-
-        if(!json.online){
-            return message.channel.send(message.language.get("MINECRAFT_ERR_OFFLINE"));
-        }
+        gamedig.query(options).then((json) => {
+            
+            let imgRes = await fetch("https://www.minecraftskinstealer.com/achievement/a.php?i=2&h=Success&t="+ip);
+            let imgAttachment = new Discord.MessageAttachment(await imgRes.buffer(), "success.png");
     
-        if(json.error.length > 1){
-            if(json.error === "invalid hostname or port"){
-                return message.channel.send(message.language.get("MINECRAFT_ERR_OFFLINE"));
-            } else {
-                return message.channel.send(message.language.get("ERR_OCCURENCED"));
-            }
-        }
+            let mcEmbed = new Discord.MessageEmbed()
+                .setAuthor(message.language.get("MINECRAFT_HEADINGS", ip)[0])
+                .addField(message.language.get("MINECRAFT_HEADINGS", ip)[1], json.raw.version.name)
+                .addField(message.language.get("MINECRAFT_HEADINGS", ip)[2], message.language.get("MINECRAFT_PLAYERS", json.raw.players.online))
+                .addField(message.language.get("MINECRAFT_HEADINGS", ip)[3], message.language.get("MINECRAFT_PLAYERS", json.raw.players.max))
+                .addField(message.language.get("MINECRAFT_HEADINGS", ip)[4], message.language.get("MINECRAFT_ONLINE", json.ping))
+                .addField(message.language.get("MINECRAFT_HEADINGS", ip)[5], json.connect)
+                .setColor(data.config.embed.color)
+                .setThumbnail(favicon)
+                .setFooter(data.config.embed.footer);
+    
+            message.channel.send([ mcEmbed, imgAttachment ]);
 
-        let imgRes = await fetch("https://www.minecraftskinstealer.com/achievement/a.php?i=2&h=Success&t="+ip);
-        let imgAttachment = new Discord.MessageAttachment(await imgRes.buffer(), "success.png");
-
-        let mcEmbed = new Discord.MessageEmbed()
-            .setAuthor(message.language.get("MINECRAFT_HEADINGS", ip)[0])
-            .addField(message.language.get("MINECRAFT_HEADINGS", ip)[1], json.server.name)
-            .addField(message.language.get("MINECRAFT_HEADINGS", ip)[2], message.language.get("MINECRAFT_PLAYERS", json.players.now))
-            .addField(message.language.get("MINECRAFT_HEADINGS", ip)[3], message.language.get("MINECRAFT_PLAYERS", json.players.max))
-            .addField(message.language.get("MINECRAFT_HEADINGS", ip)[4], message.language.get("MINECRAFT_ONLINE"))
-            .setColor(data.config.embed.color)
-            .setThumbnail(favicon)
-            .setFooter(data.config.embed.footer);
-
-        message.channel.send([ mcEmbed, imgAttachment ]);
+        }).catch((err) => {
+            return message.channel.send(message.language.get("MINECRAFT_ERR_OFFLINE"));
+        });
 
     }
 

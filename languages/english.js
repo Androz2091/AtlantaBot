@@ -389,7 +389,8 @@ module.exports = class {
 				`${e.version} Version`,
 				`${e.minecraft} Currently connected`,
 				`${e.users} Maximum`,
-				`${e.online} Status`
+				`${e.online} Status`,
+				`${e.ip} Full IP`
 			],
 
 			/* JOKE COMMAND */
@@ -511,7 +512,7 @@ module.exports = class {
 			PERMISSIONS_USAGE: "permissions (@member)",
 			PERMISSIONS_EXAMPLES: "$permissions\n$permissions @Androz#2091",
 			// Content
-			PERMISSIONS_TITLE: (username, channel) => `Permissions of ${username} in #${channel}`,
+			PERMISSIONS_TITLE: (username, channel) => `Permissions of ${username} dans #${channel}`,
 
 			/* SERVERSLIST COMMAND */
 
