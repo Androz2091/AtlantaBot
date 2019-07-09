@@ -13,7 +13,7 @@ module.exports = {
 		color: "#0091fc", // The default color for the embeds
 		footer: "Atlanta | Open Source" // And the default footer for the embeds
 	},
-	defaultLanguage: "en", // The default language for the new servers
+	defaultLanguage: "english", // The default language for the new servers
 	botname: "Atlanta", // The name of the bot
 	/* Bot's owner informations */
 	owner: {
