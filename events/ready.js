@@ -1,4 +1,5 @@
-const Discord = require("discord.js");
+const Discord = require("discord.js"),
+giveaways = require("discord-giveaways");
 
 module.exports = class {
 
@@ -37,6 +38,18 @@ module.exports = class {
                 }
             });
         }
+
+        giveaways.launch(client, {
+            updateCountdownEvery: 15000,
+            botsCanWin: false,
+            ignoreIfHasPermission: [
+                "MANAGE_MESSAGES",
+                "MANAGE_GUILD",
+                "ADMINISTRATOR"
+            ],
+            embedColor: "#FF0000",
+            reaction: "🎉"
+        });    
 
         // Update the game every 20s
         const status = require("../config.js").status;

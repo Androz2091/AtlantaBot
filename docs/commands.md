@@ -1,5 +1,5 @@
 # Commands  
-Here's the list of Atlanta commands. This one contains more than **70 commands** in **7 categories**!  
+Here's the list of Atlanta commands. This one contains more than **80 commands** in **7 categories**!  
 
 #### Contents of the table  
 **Name**: The name of the command  
@@ -52,7 +52,7 @@ Here's the list of Atlanta commands. This one contains more than **70 commands**
 | **slowmode**      | Define a cooldown in a channel                                | slowmode [#channel] (time)       | 3 seconds  |
 | **welcome**       | Send a welcome message to a pre-defined channel!              | welcome                          | 3 seconds  |
 
-### Moderation (12 commands)
+### Moderation (13 commands)
 
 | Name             | Description                                                                             | Usage                               | Cooldown  |
 | ---------------- | --------------------------------------------------------------------------------------- | ----------------------------------- | --------- |
@@ -60,6 +60,7 @@ Here's the list of Atlanta commands. This one contains more than **70 commands**
 | **ban**          | Banished the mentioned member!                                                          | ban [@user] (reason)                | 3 seconds |
 | **checkinvites** | Check if members do not have an ad for their Discord server in their presence!          | checkinvites                        | 3 seconds |
 | **clear**        | Deletes messages very quickly!                                                          | clear[number-of-messages] (@member) | 3 seconds |
+| **giveaway**     |                                                                                         |                                     | 5 seconds |
 | **kick**         | Kick out the mentioned member!                                                          | kick [@user] (reason)               | 3 seconds |
 | **mute**         | Prevents the member from sending messages and connecting by voice for a period of time! | mute [@member] [time]               | 3 seconds |
 | **poll**         | Launch a survey in the current channel!                                                 | poll [question]                     | 3 seconds |

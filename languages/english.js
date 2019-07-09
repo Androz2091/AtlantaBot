@@ -682,6 +682,45 @@ module.exports = class {
 			WELCOME_ERR_TIMEOUT: `${e.error} | Time's up! Please retype the command!`,
 			WELCOME_ERR_CARACT: `${e.error} | Your message must not exceed 1500 characters!`,
 
+			/* GIVEAWAY COMMAND */
+
+			// Utils
+			GIVEAWAY_DESCRIPTION: "Manage your giveaways simply!",
+			GIVEAWAY_USAGE: "giveaway [create/reroll/delete/end] (time) (winners count) (prize)",
+			GIVEAWAY_EXAMPLES: "$giveaway create 10m 2 5$ PayPal !\n$giveaway reroll 597812898022031374",
+			// Errors
+			GIVEAWAY_ERR_STATUS: `${e.error} | You must specify \`create\`, \`reroll\` ou \`delete\`!`,
+			GIVEAWAY_ERR_CREATE: (prefix) => `${e.error} | You must enter the information in this format: \n\n\`${prefix}giveaway [time] [winners count] [prize]\``,
+			GIVEAWAY_ERR_REROLL: `${e.error} | You must enter the ID of the giveaway message a re-rolled!`,
+			GIVEAWAY_ERR_DELETE: `${e.error} | You must enter the ID of the giveaway message to be deleted!`,
+			GIVEAWAY_ERR_END: `${e.error} | You must enter the ID of the giveaway message to be ended!`,
+			GIVEAWAY_ERR_REROLL_MSG_ENDED: (messageID) => `${e.error} | No giveaway **ended** found with message ID \`${messageID}\``,
+			GIVEAWAY_ERR_MESSAGE_NOT_FOUND: (messageID) => `${e.error} | No giveaway found with message ID \`${messageID}\``,
+			GIVEAWAY_ERR_15_DAYS: `${e.error} | The maximum length of a giveaway is 15 days.`,
+			GIVEAWAY_ERR_MAX: `${e.error} | A maximum of 4 Giveaways can be launched on the same server.`,
+			// Content
+			GIVEAWAY_CREATED: (channel) => `${e.success} | Giveaway launched!`,
+			GIVEAWAY_REROLLED: `${e.success} | New draw done!`,
+			GIVEAWAY_DELETED: `${e.success} | Giveaway deleted!`,
+			GIVEAWAY_ENDED: `${e.success} | Giveaway in stop mode (-15 seconds)!`,
+			// Messages
+			GIVEAWAY_CREATE_MESSAGES: {
+				giveaway: "🎉🎉 **GIVEAWAY** 🎉🎉",
+				giveawayEnded: "🎉🎉 **GIVEAWAY ENDED** 🎉🎉",
+				timeRemaining: "Time remaining: **{duration}** !",
+				inviteToParticipate: "React with 🎉 to participate!",
+				winMessage: "Congratulations, {winners} ! You won **{prize}** !",
+				embedFooter: "Giveaways",
+				noWinner: "Giveaway cancelled, no valid participation.",
+				winners: "winner(s)",
+				endedAt: "End at",
+				units: { seconds: "seconds", minutes: "minutes", hours: "hours", days: "days" }		
+			},
+			GIVEAWAY_REROLL_MESSAGES: {
+				congrat: ":tada: New winner(s) : {winners}! Congratulations!",
+				error: "No valid entries, no winners can be chosen!"
+			},
+
 			/* GOODBYE COMMAND */
 
 			// Utils
