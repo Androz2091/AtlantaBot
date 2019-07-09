@@ -19,6 +19,8 @@ Obtain the necessary API keys:
 If you do not have some API keys, such as the Discordbots key, leave the fields empty, the commands/features that use them will be automatically disabled.
 {% endhint %}
 
+For emojis, you must add them on one of your bot's servers and enter the string of the emoji (<:emojiName:emojiID>). If you are lazy to add them, you can join [**this server**](http://emojis.atlanta-bot.fr) on which you will only have to add your bot to access a bank of emojis!
+
 ## Install dependencies
 
 1. Run `apt update`.
