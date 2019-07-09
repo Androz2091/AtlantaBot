@@ -39,43 +39,82 @@ module.exports = {
 	},
 	/* The emojis that are required for certain commands */
 	emojis: {
-		stats: "XXXXXXXXXXX",
-		ram: "XXXXXXXXXXX",
-		version: "XXXXXXXXXXX",
-		online: "XXXXXXXXXXX",
-		link: "XXXXXXXXXXX",
-		voice: "XXXXXXXXXXX",
-		add: "XXXXXXXXXXX",
-		vote: "XXXXXXXXXXX",
-		help: "XXXXXXXXXXX",
-		warn: "XXXXXXXXXXX",
 		error: "XXXXXXXXXXX",
+		// RE: https://cdn.discordapp.com/emojis/565212755804684318.png
 		success: "XXXXXXXXXXX",
+		// RE: https://cdn.discordapp.com/emojis/565212709591973896.png
 		loading: "XXXXXXXXXXX",
+		// RE: https://cdn.discordapp.com/emojis/565214530121105418.gif
+		stats: "XXXXXXXXXXX",
+		// RE: https://img.icons8.com/flat_round/64/000000/bar-chart-isometric.png
+		ram: "XXXXXXXXXXX",
+		// RE: https://img.icons8.com/color/96/000000/processor.png
+		version: "XXXXXXXXXXX",
+		// RE: https://img.icons8.com/color/96/000000/installing-updates.png
+		online: "XXXXXXXXXXX",
+		// RE: https://img.icons8.com/color/96/000000/connection-status-on.png
+		link: "XXXXXXXXXXX",
+		// RE: https://img.icons8.com/color/96/000000/link.png
+		voice: "XXXXXXXXXXX",
+		// RE: https://img.icons8.com/color/96/000000/speaker.png
+		add: "XXXXXXXXXXX",
+		// RE: https://img.icons8.com/flat_round/64/000000/plus.png
+		vote: "XXXXXXXXXXX",
+		// RE: https://img.icons8.com/flat_round/96/vote-button.png 
+		help: "XXXXXXXXXXX",
+		// RE: https://img.icons8.com/color/96/000000/help.png
+		warn: "XXXXXXXXXXX",
+		// RE: https://img.icons8.com/flat_round/64/000000/error--v1.png
 		score: "XXXXXXXXXXX",
+		// https://img.icons8.com/color/96/000000/-scoreboard-.png
 		games: "XXXXXXXXXXX",
+		// https://img.icons8.com/color/96/000000/-scoreboard-.png
 		kills: "XXXXXXXXXXX",
+		// RE: https://img.icons8.com/color/96/000000/submachine-gun.png
 		crown: "XXXXXXXXXXX",
+		// RE: https://img.icons8.com/flat_round/96/000000/crown.png
 		discriminator: "XXXXXXXXXXX",
+		// RE: https://img.icons8.com/color/96/000000/hashtag-2.png
 		bot: "XXXXXXXXXXX",
+		// RE: https://img.icons8.com/color/96/000000/bot.png
 		avatar: "XXXXXXXXXXX",
+		// RE: https://img.icons8.com/color/96/000000/picture.png
 		calendar: "XXXXXXXXXXX",
+		// RE: https://img.icons8.com/color/96/000000/calendar.png
 		calendar2: "XXXXXXXXXXX",
+		// RE: https://img.icons8.com/color/96/000000/calendar-2.png
 		up: "XXXXXXXXXXX",
+		// RE: https://img.icons8.com/cotton/64/000000/circled-up--v2.png
 		pencil: "XXXXXXXXXXX",
+		// RE: https://img.icons8.com/color/96/000000/pencil.png
 		roles: "XXXXXXXXXXX",
+		// RE: https://img.icons8.com/color/96/000000/admin-settings-male.png
 		color: "XXXXXXXXXXX",
+		// RE: https://img.icons8.com/color/96/000000/color-palette.png
 		minecraft: "XXXXXXXXXXX",
+		// RE: https://img.icons8.com/color/96/000000/minecraft-sword.png 
 		users: "XXXXXXXXXXX",
+		// RE: https://img.icons8.com/color/96/000000/group.png
 		title: "XXXXXXXXXXX",
+		// RE: https://img.icons8.com/color/96/000000/tag-window.png
 		singer: "XXXXXXXXXXX",
+		// RE: https://img.icons8.com/ios-filled/96/000000/rap.png
 		time: "XXXXXXXXXXX",
+		// RE: https://img.icons8.com/color/96/000000/future.png
 		search: "XXXXXXXXXXX",
+		// RE: https://img.icons8.com/cotton/96/000000/search--v2.png
 		desc: "XXXXXXXXXXX",
+		// RE: https://img.icons8.com/color/96/000000/text-box.png
 		playlist: "XXXXXXXXXXX",
+		// RE: https://img.icons8.com/color/96/000000/smart-playlist.png
 		channels: "XXXXXXXXXXX",
+		// RE: https://img.icons8.com/color/96/000000/filled-chat.png
 		afk: "XXXXXXXXXXX",
-		id: "XXXXXXXXXXX"
+		// RE: https://img.icons8.com/color/96/000000/no-microphone.png
+		id: "XXXXXXXXXXX",
+		// RE: https://img.icons8.com/color/96/000000/id-verified.png
+		ip: "XXXXXXXXXXX"
+		// RE: https://img.icons8.com/color/96/000000/ip-address.png
 	},
 	/* The others utils links */
 	others: {
