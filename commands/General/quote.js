@@ -23,6 +23,19 @@ class Quote extends Command {
 
     async run (message, args, data) {
 
+        function embed(m){
+            let embed = new Discord.MessageEmbed()
+                .setAuthor(m.author.tag, m.author.displayAvatarURL())
+                .setDescription(m.content)
+                .setColor(m.member ? m.member.roles.highest ? m.member.roles.highest.color : data.config.embed.color : data.config.embed.color)
+                .setFooter(m.guild.name+" | #"+m.channel.name)
+                .setTimestamp(m.createdTimestamp);
+            if(m.attachments.size > 0){
+                embed.setImage(m.attachments.first().url);
+            }
+            return embed;
+        }
+        
         let msgID = args[0];
         if(isNaN(msgID)){
             return message.channel.send(message.language.get("ERR_INVALID_ID"));
@@ -52,19 +65,6 @@ class Quote extends Command {
                 message.delete();
                 message.channel.send(embed(msg));
             });
-        }
-
-        function embed(m){
-            let embed = new Discord.MessageEmbed()
-                .setAuthor(m.author.tag, m.author.displayAvatarURL())
-                .setDescription(m.content)
-                .setColor(m.member ? m.member.roles.highest ? m.member.roles.highest.color : data.config.embed.color : data.config.embed.color)
-                .setFooter(m.guild.name+" | #"+m.channel.name)
-                .setTimestamp(m.createdTimestamp);
-            if(m.attachments.size > 0){
-                embed.setImage(m.attachments.first().url);
-            }
-            return embed;
         }
     }
 
