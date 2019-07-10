@@ -13,7 +13,7 @@ class Invitations extends Command {
             enabled: true,
             guildOnly: true,
             aliases: [],
-            memberPermissions: [ "MANAGE_MESSAGES" ],
+            memberPermissions: [],
             botPermissions: [ "SEND_MESSAGES", "EMBED_LINKS", "MANAGE_CHANNELS" ],
             nsfw: false,
             ownerOnly: false,
