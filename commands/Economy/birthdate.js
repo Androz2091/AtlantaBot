@@ -50,7 +50,7 @@ class Birthdate extends Command {
         if(d.getTime() > Date.now()){
             return message.channel.send(message.language.get("BIRTHDATE_ERR_TOO_HIGH"));
         }
-        if(d.getTime() < (Date.now()-2523e+12)){
+        if(d.getTime() < (Date.now()-2,523e+12)){
             return message.channel.send(message.language.get("BIRTHDATE_ERR_TOO_LOW"));
         }
 
