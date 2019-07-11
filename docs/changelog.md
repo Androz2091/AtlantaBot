@@ -31,6 +31,7 @@ All notable changes to this project will be documented in this file.
 *   `warns` command renamed to `sanctions` command
 *   All the emojis were updated
 *   Update links in the `invite` command
+*   Best parse of time
 
 ### Removed
 

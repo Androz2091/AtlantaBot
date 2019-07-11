@@ -1280,18 +1280,36 @@ module.exports = class {
 		: day + " " + monthNames[monthIndex] + " " + year;
         return thedate;
 	}
-	
-	convertMs(ms){
-		let d, h, m, s;
-		s = Math.floor(ms / 1000);
-		m = Math.floor(s / 60);
-		s = s % 60;
-		h = Math.floor(m / 60);
-		m = m % 60;
-		d = Math.floor(h / 24);
-		h = h % 24;
-		h += d * 24;
-		return h + " heure(s) " + m + " minute(s) " + s + " seconde(s)";
+
+	/**
+	 * Parse ms and returns a string
+	 * @param {number} milliseconds The amount of milliseconds
+	 * @returns The parsed milliseconds
+	 */
+	convertMs(milliseconds){
+		let roundTowardsZero = milliseconds > 0 ? Math.floor : Math.ceil;
+		let days = roundTowardsZero(milliseconds / 86400000),
+		hours = roundTowardsZero(milliseconds / 3600000) % 24,
+		minutes = roundTowardsZero(milliseconds / 60000) % 60,
+		seconds = roundTowardsZero(milliseconds / 1000) % 60;
+		if(seconds === 0){
+			seconds++;
+		}
+		let isDays = days > 0,
+		isHours = hours > 0,
+		isMinutes = minutes > 0;
+		let pattern = 
+		(!isDays ? "" : (isMinutes || isDays) ? "{days} jours, " : "{days} jours et ")+
+		(!isHours ? "" : (isMinutes) ? "{hours} heures, " : "{hours} heures et ")+
+		(!isMinutes ? "" : "{minutes} minutes et ")+
+		("{seconds} secondes");
+		let sentence = pattern
+			.replace("{duration}", pattern)
+			.replace("{days}", days)
+			.replace("{hours}", hours)
+			.replace("{minutes}", minutes)
+			.replace("{seconds}", seconds);
+		return sentence;
 	}
 
 }
