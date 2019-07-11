@@ -42,7 +42,7 @@ class Giveaway extends Command {
             if(isNaN(ms(time))){
                 return message.channel.send(message.language.get("ERR_INVALID_TIME"));
             }
-            if(ms(time) > 1,296e+9){
+            if(ms(time) > ms("15d")){
                 return message.channel.send(message.language.get("GIVEAWAY_ERR_15_DAYS"))
             }
             let winnersCount = args[2];
