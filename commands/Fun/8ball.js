@@ -23,7 +23,7 @@ class Eightball extends Command {
 
     async run (message, args, data) {
         
-        if(!args[0] || (!message.content.endsWith("?"))){
+        if(!args[0] || (!message.content.endsWith("?"))){
             return message.channel.send(message.language.get("EIGHTBALL_ERR_QUESTION"));
         }
 
