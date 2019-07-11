@@ -2,7 +2,7 @@
 
 All notable changes to this project will be documented in this file.
 
-## [4.0.0] - 2019-07-07
+## [4.0.0] - 2019-11-07
 
 ### Added
 
@@ -30,6 +30,7 @@ All notable changes to this project will be documented in this file.
 *   `credits` command renamed to `money` command
 *   `warns` command renamed to `sanctions` command
 *   All the emojis were updated
+*   Update links in the `invite` command
 
 ### Removed
 
