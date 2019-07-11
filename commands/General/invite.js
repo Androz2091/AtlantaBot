@@ -23,14 +23,14 @@ class Invite extends Command {
 
     async run (message, args, data) {
 
-        let inviteLink = `https://discordapp.com/oauth2/authorize?client_id=${this.client.user.id}&scope=bot&permissions=2146958847`;
-        let voteURL = `https://discordbots.org/bot/${this.client.user.id}/vote`;
-        let supportURL = await message.client.functions.supportLink(message.client);
+        let inviteLink = message.client.config.inviteURL || `https://discordapp.com/oauth2/authorize?client_id=${this.client.user.id}&scope=bot&permissions=2146958847`;
+        let voteURL = message.client.config.voteURL || `https://discordbots.org/bot/${this.client.user.id}/vote`;
+        let supportURL = message.client.config.supportURL || await message.client.functions.supportLink(message.client);
 
         if(args[0]){
             return message.channel.send(inviteLink);
         }
-
+        
         let embed = new Discord.MessageEmbed()
             .setAuthor(message.language.get("INVITE_TITLE"))
             .setDescription(message.language.get("INVITE_DESC", data.settings.prefix))
