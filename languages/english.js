@@ -97,7 +97,7 @@ module.exports = class {
 			HELP_ERR_CMD_CUSTOMIZED: (cmd) => `${e.error} | The \`${cmd}\` command has no help because it is customized.`,
 			// Content
 			HELP_REMINDER: (prefix) => `To get help on an command type \`${prefix}help <commande>\` !`,
-			HELP_TITLE:(nb) => `List of commands - (${nb})`,
+			HELP_TITLE:(nb) => `${c.botname} | Commands`,
 			HELP_NO_ALIASES: "No aliases.",
 			// Headings
 			HELP_HEADINGS: [

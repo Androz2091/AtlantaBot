@@ -23,7 +23,7 @@ class Help extends Command {
     async run (message, args, data) {
 
         // if a command is provided
-        if(args[0] && args[0] !== "-g"){
+        if(args[0] && args[0] !== "-p"){
 
             let isCustom = (data.settings.customCommands ? data.settings.customCommands.find((c) => c.name === args[0]) : false);
             
@@ -53,8 +53,6 @@ class Help extends Command {
             return message.channel.send(groupEmbed);
         }
 
-        
-
         let categories = [];
         message.client.commands.forEach((command) => {
             if(!categories.includes(command.help.category)){
@@ -65,103 +63,101 @@ class Help extends Command {
             }
         });
 
-        if(args[0] === "-g"){
+        if(args[0] === "-p"){
+            message.delete();
+
+            let embeds = [];
+            categories.forEach((category) => {
+                let commands = message.client.commands.filter((cmd) => cmd.help.category === category);
+                let embed = new Discord.MessageEmbed()
+                    .setAuthor(category)
+                    .setDescription(commands.sort().map((cmd) => `\`${cmd.help.name}\``).join(", "))
+                    .setColor(data.config.embed.color)
+                    .setFooter(data.config.embed.footer, message.author.displayAvatarURL());
+                embeds.push(embed);
+            });
+            
+            if(message.guild){
+                if(data.settings.customCommands.length > 0){
+                    let embed = new Discord.MessageEmbed()
+                        .setAuthor(message.language.get("UTILS").CUSTOM)
+                        .setDescription(data.settings.customCommands.sort().map((cmd) => `\`${cmd.name}\``).join(", "))
+                        .setColor(data.config.embed.color)
+                        .setFooter(data.config.embed.footer, message.author.displayAvatarURL());
+                    embeds.push(embed);
+                }
+            }
+
             let i = 0;
+            let tdata = await message.channel.send(embeds[parseInt(i, 10)]);
+            
+            if(embeds[i-1]){
+                tdata.react("⬅");
+            }
+            if(embeds[i+1]){
+                tdata.react("➡");
+            }
+            await tdata.react("❌");
+
+            let reactCollector = tdata.createReactionCollector((reaction, user) => user.id === message.author.id);
+
+            setTimeout(function(){
+                reactCollector.stop();
+            }, 60000);
+
+            reactCollector.on("collect", async(reaction, user) => {
+
+                // Remove the reaction when the user react to the message
+                await reaction.users.remove(message.author.id);
+
+                switch(reaction._emoji.name){
+                    case "⬅" :
+                        i--;
+                        tdata = await tdata.edit(embeds[parseInt(i, 10)]);
+                        break;
+                    case "➡" :
+                        i++;
+                        tdata = await tdata.edit(embeds[parseInt(i, 10)]);
+                        break;
+                    case "❌" :
+                        reactCollector.stop();
+                        break;
+                }
+
+                if(!embeds[i-1]){
+                    let r = tdata.reactions.find((r) => r._emoji.name === "⬅");
+                    if(r){
+                        r.users.remove(message.client.user).catch((e) => {});
+                    }
+                } else {
+                    tdata.react("⬅").catch((e) => {});
+                }
+                if(!embeds[i+1]){
+                    let r = tdata.reactions.find((r) => r._emoji.name === "➡");
+                    if(r){
+                        r.users.remove(message.client.user).catch((e) => {});
+                    }
+                } else {
+                    tdata.react("➡").catch((e) => {});
+                }
+
+            });
+
+            reactCollector.on("end", () => {
+                tdata.delete();
+            });
+        } else {
             let embed = new Discord.MessageEmbed()
-                .setAuthor(message.language.get("HELP_REMINDER"))
+                .setDescription("● "+message.language.get("HELP_REMINDER", data.settings.prefix))
                 .setColor(data.config.embed.color)
                 .setFooter(data.config.embed.footer);
             categories.forEach((cat) => {
                 let commands = message.client.commands.filter((cmd) => cmd.help.category === cat);
                 embed.addField(cat+" - ("+commands.size+")", commands.map((cmd) => "`"+cmd.help.name+"`").join(", "));
-                i+=commands.size;
             });
-            embed.setAuthor(message.language.get("HELP_TITLE", i));
+            embed.setAuthor(message.language.get("HELP_TITLE"), message.client.user.displayAvatarURL());
             return message.channel.send(embed);
         }
-
-        message.delete();
-
-        let embeds = [];
-        categories.forEach((category) => {
-            let commands = message.client.commands.filter((cmd) => cmd.help.category === category);
-            let embed = new Discord.MessageEmbed()
-                .setAuthor(category)
-                .setDescription(commands.sort().map((cmd) => `\`${cmd.help.name}\``).join(", "))
-                .setColor(data.config.embed.color)
-                .setFooter(data.config.embed.footer, message.author.displayAvatarURL());
-            embeds.push(embed);
-        });
-        
-        if(message.guild){
-            if(data.settings.customCommands.length > 0){
-                let embed = new Discord.MessageEmbed()
-                    .setAuthor(message.language.get("UTILS").CUSTOM)
-                    .setDescription(data.settings.customCommands.sort().map((cmd) => `\`${cmd.name}\``).join(", "))
-                    .setColor(data.config.embed.color)
-                    .setFooter(data.config.embed.footer, message.author.displayAvatarURL());
-                embeds.push(embed);
-            }
-        }
-
-        let i = 0;
-        let tdata = await message.channel.send(embeds[parseInt(i, 10)]);
-        
-        if(embeds[i-1]){
-            tdata.react("⬅");
-        }
-        if(embeds[i+1]){
-            tdata.react("➡");
-        }
-        await tdata.react("❌");
-
-        let reactCollector = tdata.createReactionCollector((reaction, user) => user.id === message.author.id);
-
-        setTimeout(function(){
-            reactCollector.stop();
-        }, 60000);
-
-        reactCollector.on("collect", async(reaction, user) => {
-
-            // Remove the reaction when the user react to the message
-            await reaction.users.remove(message.author.id);
-
-            switch(reaction._emoji.name){
-                case "⬅" :
-                    i--;
-                    tdata = await tdata.edit(embeds[parseInt(i, 10)]);
-                    break;
-                case "➡" :
-                    i++;
-                    tdata = await tdata.edit(embeds[parseInt(i, 10)]);
-                    break;
-                case "❌" :
-                    reactCollector.stop();
-                    break;
-            }
-
-            if(!embeds[i-1]){
-                let r = tdata.reactions.find((r) => r._emoji.name === "⬅");
-                if(r){
-                    r.users.remove(message.client.user).catch((e) => {});
-                }
-            } else {
-                tdata.react("⬅").catch((e) => {});
-            }
-            if(!embeds[i+1]){
-                let r = tdata.reactions.find((r) => r._emoji.name === "➡");
-                if(r){
-                    r.users.remove(message.client.user).catch((e) => {});
-                }
-            } else {
-                tdata.react("➡").catch((e) => {});
-            }
-
-        });
-
-        reactCollector.on("end", () => {
-            tdata.delete();
-        });
     }
 
 }

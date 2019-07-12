@@ -96,7 +96,7 @@ module.exports = class {
 			HELP_ERR_CMD_CUSTOMIZED: (cmd) => `${e.error} | La commande ${cmd} ne dispose pas d'aide car elle est personnalisée.`,
 			// Content
 			HELP_REMINDER: (prefix) => `Pour avoir de l'aide sur une commande tapez \`${prefix}help <commande>\` !`,
-			HELP_TITLE:(nb) => `Liste des commandes - (${nb})`,
+			HELP_TITLE:(nb) => `${c.botname} | Commandes`,
 			HELP_NO_ALIASES: "Aucun alias.",
 			// Headings
 			HELP_HEADINGS: [
