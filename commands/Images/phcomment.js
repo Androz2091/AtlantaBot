@@ -22,10 +22,6 @@ class Phcomment extends Command {
     }
 
     async run (message, args, data) {
-        
-        if(!message.client.IdiotAPI){
-            return message.channel.send(message.language.get("ERR_COMMAND_DISABLED"));
-        }
 
         let user = message.author;
         let text = args.join(" ");
