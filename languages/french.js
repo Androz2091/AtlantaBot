@@ -865,6 +865,13 @@ module.exports = class {
 				`${e.link} • __Liens__`,
 			],
 
+			/* FACEPALM COMMAND */
+
+			// Utils
+			FACEPALM_DESCRIPTION: "Génère une image de type \"facepalm\" grâce à l'API Anidiots",
+			FACEPALM_USAGE: "facepalm (@membre)",
+			FACEPALM_EXAMPLES: "$facepalm\n$facepalm @Androz#2091",
+
 			/* PLAY COMMAND */
 
 			// Utils

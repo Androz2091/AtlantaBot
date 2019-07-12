@@ -979,6 +979,13 @@ module.exports = class {
 				`${e.link} • __Links__`,
 			],
 
+			/* FACEPALM COMMAND */
+
+			// Utils
+			FACEPALM_DESCRIPTION: "Generates a \"facepalm\" image using the Anidiots API",
+			FACEPALM_USAGE: "facepalm (@member)",
+			FACEPALM_EXAMPLES: "$facepalm\n$facepalm @Androz#2091",
+
 			/* TRANSLATE COMMAND  */
 
 			// Utils
