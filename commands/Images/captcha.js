@@ -23,10 +23,6 @@ class Captcha extends Command {
 
     async run (message, args, data) {
         
-        if(!message.client.IdiotAPI){
-            return message.channel.send(message.language.get("ERR_COMMAND_DISABLED"));
-        }
-
         let options = { format: "png", size: 512 };
         let avatarURL = message.mentions.users.first() ?
         message.mentions.users.first().displayAvatarURL(options)
