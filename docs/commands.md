@@ -70,12 +70,13 @@ Here's the list of Atlanta commands. This one contains more than **90 commands**
 | **unmute**       | Unmute the mentioned member!                                                            | unmute [@member]                                                   | 3 seconds |
 | **warn**         | Warn a member in private messages                                                       | warn [@member] [reason]                                            | 3 seconds |
 
-### Images (12 commands)
+### Images (13 commands)
 
 | Name          | Description                                             | Usage                      | Cooldown  |
 | ------------- | ------------------------------------------------------- | -------------------------- | --------- |
 | **avatar**    | Displays the avatar of the mentionned member            | avatar (@member)           | 5 seconds |
 | **captcha**   | Generates a "triggered" image using the Nekobot API     | captcha (@member)          | 5 seconds |
+| **clyde**     | Generates a "clyde" image using the Nekobot API         | clyde [text]               | 5 seconds |
 | **facepalm**  | Generates a "facepalm" image using the Anidiots API     | facepalm (@member)         | 5 seconds |
 | **garbage**   | Generates a "garbage" image using the Anidiots API      | garbage (@member)          | 5 seconds |
 | **hates**     | Generates a "hates" image using the Anidiots API        | hates (@member)            | 5 seconds |

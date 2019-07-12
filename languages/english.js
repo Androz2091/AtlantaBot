@@ -1051,6 +1051,13 @@ module.exports = class {
 			LOVE_USAGE: "love [@user1] (@user2)",
 			LOVE_EXAMPLES: "$love @Androz#2091\n$love @Androz#2091 @Clyde#0000",
 
+			/* CLYDE COMMAND */
+
+			// Utils
+			CLYDE_DESCRIPTION: "Generates a \"clyde\" image using the Nekobot API",
+			CLYDE_USAGE: "clyde [text]",
+			CLYDE_EXAMPLES: "$clyde Discord will close on November 11, 2019. Goodbye.",
+
 			/* TRANSLATE COMMAND  */
 
 			// Utils
