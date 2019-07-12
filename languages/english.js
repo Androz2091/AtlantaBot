@@ -1044,6 +1044,13 @@ module.exports = class {
 			AVATAR_USAGE: "avatar (@member)",
 			AVATAR_EXAMPLES: "$avatar\$avatar @Androz#2091",
 
+			/* LOVE COMMAND */
+
+			// Utils
+			LOVE_DESCRIPTION: "Generates a \"love\" image using the Nekobot API",
+			LOVE_USAGE: "love [@user1] (@user2)",
+			LOVE_EXAMPLES: "$love @Androz#2091\n$love @Androz#2091 @Clyde#0000",
+
 			/* TRANSLATE COMMAND  */
 
 			// Utils
