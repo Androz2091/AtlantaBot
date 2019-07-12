@@ -914,6 +914,15 @@ module.exports = class {
 			CAPTCHA_USAGE: "captcha (@membre)",
 			CAPTCHA_EXAMPLES: "$captcha\n$captcha @Androz#2091",
 
+			/* PHCOMMENT COMMAND */
+
+			// Utils
+			PHCOMMENT_DESCRIPTION: "Génère une image de type \"phcomment\" grâce à l'API Nekobot",
+			PHCOMMENT_USAGE: "phcomment (@membre) (texte)",
+			PHCOMMENT_EXAMPLES: "$phcomment\n$phcomment @Androz#2091",
+			// Errors
+			PHCOMMENT_ERR_TEXT: `${e.error} | Vous devez entrer le texte du commentaire !`,
+
 			/* PLAY COMMAND */
 
 			// Utils

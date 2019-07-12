@@ -1028,6 +1028,15 @@ module.exports = class {
 			CAPTCHA_USAGE: "captcha (@member)",
 			CAPTCHA_EXAMPLES: "$captcha\n$captcha @Androz#2091",
 
+			/* PHCOMMENT COMMAND */
+
+			// Utils
+			PHCOMMENT_DESCRIPTION: "Generates a \"phcomment\" image using the Nekobot API",
+			PHCOMMENT_USAGE: "phcomment (@member) (text)",
+			PHCOMMENT_EXAMPLES: "$phcomment\n$phcomment @Androz#2091",
+			// Errors
+			PHCOMMENT_ERR_TEXT: `${e.error} | You must enter the text of the comment!`,
+
 			/* TRANSLATE COMMAND  */
 
 			// Utils

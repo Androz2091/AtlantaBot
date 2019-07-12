@@ -87,19 +87,20 @@ Here's the list of Atlanta commands. This one contains more than **80 commands**
 | **wedding**     | Marry the person of your choice!                                          | wedding [@user#0000]             | 10 seconds |
 | **work**        | Work and earn money!                                                      | work                             | 3 seconds  |
 
-### Images (9 commands)
+### Images (10 commands)
 
-| Name          | Description                                             | Usage                   | Cooldown  |
-| ------------- | ------------------------------------------------------- | ----------------------- | --------- |
-| **captcha**   | Generates a "triggered" image using the Nekobot API     | captcha (@member)       | 5 seconds |
-| **facepalm**  | Generates a "facepalm" image using the Anidiots API     | facepalm (@member)      | 5 seconds |
-| **garbage**   | Generates a "garbage" image using the Anidiots API      | garbage (@member)       | 5 seconds |
-| **hates**     | Generates a "hates" image using the Anidiots API        | hates (@member)         | 5 seconds |
-| **qrcode**    | Generates a QR Code with your text!                     | qrcode [text]           | 3 seconds |
-| **respect**   | Generates a "respect" image using the Anidiots API      | respect (@member)       | 5 seconds |
-| **shit**      | Generates a "respect" image using the Anidiots API      | shit (@member)          | 5 seconds |
-| **triggered** | Generates a "triggered" image using the Anidiots API    | triggered (@member)     | 5 seconds |
-| **tweet**     | Generate a tweet of a person of your choice on Twitter! | tweet [@twitter] [text] | 5 seconds |
+| Name          | Description                                             | Usage                      | Cooldown  |
+| ------------- | ------------------------------------------------------- | -------------------------- | --------- |
+| **captcha**   | Generates a "triggered" image using the Nekobot API     | captcha (@member)          | 5 seconds |
+| **facepalm**  | Generates a "facepalm" image using the Anidiots API     | facepalm (@member)         | 5 seconds |
+| **garbage**   | Generates a "garbage" image using the Anidiots API      | garbage (@member)          | 5 seconds |
+| **hates**     | Generates a "hates" image using the Anidiots API        | hates (@member)            | 5 seconds |
+| **phcomment** | Generates a "phcomment" image using the Nekobot API     | phcomment (@member) (text) | 5 seconds |
+| **qrcode**    | Generates a QR Code with your text!                     | qrcode [text]              | 3 seconds |
+| **respect**   | Generates a "respect" image using the Anidiots API      | respect (@member)          | 5 seconds |
+| **shit**      | Generates a "respect" image using the Anidiots API      | shit (@member)             | 5 seconds |
+| **triggered** | Generates a "triggered" image using the Anidiots API    | triggered (@member)        | 5 seconds |
+| **tweet**     | Generate a tweet of a person of your choice on Twitter! | tweet [@twitter] [text]    | 5 seconds |
 
 ### Fun (9 commands)
 
