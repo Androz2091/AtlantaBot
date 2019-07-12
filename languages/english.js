@@ -1007,6 +1007,13 @@ module.exports = class {
 			RESPECT_USAGE: "respect (@member)",
 			RESPECT_EXAMPLES: "$respect\n$respect @Androz#2091",
 
+			/* SHIT COMMAND */
+
+			// Utils
+			SHIT_DESCRIPTION: "Generates a \"respect\" image using the Anidiots API",
+			SHIT_USAGE: "shit (@member)",
+			SHIT_EXAMPLES: "$shit\n$shit @Androz#2091",
+
 			/* TRANSLATE COMMAND  */
 
 			// Utils

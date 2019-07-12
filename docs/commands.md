@@ -114,6 +114,16 @@ Here's the list of Atlanta commands. This one contains more than **80 commands**
 | **skip**  | Play the next song!                          | skip         | 5 seconds |
 | **stop**  | Stop the music in progress!                  | stop         | 5 seconds |
 
+### Images (5 commands)
+
+| Name         | Description                                         | Usage              | Cooldown  |
+| ------------ | --------------------------------------------------- | ------------------ | --------- |
+| **facepalm** | Generates a "facepalm" image using the Anidiots API | facepalm (@member) | 5 seconds |
+| **garbage**  | Generates a "garbage" image using the Anidiots API  | garbage (@member)  | 5 seconds |
+| **hates**    | Generates a "hates" image using the Anidiots API    | hates (@member)    | 5 seconds |
+| **respect**  | Generates a "respect" image using the Anidiots API  | respect (@member)  | 5 seconds |
+| **shit**     | Generates a "respect" image using the Anidiots API  | shit (@member)     | 5 seconds |
+
 ### Owner (4 commands)
 
 | Name             | Description                                                                                     | Usage               | Cooldown  |
@@ -122,13 +132,4 @@ Here's the list of Atlanta commands. This one contains more than **80 commands**
 | **getconf**      | Displays the configuration of a server                                                          | getconf [server ID] | 3 seconds |
 | **getinvite**    | Generates an invitation to the server in question. Make sure you make good use of this command. | getinvite [ID/Name] | 3 seconds |
 | **servers-list** | Displays the list of the servers of the bot!                                                    | servers-list        | 5 seconds |
-
-### Images (4 commands)
-
-| Name         | Description                                         | Usage              | Cooldown  |
-| ------------ | --------------------------------------------------- | ------------------ | --------- |
-| **facepalm** | Generates a "facepalm" image using the Anidiots API | facepalm (@member) | 5 seconds |
-| **garbage**  | Generates a "garbage" image using the Anidiots API  | garbage (@member)  | 5 seconds |
-| **hates**    | Generates a "hates" image using the Anidiots API    | hates (@member)    | 5 seconds |
-| **respect**  | Generates a "respect" image using the Anidiots API  | respect (@member)  | 5 seconds |
 

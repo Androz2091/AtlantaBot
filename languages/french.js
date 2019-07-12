@@ -893,6 +893,13 @@ module.exports = class {
 			RESPECT_USAGE: "respect (@membre)",
 			RESPECT_EXAMPLES: "$respect\n$respect @Androz#2091",
 
+			/* SHIT COMMAND */
+
+			// Utils
+			SHIT_DESCRIPTION: "Génère une image de type \"shit\" grâce à l'API Anidiots",
+			SHIT_USAGE: "shit (@membre)",
+			SHIT_EXAMPLES: "$shit\n$shit @Androz#2091",
+
 			/* PLAY COMMAND */
 
 			// Utils
