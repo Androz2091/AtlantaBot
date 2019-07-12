@@ -152,8 +152,9 @@ class Help extends Command {
                 .setColor(data.config.embed.color)
                 .setFooter(data.config.embed.footer);
             categories.forEach((cat) => {
+                let emoji = message.client.guilds.get(message.client.config.support.id).emojis.find((e) => e.name === cat.toLowerCase()+"_category_atlanta");
                 let commands = message.client.commands.filter((cmd) => cmd.help.category === cat);
-                embed.addField(cat+" - ("+commands.size+")", commands.map((cmd) => "`"+cmd.help.name+"`").join(", "));
+                embed.addField((emoji ? emoji.toString() : "")+" "+cat+" - ("+commands.size+")", commands.map((cmd) => "`"+cmd.help.name+"`").join(", "));
             });
             embed.setAuthor(message.language.get("HELP_TITLE"), message.client.user.displayAvatarURL());
             return message.channel.send(embed);
