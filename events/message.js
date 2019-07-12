@@ -102,7 +102,7 @@ module.exports = class {
             let afkReason = data.users[0].afk;
             if(afkReason){
                 data.users[0].afk = null;
-                data.users[0].save();
+                await data.users[0].save();
                 message.channel.send(message.language.get("AFK_DELETED", message.author));
             }
 
@@ -170,7 +170,8 @@ module.exports = class {
                     return message.channel.send(message.language.get("INHIBITOR_PERMISSIONS", cmd.conf.permission));
                 }
             }
-            if(!message.member.hasPermission("MENTION_EVERYONE") && message.mentions.everyone){
+
+            if(!message.channel.permissionsFor(message.member).has("MENTION_EVERYONE") && message.content.includes("@everyone") && message.content.includes("@here")){
                 return message.channel.send(language.get("ERR_EVERYONE"));
             }
             if(!message.channel.nsfw && cmd.conf.nsfw){
