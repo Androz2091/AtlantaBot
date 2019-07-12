@@ -199,6 +199,13 @@ module.exports = class {
 
         client.logger.log(`${message.author.username} (${message.author.id}) ran command ${cmd.help.name}`, "cmd");
         cmd.run(message, args, data);
+        let Log = require("../base/Log");
+        let log = new Log({
+            command: cmd.help,
+            date: Date.now(),
+            user: message.author.toJSON()
+        });
+        log.save();
     }
 };
 

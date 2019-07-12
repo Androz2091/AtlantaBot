@@ -1,5 +1,6 @@
 const Command = require("../../base/Command.js"),
-Discord = require("discord.js");
+Discord = require("discord.js"),
+ms = require("ms");
 
 class Help extends Command {
     constructor (client) {
@@ -147,8 +148,11 @@ class Help extends Command {
                 tdata.delete();
             });
         } else {
+            let Log = require("../../base/Log");
+            let ran = await Log.find({});
+            let ranLast7Days = ran.filter((l) => l.date > Date.now()-ms("7d"));
             let embed = new Discord.MessageEmbed()
-                .setDescription("● "+message.language.get("HELP_REMINDER", data.settings.prefix))
+                .setDescription(message.language.get("HELP_DESCRIPTION", data.settings.prefix, ranLast7Days.length))
                 .setColor(data.config.embed.color)
                 .setFooter(data.config.embed.footer);
             categories.forEach((cat) => {
