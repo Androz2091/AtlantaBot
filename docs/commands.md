@@ -123,10 +123,11 @@ Here's the list of Atlanta commands. This one contains more than **80 commands**
 | **getinvite**    | Generates an invitation to the server in question. Make sure you make good use of this command. | getinvite [ID/Name] | 3 seconds |
 | **servers-list** | Displays the list of the servers of the bot!                                                    | servers-list        | 5 seconds |
 
-### Images (2 commands)
+### Images (3 commands)
 
 | Name         | Description                                         | Usage              | Cooldown  |
 | ------------ | --------------------------------------------------- | ------------------ | --------- |
 | **facepalm** | Generates a "facepalm" image using the Anidiots API | facepalm (@member) | 5 seconds |
+| **garbage**  | Generates a "garbage" image using the Anidiots API  | garbage (@member)  | 5 seconds |
 | **hates**    | Generates a "hates" image using the Anidiots API    | hates (@member)    | 5 seconds |
 

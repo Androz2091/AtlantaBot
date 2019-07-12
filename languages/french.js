@@ -878,6 +878,13 @@ module.exports = class {
 			HATES_DESCRIPTION: "Génère une image de type \"hates\" grâce à l'API Anidiots",
 			HATES_USAGE: "hates (@membre)",
 			HATES_EXAMPLES: "$hates\n$hates @Androz#2091",
+			
+			/* GARBAGE COMMAND */
+
+			// Utils
+			GARBAGE_DESCRIPTION: "Génère une image de type \"garbage\" grâce à l'API Anidiots",
+			GARBAGE_USAGE: "garbage (@membre)",
+			GARBAGE_EXAMPLES: "$garbage\n$garbage @Androz#2091",
 
 			/* PLAY COMMAND */
 

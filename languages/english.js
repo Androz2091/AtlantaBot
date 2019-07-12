@@ -993,6 +993,13 @@ module.exports = class {
 			HATES_USAGE: "hates (@member)",
 			HATES_EXAMPLES: "$hates\n$hates @Androz#2091",
 
+			/* GARBAGE COMMAND */
+
+			// Utils
+			GARBAGE_DESCRIPTION: "Generates a \"garbage\" image using the Anidiots API",
+			GARBAGE_USAGE: "garbage (@member)",
+			GARBAGE_EXAMPLES: "$garbage\n$garbage @Androz#2091",
+
 			/* TRANSLATE COMMAND  */
 
 			// Utils
