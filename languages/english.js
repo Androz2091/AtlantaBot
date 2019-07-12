@@ -986,6 +986,13 @@ module.exports = class {
 			FACEPALM_USAGE: "facepalm (@member)",
 			FACEPALM_EXAMPLES: "$facepalm\n$facepalm @Androz#2091",
 
+			/* HATES COMMAND */
+
+			// Utils
+			HATES_DESCRIPTION: "Generates a \"hates\" image using the Anidiots API",
+			HATES_USAGE: "hates (@member)",
+			HATES_EXAMPLES: "$hates\n$hates @Androz#2091",
+
 			/* TRANSLATE COMMAND  */
 
 			// Utils
