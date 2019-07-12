@@ -87,7 +87,21 @@ Here's the list of Atlanta commands. This one contains more than **80 commands**
 | **wedding**     | Marry the person of your choice!                                          | wedding [@user#0000]             | 10 seconds |
 | **work**        | Work and earn money!                                                      | work                             | 3 seconds  |
 
-### Fun (11 commands)
+### Images (9 commands)
+
+| Name          | Description                                             | Usage                   | Cooldown  |
+| ------------- | ------------------------------------------------------- | ----------------------- | --------- |
+| **captcha**   | Generates a "triggered" image using the Nekobot API     | captcha (@member)       | 5 seconds |
+| **facepalm**  | Generates a "facepalm" image using the Anidiots API     | facepalm (@member)      | 5 seconds |
+| **garbage**   | Generates a "garbage" image using the Anidiots API      | garbage (@member)       | 5 seconds |
+| **hates**     | Generates a "hates" image using the Anidiots API        | hates (@member)         | 5 seconds |
+| **qrcode**    | Generates a QR Code with your text!                     | qrcode [text]           | 3 seconds |
+| **respect**   | Generates a "respect" image using the Anidiots API      | respect (@member)       | 5 seconds |
+| **shit**      | Generates a "respect" image using the Anidiots API      | shit (@member)          | 5 seconds |
+| **triggered** | Generates a "triggered" image using the Anidiots API    | triggered (@member)     | 5 seconds |
+| **tweet**     | Generate a tweet of a person of your choice on Twitter! | tweet [@twitter] [text] | 5 seconds |
+
+### Fun (9 commands)
 
 | Name          | Description                                                                                   | Usage                           | Cooldown  |
 | ------------- | --------------------------------------------------------------------------------------------- | ------------------------------- | --------- |
@@ -99,20 +113,7 @@ Here's the list of Atlanta commands. This one contains more than **80 commands**
 | **lmg**       | Returns a link to lmgtfy.com                                                                  | lmg [question]                  | 1 seconds |
 | **lovecalc**  | How much love is there between two people? *This is a fun command, not to be taken seriously* | lovecalc [@member1] (@member2)  | 1 seconds |
 | **number**    | Find the number I chose!                                                                      | number                          | 5 seconds |
-| **qrcode**    | Generates a QR Code with your text!                                                           | qrcode [text]                   | 3 seconds |
 | **random**    | Randomly pick one of the choices you give me!                                                 | random [choice1/choice2/etc...] | 5 seconds |
-| **tweet**     | Generate a tweet of a person of your choice on Twitter!                                       | tweet [@twitter] [text]         | 5 seconds |
-
-### Images (6 commands)
-
-| Name          | Description                                          | Usage               | Cooldown  |
-| ------------- | ---------------------------------------------------- | ------------------- | --------- |
-| **facepalm**  | Generates a "facepalm" image using the Anidiots API  | facepalm (@member)  | 5 seconds |
-| **garbage**   | Generates a "garbage" image using the Anidiots API   | garbage (@member)   | 5 seconds |
-| **hates**     | Generates a "hates" image using the Anidiots API     | hates (@member)     | 5 seconds |
-| **respect**   | Generates a "respect" image using the Anidiots API   | respect (@member)   | 5 seconds |
-| **shit**      | Generates a "respect" image using the Anidiots API   | shit (@member)      | 5 seconds |
-| **triggered** | Generates a "triggered" image using the Anidiots API | triggered (@member) | 5 seconds |
 
 ### Music (5 commands)
 

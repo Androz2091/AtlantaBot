@@ -907,6 +907,13 @@ module.exports = class {
 			TRIGGERED_USAGE: "triggered (@membre)",
 			TRIGGERED_EXAMPLES: "$triggered\n$triggered @Androz#2091",
 
+			/* CAPTCHA COMMAND */
+
+			// Utils
+			CAPTCHA_DESCRIPTION: "Génère une image de type \"captcha\" grâce à l'API Nekobot",
+			CAPTCHA_USAGE: "captcha (@membre)",
+			CAPTCHA_EXAMPLES: "$captcha\n$captcha @Androz#2091",
+
 			/* PLAY COMMAND */
 
 			// Utils
