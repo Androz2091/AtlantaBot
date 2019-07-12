@@ -103,6 +103,17 @@ Here's the list of Atlanta commands. This one contains more than **80 commands**
 | **random**    | Randomly pick one of the choices you give me!                                                 | random [choice1/choice2/etc...] | 5 seconds |
 | **tweet**     | Generate a tweet of a person of your choice on Twitter!                                       | tweet [@twitter] [text]         | 5 seconds |
 
+### Images (6 commands)
+
+| Name          | Description                                          | Usage               | Cooldown  |
+| ------------- | ---------------------------------------------------- | ------------------- | --------- |
+| **facepalm**  | Generates a "facepalm" image using the Anidiots API  | facepalm (@member)  | 5 seconds |
+| **garbage**   | Generates a "garbage" image using the Anidiots API   | garbage (@member)   | 5 seconds |
+| **hates**     | Generates a "hates" image using the Anidiots API     | hates (@member)     | 5 seconds |
+| **respect**   | Generates a "respect" image using the Anidiots API   | respect (@member)   | 5 seconds |
+| **shit**      | Generates a "respect" image using the Anidiots API   | shit (@member)      | 5 seconds |
+| **triggered** | Generates a "triggered" image using the Anidiots API | triggered (@member) | 5 seconds |
+
 ### Music (5 commands)
 
 | Name      | Description                                  | Usage        | Cooldown  |
@@ -112,16 +123,6 @@ Here's the list of Atlanta commands. This one contains more than **80 commands**
 | **queue** | Displays the queue                           | queue        | 5 seconds |
 | **skip**  | Play the next song!                          | skip         | 5 seconds |
 | **stop**  | Stop the music in progress!                  | stop         | 5 seconds |
-
-### Images (5 commands)
-
-| Name         | Description                                         | Usage              | Cooldown  |
-| ------------ | --------------------------------------------------- | ------------------ | --------- |
-| **facepalm** | Generates a "facepalm" image using the Anidiots API | facepalm (@member) | 5 seconds |
-| **garbage**  | Generates a "garbage" image using the Anidiots API  | garbage (@member)  | 5 seconds |
-| **hates**    | Generates a "hates" image using the Anidiots API    | hates (@member)    | 5 seconds |
-| **respect**  | Generates a "respect" image using the Anidiots API  | respect (@member)  | 5 seconds |
-| **shit**     | Generates a "respect" image using the Anidiots API  | shit (@member)     | 5 seconds |
 
 ### Owner (4 commands)
 

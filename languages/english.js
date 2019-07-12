@@ -1014,6 +1014,13 @@ module.exports = class {
 			SHIT_USAGE: "shit (@member)",
 			SHIT_EXAMPLES: "$shit\n$shit @Androz#2091",
 
+			/* TRIGGERED COMMAND */
+
+			// Utils
+			TRIGGERED_DESCRIPTION: "Generates a \"triggered\" image using the Anidiots API",
+			TRIGGERED_USAGE: "triggered (@member)",
+			TRIGGERED_EXAMPLES: "$triggered\n$triggered @Androz#2091",
+
 			/* TRANSLATE COMMAND  */
 
 			// Utils
