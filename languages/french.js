@@ -923,6 +923,13 @@ module.exports = class {
 			// Errors
 			PHCOMMENT_ERR_TEXT: `${e.error} | Vous devez entrer le texte du commentaire !`,
 
+			/* AVATAR COMMAND */
+
+			// Utils
+			AVATAR_DESCRIPTION: "Affiche l'avatar du membre mentionné",
+			AVATAR_USAGE: "avatar (@membre)",
+			AVATAR_EXAMPLES: "$avatar\$avatar @Androz#2091",
+
 			/* PLAY COMMAND */
 
 			// Utils

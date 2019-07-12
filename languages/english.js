@@ -1037,6 +1037,13 @@ module.exports = class {
 			// Errors
 			PHCOMMENT_ERR_TEXT: `${e.error} | You must enter the text of the comment!`,
 
+			/* AVATAR COMMAND */
+
+			// Utils
+			AVATAR_DESCRIPTION: "Displays the avatar of the mentionned member",
+			AVATAR_USAGE: "avatar (@member)",
+			AVATAR_EXAMPLES: "$avatar\$avatar @Androz#2091",
+
 			/* TRANSLATE COMMAND  */
 
 			// Utils

@@ -87,10 +87,11 @@ Here's the list of Atlanta commands. This one contains more than **80 commands**
 | **wedding**     | Marry the person of your choice!                                          | wedding [@user#0000]             | 10 seconds |
 | **work**        | Work and earn money!                                                      | work                             | 3 seconds  |
 
-### Images (10 commands)
+### Images (11 commands)
 
 | Name          | Description                                             | Usage                      | Cooldown  |
 | ------------- | ------------------------------------------------------- | -------------------------- | --------- |
+| **avatar**    | Displays the avatar of the mentionned member            | avatar (@member)           | 5 seconds |
 | **captcha**   | Generates a "triggered" image using the Nekobot API     | captcha (@member)          | 5 seconds |
 | **facepalm**  | Generates a "facepalm" image using the Anidiots API     | facepalm (@member)         | 5 seconds |
 | **garbage**   | Generates a "garbage" image using the Anidiots API      | garbage (@member)          | 5 seconds |
