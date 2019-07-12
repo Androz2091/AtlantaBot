@@ -943,6 +943,8 @@ module.exports = class {
 			CLYDE_DESCRIPTION: "Génère une image de type \"clyde\" grâce à l'API Nekobot",
 			CLYDE_USAGE: "clyde [texte]",
 			CLYDE_EXAMPLES: "$clyde Discord va fermer le 11 novembre 2019. Au revoir.",
+			// Errors
+			CLYDE_ERR_TEXT: `${e.error} | Veuillez entrer un texte !`,
 
 			/* PLAY COMMAND */
 
