@@ -1000,6 +1000,13 @@ module.exports = class {
 			GARBAGE_USAGE: "garbage (@member)",
 			GARBAGE_EXAMPLES: "$garbage\n$garbage @Androz#2091",
 
+			/* RESPECT COMMAND */
+
+			// Utils
+			RESPECT_DESCRIPTION: "Generates a \"respect\" image using the Anidiots API",
+			RESPECT_USAGE: "respect (@member)",
+			RESPECT_EXAMPLES: "$respect\n$respect @Androz#2091",
+
 			/* TRANSLATE COMMAND  */
 
 			// Utils
