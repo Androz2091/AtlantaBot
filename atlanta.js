@@ -5,6 +5,7 @@ const util = require("util"),
 fs = require("fs"),
 path = require("path"),
 readdir = util.promisify(fs.readdir),
+Idiot = require("idiotic-api"),
 mongoose = require("mongoose");
 
 // Creates new class
@@ -99,6 +100,10 @@ const init = async () => {
     }).catch((err) => {
         client.logger.log("Unable to connect to the Mongodb database. Error:"+err, "error");
     });
+
+    if(client.config.apiKeys.anidiots){
+        client.IdiotAPI = new Idiot.Client(client.config.apiKeys.anidiots, { dev: true });
+    }
 
 };
 
