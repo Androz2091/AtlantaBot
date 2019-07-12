@@ -152,7 +152,7 @@ class Help extends Command {
             let ran = await Log.find({});
             let ranLast7Days = ran.filter((l) => l.date > Date.now()-ms("7d"));
             let embed = new Discord.MessageEmbed()
-                .setDescription(message.language.get("HELP_DESCRIPTION", data.settings.prefix, ranLast7Days.length))
+                .setDescription(message.language.get("HELP_EDESCRIPTION", data.settings.prefix, ranLast7Days.length))
                 .setColor(data.config.embed.color)
                 .setFooter(data.config.embed.footer);
             categories.forEach((cat) => {
