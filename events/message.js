@@ -171,7 +171,7 @@ module.exports = class {
                 }
             }
 
-            if(!message.channel.permissionsFor(message.member).has("MENTION_EVERYONE") && message.content.includes("@everyone") && message.content.includes("@here")){
+            if(!message.channel.permissionsFor(message.member).has("MENTION_EVERYONE") && (message.content.includes("@everyone") || message.content.includes("@here"))){
                 return message.channel.send(language.get("ERR_EVERYONE"));
             }
             if(!message.channel.nsfw && cmd.conf.nsfw){
