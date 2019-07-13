@@ -966,7 +966,7 @@ module.exports = class {
 			STATS_ONLINE: (time) => `From ${time}`,
 			STATS_VC: (nb) => `Music in progress on \`${nb}\` servers`,
 			STATS_CREDITS: "Thanks to \`https://icones8.fr/icons/\`, all the emojis (or almost) come from this site!",
-			STATS_LINKS: (url, id) => `[Github](${c.others.github}) | [Invite ${c.botname}](https://discordapp.com/oauth2/authorize?client_id=${id}&scope=bot&permissions=2146958847) | [Support](${url}) | [Don](${c.others.donate})`,
+			STATS_LINKS: (url, id) => `[Donate](${c.others.donate}) ● [Invite](https://discordapp.com/oauth2/authorize?client_id=${id}&scope=bot&permissions=2146958847) ● [Server](${url}) ● [Github](${c.others.github})`,
 			// Headings
 			STATS_HEADINGS:[
 				`Stats`,
