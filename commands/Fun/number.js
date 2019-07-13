@@ -73,10 +73,10 @@ class Number extends Command {
                 collector.stop(msg.author.username);
             }
             if(parseInt(msg.content) < number){
-                message.channel.send(message.language.get("NUMBER_HIGHER", msg.content, message.author));
+                message.channel.send(message.language.get("NUMBER_HIGHER", msg.content, msg.author));
             }
             if(parseInt(msg.content) > number){
-                message.channel.send(message.language.get("NUMBER_SMALLER", msg.content, message.author));
+                message.channel.send(message.language.get("NUMBER_SMALLER", msg.content, msg.author));
             }
     
         });
