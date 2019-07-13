@@ -199,14 +199,18 @@ module.exports = class {
         cmdCooldown[message.author.id][cmd.help.name] = Date.now() + cmd.conf.cooldown;
 
         client.logger.log(`${message.author.username} (${message.author.id}) ran command ${cmd.help.name}`, "cmd");
-        cmd.run(message, args, data);
-        let Log = require("../base/Log");
-        let log = new Log({
-            command: cmd.help,
-            date: Date.now(),
-            user: message.author.toJSON()
-        });
-        log.save();
+        try {
+            cmd.run(message, args, data);
+            let Log = require("../base/Log");
+            let log = new Log({
+                command: cmd.help,
+                date: Date.now(),
+                user: message.author.toJSON()
+            });
+            log.save();
+        } catch(e){
+            return message.channel.send(message.language.get("ERR_OCCURENCED"));
+        }
     }
 };
 
