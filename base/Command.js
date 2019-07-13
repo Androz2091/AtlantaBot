@@ -19,5 +19,5 @@ module.exports = class Command {
       this.client = client;
       this.conf = { enabled, guildOnly, aliases, memberPermissions, botPermissions, nsfw, ownerOnly, cooldown};
       this.help = { name, description, category, usage, examples };
-    };
+    }
   };
