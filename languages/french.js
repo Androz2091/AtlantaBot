@@ -51,8 +51,8 @@ module.exports = class {
 			// ERROR MESSAGES
 
 			ERR_COMMAND_DISABLED: `${e.error} | Cette commande est actuellement désactivée !`,
-			ERR_OWNER_ONLY: `${e.error} | Seul ${c.owner.name} peut effectuer ces commandes !`,
-			ERR_INVALID_CHANNEL: `${e.error} | Veuillez mentionner un salon valide !`,
+			ERR_OWNER_ONLY: `${e.error} | Seul ${c.owner.name} peut effectuer ces commandes !`,
+			ERR_INVALID_CHANNEL: `${e.error} | Veuillez mentionner un salon valide !`,
 			ERR_INVALID_ROLE: `${e.error} | Veuillez mentionner un rôle valide !`,
 			ERR_INVALID_MEMBER: `${e.error} | Veuillez mentionner un membre valide !`,
 			ERR_INVALID_NUMBER: (nan) => `${e.error} | \`${nan}\` n'est pas un nombre valide !`,
@@ -67,7 +67,7 @@ module.exports = class {
 			ERR_UNAUTHORIZED_CHANNEL: (channel) => `${e.error} | Les commandes sont interdites dans ${channel} !`,
 			ERR_BAD_PARAMETERS: (cmd, prefix) => `${e.error} | Veuillez vérifier les paramètres de la commande. Regardez les exemples en tapant \`${prefix}help ${cmd}\` !`,
 			ERR_ROLE_NOT_FOUND: (role) => `${e.error} | Aucun rôle trouvé avec \`${role}\` !`,
-			ERR_CHANNEL_NOT_FOUND: (channel) => `${e.error} | Aucun salon trouvé avec \`${channel}\``,
+			ERR_CHANNEL_NOT_FOUND: (channel) => `${e.error} | Aucun salon trouvé avec \`${channel}\``,
 			ERR_YES_NO: `${e.error} | Vous devez répondre par "oui" ou par "non" !`,
 			ERR_EVERYONE: `${e.error} | Vous n'avez pas l'autorisation de mentionner everyone ou here dans les commandes.`,
 			ERR_BOT_USER: `${e.error} | Cet utilisateur est un bot !`,
@@ -262,7 +262,7 @@ module.exports = class {
 				`${e.discriminator} Discriminateur`,
 				`${e.bot} Robot`,
 				`${e.avatar} Avatar`,
-				`${e.calendar} Création`,
+				`${e.calendar} Création`,
 				`${e.games} Jeu`,
 				`${e.online} Statut`,
 				`${e.up} Rôle`,
@@ -375,7 +375,7 @@ module.exports = class {
 			MINECRAFT_USAGE: "minecraft [ip]",
 			MINECRAFT_EXAMPLES: "$minecraft mc.hypixel.net",
 			// Errors
-			MINECRAFT_ERR_IP: `${e.error} | Veuillez entrer une IP !`,
+			MINECRAFT_ERR_IP: `${e.error} | Veuillez entrer une IP !`,
 			MINECRAFT_ERR_OFFLINE: `${e.error} | Ce serveur est hors ligne ou a bloquer les accès. Rappel : les serveurs MCPE ne sont pas pris en charge !`,
 			// Content
 			MINECRAFT_ONLINE: "En ligne",
@@ -407,7 +407,7 @@ module.exports = class {
 			EIGHTBALL_USAGE: "8ball [question]",
 			EIGHTBALL_EXAMPLES: "$8ball Est-ce qu'Atlanta est le meilleur bot Discord ?",
 			// Errors
-			EIGHTBALL_ERR_QUESTION: `${e.error} | Vous devez entrer une question à me poser !`,
+			EIGHTBALL_ERR_QUESTION: `${e.error} | Vous devez entrer une question à me poser !`,
 			// Content
 			EIGHTBALL_ANSWERS: [
 				"j'en suis certain.",
@@ -474,8 +474,8 @@ module.exports = class {
 			GETCONF_USAGE: "getconf [serveur ID]",
 			GETCONF_EXAMPLES: "$getconf 565048515357835264",
 			// Errors
-			GETCONF_ERR_ID: `${e.error} | Veuillez entrer une ID valide !`,
-			GETCONF_ERR_GUILD_NOT_FOUND: `${e.error} | Aucun serveur trouvé!`,
+			GETCONF_ERR_ID: `${e.error} | Veuillez entrer une ID valide !`,
+			GETCONF_ERR_GUILD_NOT_FOUND: `${e.error} | Aucun serveur trouvé!`,
 
 			/* PERMISSIONS COMMAND */
 

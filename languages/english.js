@@ -52,8 +52,8 @@ module.exports = class {
 			// ERROR MESSAGES
 
 			ERR_COMMAND_DISABLED: `${e.error} | This command is currently disabled!`,
-			ERR_OWNER_ONLY: `${e.error} | Only ${c.owner.name} can do these commands!`,
-			ERR_INVALID_CHANNEL: `${e.error} | Please mention a valid channel!`,
+			ERR_OWNER_ONLY: `${e.error} | Only ${c.owner.name} can do these commands!`,
+			ERR_INVALID_CHANNEL: `${e.error} | Please mention a valid channel!`,
 			ERR_INVALID_ROLE: `${e.error} | Please mention a valid role!`,
 			ERR_INVALID_MEMBER: `${e.error} | Please mention a valid member!`,
 			ERR_INVALID_NUMBER: (nan) => `${e.error} | \`${nan}\` is not a valid number!`,
@@ -68,7 +68,7 @@ module.exports = class {
 			ERR_UNAUTHORIZED_CHANNEL: (channel) => `${e.error} | Commands are forbidden in ${channel} !`,
 			ERR_BAD_PARAMETERS: (cmd, prefix) => `${e.error} | Please check the commands parameters. Look at the examples by typing \`${prefix}help ${cmd}\` !`,
 			ERR_ROLE_NOT_FOUND: (role) => `${e.error} | No role found with \`${role}\` !`,
-			ERR_CHANNEL_NOT_FOUND: (channel) => `${e.error} | No channel found with \`${channel}\``,
+			ERR_CHANNEL_NOT_FOUND: (channel) => `${e.error} | No channel found with \`${channel}\``,
 			ERR_YES_NO: `${e.error} | You must answer "yes" or "no"!`,
 			ERR_EVERYONE: `${e.error} | You are not allowed to mention everyone or here in the commands.`,
 			ERR_BOT_USER: `${e.error} | This user is a bot!`,
@@ -377,7 +377,7 @@ module.exports = class {
 			MINECRAFT_USAGE: "minecraft [ip]",
 			MINECRAFT_EXAMPLES: "$minecraft mc.hypixel.net",
 			// Errors
-			MINECRAFT_ERR_IP: `${e.error} | Please enter an IP!`,
+			MINECRAFT_ERR_IP: `${e.error} | Please enter an IP!`,
 			MINECRAFT_ERR_OFFLINE: `${e.error} | This server is offline or blocking access. Reminder: MCPE servers are not supported!`,
 			// Content
 			MINECRAFT_ONLINE: "Online",
@@ -409,7 +409,7 @@ module.exports = class {
 			EIGHTBALL_USAGE: "8ball [question]",
 			EIGHTBALL_EXAMPLES: "$8ball Is Atlanta the best Discord bot?",
 			// Errors
-			EIGHTBALL_ERR_QUESTION: `${e.error} | You have to enter a question to ask me!`,
+			EIGHTBALL_ERR_QUESTION: `${e.error} | You have to enter a question to ask me!`,
 			// Content
 			EIGHTBALL_ANSWERS: [
 				"I'm sure of it.",
@@ -502,8 +502,8 @@ module.exports = class {
 			GETCONF_USAGE: "getconf [server ID]",
 			GETCONF_EXAMPLES: "$getconf 565048515357835264",
 			// Errors
-			GETCONF_ERR_ID: `${e.error} | Please enter a valid ID!`,
-			GETCONF_ERR_GUILD_NOT_FOUND: `${e.error} | No server found!`,
+			GETCONF_ERR_ID: `${e.error} | Please enter a valid ID!`,
+			GETCONF_ERR_GUILD_NOT_FOUND: `${e.error} | No server found!`,
 
 			/* PERMISSIONS COMMAND */
 
