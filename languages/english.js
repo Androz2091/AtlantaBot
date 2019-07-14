@@ -97,7 +97,7 @@ module.exports = class {
 			HELP_ERR_CMD_CUSTOMIZED: (cmd) => `${e.error} | The \`${cmd}\` command has no help because it is customized.`,
 			// Content
 			HELP_EDESCRIPTION: (prefix, commands) => `● To get help on an command type \`${prefix}help <commande>\`!\n● Commands ran (7 last days) : \`${commands}\``,
-			HELP_TITLE:(nb) => `${c.botname} | Commands`,
+			HELP_TITLE: `${c.botname} | Commands`,
 			HELP_NO_ALIASES: "No aliases.",
 			// Headings
 			HELP_HEADINGS: [
@@ -230,7 +230,7 @@ module.exports = class {
 			// Content
 			SETAFK_SUCCESS: (reason) => `${e.success} | You passed afk (reason: ${reason})`,
 			// Others
-			AFK_DELETED: (user) => `${e.warn} | Your AFK has just been deleted!`,
+			AFK_DELETED: `${e.warn} | Your AFK has just been deleted!`,
 			AFK_MEMBER: (user, reason) => `${e.warn} | **${user.tag}** is currently AFK for:\n\`\`\`${reason}\`\`\``,
 
 			/* REMINDME COMMAND */
@@ -699,7 +699,7 @@ module.exports = class {
 			GIVEAWAY_ERR_15_DAYS: `${e.error} | The maximum length of a giveaway is 15 days.`,
 			GIVEAWAY_ERR_MAX: `${e.error} | A maximum of 4 Giveaways can be launched on the same server.`,
 			// Content
-			GIVEAWAY_CREATED: (channel) => `${e.success} | Giveaway launched!`,
+			GIVEAWAY_CREATED: `${e.success} | Giveaway launched!`,
 			GIVEAWAY_REROLLED: `${e.success} | New draw done!`,
 			GIVEAWAY_DELETED: `${e.success} | Giveaway deleted!`,
 			GIVEAWAY_ENDED: `${e.success} | Giveaway in stop mode (-15 seconds)!`,
@@ -1173,8 +1173,8 @@ module.exports = class {
 			// Content
 			SETWARNS_SUCCESS_KICK: (prefix, number) => `${e.success} | Configuration saved! When a member has reached the ${number} warns, he will be kicked out. Type \`${prefix}configuration\` to see your new configuration!`,
 			SETWARNS_SUCCESS_BAN: (prefix, number) => `${e.success} | Configuration enregistrée ! Lorsqu'un membre aura atteint les ${number} warns, il sera banned. Tapez \`${prefix}configuration\` pour voir votre nouvelle configuration !`,
-			SETWARNS_SUCCESS_RESET_KICK: (prefix, number) => `${e.success} | Configuration saved! The kick sanction is no longer automatic! Type \`${prefix}configuration\` to see your new configuration!`,
-			SETWARNS_SUCCESS_RESET_BAN: (prefix, number) => `${e.success} | Configuration saved! The ban sanction is no longer automatic! Type \`${prefix}configuration\` to see your new configuration!`,
+			SETWARNS_SUCCESS_RESET_KICK: (prefix) => `${e.success} | Configuration saved! The kick sanction is no longer automatic! Type \`${prefix}configuration\` to see your new configuration!`,
+			SETWARNS_SUCCESS_RESET_BAN: (prefix) => `${e.success} | Configuration saved! The ban sanction is no longer automatic! Type \`${prefix}configuration\` to see your new configuration!`,
 
 			/* POLL COMMAND */
 

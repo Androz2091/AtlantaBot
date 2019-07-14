@@ -96,7 +96,7 @@ module.exports = class {
 			HELP_ERR_CMD_CUSTOMIZED: (cmd) => `${e.error} | La commande ${cmd} ne dispose pas d'aide car elle est personnalisée.`,
 			// Content
 			HELP_EDESCRIPTION: (prefix, commands) => `● Pour avoir de l'aide sur une commande tapez \`${prefix}help <commande>\` !\n● Commandes envoyées (7 derniers jours) : \`${commands}\``,
-			HELP_TITLE:(nb) => `${c.botname} | Commandes`,
+			HELP_TITLE: `${c.botname} | Commandes`,
 			HELP_NO_ALIASES: "Aucun alias.",
 			// Headings
 			HELP_HEADINGS: [
@@ -229,7 +229,7 @@ module.exports = class {
 			// Content
 			SETAFK_SUCCESS: (reason) => `${e.success} | Vous êtes passé afk (raison : ${reason})`,
 			// Others
-			AFK_DELETED: (user) => `${e.warn} | Votre AFK vient d'être supprimé !`,
+			AFK_DELETED: `${e.warn} | Votre AFK vient d'être supprimé !`,
 			AFK_MEMBER: (user, reason) => `${e.warn} | **${user.tag}** est actuellement AFK pour :\n\`\`\`${reason}\`\`\``,
 
 			/* REMINDME COMMAND */
@@ -1122,8 +1122,8 @@ module.exports = class {
 			// Content
 			SETWARNS_SUCCESS_KICK: (prefix, number) => `${e.success} | Configuration enregistrée ! Lorsqu'un membre aura atteint les ${number} warns, il sera expulsé. Tapez \`${prefix}configuration\` pour voir votre nouvelle configuration !`,
 			SETWARNS_SUCCESS_BAN: (prefix, number) => `${e.success} | Configuration enregistrée ! Lorsqu'un membre aura atteint les ${number} warns, il sera banni. Tapez \`${prefix}configuration\` pour voir votre nouvelle configuration !`,
-			SETWARNS_SUCCESS_RESET_KICK: (prefix, number) => `${e.success} | Configuration enregistrée ! La sanction kick n'est maintenant plus automatique ! Tapez \`${prefix}configuration\` pour voir votre nouvelle configuration !`,
-			SETWARNS_SUCCESS_RESET_BAN: (prefix, number) => `${e.success} | Configuration enregistrée ! La sanction ban n'est maintenant plus automatique ! Tapez \`${prefix}configuration\` pour voir votre nouvelle configuration !`,
+			SETWARNS_SUCCESS_RESET_KICK: (prefix) => `${e.success} | Configuration enregistrée ! La sanction kick n'est maintenant plus automatique ! Tapez \`${prefix}configuration\` pour voir votre nouvelle configuration !`,
+			SETWARNS_SUCCESS_RESET_BAN: (prefix) => `${e.success} | Configuration enregistrée ! La sanction ban n'est maintenant plus automatique ! Tapez \`${prefix}configuration\` pour voir votre nouvelle configuration !`,
 
 			/* POLL COMMAND */
 
@@ -1171,7 +1171,7 @@ module.exports = class {
 			GIVEAWAY_ERR_15_DAYS: `${e.error} | La longueur maximale d'un giveaway est de 15 jours.`,
 			GIVEAWAY_ERR_MAX: `${e.error} | Un maximum de 4 Giveaways peuvent être lancé sur un même serveur.`,
 			// Content
-			GIVEAWAY_CREATED: (channel) => `${e.success} | Giveaway lancé !`,
+			GIVEAWAY_CREATED: `${e.success} | Giveaway lancé !`,
 			GIVEAWAY_REROLLED: `${e.success} | Nouveau tirage effectué !`,
 			GIVEAWAY_DELETED: `${e.success} | Giveaway supprimé !`,
 			GIVEAWAY_ENDED: `${e.success} | Giveaway en cours d'arrêt (- de 15 secondes) !`,
