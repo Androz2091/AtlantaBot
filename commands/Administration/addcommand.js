@@ -23,7 +23,7 @@ class Addcommand extends Command {
 
     async run (message, args, data) {
         
-        let name = args[0].toLowerCase();
+        let name = args[0];
         if(!name){
             return message.channel.send(message.language.get("ADDCOMMAND_ERR_NAME"));
         }
@@ -38,7 +38,7 @@ class Addcommand extends Command {
         }
         
         data.settings.customCommands.push({
-            name: name,
+            name: name.toLowerCase(),
             answer: answer
         });
         data.settings.save();
