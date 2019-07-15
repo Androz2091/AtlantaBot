@@ -6,7 +6,7 @@ let e = c.emojis;
 // This class is used to store languages strings
 
 module.exports = class {
-    constructor(...args) {
+    constructor() {
 		this.language = {
 
 			// Utils
