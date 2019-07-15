@@ -479,7 +479,7 @@ module.exports = class {
 			BACKUP_ERR_STATUS: `${e.error} | You must specify \`create\`, \`load\` or \`infos\`!`,
 			BACKUP_ERR_NOT_FOUND: (backupID) => `${e.error} | No backup found for \`${backupID}\``,
 			BACKUP_ERR_ID: `${e.error} | Please enter a backup ID!`,
-			BACKUP_ERR_TIMEOUT: `${e.error} | Time's up! Cancelled backup loading!`,
+			BACKUP_ERR_TIMEOUT: `${e.error} | Time's up! Cancelled backup loading!`,
 			// Content
 			BACKUP_CREATE_SUCCESS: `${e.success} | Successfully created backup! The backup ID has been sent to you in private messages!`,
 			BACKUP_CREATE_SUCCESS_ID: (backupID) => `${e.success} | Here is the ID of your backup: \`\`\`${backupID}\`\`\``,
