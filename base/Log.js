@@ -1,5 +1,4 @@
-const mongoose = require("mongoose"),
-config = require("../config.js");
+const mongoose = require("mongoose");
 
 module.exports = mongoose.model("Log", new mongoose.Schema({
     command: { type: Object },
