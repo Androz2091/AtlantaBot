@@ -501,8 +501,8 @@ module.exports = class {
 			// Errors
 			BACKUP_ERR_STATUS: `${e.error} | Vous devez préciser \`create\`, \`load\` ou \`infos\` !`,
 			BACKUP_ERR_NOT_FOUND: (backupID) => `${e.error} | Aucune sauvegarde trouvée pour \`${backupID}\``,
-			BACKUP_ERR_ID: `${e.error} | Veuillez entrer une ID de sauvegarde !`,
-			BACKUP_ERR_TIMEOUT: `${e.error} | Temps écoulé | Chargement de la sauvegarde annulé !`,
+			BACKUP_ERR_ID: `${e.error} | Veuillez entrer une ID de sauvegarde !`,
+			BACKUP_ERR_TIMEOUT: `${e.error} | Temps écoulé | Chargement de la sauvegarde annulé !`,
 			// Content
 			BACKUP_CREATE_SUCCESS: `${e.success} | Sauvegarde créée avec succès ! L'ID de la sauvegarde vous a été envoyée en messages privés !`,
 			BACKUP_CREATE_SUCCESS_ID: (backupID) => `${e.success} | Voici l'ID de votre sauvegarde : \`\`\`${backupID}\`\`\``,
@@ -562,8 +562,8 @@ module.exports = class {
 			IGNORE_USAGE: "ignore [#salon]",
 			IGNORE_EXAMPLES: "$ignore #général",
 			// Content
-			IGNORE_SUCCESS_DISABLED: (channel) => `${e.success} | Les commandes sont maintenant autorisées dans ${channel} !`,
-			IGNORE_SUCCESS_ENABLED: (channel) => `${e.warn} | Les commandes sont maintenant interdites dans ${channel} !`,
+			IGNORE_SUCCESS_DISABLED: (channel) => `${e.success} | Les commandes sont maintenant autorisées dans ${channel} !`,
+			IGNORE_SUCCESS_ENABLED: (channel) => `${e.warn} | Les commandes sont maintenant interdites dans ${channel} !`,
 
 			/* SETPREFIX COMMAND */
 
@@ -573,7 +573,7 @@ module.exports = class {
 			SETPREFIX_EXAMPLES: "$setprefix !",
 			// Errors
 			SETPREFIX_ERR_PREFIX: `${e.error} | Veuillez entrer un préfixe valide !`,
-			SETPREFIX_ERR_CARACT: `${e.error} | Le préfixe ne doit pas excéder les 5 caractères !`,
+			SETPREFIX_ERR_CARACT: `${e.error} | Le préfixe ne doit pas excéder les 5 caractères !`,
 			// Content
 			SETPREFIX_SUCCESS: (prefix) => `${e.success} | Le préfixe a bien été modifié ! Tapez \`${prefix}help\` pour voir la liste des commandes !`,
 
@@ -601,7 +601,7 @@ module.exports = class {
 			WELCOME_FORM_CHANNEL: (author) => `Bonjour ${author} ! Dans quel salon s'enverra le message de bienvenue ? (mentionnez un salon)`,
 			WELCOME_FORM_MESSAGE: (channel, msg) => `D'accord ! Les messages s'enverront donc dans ${channel}. Entrez le message de bienvenue ci-dessous : \n\nInfos:\`\`\`\nMention : {user}\nMembres : {membercount}\nServeur : {server}\`\`\`Par exemple, "Bienvenue {user} sur {server} ! Grâce à toi, nous sommes {membercount} !" donnera "Bienvenue ${msg.author} sur ${msg.guild.name} ! Grâce à toi, nous sommes ${msg.guild.memberCount} !".`,
 			WELCOME_FORM_IMAGE: `Ça marche ! Voulez-vous qu'une superbe image de bienvenue soit envoyée en même temps ? Répondez par "oui" ou par "non" !`,
-			WELCOME_FORM_SUCCESS: (channel, prefix) => `${e.success} | Messages de bienvenue activés dans <#${channel}> ! Tapez \`${prefix}welcome test\` pour tester le message de bienvenue !`,
+			WELCOME_FORM_SUCCESS: (channel, prefix) => `${e.success} | Messages de bienvenue activés dans <#${channel}> ! Tapez \`${prefix}welcome test\` pour tester le message de bienvenue !`,
 			WELCOME_IMG: (name) => `Bienvenue sur ${name} !`,
 			// Errors
 			WELCOME_ERR_TIMEOUT: `${e.error} | Temps écoulé ! Veuillez retaper la commande !`,
@@ -619,7 +619,7 @@ module.exports = class {
 			GOODBYE_FORM_CHANNEL: (author) => `Bonjour ${author} ! Dans quel salon s'enverra le message d'au revoir ? (mentionnez un salon)`,
 			GOODBYE_FORM_MESSAGE: (channel, msg) => `D'accord ! Les messages s'enverront donc dans ${channel}. Entrez le message d'au revoir ci-dessous : \n\nInfos:\`\`\`\nMention : {user}\nMembres : {membercount}\nServeur : {server}\`\`\`Par exemple, "Au revoir {user} ! C'est triste, sans toi nous ne sommes que {membercount} sur {server} !" donnera "Au revoir ${msg.author.username}#${msg.author.discriminator} ! C'est triste, sans toi nous ne sommes que ${msg.guild.memberCount} sur ${msg.guild.name} !".`,
 			GOODBYE_FORM_IMAGE: `Ça marche ! Voulez-vous qu'une superbe image d'au revoir soit envoyée en même temps ? Répondez par "oui" ou par "non" !`,
-			GOODBYE_FORM_SUCCESS: (channel, prefix) => `${e.success} | Messages d'au revoir activés dans <#${channel}> ! Tapez \`${prefix}goodbye test\` pour tester le message d'au revoir !`,
+			GOODBYE_FORM_SUCCESS: (channel, prefix) => `${e.success} | Messages d'au revoir activés dans <#${channel}> ! Tapez \`${prefix}goodbye test\` pour tester le message d'au revoir !`,
 			GOODBYE_IMG: (name) => `Départ de ${name}`,
 			// Errors
 			GOODBYE_ERR_TIMEOUT: `${e.error} | Temps écoulé ! Veuillez retaper la commande !`,
@@ -830,7 +830,7 @@ module.exports = class {
 			BADGE_FORMAT_BOUGHT: (badge) => `Badge : ${badge.emoji}\nNom : ${badge.name}\nDéjà acheté (${badge.price} crédits)\n--------\n`,
 			BADGE_SUCCESS: (badge) => `${e.success} | Vous venez d'acheter le badge ${badge.name} (${badge.emoji}) pour ${badge.price} crédits !`,
 			// Errors
-			BADGE_ERR_NOT_FOUND: (text) => `${e.error} | Aucun badge trouvé pour \`${text}\``,
+			BADGE_ERR_NOT_FOUND: (text) => `${e.error} | Aucun badge trouvé pour \`${text}\``,
 			BADGE_ERR_PRICE: `${e.error} | Vous n'avez pas assez de crédits pour acheter ce badge !`,
 			BADGE_ERR_BOUGHT: `${e.error} | Vous possédez déjà ce badge !`,
 			// Headings
@@ -963,7 +963,7 @@ module.exports = class {
 			PLAY_ERR_PERMS: `${e.error} | Une erreur s'est produite. Soit je ne peux pas me connecter dans votre salon, soit je ne peux pas parler dans votre salon. Vérifiez mes permissions et réessayez.`,
 			PLAY_ERR_TIMEOUT: `${e.error} | Temps écoulé ! Veuillez retaper la commande !`,
 			PLAY_ERR_NOT_FOUND: `${e.error} | Aucun résultat sur Youtube !`,
-			PLAY_ERR_NOT_PLAYING: `${e.error} | Aucune musique en cours !`,
+			PLAY_ERR_NOT_PLAYING: `${e.error} | Aucune musique en cours !`,
 			// Headings
 			PLAY_PLAYING_TITLE: "Lecture en cours",
 			PLAY_HEADINGS: [
@@ -998,7 +998,7 @@ module.exports = class {
 			SKIP_CONTENT: (title, voteCount, requiredCount) => `Chanson suivante : ${title}\nVote : ${voteCount}/${requiredCount}\nRéagissez avec 👍 pour passer à la chanson suivante !`,
 			SKIP_CONTENT_COMPLETE: (title) => `Chanson passée ! Maintenant : ${title}`,
 			// Errors
-			SKIP_ERR_NO_SONG: `${e.error} | Aucune chanson suivante !`,
+			SKIP_ERR_NO_SONG: `${e.error} | Aucune chanson suivante !`,
 
 			/* NP COMMAND */
 
@@ -1061,7 +1061,7 @@ module.exports = class {
 			CHECKINVITES_USAGE: "checkinvites",
 			CHECKINVITES_EXAMPLES: "$checkinvites",
 			// Content
-			CHECKINVITES_NOT_FOUND: `${e.success} | Aucun membre ne fait de la publicité dans son jeu !`,
+			CHECKINVITES_NOT_FOUND: `${e.success} | Aucun membre ne fait de la publicité dans son jeu !`,
 
 			/* CLEAR COMMAND */
 

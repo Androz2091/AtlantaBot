@@ -478,8 +478,8 @@ module.exports = class {
 			// Errors
 			BACKUP_ERR_STATUS: `${e.error} | You must specify \`create\`, \`load\` or \`infos\`!`,
 			BACKUP_ERR_NOT_FOUND: (backupID) => `${e.error} | No backup found for \`${backupID}\``,
-			BACKUP_ERR_ID: `${e.error} | Please enter a backup ID!`,
-			BACKUP_ERR_TIMEOUT: `${e.error} | TTime's up! Cancelled backup loading!`,
+			BACKUP_ERR_ID: `${e.error} | Please enter a backup ID!`,
+			BACKUP_ERR_TIMEOUT: `${e.error} | Time's up! Cancelled backup loading!`,
 			// Content
 			BACKUP_CREATE_SUCCESS: `${e.success} | Successfully created backup! The backup ID has been sent to you in private messages!`,
 			BACKUP_CREATE_SUCCESS_ID: (backupID) => `${e.success} | Here is the ID of your backup: \`\`\`${backupID}\`\`\``,
@@ -549,7 +549,7 @@ module.exports = class {
 			PLAY_ERR_PERMS: `${e.error} | An error has occurred. Either I can't connect in your living room or I can't talk in your living room. Check my permissions and try again.`,
 			PLAY_ERR_TIMEOUT: `${e.error} | Time's up! Please retype the command!`,
 			PLAY_ERR_NOT_FOUND: `${e.error} | No results on Youtube!`,
-			PLAY_ERR_NOT_PLAYING: `${e.error} | No music in progress!`,
+			PLAY_ERR_NOT_PLAYING: `${e.error} | No music in progress!`,
 			// Headings
 			PLAY_PLAYING_TITLE: "Playing in progress",
 			PLAY_HEADINGS: [
@@ -585,7 +585,7 @@ module.exports = class {
 			SKIP_CONTENT_COMPLETE: (title) => `Song passed ! Now: ${title}`,
 			SKIP_SUCCESS: `${e.success} | I just changed the song!`,
 			// Errors
-			SKIP_ERR_NO_SONG: `${e.error} | No next song!`,
+			SKIP_ERR_NO_SONG: `${e.error} | No next song!`,
 
 			/* NP COMMAND */
 
@@ -648,7 +648,7 @@ module.exports = class {
 			SETPREFIX_EXAMPLES: "$setprefix !",
 			// Errors
 			SETPREFIX_ERR_PREFIX: `${e.error} | Please enter a valid prefix!`,
-			SETPREFIX_ERR_CARACT: `${e.error} | The prefix must not exceed 5 characters!`,
+			SETPREFIX_ERR_CARACT: `${e.error} | The prefix must not exceed 5 characters!`,
 			// Content
 			SETPREFIX_SUCCESS: (prefix) => `${e.success} | The prefix has been changed! Type in \`${prefix}help\` to see the list of commands!`,
 
@@ -676,7 +676,7 @@ module.exports = class {
 			WELCOME_FORM_CHANNEL: (author) => `Hello ${author} ! In which channel will the welcome messages be sent? (mention a channel)`,
 			WELCOME_FORM_MESSAGE: (channel, msg) => `All right! The messages will therefore be sent in ${channel}. Enter the welcome message below: \n\n\nInfos:\n\n\nMention: {user}\nMembers: {membercount}\nServer: {server}\nFor example, "Welcome {user} to {server} ! Thanks to you, we are {membercount} ! will give "Welcome ${msg.author} to ${msg.guild.name} ! Thanks to you, we are ${msg.guild.memberCount} !".`,
 			WELCOME_FORM_IMAGE: `It works! Do you want a great welcome image to be sent at the same time? Answer with "yes" or "no"!`,
-			WELCOME_FORM_SUCCESS: (channel, prefix) => `${e.success} | Welcome messages enabled in <#${channel}> ! Type \`${prefix}welcome test\` to test the welcome message!`,
+			WELCOME_FORM_SUCCESS: (channel, prefix) => `${e.success} | Welcome messages enabled in <#${channel}> ! Type \`${prefix}welcome test\` to test the welcome message!`,
 			WELCOME_IMG: (name) => `Welcome in ${name} !`,
 			// Errors
 			WELCOME_ERR_TIMEOUT: `${e.error} | Time's up! Please retype the command!`,
@@ -733,7 +733,7 @@ module.exports = class {
 			GOODBYE_FORM_CHANNEL: (author) => `Hello ${author} ! In which channel will the goodbye messages be sent? (mention a channel)`,
 			GOODBYE_FORM_MESSAGE: (channel, msg) => `All right! The messages will therefore be sent in ${channel}. Enter the goodbye message below: \n\n\nInfos:\\n\n\nMention: {user}\nMembers: {membercount}\nServer: {server}\nFor example, "Goodbye {user} ! It's sad, without you we're only {membercount} on {server} !" will give "Goodbye ${msg.author.username}#${msg.author.discriminator} ! It's sad, without you we're only ${msg.guild.memberCount} on ${msg.guild.name} !".`,
 			GOODBYE_FORM_IMAGE: `It works! Do you want a great welcome image to be sent at the same time? Answer with "yes" or "no"!`,
-			GOODBYE_FORM_SUCCESS: (channel, prefix) => `${e.success} | Goodbye messages enabled in <#${channel}> ! Type \`${prefix}goodbye test\` to test the goodbye message!`,
+			GOODBYE_FORM_SUCCESS: (channel, prefix) => `${e.success} | Goodbye messages enabled in <#${channel}> ! Type \`${prefix}goodbye test\` to test the goodbye message!`,
 			GOODBYE_IMG: (name) => `Leaving from ${name}`,
 			// Errors
 			GOODBYE_ERR_TIMEOUT: `${e.error} | Time's up! Please retype the command!`,
@@ -944,7 +944,7 @@ module.exports = class {
 			BADGE_FORMAT_BOUGHT: (badge) => `Badge: ${badge.emoji}\nName: ${badge.name}\nAlready purchased (${badge.price} credits)\n--------\n`,
 			BADGE_SUCCESS: (badge) => `${e.success} | You just bought the badge ${badge.name} (${badge.emoji}) for ${badge.price} credits!`,
 			// Errors
-			BADGE_ERR_NOT_FOUND: (text) => `${e.error} | No badges found for \`${text}\``,
+			BADGE_ERR_NOT_FOUND: (text) => `${e.error} | No badges found for \`${text}\``,
 			BADGE_ERR_PRICE: `${e.error} | You don't have enough credits to buy this badge!`,
 			BADGE_ERR_BOUGHT: `${e.error} | You already have this badge!`,
 			// Headings
@@ -1103,7 +1103,7 @@ module.exports = class {
 			CHECKINVITES_USAGE: "checkinvites",
 			CHECKINVITES_EXAMPLES: "$checkinvites",
 			// Content
-			CHECKINVITES_NOT_FOUND: `${e.success} | No member advertises in his game!`,
+			CHECKINVITES_NOT_FOUND: `${e.success} | No member advertises in his game!`,
 
 			/* CLEAR COMMAND */
 
