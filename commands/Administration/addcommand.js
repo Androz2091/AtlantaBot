@@ -38,7 +38,7 @@ class Addcommand extends Command {
         }
         
         data.settings.customCommands.push({
-            name: name,
+            name: name.toLowerCase(),
             answer: answer
         });
         data.settings.save();
