@@ -690,10 +690,10 @@ module.exports = class {
 			GIVEAWAY_EXAMPLES: "$giveaway create 10m 2 5$ PayPal !\n$giveaway reroll 597812898022031374",
 			// Errors
 			GIVEAWAY_ERR_STATUS: `${e.error} | You must specify \`create\`, \`reroll\` ou \`delete\`!`,
-			GIVEAWAY_ERR_CREATE: (prefix) => `${e.error} | You must enter the information in this format: \n\n\`${prefix}giveaway [time] [winners count] [prize]\``,
-			GIVEAWAY_ERR_REROLL: `${e.error} | You must enter the ID of the giveaway message a re-rolled!`,
-			GIVEAWAY_ERR_DELETE: `${e.error} | You must enter the ID of the giveaway message to be deleted!`,
-			GIVEAWAY_ERR_END: `${e.error} | You must enter the ID of the giveaway message to be ended!`,
+			GIVEAWAY_ERR_CREATE: (prefix) => `${e.error} | You must enter the information in this format: \n\n\`${prefix}giveaway [time] [winners count] [prize]\``,
+			GIVEAWAY_ERR_REROLL: `${e.error} | You must enter the ID of the giveaway message a re-rolled!`,
+			GIVEAWAY_ERR_DELETE: `${e.error} | You must enter the ID of the giveaway message to be deleted!`,
+			GIVEAWAY_ERR_END: `${e.error} | You must enter the ID of the giveaway message to be ended!`,
 			GIVEAWAY_ERR_REROLL_MSG_ENDED: (messageID) => `${e.error} | No giveaway **ended** found with message ID \`${messageID}\``,
 			GIVEAWAY_ERR_MESSAGE_NOT_FOUND: (messageID) => `${e.error} | No giveaway found with message ID \`${messageID}\``,
 			GIVEAWAY_ERR_15_DAYS: `${e.error} | The maximum length of a giveaway is 15 days.`,
@@ -1171,10 +1171,10 @@ module.exports = class {
 			// Errors
 			SETWARNS_ERR_SANCTION: `${e.error} | Please indicate a valid sanction type! (\`kick\`, \`ban\`)`,
 			// Content
-			SETWARNS_SUCCESS_KICK: (prefix, number) => `${e.success} | Configuration saved! When a member has reached the ${number} warns, he will be kicked out. Type \`${prefix}configuration\` to see your new configuration!`,
-			SETWARNS_SUCCESS_BAN: (prefix, number) => `${e.success} | Configuration enregistrée ! Lorsqu'un membre aura atteint les ${number} warns, il sera banned. Tapez \`${prefix}configuration\` pour voir votre nouvelle configuration !`,
-			SETWARNS_SUCCESS_RESET_KICK: (prefix) => `${e.success} | Configuration saved! The kick sanction is no longer automatic! Type \`${prefix}configuration\` to see your new configuration!`,
-			SETWARNS_SUCCESS_RESET_BAN: (prefix) => `${e.success} | Configuration saved! The ban sanction is no longer automatic! Type \`${prefix}configuration\` to see your new configuration!`,
+			SETWARNS_SUCCESS_KICK: (prefix, number) => `${e.success} | Configuration saved! When a member has reached the ${number} warns, he will be kicked out. Type \`${prefix}configuration\` to see your new configuration!`,
+			SETWARNS_SUCCESS_BAN: (prefix, number) => `${e.success} | Configuration saved! When a member has reached the ${number} warns, he will be banned. Type \`${prefix}configuration\` to see your new configuration!`,
+			SETWARNS_SUCCESS_RESET_KICK: (prefix) => `${e.success} | Configuration saved! The kick sanction is no longer automatic! Type \`${prefix}configuration\` to see your new configuration!`,
+			SETWARNS_SUCCESS_RESET_BAN: (prefix) => `${e.success} | Configuration saved! The ban sanction is no longer automatic! Type \`${prefix}configuration\` to see your new configuration!`,
 
 			/* POLL COMMAND */
 
@@ -1260,10 +1260,10 @@ module.exports = class {
 			ADDEMOTE_EXAMPLES: "$addemote https://an-image-of.com/butterfly.png butterfly",
 			// Errors
 			ADDEMOTE_ERR_NAME: `${e.error} | Please indicate the name of the emoji!`,
-			ADDEMOTE_ERR_URL: `${e.error} | Please indicate the url of the emoji!`,
+			ADDEMOTE_ERR_URL: `${e.error} | Please indicate the url of the emoji!`,
 			ADDEMOTE_ERROR: `${e.error} | The URL to the image is invalid or you have no more space on your Discord!`,
 			// Content
-			ADDEMOTE_SUCCESS: (emote) => `${e.success} | Emoji ${emote.name} added to the server! String: \`${emote.toString()}\``,
+			ADDEMOTE_SUCCESS: (emote) => `${e.success} | Emoji ${emote.name} added to the server! String: \`${emote.toString()}\``,
 			
 			/* AUTOMOD COMMAND */
 
@@ -1276,7 +1276,7 @@ module.exports = class {
 			// Content
 			AUTOMOD_SUCCESS_ENABLED: (prefix) => `${e.success} | Discord invitations will be automatically deleted! If you want to ignore a channel, just type \`${prefix}automod off #channel\` ! This will disable auto moderation in the mentioned channel!`,
 			AUTOMOD_SUCCESS_DISABLED_CHANNEL: (channel) => `${e.success} | Automoderation will no longer be performed in the channel ${channel} !`,
-			AUTOMOD_SUCCESS_DISABLED: `${e.success} | All right! Auto moderation is no longer effective on this server!`,
+			AUTOMOD_SUCCESS_DISABLED: `${e.success} | All right! Auto moderation is no longer effective on this server!`,
 			AUTOMOD_MSG: (msg) => `${msg.author} | Your message contained a Discord invitation, so it has been deleted. If it was unintentional, you can edit your message again, it was sent to you as a private message!`,
 
 			/* SETLANG COMMAND */
@@ -1301,7 +1301,7 @@ module.exports = class {
 			FORTNITE_EXAMPLES: "$fortnite pc Ninja",
 			// Errors
 			FORTNITE_ERR_PLATFORM: `${e.error} | Enter a valid platform: \`psn\`, \`pc\` ou \`xbl\` !`,
-			FORTNITE_ERR_USERNAME: `${e.error} | Enter a valid pseudo epic games!`,
+			FORTNITE_ERR_USERNAME: `${e.error} | Enter a valid pseudo epic games!`,
 			FORTNITE_ERR_NOT_FOUND: (platform, username) => `${e.error} | Player \`${username}\` not found on the platform \`${platform}\`!`,
 			// Content
 			FORTNITE_DESC: (platform, username) => `${username} plays on ${platform} !`,
@@ -1321,7 +1321,7 @@ module.exports = class {
 			PURGE_ERR_TIMEOUT: `${e.error} | Time's up! Please retype the command!`,
 			// Content
 			PURGE_CONFIRMATION: (members) => `${e.warn} | ${members} members will be kicked out! To confirm, type \`confirm\`!`,
-			PURGE_SUCCESS: (members) => `${e.success} | ${members} membres kicked !`,
+			PURGE_SUCCESS: (members) => `${e.success} | ${members} membres kicked !`,
 
         }
     }

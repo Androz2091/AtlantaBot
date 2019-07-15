@@ -1120,10 +1120,10 @@ module.exports = class {
 			// Errors
 			SETWARNS_ERR_SANCTION: `${e.error} | Veuillez indiquer un type de sanction valide ! (\`kick\`, \`ban\`)`,
 			// Content
-			SETWARNS_SUCCESS_KICK: (prefix, number) => `${e.success} | Configuration enregistrée ! Lorsqu'un membre aura atteint les ${number} warns, il sera expulsé. Tapez \`${prefix}configuration\` pour voir votre nouvelle configuration !`,
-			SETWARNS_SUCCESS_BAN: (prefix, number) => `${e.success} | Configuration enregistrée ! Lorsqu'un membre aura atteint les ${number} warns, il sera banni. Tapez \`${prefix}configuration\` pour voir votre nouvelle configuration !`,
-			SETWARNS_SUCCESS_RESET_KICK: (prefix) => `${e.success} | Configuration enregistrée ! La sanction kick n'est maintenant plus automatique ! Tapez \`${prefix}configuration\` pour voir votre nouvelle configuration !`,
-			SETWARNS_SUCCESS_RESET_BAN: (prefix) => `${e.success} | Configuration enregistrée ! La sanction ban n'est maintenant plus automatique ! Tapez \`${prefix}configuration\` pour voir votre nouvelle configuration !`,
+			SETWARNS_SUCCESS_KICK: (prefix, number) => `${e.success} | Configuration enregistrée ! Lorsqu'un membre aura atteint les ${number} warns, il sera expulsé. Tapez \`${prefix}configuration\` pour voir votre nouvelle configuration !`,
+			SETWARNS_SUCCESS_BAN: (prefix, number) => `${e.success} | Configuration enregistrée ! Lorsqu'un membre aura atteint les ${number} warns, il sera banni. Tapez \`${prefix}configuration\` pour voir votre nouvelle configuration !`,
+			SETWARNS_SUCCESS_RESET_KICK: (prefix) => `${e.success} | Configuration enregistrée ! La sanction kick n'est maintenant plus automatique ! Tapez \`${prefix}configuration\` pour voir votre nouvelle configuration !`,
+			SETWARNS_SUCCESS_RESET_BAN: (prefix) => `${e.success} | Configuration enregistrée ! La sanction ban n'est maintenant plus automatique ! Tapez \`${prefix}configuration\` pour voir votre nouvelle configuration !`,
 
 			/* POLL COMMAND */
 
@@ -1162,10 +1162,10 @@ module.exports = class {
 			GIVEAWAY_EXAMPLES: "$giveaway create 10m 2 5€ PayPal !\n$giveaway reroll 597812898022031374",
 			// Errors
 			GIVEAWAY_ERR_STATUS: `${e.error} | Vous devez préciser \`create\`, \`reroll\` ou \`delete\` !`,
-			GIVEAWAY_ERR_CREATE: (prefix) => `${e.error} | Vous devez entrer les informations sous cette forme : \n\n\`${prefix}giveaway [temps] [nombre de gagnants] [prix]\``,
-			GIVEAWAY_ERR_REROLL: `${e.error} | Vous devez entrer l'ID du message du giveaway a re-tirer !`,
-			GIVEAWAY_ERR_DELETE: `${e.error} | Vous devez entrer l'ID du message du giveaway a supprimer !`,
-			GIVEAWAY_ERR_END: `${e.error} | Vous devez entrer l'ID du message du giveaway a terminer !`,
+			GIVEAWAY_ERR_CREATE: (prefix) => `${e.error} | Vous devez entrer les informations sous cette forme : \n\n\`${prefix}giveaway [temps] [nombre de gagnants] [prix]\``,
+			GIVEAWAY_ERR_REROLL: `${e.error} | Vous devez entrer l'ID du message du giveaway a re-tirer !`,
+			GIVEAWAY_ERR_DELETE: `${e.error} | Vous devez entrer l'ID du message du giveaway a supprimer !`,
+			GIVEAWAY_ERR_END: `${e.error} | Vous devez entrer l'ID du message du giveaway a terminer !`,
 			GIVEAWAY_ERR_REROLL_MSG_ENDED: (messageID) => `${e.error} | Aucun giveaway **terminé** trouvé avec comme ID de message \`${messageID}\``,
 			GIVEAWAY_ERR_MESSAGE_NOT_FOUND: (messageID) => `${e.error} | Aucun giveaway trouvé avec comme ID de message \`${messageID}\``,
 			GIVEAWAY_ERR_15_DAYS: `${e.error} | La longueur maximale d'un giveaway est de 15 jours.`,
@@ -1257,10 +1257,10 @@ module.exports = class {
 			ADDEMOTE_EXAMPLES: "$addemote https://une-image-de.com/papillon.png papillon",
 			// Errors
 			ADDEMOTE_ERR_NAME: `${e.error} | Veuillez indiquer le nom de l'émoji !`,
-			ADDEMOTE_ERR_URL: `${e.error} | Veuillez indiquer l'url de l'émoji !`,
+			ADDEMOTE_ERR_URL: `${e.error} | Veuillez indiquer l'url de l'émoji !`,
 			ADDEMOTE_ERROR: `${e.error} | L'URL vers l'image est invalide ou vous n'avez plus de place sur votre Discord !`,
 			// Content
-			ADDEMOTE_SUCCESS: (emote) => `${e.success} | Émoji ${emote.name} ajouté au serveur ! Chaîne : \`${emote.toString()}\``,
+			ADDEMOTE_SUCCESS: (emote) => `${e.success} | Émoji ${emote.name} ajouté au serveur ! Chaîne : \`${emote.toString()}\``,
 			
 			/* AUTOMOD COMMAND */
 
@@ -1273,7 +1273,7 @@ module.exports = class {
 			// Content
 			AUTOMOD_SUCCESS_ENABLED: (prefix) => `${e.success} | Les invitations Discord seront automatiquement supprimées ! Si vous souhaitez ignorer un salon, tapez simplement \`${prefix}automod off #salon\` ! Cela désactivera l'auto modération dans le salon mentionné !`,
 			AUTOMOD_SUCCESS_DISABLED_CHANNEL: (channel) => `${e.success} | L'auto modération ne sera plus effectuée dans le salon ${channel} !`,
-			AUTOMOD_SUCCESS_DISABLED: `${e.success} | Très bien ! L'auto modération n'est plus effective sur ce serveur !`,
+			AUTOMOD_SUCCESS_DISABLED: `${e.success} | Très bien ! L'auto modération n'est plus effective sur ce serveur !`,
 			AUTOMOD_MSG: (msg) => `${msg.author} | Votre message contenait une invitation Discord, il a donc été supprimé. Si c'était involontaire, vous pouvez rééditer votre message, il vous a été envoyé en message privé !`,
 
 			/* SETLANG COMMAND */
@@ -1298,7 +1298,7 @@ module.exports = class {
 			FORTNITE_EXAMPLES: "$fortnite pc Ninja",
 			// Errors
 			FORTNITE_ERR_PLATFORM: `${e.error} | Entrez une plateforme valide : \`psn\`, \`pc\` ou \`xbl\` !`,
-			FORTNITE_ERR_USERNAME: `${e.error} | Entrez un pseudo epic games valide !`,
+			FORTNITE_ERR_USERNAME: `${e.error} | Entrez un pseudo epic games valide !`,
 			FORTNITE_ERR_NOT_FOUND: (platform, username) => `${e.error} | Joueur \`${username}\` introuvable sur la plateforme \`${platform}\` !`,
 			// Content
 			FORTNITE_DESC: (platform, username) => `${username} joue sur ${platform} !`,
@@ -1318,7 +1318,7 @@ module.exports = class {
 			PURGE_ERR_TIMEOUT: `${e.error} | Temps écoulé ! Veuillez retaper la commande !`,
 			// Content
 			PURGE_CONFIRMATION: (members) => `${e.warn} | ${members} membres seront expulsés ! Pour confirmer, tapez \`confirm\` !`,
-			PURGE_SUCCESS: (members) => `${e.success} | ${members} membres expulsés !`,
+			PURGE_SUCCESS: (members) => `${e.success} | ${members} membres expulsés !`,
 
         }
     }
