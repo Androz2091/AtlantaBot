@@ -68,7 +68,7 @@ module.exports = {
 		score: "XXXXXXXXXXX",
 		// https://img.icons8.com/color/96/000000/-scoreboard-.png
 		games: "XXXXXXXXXXX",
-		// https://img.icons8.com/color/96/000000/-scoreboard-.png
+		// https://stockage.craftburg.net/ico/game.png
 		kills: "XXXXXXXXXXX",
 		// RE: https://img.icons8.com/color/96/000000/submachine-gun.png
 		crown: "XXXXXXXXXXX",
