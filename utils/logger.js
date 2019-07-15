@@ -2,7 +2,6 @@
 Logger class for easy and aesthetically pleasing console logging
 */
 const { bgBlue, black, green } = require("chalk");
-const moment = require("moment");
 
 function dateTimePad(value, digits){
   let number = value
