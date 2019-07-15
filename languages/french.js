@@ -851,7 +851,7 @@ module.exports = class {
 			STATS_DESC: `${c.botname} est un bot open source développé par ${c.owner.name} !`,
 			STATS_ONLINE: (time) => `Depuis ${time}`,
 			STATS_VC: (nb) => `Musique en cours sur \`${nb}\` serveurs`,
-			STATS_CREDITS: "Merci à \`https://icones8.fr/icons/\`, tous les emojis (ou presque) viennent de ce site !",
+			STATS_CREDITS: "Merci à `https://icones8.fr/icons/`, tous les emojis (ou presque) viennent de ce site !",
 			STATS_LINKS: (url, id) => `[Donate](${c.others.donate}) ● [Invite](https://discordapp.com/oauth2/authorize?client_id=${id}&scope=bot&permissions=2146958847) ● [Serveur](${url}) ● [Github](${c.others.github})`,
 			// Headings
 			STATS_HEADINGS:[
@@ -928,7 +928,7 @@ module.exports = class {
 			// Utils
 			AVATAR_DESCRIPTION: "Affiche l'avatar du membre mentionné",
 			AVATAR_USAGE: "avatar (@membre)",
-			AVATAR_EXAMPLES: "$avatar\$avatar @Androz#2091",
+			AVATAR_EXAMPLES: "$avatar\n$avatar @Androz#2091",
 
 			/* LOVE COMMAND */
 
