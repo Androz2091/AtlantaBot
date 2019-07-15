@@ -23,7 +23,7 @@ class Addcommand extends Command {
 
     async run (message, args, data) {
         
-        let name = args[0];
+        let name = args[0].toLowerCase();
         if(!name){
             return message.channel.send(message.language.get("ADDCOMMAND_ERR_NAME"));
         }
