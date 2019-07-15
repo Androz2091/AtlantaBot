@@ -66,9 +66,9 @@ module.exports = {
 		warn: "XXXXXXXXXXX",
 		// RE: https://img.icons8.com/flat_round/64/000000/error--v1.png
 		score: "XXXXXXXXXXX",
-		// https://img.icons8.com/color/96/000000/-scoreboard-.png
+		// RE: https://img.icons8.com/color/96/000000/-scoreboard-.png
 		games: "XXXXXXXXXXX",
-		// https://stockage.craftburg.net/ico/game.png
+		// RE: https://img.icons8.com/color/96/000000/computer.png
 		kills: "XXXXXXXXXXX",
 		// RE: https://img.icons8.com/color/96/000000/submachine-gun.png
 		crown: "XXXXXXXXXXX",
