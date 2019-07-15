@@ -1,7 +1,7 @@
 /*
 Logger class for easy and aesthetically pleasing console logging
 */
-const { bgBlue, bdRed, black, green } = require("chalk");
+const { bgBlue, black, green } = require("chalk");
 const moment = require("moment");
 
 module.exports = class Logger {
