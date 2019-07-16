@@ -87,8 +87,8 @@ module.exports = {
             let member = guild.me;
             let channel = guild.channels.find((ch) => ch.permissionsFor(member.id).has("CREATE_INSTANT_INVITE"));
             if(channel){
-                let invite = await channel.createInvite({maxAge :0});
-                resolve(invite.url);
+                let invite = await channel.createInvite({maxAge :0}).catch((err) => {});
+                resolve(invite ? invite.url : null);
             } else {
                 resolve("https://atlanta-bot.fr");
             }

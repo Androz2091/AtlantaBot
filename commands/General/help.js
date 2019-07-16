@@ -160,7 +160,11 @@ class Help extends Command {
                 let commands = message.client.commands.filter((cmd) => cmd.help.category === cat);
                 embed.addField((emoji ? emoji.toString() : "")+" "+cat+" - ("+commands.size+")", commands.map((cmd) => "`"+cmd.help.name+"`").join(", "));
             });
-            embed.addField("\u200B", message.language.get("STATS_LINKS", await message.client.functions.supportLink(message.client), message.client.user.id));
+            let inviteURL = await message.client.functions.supportLink(message.client).catch((err) => {});
+            if(!inviteURL){
+                inviteURL = message.client.config.supportURL || "https://discord.gg/code";
+            }
+            embed.addField("\u200B", message.language.get("STATS_LINKS", inviteURL, message.client.user.id));
             embed.setAuthor(message.language.get("HELP_TITLE"), message.client.user.displayAvatarURL());
             return message.channel.send(embed);
         }
