@@ -63,6 +63,7 @@ class Help extends Command {
                 categories.push(command.help.category);
             }
         });
+        categories = categories.sort();
 
         let Log = require("../../base/Log");
         let ran = await Log.find({});
