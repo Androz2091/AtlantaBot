@@ -113,8 +113,12 @@ module.exports = {
 		// RE: https://img.icons8.com/color/96/000000/no-microphone.png
 		id: "XXXXXXXXXXX",
 		// RE: https://img.icons8.com/color/96/000000/id-verified.png
-		ip: "XXXXXXXXXXX"
+		ip: "XXXXXXXXXXX",
 		// RE: https://img.icons8.com/color/96/000000/ip-address.png
+		folder: "XXXXXXXXXXX",
+		// RE: https://img.icons8.com/color/344/opened-folder.png
+		desc2: "XXXXXXXXXXX"
+		// RE: https://img.icons8.com/color/344/edit-property.png
 	},
 	/* The others utils links */
 	others: {
