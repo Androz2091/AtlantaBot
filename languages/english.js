@@ -936,7 +936,7 @@ module.exports = class {
 			// Utils
 			BADGE_DESCRIPTION: "Buy badges that will appear on your profile!",
 			BADGE_USAGE: "badge (name-of-the-badge)",
-			BADGE_EXAMPLES: "badge\nbadge France",
+			BADGE_EXAMPLES: "$badge\n$badge France",
 			// Content
 			BADGE_EMBED_TITLE: `Badges ${c.botname}`,
 			BADGE_EMBED_DESCRIPTION: (prefix) => `To buy a badge, type \`${prefix}badge [name-of-the-badge]\``,
