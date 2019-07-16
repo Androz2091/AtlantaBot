@@ -24,7 +24,7 @@ class Help extends Command {
     async run (message, args, data) {
 
         // if a command is provided
-        if(args[0] && args[0] !== "-p"){
+        if(args[0]){
 
             let isCustom = (data.settings.customCommands ? data.settings.customCommands.find((c) => c.name === args[0]) : false);
             
@@ -54,8 +54,11 @@ class Help extends Command {
             return message.channel.send(groupEmbed);
         }
 
-        let categories = [];
-        message.client.commands.forEach((command) => {
+        const categories = [];
+        const emojis = message.client.guilds.get(message.client.config.support.id).emojis;
+        const commands = message.client.commands;
+
+        commands.forEach((command) => {
             if(!categories.includes(command.help.category)){
                 if(command.help.category === "Owner" && message.author.id !== message.client.config.owner.id){
                     return;
@@ -63,7 +66,6 @@ class Help extends Command {
                 categories.push(command.help.category);
             }
         });
-        categories = categories.sort();
 
         let Log = require("../../base/Log");
         let ran = await Log.find({});
@@ -72,20 +74,20 @@ class Help extends Command {
             .setDescription(message.language.get("HELP_EDESCRIPTION", data.settings.prefix, ranLast7Days.length))
             .setColor(data.config.embed.color)
             .setFooter(data.config.embed.footer);
-        categories.forEach((cat) => {
-            let emoji = message.client.guilds.get(message.client.config.support.id).emojis.find((e) => e.name === cat.toLowerCase()+"_category_atlanta");
-            let commands = message.client.commands.filter((cmd) => cmd.help.category === cat);
-            embed.addField((emoji ? emoji.toString() : "")+" "+cat+" - ("+commands.size+")", commands.map((cmd) => "`"+cmd.help.name+"`").join(", "));
+        categories.sort().forEach((cat) => {
+            let emoji = emojis.find((e) => e.name === cat.toLowerCase()+"_category_atlanta");
+            let tCommands = commands.filter((cmd) => cmd.help.category === cat);
+            embed.addField((emoji ? emoji.toString() : "")+" "+cat+" - ("+tCommands.size+")", tCommands.map((cmd) => "`"+cmd.help.name+"`").join(", "));
         });
         if(message.guild){
             if(data.settings.customCommands.length > 0){
-                let emoji = message.client.guilds.get(message.client.config.support.id).emojis.find((e) => e.name === "custom_category_atlanta");
+                let emoji = emojis.find((e) => e.name === "custom_category_atlanta");
                 embed.addField((emoji ? emoji.toString() : "")+" "+message.guild.name+" - ("+data.settings.customCommands.length+")", data.settings.customCommands.map((cmd) => "`"+cmd.name+"`").join(", "));
             }
         }
-        let inviteURL = await message.client.functions.supportLink(message.client).catch((err) => {});
+        let inviteURL = message.client.config.supportURL || await message.client.functions.supportLink(message.client).catch((err) => {});
         if(!inviteURL){
-            inviteURL = message.client.config.supportURL || "https://discord.gg/code";
+            inviteURL = "https://discord.gg/code";
         }
         embed.addField("\u200B", message.language.get("STATS_LINKS", inviteURL, message.client.user.id));
         embed.setAuthor(message.language.get("HELP_TITLE"), message.client.user.displayAvatarURL());
