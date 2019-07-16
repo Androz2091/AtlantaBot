@@ -102,12 +102,12 @@ module.exports = class {
 			// Headings
 			HELP_HEADINGS: [
 				"Help :",
-				"Usage :",
-				"Examples :",
-				"Group :",
-				"Description :",
-				"Alias :",
-				"Permissions :"
+				`${e.help} Usage :`,
+				`${e.search} Examples :`,
+				`${e.folder} Group :`,
+				`${e.desc2} Description :`,
+				`${e.add} Alias :`,
+				`${e.crown} Permissions :`
 			],
 
 			/* GITHUB COMMAND */
