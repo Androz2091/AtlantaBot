@@ -101,12 +101,12 @@ module.exports = class {
 			// Headings
 			HELP_HEADINGS: [
 				"Aide :",
-				"Utilisation :",
-				"Exemples :",
-				"Groupe :",
-				"Description :",
-				"Alias :",
-				"Permissions :"
+				`${e.help} Utilisation :`,
+				`${e.search} Exemples :`,
+				`${e.folder} Groupe :`,
+				`${e.desc2} Description :`,
+				`${e.add} Alias :`,
+				`${e.crown} Permissions :`
 			],
 
 			/* GITHUB COMMAND */
@@ -822,7 +822,7 @@ module.exports = class {
 			// Utils
 			BADGE_DESCRIPTION: "Achetez des badges qui apparaîtront sur votre profil !",
 			BADGE_USAGE: "badge (nom-du-badge)",
-			BADGE_EXAMPLES: "badge\nbadge France",
+			BADGE_EXAMPLES: "$badge\n$badge France",
 			// Content
 			BADGE_EMBED_TITLE: `Badges ${c.botname}`,
 			BADGE_EMBED_DESCRIPTION: (prefix) => `Pour acheter un badge, tapez \`${prefix}badge [nom-du-badge]\``,
