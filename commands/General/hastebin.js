@@ -36,7 +36,7 @@ class Hastebin extends Command {
                 headers: { "Content-Type": "text/plain" }
             });
             
-            let json = res.json();
+            let json = await res.json();
             if(!json.key){
                 return message.channel.send(message.language.get("ERR_OCCURENCED"));
             }
