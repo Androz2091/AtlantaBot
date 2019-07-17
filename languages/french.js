@@ -242,7 +242,7 @@ module.exports = class {
 			REMINDME_ERR_MESSAGE: `${e.error} | Vous devez entrer un message qui vous sera envoyé à la fin du temps !`,
 			// Content
 			REMINDME_SAVED: `${e.success} | Rappel correctement enregistré, vous recevrez un message à la fin du temps !`,
-			REMINDME_TITLE: "Rappel Atlanta",
+			REMINDME_TITLE: `Rappel ${c.botname}`,
 			REMINDME_FIELDS: [
 				"Créé il y a",
 				"Message"
