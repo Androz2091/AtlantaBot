@@ -22,8 +22,8 @@ class Setitemshop extends Command {
     }
 
     async run (message, args, data) {
-        
-        let channel = message.mentions.channels.first() || message.channel;
+
+        let channel = message.mentions.channels.first() || message.channel;
         data.settings.plugins.itemshop = channel.id;
         data.settings.markModified("plugins.itemshop");
         data.settings.save();
@@ -33,7 +33,7 @@ class Setitemshop extends Command {
         let today = new Date();
         let mm = today.getMonth() + 1;
         let dd = today.getDate();
-        let date = today.getFullYear()+'-'+(mm>9 ? '' : '0') +mm+'-'+(dd>9 ? '' : '0')+dd
+        let date = today.getFullYear()+"-"+(mm>9 ? "" : "0")+mm+"-"+(dd>9 ? "" : "0")+dd;
         let embed = new Discord.MessageEmbed()
             .setAuthor(message.language.get("ITEMSHOP_TITLE"), this.client.user.displayAvatarURL())
             .setImage(`http://api.craftburg.net/fn-shop/atlanta/itemshop_${date}.png`)
