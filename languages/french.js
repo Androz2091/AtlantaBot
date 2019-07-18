@@ -552,6 +552,7 @@ module.exports = class {
 			CONFIGURATION_GOODBYE: (withImage, channelID) => `Salon : <#${channelID}>\nImage : ${withImage ? "Oui" : "Non"}`,
 			CONFIGURATION_MODLOGS: (channelID) => `Logs : ${channelID ? `<#${channelID}>` : "Indéfini"}`,
 			CONFIGURATION_SUGGESTIONS: (channelID) => `Suggestions : ${channelID ? `<#${channelID}>` : "Indéfini" }`,
+			CONFIGURATION_ITEMSHOP: (channelID) => `Itemshop : ${channelID ? `<#${channelID}>` : "Indéfini" }`,
 			CONFIGURATION_AUTOMOD: (ignoredChannels) => `${ignoredChannels.length > 0 ? `Salon ignorés : ${ignoredChannels.map((ch) => `<#${ch}>`)}` : "Aucun salon ignoré."}`,
 			CONFIGURATION_WARNS: (kick, ban) => `${kick ? `**Expulsion**: au bout de **${kick}** avertissements.` : "**Expulsion**: Non définie."}\n${ban ? `**Bannissement**: au bout de **${ban}** avertissements.` : "**Bannissement**: Non défini."}`,
 
@@ -1248,6 +1249,19 @@ module.exports = class {
 			SETSUGGESTS_EXAMPLES: "$setsuggests #général\n$setsuggests",
 			// Content
 			SETSUGGESTS_SUCCESS: (channel) => `${e.success} | Le salon des suggestions est maintenant ${channel} !`,
+
+			/* ITEMSHOP EVENT */
+			
+			ITEMSHOP_TITLE: `${c.botname} | Boutique Fortnite du jour`,
+
+			/* SETITEMSHOP COMMAND */
+
+			// Utils
+			SETITEMSHOP_DESCRIPTION: "Définissez le salon de la boutique du jour fortnite !",
+			SETITEMSHOP_USAGE: "setsitemshop (#salon)",
+			SETITEMSHOP_EXAMPLES: "$setsitemshop #général\n$setsitemshop",
+			// Content
+			SETITEMSHOP_SUCCESS: (channel) => `${e.success} | Le salon de la boutique du jour fortnite est maintenant ${channel} !`,
 
 			/* ADDEMOTE COMMAND */
 

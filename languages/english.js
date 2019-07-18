@@ -627,6 +627,7 @@ module.exports = class {
 			CONFIGURATION_GOODBYE: (withImage, channelID) => `Channel : <#${channelID}>\nImage : ${withImage ? "Yes" : "No"}`,
 			CONFIGURATION_MODLOGS: (channelID) => `Logs : ${channelID ? `<#${channelID}>` : "Not defined"}`,
 			CONFIGURATION_SUGGESTIONS: (channelID) => `Suggestions : ${channelID ? `<#${channelID}>` : "Not defined" }`,
+			CONFIGURATION_ITEMSHOP: (channelID) => `Itemshop : ${channelID ? `<#${channelID}>` : "Not defined" }`,
 			CONFIGURATION_AUTOMOD: (ignoredChannels) => `${ignoredChannels.length > 0 ? `Salon ignorés : ${ignoredChannels.map((ch) => `<#${ch}>`)}` : "Aucun salon ignoré."}`,
 			CONFIGURATION_WARNS: (kick, ban) => `${kick ? `**Expulsion**: after **${kick}** warnings.` : "**Expulsion**: Not defined."}\n${ban ? `**Banishment**: after **${ban}** warnings.` : "**Banishment**: Not defined."}`,
 
@@ -1251,6 +1252,19 @@ module.exports = class {
 			SETSUGGESTS_EXAMPLES: "$setsuggests #general\n$setsuggests",
 			// Content
 			SETSUGGESTS_SUCCESS: (channel) => `${e.success} | The suggestions channel is now ${channel} !`,
+
+			/* ITEMSHOP EVENT */
+
+			ITEMSHOP_TITLE: `${c.botname} | Dayli shop Fortnite`,
+
+			/* SETITEMSHOP COMMAND */
+
+			// Utils
+			SETITEMSHOP_DESCRIPTION: "Define the dayli shop fortnite channel!",
+			SETITEMSHOP_USAGE: "setsitemshop (#salon)",
+			SETITEMSHOP_EXAMPLES: "$setsitemshop #general\n$setsitemshop",
+			// Content
+			SETITEMSHOP_SUCCESS: (channel) => `${e.success} | The dayli shop fortnite channel is now ${channel} !`,
 
 			/* ADDEMOTE COMMAND */
 
