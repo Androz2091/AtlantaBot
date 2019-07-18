@@ -1,4 +1,5 @@
 const Discord = require("discord.js"),
+cron = require("node-cron"),
 giveaways = require("discord-giveaways");
 
 module.exports = class {
@@ -63,6 +64,32 @@ module.exports = class {
             }
         }, 20000);
 
+        /* DAYLI SHOP FORTNITE */
+        // Timezone UTC 0 = 2h am
+        cron.schedule('3 0 * * *', async (guild) => {
+            client.guilds.forEach(async (guild) => {
+                let settings = await client.functions.getSettings(guild.client, guild);
+                    let language = new(require(`../languages/${settings.language}`));
+                    let today = new Date();
+                    let mm = today.getMonth() + 1;
+                    let dd = today.getDate();
+                    let date = today.getFullYear()+'-'+(mm>9 ? '' : '0') +mm+'-'+(dd>9 ? '' : '0')+dd
+                    let embed = new Discord.MessageEmbed()
+                        .setAuthor(language.get("ITEMSHOP_TITLE"), client.user.displayAvatarURL())
+                        .setImage(`http://api.craftburg.net/fn-shop/atlanta/itemshop_${date}.png`)
+                        .setColor(guild.client.config.embed.color)
+                        .setFooter(guild.client.config.embed.footer);
+                    let itemshopChannel = guild.channels.get(settings.plugins.itemshop);
+                    if(itemshopChannel){
+                        let msg = await itemshopChannel.send(embed);
+
+                        await msg.react("😍");
+                        await msg.react("😐");
+                        await msg.react("😭");
+                    }
+            });
+        });
+        
         /* UNMUTE USERS */
         setInterval(function(){
             client.guilds.forEach(async (guild) => {
