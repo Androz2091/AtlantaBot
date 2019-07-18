@@ -27,6 +27,7 @@
     "discord-giveaways": "^2.1.18",
     "discord.js": "github:discordjs/discord.js",
     "ffmpeg-static": "^2.4.0",
+    "node-cron": "^2.0.3",
     "fortnite": "^4.3.2",
     "gamedig": "^2.0.14",
     "idiotic-api": "^0.2.11",
