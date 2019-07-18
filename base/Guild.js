@@ -32,6 +32,10 @@ module.exports = mongoose.model("Guild", new mongoose.Schema({
             ban: false
         },
         suggestions: false,
+        fortniteshop: {
+            enabled: false,
+            channel: null
+        },
         modlogs: false
     }},
     slowmode: { type: Object, default: {
