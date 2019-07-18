@@ -551,6 +551,7 @@ module.exports = class {
 			CONFIGURATION_WELCOME: (withImage, channelID) => `Salon : <#${channelID}>\nImage : ${withImage ? "Oui" : "Non"}`,
 			CONFIGURATION_GOODBYE: (withImage, channelID) => `Salon : <#${channelID}>\nImage : ${withImage ? "Oui" : "Non"}`,
 			CONFIGURATION_MODLOGS: (channelID) => `Logs : ${channelID ? `<#${channelID}>` : "Indéfini"}`,
+			CONFIGURATION_FORTNITESHOP: (channelID) => `FortniteShop : ${channelID ? `<#${channelID}>` : "Indéfini" }`,
 			CONFIGURATION_SUGGESTIONS: (channelID) => `Suggestions : ${channelID ? `<#${channelID}>` : "Indéfini" }`,
 			CONFIGURATION_AUTOMOD: (ignoredChannels) => `${ignoredChannels.length > 0 ? `Salon ignorés : ${ignoredChannels.map((ch) => `<#${ch}>`)}` : "Aucun salon ignoré."}`,
 			CONFIGURATION_WARNS: (kick, ban) => `${kick ? `**Expulsion**: au bout de **${kick}** avertissements.` : "**Expulsion**: Non définie."}\n${ban ? `**Bannissement**: au bout de **${ban}** avertissements.` : "**Bannissement**: Non défini."}`,
@@ -1248,6 +1249,19 @@ module.exports = class {
 			SETSUGGESTS_EXAMPLES: "$setsuggests #général\n$setsuggests",
 			// Content
 			SETSUGGESTS_SUCCESS: (channel) => `${e.success} | Le salon des suggestions est maintenant ${channel} !`,
+
+			/* FORTNITESHOP EVENT */
+			
+			FORTNITESHOP_TITLE: `${c.botname} | Boutique Fortnite du jour`,
+
+			/* SETFORTNITESHOP COMMAND */
+
+			// Utils
+			SETFORTNITESHOP_DESCRIPTION: "Définissez le salon de la boutique du jour fortnite !",
+			SETFORTNITESHOP_USAGE: "setfortniteshop (#salon)",
+			SETFORTNITESHOP_EXAMPLES: "$setfortniteshop #général\n$setfortniteshop",
+			// Content
+			SETFORTNITESHOP_SUCCESS: (channel) => `${e.success} | Le salon de la boutique du jour fortnite est maintenant ${channel} !`,
 
 			/* ADDEMOTE COMMAND */
 
