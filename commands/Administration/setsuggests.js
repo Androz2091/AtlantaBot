@@ -23,12 +23,12 @@ class Setsuggests extends Command {
 
     async run (message, args, data) {
         
-        let channel = message.mentions.channels.first() || message.channel;
+        let channel = message.mentions.channels.first() || message.channel;
         data.settings.plugins.suggestions = channel.id;
         data.settings.markModified("plugins.suggestions");
         data.settings.save();
 
-        message.channel.send(message.language.get("SETSUGGESTS_SUCCESS", message.channel));
+        message.channel.send(message.language.get("SETSUGGESTS_SUCCESS", channel));
         
     }
 
