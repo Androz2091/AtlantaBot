@@ -1064,8 +1064,8 @@ module.exports = class {
 
 			// Utils
 			TRANSLATE_DESCRIPTION: "I'm translating your text!",
-			TRANSLATE_USAGE: "translate [languages] [message]",
-			TRANSLATE_EXAMPLES: "$translate en-fr How are you ?",
+			TRANSLATE_USAGE: "translate [language] [message]",
+			TRANSLATE_EXAMPLES: "$translate fr How are you ?",
 			// Content
 			TRANSLATE_LANGS: `${e.success} | The list of languages has just been sent to you by private messages!`,
 			// Errors
