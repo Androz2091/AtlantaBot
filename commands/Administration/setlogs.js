@@ -29,7 +29,7 @@ class Setlogs extends Command {
         data.settings.save();
 
         // Send success message
-        message.channel.send(message.language.get("SETLOGS_SUCCESS", message.channel.id));
+        message.channel.send(message.language.get("SETLOGS_SUCCESS", channel.id));
     }
 
 }
