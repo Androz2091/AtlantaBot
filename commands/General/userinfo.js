@@ -73,7 +73,7 @@ class Userinfo extends Command {
             .addField(message.language.get("USERINFO_FIELDS")[8], message.language.printDate(member.joinedAt),true)
             .addField(message.language.get("USERINFO_FIELDS")[11], member.displayHexColor, true)
             .addField(message.language.get("USERINFO_FIELDS")[9], (member.nickname ? member.nickname : message.language.get("USERINFO_NO_NICKNAME")), true)
-            .addField(message.language.get("USERINFO_FIELDS")[10], (member.roles.size > 10 ? member.roles.slice(0, 9).map((r) => r).join(", ")+message.language.get('USERINFO_MORE_ROLES', member.roles.size - 10) : (member.roles.size < 1) ? message.language.get("USERINFO_NO_ROLE") : member.roles.map((r) => r).join(", ")));
+            .addField(message.language.get("USERINFO_FIELDS")[10], (member.roles.size > 10 ? member.roles.map((r) => r).slice(0, 9).join(", ")+message.language.get('USERINFO_MORE_ROLES', member.roles.size - 10) : (member.roles.size < 1) ? message.language.get("USERINFO_NO_ROLE") : member.roles.map((r) => r).join(", ")));
         }
 
         message.channel.send(embed);
