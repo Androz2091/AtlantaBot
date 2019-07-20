@@ -71,7 +71,7 @@ class Translate extends Command {
         let toTranslate = args.slice(1).join(" ");
         
         if(!langs.find((lang) => lang.name === language)){
-            return pWait.edit(message.language.get("TRANSLATE_LANG1", data.settings.prefix, language));
+            return pWait.edit(message.language.get("TRANSLATE_ERR_NOT_FOUND", data.settings.prefix, language));
         }
 
         let isAlias = langs.find((lang) => lang.aliases.includes(language));
