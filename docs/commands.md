@@ -9,27 +9,27 @@ Here's the list of Atlanta commands. This one contains more than **90 commands**
 
 ### General (19 commands)
 
-| Name            | Description                                                       | Usage                           | Cooldown  |
-| --------------- | ----------------------------------------------------------------- | ------------------------------- | --------- |
-| **fortnite**    | Displays a player's Fortnite stats!                               | fortnite [psn/xbl/pc] [pseudo]  | 1 seconds |
-| **github**      | Displays the information from the Atlanta github!                 | github                          | 5 seconds |
-| **hastebin**    | Upload your text on hastebin !                                    | hastebin [text]                 | 5 seconds |
-| **help**        | Displays the help of commands or the help of a particular command | help (command)                  | 5 seconds |
-| **invitations** | Displays the number of people you have invited to the server!     | invitations (@member)           | 3 seconds |
-| **invite**      | Displays the links of Atlanta!                                    | invite (copy)                   | 5 seconds |
-| **minecraft**   | Displays information about the Minecraft server!                  | minecraft [ip]                  | 3 seconds |
-| **minimize**    | Shorten your link!                                                | minimize [url]                  | 5 seconds |
-| **permissions** | Displays the member's permissions in the channel                  | permissions (@member)           | 1 seconds |
-| **ping**        | Displays bot latency                                              | ping                            | 1 seconds |
-| **quote**       | Quote a message in the channel!                                   | quote [messageID] [channel]     | 5 seconds |
-| **remindme**    | Define a reminder!                                                | remindme [reason]               | 3 seconds |
-| **serverinfo**  | Displays information about the server!                            | serverinfo [ID/Name]            | 3 seconds |
-| **setafk**      | Become an AFK (members who mention you will receive a message)    | setafk [reason]                 | 3 seconds |
-| **someone**     | Pick a random member on the server!                               | someone                         | 1 seconds |
-| **stats**       | Display the stats of the bot!                                     | stats                           | 3 seconds |
-| **suggest**     | Send your suggestion to the channel defined for this!             | suggest [message]               | 5 seconds |
-| **translate**   | I'm translating your text!                                        | translate [languages] [message] | 8 seconds |
-| **userinfo**    | Displays user information!                                        | userinfo (@user/userID)         | 5 seconds |
+| Name            | Description                                                       | Usage                          | Cooldown  |
+| --------------- | ----------------------------------------------------------------- | ------------------------------ | --------- |
+| **fortnite**    | Displays a player's Fortnite stats!                               | fortnite [psn/xbl/pc] [pseudo] | 1 seconds |
+| **github**      | Displays the information from the Atlanta github!                 | github                         | 5 seconds |
+| **hastebin**    | Upload your text on hastebin !                                    | hastebin [text]                | 5 seconds |
+| **help**        | Displays the help of commands or the help of a particular command | help (command)                 | 5 seconds |
+| **invitations** | Displays the number of people you have invited to the server!     | invitations (@member)          | 3 seconds |
+| **invite**      | Displays the links of Atlanta!                                    | invite (copy)                  | 5 seconds |
+| **minecraft**   | Displays information about the Minecraft server!                  | minecraft [ip]                 | 3 seconds |
+| **minimize**    | Shorten your link!                                                | minimize [url]                 | 5 seconds |
+| **permissions** | Displays the member's permissions in the channel                  | permissions (@member)          | 1 seconds |
+| **ping**        | Displays bot latency                                              | ping                           | 1 seconds |
+| **quote**       | Quote a message in the channel!                                   | quote [messageID] [channel]    | 5 seconds |
+| **remindme**    | Define a reminder!                                                | remindme [reason]              | 3 seconds |
+| **serverinfo**  | Displays information about the server!                            | serverinfo [ID/Name]           | 3 seconds |
+| **setafk**      | Become an AFK (members who mention you will receive a message)    | setafk [reason]                | 3 seconds |
+| **someone**     | Pick a random member on the server!                               | someone                        | 1 seconds |
+| **stats**       | Display the stats of the bot!                                     | stats                          | 3 seconds |
+| **suggest**     | Send your suggestion to the channel defined for this!             | suggest [message]              | 5 seconds |
+| **translate**   | I'm translating your text!                                        | translate [language] [message] | 8 seconds |
+| **userinfo**    | Displays user information!                                        | userinfo (@user/userID)        | 5 seconds |
 
 ### Administration (16 commands)
 
