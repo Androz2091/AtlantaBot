@@ -678,6 +678,7 @@ module.exports = class {
 			WELCOME_FORM_IMAGE: `It works! Do you want a great welcome image to be sent at the same time? Answer with "yes" or "no"!`,
 			WELCOME_FORM_SUCCESS: (channel, prefix) => `${e.success} | Welcome messages enabled in <#${channel}> ! Type \`${prefix}welcome test\` to test the welcome message!`,
 			WELCOME_IMG: (name) => `Welcome in ${name} !`,
+			WELCOME_NUMBER: (memberCount) => `- ${memberCount}th member !`,
 			// Errors
 			WELCOME_ERR_TIMEOUT: `${e.error} | Time's up! Please retype the command!`,
 			WELCOME_ERR_CARACT: `${e.error} | Your message must not exceed 1500 characters!`,
