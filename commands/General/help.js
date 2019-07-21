@@ -82,7 +82,7 @@ class Help extends Command {
         if(message.guild){
             if(data.settings.customCommands.length > 0){
                 let emoji = emojis.find((e) => e.name === "custom_category_atlanta");
-                embed.addField((emoji ? emoji.toString() : "")+" "+message.guild.name+" - ("+data.settings.customCommands.length+")", data.settings.customCommands.map((cmd) => "`"+cmd.name+"`").join(", "));
+                embed.addField((emoji ? emoji.toString() : "")+" "+message.guild.name+" | "+message.language.get("UTILS").CUSTOM_COMMANDS+" - ("+data.settings.customCommands.length+")", data.settings.customCommands.map((cmd) => "`"+cmd.name+"`").join(", "));
             }
         }
         let inviteURL = message.client.config.supportURL || await message.client.functions.supportLink(message.client).catch((err) => {});

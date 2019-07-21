@@ -33,7 +33,7 @@ module.exports = class {
 				UNDEFINED: "Indéfini",
 				PLEASE_WAIT: `${e.loading} | Veuillez patienter...`,
 				PREFIX: "Préfixe",
-				CUSTOM: "Personnalisées",
+				CUSTOM_COMMANDS: "Commandes personnalisées",
 				ANDMORE: "**et plus...**",
 				TITLE: "Titre",
 				AUTHOR: "Auteur"
