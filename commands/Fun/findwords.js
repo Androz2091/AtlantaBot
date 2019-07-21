@@ -40,7 +40,7 @@ class FindWords extends Command {
         }
 
         // Reads words file
-        let text = fs.readFileSync(`./data/words-${message.language.getLang()}.txt`).toString("utf-8");
+        let text = fs.readFileSync(`./assets/words/words-${message.language.getLang()}.txt`).toString("utf-8");
         let arrWords = text.split("\n");
     
         // Init some utils variables
