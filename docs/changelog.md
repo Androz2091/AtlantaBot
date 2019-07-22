@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file.
 
+## [4.0.0]
+
+### Added
+
+*   Welcome and goodbye images are now made entirely with Canvas
+
+### Fixed
+
+*   Now no longer considers that you are over 80 years old with the `birthdate` command
+
 ## [3.5.0] - 2019-11-07
 
 ### Added
