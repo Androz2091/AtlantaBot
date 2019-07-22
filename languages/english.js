@@ -677,8 +677,9 @@ module.exports = class {
 			WELCOME_FORM_MESSAGE: (channel, msg) => `All right! The messages will therefore be sent in ${channel}. Enter the welcome message below: \n\n\nInfos:\n\n\nMention: {user}\nMembers: {membercount}\nServer: {server}\nFor example, "Welcome {user} to {server} ! Thanks to you, we are {membercount} ! will give "Welcome ${msg.author} to ${msg.guild.name} ! Thanks to you, we are ${msg.guild.memberCount} !".`,
 			WELCOME_FORM_IMAGE: `It works! Do you want a great welcome image to be sent at the same time? Answer with "yes" or "no"!`,
 			WELCOME_FORM_SUCCESS: (channel, prefix) => `${e.success} | Welcome messages enabled in <#${channel}> ! Type \`${prefix}welcome test\` to test the welcome message!`,
-			WELCOME_IMG: (name) => `Welcome in ${name} !`,
-			WELCOME_NUMBER: (memberCount) => `- ${memberCount}th member !`,
+			WELCOME_IMG_MSG: (name) => `Welcome in ${name} !`,
+			WELCOME_IMG_NUMBER: (memberCount) => `- ${memberCount}th member !`,
+			WELCOME_IMG_TITLE: "WELCOME",
 			// Errors
 			WELCOME_ERR_TIMEOUT: `${e.error} | Time's up! Please retype the command!`,
 			WELCOME_ERR_CARACT: `${e.error} | Your message must not exceed 1500 characters!`,
@@ -735,7 +736,9 @@ module.exports = class {
 			GOODBYE_FORM_MESSAGE: (channel, msg) => `All right! The messages will therefore be sent in ${channel}. Enter the goodbye message below: \n\n\nInfos:\\n\n\nMention: {user}\nMembers: {membercount}\nServer: {server}\nFor example, "Goodbye {user} ! It's sad, without you we're only {membercount} on {server} !" will give "Goodbye ${msg.author.username}#${msg.author.discriminator} ! It's sad, without you we're only ${msg.guild.memberCount} on ${msg.guild.name} !".`,
 			GOODBYE_FORM_IMAGE: `It works! Do you want a great welcome image to be sent at the same time? Answer with "yes" or "no"!`,
 			GOODBYE_FORM_SUCCESS: (channel, prefix) => `${e.success} | Goodbye messages enabled in <#${channel}> ! Type \`${prefix}goodbye test\` to test the goodbye message!`,
-			GOODBYE_IMG: (name) => `Leaving from ${name}`,
+			GOODBYE_IMG_MSG: (name) => `Leaving from ${name}`,
+			GOODBYE_IMG_NUMBER: (memberCount) => `- ${memberCount}th member !`,
+			GOODBYE_IMG_TITLE: "GOODBYE",
 			// Errors
 			GOODBYE_ERR_TIMEOUT: `${e.error} | Time's up! Please retype the command!`,
 			GOODBYE_ERR_CARACT: `${e.error} | Your message must not exceed 1500 characters!`,
