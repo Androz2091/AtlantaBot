@@ -1382,7 +1382,7 @@ module.exports = class {
 		isHours = hours > 0,
 		isMinutes = minutes > 0;
 		let pattern = 
-		(!isDays ? "" : (isMinutes || isDays) ? "{days} jours, " : "{days} jours et ")+
+		(!isDays ? "" : (isMinutes || isHours) ? "{days} jours, " : "{days} jours et ")+
 		(!isHours ? "" : (isMinutes) ? "{hours} heures, " : "{hours} heures et ")+
 		(!isMinutes ? "" : "{minutes} minutes et ")+
 		("{seconds} secondes");
