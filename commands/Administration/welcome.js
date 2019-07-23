@@ -23,7 +23,7 @@ class Welcome extends Command {
 
     async run (message, args, data) {
 
-        if(args[0] === "test"){
+        if(args[0] === "test" && data.settings.plugins.welcome.enabled){
             message.client.emit("guildMemberAdd", message.member);
             return message.channel.send(message.language.get("WELCOME_TEST_SUCCESS"));
         }

@@ -23,7 +23,7 @@ class Goodbye extends Command {
 
     async run (message, args, data) {
 
-        if(args[0] === "test"){
+        if(args[0] === "test" && data.settings.plugins.goodbye.enabled){
             message.client.emit("guildMemberRemove", message.member);
             return message.channel.send(message.language.get("GOODBYE_TEST_SUCCESS"));
         }
