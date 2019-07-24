@@ -11,13 +11,21 @@ module.exports = mongoose.model("Guild", new mongoose.Schema({
             enabled: false,
             message: null,
             channel: null,
-            withImage: null
+            withImage: null,
+            color: {
+                enabled: false,
+                color: null
+            }
         },
         goodbye: {
             enabled: false,
             message: null,
             channel: null,
-            withImage: null
+            withImage: null,
+            color: {
+                enabled: false,
+                color: null
+            }
         },
         autorole: {
             enabled: false,
