@@ -1,3 +1,5 @@
+const path = require("path");
+
 module.exports = class Command {
     constructor(client, {
       name = null,
@@ -15,7 +17,7 @@ module.exports = class Command {
       cooldown = 3000
     })
     {
-      let category = (dirname ? dirname.split("/")[parseInt(dirname.split("/").length-1, 10)] : "Other");
+      let category = (dirname ? dirname.split(path.sep)[parseInt(dirname.split(path.sep).length-1, 10)] : "Other");
       this.client = client;
       this.conf = { enabled, guildOnly, aliases, memberPermissions, botPermissions, nsfw, ownerOnly, cooldown};
       this.help = { name, description, category, usage, examples };
