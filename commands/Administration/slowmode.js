@@ -30,7 +30,7 @@ class Slowmode extends Command {
         }
         let time = args[1];
         if(!time){
-            if(!data.slowmode.channels.find((ch) => ch.id === channel.id)){
+            if(!data.settings.slowmode.channels.find((ch) => ch.id === channel.id)){
                 return message.channel.send(message.language.get("ERR_INVALID_TIME"));
             }
             data.settings.slowmode.channels = data.settings.slowmode.channels.filter((ch) => ch.id !== channel.id);
