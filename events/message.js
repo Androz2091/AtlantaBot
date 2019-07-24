@@ -192,7 +192,7 @@ module.exports = class {
             cmdCooldown[message.author.id] = {};
             uCooldown = cmdCooldown[message.author.id];
         }
-        let time = uCooldown[cmd.help.name];
+        let time = uCooldown[cmd.help.name] || 0;
         if(time && (time > Date.now())){
             return message.channel.send(language.get("ERR_CMD_COOLDOWN", Math.ceil((time-Date.now())/1000)));
         }
