@@ -10,7 +10,7 @@ module.exports = {
 	dashboard: {
 		enabled: false, // whether the dashboard is enabled or not
 		secret: "XXXXXXXXXXX", // Your discord client secret
-		dashboardURL: "https://dashboard.atlanta-bot.fr", // The base URl of the dashboard
+		baseURL: "https://dashboard.atlanta-bot.fr", // The base URl of the dashboard
 		logs: "XXXXXXXXXXX", // The channel ID of logs
 		port: 8080, // Dashboard port
 		expressSessionPassword: "XXXXXXXXXXX", // Express session password (it can be what you want)
