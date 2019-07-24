@@ -53,7 +53,7 @@ module.exports = class {
 
             await updateXp(message, data);
 
-            if(!message.channel.permissionsFor(message.member).has("MANAGE_MESSAGES")){
+            if(!message.channel.permissionsFor(message.member).has("MANAGE_MESSAGES") && !message.editedAt){
                 let channelSlowmode = data.settings.slowmode.channels.find((ch) => ch.id === message.channel.id);
                 if(channelSlowmode){
                     let uSlowmode = data.settings.slowmode.users.find((d) => d.id === (message.author.id+message.channel.id));
@@ -192,7 +192,7 @@ module.exports = class {
             cmdCooldown[message.author.id] = {};
             uCooldown = cmdCooldown[message.author.id];
         }
-        let time = uCooldown[cmd.help.name];
+        let time = uCooldown[cmd.help.name] || 0;
         if(time && (time > Date.now())){
             return message.channel.send(language.get("ERR_CMD_COOLDOWN", Math.ceil((time-Date.now())/1000)));
         }
