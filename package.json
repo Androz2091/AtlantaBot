@@ -19,6 +19,7 @@
   "dependencies": {
     "ascii-art": "^1.5.1",
     "ascii-table": "0.0.9",
+    "body-parser": "^1.19.0",
     "canvas": "^2.5.0",
     "chalk": "^2.4.2",
     "dblapi.js": "^2.3.0",
@@ -26,6 +27,8 @@
     "discord-backup": "^1.0.4",
     "discord-giveaways": "^2.1.18",
     "discord.js": "github:discordjs/discord.js",
+    "express": "^4.17.1",
+    "express-session": "^1.16.2",
     "ffmpeg-static": "^2.4.0",
     "fortnite": "^4.3.2",
     "gamedig": "^2.0.14",
@@ -34,6 +37,8 @@
     "md5": "^2.2.1",
     "mongoose": "^5.6.1",
     "node-opus": "^0.3.2",
+    "passport": "^0.4.0",
+    "passport-discord": "^0.1.3",
     "simple-youtube-api": "^5.1.1",
     "ytdl-core": "^0.29.2"
   }
