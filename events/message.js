@@ -53,7 +53,7 @@ module.exports = class {
 
             await updateXp(message, data);
 
-            if(!message.channel.permissionsFor(message.member).has("MANAGE_MESSAGES")){
+            if(!message.channel.permissionsFor(message.member).has("MANAGE_MESSAGES") && !message.editedAt){
                 let channelSlowmode = data.settings.slowmode.channels.find((ch) => ch.id === message.channel.id);
                 if(channelSlowmode){
                     let uSlowmode = data.settings.slowmode.users.find((d) => d.id === (message.author.id+message.channel.id));
