@@ -36,7 +36,8 @@ module.exports = class {
 				CUSTOM_COMMANDS: "Custom commands",
 				ANDMORE: "**and more...**",
 				TITLE: "Titre",
-				AUTHOR: "Auteur"
+				AUTHOR: "Auteur",
+				SIGN_OUT: "Sign out"
 			},
 			
 			/* DBL VOTES */
@@ -1326,6 +1327,11 @@ module.exports = class {
 			// Content
 			PURGE_CONFIRMATION: (members) => `${e.warn} | ${members} members will be kicked out! To confirm, type \`confirm\`!`,
 			PURGE_SUCCESS: (members) => `${e.success} | ${members} membres kicked !`,
+
+			/* DASHBOARD */
+
+			FIRST_LOGIN: (username) => `${username} connected for the first time to the dashboard! :tada:`,
+			REGISTERED_FROM: (date) => `Member since the ${date}`
 
         }
     }
