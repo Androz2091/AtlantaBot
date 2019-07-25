@@ -1307,11 +1307,18 @@ module.exports = class {
 			FORTNITE_ERR_USERNAME: `${e.error} | Entrez un pseudo epic games valide !`,
 			FORTNITE_ERR_NOT_FOUND: (platform, username) => `${e.error} | Joueur \`${username}\` introuvable sur la plateforme \`${platform}\` !`,
 			// Content
-			FORTNITE_DESC: (platform, username) => `${username} joue sur ${platform} !`,
-			FORTNITE_SOLO_STATS: (data) => `${e.score} K/D : ${data.stats.solo.kd}\n${e.games} Parties : ${data.stats.solo.matches}\n${e.kills} Kills : ${data.stats.solo.kills}\n${e.crown} Victoire(s) : ${data.stats.solo.wins}`,
-			FORTNITE_DUO_STATS: (data) => `${e.score} K/D : ${data.stats.duo.kd}\n${e.games} Parties : ${data.stats.duo.matches}\n${e.kills} Kills : ${data.stats.duo.kills}\n${e.crown} Victoire(s) : ${data.stats.duo.wins}`,
-			FORTNITE_SQUAD_STATS: (data) => `${e.score} K/D : ${data.stats.squad.kd}\n${e.games} Parties : ${data.stats.squad.matches}\n${e.kills} Kills : ${data.stats.squad.kills}\n${e.crown} Victoire(s) : ${data.stats.squad.wins}`,
-			FORTNITE_LIFETIME_STATS: (data) => `${e.score}	K/D : ${data.stats.lifetime.kd}\n${e.games} Parties : ${data.stats.lifetime.matches}\n${e.kills} Kills : ${data.stats.lifetime.kills}\n${e.crown} Victoire(s) : ${data.stats.lifetime.wins}`,
+			FORTNITE_STATS_RIGHT: (kd, percent) => `${kd} K/D - ${percent} V%`,
+			FORTNITE_AVERAGE_KILLS: "KILLS/PARTIE",
+			FORTNITE_AVERAGE_KILL: "KILL/PARTIE",
+			FORTNITE_W_PERCENT: "V%",
+			FORTNITE_KD: "K/D",
+			FORTNITE_WINS : "VICTOIRES",
+			FORTNITE_WIN : "VICTOIRE",
+			FORTNITE_KILLS : "KILLS",
+			FORTNITE_KILL : "KILL",
+			FORTNITE_WINS_PERCENT : "VICTOIRE%",
+			FORTNITE_MATCHES : "PARTIES",
+			FORTNITE_MATCH : "PARTIE",
 
 			/* PURGE COMMAND */
 

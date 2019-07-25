@@ -75,12 +75,8 @@ module.exports = {
 		// RE: https://img.icons8.com/color/96/000000/help.png
 		warn: "XXXXXXXXXXX",
 		// RE: https://img.icons8.com/flat_round/64/000000/error--v1.png
-		score: "XXXXXXXXXXX",
-		// RE: https://img.icons8.com/color/96/000000/-scoreboard-.png
 		games: "XXXXXXXXXXX",
 		// RE: https://img.icons8.com/color/96/000000/computer.png
-		kills: "XXXXXXXXXXX",
-		// RE: https://img.icons8.com/color/96/000000/submachine-gun.png
 		crown: "XXXXXXXXXXX",
 		// RE: https://img.icons8.com/flat_round/96/000000/crown.png
 		discriminator: "XXXXXXXXXXX",
