@@ -22,5 +22,6 @@ module.exports = mongoose.model("User", new mongoose.Schema({
     cooldowns: {
         work: 0,
         rep: 0
-    }
+    },
+    logged: { type: Boolean, default: false } // if the user is logged to the dashboard
 }));
