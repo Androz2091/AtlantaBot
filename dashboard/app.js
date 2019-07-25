@@ -1,5 +1,5 @@
 const config = require("../config"),
-availableLanguages = await require("fs").readdir("../languages/");
+availableLanguages = require("fs").readdirSync("languages/");
 
 module.exports.load = async(client) => {
 
@@ -28,6 +28,8 @@ module.exports.load = async(client) => {
     .set("view engine", "ejs")
     // Set the css and js folder to ./public
     .use(express.static(path.join(__dirname, "/public")))
+    // Set the ejs templates to ./views
+    .set('views', path.join(__dirname, "/views"))
     // Set the dashboard port
     .set("port", config.dashboard.port)
     // Set the express session password and configuration
@@ -35,22 +37,17 @@ module.exports.load = async(client) => {
     // Passport (for discord authentication)
     .use(passport.initialize())
     .use(passport.session())
+    .use(function(req, res, next){
+        req.client = client;
+        let userLang = req.user ? req.user.locale : "en";
+        let lang = availableLanguages.find((l) => l.startsWith(userLang)) || "english";
+        let Language = require("../languages/"+lang);
+        req.language = new Language();
+        next();
+    })
     // Use routes
     .use("/login", discordRouter)
     .use("/", homeRouter);
-
-
-    // Add client and mongoose variables to the request object
-    app.use(function(req, res, next){
-        req.client = client;
-        if(req.params.lang){
-            let language = availableLanguages.find((l) => l.startsWith(req.params.lang));
-            if(language){
-                req.language = require("../../languages/"+language);
-            }
-        }
-        next();
-    });
 
     // Listen
     app.listen(app.get("port"), (err) => {
