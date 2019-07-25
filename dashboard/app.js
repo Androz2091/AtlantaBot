@@ -1,4 +1,5 @@
-const config = require("../config");
+const config = require("../config"),
+availableLanguages = await require("fs").readdir("../languages/");
 
 module.exports.load = async(client) => {
 
@@ -42,6 +43,12 @@ module.exports.load = async(client) => {
     // Add client and mongoose variables to the request object
     app.use(function(req, res, next){
         req.client = client;
+        if(req.params.lang){
+            let language = availableLanguages.find((l) => l.startsWith(req.params.lang));
+            if(language){
+                req.language = require("../../languages/"+language);
+            }
+        }
         next();
     });
 
