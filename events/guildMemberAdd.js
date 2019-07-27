@@ -60,7 +60,7 @@ module.exports = class {
                     .replace(/{user}/g, member)
                     .replace(/{server}/g, guild.name)
                     .replace(/{membercount}/g, guild.memberCount);
-                    if(settings.plugins.welcome.withImage){
+                    if(settings.plugins.welcome.image.enabled){
                         let canvas = Canvas.createCanvas(1024, 450),
                         ctx = canvas.getContext("2d"),
                         lang = new(require(`../languages/${settings.language}.js`)),
@@ -81,9 +81,11 @@ module.exports = class {
                         ctx.fillText(text, canvas.width - 690, canvas.height - 65);
                         // Draw discriminator
                         ctx.font = "40px Bold";
-                        ctx.fillText(member.user.discriminator, canvas.width - 623, canvas.height - 178);
+                        ctx.textAlign = "center";
+                        ctx.fillText(member.user.discriminator, canvas.width - 567, canvas.height - 178);
                         // Draw number
                         ctx.font = "22px Bold";
+                        ctx.textAlign = "left";
                         ctx.fillText(number, 40, canvas.height - 50);
                         // Draw # for discriminator
                         ctx.fillStyle = "#44d14a";
@@ -91,15 +93,49 @@ module.exports = class {
                         ctx.fillText("#", canvas.width - 690, canvas.height - 165);
                         // Draw Title with gradient
                         ctx.font = "90px Bold";
+                        ctx.textAlign = "center";
                         ctx.strokeStyle = "#1d2124";
                         ctx.lineWidth = 15;
-                        ctx.strokeText(title, canvas.width - 620, canvas.height - 330);
+                        ctx.strokeText(title, canvas.width - 370, canvas.height - 330);
+                        // Settings title color
                         var gradient = ctx.createLinearGradient(canvas.width - 780, 0, canvas.width - 30, 0);
-                        gradient.addColorStop(0, "#e15500");
-                        gradient.addColorStop(1, "#e7b121");
-                        ctx.fillStyle = gradient;
-                        ctx.fillText(title, canvas.width - 620, canvas.height - 330);
-                
+                        if(settings.plugins.welcome.image.color){
+                            if(settings.plugins.welcome.image.color.startsWith("#")){
+                                ctx.fillStyle = settings.plugins.welcome.image.color;
+                                }
+                            if(settings.plugins.welcome.image.color === "white"){
+                                ctx.fillStyle = "#ffffff";
+                                }
+                            if(settings.plugins.welcome.image.color === "orange"){
+                                gradient.addColorStop(0, "#e15500"); 
+                                gradient.addColorStop(1, "#e7b121");
+                                ctx.fillStyle = gradient;
+                                }
+                            if(settings.plugins.welcome.image.color === "red"){
+                                gradient.addColorStop(0, "#a00707");
+                                gradient.addColorStop(1, "#de0c0c");
+                                ctx.fillStyle = gradient;
+                                }
+                            if(settings.plugins.welcome.image.color === "blue"){
+                                gradient.addColorStop(0, "#00c4ff");
+                                gradient.addColorStop(1, "#0074ff");
+                                ctx.fillStyle = gradient;
+                                }
+                            if(settings.plugins.welcome.image.color === "green"){
+                                gradient.addColorStop(0, "#4caf50");
+                                gradient.addColorStop(1, "#26832a");
+                                ctx.fillStyle = gradient;
+                                }
+                            if(settings.plugins.welcome.image.color === "purple"){
+                                gradient.addColorStop(0, "#7a4c9e");
+                                gradient.addColorStop(1, "#a262d4");
+                                ctx.fillStyle = gradient;
+                                }
+                        } else {
+                            ctx.fillStyle = "#ffffff";
+                        }
+                        ctx.fillText(title, canvas.width - 370, canvas.height - 330);
+                        ctx.textAlign = "left";
                         // Pick up the pen
                         ctx.beginPath();
                         //Define Stroke Line
