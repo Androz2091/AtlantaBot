@@ -47,13 +47,13 @@ class Configuration extends Command {
         
         embed.addField(headings[2][0],
             (settings.plugins.welcome.enabled) ?
-                message.language.get("CONFIGURATION_WELCOME", settings.plugins.welcome.withImage, settings.plugins.welcome.channel)
+                message.language.get("CONFIGURATION_WELCOME", settings.plugins.welcome.image.enabled, settings.plugins.welcome.image.color, settings.plugins.welcome.channel)
             :   headings[2][1]
         );
             
         embed.addField(headings[3][0],
             (settings.plugins.goodbye.enabled) ?
-                message.language.get("CONFIGURATION_GOODBYE", settings.plugins.goodbye.withImage, settings.plugins.goodbye.channel)
+                message.language.get("CONFIGURATION_GOODBYE", settings.plugins.goodbye.image.enabled, settings.plugins.goodbye.image.color, settings.plugins.goodbye.channel)
             :   headings[3][1]
         );
 
