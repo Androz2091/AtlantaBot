@@ -37,7 +37,12 @@ module.exports = class {
 				ANDMORE: "**and more...**",
 				TITLE: "Titre",
 				AUTHOR: "Auteur",
-				SIGN_OUT: "Sign out"
+				SIGN_OUT: "Sign out",
+				YOUR_PROFILE: "Your profile",
+				UPDATE: "Update",
+				SERVERS: "Servers",
+				MANAGE: "Manage",
+				COMMANDS: "Commands"
 			},
 			
 			/* DBL VOTES */
@@ -807,6 +812,7 @@ module.exports = class {
 				INVITER: "🤵 Invitor",
 				PSEUDO: "📝 Pseudo",
 				BADGES: "🔥 Badges",
+				BIO: "🔖 Biography"
 			},
 			
 			/* WORK COMMAND */
@@ -1338,7 +1344,8 @@ module.exports = class {
 			/* DASHBOARD */
 
 			FIRST_LOGIN: (username) => `${username} connected for the first time to the dashboard! :tada:`,
-			REGISTERED_FROM: (date) => `Member since the ${date}`
+			REGISTERED_FROM: (date) => `Member since the ${date}`,
+			HELLO: (username) => `Bonjour, ${username}`
 
         }
     }
