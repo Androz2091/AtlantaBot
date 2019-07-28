@@ -19,6 +19,7 @@
   "dependencies": {
     "ascii-art": "^1.5.1",
     "ascii-table": "0.0.9",
+    "blague.xyz": "^1.0.3",
     "canvas": "^2.5.0",
     "chalk": "^2.4.2",
     "dblapi.js": "^2.3.0",
