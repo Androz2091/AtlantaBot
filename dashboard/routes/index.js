@@ -9,18 +9,15 @@ router.get("/", CheckAuth, async (req, res) => {
 router.get("/selector", CheckAuth, async(req, res) => {
     res.render("selector", {
         user: req.userInfos,
-        language: req.language
+        language: req.language,
+        currentURL: `${req.protocol}://${req.get("host")}${req.originalUrl}`
     });
 });
 
-router.get("/server/:serverID", CheckAuth, async(req, res) => {
-    let guild = req.client.guilds.get(req.params.serverID);
-    if(!guild || !req.userInfos.displayedGuilds || !req.userInfos.displayedGuilds.includes(req.params.serverID)){
-        return res.render("404", {
-            user: req.userInfos,
-            language: req.language
-        });
-    }
+router.get("/language", CheckAuth, async(req, res) => {
+    let newLanguage = (req.user.locale === "en" ? "fr" : "en");
+    req.user.locale = newLanguage;
+    res.redirect(303, req.query.redirect);
 });
 
 module.exports = router;
