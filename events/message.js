@@ -205,7 +205,8 @@ module.exports = class {
             let log = new Log({
                 command: cmd.help,
                 date: Date.now(),
-                user: message.author.toJSON()
+                user: message.author.toJSON(),
+                guild: (message.guild ? message.guild.toJSON() : {id:"dm"})
             });
             log.save();
         } catch(e){

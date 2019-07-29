@@ -1,6 +1,7 @@
 const Command = require("../../base/Command.js"),
 Discord = require("discord.js"),
-fetch = require("node-fetch");
+Joker = require("blague.xyz"),
+joker = new Joker();
 
 class Joke extends Command {
 
@@ -24,11 +25,10 @@ class Joke extends Command {
 
     async run (message, args, data) {
 
-        let res = await fetch("https://blague.xyz/joke/random");
-        let json = await res.json();
+        let joke = await joker.random();
 
         let embed = new Discord.MessageEmbed()
-            .setDescription(`${json.jokequestion}\n\n||${json.jokereponse}||`)
+            .setDescription(`${joke.toDiscordSpoils()}`)
             .setFooter(message.language.get("JOKE_FOOTER"))
             .setColor(data.config.embed.color)
 
