@@ -17,7 +17,9 @@ module.exports.load = async(client) => {
 
     /* Routers */
     const mainRouter = require("./routes/index"),
-    discordRouter = require("./routes/discord");
+    loginRouter = require("./routes/login"),
+    logoutRouter = require("./routes/logout"),
+    guildRouter = require("./routes/guild");
 
     /* App configuration */
     app
@@ -50,12 +52,23 @@ module.exports.load = async(client) => {
         }
         next();
     })
-    .use("/login", discordRouter)
+    .use("/login", loginRouter)
+    .use("/logout", logoutRouter)
+    .use("/server", guildRouter)
     .use("/", mainRouter)
     .use(function(req, res, next){
         res.status(404).render("404", {
             user: req.userInfos,
-            language: req.language
+            language: req.language,
+            currentURL: `${req.protocol}://${req.get("host")}${req.originalUrl}`
+        });
+    })
+    .use(function(err, req, res, next) {
+        console.error(err.stack);
+        res.status(500).render("500", {
+            user: req.userInfos,
+            language: req.language,
+            currentURL: `${req.protocol}://${req.get("host")}${req.originalUrl}`
         });
     });
 
