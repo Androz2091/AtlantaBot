@@ -42,7 +42,8 @@ module.exports = class {
 				UPDATE: "Update",
 				SERVERS: "Servers",
 				MANAGE: "Manage",
-				COMMANDS: "Commands"
+				COMMANDS: "Commands",
+				HOME: "Accueil"
 			},
 			
 			/* DBL VOTES */
@@ -1344,8 +1345,18 @@ module.exports = class {
 			/* DASHBOARD */
 
 			FIRST_LOGIN: (username) => `${username} connected for the first time to the dashboard! :tada:`,
-			REGISTERED_FROM: (date) => `Member since the ${date}`,
-			HELLO: (username) => `Bonjour, ${username}`
+			REGISTERED_FROM: (date) => `Member since ${date}`,
+			HELLO: (username) => `Hello, ${username}`,
+			SEARCH_SERVERS: "Search servers....",
+			SERVERS_LIST: "Servers list",
+			SELECTOR: "Selector",
+			SERVERS_MANAGEMENT: "SERVER MANAGEMENT",
+			ERR_NOT_FOUND: "Oops! Page not found.",
+			ERR_NOT_FOUND_CONTENT: "We did not find the page you were looking for. In the meantime, you can go back to the dashboard or try using the search form.",
+			ERR_SOMETING_WENT_WRONG: "Oops! Something went wrong.",
+			ERR_SOMETING_WENT_WRONG_CONTENT: "We will try to remedy this immediately. In the meantime, you can go back to the dashboard or try using the search form.",
+			ERR_NO_SERVER_FOUND: "No server found",
+			ERR_NO_SERVER_FOUND_CONTENT: "No server to display. Make sure you are logged in with the right account and try again."
 
         }
     }

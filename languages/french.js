@@ -42,7 +42,8 @@ module.exports = class {
 				UPDATE: "Mettre à jour",
 				SERVERS: "Serveurs",
 				MANAGE: "Gérer",
-				COMMANDS: "Commandes"
+				COMMANDS: "Commandes",
+				HOME: "Accueil"
 			},
 			
 			/* DBL VOTES */
@@ -1343,7 +1344,17 @@ module.exports = class {
 
 			FIRST_LOGIN: (username) => `${username} s'est connecté pour la première fois au dashboard ! :tada:`,
 			REGISTERED_FROM: (date) => `Membre depuis le ${date}`,
-			HELLO: (username) => `Bonjour, ${username}`
+			HELLO: (username) => `Bonjour, ${username}`,
+			SEARCH_SERVERS: "Chercher des serveurs...",
+			SERVERS_LIST: "Liste des serveurs",
+			SELECTOR: "Sélecteur",
+			SERVERS_MANAGEMENT: "GESTION DES SERVEURS",
+			ERR_NOT_FOUND: "Oups ! Page introuvable.",
+			ERR_NOT_FOUND_CONTENT: "Nous n'avons pas trouvé la page que vous cherchiez. En attendant, vous pouvez retourner au tableau de bord ou essayer d'utiliser le formulaire de recherche.",
+			ERR_SOMETING_WENT_WRONG: "Oups ! Quelque chose s'est mal passé.",
+			ERR_SOMETING_WENT_WRONG_CONTENT: "Nous nous efforcerons d'y remédier tout de suite. En attendant, vous pouvez retourner au tableau de bord ou essayer d'utiliser le formulaire de recherche.",
+			ERR_NO_SERVER_FOUND: "Aucun serveur trouvé",
+			ERR_NO_SERVER_FOUND_CONTENT: "Aucun serveur à afficher. Vérifiez que vous êtes connecté avec le bon compte et réessayez."
 
         }
     }
