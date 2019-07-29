@@ -1,26 +1,7 @@
 <!DOCTYPE html>
 <html>
 
-	<head>
-
-		<meta charset="utf-8">
-		<meta http-equiv="X-UA-Compatible" content="IE=edge">
-
-		<title>Atlanta | Dashboard</title>
-
-		<!-- CSS JS Fonts Icons-->
-		<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-		<link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.min.css">
-		<link rel="stylesheet" href="/bower_components/font-awesome/css/font-awesome.min.css">
-		<link rel="stylesheet" href="/dist/css/AdminLTE.min.css">
-		<link rel="stylesheet" href="/dist/css/skins/_all-skins.min.css">
-		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
-		<script src="bower_components/jquery/dist/jquery.min.js"></script>
-		<script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-		<script src="bower_components/fastclick/lib/fastclick.js"></script>
-		<script src="dist/js/adminlte.min.js"></script>
-
-	</head>
+	<%- include includes/head %>
 
 	<body class="hold-transition skin-blue sidebar-mini">
 
@@ -37,7 +18,7 @@
 
 				<!-- Content Header (Page header) -->
 				<section class="content-header">
-					<h1> Selector <small> Version 1.0.0-beta </small> </h1>
+					<h1> <%= language.get("SELECTOR") %> <small> Version 1.0.0-beta </small> </h1>
 					<ol class="breadcrumb">
 						<li><a href="/"><i class="fa fa-dashboard"></i> <%= language.get("UTILS").HOME %></a></li>
 						<li class="active"><%= language.get("SELECTOR") %></li>
