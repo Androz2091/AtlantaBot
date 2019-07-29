@@ -43,7 +43,11 @@ module.exports = class {
 				SERVERS: "Servers",
 				MANAGE: "Manage",
 				COMMANDS: "Commands",
-				HOME: "Accueil"
+				HOME: "Accueil",
+				SANCTIONS: "Sanctions",
+				FRENCH: "French",
+				ENGLISH: "English",
+				NO_CHANNEL: "No channel"
 			},
 			
 			/* DBL VOTES */
@@ -1356,7 +1360,31 @@ module.exports = class {
 			ERR_SOMETING_WENT_WRONG: "Oops! Something went wrong.",
 			ERR_SOMETING_WENT_WRONG_CONTENT: "We will try to remedy this immediately. In the meantime, you can go back to the dashboard or try using the search form.",
 			ERR_NO_SERVER_FOUND: "No server found",
-			ERR_NO_SERVER_FOUND_CONTENT: "No server to display. Make sure you are logged in with the right account and try again."
+			ERR_NO_SERVER_FOUND_CONTENT: "No server to display. Make sure you are logged in with the right account and try again.",
+			SERVER_CONF: "Configuration",
+			CONFIG_HEADINGS: {
+				BASIC: "📝 Basic configuration",
+				WELCOME: "👋 Welcome messages",
+				GOODBYE: "😢 Goodbye messages",
+				CHANNELS: "🌀 Special channels",
+				AUTOROLE: "🎖️ Autorole"
+			},
+			CONFIG_FIELDS: {
+				PREFIX: "Prefix",
+				LANG: "Language",
+				CHANNEL: "Channel",
+				MESSAGE: "Message",
+				ROLE: "Role",
+				WITHIMAGE_WELCOME: "Include a great welcome image",
+				WITHIMAGE_GOODBYE: "Include a great goodbye image",
+				SUGGESTIONS: "Suggestions",
+				MODLOGS: "Moderation logs"
+			},
+			ENABLE_MESSAGES: "Enable messages",
+			DISABLE_MESSAGES: "Disable messages",
+			ENABLE_AUTOROLE: "Enable autorole",
+			DISABLE_AUTOROLE: "Disable autorole",
+			SWITCH_LANG: "Switch languages"
 
         }
     }

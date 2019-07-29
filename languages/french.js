@@ -43,7 +43,11 @@ module.exports = class {
 				SERVERS: "Serveurs",
 				MANAGE: "Gérer",
 				COMMANDS: "Commandes",
-				HOME: "Accueil"
+				HOME: "Accueil",
+				SANCTIONS: "Sanctions",
+				FRENCH: "Français",
+				ENGLISH: "Anglais",
+				NO_CHANNEL: "Aucun salon"
 			},
 			
 			/* DBL VOTES */
@@ -612,6 +616,7 @@ module.exports = class {
 			WELCOME_IMG_MSG: (name) => `Bienvenue sur ${name} !`,
 			WELCOME_IMG_NUMBER: (memberCount) => `- ${memberCount}ème membre !`,
 			WELCOME_IMG_TITLE: "BIENVENUE",
+			WELCOME_DEFAULT_MESSAGE: "Bienvenue {user} sur {server} ! Grâce à toi, nous sommes {membercount} !",
 
 			// Errors
 			WELCOME_ERR_TIMEOUT: `${e.error} | Temps écoulé ! Veuillez retaper la commande !`,
@@ -633,6 +638,7 @@ module.exports = class {
 			GOODBYE_IMG_MSG: (name) => `Départ de ${name}`,
 			GOODBYE_IMG_NUMBER: (memberCount) => `- ${memberCount}ème membre !`,
 			GOODBYE_IMG_TITLE: "AU REVOIR",
+			GOODBYE_DEFAULT_MESSAGE: "Au revoir {user} ! C'est triste, sans toi nous ne sommes que {membercount} sur {server} !",
 			// Errors
 			GOODBYE_ERR_TIMEOUT: `${e.error} | Temps écoulé ! Veuillez retaper la commande !`,
 			GOODBYE_ERR_CARACT: `${e.error} | Votre message ne doit pas excéder les 1500 caractères !`,
@@ -1354,7 +1360,31 @@ module.exports = class {
 			ERR_SOMETING_WENT_WRONG: "Oups ! Quelque chose s'est mal passé.",
 			ERR_SOMETING_WENT_WRONG_CONTENT: "Nous nous efforcerons d'y remédier tout de suite. En attendant, vous pouvez retourner au tableau de bord ou essayer d'utiliser le formulaire de recherche.",
 			ERR_NO_SERVER_FOUND: "Aucun serveur trouvé",
-			ERR_NO_SERVER_FOUND_CONTENT: "Aucun serveur à afficher. Vérifiez que vous êtes connecté avec le bon compte et réessayez."
+			ERR_NO_SERVER_FOUND_CONTENT: "Aucun serveur à afficher. Vérifiez que vous êtes connecté avec le bon compte et réessayez.",
+			SERVER_CONF: "Configuration",
+			CONFIG_HEADINGS: {
+				BASIC: "📝 Configuration basique",
+				WELCOME: "👋 Messages de bienvenue",
+				GOODBYE: "😢 Messages d'au revoir",
+				CHANNELS: "🌀 Salons spéciaux",
+				AUTOROLE: "🎖️ Autorôle"
+			},
+			CONFIG_FIELDS: {
+				PREFIX: "Préfixe",
+				LANG: "Langue",
+				CHANNEL: "Salon",
+				MESSAGE: "Message",
+				ROLE: "Rôle",
+				WITHIMAGE_WELCOME: "Inclure une superbe image de bienvenue",
+				WITHIMAGE_GOODBYE: "Inclure une superbe image d'au revoir",
+				SUGGESTIONS: "Suggestions",
+				MODLOGS: "Logs de modération"
+			},
+			ENABLE_MESSAGES: "Activer les messages",
+			DISABLE_MESSAGES: "Désactiver les messages",
+			ENABLE_AUTOROLE: "Activer l'autorôle",
+			DISABLE_AUTOROLE: "Désactiver l'autorôle",
+			SWITCH_LANG: "Changer de langue"
 
         }
     }
