@@ -35,7 +35,7 @@
                         <!-- Menu Footer-->
                         <li class="user-footer">
                             <div class="pull-left">
-                                <a href="/" class="btn btn-default btn-flat">Dashboard</a>
+                                <a href="/language?redirect=<%= currentURL %>" class="btn btn-default btn-flat"><%= language.get("SWITCH_LANG") %></a>
                             </div>
                             <div class="pull-right">
                                 <a href="/logout" class="btn btn-default btn-flat"><%= language.get("UTILS").SIGN_OUT %></a>
