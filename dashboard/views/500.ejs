@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+		<title>Atlanta | Dashboard</title>
+
+		<!-- CSS JS Fonts Icons-->
+		<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+		<link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.min.css">
+		<link rel="stylesheet" href="/bower_components/font-awesome/css/font-awesome.min.css">
+		<link rel="stylesheet" href="/dist/css/AdminLTE.min.css">
+		<link rel="stylesheet" href="/dist/css/skins/_all-skins.min.css">
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+		<script src="/bower_components/jquery/dist/jquery.min.js"></script>
+		<script src="/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+		<script src="/bower_components/fastclick/lib/fastclick.js"></script>
+		<script src="/dist/js/adminlte.min.js"></script>
+
+	</head>
+	
+    <body class="hold-transition skin-blue sidebar-mini">
+        
+        <div class="wrapper">
+        
+            <!-- The header is the topbar -->
+            <%- include includes/header %>
+
+            <!-- The sidebar includes the menu -->
+            <%- include includes/sidebar %>
+
+            <!-- Content Wrapper. Contains page content -->
+            <div class="content-wrapper">
+
+            <!-- Content Header (Page header) -->
+            <section class="content-header">
+                <h1>
+                    404 Error Page
+                </h1>
+                <ol class="breadcrumb">
+                    <li><a href="/"><i class="fa fa-dashboard"></i> <%= language.get("UTILS").HOME %></a></li>
+                    <li class="active">404 error</li>
+                </ol>
+            </section>
+
+			<!-- Main content -->
+			<section class="content">
+				<div class="error-page">
+					<h2 class="headline text-red"> 500</h2>
+
+					<div class="error-content">
+						<h3><i class="fa fa-warning text-red"></i> <%= language.get("ERR_SOMETING_WENT_WRONG") %></h3>
+
+						<p>
+							<%= language.get("ERR_SOMETING_WENT_WRONG_CONTENT") %>
+						</p>
+
+						<form class="search-form" action="/selector">
+							<div class="input-group">
+								<input type="text" name="q" class="form-control" placeholder="<%= language.get('SEARCH_SERVERS') %>">
+
+								<div class="input-group-btn">
+									<button type="submit" class="btn btn-warning btn-flat"><i class="fa fa-search"></i>
+									</button>
+								</div>
+							</div>
+							<!-- /.input-group -->
+						</form>
+					</div>
+					<!-- /.error-content -->
+				</div>
+				<!-- /.error-page -->
+			</section>
+			<!-- /.content -->
+		</div>
+		<!-- /.content-wrapper -->
+    
+   		<%- include includes/footer -%>
+		
+	</div>
+	<!-- ./wrapper -->
+</body>
+</html>
