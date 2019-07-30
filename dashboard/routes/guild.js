@@ -1,4 +1,5 @@
 const express = require("express"),
+utils = require("../utils"),
 CheckAuth = require("../auth/CheckAuth"),
 router = express.Router();
 
@@ -15,7 +16,7 @@ router.get("/:serverID", CheckAuth, async(req, res) => {
     }
 
     // Fetch guild informations
-    let guildInfos = await fetchGuild(guild.id, req.client, req.user.guilds);
+    let guildInfos = await utils.fetchGuild(guild.id, req.client, req.user.guilds);
 
     res.render("guild", {
         guild: guildInfos,
@@ -142,17 +143,3 @@ router.post("/:serverID", CheckAuth, async(req, res) => {
 });
 
 module.exports = router;
-
-/**
- * Fetch guild informations
- * @param {string} guildID The ID of the guild to fetch
- * @param {object} client The discord client instance
- * @param {array} guilds The user guilds
- */
-async function fetchGuild(guildID, client, guilds){
-    let guild = client.guilds.get(guildID);
-    let conf = await client.guildsData.findOne({id:guild.id});
-    let logs = await require("../../base/Log").find({});
-    let stats = { commands: logs.filter((cmd) => cmd.guild && cmd.guild.id === guild.id) };
-    return { ...guild, ...conf.toJSON(), ...guilds.find((g) => g.id === guild.id), ...stats };
-}
