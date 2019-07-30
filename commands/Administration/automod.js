@@ -34,7 +34,7 @@ class Automod extends Command {
             data.settings.save();
             message.channel.send(message.language.get("AUTOMOD_SUCCESS_ENABLED", data.settings.prefix));
         } else if (status === "off"){
-            if(message.mentions.channels.first()){
+            if(message.mentions.channels.filter((ch) => ch.type === "text" && channel.guild.id === message.guild.id).first()){
                 let channel = message.mentions.channels.first();
                 data.settings.plugins.automod.ignored.push(channel);
                 data.settings.markModified("plugins.automod");

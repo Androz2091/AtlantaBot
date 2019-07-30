@@ -81,7 +81,7 @@ class Welcome extends Command {
             }
 
             if(!welcome.channel){
-                let channel = msg.mentions.channels.first();
+                let channel = msg.mentions.channels.filter((ch) => ch.type === "text" && channel.guild.id === message.guild.id).first();
                 if(!channel){
                     return message.channel.send(message.language.get("ERR_INVALID_CHANNEL"));
                 }
