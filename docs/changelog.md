@@ -13,6 +13,18 @@ All notable changes to this project will be documented in this file.
 ### Fixed
 
 *   Now no longer considers that you are over 80 years old with the `birthdate` command
+*   `clear` command now checks if the parameter is a number
+*   `announcement` command now checks if the message length is higher than 1030
+
+### Dashboard
+
+*   Dashboard is back in the same repository as Atlanta to make things easier
+*   Support for almost all server settings (welcome messages, goodbye messages, prefix, language, etc...)
+*   English **and** French support
+*   Page for displaying the ranking
+*   Page to display a user's profile
+*   Page to edit the profile
+*   Server search form
 
 ## [3.5.0] - 2019-11-07
 
