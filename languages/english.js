@@ -1218,6 +1218,7 @@ module.exports = class {
 			ANNOUNCEMENT_EXAMPLES: "$announcement A new #spam channel!",
 			// Errors
 			ANNOUNCEMENT_ERR_TEXT: `${e.error} | You must enter the text of the announcement!`,
+			ANNOUNCEMENT_ERR_TEXT_LENGTH: `${e.error} | Please enter a text of less than 1030 characters!`,
 			ANNOUNCEMENT_ERR_TIMEOUT: `${e.error} | Time's up! Please retype the command!`,
 			// Content
 			ANNOUNCEMENT_FORM_MENTION: "Would you like to add a mention to your message? Answer \"yes\" or \"no\"!",

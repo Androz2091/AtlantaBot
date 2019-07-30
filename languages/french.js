@@ -1170,6 +1170,7 @@ module.exports = class {
 			ANNOUNCEMENT_EXAMPLES: "$announcement Un nouveau salon #spam !",
 			// Errors
 			ANNOUNCEMENT_ERR_TEXT: `${e.error} | Vous devez entrer le texte de l'annonce !`,
+			ANNOUNCEMENT_ERR_TEXT_LENGTH: `${e.error} | Veuillez entrer un texte inférieur à 1030 caractères !`,
 			ANNOUNCEMENT_ERR_TIMEOUT: `${e.error} | Temps écoulé ! Veuillez retaper la commande !`,
 			// Content
 			ANNOUNCEMENT_FORM_MENTION: "Souhaitez-vous ajouter une mention à votre annonce ? Répondez par \"oui\" ou \"non\" !",
