@@ -38,7 +38,7 @@ class Leaderboard extends Command {
         });
         
         let type = args[0];
-        if(!type || (type !== "credits" && type !== "rep" && type !== "levels")){
+        if(!type || (type !== "credits" && type !== "rep" && type !== "level")){
             return message.channel.send(message.language.get("LEADERBOARD_ERR_TYPE"));
         }
 
@@ -59,7 +59,7 @@ class Leaderboard extends Command {
             order.push("rep", "level", "credits");
         }
         // Sort the array by level
-        if(args[0].toLowerCase() === "levels"){
+        if(args[0].toLowerCase() === "level"){
             leaderboard = message.client.functions.sortByKey(leaderboard, "level");
             table.setHeading("#", message.language.get("UTILS").USER, message.language.get("UTILS").LEVEL, message.language.get("UTILS").REP, message.language.get("UTILS").CREDITS);
             order.push("level", "rep", "credits");
