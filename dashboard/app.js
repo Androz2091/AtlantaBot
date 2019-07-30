@@ -1,5 +1,7 @@
 const config = require("../config"),
 Discord = require("discord.js"),
+utils = require("./utils"),
+CheckAuth = require("./auth/CheckAuth"),
 availableLanguages = require("fs").readdirSync("languages/");
 
 module.exports.load = async(client) => {
@@ -17,8 +19,10 @@ module.exports.load = async(client) => {
 
     /* Routers */
     const mainRouter = require("./routes/index"),
+    userRouter = require("./routes/user"),
     loginRouter = require("./routes/login"),
     logoutRouter = require("./routes/logout"),
+    profileRouter = require("./routes/profile"),
     guildRouter = require("./routes/guild");
 
     /* App configuration */
@@ -48,22 +52,24 @@ module.exports.load = async(client) => {
         let Language = require("../languages/"+lang);
         req.language = new Language();
         if(req.user){
-            req.userInfos = await fetchUser(req.user, req.client, req.query.q);
+            req.userInfos = await utils.fetchUser(req.user, req.client, req.query.q);
         }
         next();
     })
     .use("/login", loginRouter)
     .use("/logout", logoutRouter)
     .use("/server", guildRouter)
+    .use("/profile", profileRouter)
+    .use("/user", userRouter)
     .use("/", mainRouter)
-    .use(function(req, res, next){
+    .use(CheckAuth, function(req, res, next){
         res.status(404).render("404", {
             user: req.userInfos,
             language: req.language,
             currentURL: `${req.protocol}://${req.get("host")}${req.originalUrl}`
         });
     })
-    .use(function(err, req, res, next) {
+    .use(CheckAuth, function(err, req, res, next) {
         console.error(err.stack);
         res.status(500).render("500", {
             user: req.userInfos,
@@ -98,33 +104,4 @@ module.exports.load = async(client) => {
 
     passport.use(disStrat);
 
-}
-
-/**
- * Fetch user informations (stats, guilds, etc...)
- * @param {object} userData The oauth2 user informations
- * @param {object} client The discord client instance
- * @param {string} query The optional query for guilds
- */
-async function fetchUser(userData, client, query){
-    userData.guilds.forEach((guild) => {
-        let perms = new Discord.Permissions(guild.permissions);
-        if(perms.has("MANAGE_GUILD")){
-            guild.admin = true;
-        }
-        guild.url = (client.guilds.get(guild.id) ? `/server/${guild.id}/` : `https://discordapp.com/oauth2/authorize?client_id=${client.user.id}&scope=bot&permissions=2146958847&guild_id=${guild.id}`);
-        guild.iconURL = (guild.icon ? `https://cdn.discordapp.com/icons/${guild.id}/${guild.icon}.png?size=128` : "https://discordemoji.com/assets/emoji/discordcry.png");
-        guild.displayed = (query ? guild.name.toLowerCase().includes(query.toLowerCase()) : true);
-    });
-    userData.displayedGuilds = userData.guilds.filter((g) => g.displayed && g.admin);
-    if(userData.displayedGuilds.length < 1){
-        delete userData.displayedGuilds;
-    }
-    let user = await client.users.fetch(userData.id);
-    let usersDb = await client.functions.getUsersData(client, [ user ]);
-    let userDb = usersDb[0];
-    let logs = await require("../base/Log").find({});
-    let stats = { commands: logs.filter((cmd) => cmd.user.id === user.id) };
-    let userInfos = { ...user.toJSON(), ...userDb.toJSON(), ...userData, ...user.presence,  ...stats};
-    return userInfos;
 }
