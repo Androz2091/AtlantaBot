@@ -171,5 +171,9 @@ module.exports = class {
         fs.writeFileSync("./docs/commands.md", text);
         client.logger.log("Docs updated!");
 
+        if(client.config.dashboard.enabled){
+            client.dashboard.load(client);
+        }
+
     }
 }  

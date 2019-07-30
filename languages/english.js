@@ -36,7 +36,21 @@ module.exports = class {
 				CUSTOM_COMMANDS: "Custom commands",
 				ANDMORE: "**and more...**",
 				TITLE: "Titre",
-				AUTHOR: "Auteur"
+				AUTHOR: "Auteur",
+				SIGN_OUT: "Sign out",
+				YOUR_PROFILE: "Your profile",
+				UPDATE: "Update",
+				SERVERS: "Servers",
+				MANAGE: "Manage",
+				COMMANDS: "Commands",
+				HOME: "Accueil",
+				SANCTIONS: "Sanctions",
+				FRENCH: "French",
+				ENGLISH: "English",
+				NO_CHANNEL: "No channel",
+				PROFILE: "Profile",
+				LEADERBOARD: "Ranking",
+				ECONOMY: "Economy"
 			},
 			
 			/* DBL VOTES */
@@ -806,6 +820,7 @@ module.exports = class {
 				INVITER: "🤵 Invitor",
 				PSEUDO: "📝 Pseudo",
 				BADGES: "🔥 Badges",
+				BIO: "🔖 Biography"
 			},
 			
 			/* WORK COMMAND */
@@ -1347,6 +1362,50 @@ module.exports = class {
 			// Content
 			PURGE_CONFIRMATION: (members) => `${e.warn} | ${members} members will be kicked out! To confirm, type \`confirm\`!`,
 			PURGE_SUCCESS: (members) => `${e.success} | ${members} membres kicked !`,
+
+			/* DASHBOARD */
+
+			FIRST_LOGIN: (username) => `${username} connected for the first time to the dashboard! :tada:`,
+			REGISTERED_FROM: (date) => `Member since ${(date ? date : "")}`,
+			HELLO: (username) => `Hello, ${username}`,
+			SEARCH_SERVERS: "Search servers....",
+			SERVERS_LIST: "Servers list",
+			SELECTOR: "Selector",
+			SERVERS_MANAGEMENT: "SERVER MANAGEMENT",
+			ERR_NOT_FOUND: "Oops! Page not found.",
+			ERR_NOT_FOUND_CONTENT: "We did not find the page you were looking for. In the meantime, you can go back to the dashboard or try using the search form.",
+			ERR_SOMETING_WENT_WRONG: "Oops! Something went wrong.",
+			ERR_SOMETING_WENT_WRONG_CONTENT: "We will try to remedy this immediately. In the meantime, you can go back to the dashboard or try using the search form.",
+			ERR_NO_SERVER_FOUND: "No server found",
+			ERR_NO_SERVER_FOUND_CONTENT: "No server to display. Make sure you are logged in with the right account and try again.",
+			SERVER_CONF: "Configuration",
+			CONFIG_HEADINGS: {
+				BASIC: "📝 Basic configuration",
+				WELCOME: "👋 Welcome messages",
+				GOODBYE: "😢 Goodbye messages",
+				CHANNELS: "🌀 Special channels",
+				AUTOROLE: "🎖️ Autorole"
+			},
+			CONFIG_FIELDS: {
+				PREFIX: "Prefix",
+				LANG: "Language",
+				CHANNEL: "Channel",
+				MESSAGE: "Message",
+				ROLE: "Role",
+				WITHIMAGE_WELCOME: "Include a great welcome image",
+				WITHIMAGE_GOODBYE: "Include a great goodbye image",
+				SUGGESTIONS: "Suggestions",
+				MODLOGS: "Moderation logs"
+			},
+			ENABLE_MESSAGES: "Enable messages",
+			DISABLE_MESSAGES: "Disable messages",
+			ENABLE_AUTOROLE: "Enable autorole",
+			DISABLE_AUTOROLE: "Disable autorole",
+			SWITCH_LANG: "Switch to French 🇫🇷",
+			FIRST_LEAD_MONEY: "1st of the ranking \"Credits\"",
+			FIRST_LEAD_LEVEL: "1st of the ranking \"Level\"",
+			FIRST_LEAD_REP: "1st of the ranking \"Reputation\"",
+			VIEW_PUB_PROFILE: "View my public profile"
 
         }
     }

@@ -13,14 +13,15 @@ class Atlanta extends Client {
 
     constructor (options) {
         super(options);
-        this.config = require("./config.js"); // Load the config file
+        this.config = require("./config"); // Load the config file
         this.commands = new Collection(); // Creates new commands collection
         this.aliases = new Collection(); // Creates new command aliases collection
-        this.logger = require("./utils/logger.js"); // Load the logger file
+        this.logger = require("./utils/logger"); // Load the logger file
         this.wait = util.promisify(setTimeout); // client.wait(1000) - Wait 1 second
-        this.functions = require("./utils/functions.js"); // Load the functions file
-        this.guildsData = require("./base/Guild.js"),
-        this.usersData = require("./base/User.js"),
+        this.functions = require("./utils/functions"); // Load the functions file
+        this.guildsData = require("./base/Guild"); // Guild mongoose model
+        this.usersData = require("./base/User"); // User mongoose model
+        this.dashboard = require("./dashboard/app"); // Dashboard app
         this.queues = new Collection(); // This collection will be used for the music
     }
 

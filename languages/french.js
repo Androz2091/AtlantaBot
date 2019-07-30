@@ -36,7 +36,21 @@ module.exports = class {
 				CUSTOM_COMMANDS: "Commandes personnalisées",
 				ANDMORE: "**et plus...**",
 				TITLE: "Titre",
-				AUTHOR: "Auteur"
+				AUTHOR: "Auteur",
+				SIGN_OUT: "Déconnexion",
+				YOUR_PROFILE: "Votre profil",
+				UPDATE: "Mettre à jour",
+				SERVERS: "Serveurs",
+				MANAGE: "Gérer",
+				COMMANDS: "Commandes",
+				HOME: "Accueil",
+				SANCTIONS: "Sanctions",
+				FRENCH: "Français",
+				ENGLISH: "Anglais",
+				NO_CHANNEL: "Aucun salon",
+				PROFILE: "Profil",
+				LEADERBOARD: "Classement",
+				ECONOMY: "Économie"
 			},
 			
 			/* DBL VOTES */
@@ -605,6 +619,7 @@ module.exports = class {
 			WELCOME_IMG_MSG: (name) => `Bienvenue sur ${name} !`,
 			WELCOME_IMG_NUMBER: (memberCount) => `- ${memberCount}ème membre !`,
 			WELCOME_IMG_TITLE: "BIENVENUE",
+			WELCOME_DEFAULT_MESSAGE: "Bienvenue {user} sur {server} ! Grâce à toi, nous sommes {membercount} !",
 
 			// Errors
 			WELCOME_ERR_TIMEOUT: `${e.error} | Temps écoulé ! Veuillez retaper la commande !`,
@@ -626,6 +641,7 @@ module.exports = class {
 			GOODBYE_IMG_MSG: (name) => `Départ de ${name}`,
 			GOODBYE_IMG_NUMBER: (memberCount) => `- ${memberCount}ème membre !`,
 			GOODBYE_IMG_TITLE: "AU REVOIR",
+			GOODBYE_DEFAULT_MESSAGE: "Au revoir {user} ! C'est triste, sans toi nous ne sommes que {membercount} sur {server} !",
 			// Errors
 			GOODBYE_ERR_TIMEOUT: `${e.error} | Temps écoulé ! Veuillez retaper la commande !`,
 			GOODBYE_ERR_CARACT: `${e.error} | Votre message ne doit pas excéder les 1500 caractères !`,
@@ -693,6 +709,7 @@ module.exports = class {
 				INVITER: "🤵 Inviteur",
 				PSEUDO: "📝 Pseudo",
 				BADGES: "🔥 Badges",
+				BIO: "🔖 Biographie"
 			},
 			
 			/* WORK COMMAND */
@@ -1346,6 +1363,49 @@ module.exports = class {
 			PURGE_CONFIRMATION: (members) => `${e.warn} | ${members} membres seront expulsés ! Pour confirmer, tapez \`confirm\` !`,
 			PURGE_SUCCESS: (members) => `${e.success} | ${members} membres expulsés !`,
 
+			/* DASHBOARD */
+
+			FIRST_LOGIN: (username) => `${username} s'est connecté pour la première fois au dashboard ! :tada:`,
+			REGISTERED_FROM: (date) => `Membre depuis le ${(date ? date : "")}`,
+			HELLO: (username) => `Bonjour, ${username}`,
+			SEARCH_SERVERS: "Chercher des serveurs...",
+			SERVERS_LIST: "Liste des serveurs",
+			SELECTOR: "Sélecteur",
+			SERVERS_MANAGEMENT: "GESTION DES SERVEURS",
+			ERR_NOT_FOUND: "Oups ! Page introuvable.",
+			ERR_NOT_FOUND_CONTENT: "Nous n'avons pas trouvé la page que vous cherchiez. En attendant, vous pouvez retourner au tableau de bord ou essayer d'utiliser le formulaire de recherche.",
+			ERR_SOMETING_WENT_WRONG: "Oups ! Quelque chose s'est mal passé.",
+			ERR_SOMETING_WENT_WRONG_CONTENT: "Nous nous efforcerons d'y remédier tout de suite. En attendant, vous pouvez retourner au tableau de bord ou essayer d'utiliser le formulaire de recherche.",
+			ERR_NO_SERVER_FOUND: "Aucun serveur trouvé",
+			ERR_NO_SERVER_FOUND_CONTENT: "Aucun serveur à afficher. Vérifiez que vous êtes connecté avec le bon compte et réessayez.",
+			SERVER_CONF: "Configuration",
+			CONFIG_HEADINGS: {
+				BASIC: "📝 Configuration basique",
+				WELCOME: "👋 Messages de bienvenue",
+				GOODBYE: "😢 Messages d'au revoir",
+				CHANNELS: "🌀 Salons spéciaux",
+				AUTOROLE: "🎖️ Autorôle"
+			},
+			CONFIG_FIELDS: {
+				PREFIX: "Préfixe",
+				LANG: "Langue",
+				CHANNEL: "Salon",
+				MESSAGE: "Message",
+				ROLE: "Rôle",
+				WITHIMAGE_WELCOME: "Inclure une superbe image de bienvenue",
+				WITHIMAGE_GOODBYE: "Inclure une superbe image d'au revoir",
+				SUGGESTIONS: "Suggestions",
+				MODLOGS: "Logs de modération"
+			},
+			ENABLE_MESSAGES: "Activer les messages",
+			DISABLE_MESSAGES: "Désactiver les messages",
+			ENABLE_AUTOROLE: "Activer l'autorôle",
+			DISABLE_AUTOROLE: "Désactiver l'autorôle",
+			SWITCH_LANG: "Passer en Anglais 🇬🇧",
+			FIRST_LEAD_MONEY: "1er du classement \"Crédits\"",
+			FIRST_LEAD_LEVEL: "1er du classement \"Niveau\"",
+			FIRST_LEAD_REP: "1er du classement \"Réputation\"",
+			VIEW_PUB_PROFILE: "Voir mon profil public"
         }
     }
 
