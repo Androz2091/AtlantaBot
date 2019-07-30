@@ -1319,6 +1319,20 @@ module.exports = class {
 			FORTNITE_MATCHES : "PARTIES",
 			FORTNITE_MATCH : "PARTIE",
 
+			/* CALC COMMAND */
+			
+			// Utils
+			CALC_DESCRIPTION: "Une calculatrice capable de résoudre des opérations complexes et convertir des unités !",
+			CALC_USAGE: "calc [calcul]",
+			CALC_EXAMPLES: "$calc 10*5+sin(3)\n$calc 10cm to m",
+			// Errors
+			CALC_EMPTY: `${e.error} | Entrez un calcul !`,
+			CALC_ERROR: `${e.error} | Entez un calcul valide !`,
+			// Content
+			CALC_TITLE: "Calculatrice",
+			CALC_OPERATION: "Opération",
+			CALC_RESULT: "Résultat",
+
 			/* PURGE COMMAND */
 
 			// Utils
