@@ -27,6 +27,9 @@ class Warn extends Command {
         if(!member){
             return message.channel.send(message.language.get("ERR_INVALID_MEMBER"));
         }
+        if(member.user.bot){
+            return message.channel.send(message.language.get("ERR_BOT_USER"));
+        }
 
         let reason = args.slice(1).join(" ");
         if(!reason){
