@@ -24,7 +24,7 @@ class Clear extends Command {
     async run (message, args, data) {
 
         let amount = args[0];
-        if(!amount){
+        if(!amount || isNaN(amount) || parseInt(amount) < 1){
             return message.channel.send(message.language.get("CLEAR_ERR_AMOUNT"));
         }
 
