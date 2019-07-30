@@ -246,6 +246,8 @@ class Fortnite extends Command {
             let attachment = new Discord.MessageAttachment(canvas.toBuffer(), "fortnite-stats-image.png");
             m.delete();
             await message.channel.send(attachment);
+        }).catch((err) => {
+            return message.channel.send(message.language.get("FORTNITE_ERR_NOT_FOUND", platform, user));
         });
     }
 }

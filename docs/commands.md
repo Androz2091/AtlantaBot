@@ -47,7 +47,7 @@ Here's the list of Atlanta commands. This one contains more than **90 commands**
 | **ignore**        | Disables or activates commands in the mentioned channel       | ignore [#channel]                | 3 seconds  |
 | **purge**         | Kick out inactive members!                                    | purge [days]                     | 5 seconds  |
 | **setlang**       | Change the server language!                                   | setlang [french/english]         | 3 seconds  |
-| **setlogs**       | Define the log channel!                                       | setlogs (#channel)               | 3 seconds  |
+| **setmodlogs**    | Define the log channel!                                       | setmodlogs (#channel)            | 3 seconds  |
 | **setprefix**     | Changes the server prefix                                     | setprefix [prefix]               | 3 seconds  |
 | **setsuggests**   | Define the suggestion channel!                                | setsuggests (#channel)           | 3 seconds  |
 | **slowmode**      | Define a cooldown in a channel                                | slowmode [#channel] (time)       | 3 seconds  |

@@ -639,7 +639,7 @@ module.exports = class {
 			CONFIGURATION_AUTOROLE: (roleID) => `Role : <@&${roleID}>`,
 			CONFIGURATION_WELCOME: (withImage, channelID) => `Channel : <#${channelID}>\nImage : ${withImage ? "Yes" : "No"}`,
 			CONFIGURATION_GOODBYE: (withImage, channelID) => `Channel : <#${channelID}>\nImage : ${withImage ? "Yes" : "No"}`,
-			CONFIGURATION_MODLOGS: (channelID) => `Logs : ${channelID ? `<#${channelID}>` : "Not defined"}`,
+			CONFIGURATION_MODLOGS: (channelID) => `Moderation logs : ${channelID ? `<#${channelID}>` : "Not defined"}`,
 			CONFIGURATION_SUGGESTIONS: (channelID) => `Suggestions : ${channelID ? `<#${channelID}>` : "Not defined" }`,
 			CONFIGURATION_AUTOMOD: (ignoredChannels) => `${ignoredChannels.length > 0 ? `Salon ignorés : ${ignoredChannels.map((ch) => `<#${ch}>`)}` : "Aucun salon ignoré."}`,
 			CONFIGURATION_WARNS: (kick, ban) => `${kick ? `**Expulsion**: after **${kick}** warnings.` : "**Expulsion**: Not defined."}\n${ban ? `**Banishment**: after **${ban}** warnings.` : "**Banishment**: Not defined."}`,
@@ -1241,14 +1241,14 @@ module.exports = class {
 				"Time"
 			],
 
-			/* SETLOGS COMMAND */
+			/* SETMODLOGS COMMAND */
 
 			// Utils
-			SETLOGS_DESCRIPTION: "Define the log channel!",
-			SETLOGS_USAGE: "setlogs (#channel)",
-			SETLOGS_EXAMPLES: "$setlogs #modlogs\n$setlogs",
+			SETMODLOGS_DESCRIPTION: "Define the log channel!",
+			SETMODLOGS_USAGE: "setmodlogs (#channel)",
+			SETMODLOGS_EXAMPLES: "$setmodlogs #modlogs\n$setmodlogs",
 			// Content
-			SETLOGS_SUCCESS: (id) => `${e.success} | Logs channel defined on <#${id}> !`,
+			SETMODLOGS_SUCCESS: (id) => `${e.success} | Moderation logs channel defined on <#${id}> !`,
 
 			/* SOMEONE COMMAND */
 

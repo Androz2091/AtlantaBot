@@ -564,7 +564,7 @@ module.exports = class {
 			CONFIGURATION_AUTOROLE: (roleID) => `Rôle : <@&${roleID}>`,
 			CONFIGURATION_WELCOME: (withImage, channelID) => `Salon : <#${channelID}>\nImage : ${withImage ? "Oui" : "Non"}`,
 			CONFIGURATION_GOODBYE: (withImage, channelID) => `Salon : <#${channelID}>\nImage : ${withImage ? "Oui" : "Non"}`,
-			CONFIGURATION_MODLOGS: (channelID) => `Logs : ${channelID ? `<#${channelID}>` : "Indéfini"}`,
+			CONFIGURATION_MODLOGS: (channelID) => `Logs modération : ${channelID ? `<#${channelID}>` : "Indéfini"}`,
 			CONFIGURATION_SUGGESTIONS: (channelID) => `Suggestions : ${channelID ? `<#${channelID}>` : "Indéfini" }`,
 			CONFIGURATION_AUTOMOD: (ignoredChannels) => `${ignoredChannels.length > 0 ? `Salon ignorés : ${ignoredChannels.map((ch) => `<#${ch}>`)}` : "Aucun salon ignoré."}`,
 			CONFIGURATION_WARNS: (kick, ban) => `${kick ? `**Expulsion**: au bout de **${kick}** avertissements.` : "**Expulsion**: Non définie."}\n${ban ? `**Bannissement**: au bout de **${ban}** avertissements.` : "**Bannissement**: Non défini."}`,
@@ -1241,14 +1241,14 @@ module.exports = class {
 				"Expiration"
 			],
 
-			/* SETLOGS COMMAND */
+			/* SETMODLOGS COMMAND */
 
 			// Utils
-			SETLOGS_DESCRIPTION: "Définissez le salon des logs !",
-			SETLOGS_USAGE: "setlogs (#salon)",
-			SETLOGS_EXAMPLES: "$setlogs #modlogs\n$setlogs",
+			SETMODLOGS_DESCRIPTION: "Définissez le salon des logs de modération !",
+			SETMODLOGS_USAGE: "setmodlogs (#salon)",
+			SETMODLOGS_EXAMPLES: "$setmodlogs #modlogs\n$setmodlogs",
 			// Content
-			SETLOGS_SUCCESS: (id) => `${e.success} | Salon des logs défini sur <#${id}> !`,
+			SETMODLOGS_SUCCESS: (id) => `${e.success} | Salon des logs de modération défini sur <#${id}> !`,
 
 			/* SOMEONE COMMAND */
 

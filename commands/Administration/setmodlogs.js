@@ -1,14 +1,14 @@
 const Command = require("../../base/Command.js"),
 Discord = require("discord.js");
 
-class Setlogs extends Command {
+class Setmodlogs extends Command {
 
     constructor (client) {
         super(client, {
-            name: "setlogs",
-            description: (language) => language.get("SETLOGS_DESCRIPTION"),
-            usage: (language) => language.get("SETLOGS_USAGE"),
-            examples: (language) => language.get("SETLOGS_EXAMPLES"),
+            name: "setmodlogs",
+            description: (language) => language.get("SETMODLOGS_DESCRIPTION"),
+            usage: (language) => language.get("SETMODLOGS_USAGE"),
+            examples: (language) => language.get("SETMODLOGS_EXAMPLES"),
             dirname: __dirname,
             enabled: true,
             guildOnly: true,
@@ -29,9 +29,9 @@ class Setlogs extends Command {
         data.settings.save();
 
         // Send success message
-        message.channel.send(message.language.get("SETLOGS_SUCCESS", channel.id));
+        message.channel.send(message.language.get("SETMODLOGS_SUCCESS", channel.id));
     }
 
 }
 
-module.exports = Setlogs;
+module.exports = Setmodlogs;

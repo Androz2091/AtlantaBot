@@ -16,7 +16,8 @@ All notable changes to this project will be documented in this file.
 *   `clear` command now checks if the parameter is a number
 *   `announcement` command now checks if the message length is higher than 1030
 *   `warn` command now checks if the mentionned member is not a bot
-*   `ignore`, `slowmode`, `automod`, `goodbye`, `welcome`, `setlogs` and `setsuggests` now check if the mentionned channel is a text channel and if the channel is in the current guild
+*   `setlogs` command renamed to `setmodlogs`
+*   `ignore`, `slowmode`, `automod`, `goodbye`, `welcome`, `setmodlogs` and `setsuggests` now check if the mentionned channel is a text channel and if the channel is in the current guild
 
 ### Dashboard
 
