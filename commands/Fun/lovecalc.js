@@ -30,7 +30,8 @@ class Lovecalc extends Command {
             return message.channel.send(message.language.get("LOVECALC_ERR_MENTIONS"));
         }
 
-        let str = `${member1.id}${member2.user.username}${member1.user.username}${member2.id}`;
+        let members = [ member1, member2 ].sort((a, b) => parseInt(a.id, 10) - parseInt(b.id, 10));
+        let str = `${members[0].id}${members[1].user.username}${members[0].user.username}${members[1].id}`;
         let hash = md5(str);
 
         let string = "";
