@@ -1321,6 +1321,20 @@ module.exports = class {
 			FORTNITE_MATCHES : "MATCHES",
 			FORTNITE_MATCH : "MATCH",
 
+			/* CALC COMMAND */
+			
+			// Utils
+			CALC_DESCRIPTION: "A calculator capable of solving complex operations and converting units!",
+			CALC_USAGE: "calc [calculation]",
+			CALC_EXAMPLES: "$calc 10*5+sin(3)\n$calc 10cm to m",
+			// Errors
+			CALC_EMPTY: `${e.error} | Enter a calculation!`,
+			CALC_ERROR: `${e.error} | Enter a valid calculation!`,
+			// Content
+			CALC_TITLE: "Calculator",
+			CALC_OPERATION: "Operation",
+			CALC_RESULT: "Result",
+						
 			/* PURGE COMMAND */
 
 			// Utils

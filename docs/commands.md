@@ -7,29 +7,30 @@ Here's the list of Atlanta commands. This one contains more than **90 commands**
 **Usage**: The arguments/options that the command takes in parameters  
 **Cooldown**: The time that must elapse between each command so that it can be executed again by the user
 
-### General (19 commands)
+### General (20 commands)
 
-| Name            | Description                                                       | Usage                          | Cooldown  |
-| --------------- | ----------------------------------------------------------------- | ------------------------------ | --------- |
-| **fortnite**    | Displays a player's Fortnite stats!                               | fortnite [psn/xbl/pc] [pseudo] | 1 seconds |
-| **github**      | Displays the information from the Atlanta github!                 | github                         | 5 seconds |
-| **hastebin**    | Upload your text on hastebin !                                    | hastebin [text]                | 5 seconds |
-| **help**        | Displays the help of commands or the help of a particular command | help (command)                 | 5 seconds |
-| **invitations** | Displays the number of people you have invited to the server!     | invitations (@member)          | 3 seconds |
-| **invite**      | Displays the links of Atlanta!                                    | invite (copy)                  | 5 seconds |
-| **minecraft**   | Displays information about the Minecraft server!                  | minecraft [ip]                 | 3 seconds |
-| **minimize**    | Shorten your link!                                                | minimize [url]                 | 5 seconds |
-| **permissions** | Displays the member's permissions in the channel                  | permissions (@member)          | 1 seconds |
-| **ping**        | Displays bot latency                                              | ping                           | 1 seconds |
-| **quote**       | Quote a message in the channel!                                   | quote [messageID] [channel]    | 5 seconds |
-| **remindme**    | Define a reminder!                                                | remindme [reason]              | 3 seconds |
-| **serverinfo**  | Displays information about the server!                            | serverinfo [ID/Name]           | 3 seconds |
-| **setafk**      | Become an AFK (members who mention you will receive a message)    | setafk [reason]                | 3 seconds |
-| **someone**     | Pick a random member on the server!                               | someone                        | 1 seconds |
-| **stats**       | Display the stats of the bot!                                     | stats                          | 3 seconds |
-| **suggest**     | Send your suggestion to the channel defined for this!             | suggest [message]              | 5 seconds |
-| **translate**   | I'm translating your text!                                        | translate [language] [message] | 8 seconds |
-| **userinfo**    | Displays user information!                                        | userinfo (@user/userID)        | 5 seconds |
+| Name            | Description                                                              | Usage                          | Cooldown  |
+| --------------- | ------------------------------------------------------------------------ | ------------------------------ | --------- |
+| **calc**        | A calculator capable of solving complex operations and converting units! | calc [calculation]             | 1 seconds |
+| **fortnite**    | Displays a player's Fortnite stats!                                      | fortnite [psn/xbl/pc] [pseudo] | 1 seconds |
+| **github**      | Displays the information from the xiBot V2 github!                       | github                         | 5 seconds |
+| **hastebin**    | Upload your text on hastebin !                                           | hastebin [text]                | 5 seconds |
+| **help**        | Displays the help of commands or the help of a particular command        | help (command)                 | 5 seconds |
+| **invitations** | Displays the number of people you have invited to the server!            | invitations (@member)          | 3 seconds |
+| **invite**      | Displays the links of xiBot V2!                                          | invite (copy)                  | 5 seconds |
+| **minecraft**   | Displays information about the Minecraft server!                         | minecraft [ip]                 | 3 seconds |
+| **minimize**    | Shorten your link!                                                       | minimize [url]                 | 5 seconds |
+| **permissions** | Displays the member's permissions in the channel                         | permissions (@member)          | 1 seconds |
+| **ping**        | Displays bot latency                                                     | ping                           | 1 seconds |
+| **quote**       | Quote a message in the channel!                                          | quote [messageID] [channel]    | 5 seconds |
+| **remindme**    | Define a reminder!                                                       | remindme [reason]              | 3 seconds |
+| **serverinfo**  | Displays information about the server!                                   | serverinfo [ID/Name]           | 3 seconds |
+| **setafk**      | Become an AFK (members who mention you will receive a message)           | setafk [reason]                | 3 seconds |
+| **someone**     | Pick a random member on the server!                                      | someone                        | 1 seconds |
+| **stats**       | Display the stats of the bot!                                            | stats                          | 3 seconds |
+| **suggest**     | Send your suggestion to the channel defined for this!                    | suggest [message]              | 5 seconds |
+| **translate**   | I'm translating your text!                                               | translate [language] [message] | 8 seconds |
+| **userinfo**    | Displays user information!                                               | userinfo (@user/userID)        | 5 seconds |
 
 ### Administration (16 commands)
 
@@ -52,24 +53,6 @@ Here's the list of Atlanta commands. This one contains more than **90 commands**
 | **slowmode**      | Define a cooldown in a channel                                | slowmode [#channel] (time)       | 3 seconds  |
 | **welcome**       | Send a welcome message to a pre-defined channel!              | welcome                          | 3 seconds  |
 
-### Moderation (13 commands)
-
-| Name             | Description                                                                             | Usage                                                              | Cooldown  |
-| ---------------- | --------------------------------------------------------------------------------------- | ------------------------------------------------------------------ | --------- |
-| **announcement** | Send an announcement in the current channel!                                            | announcement [text]                                                | 3 seconds |
-| **ban**          | Banished the mentioned member!                                                          | ban [@user] (reason)                                               | 3 seconds |
-| **checkinvites** | Check if members do not have an ad for their Discord server in their presence!          | checkinvites                                                       | 3 seconds |
-| **clear**        | Deletes messages very quickly!                                                          | clear[number-of-messages] (@member)                                | 3 seconds |
-| **giveaway**     | Manage your giveaways simply!                                                           | giveaway [create/reroll/delete/end] (time) (winners count) (prize) | 5 seconds |
-| **kick**         | Kick out the mentioned member!                                                          | kick [@user] (reason)                                              | 3 seconds |
-| **mute**         | Prevents the member from sending messages and connecting by voice for a period of time! | mute [@member] [time]                                              | 3 seconds |
-| **poll**         | Launch a survey in the current channel!                                                 | poll [question]                                                    | 3 seconds |
-| **sanctions**    | Displays the list of infractions committed by a member!                                 | sanctions [@member]                                                | 3 seconds |
-| **setwarns**     | Define the sanctions that members will get after a certain number of warns!             | setwarns [kick/ban] [number/reset]                                 | 3 seconds |
-| **unban**        | Unban the user from the server!                                                         | unban [userID/user#0000]                                           | 3 seconds |
-| **unmute**       | Unmute the mentioned member!                                                            | unmute [@member]                                                   | 3 seconds |
-| **warn**         | Warn a member in private messages                                                       | warn [@member] [reason]                                            | 3 seconds |
-
 ### Images (13 commands)
 
 | Name          | Description                                             | Usage                      | Cooldown  |
@@ -87,6 +70,24 @@ Here's the list of Atlanta commands. This one contains more than **90 commands**
 | **shit**      | Generates a "respect" image using the Anidiots API      | shit (@member)             | 5 seconds |
 | **triggered** | Generates a "triggered" image using the Anidiots API    | triggered (@member)        | 5 seconds |
 | **tweet**     | Generate a tweet of a person of your choice on Twitter! | tweet [@twitter] [text]    | 5 seconds |
+
+### Moderation (13 commands)
+
+| Name             | Description                                                                             | Usage                                                              | Cooldown  |
+| ---------------- | --------------------------------------------------------------------------------------- | ------------------------------------------------------------------ | --------- |
+| **announcement** | Send an announcement in the current channel!                                            | announcement [text]                                                | 3 seconds |
+| **ban**          | Banished the mentioned member!                                                          | ban [@user] (reason)                                               | 3 seconds |
+| **checkinvites** | Check if members do not have an ad for their Discord server in their presence!          | checkinvites                                                       | 3 seconds |
+| **clear**        | Deletes messages very quickly!                                                          | clear[number-of-messages] (@member)                                | 3 seconds |
+| **giveaway**     | Manage your giveaways simply!                                                           | giveaway [create/reroll/delete/end] (time) (winners count) (prize) | 5 seconds |
+| **kick**         | Kick out the mentioned member!                                                          | kick [@user] (reason)                                              | 3 seconds |
+| **mute**         | Prevents the member from sending messages and connecting by voice for a period of time! | mute [@member] [time]                                              | 3 seconds |
+| **poll**         | Launch a survey in the current channel!                                                 | poll [question]                                                    | 3 seconds |
+| **sanctions**    | Displays the list of infractions committed by a member!                                 | sanctions [@member]                                                | 3 seconds |
+| **setwarns**     | Define the sanctions that members will get after a certain number of warns!             | setwarns [kick/ban] [number/reset]                                 | 3 seconds |
+| **unban**        | Unban the user from the server!                                                         | unban [userID/user#0000]                                           | 3 seconds |
+| **unmute**       | Unmute the mentioned member!                                                            | unmute [@member]                                                   | 3 seconds |
+| **warn**         | Warn a member in private messages                                                       | warn [@member] [reason]                                            | 3 seconds |
 
 ### Economy (12 commands)
 
