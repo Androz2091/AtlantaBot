@@ -27,7 +27,7 @@ class Invite extends Command {
         let voteURL = message.client.config.voteURL || `https://discordbots.org/bot/${this.client.user.id}/vote`;
         let supportURL = message.client.config.supportURL || await message.client.functions.supportLink(message.client);
 
-        if(args[0]){
+        if(args[0] && args[0] === "copy"){
             return message.channel.send(inviteLink);
         }
         
