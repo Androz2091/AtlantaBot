@@ -31,7 +31,7 @@
                 <li><a href="/selector"><i class="fa fa-mouse-pointer"></i> <span><%= language.get("SELECTOR") %></span></a></li>
             </li>
             <li class="treeview">
-                <a href="#">
+                <a href="/server/">
                 <i class="fa fa-server"></i>
                 <span><%= language.get("SERVERS_LIST") %></span>
                 <span class="pull-right-container">
@@ -40,9 +40,15 @@
                 </a>
                 <ul class="treeview-menu">
                     <% user.guilds.filter((g) => g.admin).sort((a,b) => b.owner).forEach((guild) => { %>
-                        <li><a href="/server/<%= guild.id %>"><i class="fa fa-circle-o text-<%= guild.owner ? 'blue' : 'grey' %>"></i> <%= guild.name %></a></li>
+                        <li><a href="<%= guild.url %>"><i class="fa fa-circle-o text-<%= guild.owner ? 'blue' : 'grey' %>"></i> <%= guild.name %></a></li>
                     <% }); %>
                 </ul>
+            </li>
+        </ul>
+        <ul class="sidebar-menu" data-widget="tree">
+            <li class="header"><%= language.get("UTILS").ECONOMY.toUpperCase() %></li>
+            <li class="treeview menu-open">
+                <li><a href="/profile"><i class="fa fa-user"></i> <span><%= language.get("UTILS").LEADERBOARD %></span></a></li>
             </li>
         </ul>
     </section>
@@ -54,5 +60,7 @@
         // get current URL path and assign 'active' class
         let pathname = window.location.pathname;
         $(`.sidebar-menu > li > a[href="${pathname}"]`).parent().addClass("active");
+        $(`.sidebar-menu > li > ul > li > a[href="${window.location.pathname}"]`).parent().addClass("active");
+        $(`.sidebar-menu > li > a[href="/${window.location.pathname.split("/")[1]}/"]`).parent().addClass("active");
     });
 </script>
