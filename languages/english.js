@@ -147,7 +147,7 @@ module.exports = class {
 			HASTEBIN_USAGE: "hastebin [text]",
 			HASTEBIN_EXAMPLES: "$hastebin Hello World!",
 			// Errors
-			HASTEBIN_TEXT: `${e.error} | You must enter a text!`,
+			HASTEBIN_ERR_TEXT: `${e.error} | You must enter a text!`,
 			// Content
 			HASTEBIN_TITLE: `Upload complete!`,
 
