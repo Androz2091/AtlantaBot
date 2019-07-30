@@ -706,7 +706,7 @@ module.exports = class {
 			GIVEAWAY_EXAMPLES: "$giveaway create 10m 2 5$ PayPal !\n$giveaway reroll 597812898022031374",
 			// Errors
 			GIVEAWAY_ERR_STATUS: `${e.error} | You must specify \`create\`, \`reroll\` ou \`delete\`!`,
-			GIVEAWAY_ERR_CREATE: (prefix) => `${e.error} | You must enter the information in this format: \n\n\`${prefix}giveaway [time] [winners count] [prize]\``,
+			GIVEAWAY_ERR_CREATE: (prefix) => `${e.error} | You must enter the information in this format: \n\n\`${prefix}giveaway create [time] [winners count] [prize]\``,
 			GIVEAWAY_ERR_REROLL: `${e.error} | You must enter the ID of the giveaway message a re-rolled!`,
 			GIVEAWAY_ERR_DELETE: `${e.error} | You must enter the ID of the giveaway message to be deleted!`,
 			GIVEAWAY_ERR_END: `${e.error} | You must enter the ID of the giveaway message to be ended!`,
