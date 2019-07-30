@@ -30,15 +30,16 @@ class Minimize extends Command {
         }
 
         let res = await fetch(`https://is.gd/create.php?format=simple&url=${encodeURI(url)}`);
+        let body = await res.text();
 
-        if(res.body === "Error: Please enter a valid URL to shorten"){
+        if(body === "Error: Please enter a valid URL to shorten"){
             return message.channel.send(message.language.get("MINIMIZE_ERR_INVALID_URL"));
         }
 
         let embed = new Discord.MessageEmbed()
             .setColor(data.config.embed.color)
             .setFooter(data.config.embed.footer)
-            .setDescription(await res.text());
+            .setDescription(body);
         message.channel.send(embed);
 
     }
