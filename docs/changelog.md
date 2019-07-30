@@ -7,6 +7,7 @@ All notable changes to this project will be documented in this file.
 ### Added
 
 *   Welcome and goodbye images are now made entirely with Canvas
+*   New `calc` command
 
 ### Fixed
 
