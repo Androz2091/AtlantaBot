@@ -66,59 +66,40 @@
                                 </div>
                                 <!-- /.box-footer -->
                             </div>
-                            <!-- WELCOME CONFIGURATION -->
-                            <div class="box box-success">
+                            <!-- BASIC CONFIGURATION -->
+                            <div class="box box-warning">
                                 <div class="box-header with-border">
-                                    <h3 class="box-title"><%= language.get("CONFIG_HEADINGS").WELCOME %></h3>
+                                    <h3 class="box-title"><%= language.get("CONFIG_HEADINGS").BASIC %></h3>
                                 </div>
                                 <form role="form" action="/server/<%= guild.id %>/" method="POST">
                                     <!-- /.box-header -->
                                     <div class="box-body">
                                         <!-- text input -->
                                         <div class="form-group">
-                                            <label><%= language.get("CONFIG_FIELDS").MESSAGE %></label>
-                                            <textarea rows="3" name="message" class="form-control" required><%= (guild.plugins.welcome.message || language.get('WELCOME_DEFAULT_MESSAGE')) %></textarea>
+                                            <label><%= language.get("CONFIG_FIELDS").PREFIX %></label>
+                                            <input type="text" name="prefix" class="form-control" placeholder="<%= guild.prefix %>">
                                         </div>
                                         <!-- select -->
                                         <div class="form-group">
-                                            <label><%= language.get("CONFIG_FIELDS").CHANNEL %></label>
-                                            <select class="form-control" name="channel">
-                                                <% if(guild.plugins.welcome.enabled){ %>
-                                                    <option selected="selected">#<%= client.channels.get(guild.plugins.welcome.channel).name %></option>
-                                                    <% guild.channels.filter((ch) => ch.id !== guild.plugins.welcome.channel && ch.type === "text").forEach((ch) => { %>
-                                                        <option>#<%= ch.name %></option>
-                                                    <% }); } else { %>
-                                                    <option selected="selected">#<%= guild.channels.filter((ch) => ch.type === "text").first().name %></option>
-                                                    <% guild.channels.filter((ch) => ch.id !== guild.channels.first().id && ch.type === "text").forEach((ch) => { %>
-                                                        <option>#<%= ch.name %></option>
-                                                    <% }); %>
+                                            <label><%= language.get("CONFIG_FIELDS").LANG %></label>
+                                            <select class="form-control" name="language">
+                                                <% if(guild.language === "french"){ %>
+                                                    <option selected="selected"><%= language.get("UTILS").FRENCH %></option>
+                                                    <option><%= language.get("UTILS").ENGLISH %></options>
+                                                <% } else { %>
+                                                <option><%= language.get("UTILS").FRENCH %></option>
+                                                <option selected="selected"><%= language.get("UTILS").ENGLISH %></options>
                                                 <% } %>
                                             </select>
-                                        </div>
-                                        <!-- select -->
-                                        <div class="form-group">
-                                            <div class="checkbox">
-                                                <label>
-                                                    <% if(guild.plugins.welcome.withImage || !guild.plugins.welcome.enabled) { %>
-                                                        <input type="checkbox" name="withImage" checked><%= language.get("CONFIG_FIELDS").WITHIMAGE_WELCOME %>
-                                                    <% } else { %>
-                                                        <input type="checkbox" name="withImage"><%= language.get("CONFIG_FIELDS").WITHIMAGE_WELCOME %>
-                                                    <% } %>
-                                                </label>
-                                            </div>
                                         </div>
                                     </div>
                                     <!-- /.box-body -->
                                     <div class="box-footer">
-                                        <% if(guild.plugins.welcome.enabled){ %>
-                                            <button type="submit" name="welcomeDisable" class="btn btn-danger"><%= language.get("DISABLE_MESSAGES") %></button>
-                                            <button type="submit" name="welcomeUpdate" class="btn btn-primary pull-right"><%= language.get("UTILS").UPDATE %></button>
-                                        <% } else { %>
-                                            <button type="submit" name="welcomeEnable" class="btn btn-success"><%= language.get("ENABLE_MESSAGES") %></button>
-                                        <% } %>
+                                        <button type="submit" class="btn btn-primary"><%= language.get("UTILS").UPDATE %></button>
                                     </div>
                                 </form>
                             </div>
+                            <!-- /.box -->
                             <!-- SPECIAL CHANNELS -->
                             <div class="box box-warning">
                                 <div class="box-header with-border">
@@ -172,40 +153,59 @@
                             <!-- /.box -->
                         </div>
                         <div class="col-md-6">
-                            <!-- BASIC CONFIGURATION -->
-                            <div class="box box-warning">
+                            <!-- WELCOME CONFIGURATION -->
+                            <div class="box box-success">
                                 <div class="box-header with-border">
-                                    <h3 class="box-title"><%= language.get("CONFIG_HEADINGS").BASIC %></h3>
+                                    <h3 class="box-title"><%= language.get("CONFIG_HEADINGS").WELCOME %></h3>
                                 </div>
                                 <form role="form" action="/server/<%= guild.id %>/" method="POST">
                                     <!-- /.box-header -->
                                     <div class="box-body">
                                         <!-- text input -->
                                         <div class="form-group">
-                                            <label><%= language.get("CONFIG_FIELDS").PREFIX %></label>
-                                            <input type="text" name="prefix" class="form-control" placeholder="<%= guild.prefix %>">
+                                            <label><%= language.get("CONFIG_FIELDS").MESSAGE %></label>
+                                            <textarea rows="3" name="message" class="form-control" required><%= (guild.plugins.welcome.message || language.get('WELCOME_DEFAULT_MESSAGE')) %></textarea>
                                         </div>
                                         <!-- select -->
                                         <div class="form-group">
-                                            <label><%= language.get("CONFIG_FIELDS").LANG %></label>
-                                            <select class="form-control" name="language">
-                                                <% if(guild.language === "french"){ %>
-                                                    <option selected="selected"><%= language.get("UTILS").FRENCH %></option>
-                                                    <option><%= language.get("UTILS").ENGLISH %></options>
-                                                <% } else { %>
-                                                <option><%= language.get("UTILS").FRENCH %></option>
-                                                <option selected="selected"><%= language.get("UTILS").ENGLISH %></options>
+                                            <label><%= language.get("CONFIG_FIELDS").CHANNEL %></label>
+                                            <select class="form-control" name="channel">
+                                                <% if(guild.plugins.welcome.enabled){ %>
+                                                    <option selected="selected">#<%= client.channels.get(guild.plugins.welcome.channel).name %></option>
+                                                    <% guild.channels.filter((ch) => ch.id !== guild.plugins.welcome.channel && ch.type === "text").forEach((ch) => { %>
+                                                        <option>#<%= ch.name %></option>
+                                                    <% }); } else { %>
+                                                    <option selected="selected">#<%= guild.channels.filter((ch) => ch.type === "text").first().name %></option>
+                                                    <% guild.channels.filter((ch) => ch.id !== guild.channels.first().id && ch.type === "text").forEach((ch) => { %>
+                                                        <option>#<%= ch.name %></option>
+                                                    <% }); %>
                                                 <% } %>
                                             </select>
+                                        </div>
+                                        <!-- select -->
+                                        <div class="form-group">
+                                            <div class="checkbox">
+                                                <label>
+                                                    <% if(guild.plugins.welcome.withImage || !guild.plugins.welcome.enabled) { %>
+                                                        <input type="checkbox" name="withImage" checked><%= language.get("CONFIG_FIELDS").WITHIMAGE_WELCOME %>
+                                                    <% } else { %>
+                                                        <input type="checkbox" name="withImage"><%= language.get("CONFIG_FIELDS").WITHIMAGE_WELCOME %>
+                                                    <% } %>
+                                                </label>
+                                            </div>
                                         </div>
                                     </div>
                                     <!-- /.box-body -->
                                     <div class="box-footer">
-                                        <button type="submit" class="btn btn-primary"><%= language.get("UTILS").UPDATE %></button>
+                                        <% if(guild.plugins.welcome.enabled){ %>
+                                            <button type="submit" name="welcomeDisable" class="btn btn-danger"><%= language.get("DISABLE_MESSAGES") %></button>
+                                            <button type="submit" name="welcomeUpdate" class="btn btn-primary pull-right"><%= language.get("UTILS").UPDATE %></button>
+                                        <% } else { %>
+                                            <button type="submit" name="welcomeEnable" class="btn btn-success"><%= language.get("ENABLE_MESSAGES") %></button>
+                                        <% } %>
                                     </div>
                                 </form>
                             </div>
-                            <!-- /.box -->
                             <!-- GOODBYE CONFIGURATION -->
                             <div class="box box-danger">
                                 <div class="box-header with-border">
