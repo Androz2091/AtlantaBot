@@ -39,7 +39,7 @@
                 </span>
                 </a>
                 <ul class="treeview-menu">
-                    <% user.guilds.filter((g) => g.admin).sort((a,b) => b.owner).forEach((guild) => { %>
+                    <% user.displayedGuilds.forEach((guild) => { %>
                         <li><a href="<%= guild.url %>"><i class="fa fa-circle-o text-<%= guild.owner ? 'blue' : 'grey' %>"></i> <%= guild.name %></a></li>
                     <% }); %>
                 </ul>
