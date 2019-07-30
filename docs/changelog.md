@@ -8,6 +8,7 @@ All notable changes to this project will be documented in this file.
 
 *   Welcome and goodbye images are now made entirely with Canvas
 *   New `calc` command
+*   Add fortnite stats images (made with Canvas)
 
 ### Fixed
 
