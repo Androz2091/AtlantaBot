@@ -47,7 +47,10 @@ module.exports = class {
 				SANCTIONS: "Sanctions",
 				FRENCH: "French",
 				ENGLISH: "English",
-				NO_CHANNEL: "No channel"
+				NO_CHANNEL: "No channel",
+				PROFILE: "Profile",
+				LEADERBOARD: "Ranking",
+				ECONOMY: "Economy"
 			},
 			
 			/* DBL VOTES */
@@ -1349,7 +1352,7 @@ module.exports = class {
 			/* DASHBOARD */
 
 			FIRST_LOGIN: (username) => `${username} connected for the first time to the dashboard! :tada:`,
-			REGISTERED_FROM: (date) => `Member since ${date}`,
+			REGISTERED_FROM: (date) => `Member since ${(date ? date : "")}`,
 			HELLO: (username) => `Hello, ${username}`,
 			SEARCH_SERVERS: "Search servers....",
 			SERVERS_LIST: "Servers list",
@@ -1384,7 +1387,11 @@ module.exports = class {
 			DISABLE_MESSAGES: "Disable messages",
 			ENABLE_AUTOROLE: "Enable autorole",
 			DISABLE_AUTOROLE: "Disable autorole",
-			SWITCH_LANG: "Switch languages"
+			SWITCH_LANG: "Switch to French 🇫🇷",
+			FIRST_LEAD_MONEY: "1st of the ranking \"Credits\"",
+			FIRST_LEAD_LEVEL: "1st of the ranking \"Level\"",
+			FIRST_LEAD_REP: "1st of the ranking \"Reputation\"",
+			VIEW_PUB_PROFILE: "View my public profile"
 
         }
     }
