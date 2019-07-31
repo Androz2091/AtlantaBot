@@ -635,6 +635,7 @@ module.exports = class {
 				[ "Channels" ],
 				[ "Warns" ],
 				[ "Automoderation", "Automoderation disabled" ]
+				[ "Edit your configuration", `[Clic here to go on the dashboard!](${c.dashboard.baseURL})`]
 			],
 			CONFIGURATION_AUTOROLE: (roleID) => `Role : <@&${roleID}>`,
 			CONFIGURATION_WELCOME: (withImage, channelID) => `Channel : <#${channelID}>\nImage : ${withImage ? "Yes" : "No"}`,

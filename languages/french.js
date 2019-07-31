@@ -559,7 +559,8 @@ module.exports = class {
 				[ "Slowmode", "Aucun salon avec slowmode" ],
 				[ "Salons" ],
 				[ "Avertissements" ],
-				[ "Automodération", "Automodération désactivée" ]
+				[ "Automodération", "Automodération désactivée" ],
+				[ "Éditer votre configuration", `[Cliquez ici pour accéder au dashboard !](${c.dashboard.baseURL})`]
 			],
 			CONFIGURATION_AUTOROLE: (roleID) => `Rôle : <@&${roleID}>`,
 			CONFIGURATION_WELCOME: (withImage, channelID) => `Salon : <#${channelID}>\nImage : ${withImage ? "Oui" : "Non"}`,
