@@ -2,13 +2,14 @@
 
 All notable changes to this project will be documented in this file.
 
-## [4.0.0]
+## [4.0.0] - 2019-01-08
 
 ### Added
 
-*   Welcome and goodbye images are now made entirely with Canvas
+*   Welcome and goodbye images were improved (using Canvas)
+*   Fortnite stats are now displayed in images (using Canvas)
 *   New `calc` command
-*   Add fortnite stats images (made with Canvas)
+*   13 new commands in `images` category
 
 ### Fixed
 
@@ -18,6 +19,9 @@ All notable changes to this project will be documented in this file.
 *   `warn` command now checks if the mentionned member is not a bot
 *   `setlogs` command renamed to `setmodlogs`
 *   `ignore`, `slowmode`, `automod`, `goodbye`, `welcome`, `setmodlogs` and `setsuggests` now check if the mentionned channel is a text channel and if the channel is in the current guild
+*   The design of the `help` command has been improved
+*   The `help` command now displays the number of commands executed in the last 7 days
+*   And many other small bugs!
 
 ### Dashboard
 
