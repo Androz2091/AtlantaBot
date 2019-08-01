@@ -9,9 +9,7 @@ const Discord = require("discord.js");
 async function fetchGuild(guildID, client, guilds){
     let guild = client.guilds.get(guildID);
     let conf = await client.guildsData.findOne({id:guild.id});
-    let logs = await require("../base/Log").find({});
-    let stats = { commands: logs.filter((cmd) => cmd.guild && cmd.guild.id === guild.id) };
-    return { ...guild, ...conf.toJSON(), ...guilds.find((g) => g.id === guild.id), ...stats };
+    return { ...guild, ...conf.toJSON(), ...guilds.find((g) => g.id === guild.id) };
 }
 
 /**
@@ -40,9 +38,7 @@ async function fetchUser(userData, client, query){
     let user = await client.users.fetch(userData.id);
     let usersDb = await client.functions.getUsersData(client, [ user ]);
     let userDb = usersDb[0];
-    let logs = await require("../base/Log").find({});
-    let stats = { commands: logs.filter((cmd) => cmd.user.id === user.id) };
-    let userInfos = { ...user.toJSON(), ...userDb.toJSON(), ...userData, ...user.presence,  ...stats};
+    let userInfos = { ...user.toJSON(), ...userDb.toJSON(), ...userData, ...user.presence };
     return userInfos;
 }
 
@@ -54,7 +50,7 @@ async function fetchUser(userData, client, query){
  */
 async function getLeaderboard(client, amount){
     let leaderboard = [];
-    let users = await client.usersData.find({});
+    let users = await client.usersData.find({}).lean();
     users.forEach((user) => {
         leaderboard.push({
             id: user.id,
@@ -89,6 +85,10 @@ async function fetchUsers(array, client) {
         let users = [];
         array.forEach((element) => {
             client.users.fetch(element.id).then((user) => {
+                user.username = user.username.replace(/[\W_]+/g," ");
+                if(user.username.length > 13){
+                    user.username = user.username.substr(0, 10)+"...";
+                }
                 users.push({ ...{
                     money: element.money,
                     level: element.level,
