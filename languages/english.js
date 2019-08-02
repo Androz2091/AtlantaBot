@@ -695,6 +695,7 @@ module.exports = class {
 			WELCOME_IMG_MSG: (name) => `Welcome in ${name} !`,
 			WELCOME_IMG_NUMBER: (memberCount) => `- ${memberCount}th member !`,
 			WELCOME_IMG_TITLE: "WELCOME",
+			WELCOME_DEFAULT_MESSAGE: "Welcome {user} to {server} ! Thanks to you, we are {membercount} !",
 			// Errors
 			WELCOME_ERR_TIMEOUT: `${e.error} | Time's up! Please retype the command!`,
 			WELCOME_ERR_CARACT: `${e.error} | Your message must not exceed 1500 characters!`,
@@ -754,6 +755,7 @@ module.exports = class {
 			GOODBYE_IMG_MSG: (name) => `Leaving from ${name}`,
 			GOODBYE_IMG_NUMBER: (memberCount) => `- ${memberCount}th member !`,
 			GOODBYE_IMG_TITLE: "GOODBYE",
+			GOODBYE_DEFAULT_MESSAGE: "Goodbye {user} ! It's sad, without you we're only {membercount} on {server} !",
 			// Errors
 			GOODBYE_ERR_TIMEOUT: `${e.error} | Time's up! Please retype the command!`,
 			GOODBYE_ERR_CARACT: `${e.error} | Your message must not exceed 1500 characters!`,
