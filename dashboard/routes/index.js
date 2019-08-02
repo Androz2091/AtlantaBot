@@ -10,14 +10,14 @@ router.get("/selector", CheckAuth, async(req, res) => {
     res.render("selector", {
         user: req.userInfos,
         language: req.language,
-        currentURL: `${req.protocol}://${req.get("host")}${req.originalUrl}`
+        currentURL: `${req.client.config.dashboard.baseURL}/${req.originalUrl}`
     });
 });
 
 router.get("/language", CheckAuth, async(req, res) => {
     let newLanguage = (req.user.locale === "en" ? "fr" : "en");
     req.user.locale = newLanguage;
-    res.redirect(303, req.query.redirect);
+    res.redirect(`${req.query.redirect}`);
 });
 
 module.exports = router;

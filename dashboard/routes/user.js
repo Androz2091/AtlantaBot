@@ -11,7 +11,7 @@ router.get("/:userID", CheckAuth, async function(req, res) {
         res.render("404", {
             user: req.userInfos,
             language: req.language,
-            currentURL: `${req.protocol}://${req.get("host")}${req.originalUrl}`
+            currentURL: `${req.client.config.dashboard.baseURL}/${req.originalUrl}`
         });
     });
     let leaderboard = await utils.getLeaderboard(req.client);
@@ -27,7 +27,7 @@ router.get("/:userID", CheckAuth, async function(req, res) {
         },
         client: req.client,
         language: req.language,
-        currentURL: `${req.protocol}://${req.get("host")}${req.originalUrl}`
+        currentURL: `${req.client.config.dashboard.baseURL}/${req.originalUrl}`
     });
 });
 

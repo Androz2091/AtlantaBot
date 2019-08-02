@@ -9,8 +9,8 @@ router.get("/", CheckAuth, async function(req, res) {
     res.render("profile", {
         user: req.userInfos,
         language: req.language,
-        currentURL: `${req.protocol}://${req.get("host")}${req.originalUrl}`,
-        stats: stats
+        currentURL: `${req.client.config.dashboard.baseURL}/${req.originalUrl}`,
+        stats
     });
 });
 
