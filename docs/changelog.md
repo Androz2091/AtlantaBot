@@ -11,6 +11,7 @@ All notable changes to this project will be documented in this file.
 *   New `calc` command
 *   13 new commands in `images` category
 *   `*clear all` to clear all the messages in a channel
+*   `vote` alias has come back
 
 ### Fixed
 
