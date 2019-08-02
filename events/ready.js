@@ -97,12 +97,12 @@ module.exports = class {
 
         setInterval(async function(){
             let language = new(require(`../languages/${client.config.defaultLanguage}`));
-            let users = await client.usersData.find({});
+            let users = await client.usersData.find({}).lean();
             let dateNow = Date.now();
-            users.forEach((user) => {
+            users.forEach(async (user) => {
                 let dUser = client.users.get(user.id);
                 if(dUser){
-                    let reminds = user.reminds;
+                    let reminds = user.reminds || [];
                     if(reminds.length > 0){
                         let mustSent = reminds.filter((r) => r.sendAt < dateNow);
                         if(mustSent.length > 0){
@@ -116,9 +116,9 @@ module.exports = class {
                                 dUser.send(embed);
                             });
                         }
-                        let u = users.find((u) => u.id === user.id);
-                        u.reminds = u.reminds.filter((r) => r.sendAt >= dateNow);
-                        u.save();
+                        let mUser = await client.usersData.findOne({id:user.id});
+                        mUser.reminds = user.reminds.filter((r) => r.sendAt >= dateNow);
+                        mUser.save();
                     }
                 }
             });
