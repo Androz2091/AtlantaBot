@@ -41,7 +41,7 @@ class Ban extends Command {
             reason = message.language.get("UTILS").NO_REASON_PROVIDED;
         }
 
-        let member = message.guild.members.fetch(user.id);
+        let member = await message.guild.members.fetch(user.id);
         if(member && !member.bannable){
             return message.channel.send(message.language.get("BAN_ERR_PERMISSIONS"));
         }
@@ -68,6 +68,7 @@ class Ban extends Command {
             Moderator.addCase(data.settings, caseInfo);
 
         }).catch((err) => {
+            console.log(err)
             return message.channel.send(message.language.get("BAN_ERR_PERMISSIONS"));
         });
 
