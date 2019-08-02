@@ -35,8 +35,7 @@ class Kick extends Command {
             reason = message.language.get("UTILS").NO_REASON_PROVIDED;
         }
         
-        let member = message.guild.members.fetch(user.id);
-        if(member && !member.kickable){
+        if(!member.kickable){
             return message.channel.send(message.language.get("KICK_ERR_PERMISSIONS"));
         }
 
