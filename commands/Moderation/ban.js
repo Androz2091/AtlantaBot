@@ -40,6 +40,11 @@ class Ban extends Command {
         if(!reason){
             reason = message.language.get("UTILS").NO_REASON_PROVIDED;
         }
+
+        let member = message.guild.members.fetch(user.id);
+        if(member && !member.bannable){
+            return message.channel.send(message.language.get("BAN_ERR_PERMISSIONS"));
+        }
         
         await user.send(message.language.get("BAN_SUCCESS_DM", user, message, reason)).catch((err) => {});
 

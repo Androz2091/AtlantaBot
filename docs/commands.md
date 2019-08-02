@@ -53,24 +53,6 @@ Here's the list of Atlanta commands. This one contains more than **90 commands**
 | **slowmode**      | Define a cooldown in a channel                                | slowmode [#channel] (time)       | 3 seconds  |
 | **welcome**       | Send a welcome message to a pre-defined channel!              | welcome                          | 3 seconds  |
 
-### Images (13 commands)
-
-| Name          | Description                                             | Usage                      | Cooldown  |
-| ------------- | ------------------------------------------------------- | -------------------------- | --------- |
-| **avatar**    | Displays the avatar of the mentionned member            | avatar (@member)           | 5 seconds |
-| **captcha**   | Generates a "triggered" image using the Nekobot API     | captcha (@member)          | 5 seconds |
-| **clyde**     | Generates a "clyde" image using the Nekobot API         | clyde [text]               | 5 seconds |
-| **facepalm**  | Generates a "facepalm" image using the Anidiots API     | facepalm (@member)         | 5 seconds |
-| **garbage**   | Generates a "garbage" image using the Anidiots API      | garbage (@member)          | 5 seconds |
-| **hates**     | Generates a "hates" image using the Anidiots API        | hates (@member)            | 5 seconds |
-| **love**      | Generates a "love" image using the Nekobot API          | love [@user1] (@user2)     | 5 seconds |
-| **phcomment** | Generates a "phcomment" image using the Nekobot API     | phcomment (@member) (text) | 5 seconds |
-| **qrcode**    | Generates a QR Code with your text!                     | qrcode [text]              | 3 seconds |
-| **respect**   | Generates a "respect" image using the Anidiots API      | respect (@member)          | 5 seconds |
-| **shit**      | Generates a "respect" image using the Anidiots API      | shit (@member)             | 5 seconds |
-| **triggered** | Generates a "triggered" image using the Anidiots API    | triggered (@member)        | 5 seconds |
-| **tweet**     | Generate a tweet of a person of your choice on Twitter! | tweet [@twitter] [text]    | 5 seconds |
-
 ### Moderation (13 commands)
 
 | Name             | Description                                                                             | Usage                                                              | Cooldown  |
@@ -88,6 +70,24 @@ Here's the list of Atlanta commands. This one contains more than **90 commands**
 | **unban**        | Unban the user from the server!                                                         | unban [userID/user#0000]                                           | 3 seconds |
 | **unmute**       | Unmute the mentioned member!                                                            | unmute [@member]                                                   | 3 seconds |
 | **warn**         | Warn a member in private messages                                                       | warn [@member] [reason]                                            | 3 seconds |
+
+### Images (13 commands)
+
+| Name          | Description                                             | Usage                      | Cooldown  |
+| ------------- | ------------------------------------------------------- | -------------------------- | --------- |
+| **avatar**    | Displays the avatar of the mentionned member            | avatar (@member)           | 5 seconds |
+| **captcha**   | Generates a "triggered" image using the Nekobot API     | captcha (@member)          | 5 seconds |
+| **clyde**     | Generates a "clyde" image using the Nekobot API         | clyde [text]               | 5 seconds |
+| **facepalm**  | Generates a "facepalm" image using the Anidiots API     | facepalm (@member)         | 5 seconds |
+| **garbage**   | Generates a "garbage" image using the Anidiots API      | garbage (@member)          | 5 seconds |
+| **hates**     | Generates a "hates" image using the Anidiots API        | hates (@member)            | 5 seconds |
+| **love**      | Generates a "love" image using the Nekobot API          | love [@user1] (@user2)     | 5 seconds |
+| **phcomment** | Generates a "phcomment" image using the Nekobot API     | phcomment (@member) (text) | 5 seconds |
+| **qrcode**    | Generates a QR Code with your text!                     | qrcode [text]              | 3 seconds |
+| **respect**   | Generates a "respect" image using the Anidiots API      | respect (@member)          | 5 seconds |
+| **shit**      | Generates a "respect" image using the Anidiots API      | shit (@member)             | 5 seconds |
+| **triggered** | Generates a "triggered" image using the Anidiots API    | triggered (@member)        | 5 seconds |
+| **tweet**     | Generate a tweet of a person of your choice on Twitter! | tweet [@twitter] [text]    | 5 seconds |
 
 ### Economy (12 commands)
 
