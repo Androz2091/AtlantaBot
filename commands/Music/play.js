@@ -69,7 +69,8 @@ class Play extends Command {
                 let index = parseInt(answers.first().content, 10);
                 video = await youtube.getVideoByID(videos[index-1].id);
                 return music.handleVideo(message.client, video, message, voice, data);
-            }).catch(() => {
+            }).catch((e) => {
+                console.log(e);
                 return message.channel.send(message.language.get("PLAY_ERR_TIMEOUT"));
             });
         } catch(e){
