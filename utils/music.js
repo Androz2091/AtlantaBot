@@ -12,7 +12,7 @@ async function handleVideo (client, video, message, voice, data) {
         client.queues.set(message.guild.id, queue);
         queue.songs.push(song);
         let connection = await voice.join().catch((err) => {
-            msg.channel.send(message.language.get("PLAY_ERR_CANT_JOIN"));
+            message.channel.send(message.language.get("PLAY_ERR_CANT_JOIN"));
             return client.queues.delete(message.guild.id);
         });
         queue.connection = connection;
