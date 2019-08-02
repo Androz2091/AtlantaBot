@@ -9,7 +9,7 @@ class Triggered extends Command {
             usage: (language) => language.get("TRIGGERED_USAGE"),
             examples: (language) => language.get("TRIGGEREDS_EXAMPLES"),
             dirname: __dirname,
-            enabled: false,
+            enabled: true,
             guildOnly: false,
             aliases: [],
             memberPermissions: [],
