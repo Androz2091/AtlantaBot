@@ -43,10 +43,11 @@ Atlanta has a lot of features, with **7 main categories**:
 
 Atlanta has its own dashboard which also offers many features! The dashboard runs with Express and EJS!
 
-<img align="left" style="float: left; margin: 0 10px 0 0;" src="https://zupimages.net/up/19/26/m3wb.png" height="200" width="350"/>
-<img align="center" style="float: centrer; margin: 0 10px 0 0;" src="https://zupimages.net/up/19/26/4mf0.png" height="200" width="350"/>
+<img align="left" style="float: centrer; margin: 0 10px 0 0;" src="https://zupimages.net/up/19/31/c3ya.png" height="200" width="350"/>
+<img align="center" style="float: left; margin: 0 10px 0 0;" src="https://zupimages.net/up/19/31/vnq5.png" height="200" width="350"/>
+<img align="center" style="float: centrer; margin: 0 10px 0 0;" src="https://zupimages.net/up/19/31/htga.png" height="200" width="350"/>
 
-You can directly **edit your configuration**, **manage your servers**, **view your statistics**, **modify your profile** and much more!
+You can directly **edit your configuration**, **manage your servers**, **view rankings**, **modify your profile** and much more!
 
 > Find the code [here](https://github.com/atlantabot/atlanta-dashboard). Documentation will be available soon!
 
