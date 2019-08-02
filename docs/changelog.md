@@ -10,6 +10,7 @@ All notable changes to this project will be documented in this file.
 *   Fortnite stats are now displayed in images (using Canvas)
 *   New `calc` command
 *   13 new commands in `images` category
+*   `*clear all` to clear all the messages in a channel
 
 ### Fixed
 

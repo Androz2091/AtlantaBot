@@ -1094,7 +1094,10 @@ module.exports = class {
 			CLEAR_EXAMPLES: "$clear 10\n$clear 10 @Androz#2091",
 			// Errors
 			CLEAR_ERR_AMOUNT: `${e.error} | Vous devez préciser un nombre de messages à supprimer !`,
+			CLEAR_ERR_TIMEOUT: `${e.error} | Temps écoulé ! Veuillez retaper la commande !`,
 			// Content
+			CLEAR_CLONE: `${e.warn} | Tous les messages du salons seront supprimés ! Pour confirmer tapez \`-confirm\``,
+			CLEAR_DELETED: `${e.success} | Salon réinitalisé !`,
 			CLEAR_SUCCESS: (amount) => `${e.success} | **${amount}** messages supprimés !`,
 			CLEAR_SUCCESS_USER: (amount, user) => `${e.success} | **${amount}** messages de **${user.tag}** supprimés !`,
 

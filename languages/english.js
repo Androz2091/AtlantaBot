@@ -1133,7 +1133,10 @@ module.exports = class {
 			CLEAR_EXAMPLES: "$clear 10\n$clear 10 @Androz#2091",
 			// Errors
 			CLEAR_ERR_AMOUNT: `${e.error} | You must specify a number of messages to delete!`,
+			CLEAR_ERR_TIMEOUT: `${e.error} | Time's up! Please retype the command!`,
 			// Content
+			CLEAR_CLONE: `${e.warn} | All messages of the channel will be deleted! To confirm type \`-confirm\``,
+			CLEAR_DELETED: `${e.success} | Salon reinitialized!`,
 			CLEAR_SUCCESS: (amount) => `${e.success} | **${amount}** messages deleted!`,
 			CLEAR_SUCCESS_USER: (amount, user) => `${e.success} | **${amount}** messages of **${user.tag}** deleted !`,
 

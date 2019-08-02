@@ -23,6 +23,23 @@ class Clear extends Command {
 
     async run (message, args, data) {
 
+        if(args[0] === "all"){
+            message.channel.send(message.language.get("CLEAR_CLONE"));
+            await message.channel.awaitMessages((m) => (m.author.id === message.author.id) && (m.content === "-confirm"), {
+                max: 1,
+                time: 20000,
+                errors: ["time"]
+            }).catch((err) => {
+                // if the author of the commands does not confirm the backup loading
+                return message.channel.send(message.language.get("CLEAR_ERR_TIMEOUT"));
+            });
+            let position = message.channel.position;
+            let newChannel = await message.channel.clone();
+            await message.channel.delete();
+            newChannel.setPosition(position);
+            return newChannel.send(message.language.get("CLEAR_DELETED"));
+        }
+
         let amount = args[0];
         if(!amount || isNaN(amount) || parseInt(amount) < 1){
             return message.channel.send(message.language.get("CLEAR_ERR_AMOUNT"));
