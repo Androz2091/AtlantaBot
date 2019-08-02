@@ -52,7 +52,7 @@ class Skip extends Command {
             
             m.react("👍");
 
-            let mustVote = members.size/2+1;
+            let mustVote = Math.floor(members.size/2+1);
 
             embed.setDescription(message.language.get("SKIP_CONTENT", queue.songs[1].title, 0, mustVote));
             m.edit(embed);
