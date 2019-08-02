@@ -38,11 +38,13 @@
                     <i class="fa fa-angle-left pull-right"></i>
                 </span>
                 </a>
-                <ul class="treeview-menu">
-                    <% user.displayedGuilds.forEach((guild) => { %>
-                        <li><a href="<%= guild.url %>"><i class="fa fa-circle-o text-<%= guild.owner ? 'blue' : 'grey' %>"></i> <%= guild.name %></a></li>
-                    <% }); %>
-                </ul>
+                <% if(user.displayedGuilds){ %>
+                    <ul class="treeview-menu">
+                        <% user.displayedGuilds.forEach((guild) => { %>
+                            <li><a href="<%= guild.url %>"><i class="fa fa-circle-o text-<%= guild.owner ? 'blue' : 'grey' %>"></i> <%= guild.name %></a></li>
+                        <% }); %>
+                    </ul> 
+                <% } %>
             </li>
         </ul>
         <ul class="sidebar-menu" data-widget="tree">
