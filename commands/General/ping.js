@@ -23,7 +23,7 @@ class Ping extends Command {
 
     async run (message, args, data) {
         message.channel.send(message.language.get("PING", 0.0000)).then((m) => {
-            m.edit(message.language.get("PING", Date.now() - m.createdTimestamp));
+            m.edit(message.language.get("PING", m.createdTimestamp - message.createdTimestamp));
         });
     }
 
