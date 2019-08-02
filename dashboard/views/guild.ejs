@@ -96,7 +96,7 @@
                                         <div class="form-group">
                                             <label><%= language.get("CONFIG_FIELDS").SUGGESTIONS %></label>
                                             <select class="form-control" name="suggestions">
-                                                <% if(guild.plugins.suggestions){ %>
+                                                <% if(guild.plugins.suggestions && client.channels.get(guild.plugins.suggestions)){ %>
                                                     <option selected="selected">#<%= client.channels.get(guild.plugins.suggestions).name %></option>
                                                     <% guild.channels.filter((ch) => ch.type === "text" && ch.id !== guild.plugins.suggestions).forEach((ch) => { %>
                                                         <option>#<%= ch.name %></option>
@@ -113,7 +113,7 @@
                                         <div class="form-group">
                                             <label><%= language.get("CONFIG_FIELDS").MODLOGS %></label>
                                             <select class="form-control" name="modlogs">
-                                                <% if(guild.plugins.suggestions){ %>
+                                                <% if(guild.plugins.suggestions && client.channels.get(guild.plugins.modlogs)){ %>
                                                     <option selected="selected">#<%= client.channels.get(guild.plugins.modlogs).name %></option>
                                                     <% guild.channels.filter((ch) => ch.type === "text" && ch.id !== guild.plugins.modlogs).forEach((ch) => { %>
                                                         <option>#<%= ch.name %></option>
