@@ -644,7 +644,7 @@ module.exports = class {
 				[ "Slowmode", "No channel with slowmode" ],
 				[ "Channels" ],
 				[ "Warns" ],
-				[ "Automoderation", "Automoderation disabled" ]
+				[ "Automoderation", "Automoderation disabled" ],
 				[ "Edit your configuration", `[Clic here to go on the dashboard!](${c.dashboard.baseURL})`]
 			],
 			CONFIGURATION_AUTOROLE: (roleID) => `Role : <@&${roleID}>`,
