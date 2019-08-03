@@ -23,6 +23,11 @@ class Steal extends Command {
 
     async run (message, args, data) {
 
+        let member = message.mentions.members.first();
+        if(!member){
+            return message.channel.send(message.language.get("ERR_INVALID_MEMBER"));
+        }
+
         if(!data.users[0].stats.steal){
             data.users[0].stats.steal = { successful: 0, fails: 0, stolen: 0 };
             data.users[0].markModified("stats.steal");
@@ -32,11 +37,6 @@ class Steal extends Command {
             data.users[1].stats.steal = { successful: 0, fails: 0, stolen: 0 };
             data.users[1].markModified("stats.steal");
             await data.users[1].save();
-        }
-
-        let member = message.mentions.members.first();
-        if(!member){
-            return message.channel.send(message.language.get("ERR_INVALID_MEMBER"));
         }
 
         let isInCooldown = data.users[1].cooldowns.steal;
@@ -61,7 +61,7 @@ class Steal extends Command {
             return message.channel.send(message.language.get("STEAL_ERR_NO_MONEY", potentiallyLose));
         }
 
-        let itsAWon = Math.floor(this.client.functions.randomNum(0, 100) < 20);
+        let itsAWon = Math.floor(this.client.functions.randomNum(0, 100) < 25);
         
         if(itsAWon){
             let toWait = Date.now() + 6*(60*60000);

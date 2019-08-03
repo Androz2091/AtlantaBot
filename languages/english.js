@@ -50,7 +50,8 @@ module.exports = class {
 				NO_CHANNEL: "No channel",
 				PROFILE: "Profile",
 				LEADERBOARD: "Ranking",
-				ECONOMY: "Economy"
+				ECONOMY: "Economy",
+				KNOW_MORE: "More information"
 			},
 			
 			/* DBL VOTES */
@@ -526,7 +527,16 @@ module.exports = class {
 			PERMISSIONS_USAGE: "permissions (@member)",
 			PERMISSIONS_EXAMPLES: "$permissions\n$permissions @Androz#2091",
 			// Content
-			PERMISSIONS_TITLE: (username, channel) => `Permissions of ${username} dans #${channel}`,
+			PERMISSIONS_TITLE: (username, channel) => `Permissions of ${username} in #${channel}`,
+
+			/* PARTNERS COMMAND */
+
+			// Utils
+			PARTNERS_DESCRIPTION: "Displays Atlanta partners",
+			PARTNERS_USAGE: "partners",
+			PARTNERS_EXAMPLES: "$partners",
+			// Content
+			PARTNERS_TITLE: `${c.botname} Partners`,
 
 			/* SERVERSLIST COMMAND */
 
