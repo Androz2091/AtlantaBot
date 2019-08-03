@@ -15,13 +15,19 @@ module.exports = mongoose.model("User", new mongoose.Schema({
         slots: 0,
         findwords: 0,
         number: 0,
-        commands: 0
+        commands: 0,
+        steal: {
+            successful: 0,
+            fails: 0,
+            stolen: 0
+        }
     }},
     afk: { type: String, default: null },
     reminds: { type: Array, default: [] },
     cooldowns: {
         work: 0,
-        rep: 0
+        rep: 0,
+        steal: 0
     },
     logged: { type: Boolean, default: false } // if the user is logged to the dashboard
 }));
