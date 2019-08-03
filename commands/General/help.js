@@ -68,7 +68,7 @@ class Help extends Command {
         });
 
         let Log = require("../../base/Log");
-        let ran = await Log.find({});
+        let ran = await Log.find().lean();
         let ranLast7Days = ran.filter((l) => l.date > Date.now()-ms("7d"));
         let embed = new Discord.MessageEmbed()
             .setDescription(message.language.get("HELP_EDESCRIPTION", data.settings.prefix, ranLast7Days.length))

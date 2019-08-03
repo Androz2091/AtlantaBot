@@ -26,7 +26,7 @@ class Leaderboard extends Command {
         
         let leaderboard = [];
 
-        let users = await message.client.usersData.find({});
+        let users = await message.client.usersData.find().lean();
 
         users.forEach((user) => {
             leaderboard.push({
