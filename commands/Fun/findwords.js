@@ -40,8 +40,7 @@ class FindWords extends Command {
         }
 
         // Reads words file
-        let text = fs.readFileSync(`./assets/words/${message.language.getLang()}.txt`).toString("utf-8");
-        let arrWords = text.split("\n");
+        let arrWords = require("../../assets/json/"+message.language.getLang()+"_words.json");
     
         // Init some utils variables
         let participants = [],
