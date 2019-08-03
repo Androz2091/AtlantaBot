@@ -12,7 +12,7 @@ router.get("/", passport.authenticate("discord", { failureRedirect: config.dashb
     }
     let logsChannel = req.client.channels.get(config.dashboard.logs);
     let user = await req.client.users.fetch(req.user.id);
-    let usersData = await req.client.functions.getUsersData(req.client, [ req.user.id ]);
+    let usersData = await req.client.functions.getUsersData(req.client, [ req.user ]);
     let userData = usersData[0];
     if(!userData.logged && logsChannel && user){
         let embed = new Discord.MessageEmbed()
