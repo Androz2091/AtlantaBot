@@ -880,6 +880,7 @@ module.exports = class {
 			LEADERBOARD_EXAMPLES: "$leaderboard credits\n$leaderboard levels",
 			// Errors
 			LEADERBOARD_ERR_TYPE: `${e.error} | Please enter a type of leaderboard! (\`credits\`, \`level\` ou \`rep\`)`,
+			LEADERBOARD_ERR_MOBILE: `:confused: We have detected that you are using a phone.... The leaderboard is not yet available directly on Discord for mobiles but you can still access it on the dashboard: <${c.dashboard.baseURL}>`,
 
 			/* PAY COMMAND */
 

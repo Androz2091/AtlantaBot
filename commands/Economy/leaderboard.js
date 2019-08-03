@@ -24,6 +24,11 @@ class Leaderboard extends Command {
 
     async run (message, args, data) {
         
+        let isOnlyOnMobile = JSON.stringify(Object.keys(message.author.presence.clientStatus)) === JSON.stringify([ "mobile" ]);
+        if(isOnlyOnMobile){
+            return message.channel.send(message.language.get("LEADERBOARD_ERR_MOBILE"));
+        }
+
         let leaderboard = [];
 
         let users = await message.client.usersData.find().lean();
