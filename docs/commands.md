@@ -53,23 +53,23 @@ Here's the list of Atlanta commands. This one contains more than **90 commands**
 | **slowmode**      | Define a cooldown in a channel                                | slowmode [#channel] (time)       | 3 seconds  |
 | **welcome**       | Send a welcome message to a pre-defined channel!              | welcome                          | 3 seconds  |
 
-### Moderation (13 commands)
+### Economy (13 commands)
 
-| Name             | Description                                                                             | Usage                                                              | Cooldown  |
-| ---------------- | --------------------------------------------------------------------------------------- | ------------------------------------------------------------------ | --------- |
-| **announcement** | Send an announcement in the current channel!                                            | announcement [text]                                                | 3 seconds |
-| **ban**          | Banished the mentioned member!                                                          | ban [@user] (reason)                                               | 3 seconds |
-| **checkinvites** | Check if members do not have an ad for their Discord server in their presence!          | checkinvites                                                       | 3 seconds |
-| **clear**        | Deletes messages very quickly!                                                          | clear[number-of-messages] (@member)                                | 3 seconds |
-| **giveaway**     | Manage your giveaways simply!                                                           | giveaway [create/reroll/delete/end] (time) (winners count) (prize) | 5 seconds |
-| **kick**         | Kick out the mentioned member!                                                          | kick [@user] (reason)                                              | 3 seconds |
-| **mute**         | Prevents the member from sending messages and connecting by voice for a period of time! | mute [@member] [time]                                              | 3 seconds |
-| **poll**         | Launch a survey in the current channel!                                                 | poll [question]                                                    | 3 seconds |
-| **sanctions**    | Displays the list of infractions committed by a member!                                 | sanctions [@member]                                                | 3 seconds |
-| **setwarns**     | Define the sanctions that members will get after a certain number of warns!             | setwarns [kick/ban] [number/reset]                                 | 3 seconds |
-| **unban**        | Unban the user from the server!                                                         | unban [userID/user#0000]                                           | 3 seconds |
-| **unmute**       | Unmute the mentioned member!                                                            | unmute [@member]                                                   | 3 seconds |
-| **warn**         | Warn a member in private messages                                                       | warn [@member] [reason]                                            | 3 seconds |
+| Name            | Description                                                               | Usage                            | Cooldown   |
+| --------------- | ------------------------------------------------------------------------- | -------------------------------- | ---------- |
+| **badge**       | Buy badges that will appear on your profile!                              | badge (name-of-the-badge)        | 3 seconds  |
+| **birthdate**   | Set your birthday date (which will appear on your profile)                | birthdate (date)                 | 1 seconds  |
+| **divorce**     | Divorce the person you are currently married to!                          | divorce                          | 3 seconds  |
+| **leaderboard** | Displays users who have the most credits, levels or reputation points!    | leaderboard [rep/levels/credits] | 5 seconds  |
+| **money**       | Displays your credits                                                     | money (@member)                  | 1 seconds  |
+| **pay**         | Pay a member with credits!                                                | pay [@user#0000] [amount]        | 10 seconds |
+| **profile**     | Displays the profile of the mentioned user (or the author of the message) | profile (@user#0000)             | 3 seconds  |
+| **rep**         | Give a member a reputation point!                                         | rep [@user#0000]                 | 3 seconds  |
+| **setbio**      |                                                                           |                                  | 5 seconds  |
+| **slots**       | An equivalent to the Casino!                                              | slots [amount]                   | 3 seconds  |
+| **steal**       |                                                                           |                                  | 1 seconds  |
+| **wedding**     | Marry the person of your choice!                                          | wedding [@user#0000]             | 10 seconds |
+| **work**        | Work and earn money!                                                      | work                             | 3 seconds  |
 
 ### Images (13 commands)
 
@@ -89,22 +89,23 @@ Here's the list of Atlanta commands. This one contains more than **90 commands**
 | **triggered** | Generates a "triggered" image using the Anidiots API    | triggered (@member)        | 5 seconds |
 | **tweet**     | Generate a tweet of a person of your choice on Twitter! | tweet [@twitter] [text]    | 5 seconds |
 
-### Economy (12 commands)
+### Moderation (13 commands)
 
-| Name            | Description                                                               | Usage                            | Cooldown   |
-| --------------- | ------------------------------------------------------------------------- | -------------------------------- | ---------- |
-| **badge**       | Buy badges that will appear on your profile!                              | badge (name-of-the-badge)        | 3 seconds  |
-| **birthdate**   | Set your birthday date (which will appear on your profile)                | birthdate (date)                 | 1 seconds  |
-| **divorce**     | Divorce the person you are currently married to!                          | divorce                          | 3 seconds  |
-| **leaderboard** | Displays users who have the most credits, levels or reputation points!    | leaderboard [rep/levels/credits] | 5 seconds  |
-| **money**       | Displays your credits                                                     | money (@member)                  | 1 seconds  |
-| **pay**         | Pay a member with credits!                                                | pay [@user#0000] [amount]        | 10 seconds |
-| **profile**     | Displays the profile of the mentioned user (or the author of the message) | profile (@user#0000)             | 3 seconds  |
-| **rep**         | Give a member a reputation point!                                         | rep [@user#0000]                 | 3 seconds  |
-| **setbio**      |                                                                           |                                  | 5 seconds  |
-| **slots**       | An equivalent to the Casino!                                              | slots [amount]                   | 3 seconds  |
-| **wedding**     | Marry the person of your choice!                                          | wedding [@user#0000]             | 10 seconds |
-| **work**        | Work and earn money!                                                      | work                             | 3 seconds  |
+| Name             | Description                                                                             | Usage                                                              | Cooldown  |
+| ---------------- | --------------------------------------------------------------------------------------- | ------------------------------------------------------------------ | --------- |
+| **announcement** | Send an announcement in the current channel!                                            | announcement [text]                                                | 3 seconds |
+| **ban**          | Banished the mentioned member!                                                          | ban [@user] (reason)                                               | 3 seconds |
+| **checkinvites** | Check if members do not have an ad for their Discord server in their presence!          | checkinvites                                                       | 3 seconds |
+| **clear**        | Deletes messages very quickly!                                                          | clear[number-of-messages] (@member)                                | 3 seconds |
+| **giveaway**     | Manage your giveaways simply!                                                           | giveaway [create/reroll/delete/end] (time) (winners count) (prize) | 5 seconds |
+| **kick**         | Kick out the mentioned member!                                                          | kick [@user] (reason)                                              | 3 seconds |
+| **mute**         | Prevents the member from sending messages and connecting by voice for a period of time! | mute [@member] [time]                                              | 3 seconds |
+| **poll**         | Launch a survey in the current channel!                                                 | poll [question]                                                    | 3 seconds |
+| **sanctions**    | Displays the list of infractions committed by a member!                                 | sanctions [@member]                                                | 3 seconds |
+| **setwarns**     | Define the sanctions that members will get after a certain number of warns!             | setwarns [kick/ban] [number/reset]                                 | 3 seconds |
+| **unban**        | Unban the user from the server!                                                         | unban [userID/user#0000]                                           | 3 seconds |
+| **unmute**       | Unmute the mentioned member!                                                            | unmute [@member]                                                   | 3 seconds |
+| **warn**         | Warn a member in private messages                                                       | warn [@member] [reason]                                            | 3 seconds |
 
 ### Fun (9 commands)
 

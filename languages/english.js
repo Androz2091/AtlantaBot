@@ -882,6 +882,26 @@ module.exports = class {
 			LEADERBOARD_ERR_TYPE: `${e.error} | Please enter a type of leaderboard! (\`credits\`, \`level\` ou \`rep\`)`,
 			LEADERBOARD_ERR_MOBILE: `:confused: We have detected that you are using a phone.... The leaderboard is not yet available directly on Discord for mobiles but you can still access it on the dashboard: <${c.dashboard.baseURL}>`,
 
+			/* STEAL COMMAND */
+
+			// Utils
+			STEAL_DESCRIPTION: "Try stealing a member!",
+			STEAL_USAGE: "steal [@membre] [amount]",
+			STEAL_EXAMPLES: "$steal @Androz#2091 100",
+			// Errors
+			STEAL_ERR_AMOUNT: (member) => `${e.error} | Please enter a valid amount to be robbed to **${member.user.tag}** !`,
+			STEAL_ERR_AMOUNT_MEMBER: (member, money) => `${e.error} | **${member.user.username}** does not have **${money}** credits !`,
+			STEAL_ERR_NO_MONEY: (needed) => `${e.error} | You must have more than **${needed}** credits to attempt this robbery!`,
+			// Content
+			STEAL_WON: (stealed, member) => [
+				`:tada: | Congratulations! The police weren't fast enough to stop you from stealing **${stealed}** credits to **${member.user.username}** !`,
+				`:confused: | **${member.user.username}** ? Bad news. You just got robbed **${stealed}** credits!`,
+			],
+			STEAL_LOSE: (lose, member, won) => [
+				`:oncoming_police_car: | The police caught you in the act, impossible to deny, your fine is **${lose}** credits. **${won}** offset credits will be paid to **${member.user.username}**.`,
+				`:police_car: | Bad news.... **${member.user.username}** called the police in time. Your fine is **${lose}** credits and **${won}** offset credits will be paid to **${member.user.username}**.`
+			],
+
 			/* PAY COMMAND */
 
 			// Utils
