@@ -23,9 +23,27 @@ class Steal extends Command {
 
     async run (message, args, data) {
 
+        if(!data.users[0].stats.steal){
+            data.users[0].stats.steal = { successful: 0, fails: 0, stolen: 0 };
+            data.users[0].markModified("stats.steal");
+            await data.users[0].save();
+        }
+        if(!data.users[1].stats.steal){
+            data.users[1].stats.steal = { successful: 0, fails: 0, stolen: 0 };
+            data.users[1].markModified("stats.steal");
+            await data.users[1].save();
+        }
+
         let member = message.mentions.members.first();
         if(!member){
             return message.channel.send(message.language.get("ERR_INVALID_MEMBER"));
+        }
+
+        let isInCooldown = data.users[1].cooldowns.steal;
+        if(isInCooldown){
+            if(isInCooldown > Date.now()){
+                return message.channel.send(message.language.get("STEAL_ERR_CLDWN", member));
+            }
         }
 
         let amountToSteal = args[1];
@@ -43,9 +61,18 @@ class Steal extends Command {
             return message.channel.send(message.language.get("STEAL_ERR_NO_MONEY", potentiallyLose));
         }
 
-        let itsAWon = Math.floor(this.client.functions.randomNum(0, 100) < 35);
+        let itsAWon = Math.floor(this.client.functions.randomNum(0, 100) < 20);
         
         if(itsAWon){
+            let toWait = Date.now() + 6*(60*60000);
+            data.users[1].cooldowns.steal = toWait;
+            await data.users[1].save();
+            data.users[0].stats.steal.successful++;
+            data.users[0].markModified("stats.steal");
+            await data.users[0].save();
+            data.users[1].stats.steal.stolen++;
+            data.users[1].markModified("stats.steal");
+            await data.users[1].save();
             let messages = message.language.get("STEAL_WON", amountToSteal, member);
             message.channel.send(messages[Math.floor(this.client.functions.randomNum(0, messages.length))]);
             data.users[0].money += amountToSteal;
@@ -53,6 +80,9 @@ class Steal extends Command {
             data.users[0].save();
             data.users[1].save();
         } else {
+            data.users[0].stats.steal.fails++;
+            data.users[0].markModified("stats.steal");
+            await data.users[0].save();
             let won = Math.floor(0.9*amountToSteal);
             let messages = message.language.get("STEAL_LOSE", potentiallyLose, member, won)
             message.channel.send(messages[Math.floor(this.client.functions.randomNum(0, messages.length))]);

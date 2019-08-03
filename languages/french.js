@@ -779,6 +779,7 @@ module.exports = class {
 			STEAL_ERR_AMOUNT: (member) => `${e.error} | Veuillez entrer un montant valide à piller à **${member.user.tag}** !`,
 			STEAL_ERR_AMOUNT_MEMBER: (member, money) => `${e.error} | **${member.user.username}** ne dispose pas de **${money}** crédits !`,
 			STEAL_ERR_NO_MONEY: (needed) => `${e.error} | Vous devez avoir plus de **${needed}** crédits pour tenter ce pillage !`,
+			STEAL_ERR_CLDWN: (member) => `:spy: **${member.user.username}** est sur ses gardes... Patientez un peu et réessayez !`,
 			// Content
 			STEAL_WON: (stealed, member) => [
 				`:tada: | Félicitations ! La police n'a pas été assez rapide pour t'empêcher de voler **${stealed}** crédits à **${member.user.username}** !`,

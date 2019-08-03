@@ -892,6 +892,7 @@ module.exports = class {
 			STEAL_ERR_AMOUNT: (member) => `${e.error} | Please enter a valid amount to be robbed to **${member.user.tag}** !`,
 			STEAL_ERR_AMOUNT_MEMBER: (member, money) => `${e.error} | **${member.user.username}** does not have **${money}** credits !`,
 			STEAL_ERR_NO_MONEY: (needed) => `${e.error} | You must have more than **${needed}** credits to attempt this robbery!`,
+			STEAL_ERR_CLDWN: (member) => `:spy: **${member.user.username}** is on guard.... Wait a while and try again!`,
 			// Content
 			STEAL_WON: (stealed, member) => [
 				`:tada: | Congratulations! The police weren't fast enough to stop you from stealing **${stealed}** credits to **${member.user.username}** !`,
