@@ -786,6 +786,7 @@ module.exports = class {
 			STEAL_USAGE: "steal [@membre] [crédits]",
 			STEAL_EXAMPLES: "$steal @Androz#2091 100",
 			// Errors
+			STEAL_ERR_YOURSELF: `${e.error} | Vous ne pouvez pas vous piller vous-même !`,
 			STEAL_ERR_AMOUNT: (member) => `${e.error} | Veuillez entrer un montant valide à piller à **${member.user.tag}** !`,
 			STEAL_ERR_AMOUNT_MEMBER: (member, money) => `${e.error} | **${member.user.username}** ne dispose pas de **${money}** crédits !`,
 			STEAL_ERR_NO_MONEY: (needed) => `${e.error} | Vous devez avoir plus de **${needed}** crédits pour tenter ce pillage !`,
