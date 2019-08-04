@@ -28,6 +28,10 @@ class Steal extends Command {
             return message.channel.send(message.language.get("ERR_INVALID_MEMBER"));
         }
 
+        if(member.id === message.author.id){
+            return message.channel.send(message.language.get("STEAL_ERR_YOURSELF"));
+        }
+
         if(!data.users[0].stats.steal){
             data.users[0].stats.steal = { successful: 0, fails: 0, stolen: 0 };
             data.users[0].markModified("stats.steal");
