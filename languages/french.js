@@ -391,7 +391,7 @@ module.exports = class {
 			MINECRAFT_EXAMPLES: "$minecraft mc.hypixel.net",
 			// Errors
 			MINECRAFT_ERR_IP: `${e.error} | Veuillez entrer une IP !`,
-			MINECRAFT_ERR_OFFLINE: `${e.error} | Ce serveur est hors ligne ou a bloquer les accès !`,
+			MINECRAFT_ERR_OFFLINE: `${e.error} | Ce serveur est hors ligne ou a bloqué les accès !`,
 			// Content
 			MINECRAFT_ONLINE: "En ligne",
 			MINECRAFT_OFFLINE: "Hors ligne",
