@@ -46,17 +46,19 @@ class Minecraft extends Command {
 
         let json = null;
         
-        gamedig.query(options).then((res) => {
+        await gamedig.query(options).then((res) => {
             json = res;
         }).catch((err) => {});
 
         if(!json){
             options.type = "minecraftpe";
-            gamedig.query(options).then((res) => {
+            await gamedig.query(options).then((res) => {
                 json = res;
-            }).catch((err) => {
-                return message.channel.send(message.language.get("MINECRAFT_ERR_OFFLINE"));
-            });
+            }).catch((err) => {});
+        }
+
+        if(!json){
+            return message.channel.send(message.language.get("MINECRAFT_ERR_OFFLINE"));
         }
 
         let imgRes = await fetch("https://www.minecraftskinstealer.com/achievement/a.php?i=2&h=Success&t="+ip);
