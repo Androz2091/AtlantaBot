@@ -393,7 +393,7 @@ module.exports = class {
 			MINECRAFT_EXAMPLES: "$minecraft mc.hypixel.net",
 			// Errors
 			MINECRAFT_ERR_IP: `${e.error} | Please enter an IP!`,
-			MINECRAFT_ERR_OFFLINE: `${e.error} | This server is offline or blocking access. Reminder: MCPE servers are not supported!`,
+			MINECRAFT_ERR_OFFLINE: `${e.error} | This server is offline or blocking access!`,
 			// Content
 			MINECRAFT_ONLINE: "Online",
 			MINECRAFT_OFFLINE: "Offline",
