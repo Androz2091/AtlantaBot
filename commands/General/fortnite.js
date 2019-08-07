@@ -28,11 +28,11 @@ class Fortnite extends Command {
  
     async run (message, args, data) {
 
-        if(!data.config.apiKeys.fortnite || data.config.apiKeys.fortnite.length === ""){
+        if(!data.config.apiKeys.fortniteTRN || data.config.apiKeys.fortniteTRN.length === ""){
             return message.channel.send(message.language.get("ERR_COMMAND_DISABLED"));
         }
 
-        let fortniteClient = new fortnite(data.config.apiKeys.fortnite);
+        let fortniteClient = new fortnite(data.config.apiKeys.fortniteTRN);
 
         let platform = args[0];
         if(!platform || (platform !== "pc" && platform !== "xbl" && platform !== "psn")){
@@ -55,14 +55,14 @@ class Fortnite extends Command {
             ctx = canvas.getContext("2d");
 
             // Background stats
-            let background = await Canvas.loadImage("./assets/img/fortnite_stats_background.png");
+            let background = await Canvas.loadImage("./assets/img/fortnite/stats/background.png");
             // This uses the canvas dimensions to stretch the image onto the entire canvas
             ctx.drawImage(background, 0, 0, canvas.width, canvas.height);
             // Draw xbox, pc or psn logo
-            let iconPlatform = await Canvas.loadImage(`./assets/img/fortnite_stats_${platform}.png`);
+            let iconPlatform = await Canvas.loadImage(`./assets/img/fortnite/stats/${platform}.png`);
             ctx.drawImage(iconPlatform, 62, 43, 60, 60);
             // Draw crown logo
-            let iconCrown = await Canvas.loadImage("./assets/img/fortnite_stats_crown.png");
+            let iconCrown = await Canvas.loadImage("./assets/img/fortnite/stats/crown.png");
             ctx.drawImage(iconCrown, canvas.width - 280, 41, 60, 60);
             // Draw username
             ctx.fillStyle = "#dcdfd9";
@@ -242,10 +242,16 @@ class Fortnite extends Command {
             ctx.font = "23px KeepCalm";
             ctx.fillText(data.config.embed.footer+" - fortnitetracker.com", canvas.width / 2, canvas.height - 10); 
 
-
-            let attachment = new Discord.MessageAttachment(canvas.toBuffer(), "fortnite-stats-image.png");
-            m.delete();
-            await message.channel.send(attachment);
+            // Send embed
+            let attachment = new Discord.MessageAttachment(canvas.toBuffer(), "fortnite-stats-image.png"),
+            embed = new Discord.MessageEmbed()
+            .setDescription(message.language.get("FORTNITE_TITLE", tdata.username, tdata.url.replace(new RegExp(" ", "g"), "%20")))
+            .attachFiles(attachment)
+            .setImage(`attachment://fortnite-stats-image.png`)
+            .setColor(data.config.embed.color)
+            .setFooter(data.config.embed.footer);
+            await m.delete();
+            await message.channel.send(embed);
         }).catch((err) => {
             return message.channel.send(message.language.get("FORTNITE_ERR_NOT_FOUND", platform, user));
         });
