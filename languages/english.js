@@ -1363,6 +1363,7 @@ module.exports = class {
 			FORTNITE_ERR_USERNAME: `${e.error} | Enter a valid pseudo epic games!`,
 			FORTNITE_ERR_NOT_FOUND: (platform, username) => `${e.error} | Player \`${username}\` not found on the platform \`${platform}\`!`,
 			// Content
+			FORTNITE_TITLE: (username, link) => `[${username}](${link})'s Fortnite Stats`,
 			FORTNITE_STATS_RIGHT: (kd, percent) => `${kd} K/D - ${percent} WIN%`,
 			FORTNITE_AVERAGE_KILLS: "KILLS/MATCH",
 			FORTNITE_AVERAGE_KILL: "KILL/MATCH",
