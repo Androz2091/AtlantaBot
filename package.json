@@ -33,6 +33,7 @@
     "express-session": "^1.16.2",
     "ffmpeg-static": "^2.4.0",
     "fortnite": "^4.3.2",
+    "fortnite-9812": "^1.0.4",
     "gamedig": "^2.0.14",
     "idiotic-api": "^0.2.11",
     "markdown-table": "^1.1.3",
