@@ -242,10 +242,16 @@ class Fortnite extends Command {
             ctx.font = "23px KeepCalm";
             ctx.fillText(data.config.embed.footer+" - fortnitetracker.com", canvas.width / 2, canvas.height - 10); 
 
-
-            let attachment = new Discord.MessageAttachment(canvas.toBuffer(), "fortnite-stats-image.png");
-            m.delete();
-            await message.channel.send(attachment);
+            // Send embed
+            let attachment = new Discord.MessageAttachment(canvas.toBuffer(), "fortnite-stats-image.png"),
+            embed = new Discord.MessageEmbed()
+            .setDescription(message.language.get("FORTNITE_TITLE", tdata.username, tdata.url.replace(new RegExp(" ", "g"), "%20")))
+            .attachFiles(attachment)
+            .setImage(`attachment://fortnite-stats-image.png`)
+            .setColor(data.config.embed.color)
+            .setFooter(data.config.embed.footer);
+            await m.delete();
+            await message.channel.send(embed);
         }).catch((err) => {
             return message.channel.send(message.language.get("FORTNITE_ERR_NOT_FOUND", platform, user));
         });
