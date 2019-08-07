@@ -28,11 +28,11 @@ class Fortnite extends Command {
  
     async run (message, args, data) {
 
-        if(!data.config.apiKeys.fortnite || data.config.apiKeys.fortnite.length === ""){
+        if(!data.config.apiKeys.fortniteTRN || data.config.apiKeys.fortniteTRN.length === ""){
             return message.channel.send(message.language.get("ERR_COMMAND_DISABLED"));
         }
 
-        let fortniteClient = new fortnite(data.config.apiKeys.fortnite);
+        let fortniteClient = new fortnite(data.config.apiKeys.fortniteTRN);
 
         let platform = args[0];
         if(!platform || (platform !== "pc" && platform !== "xbl" && platform !== "psn")){

@@ -38,8 +38,8 @@ module.exports = {
 	},
 	/* The API keys that are required for certain commands */
 	apiKeys: {
-		// FORTNITE: https://fortnitetracker.com/site-api 
-		fortnite: "XXXXXXXXXXX",
+		// FORTNITE TRN: https://fortnitetracker.com/site-api 
+		fortniteTRN: "XXXXXXXXXXX",
 		// DBL: https://discordbots.org/api/docs#mybots
 		dbl: "XXXXXXXXXXX",
 		// SIMPLE YOUTUBE API: https://console.developers.google.com/
