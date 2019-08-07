@@ -577,6 +577,7 @@ module.exports = class {
 			CONFIGURATION_GOODBYE: (withImage, channelID) => `Salon : <#${channelID}>\nImage : ${withImage ? "Oui" : "Non"}`,
 			CONFIGURATION_MODLOGS: (channelID) => `Logs modération : ${channelID ? `<#${channelID}>` : "Indéfini"}`,
 			CONFIGURATION_SUGGESTIONS: (channelID) => `Suggestions : ${channelID ? `<#${channelID}>` : "Indéfini" }`,
+			CONFIGURATION_FORTNITESHOP: (channelID) => `Boutique Fortnite : ${channelID ? `<#${channelID}>` : "Indéfini" }`,
 			CONFIGURATION_AUTOMOD: (ignoredChannels) => `${ignoredChannels.length > 0 ? `Salon ignorés : ${ignoredChannels.map((ch) => `<#${ch}>`)}` : "Aucun salon ignoré."}`,
 			CONFIGURATION_WARNS: (kick, ban) => `${kick ? `**Expulsion**: au bout de **${kick}** avertissements.` : "**Expulsion**: Non définie."}\n${ban ? `**Bannissement**: au bout de **${ban}** avertissements.` : "**Bannissement**: Non défini."}`,
 
@@ -1374,6 +1375,28 @@ module.exports = class {
 			FORTNITE_WINS_PERCENT : "VICTOIRE%",
 			FORTNITE_MATCHES : "PARTIES",
 			FORTNITE_MATCH : "PARTIE",
+
+			/* FORTNITESHOP COMMAND */
+			
+			// Utils
+			FORTNITESHOP_DESCRIPTION: "Affiche la boutique d'objets Fortnite !",
+			FORTNITESHOP_USAGE: "fortniteshop",
+			FORTNITESHOP_EXAMPLES: "$fortniteshop",
+			// Content
+			FORTNITESHOP_HEADER: "BOUTIQUE D'OBJETS FORTNITE",
+			FORTNITESHOP_DAILY: "DU JOUR",
+			FORTNITESHOP_FEATURED: "A LA UNE",
+			FORTNITESHOP_TITLE: (date) => `Boutique Fortnite du ${date}`,
+
+			/* SETFORTNITESHOP COMMAND */
+			
+			// Utils
+			SETFORTNITESHOP_DESCRIPTION: "Définissez le salon de la boutique Fortnite du jour !",
+			SETFORTNITESHOP_USAGE: "setfortniteshop (#salon)",
+			SETFORTNITESHOP_EXAMPLES: "$setfortniteshop #shop\n$setfortniteshop",
+			// Content
+			SETFORTNITESHOP_DISABLED: `${e.success} | Boutique Fortnite du jour désactivée !`,
+			SETFORTNITESHOP_ENABLED: (id) => `${e.success} | Salon de la boutique Fortnite du jour défini sur <#${id}> !`,
 
 			/* CALC COMMAND */
 			

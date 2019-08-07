@@ -652,6 +652,7 @@ module.exports = class {
 			CONFIGURATION_GOODBYE: (withImage, channelID) => `Channel : <#${channelID}>\nImage : ${withImage ? "Yes" : "No"}`,
 			CONFIGURATION_MODLOGS: (channelID) => `Moderation logs : ${channelID ? `<#${channelID}>` : "Not defined"}`,
 			CONFIGURATION_SUGGESTIONS: (channelID) => `Suggestions : ${channelID ? `<#${channelID}>` : "Not defined" }`,
+			CONFIGURATION_FORTNITESHOP: (channelID) => `Fortnite Shop : ${channelID ? `<#${channelID}>` : "Not defined" }`,
 			CONFIGURATION_AUTOMOD: (ignoredChannels) => `${ignoredChannels.length > 0 ? `Salon ignorés : ${ignoredChannels.map((ch) => `<#${ch}>`)}` : "Aucun salon ignoré."}`,
 			CONFIGURATION_WARNS: (kick, ban) => `${kick ? `**Expulsion**: after **${kick}** warnings.` : "**Expulsion**: Not defined."}\n${ban ? `**Banishment**: after **${ban}** warnings.` : "**Banishment**: Not defined."}`,
 
@@ -1376,6 +1377,28 @@ module.exports = class {
 			FORTNITE_WINS_PERCENT : "WIN%",
 			FORTNITE_MATCHES : "MATCHES",
 			FORTNITE_MATCH : "MATCH",
+
+			/* FORTNITESHOP COMMAND */
+			
+			// Utils
+			FORTNITESHOP_DESCRIPTION: "Displays the fortnite items shop!",
+			FORTNITESHOP_USAGE: "fortniteshop",
+			FORTNITESHOP_EXAMPLES: "$fortniteshop",
+			// Content
+			FORTNITESHOP_HEADER: "FORTNITE ITEMS SHOP",
+			FORTNITESHOP_DAILY: "DAILY",
+			FORTNITESHOP_FEATURED: "FEATURED",
+			FORTNITESHOP_TITLE: (date) => `Fortnite shop of ${date}`,
+
+			/* SETFORTNITESHOP COMMAND */
+			
+			// Utils
+			SETFORTNITESHOP_DESCRIPTION: "Define the daily Fortnite shop channel!",
+			SETFORTNITESHOP_USAGE: "setfortniteshop (#channel)",
+			SETFORTNITESHOP_EXAMPLES: "$setfortniteshop #shop\n$setfortniteshop",
+			// Content
+			SETFORTNITESHOP_DISABLED: `${e.success} | Daily Fortnite shop disabled!`,
+			SETFORTNITESHOP_ENABLED: (id) => `${e.success} | Fortnite shop channel defined on <#${id}> !`,
 
 			/* CALC COMMAND */
 			
