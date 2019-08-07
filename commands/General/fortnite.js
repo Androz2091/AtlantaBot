@@ -55,14 +55,14 @@ class Fortnite extends Command {
             ctx = canvas.getContext("2d");
 
             // Background stats
-            let background = await Canvas.loadImage("./assets/img/fortnite_stats_background.png");
+            let background = await Canvas.loadImage("./assets/img/fortnite/stats/background.png");
             // This uses the canvas dimensions to stretch the image onto the entire canvas
             ctx.drawImage(background, 0, 0, canvas.width, canvas.height);
             // Draw xbox, pc or psn logo
-            let iconPlatform = await Canvas.loadImage(`./assets/img/fortnite_stats_${platform}.png`);
+            let iconPlatform = await Canvas.loadImage(`./assets/img/fortnite/stats/${platform}.png`);
             ctx.drawImage(iconPlatform, 62, 43, 60, 60);
             // Draw crown logo
-            let iconCrown = await Canvas.loadImage("./assets/img/fortnite_stats_crown.png");
+            let iconCrown = await Canvas.loadImage("./assets/img/fortnite/stats/crown.png");
             ctx.drawImage(iconCrown, canvas.width - 280, 41, 60, 60);
             // Draw username
             ctx.fillStyle = "#dcdfd9";
