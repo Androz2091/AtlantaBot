@@ -41,6 +41,9 @@ class Slowmode extends Command {
             if(isNaN(ms(time))){
                 return message.channel.send(message.language.get("ERR_INVALID_TIME"));
             }
+            if(data.settings.slowmode.channels.find((ch) => ch.id === channel.id)){
+                data.settings.slowmode.channels = data.settings.slowmode.channels.filter((ch) => ch.id !== channel.id);
+            }
             data.settings.slowmode.channels.push({
                 id: channel.id,
                 time: ms(time)
