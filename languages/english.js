@@ -1459,7 +1459,8 @@ module.exports = class {
 				WITHIMAGE_WELCOME: "Include a great welcome image",
 				WITHIMAGE_GOODBYE: "Include a great goodbye image",
 				SUGGESTIONS: "Suggestions",
-				MODLOGS: "Moderation logs"
+				MODLOGS: "Moderation logs",
+				FORTNITESHOP: "Fortnite shop"
 			},
 			ENABLE_MESSAGES: "Enable messages",
 			DISABLE_MESSAGES: "Disable messages",
