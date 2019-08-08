@@ -49,7 +49,7 @@ Atlanta has its own dashboard which also offers many features! The dashboard run
 
 You can directly **edit your configuration**, **manage your servers**, **view rankings**, **modify your profile** and much more!
 
-> Find the code [here](https://github.com/atlantabot/atlanta-dashboard). Documentation will be available soon!
+> Find the code in the dashboard folder! 
 
 ## Installation
 
