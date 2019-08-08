@@ -23,6 +23,7 @@
     "body-parser": "^1.19.0",
     "canvas": "^2.5.0",
     "chalk": "^2.4.2",
+    "cron": "^1.7.1",
     "dblapi.js": "^2.3.0",
     "deepl-scraper": "^1.0.8",
     "discord-backup": "^1.0.4",
