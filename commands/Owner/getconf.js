@@ -75,7 +75,8 @@ class Getconf extends Command {
 
         embed.addField(headings[5][0],
             message.language.get("CONFIGURATION_MODLOGS", settings.plugins.modlogs)+"\n"+
-            message.language.get("CONFIGURATION_SUGGESTIONS", settings.plugins.suggestions)
+            message.language.get("CONFIGURATION_SUGGESTIONS", settings.plugins.suggestions)+"\n"+
+            message.language.get("CONFIGURATION_FORTNITESHOP", settings.plugins.fortniteshop)
         );
         
         embed.addField(headings[6][0],

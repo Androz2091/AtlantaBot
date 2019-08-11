@@ -127,6 +127,23 @@
                                                 <% } %>
                                             </select>
                                         </div>
+                                        <div class="form-group">
+                                            <label><%= language.get("CONFIG_FIELDS").FORTNITESHOP %></label>
+                                            <select class="form-control" name="fortniteshop">
+                                                <% if(guild.plugins.fortniteshop && client.channels.get(guild.plugins.fortniteshop)){ %>
+                                                    <option selected="selected">#<%= client.channels.get(guild.plugins.fortniteshop).name %></option>
+                                                    <% guild.channels.filter((ch) => ch.type === "text" && ch.id !== guild.plugins.fortniteshop).forEach((ch) => { %>
+                                                        <option>#<%= ch.name %></option>
+                                                    <% }); %>
+                                                        <option><%= language.get("UTILS").NO_CHANNEL %></option>
+                                                <% } else { %>
+                                                    <option selected="selected"><%= language.get("UTILS").NO_CHANNEL %></option>
+                                                    <% guild.channels.filter((ch) => ch.type === "text").forEach((ch) => { %>
+                                                        <option>#<%= ch.name %></option>
+                                                    <% }); %>
+                                                <% } %>
+                                            </select>
+                                        </div>
                                     </div>
                                     <!-- /.box-body -->
                                     <div class="box-footer">

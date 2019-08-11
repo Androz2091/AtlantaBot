@@ -124,6 +124,10 @@ module.exports = class {
             });
         }, 3000);
 
+        /* DAILY SHOP FORTNITE */
+        let fortniteShop = require("../utils/fortniteshop.js");
+        fortniteShop.init(client);
+
         /* AUTO UPDATE DOCS */
 
         let table = require("markdown-table");
