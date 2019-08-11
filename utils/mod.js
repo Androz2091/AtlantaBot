@@ -1,7 +1,7 @@
 const Discord = require("discord.js"),
 ms = require("ms");
 
-module.exports = class {
+module.exports = class Mod {
 
     constructor(client){
         this.client = client;
