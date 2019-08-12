@@ -23,7 +23,7 @@ class Setsuggests extends Command {
 
     async run (message, args, data) {
         
-        let channel = message.mentions.channels.filter((ch) => ch.type === "text" && channel.guild.id === message.guild.id).first() || message.channel;
+        let channel = message.mentions.channels.filter((ch) => ch.type === "text" && ch.guild.id === message.guild.id).first() || message.channel;
         data.settings.plugins.suggestions = channel.id;
         data.settings.markModified("plugins.suggestions");
         data.settings.save();
