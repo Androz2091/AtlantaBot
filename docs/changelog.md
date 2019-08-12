@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file.
 
+## [5.0.0]
+
+### Added
+
+*   New `fortniteshop` command
+*   New Fornite Shop channel, in which a shop image made with canvas is sent every morning
+
 ## [4.0.0] - 2019-01-08
 
 ### Added
