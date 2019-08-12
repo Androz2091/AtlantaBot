@@ -41,17 +41,12 @@ class Suggest extends Command {
             .setColor(data.config.embed.color)
             .setFooter(data.config.embed.footer);
 
-        let success = message.client.config.emojis.success.split(":")[1];
-        let error = message.client.config.emojis.error.split(":")[1];
-
-        let emotes = [
-            message.client.emojis.find((e) => e.name === success),
-            message.client.emojis.find((e) => e.name === error)
-        ];
-
+        let success = Discord.Util.parseEmoji(message.client.config.emojis.success).id;
+        let error = Discord.Util.parseEmoji(message.client.config.emojis.error).id;
+        
         suggChannel.send(embed).then(async (m) => {
-            await m.react(emotes[0]);
-            await m.react(emotes[1]);
+            await m.react(success);
+            await m.react(error);
         });
 
         message.channel.send(message.language.get("SUGGEST_SUCCESS", suggChannel));
