@@ -110,7 +110,7 @@ module.exports = class {
 			HELP_ERR_NOT_FOUND: (cmd) => `${e.error} | Commande \`${cmd}\` introuvable !`,
 			HELP_ERR_CMD_CUSTOMIZED: (cmd) => `${e.error} | La commande ${cmd} ne dispose pas d'aide car elle est personnalisée.`,
 			// Content
-			HELP_EDESCRIPTION: (prefix, commands) => `● Pour avoir de l'aide sur une commande tapez \`${prefix}help <commande>\` !\n● Commandes envoyées (7 derniers jours) : \`${commands}\``,
+			HELP_EDESCRIPTION: (prefix) => `● Pour avoir de l'aide sur une commande tapez \`${prefix}help <commande>\` !`,
 			HELP_TITLE: `${c.botname} | Commandes`,
 			HELP_NO_ALIASES: "Aucun alias.",
 			// Headings
