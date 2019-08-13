@@ -127,8 +127,10 @@ module.exports = {
 		// RE: https://img.icons8.com/color/344/opened-folder.png
 		desc2: "XXXXXXXXXXX",
 		// RE: https://img.icons8.com/color/344/edit-property.png
-		patreon: "XXXXXXXXXXX"
+		patreon: "XXXXXXXXXXX",
 		// RE: https://cdn6.aptoide.com/imgs/2/8/e/28e759bcb1e00ad978afdf443e60c11e_icon.png
+		server: "XXXXXXXXXXX"
+		// RE: https://img.icons8.com/color/96/000000/root-server.png
 	},
 	/* The others utils links */
 	others: {

@@ -284,12 +284,17 @@ module.exports = class {
 				`${e.calendar2} Arrivée`,
 				`${e.pencil} Surnom`,
 				`${e.roles} Rôles`,
-				`${e.color} Couleur`
+				`${e.color} Couleur`,
+				`${e.desc} Description`,
+				`${e.stats} Stats`,
+				`${e.link} Liens`
 			],
 			USERINFO_NO_GAME: "Pas de jeu",
 			USERINFO_NO_ROLE: "Aucun rôle",
 			USERINFO_MORE_ROLES: (nb) => ` et ${nb} autres rôles`,
 			USERINFO_NO_NICKNAME: "Pas de surnom",
+			USERINFO_LINKS: (discord, invite, github, website) => `${discord ? `[Support](https://discord.gg/${discord})\n` : ""}[Invitation](${invite})\n${github ? `[Github](${github})\n` : ""}${website ? `[Site web](${website})` : ""}`,
+			USERINFO_STATS: (votes, servers, shards, lib) => `**${votes}** votes (Discordbots.org)\n**${servers}** serveurs\n**${shards.length === 0 ? "Aucun" : shards.length}** shards\nDéveloppé avec **${lib}**`,
 
 			/* SERVERINFO COMMAND */
 

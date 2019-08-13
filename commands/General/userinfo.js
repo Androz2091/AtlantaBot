@@ -1,5 +1,6 @@
 const Command = require("../../base/Command.js"),
-Discord = require("discord.js");
+Discord = require("discord.js"),
+fetch = require("node-fetch");
 
 class Userinfo extends Command {
 
@@ -67,13 +68,24 @@ class Userinfo extends Command {
             .addField(message.language.get("USERINFO_FIELDS")[6], message.language.get("UTILS").STATUS[user.presence.status], true);
         }
             
-        
         if(member){
             embed.addField(message.language.get("USERINFO_FIELDS")[7], (member.roles.highest ? member.roles.highest : message.language.get("USERINFO_NO_ROLE")), true)
             .addField(message.language.get("USERINFO_FIELDS")[8], message.language.printDate(member.joinedAt),true)
             .addField(message.language.get("USERINFO_FIELDS")[11], member.displayHexColor, true)
             .addField(message.language.get("USERINFO_FIELDS")[9], (member.nickname ? member.nickname : message.language.get("USERINFO_NO_NICKNAME")), true)
-            .addField(message.language.get("USERINFO_FIELDS")[10], (member.roles.size > 10 ? member.roles.map((r) => r).slice(0, 9).join(", ")+message.language.get('USERINFO_MORE_ROLES', member.roles.size - 10) : (member.roles.size < 1) ? message.language.get("USERINFO_NO_ROLE") : member.roles.map((r) => r).join(", ")));
+            .addField(message.language.get("USERINFO_FIELDS")[10], (member.roles.size > 10 ? member.roles.map((r) => r).slice(0, 9).join(", ")+message.language.get("USERINFO_MORE_ROLES", member.roles.size - 10) : (member.roles.size < 1) ? message.language.get("USERINFO_NO_ROLE") : member.roles.map((r) => r).join(", ")));
+        }
+
+        if(user.bot && message.client.config.apiKeys.dbl && (message.client.config.apiKeys.dbl !== "")){
+            let res = await fetch("https://discordbots.org/api/bots/"+user.id, {
+                headers: { "Authorization": message.client.config.apiKeys.dbl }
+            });
+            let data = await res.json();
+            if(!data.error){
+                embed.addField(message.language.get("USERINFO_FIELDS")[12], data.shortdesc, true)
+                .addField(message.language.get("USERINFO_FIELDS")[13], message.language.get("USERINFO_STATS", data.monthlyPoints || 0, data.server_count || 0, data.shards || [], data.lib || "unknown"), true)
+                .addField(message.language.get("USERINFO_FIELDS")[14], message.language.get("USERINFO_LINKS", data.support, data.invite, data.github, data.website), true);
+            }
         }
 
         message.channel.send(embed);
