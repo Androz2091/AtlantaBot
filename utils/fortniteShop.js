@@ -787,11 +787,11 @@ async function init(client) {
         if(!client.config.apiKeys.fortniteFNBR || client.config.apiKeys.fortniteFNBR === "") return;
         checkImage(client);
         client.guilds.forEach(async (guild) => {
-            let settings = await client.functions.getSettings(guild.client, guild);
-            let language = new(require("../languages/"+settings.language+".js"));
+            let guildData = await client.functions.getGuildData(guild.client, guild);
+            let language = new(require("../languages/"+guildData.language+".js"));
             let path = `./assets/img/fortnite/shop/${language.getLang()}/${getFileName()}.png`;
-            if(settings.plugins.fortniteshop && fs.existsSync(path)) {
-                let fnChannel = client.channels.get(settings.plugins.fortniteshop);
+            if(guildData.plugins.fortniteshop && fs.existsSync(path)) {
+                let fnChannel = client.channels.get(guildData.plugins.fortniteshop);
                 if(fnChannel) {
                     let attachment = new Discord.MessageAttachment(path, `${fileName}.png`),
                     embed = new Discord.MessageEmbed()

@@ -45,20 +45,20 @@ module.exports = class {
 
         member.guild.fetch().then(async (guild) => {
 
-            let settings = await this.client.functions.getSettings(this.client, guild);
+            let guildData = await this.client.functions.getGuildData(this.client, guild);
 
             // Check if goodbye message is enabled
-            if(settings.plugins.goodbye.enabled){
-                let channel = guild.channels.get(settings.plugins.goodbye.channel);
+            if(guildData.plugins.goodbye.enabled){
+                let channel = guild.channels.get(guildData.plugins.goodbye.channel);
                 if(channel){
-                    let message = settings.plugins.goodbye.message
+                    let message = guildData.plugins.goodbye.message
                     .replace(/{user}/g, member.user.tag)
                     .replace(/{server}/g, guild.name)
                     .replace(/{membercount}/g, guild.memberCount);
-                    if(settings.plugins.goodbye.withImage){
+                    if(guildData.plugins.goodbye.withImage){
                         let canvas = Canvas.createCanvas(1024, 450),
                         ctx = canvas.getContext("2d"),
-                        lang = new(require(`../languages/${settings.language}.js`)),
+                        lang = new(require(`../languages/${guildData.language}.js`)),
                         text = lang.get("GOODBYE_IMG_MSG", guild.name),
                         number = lang.get("GOODBYE_IMG_NUMBER", guild.memberCount),
                         title = lang.get("GOODBYE_IMG_TITLE");

@@ -37,7 +37,7 @@ class Giveaway extends Command {
             }
             let time = args[1];
             if(!time){
-                return message.channel.send(message.language.get("GIVEAWAY_ERR_CREATE", data.settings.prefix));
+                return message.channel.send(message.language.get("GIVEAWAY_ERR_CREATE", data.guild.prefix));
             }
             if(isNaN(ms(time))){
                 return message.channel.send(message.language.get("ERR_INVALID_TIME"));
@@ -47,14 +47,14 @@ class Giveaway extends Command {
             }
             let winnersCount = args[2];
             if(!winnersCount){
-                return message.channel.send(message.language.get("GIVEAWAY_ERR_CREATE", data.settings.prefix));
+                return message.channel.send(message.language.get("GIVEAWAY_ERR_CREATE", data.guild.prefix));
             }
             if(isNaN(winnersCount) || winnersCount > 10 || winnersCount < 1){
                 return message.channel.send(message.language.get("ERR_INVALID_NUMBER_MM", 1, 10));
             }
             let prize = args.slice(3).join(" ");
             if(!prize){
-                return message.channel.send(message.language.get("GIVEAWAY_ERR_CREATE", data.settings.prefix)); 
+                return message.channel.send(message.language.get("GIVEAWAY_ERR_CREATE", data.guild.prefix)); 
             }
             giveaways.start(message.channel, {
                 time: ms(time),

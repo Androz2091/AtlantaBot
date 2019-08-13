@@ -37,9 +37,9 @@ class Warn extends Command {
         }
 
         // Gets current member sanctions
-        let sanctionsCount = data.settings.cases.list.filter((d) => d.user === member.id).length;
-        let banCount = data.settings.plugins.warnsSanctions.ban;
-        let kickCount = data.settings.plugins.warnsSanctions.kick;
+        let sanctionsCount = data.guild.cases.list.filter((d) => d.user === member.id).length;
+        let banCount = data.guild.plugins.warnsSanctions.ban;
+        let kickCount = data.guild.plugins.warnsSanctions.kick;
         let Moderator = new(require("../../utils/mod.js"))(this.client);
         let caseInfo = {
             channel: message.channel,
@@ -53,8 +53,8 @@ class Warn extends Command {
             if(sanctionsCount >= banCount){
                 member.send(message.language.get("BAN_SUCCESS_DM", member.user, message, reason));
                 caseInfo.type = "ban";
-                Moderator.log(data.settings, caseInfo, message.language);
-                Moderator.addCase(data.settings, caseInfo);
+                Moderator.log(data.guild, caseInfo, message.language);
+                Moderator.addCase(data.guild, caseInfo);
                 message.guild.members.ban(member).catch((err) => {});
                 return message.channel.send(message.language.get("WARN_AUTOBAN", member, banCount));
             }
@@ -64,16 +64,16 @@ class Warn extends Command {
             if(sanctionsCount >= kickCount){
                 member.send(message.language.get("KICK_SUCCESS_DM", member.user, message, reason));
                 caseInfo.type = "kick";
-                Moderator.log(data.settings, caseInfo, message.language);
-                Moderator.addCase(data.settings, caseInfo);
+                Moderator.log(data.guild, caseInfo, message.language);
+                Moderator.addCase(data.guild, caseInfo);
                 message.guild.members.kick(member).catch((err) => {});
                 return message.channel.send(message.language.get("WARN_AUTOKICK", member, banCount));
             }
         }
         
         caseInfo.type = "warn";
-        Moderator.log(data.settings, caseInfo, message.language);
-        Moderator.addCase(data.settings, caseInfo);
+        Moderator.log(data.guild, caseInfo, message.language);
+        Moderator.addCase(data.guild, caseInfo);
         
         member.send(message.language.get("WARN_SUCCESS_DM", message, reason));
         

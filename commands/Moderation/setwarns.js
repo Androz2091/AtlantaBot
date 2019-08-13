@@ -32,16 +32,16 @@ class Setwarns extends Command {
 
         if(number === "reset"){
             if(sanction === "kick"){
-                data.settings.plugins.warnsSanctions.kick = false;
-                data.settings.markModified("plugins.warnsSanctions");
-                data.settings.save();
-                return message.channel.send(message.language.get("SETWARNS_SUCCESS_RESET_KICK", data.settings.prefix, number));
+                data.guild.plugins.warnsSanctions.kick = false;
+                data.guild.markModified("plugins.warnsSanctions");
+                data.guild.save();
+                return message.channel.send(message.language.get("SETWARNS_SUCCESS_RESET_KICK", data.guild.prefix, number));
             }
             if(sanction === "ban"){
-                data.settings.plugins.warnsSanctions.ban = false;
-                data.settings.markModified("plugins.warnsSanctions");
-                data.settings.save();
-                return message.channel.send(message.language.get("SETWARNS_SUCCESS_RESET_BAN", data.settings.prefix, number));
+                data.guild.plugins.warnsSanctions.ban = false;
+                data.guild.markModified("plugins.warnsSanctions");
+                data.guild.save();
+                return message.channel.send(message.language.get("SETWARNS_SUCCESS_RESET_BAN", data.guild.prefix, number));
             }
         }
 
@@ -53,17 +53,17 @@ class Setwarns extends Command {
         }
 
         if(sanction === "kick"){
-            data.settings.plugins.warnsSanctions.kick = number;
-            data.settings.markModified("plugins.warnsSanctions");
-            data.settings.save();
-            return message.channel.send(message.language.get("SETWARNS_SUCCESS_KICK", data.settings.prefix, number));
+            data.guild.plugins.warnsSanctions.kick = number;
+            data.guild.markModified("plugins.warnsSanctions");
+            data.guild.save();
+            return message.channel.send(message.language.get("SETWARNS_SUCCESS_KICK", data.guild.prefix, number));
         }
 
         if(sanction === "ban"){
-            data.settings.plugins.warnsSanctions.ban = number;
-            data.settings.markModified("plugins.warnsSanctions");
-            data.settings.save();
-            return message.channel.send(message.language.get("SETWARNS_SUCCESS_BAN", data.settings.prefix, number));
+            data.guild.plugins.warnsSanctions.ban = number;
+            data.guild.markModified("plugins.warnsSanctions");
+            data.guild.save();
+            return message.channel.send(message.language.get("SETWARNS_SUCCESS_BAN", data.guild.prefix, number));
         }
 
     }

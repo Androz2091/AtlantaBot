@@ -28,14 +28,14 @@ class Setlang extends Command {
         }
 
         if(args[0] === "french"){
-            data.settings.language = "french";
-            data.settings.save();
+            data.guild.language = "french";
+            data.guild.save();
             return message.channel.send(message.language.get("SETLANG_LANGS")[0]);
         }
         
         if(args[0] === "english"){
-            data.settings.language = "english";
-            data.settings.save();
+            data.guild.language = "english";
+            data.guild.save();
             return message.channel.send(message.language.get("SETLANG_LANGS")[1]);
         }
         

@@ -37,7 +37,7 @@ module.exports = {
             const prefixes = [
                 `<@${message.client.user.id}>`,
                 data.config.botname,
-                data.settings.prefix
+                data.guild.prefix
             ];
             let prefix = null;
             prefixes.forEach((p) => {
@@ -52,25 +52,22 @@ module.exports = {
     },
 
     /**
-     * Gets channel settings
+     * Gets guild data
      * @param {object} client The discord client
      * @param {object} guild The guild object
      * @returns The channel data
      */
-    async getSettings(client, guild){
+    async getGuildData(client, guild){
         return new Promise(async function(resolve, reject){
             if(guild){
-                client.guildsData.find({id: guild.id}, function (err, result) {
-                    if(result[0]){
-                        resolve(result[0]);
-                    } else {
-                        let Guild = new client.guildsData({
-                            id: guild.id
-                        });
-                        Guild.save();
-                        resolve(Guild);
-                    }
-                });
+                let guildData = await client.guildsData.findOne({id: guild.id});
+                if(guildData){
+                    resolve(guildData);
+                } else {
+                    guildData = new client.guildsData({ id: guild.id });
+                    guildData.save();
+                    resolve(guildData);
+                }
             } else {
                 resolve({
                     prefix: client.config.prefix,

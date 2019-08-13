@@ -30,26 +30,26 @@ class Slowmode extends Command {
         }
         let time = args[1];
         if(!time){
-            if(!data.settings.slowmode.channels.find((ch) => ch.id === channel.id)){
+            if(!data.guild.slowmode.channels.find((ch) => ch.id === channel.id)){
                 return message.channel.send(message.language.get("ERR_INVALID_TIME"));
             }
-            data.settings.slowmode.channels = data.settings.slowmode.channels.filter((ch) => ch.id !== channel.id);
-            data.settings.markModified("slowmode.channels");
-            data.settings.save();
+            data.guild.slowmode.channels = data.guild.slowmode.channels.filter((ch) => ch.id !== channel.id);
+            data.guild.markModified("slowmode.channels");
+            data.guild.save();
             message.channel.send(message.language.get("SLOWMODE_DISABLED", channel.id));
         } else {
             if(isNaN(ms(time))){
                 return message.channel.send(message.language.get("ERR_INVALID_TIME"));
             }
-            if(data.settings.slowmode.channels.find((ch) => ch.id === channel.id)){
-                data.settings.slowmode.channels = data.settings.slowmode.channels.filter((ch) => ch.id !== channel.id);
+            if(data.guild.slowmode.channels.find((ch) => ch.id === channel.id)){
+                data.guild.slowmode.channels = data.guild.slowmode.channels.filter((ch) => ch.id !== channel.id);
             }
-            data.settings.slowmode.channels.push({
+            data.guild.slowmode.channels.push({
                 id: channel.id,
                 time: ms(time)
             });
-            data.settings.markModified("slowmode.channels");
-            data.settings.save();
+            data.guild.markModified("slowmode.channels");
+            data.guild.save();
             message.channel.send(message.language.get("SLOWMODE_ENABLED", channel.id, time));
         }
     }

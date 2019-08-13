@@ -26,7 +26,7 @@ class Help extends Command {
         // if a command is provided
         if(args[0]){
 
-            let isCustom = (data.settings.customCommands ? data.settings.customCommands.find((c) => c.name === args[0]) : false);
+            let isCustom = (data.guild.customCommands ? data.guild.customCommands.find((c) => c.name === args[0]) : false);
             
             // if the command doesn't exist, error message
             let cmd = message.client.commands.get(args[0]) || message.client.commands.get(message.client.aliases.get(args[0]));
@@ -37,12 +37,12 @@ class Help extends Command {
             }
 
             // Replace $ caract with the server prefix
-            let examples = cmd.help.examples(message.language).replace(/[$_]/g, data.settings.prefix);
+            let examples = cmd.help.examples(message.language).replace(/[$_]/g, data.guild.prefix);
 
             // Creates the help embed
             let groupEmbed = new Discord.MessageEmbed()
                 .setAuthor(message.language.get("HELP_HEADINGS")[0]+" "+cmd.help.name)
-                .addField(message.language.get("HELP_HEADINGS")[1], data.settings.prefix+cmd.help.usage(message.language))
+                .addField(message.language.get("HELP_HEADINGS")[1], data.guild.prefix+cmd.help.usage(message.language))
                 .addField(message.language.get("HELP_HEADINGS")[2], examples)
                 .addField(message.language.get("HELP_HEADINGS")[3], cmd.help.category)
                 .addField(message.language.get("HELP_HEADINGS")[4], cmd.help.description(message.language))
@@ -68,7 +68,7 @@ class Help extends Command {
         });
 
         let embed = new Discord.MessageEmbed()
-            .setDescription(message.language.get("HELP_EDESCRIPTION", data.settings.prefix))
+            .setDescription(message.language.get("HELP_EDESCRIPTION", data.guild.prefix))
             .setColor(data.config.embed.color)
             .setFooter(data.config.embed.footer);
         categories.sort().forEach((cat) => {
@@ -77,9 +77,9 @@ class Help extends Command {
             embed.addField((emoji ? emoji.toString() : "")+" "+cat+" - ("+tCommands.size+")", tCommands.map((cmd) => "`"+cmd.help.name+"`").join(", "));
         });
         if(message.guild){
-            if(data.settings.customCommands.length > 0){
+            if(data.guild.customCommands.length > 0){
                 let emoji = emojis.find((e) => e.name === "custom_category_atlanta");
-                embed.addField((emoji ? emoji.toString() : "")+" "+message.guild.name+" | "+message.language.get("UTILS").CUSTOM_COMMANDS+" - ("+data.settings.customCommands.length+")", data.settings.customCommands.map((cmd) => "`"+cmd.name+"`").join(", "));
+                embed.addField((emoji ? emoji.toString() : "")+" "+message.guild.name+" | "+message.language.get("UTILS").CUSTOM_COMMANDS+" - ("+data.guild.customCommands.length+")", data.guild.customCommands.map((cmd) => "`"+cmd.name+"`").join(", "));
             }
         }
         let inviteURL = message.client.config.supportURL || await message.client.functions.supportLink(message.client).catch((err) => {});

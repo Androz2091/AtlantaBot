@@ -23,21 +23,21 @@ class Welcome extends Command {
 
     async run (message, args, data) {
 
-        if(args[0] === "test" && data.settings.plugins.welcome.enabled){
+        if(args[0] === "test" && data.guild.plugins.welcome.enabled){
             message.client.emit("guildMemberAdd", message.member);
             return message.channel.send(message.language.get("WELCOME_TEST_SUCCESS"));
         }
 
-        if(data.settings.plugins.welcome.enabled){
-            data.settings.plugins.welcome = {
+        if(data.guild.plugins.welcome.enabled){
+            data.guild.plugins.welcome = {
                 enabled: false,
                 message: null,
                 channel: null,
                 withImage: null
             };
-            data.settings.markModified("plugins.welcome");
-            data.settings.save();
-            return message.channel.send(message.language.get("WELCOME_DISABLED", data.settings.prefix));
+            data.guild.markModified("plugins.welcome");
+            data.guild.save();
+            return message.channel.send(message.language.get("WELCOME_DISABLED", data.guild.prefix));
         }
 
         let welcome = {
@@ -55,18 +55,18 @@ class Welcome extends Command {
             if(welcome.message){
                 if(msg.content.toLowerCase() === message.language.get("UTILS").YES.toLowerCase()){
                     welcome.withImage = true;
-                    message.channel.send(message.language.get("WELCOME_FORM_SUCCESS", welcome.channel, data.settings.prefix));
-                    data.settings.plugins.welcome = welcome;
-                    data.settings.markModified("plugins.welcome");
-                    await data.settings.save();
+                    message.channel.send(message.language.get("WELCOME_FORM_SUCCESS", welcome.channel, data.guild.prefix));
+                    data.guild.plugins.welcome = welcome;
+                    data.guild.markModified("plugins.welcome");
+                    await data.guild.save();
                     return collector.stop();
                 }
                 if(msg.content.toLowerCase() === message.language.get("UTILS").NO.toLowerCase()){
                     welcome.withImage = false;
-                    message.channel.send(message.language.get("WELCOME_FORM_SUCCESS", welcome.channel, data.settings.prefix));
-                    data.settings.plugins.welcome = welcome;
-                    data.settings.markModified("plugins.welcome");
-                    await data.settings.save();
+                    message.channel.send(message.language.get("WELCOME_FORM_SUCCESS", welcome.channel, data.guild.prefix));
+                    data.guild.plugins.welcome = welcome;
+                    data.guild.markModified("plugins.welcome");
+                    await data.guild.save();
                     return collector.stop();
                 }
                 return message.channel.send(message.language.get("ERR_YES_NO"));

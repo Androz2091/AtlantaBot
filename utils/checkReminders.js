@@ -9,7 +9,7 @@ module.exports = {
     init(client){
         setInterval(async function(){
             let language = new(require(`../languages/${client.config.defaultLanguage}`));
-            let users = await client.usersData.find({}).lean();
+            let users = await client.usersData.find().lean();
             let dateNow = Date.now();
             users.forEach(async (user) => {
                 let dUser = client.users.get(user.id);

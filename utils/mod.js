@@ -9,11 +9,11 @@ module.exports = class Mod {
 
     /**
      * Send a log embed in the logs channel
-     * @param {object} settings The guild settings
+     * @param {object} guildData The guild data
      * @param {object} options The sanction options
      * @param {object} language The guild language
      */ 
-    log(settings, options, language){
+    log(guildData, options, language){
 
         let embed = new Discord.MessageEmbed()
             .setTimestamp()
@@ -24,26 +24,26 @@ module.exports = class Mod {
 
         switch(options.type){
             case "ban":
-                embed.setAuthor(language.get("MODLOGS_TYPES").BAN.replace("{case}", settings.cases.count+1))
+                embed.setAuthor(language.get("MODLOGS_TYPES").BAN.replace("{case}", guildData.cases.count+1))
                 .setColor("#e02316");
                 break;
             case "kick":
-                embed.setAuthor(language.get("MODLOGS_TYPES").KICK.replace("{case}", settings.cases.count+1))
+                embed.setAuthor(language.get("MODLOGS_TYPES").KICK.replace("{case}", guildData.cases.count+1))
                 .setColor("#e88709");
                 break;
             case "warn":
-                embed.setAuthor(language.get("MODLOGS_TYPES").WARN.replace("{case}", settings.cases.count+1))
+                embed.setAuthor(language.get("MODLOGS_TYPES").WARN.replace("{case}", guildData.cases.count+1))
                 .setColor("#8c14e2");
                 break;
             case "mute":
-                embed.setAuthor(language.get("MODLOGS_TYPES").MUTE.replace("{case}", settings.cases.count+1))
+                embed.setAuthor(language.get("MODLOGS_TYPES").MUTE.replace("{case}", guildData.cases.count+1))
                 .addField(language.get("MODLOGS_HEADINGS")[3], options.time, true)
                 .addField(language.get("MODLOGS_HEADINGS")[4], language.printDate(new Date(Date.now()+ms(options.time)), true), true)
                 .setColor("#f44271");
                 break;
         }
 
-        let channel = this.client.channels.get(settings.plugins.modlogs);
+        let channel = this.client.channels.get(guildData.plugins.modlogs);
         if(channel){
             channel.send(embed);
         }
@@ -52,17 +52,17 @@ module.exports = class Mod {
 
     /**
      * Update guild cases
-     * @param {object} settings The guild settings
+     * @param {object} guildData The guild data
      * @param {object} options The sanction options
      */
-    addCase(settings, options){
+    addCase(guildData, options){
         return new Promise(async function(resolve, reject){
             // Add one to guild cases
-            settings.cases.count = settings.cases.count+1;
+            guildData.cases.count = guildData.cases.count+1;
 
             // Save the case
-            settings.cases.list.push({
-                case: settings.cases.count,
+            guildData.cases.list.push({
+                case: guildData.cases.count,
                 type: options.type,
                 user: options.user.id,
                 moderator: options.moderator.id,
@@ -72,22 +72,22 @@ module.exports = class Mod {
                 reason: options.reason
             });
 
-            settings.markModified("cases");
-            await settings.save();
-            resolve(settings);
+            guildData.markModified("cases");
+            await guildData.save();
+            resolve(guildData);
         });
     }
 
     /**
      * Fetch user sanctions
-     * @param {object} settings The guild settings
+     * @param {object} guildData The guild data
      * @param {object} userID The ID of the user to fetch
      * @param {object} embed The embed to return
      * @param {object} language The language of the guild
      * @returns The user sanctions
      */
-    async fetchUserSanctions(settings, userID, embed, language){
-        let sanctions = settings.cases.list.filter((c) => c.user === userID);
+    async fetchUserSanctions(guildData, userID, embed, language){
+        let sanctions = guildData.cases.list.filter((c) => c.user === userID);
         if(sanctions.length < 1){
             return false;
         }

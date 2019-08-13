@@ -34,7 +34,7 @@ class Wedding extends Command {
         
         // if the message author is already wedded
         if(data.users[0].lover){
-            return message.channel.send(message.language.get("WEDDING_ERR_AUTHOR_MARRIED", data.settings.prefix));
+            return message.channel.send(message.language.get("WEDDING_ERR_AUTHOR_MARRIED", data.guild.prefix));
         }
         // if the member is already wedded
         if(data.users[1].lover){

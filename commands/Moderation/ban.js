@@ -64,8 +64,8 @@ class Ban extends Command {
             };
 
             let Moderator = new(require("../../utils/mod.js"))(this.client);
-            Moderator.log(data.settings, caseInfo, message.language);
-            Moderator.addCase(data.settings, caseInfo);
+            Moderator.log(data.guild, caseInfo, message.language);
+            Moderator.addCase(data.guild, caseInfo);
 
         }).catch((err) => {
             console.log(err)

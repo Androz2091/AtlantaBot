@@ -28,15 +28,15 @@ class Ignore extends Command {
             return message.channel.send(message.language.get("ERR_INVALID_CHANNEL"));
         }
 
-        let ignored = data.settings.ignoredChannels.includes(channel.id);
+        let ignored = data.guild.ignoredChannels.includes(channel.id);
 
         if(ignored){
-            data.settings.ignoredChannels = data.settings.ignoredChannels.filter((ch) => ch !== channel.id);
-            data.settings.save();
+            data.guild.ignoredChannels = data.guild.ignoredChannels.filter((ch) => ch !== channel.id);
+            data.guild.save();
             return message.channel.send(message.language.get("IGNORE_SUCCESS_DISABLED", channel));
         } else if(!ignored){
-            data.settings.ignoredChannels.push(channel.id);
-            data.settings.save();
+            data.guild.ignoredChannels.push(channel.id);
+            data.guild.save();
             return message.channel.send(message.language.get("IGNORE_SUCCESS_ENABLED", channel));
         }
         

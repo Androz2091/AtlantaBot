@@ -34,58 +34,58 @@ class Getconf extends Command {
         }
 
         const headings = message.language.get("CONFIGURATION_HEADINGS"),
-        settings = await message.client.functions.getSettings(message.client, guild);
+        guildData = await message.client.functions.getGuildData(message.client, guild);
         
         let embed = new Discord.MessageEmbed()
             .setAuthor(guild.name, guild.iconURL())
             .setColor(data.config.embed.color)
             .setFooter(data.config.embed.footer);
 
-        embed.addField(message.language.get("UTILS").PREFIX, settings.prefix);
+        embed.addField(message.language.get("UTILS").PREFIX, guildData.prefix);
 
         embed.addField(headings[0][0],
-            (settings.ignoredChannels.length > 0) ?
-            settings.ignoredChannels.map((ch) => "<#"+ch+">").join(", ")
+            (guildData.ignoredChannels.length > 0) ?
+            guildData.ignoredChannels.map((ch) => "<#"+ch+">").join(", ")
             : headings[0][1]
         );
     
         embed.addField(headings[1][0], 
-            (settings.plugins.autorole.enabled) ?
-                message.language.get("CONFIGURATION_AUTOROLE", settings.plugins.autorole.role)
+            (guildData.plugins.autorole.enabled) ?
+                message.language.get("CONFIGURATION_AUTOROLE", guildData.plugins.autorole.role)
             :   headings[1][1]
         );
         
         embed.addField(headings[2][0],
-            (settings.plugins.welcome.enabled) ?
-                message.language.get("CONFIGURATION_WELCOME", settings.plugins.welcome.withImage, settings.plugins.welcome.channel)
+            (guildData.plugins.welcome.enabled) ?
+                message.language.get("CONFIGURATION_WELCOME", guildData.plugins.welcome.withImage, guildData.plugins.welcome.channel)
             :   headings[2][1]
         );
             
         embed.addField(headings[3][0],
-            (settings.plugins.goodbye.enabled) ?
-                message.language.get("CONFIGURATION_GOODBYE", settings.plugins.goodbye.withImage, settings.plugins.goodbye.channel)
+            (guildData.plugins.goodbye.enabled) ?
+                message.language.get("CONFIGURATION_GOODBYE", guildData.plugins.goodbye.withImage, guildData.plugins.goodbye.channel)
             :   headings[3][1]
         );
 
         embed.addField(headings[4][0],
-            (settings.slowmode.channels.length > 0) ?
-                settings.slowmode.channels.map((ch) => `<#${ch.id}> (${message.language.convertMs(ch.time)})\n`)
+            (guildData.slowmode.channels.length > 0) ?
+                guildData.slowmode.channels.map((ch) => `<#${ch.id}> (${message.language.convertMs(ch.time)})\n`)
             :   headings[4][1]
         );
 
         embed.addField(headings[5][0],
-            message.language.get("CONFIGURATION_MODLOGS", settings.plugins.modlogs)+"\n"+
-            message.language.get("CONFIGURATION_SUGGESTIONS", settings.plugins.suggestions)+"\n"+
-            message.language.get("CONFIGURATION_FORTNITESHOP", settings.plugins.fortniteshop)
+            message.language.get("CONFIGURATION_MODLOGS", guildData.plugins.modlogs)+"\n"+
+            message.language.get("CONFIGURATION_SUGGESTIONS", guildData.plugins.suggestions)+"\n"+
+            message.language.get("CONFIGURATION_FORTNITESHOP", guildData.plugins.fortniteshop)
         );
         
         embed.addField(headings[6][0],
-            message.language.get("CONFIGURATION_WARNS", settings.plugins.warnsSanctions.kick, settings.plugins.warnsSanctions.ban)
+            message.language.get("CONFIGURATION_WARNS", guildData.plugins.warnsSanctions.kick, guildData.plugins.warnsSanctions.ban)
         );
         
         embed.addField(headings[7][0],
-            (settings.plugins.automod.enabled) ?
-                message.language.get("CONFIGURATION_AUTOMOD", settings.plugins.automod.ignored)
+            (guildData.plugins.automod.enabled) ?
+                message.language.get("CONFIGURATION_AUTOMOD", guildData.plugins.automod.ignored)
             :   headings[7][1]
         );
 

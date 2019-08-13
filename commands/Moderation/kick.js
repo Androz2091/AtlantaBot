@@ -57,8 +57,8 @@ class Kick extends Command {
             };
 
             let Moderator = new(require("../../utils/mod.js"))(this.client);
-            Moderator.log(data.settings, caseInfo, message.language);
-            Moderator.addCase(data.settings, caseInfo);
+            Moderator.log(data.guild, caseInfo, message.language);
+            Moderator.addCase(data.guild, caseInfo);
 
         }).catch((err) => {
             return message.channel.send(message.language.get("KICK_ERR_PERMISSIONS"));

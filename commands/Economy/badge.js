@@ -60,7 +60,7 @@ class Badge extends Command {
 
         let embed = new Discord.MessageEmbed()
             .setAuthor(message.language.get("BADGE_EMBED_TITLE"))
-            .setDescription(message.language.get("BADGE_EMBED_DESCRIPTION", data.settings.prefix))
+            .setDescription(message.language.get("BADGE_EMBED_DESCRIPTION", data.guild.prefix))
             .setColor(data.config.embed.color)
             .setFooter(data.config.embed.footer);
             

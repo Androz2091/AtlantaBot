@@ -62,20 +62,20 @@ class Mute extends Command {
         };
 
         let Moderator = new(require("../../utils/mod.js"))(this.client);
-        Moderator.log(data.settings, caseInfo, message.language);
-        await Moderator.addCase(data.settings, caseInfo);
+        Moderator.log(data.guild, caseInfo, message.language);
+        await Moderator.addCase(data.guild, caseInfo);
         
-        let isAlreadyMuted = data.settings.muted.find((d) => d.userID === member.id);
+        let isAlreadyMuted = data.guild.muted.find((d) => d.userID === member.id);
         if(isAlreadyMuted){
-            data.settings.muted = data.settings.muted.filter((d) => d.userID !== member.id);
+            data.guild.muted = data.guild.muted.filter((d) => d.userID !== member.id);
         }
 
-        data.settings.muted.push({
+        data.guild.muted.push({
             userID: member.id,
             endDate: new Date(Date.now()+ms(time)),
-            caseNumber: data.settings.cases.count
+            caseNumber: data.guild.cases.count
         });
-        await data.settings.save();
+        await data.guild.save();
 
     }
 

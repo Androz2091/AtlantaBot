@@ -28,12 +28,12 @@ class Delcommand extends Command {
             return message.channel.send(message.language.get("DELCOMMAND_ERR_NAME"));
         }
 
-        if(!data.settings.customCommands.find((c) => c.name === name)){
+        if(!data.guild.customCommands.find((c) => c.name === name)){
             return message.channel.send(message.language.get("DELCOMMAND_EXISTS", name));
         }
         
-        data.settings.customCommands = data.settings.customCommands.filter((c) => c.name !== name);
-        data.settings.save();
+        data.guild.customCommands = data.guild.customCommands.filter((c) => c.name !== name);
+        data.guild.save();
 
         message.channel.send(message.language.get("DELCOMMAND_SUCCESS", name));
     }

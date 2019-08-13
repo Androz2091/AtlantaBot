@@ -31,8 +31,8 @@ class Setprefix extends Command {
             return message.channel.send(message.language.get("SETPREFIX_ERR_CARACT"));
         }
         
-        data.settings.prefix = prefix;
-        data.settings.save();
+        data.guild.prefix = prefix;
+        data.guild.save();
 
         // Sucess
         return message.channel.send(message.language.get("SETPREFIX_SUCCESS", prefix));

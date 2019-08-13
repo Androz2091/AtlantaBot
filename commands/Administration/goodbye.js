@@ -23,21 +23,21 @@ class Goodbye extends Command {
 
     async run (message, args, data) {
 
-        if(args[0] === "test" && data.settings.plugins.goodbye.enabled){
+        if(args[0] === "test" && data.guild.plugins.goodbye.enabled){
             message.client.emit("guildMemberRemove", message.member);
             return message.channel.send(message.language.get("GOODBYE_TEST_SUCCESS"));
         }
 
-        if(data.settings.plugins.goodbye.enabled){
-            data.settings.plugins.goodbye = {
+        if(data.guild.plugins.goodbye.enabled){
+            data.guild.plugins.goodbye = {
                 enabled: false,
                 message: null,
                 channel: null,
                 withImage: null
             };
-            data.settings.markModified("plugins.goodbye");
-            data.settings.save();
-            return message.channel.send(message.language.get("GOODBYE_DISABLED", data.settings.prefix));
+            data.guild.markModified("plugins.goodbye");
+            data.guild.save();
+            return message.channel.send(message.language.get("GOODBYE_DISABLED", data.guild.prefix));
         }
 
         let goodbye = {
@@ -55,18 +55,18 @@ class Goodbye extends Command {
             if(goodbye.message){
                 if(msg.content.toLowerCase() === message.language.get("UTILS").YES.toLowerCase()){
                     goodbye.withImage = true;
-                    message.channel.send(message.language.get("GOODBYE_FORM_SUCCESS", goodbye.channel, data.settings.prefix));
-                    data.settings.plugins.goodbye = goodbye;
-                    data.settings.markModified("plugins.goodbye");
-                    await data.settings.save();
+                    message.channel.send(message.language.get("GOODBYE_FORM_SUCCESS", goodbye.channel, data.guild.prefix));
+                    data.guild.plugins.goodbye = goodbye;
+                    data.guild.markModified("plugins.goodbye");
+                    await data.guild.save();
                     return collector.stop();
                 }
                 if(msg.content.toLowerCase() === message.language.get("UTILS").NO.toLowerCase()){
                     goodbye.withImage = false;
-                    message.channel.send(message.language.get("GOODBYE_FORM_SUCCESS", goodbye.channel, data.settings.prefix));
-                    data.settings.plugins.goodbye = goodbye;
-                    data.settings.markModified("plugins.goodbye");
-                    await data.settings.save();
+                    message.channel.send(message.language.get("GOODBYE_FORM_SUCCESS", goodbye.channel, data.guild.prefix));
+                    data.guild.plugins.goodbye = goodbye;
+                    data.guild.markModified("plugins.goodbye");
+                    await data.guild.save();
                     return collector.stop();
                 }
                 return message.channel.send(message.language.get("ERR_YES_NO"));

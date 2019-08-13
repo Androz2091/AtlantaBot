@@ -33,7 +33,7 @@ class Invite extends Command {
         
         let embed = new Discord.MessageEmbed()
             .setAuthor(message.language.get("INVITE_TITLE"))
-            .setDescription(message.language.get("INVITE_DESC", data.settings.prefix))
+            .setDescription(message.language.get("INVITE_DESC", data.guild.prefix))
             .addField(message.language.get("INVITE_HEADINGS")[0], inviteLink)
             .addField(message.language.get("INVITE_HEADINGS")[1], voteURL)
             .addField(message.language.get("INVITE_HEADINGS")[2], supportURL)

@@ -29,21 +29,21 @@ class Automod extends Command {
         }
 
         if(status === "on"){
-            data.settings.plugins.automod = { enabled: true, ignored: [] };
-            data.settings.markModified("plugins.automod");
-            data.settings.save();
-            message.channel.send(message.language.get("AUTOMOD_SUCCESS_ENABLED", data.settings.prefix));
+            data.guild.plugins.automod = { enabled: true, ignored: [] };
+            data.guild.markModified("plugins.automod");
+            data.guild.save();
+            message.channel.send(message.language.get("AUTOMOD_SUCCESS_ENABLED", data.guild.prefix));
         } else if (status === "off"){
             if(message.mentions.channels.filter((ch) => ch.type === "text" && ch.guild.id === message.guild.id).first()){
                 let channel = message.mentions.channels.first();
-                data.settings.plugins.automod.ignored.push(channel);
-                data.settings.markModified("plugins.automod");
-                data.settings.save();
+                data.guild.plugins.automod.ignored.push(channel);
+                data.guild.markModified("plugins.automod");
+                data.guild.save();
                 message.channel.send(message.language.get("AUTOMOD_SUCCESS_DISABLED_CHANNEL", channel));
             } else {
-                data.settings.plugins.automod = { enabled: false, ignored: [] };
-                data.settings.markModified("plugins.automod");
-                data.settings.save();
+                data.guild.plugins.automod = { enabled: false, ignored: [] };
+                data.guild.markModified("plugins.automod");
+                data.guild.save();
                 message.channel.send(message.language.get("AUTOMOD_SUCCESS_DISABLED"));
             }
         }

@@ -28,7 +28,7 @@ class Addcommand extends Command {
             return message.channel.send(message.language.get("ADDCOMMAND_ERR_NAME"));
         }
 
-        if(this.client.commands.get(name) || this.client.aliases.get(name) || data.settings.customCommands.find((c) => c.name === name)){
+        if(this.client.commands.get(name) || this.client.aliases.get(name) || data.guild.customCommands.find((c) => c.name === name)){
             return message.channel.send(message.language.get("ADDCOMMAND_ERR_EXISTS", name));
         }
 
@@ -37,11 +37,11 @@ class Addcommand extends Command {
             return message.channel.send(message.language.get("ADDCOMMAND_ERR_ANSWER"));
         }
         
-        data.settings.customCommands.push({
+        data.guild.customCommands.push({
             name: name.toLowerCase(),
             answer: answer
         });
-        data.settings.save();
+        data.guild.save();
         
         message.channel.send(message.language.get("ADDCOMMAND_SUCCESS", name));
     }

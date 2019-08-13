@@ -41,26 +41,26 @@ class Autorole extends Command {
                 }
             }
 
-            data.settings.plugins.autorole = {
+            data.guild.plugins.autorole = {
                 enabled: true,
                 role: role.id
             };
-            data.settings.markModified("plugins.autorole");
-            data.settings.save();
+            data.guild.markModified("plugins.autorole");
+            data.guild.save();
 
-            message.channel.send(message.language.get("AUTOROLE_ENABLED", data.settings.prefix));
+            message.channel.send(message.language.get("AUTOROLE_ENABLED", data.guild.prefix));
         }
 
         if(status === "off"){
 
-            data.settings.plugins.autorole = {
+            data.guild.plugins.autorole = {
                 enabled: false,
                 role: null
             };
-            data.settings.markModified("plugins.autorole");
-            data.settings.save();
+            data.guild.markModified("plugins.autorole");
+            data.guild.save();
             
-            message.channel.send(message.language.get("AUTOROLE_DISABLED", data.settings.prefix));
+            message.channel.send(message.language.get("AUTOROLE_DISABLED", data.guild.prefix));
 
         }
         

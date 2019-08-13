@@ -39,7 +39,7 @@ class Translate extends Command {
         let pWait = await message.channel.send(message.language.get("UTILS").PLEASE_WAIT);
         
         if(!args[0]){
-            return pWait.edit(message.language.get("TRANSLATE_ERR_LANG", data.settings.prefix));
+            return pWait.edit(message.language.get("TRANSLATE_ERR_LANG", data.guild.prefix));
         }
 
         // If the user wants the languages list
@@ -71,7 +71,7 @@ class Translate extends Command {
         let toTranslate = args.slice(1).join(" ");
         
         if(!langs.find((lang) => lang.name === language)){
-            return pWait.edit(message.language.get("TRANSLATE_ERR_NOT_FOUND", data.settings.prefix, language));
+            return pWait.edit(message.language.get("TRANSLATE_ERR_NOT_FOUND", data.guild.prefix, language));
         }
 
         let isAlias = langs.find((lang) => lang.aliases.includes(language));

@@ -35,7 +35,7 @@ class Sanctions extends Command {
 
         let Moderator = new(require("../../utils/mod.js"))(this.client);
 
-        let newEmbed = await Moderator.fetchUserSanctions(data.settings, user.id, embed, message.language);
+        let newEmbed = await Moderator.fetchUserSanctions(data.guild, user.id, embed, message.language);
 
         if(!newEmbed){
             embed.setDescription(message.language.get("SANCTIONS_ERR_NOTHING"));

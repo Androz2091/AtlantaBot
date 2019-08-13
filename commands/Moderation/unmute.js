@@ -28,11 +28,11 @@ class Unmute extends Command {
             return message.channel.send(message.language.get("ERR_INVALID_MEMBER"));
         }
         
-        let index = data.settings.muted.findIndex((d) => d.userID === member.id);
+        let index = data.guild.muted.findIndex((d) => d.userID === member.id);
         if(index === 0 || index){
-            data.settings.muted[parseInt(index, 10)].endDate = Date.now();
-            data.settings.markModified("muted");
-            data.settings.save();
+            data.guild.muted[parseInt(index, 10)].endDate = Date.now();
+            data.guild.markModified("muted");
+            data.guild.save();
             message.channel.send(message.language.get("UNMUTE_SUCCESS_USER", member.user));
         } else {
             message.channel.send(message.language.get("UNMUTE_ERR_NOT_MUTED"));

@@ -49,22 +49,22 @@ class Setfortniteshop extends Command {
             return message.channel.send(message.language.get("ERR_COMMAND_DISABLED"));
         }
 
-        let lang = data.settings.language,
+        let lang = data.guild.language,
             fortniteClient = new fortnite.Client({
                 fnbrToken: data.config.apiKeys.fortniteFNBR
             })
 
-        if (data.settings.plugins.fortniteshop && !message.mentions.channels.first() || message.mentions.channels.first() && data.settings.plugins.fortniteshop === message.mentions.channels.first().id) {
-            data.settings.plugins.fortniteshop = false;
-            data.settings.markModified("plugins.fortniteshop");
-            data.settings.save();
+        if (data.guild.plugins.fortniteshop && !message.mentions.channels.first() || message.mentions.channels.first() && data.guild.plugins.fortniteshop === message.mentions.channels.first().id) {
+            data.guild.plugins.fortniteshop = false;
+            data.guild.markModified("plugins.fortniteshop");
+            data.guild.save();
             return message.channel.send(message.language.get("SETFORTNITESHOP_DISABLED"));
         }
 
         let channel = message.mentions.channels.first() || message.channel;
-        data.settings.plugins.fortniteshop = channel.id;
-        data.settings.markModified("plugins.fortniteshop");
-        data.settings.save();
+        data.guild.plugins.fortniteshop = channel.id;
+        data.guild.markModified("plugins.fortniteshop");
+        data.guild.save();
 
         message.channel.send(message.language.get("SETFORTNITESHOP_ENABLED", channel.id));
 

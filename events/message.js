@@ -28,17 +28,17 @@ module.exports = class {
         let client = this.client;
         data.config = client.config;
 
-        // Gets settings
-        let settings = await client.functions.getSettings(client, message.guild);
-        data.settings = settings;
+        // Gets guild data
+        let guild = await client.functions.getGuildData(client, message.guild);
+        data.guild = guild;
 
         // Gets language
-        let language = new(require(`../languages/${settings.language}.js`));
+        let language = new(require(`../languages/${guild.language}.js`));
         message.language = language;
 
         // Check if the bot was mentionned
         if(message.content === `<@${client.user.id}>`){
-            return message.reply(language.get("PREFIX_INFO", settings.prefix));
+            return message.reply(language.get("PREFIX_INFO", guild.prefix));
         }
 
         if(message.content === "@someone"){
@@ -54,9 +54,9 @@ module.exports = class {
             await updateXp(message, data);
 
             if(!message.channel.permissionsFor(message.member).has("MANAGE_MESSAGES") && !message.editedAt){
-                let channelSlowmode = data.settings.slowmode.channels.find((ch) => ch.id === message.channel.id);
+                let channelSlowmode = data.guild.slowmode.channels.find((ch) => ch.id === message.channel.id);
                 if(channelSlowmode){
-                    let uSlowmode = data.settings.slowmode.users.find((d) => d.id === (message.author.id+message.channel.id));
+                    let uSlowmode = data.guild.slowmode.users.find((d) => d.id === (message.author.id+message.channel.id));
                     if(uSlowmode){
                         if(uSlowmode.time > Date.now()){
                             message.delete();
@@ -66,17 +66,17 @@ module.exports = class {
                             uSlowmode.time = channelSlowmode.time+Date.now();
                         }
                     } else {
-                        data.settings.slowmode.users.push({
+                        data.guild.slowmode.users.push({
                             id: message.author.id+message.channel.id,
                             time: channelSlowmode.time+Date.now()
                         });
                     }
-                    data.settings.markModified("slowmode.users");
-                    data.settings.save();
+                    data.guild.markModified("slowmode.users");
+                    data.guild.save();
                 }
             }
 
-            if(data.settings.plugins.automod.enabled && !data.settings.plugins.automod.ignored.includes(message.channel.id)){
+            if(data.guild.plugins.automod.enabled && !data.guild.plugins.automod.ignored.includes(message.channel.id)){
                 if(/(discord\.(gg|io|me|li)\/.+|discordapp\.com\/invite\/.+)/i.test(message.content)){
                     if(!message.channel.permissionsFor(message.member).has("MANAGE_MESSAGES")){
                         message.delete();
@@ -86,17 +86,17 @@ module.exports = class {
                 }
             }
 
-            if(!data.settings.cases){
-                data.settings.cases = {
+            if(!data.guild.cases){
+                data.guild.cases = {
                     count: 0,
                     list: []
                 };
-                data.settings.save();
+                data.guild.save();
             }
 
-            if(data.settings.warns){
-                delete data.settings.warns;
-                data.settings.save();
+            if(data.guild.warns){
+                delete data.guild.warns;
+                data.guild.save();
             }
 
             let afkReason = data.users[0].afk;
@@ -127,7 +127,7 @@ module.exports = class {
         
         if(!cmd){
             if(message.guild){
-                let customCommand = data.settings.customCommands.find((c) => c.name === command);
+                let customCommand = data.guild.customCommands.find((c) => c.name === command);
                 if(customCommand){
                     message.channel.send(customCommand.answer);
                 }
@@ -161,7 +161,7 @@ module.exports = class {
             if(neededPermission.length > 0){
                 return message.channel.send(language.get("ERR_MISSING_MEMBER_PERMS", neededPermission.map((p) => `\`${p}\``).join(", ")));
             }
-            if(settings.ignoredChannels.includes(message.channel.id) && !message.member.hasPermission("MANAGE_MESSAGES")){
+            if(guild.ignoredChannels.includes(message.channel.id) && !message.member.hasPermission("MANAGE_MESSAGES")){
                 return (message.delete()) && (message.author.send(language.get("ERR_UNAUTHORIZED_CHANNEL", (message.channel))));
             }
     
