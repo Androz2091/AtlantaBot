@@ -1,49 +1,62 @@
 const mongoose = require("mongoose"),
+Schema = mongoose.Schema,
 config = require("../config.js");
 
-module.exports = mongoose.model("Guild", new mongoose.Schema({
+module.exports = mongoose.model("Guild", new Schema({
+
+    /* REQUIRED */
     id: { type: String }, // Discord ID of the guild
-    membersData: { type: Object, default: {} }, // Members data of the guild
+    
+    /* MEMBERSDATA */
+    membersData: [{ type: Schema.Types.ObjectId, ref: "Member" }], // Members data of the guild
+
+    /* CONFIGURATION */
     language: { type: String, default: config.defaultLanguage }, // Language of the guild
     prefix: { type: String, default: config.prefix }, // Default or custom prefix of the guild
     plugins: { type: Object, default: { // Plugins data
+        // Welcome messages
         welcome: {
-            enabled: false,
-            message: null,
-            channel: null,
-            withImage: null
+            enabled: false, // Whether the welcome messages are enabled
+            message: null, // The welcome message
+            channel: null, // The channel to send the welcome messages
+            withImage: null // Whether the welcome images are enabled
         },
+        // Goodbye messages
         goodbye: {
-            enabled: false,
-            message: null,
-            channel: null,
-            withImage: null
+            enabled: false, // Whether the goodbye messages are enabled
+            message: null, // The goodbye message
+            channel: null, // The channel to send the goodbye messages
+            withImage: null // Whether the goodbye images are enabled
         },
+        // Autorole
         autorole: {
-            enabled: false,
-            role: null
+            enabled: false, // Whether the autorole is enabled
+            role: null // The role to add when a member join the server
         },
+        // Auto moderation
         automod: {
-            enabled: false,
-            ignored: []
+            enabled: false, // Whether the auto moderation is enabled
+            ignored: [] // The channels in which the auto moderation is disabled
         },
+        // Auto sanctions
         warnsSanctions: {
-            kick: false,
-            ban: false
+            kick: false, // The number of warns required to kick the user
+            ban: false // The number of warns required to ban the user
         },
-        suggestions: false,
-        modlogs: false,
-        fortniteshop: false
+        // Tickets
+        tickets: {
+            enabled: false, // Whether the tickets system is enabled
+            category: null // The category for the tickets system
+        },
+        suggestions: false, // the channel in which the suggestions will be sent
+        modlogs: false, // the channel in which the moderation logs (mute, kick, ban, etc...) will be sent
+        fortniteshop: false, // the channel in which the fortnite shop image will be sent at 2.05am
+        logs: false // the channel in which the logs (message deleted, etc...) will be sent
     }},
-    slowmode: { type: Object, default: {
+    slowmode: { type: Object, default: { // Servers slowmode
         users: [],
         channels: []
     }},
     ignoredChannels: { type: Array, default: [] }, // Channels ignored by the bot
-    cases: { type: Object, default: { // Warns data for the guild
-        count: 0,
-        list: []
-    }},
-    muted: { type: Array }, // Members that are muted in this guild
-    customCommands: { type: Array } // Custom commands of the guild
+    customCommands: { type: Array, default: [] } // Custom commands of the guild
 }));
