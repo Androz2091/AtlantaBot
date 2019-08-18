@@ -31,7 +31,7 @@ class Giveaway extends Command {
         }
 
         if(status === "create"){
-            let currentGiveaways = giveaways.fetch().filter((g) => g.guildID === message.guild.id).length;
+            let currentGiveaways = giveaways.fetch().filter((g) => g.guildID === message.guild.id && !g.ended).length;
             if(currentGiveaways > 3){
                 return message.channel.send(message.language.get("GIVEAWAY_ERR_MAX"));
             }

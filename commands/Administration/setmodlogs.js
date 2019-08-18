@@ -23,10 +23,10 @@ class Setmodlogs extends Command {
 
     async run (message, args, data) {
         
-        let channel = message.mentions.channels.filter((ch) => ch.type === "text" && channel.guild.id === message.guild.id).first() || message.channel;
-        data.guild.plugins.modlogs = channel.id;
-        data.guild.markModified("plugins.modlogs");
-        data.guild.save();
+        let channel = message.mentions.channels.filter((ch) => ch.type === "text" && ch.guild.id === message.guild.id).first() || message.channel;
+        data.settings.plugins.modlogs = channel.id;
+        data.settings.markModified("plugins.modlogs");
+        data.settings.save();
 
         // Send success message
         message.channel.send(message.language.get("SETMODLOGS_SUCCESS", channel.id));
