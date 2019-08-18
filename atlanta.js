@@ -1,71 +1,12 @@
-// Load up the discord.js library
-const { Client, Collection } = require("discord.js");
-// We also load the rest of the things we need in this file:
 const util = require("util"),
 fs = require("fs"),
-path = require("path"),
 readdir = util.promisify(fs.readdir),
 Idiot = require("idiotic-api"),
 mongoose = require("mongoose");
 
-// Creates new class
-class Atlanta extends Client {
-
-    constructor (options) {
-        super(options);
-        this.config = require("./config"); // Load the config file
-        this.commands = new Collection(); // Creates new commands collection
-        this.aliases = new Collection(); // Creates new command aliases collection
-        this.logger = require("./utils/logger"); // Load the logger file
-        this.wait = util.promisify(setTimeout); // client.wait(1000) - Wait 1 second
-        this.functions = require("./utils/functions"); // Load the functions file
-        this.guildsData = require("./base/Guild"); // Guild mongoose model
-        this.usersData = require("./base/User"); // User mongoose model
-        this.dashboard = require("./dashboard/app"); // Dashboard app
-        this.queues = new Collection(); // This collection will be used for the music
-    }
-
-    // This function is used to load a command and add it to the collection
-    loadCommand (commandPath, commandName) {
-        try {
-            const props = new (require(`${commandPath}${path.sep}${commandName}`))(this);
-            this.logger.log(`Loading Command: ${props.help.name}. 👌`, "log");
-            props.conf.location = commandPath;
-            if (props.init){
-                props.init(this);
-            }
-            this.commands.set(props.help.name, props);
-            props.conf.aliases.forEach((alias) => {
-                this.aliases.set(alias, props.help.name);
-            });
-            return false;
-        } catch (e) {
-            return `Unable to load command ${commandName}: ${e}`;
-        }
-    }
-
-    // This function is used to unload a command (you need to load them again)
-    async unloadCommand (commandPath, commandName) {
-        let command;
-        if(this.commands.has(commandName)) {
-            command = this.commands.get(commandName);
-        } else if(this.aliases.has(commandName)){
-            command = this.commands.get(this.aliases.get(commandName));
-        }
-        if(!command){
-            return `The command \`${commandName}\` doesn't seem to exist, nor is it an alias. Try again!`;
-        }
-        if(command.shutdown){
-            await command.shutdown(this);
-        }
-        delete require.cache[require.resolve(`${commandPath}${path.sep}${commandName}.js`)];
-        return false;
-    }
-
-}
-
-// Creates new client
-const client = new Atlanta();
+// Load Atlanta class
+const Atlanta = require("./base/Atlanta"),
+client = new Atlanta();
 
 const init = async () => {
 
