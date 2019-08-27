@@ -51,7 +51,9 @@ module.exports = class {
 				PROFILE: "Profil",
 				LEADERBOARD: "Classement",
 				ECONOMY: "Économie",
-				KNOW_MORE: "En savoir plus"
+				KNOW_MORE: "En savoir plus",
+				PROFILE: "Profil",
+				SETTINGS: "Paramètres"
 			},
 			
 			/* DBL VOTES */
@@ -716,7 +718,8 @@ module.exports = class {
 			// Headings
 			PROFILE_TITLE: (username) => `Profil de ${username}`,
 			PROFILE_HEADINGS:{
-				MONEY:"💰 Argent",
+				MONEY:"💰 Argent local",
+				GLOBAL_MONEY:"💳 Argent global",
 				REP: "🎩 Réputation",
 				REGISTERED_AT: "📅 Enregistré",
 				LEVEL:"📊 Niveau",
