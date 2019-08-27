@@ -29,7 +29,7 @@ module.exports = class {
         data.config = client.config;
 
         // Gets guild data
-        let guild = await client.functions.getGuildData(client, message.guild);
+        let guild = await client.findOrCreateGuild({ id: message.guild.id });
         data.guild = guild;
 
         // Gets language
@@ -37,7 +37,7 @@ module.exports = class {
         message.language = language;
 
         // Check if the bot was mentionned
-        if(message.content === `<@${client.user.id}>`){
+        if(message.content.match(new RegExp(`^<@!?${client.user.id}>( |)$`))){
             return message.reply(language.get("PREFIX_INFO", guild.prefix));
         }
 
@@ -45,9 +45,12 @@ module.exports = class {
             return client.commands.get("someone").run(message, null, data);
         }
 
-        // Gets the data of the users
-        let usersData = await client.functions.getUsersData(client, [message.author, ...message.mentions.users.values()]);
-        data.users = usersData;
+        // Gets the data of the member
+        let memberData = await client.findOrCreateMember({ id: message.author.id, guildID: message.guild.id });
+        data.memberData = memberData;
+
+        let userData = await client.findOrCreateUser({ id: message.author.id });
+        data.userData = userData;
 
         if(message.guild){
 
@@ -72,7 +75,7 @@ module.exports = class {
                         });
                     }
                     data.guild.markModified("slowmode.users");
-                    data.guild.save();
+                    await data.guild.save();
                 }
             }
 
@@ -86,28 +89,15 @@ module.exports = class {
                 }
             }
 
-            if(!data.guild.cases){
-                data.guild.cases = {
-                    count: 0,
-                    list: []
-                };
-                data.guild.save();
-            }
-
-            if(data.guild.warns){
-                delete data.guild.warns;
-                data.guild.save();
-            }
-
-            let afkReason = data.users[0].afk;
+            let afkReason = data.userData.afk;
             if(afkReason){
-                data.users[0].afk = null;
-                await data.users[0].save();
+                data.userData.afk = null;
+                await data.userData.save();
                 message.channel.send(message.language.get("AFK_DELETED", message.author));
             }
 
             message.mentions.users.forEach(async (u) => {
-                let userData = await message.client.usersData.findOne({id: u.id});
+                let userData = await client.findOrCreateUser({ id: u.id });
                 if(userData.afk){
                     message.channel.send(message.language.get("AFK_MEMBER", u, userData.afk));
                 }
@@ -206,7 +196,7 @@ module.exports = class {
                 command: cmd.help,
                 date: Date.now(),
                 user: message.author.toJSON(),
-                guild: (message.guild ? message.guild.toJSON() : {id:"dm"})
+                guild: (message.guild ? message.guild.toJSON() : { id:"dm" })
             });
             log.save();
         } catch(e){
@@ -221,12 +211,10 @@ module.exports = class {
 */
 
 async function updateXp(msg, data){
-    
-    let user = data.users[0];
 
     // Gets the user informations
-    let points = parseInt(user.exp);
-    let level = parseInt(user.level);
+    let points = parseInt(data.memberData.exp);
+    let level = parseInt(data.memberData.level);
 
     // if the member is already in the cooldown db
     let isInCooldown = xpCooldown[msg.author.id];
@@ -249,10 +237,10 @@ async function updateXp(msg, data){
 
     // check if the member up to the next level
     if(newXp > neededXp){
-        user.level = parseInt(level+1, 10);
+        data.memberData.level = parseInt(level+1, 10);
     }
 
     // Update user data
-    user.exp = parseInt(newXp, 10);
-    await user.save();
+    data.memberData.exp = parseInt(newXp, 10);
+    await data.memberData.save();
 }
