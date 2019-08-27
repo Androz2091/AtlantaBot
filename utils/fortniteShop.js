@@ -787,7 +787,7 @@ async function init(client) {
         if(!client.config.apiKeys.fortniteFNBR || client.config.apiKeys.fortniteFNBR === "") return;
         checkImage(client);
         client.guilds.forEach(async (guild) => {
-            let guildData = await client.functions.getGuildData(guild.client, guild);
+            let guildData = await client.findOrCreateGuild({ id: guild.id });
             let language = new(require("../languages/"+guildData.language+".js"));
             let path = `./assets/img/fortnite/shop/${language.getLang()}/${getFileName()}.png`;
             if(guildData.plugins.fortniteshop && fs.existsSync(path)) {
