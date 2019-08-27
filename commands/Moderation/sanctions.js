@@ -23,26 +23,27 @@ class Sanctions extends Command {
 
     async run (message, args, data) {
         
-        let user = message.mentions.users.first();
+        let user = await this.client.resolveUser(args[0]);
         if(!user){
-            return message.channel.send(message.language.get("ERR_INVALID_MEMBER"));
+            return message.channel.send(message.language.get("ERR_INVALID_USER"));
         }
+        let memberData = await this.client.findOrCreateMember({ id: user.id, guildID: message.guild.id });
 
         let embed = new Discord.MessageEmbed()
             .setAuthor(user.tag, user.displayAvatarURL())
             .setColor(data.config.embed.color)
             .setFooter(data.config.embed.footer);
 
-        let Moderator = new(require("../../utils/mod.js"))(this.client);
-
-        let newEmbed = await Moderator.fetchUserSanctions(data.guild, user.id, embed, message.language);
-
-        if(!newEmbed){
+        if(memberData.sanctions.length < 1){
             embed.setDescription(message.language.get("SANCTIONS_ERR_NOTHING"));
             return message.channel.send(embed);
+        } else {
+            memberData.sanctions.forEach((s) => {
+                embed.addField(s.type+" | #"+s.case, message.language.get("PRINT_SANCTION", s), true);
+            });
         }
 
-        message.channel.send(newEmbed);
+        message.channel.send(embed);
     }
 
 }

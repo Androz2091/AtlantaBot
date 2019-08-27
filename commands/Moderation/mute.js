@@ -24,10 +24,11 @@ class Mute extends Command {
 
     async run (message, args, data) {
         
-        let member = message.mentions.members.first();
+        let member = await this.client.resolveMember(args[0], message.guild);
         if(!member){
             return message.channel.send(message.language.get("ERR_INVALID_MEMBER"));
         }
+        let memberData = await this.client.findOrCreateMember({ id: member.id, guildID: message.guild.id });
 
         let time = args[1];
         if(!time || isNaN(ms(time))){
@@ -50,32 +51,44 @@ class Mute extends Command {
         message.channel.send(message.language.get("MUTE_SUCCESS", member, time, reason));
 
         member.send(message.language.get("MUTE_SUCCESS_DM", message, time, reason));
-        
+
+        data.guild.casesCount++;
+
         let caseInfo = {
-            channel: message.channel,
-            moderator: message.author,
-            user: member.user,
+            channel: message.channel.name,
+            moderator: message.author.id,
             date: Date.now(),
-            reason: reason,
             type: "mute",
-            time: time
+            case: data.guild.casesCount,
+            reason,
+            time
         };
 
-        let Moderator = new(require("../../utils/mod.js"))(this.client);
-        Moderator.log(data.guild, caseInfo, message.language);
-        await Moderator.addCase(data.guild, caseInfo);
-        
-        let isAlreadyMuted = data.guild.muted.find((d) => d.userID === member.id);
-        if(isAlreadyMuted){
-            data.guild.muted = data.guild.muted.filter((d) => d.userID !== member.id);
-        }
+        memberData.mute.muted = true;
+        memberData.mute.endDate = Date.now()+ms(time);
+        memberData.mute.case = data.guild.casesCount;
+        memberData.sanctions.push(caseInfo);
 
-        data.guild.muted.push({
-            userID: member.id,
-            endDate: new Date(Date.now()+ms(time)),
-            caseNumber: data.guild.cases.count
-        });
+        memberData.markModified("sanctions");
+        memberData.markModified("mute");
+        memberData.save();
+
         await data.guild.save();
+
+        if(data.guild.plugins.modlogs){
+            let channel = message.guild.channels.get(data.guild.plugins.modlogs);
+            if(!channel) return;
+            let headings = message.language.get("MODLOGS_HEADINGS");
+            let embed = new Discord.MessageEmbed()
+                .setAuthor(message.language.get("MUTE_TITLE_LOGS", data.guild.casesCount))
+                .addField(headings.USER, `\`${member.user.tag}\` (${member.user.toString()})`, true)
+                .addField(headings.MODERATOR, `\`${message.author.tag}\` (${message.author.toString()})`, true)
+                .addField(headings.REASON, reason, true)
+                .addField(headings.TIME, time, true)
+                .addField(headings.EXPIRATION, message.language.printDate(new Date(Date.now()+ms(time))), true)
+                .setColor("#f44271");
+            channel.send(embed);
+        }
 
     }
 

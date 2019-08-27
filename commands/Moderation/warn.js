@@ -23,13 +23,14 @@ class Warn extends Command {
 
     async run (message, args, data) {
         
-        let member = message.mentions.members.first();
+        let member = await this.client.resolveMember(args[0], message.guild);
         if(!member){
             return message.channel.send(message.language.get("ERR_INVALID_MEMBER"));
         }
         if(member.user.bot){
             return message.channel.send(message.language.get("ERR_BOT_USER"));
         }
+        let memberData = await this.client.findOrCreateMember({ id: member.id, guildID: message.guild.id });
 
         let reason = args.slice(1).join(" ");
         if(!reason){
@@ -37,47 +38,57 @@ class Warn extends Command {
         }
 
         // Gets current member sanctions
-        let sanctionsCount = data.guild.cases.list.filter((d) => d.user === member.id).length;
+        let sanctions = memberData.sanctions.length;
         let banCount = data.guild.plugins.warnsSanctions.ban;
         let kickCount = data.guild.plugins.warnsSanctions.kick;
-        let Moderator = new(require("../../utils/mod.js"))(this.client);
+        
+        data.guild.casesCount++;
+        data.guild.save();
+
         let caseInfo = {
             channel: message.channel,
             moderator: message.author,
-            user: member.user,
             date: Date.now(),
-            reason
+            case: data.guild.casesCount,
+            reason,
         };
 
+        let headings = message.language.get("MODLOGS_HEADINGS");
+        let embed = new Discord.MessageEmbed()
+            .addField(headings.USER, `\`${member.user.tag}\` (${member.user.toString()})`)
+            .addField(headings.MODERATOR, `\`${message.author.tag}\` (${message.author.toString()}`);
+
         if(banCount){
-            if(sanctionsCount >= banCount){
+            if(sanctions >= banCount){
                 member.send(message.language.get("BAN_SUCCESS_DM", member.user, message, reason));
                 caseInfo.type = "ban";
-                Moderator.log(data.guild, caseInfo, message.language);
-                Moderator.addCase(data.guild, caseInfo);
+                embed.setAuthor(message.language.get("BAN_TITLE_LOGS"), data.guild.casesCount)
+                .setColor("#e02316");
                 message.guild.members.ban(member).catch((err) => {});
-                return message.channel.send(message.language.get("WARN_AUTOBAN", member, banCount));
+                message.channel.send(message.language.get("WARN_AUTOBAN", member, banCount));
             }
-        }
-
-        if(kickCount){
-            if(sanctionsCount >= kickCount){
+        } else if(kickCount){
+            if(sanctions >= kickCount){
                 member.send(message.language.get("KICK_SUCCESS_DM", member.user, message, reason));
                 caseInfo.type = "kick";
-                Moderator.log(data.guild, caseInfo, message.language);
-                Moderator.addCase(data.guild, caseInfo);
+                embed.setAuthor(message.language.get("KICK_TITLE_LOGS"), data.guild.casesCount)
+                .setColor("#e88709");
                 message.guild.members.kick(member).catch((err) => {});
-                return message.channel.send(message.language.get("WARN_AUTOKICK", member, banCount));
+                message.channel.send(message.language.get("WARN_AUTOKICK", member, banCount));
             }
+        } else {
+            caseInfo.type = "warn";
+            embed.setAuthor(message.language.get("WARN_TITLE_LOGS"), data.guild.casesCount)
+            .setColor("#8c14e2");
+            member.send(message.language.get("WARN_SUCCESS_DM", message, reason));
+            message.channel.send(message.language.get("WARN_SUCCESS", member, reason));
         }
-        
-        caseInfo.type = "warn";
-        Moderator.log(data.guild, caseInfo, message.language);
-        Moderator.addCase(data.guild, caseInfo);
-        
-        member.send(message.language.get("WARN_SUCCESS_DM", message, reason));
-        
-        message.channel.send(message.language.get("WARN_SUCCESS", member, reason));
+
+        if(data.guild.plugins.modlogs){
+            let channel = message.guild.channels.get(data.guild.plugins.modlogs);
+            if(!channel) return;
+            channel.send(embed);
+        }
     }
 
 }

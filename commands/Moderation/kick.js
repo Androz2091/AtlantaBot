@@ -23,11 +23,12 @@ class Kick extends Command {
 
     async run (message, args, data) {
 
-        let member = message.mentions.members.first();
+        let member = await resolveMember(args[0]);
         if(!member){
             return message.channel.send(message.language.get("ERR_INVALID_MEMBER"));
         }
-        let user = member.user;
+        let memberData = await this.client.findOrCreateMember({ id: member.id, guildID: message.guild.id });
+
         
         // Gets the kcik reason
         let reason = args.slice(1).join(" ");
@@ -39,26 +40,41 @@ class Kick extends Command {
             return message.channel.send(message.language.get("KICK_ERR_PERMISSIONS"));
         }
 
-        await user.send(message.language.get("KICK_SUCCESS_DM", user, message, reason)).catch((err) => {});
+        await member.send(message.language.get("KICK_SUCCESS_DM", member.user, message, reason)).catch((err) => {});
 
         // Kick the user
         member.kick().then(() => {
 
             // Send a success message in the current channel
-            message.channel.send(message.language.get("KICK_SUCCESS_CHANNEL", user, message, reason));
+            message.channel.send(message.language.get("KICK_SUCCESS_CHANNEL", member.user, message, reason));
+
+            data.guild.casesCount++;
+            data.guild.save();
 
             let caseInfo = {
                 channel: message.channel,
                 moderator: message.author,
-                user: user,
                 date: Date.now(),
-                reason: reason,
-                type: "kick"
+                type: "kick",
+                case: data.guild.casesCount,
+                reason,
             };
+            
+            memberData.sanctions.push(caseInfo);
+            memberData.save();
 
-            let Moderator = new(require("../../utils/mod.js"))(this.client);
-            Moderator.log(data.guild, caseInfo, message.language);
-            Moderator.addCase(data.guild, caseInfo);
+            if(data.guild.plugins.modlogs){
+                let channel = message.guild.channels.get(data.guild.plugins.modlogs);
+                if(!channel) return;
+                let headings = message.language.get("MODLOGS_HEADINGS");
+                let embed = new Discord.MessageEmbed()
+                    .setAuthor(message.language.get("KICK_TITLE_LOGS", data.guild.casesCount))
+                    .addField(headings.USER, `\`${member.user.tag}\` (${member.user.toString()})`, true)
+                    .addField(headings.MODERATOR, `\`${message.author.tag}\` (${message.author.toString()})`, true)
+                    .addField(headings.REASON, reason, true)
+                    .setColor("#e88709");
+                channel.send(embed);
+            }
 
         }).catch((err) => {
             return message.channel.send(message.language.get("KICK_ERR_PERMISSIONS"));

@@ -24,7 +24,8 @@ class Ban extends Command {
     async run (message, args, data) {
         
         let user = message.mentions.users.first() || await message.client.users.fetch(args[0]).catch((err) => {});
-        
+        let memberData = message.guild.members.get(user.id) ? await this.client.findOrCreateMember({ id: user.id, guildID: message.guild.id }) : null;
+
         if(!user){
             return message.channel.send(message.language.get("ERR_INVALID_MEMBER"));
         }
@@ -49,23 +50,40 @@ class Ban extends Command {
         await user.send(message.language.get("BAN_SUCCESS_DM", user, message, reason)).catch((err) => {});
 
         // Ban the user
-        message.guild.members.ban(user).then(() => {
+        message.guild.members.fetch(user).then(() => {
 
             // Send a success message in the current channel
             message.channel.send(message.language.get("BAN_SUCCESS_CHANNEL", user, message, reason));
 
             let caseInfo = {
-                channel: message.channel,
-                moderator: message.author,
-                user: user,
+                channel: message.channel.id,
+                moderator: message.author.id,
                 date: Date.now(),
-                reason: reason,
-                type: "ban"
+                type: "ban",
+                case: data.guild.casesCount,
+                reason
             };
 
-            let Moderator = new(require("../../utils/mod.js"))(this.client);
-            Moderator.log(data.guild, caseInfo, message.language);
-            Moderator.addCase(data.guild, caseInfo);
+            if(memberData){
+                memberData.sanctions.push(caseInfo);
+                memberData.save();
+            }
+
+            data.guild.casesCount++;
+            data.guild.save();
+
+            if(data.guild.plugins.modlogs){
+                let channel = message.guild.channels.get(data.guild.plugins.modlogs);
+                if(!channel) return;
+                let headings = message.language.get("MODLOGS_HEADINGS");
+                let embed = new Discord.MessageEmbed()
+                    .setAuthor(message.language.get("BAN_TITLE_LOGS", data.guild.casesCount))
+                    .addField(headings.USER, `\`${user.tag}\` (${user.toString()})`, true)
+                    .addField(headings.MODERATOR, `\`${message.author.tag}\` (${message.author.toString()})`, true)
+                    .addField(headings.REASON, reason, true)
+                    .setColor("#e02316");
+                channel.send(embed);
+            }
 
         }).catch((err) => {
             console.log(err)
