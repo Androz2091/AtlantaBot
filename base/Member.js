@@ -23,6 +23,10 @@ module.exports = mongoose.model("Member", new mongoose.Schema({
 
     /* OTHER INFORMATIONS */
     sanctions: { type: Array, default: [] }, // Array of the member sanctions (mute, ban, kick, etc...)
-    muted: { type: Boolean, default: false } // Whether the member is muted
+    mute: { type: Object, default: { // The member mute infos
+        muted: false,
+        case: null,
+        endDate: null
+    }},
     
 }));
