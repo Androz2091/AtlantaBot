@@ -1081,7 +1081,7 @@ module.exports = class {
 			QUEUE_TITLE: `${e.playlist} Playlist`,
 
 			/* TRANSLATE COMMAND  */
-
+11111
 			// Utils
 			TRANSLATE_DESCRIPTION: "Je traduis votre texte !",
 			TRANSLATE_USAGE: "translate [langue] [message]",
@@ -1247,7 +1247,7 @@ module.exports = class {
 				giveawayEnded: "🎉🎉 **GIVEAWAY TERMINÉ** 🎉🎉",
 				timeRemaining: "Temps restant: **{duration}** !",
 				inviteToParticipate: "Réagissez avec 🎉 pour participer !",
-				winMessage: "Féliciations, {winners} ! Vous avez gagné **{prize}** !",
+				winMessage: "Félicitations, {winners} ! Vous avez gagné **{prize}** !",
 				embedFooter: "Giveaways",
 				noWinner: "Giveaway annulé, pas de participation valide.",
 				winners: "gagnant(s)",
