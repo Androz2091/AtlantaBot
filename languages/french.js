@@ -322,7 +322,7 @@ module.exports = class {
 			/* UNBAN COMMAND */
 
 			// Utils
-			UNDESCRIPTION: "Unban l'utilisateur du serveur !",
+			UNBAN_DESCRIPTION: "Unban l'utilisateur du serveur !",
 			UNBAN_USAGE: "unban [userID/user#0000]",
 			UNBAN_EXAMPLES: "$unban 422820341791064085\n$unban Androz#2091",
 			// Errors
@@ -1252,7 +1252,7 @@ module.exports = class {
 				giveawayEnded: "🎉🎉 **GIVEAWAY TERMINÉ** 🎉🎉",
 				timeRemaining: "Temps restant: **{duration}** !",
 				inviteToParticipate: "Réagissez avec 🎉 pour participer !",
-				winMessage: "Féliciations, {winners} ! Vous avez gagné **{prize}** !",
+				winMessage: "Félicitations, {winners} ! Vous avez gagné **{prize}** !",
 				embedFooter: "Giveaways",
 				noWinner: "Giveaway annulé, pas de participation valide.",
 				winners: "gagnant(s)",
