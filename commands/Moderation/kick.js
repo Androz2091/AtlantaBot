@@ -43,7 +43,7 @@ class Kick extends Command {
         await member.send(message.language.get("KICK_SUCCESS_DM", member.user, message, reason)).catch((err) => {});
 
         // Kick the user
-        member.kick().then(() => {
+        member.kick(reason).then(() => {
 
             // Send a success message in the current channel
             message.channel.send(message.language.get("KICK_SUCCESS_CHANNEL", member.user, message, reason));
