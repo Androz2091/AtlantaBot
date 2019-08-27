@@ -4,34 +4,12 @@ const { resolve } = require("path");
 // Register assets fonts
 Canvas.registerFont(resolve("./assets/fonts/theboldfont.ttf"), { family: "Bold" });
 Canvas.registerFont(resolve("./assets/fonts/SketchMatch.ttf"), { family: "SketchMatch" });
-const applyUsername = (canvas, text) => {
+
+const applyText = (canvas, text, defaultFontSize) => {
     const ctx = canvas.getContext("2d");
-
-    // Declare a base size of the font
-    let fontSize = 53;
-
     do {
-        // Assign the font
-        ctx.font = `${fontSize -= 10}px Bold`;
-        // Compare pixel width
+        ctx.font = `${defaultFontSize -= 10}px Bold`;
     } while (ctx.measureText(text).width > 600);
-
-    // Return the result
-    return ctx.font;
-};
-const applyServName = (canvas, text) => {
-    const ctx = canvas.getContext("2d");
-
-    // Declare a base size of the font
-    let fontSize = 48;
-
-    do {
-        // Assign the font
-        ctx.font = `${fontSize -= 10}px Bold`;
-        // Compare pixel width
-    } while (ctx.measureText(text).width > 600);
-
-    // Return the result
     return ctx.font;
 };
 
@@ -45,7 +23,7 @@ module.exports = class {
     
         member.guild.fetch().then(async (guild) => {
 
-            let guildData = await this.client.functions.getGuildData(this.client, guild);
+            let guildData = await this.client.findOrCreateGuild({ id: guild.id });
 
             // Check if the autorole is enabled
             if(guildData.plugins.autorole.enabled){
@@ -74,10 +52,10 @@ module.exports = class {
                         ctx.drawImage(background, 0, 0, canvas.width, canvas.height);
                         // Draw username
                         ctx.fillStyle = "#ffffff";
-                        ctx.font = applyUsername(canvas, member.user.username);
+                        ctx.font = applyText(canvas, member.user.username, 48);
                         ctx.fillText(member.user.username, canvas.width - 660, canvas.height - 248);
                         // Draw server name
-                        ctx.font = applyServName(canvas, text);
+                        ctx.font = applyText(canvas, text, 53);
                         ctx.fillText(text, canvas.width - 690, canvas.height - 65);
                         // Draw discriminator
                         ctx.font = "40px Bold";
