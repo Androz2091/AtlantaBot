@@ -1,3 +1,5 @@
+const Discord = require("discord.js");
+
 /* THIS CHECK IF THERE IS A USER TO UNMUTE */
 
 module.exports = {
@@ -9,12 +11,9 @@ module.exports = {
     init(client){
         setInterval(function(){
             client.guilds.forEach(async (guild) => {
-                let guildData = await client.functions.getGuildData(guild.client, guild);
-                let muted = guildData.muted;
-                if(muted.length < 0) return;
-                let mustBeUnmuted = muted.filter((d) => d.endDate < Date.now());
-                mustBeUnmuted.forEach(async (d) => {
-                    let member = await guild.members.fetch(d.userID);
+                let guildData = await client.findOrCreateGuild({ id: guild.id });
+                guildData.membersData.filter((m) => m.mute.muted).filter((m) => m.mute.endDate < Date.now()).forEach(async (memberData) => {
+                    let member = await guild.members.fetch(memberData.id);
                     if(member){
                         guild.channels.forEach((channel) => {
                             let permOverwrites = channel.permissionOverwrites.get(member.id);
@@ -23,20 +22,24 @@ module.exports = {
                             }
                         });
                     }
-                    guildData.muted = guildData.muted.filter((d) => d.userID !== member.id);
-                    await guildData.save();
                     let language = new(require(`../languages/${guildData.language}`));
                     let embed = new Discord.MessageEmbed()
-                        .setDescription(language.get("UNMUTE_SUCCESS", member.id, d.caseNumber))
+                        .setDescription(language.get("UNMUTE_SUCCESS", memberData.id, memberData.mute.case))
                         .setColor("#f44271")
                         .setFooter(guild.client.config.embed.footer);
                     let channel = guild.channels.get(guildData.plugins.modlogs);
                     if(channel){
                         channel.send(embed);
                     }
+                    memberData.mute = {
+                        muted: false,
+                        endDate: null,
+                        case: null
+                    };
+                    memberData.save();
                 });
             });
-        }, 2500);
+        }, 3500);
     }
 
 };
