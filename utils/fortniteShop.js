@@ -783,7 +783,7 @@ async function init(client) {
         deleteOldFiles();
     }, null, true, "Europe/Paris");
     
-    new CronJob("30 0 2 * * *", async function() {
+    new CronJob("30 1 2 * * *", async function() {
         if(!client.config.apiKeys.fortniteFNBR || client.config.apiKeys.fortniteFNBR === "") return;
         checkImage(client);
         client.guilds.forEach(async (guild) => {
