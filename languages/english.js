@@ -1145,6 +1145,7 @@ module.exports = class {
 			BAN_ERR_PERMISSIONS: `${e.error} | An error has occurred... check that I have the permissions to ban this member and try again!`,
 			BAN_SUCCESS_DM: (user, msg, reason) => `${e.error} | Hello <@${user.id}>,\nYou have just been banned from **${msg.guild.name}** by **${msg.author.tag}** for **${reason}** !`,
 			BAN_SUCCESS_CHANNEL: (user, msg, reason) => `${e.success} | **${user.username}** has just been banned from **${msg.guild.name}** by **${msg.author.tag}** for **${reason}** !`,
+			BAN_TITLE_LOGS: (caseNumber) => `Ban | Case #${caseNumber}`,
 
 			/* KICK COMMAND */
 
@@ -1156,6 +1157,7 @@ module.exports = class {
 			KICK_ERR_PERMISSIONS: `${e.error} | An error has occurred... check that I have the permission to kick this member out and try again!`,
 			KICK_SUCCESS_DM: (user, msg, reason) => `${e.error} | Hello <@${user.id}>,\nYou have just been kicked out from **${msg.guild.name}** by **${msg.author.tag}** for **${reason}** !`,
 			KICK_SUCCESS_CHANNEL: (user, msg, reason) => `${e.success} | **${user.username}** has just been kicked out from **${msg.guild.name}** by **${msg.author.tag}** for **${reason}** !`,
+			KICK_TITLE_LOGS: (caseNumber) => `Kick | Case #${caseNumber}`,
 
 			/* CHECKINVITES COMMAND */
 
@@ -1188,8 +1190,9 @@ module.exports = class {
 			MUTE_USAGE: "mute [@member] [time]",
 			MUTE_EXAMPLES: "$mute @Androz#2091 Spam",
 			// Content
-			MUTE_SUCCESS: (member, time, reason) => `${e.success} | **${member.user.tag} is now muted for **${time}** for **${reason}** !`,
+			MUTE_SUCCESS: (member, time, reason) => `${e.success} | **${member.user.tag}** is now muted for **${time}** for **${reason}** !`,
 			MUTE_SUCCESS_DM: (message, time, reason) => `${e.error} | You are muted in **${message.guild.name}** for **${time}** for **${reason}** !`,
+			MUTE_TITLE_LOGS: (caseNumber) => `Mute | Case #${caseNumber}`,
 
 			/* UNMUTE COMMAND */
 
@@ -1211,6 +1214,7 @@ module.exports = class {
 			SANCTIONS_EXAMPLE: "$sanctions @Androz#2091",
 			// Errors
 			SANCTIONS_ERR_NOTHING: "This member has not committed any infractions.",
+			PRINT_SANCTION: (sData) => `Moderator: <@${sData.moderator}>\nReason: ${sData.reason}`,
 
 			/* WARN COMMAND */
 
@@ -1271,20 +1275,13 @@ module.exports = class {
 			ANNOUNCEMENT_HEADING: "📢 Announcement :",
 
 			/* MODOGS EMBEDS */
-			MODLOGS_TYPES: {
-				BAN: `Ban | Case #{case}`,
-				KICK: `Kick | Case #{case}`,
-				UNBAN: `Unban | Case #{case}`,
-				WARN: `Warn | Case #{case}`,
-				MUTE: `Mute | Case #{case}`,
-				UNMUTE: `Unmute | Case #{case}`,
+			MODLOGS_HEADINGS: {
+				USER: "User",
+				MODERATOR: "Moderator",
+				REASON: "Reason",
+				TIME: "Time",
+				EXPIRATION: "Expiration"
 			},
-			MODLOGS_HEADINGS: [
-				"User",
-				"Moderator",
-				"Reason",
-				"Time"
-			],
 
 			/* SETMODLOGS COMMAND */
 

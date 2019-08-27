@@ -320,7 +320,7 @@ module.exports = class {
 			/* UNBAN COMMAND */
 
 			// Utils
-			UNBAN_DESCRIPTION: "Unban l'utilisateur du serveur !",
+			UNDESCRIPTION: "Unban l'utilisateur du serveur !",
 			UNBAN_USAGE: "unban [userID/user#0000]",
 			UNBAN_EXAMPLES: "$unban 422820341791064085\n$unban Androz#2091",
 			// Errors
@@ -1115,6 +1115,7 @@ module.exports = class {
 			KICK_ERR_PERMISSIONS: `${e.error} | Une erreur est survenue... vérifiez que j'ai bien les permissions d'expulser ce membre et réessayez !`,
 			KICK_SUCCESS_DM: (user, msg, reason) => `${e.error} | Bonjour <@${user.id}>,\nVous venez d'être expulsé de **${msg.guild.name}** par **${msg.author.tag}** pour **${reason}** !`,
 			KICK_SUCCESS_CHANNEL: (user, msg, reason) => `${e.success} | **${user.username}** vient d'être expulsé de **${msg.guild.name}** par **${msg.author.tag}** pour **${reason}** !`,
+			KICK_TITLE_LOGS: (caseNumber) => `Kick | Cas #${caseNumber}`,
 
 			/* CHECKINVITES COMMAND */
 
@@ -1149,6 +1150,7 @@ module.exports = class {
 			// Content
 			MUTE_SUCCESS: (member, time, reason) => `${e.success} | **${member.user.tag}** est maintenant mute pendant **${time}** pour **${reason}** !`,
 			MUTE_SUCCESS_DM: (message, time, reason) => `${e.error} | Vous êtes mute sur **${message.guild.name}** pendant **${time}** pour **${reason}** !`,
+			MUTE_TITLE_LOGS: (caseNumber) => `Mute | Cas #${caseNumber}`,
 
 			/* UNMUTE COMMAND */
 
@@ -1267,6 +1269,7 @@ module.exports = class {
 			SANCTIONS_EXAMPLE: "$sanctions @Androz#2091",
 			// Errors
 			SANCTIONS_ERR_NOTHING: "Ce membre n'a commis aucune infraction.",
+			PRINT_SANCTION: (sData) => `Modérateur: <@${sData.moderator}>\nRaison: ${sData.reason}`,
 
 			/* MODOGS EMBEDS */
 			MODLOGS_TYPES: {
@@ -1276,13 +1279,13 @@ module.exports = class {
 				WARN: `Avertissement | Cas #{case}`,
 				MUTE: `Mute | Cas #{case}`
 			},
-			MODLOGS_HEADINGS: [
-				"Utilisateur",
-				"Modérateur",
-				"Raison",
-				"Temps",
-				"Expiration"
-			],
+			MODLOGS_HEADINGS: {
+				USER: "Utilisateur",
+				MODERATOR: "Modérateur",
+				REASON: "Raison",
+				TIME: "Temps",
+				EXPIRATION: "Expiration"
+			},
 
 			/* SETMODLOGS COMMAND */
 
