@@ -1,7 +1,7 @@
 const Discord = require("discord.js");
 
 module.exports = {
-    
+
     /**
      * Gets the users data
      * @param {object} client The discord client
@@ -49,32 +49,6 @@ module.exports = {
         } else {
             return true;
         }
-    },
-
-    /**
-     * Gets guild data
-     * @param {object} client The discord client
-     * @param {object} guild The guild object
-     * @returns The channel data
-     */
-    async getGuildData(client, guild){
-        return new Promise(async function(resolve, reject){
-            if(guild){
-                let guildData = await client.guildsData.findOne({id: guild.id});
-                if(guildData){
-                    resolve(guildData);
-                } else {
-                    guildData = new client.guildsData({ id: guild.id });
-                    guildData.save();
-                    resolve(guildData);
-                }
-            } else {
-                resolve({
-                    prefix: client.config.prefix,
-                    language: client.config.defaultLanguage
-                });
-            }
-        });
     },
 
     // This function return a valid link to the support server
