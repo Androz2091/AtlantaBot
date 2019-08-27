@@ -58,10 +58,10 @@ class Atlanta extends Client {
     }
 
     // This function is used to find a user data or create it
-    async findOrCreateUser(params, isLean){
+    async findOrCreateUser(param, isLean){
         let usersData = this.usersData;
         return new Promise(async function (resolve, reject){
-            let userData = (isLean ? await usersData.findOne(param).lean() : await userData.findOne(param));
+            let userData = (isLean ? await usersData.findOne(param).lean() : await usersData.findOne(param));
             if(userData){
                 resolve(userData);
             } else {
@@ -83,14 +83,72 @@ class Atlanta extends Client {
             } else {
                 memberData = new membersData(param);
                 await memberData.save();
-                let guild = await guildsData.findOne({ id: memberData.guildID });
+                let guild = await guildsData.findOne({ id: param.guildID });
                 if(guild){
-                    guild.membersData.push(memberData);
+                    guild.membersData.push(memberData._id);
                     await guild.save();
                 }
                 resolve(memberData.toJSON());
             }
         });
+    }
+
+    // This function is used to find a guild data or create it
+    async findOrCreateGuild(param, isLean){
+        let guildsData = this.guildsData;
+        return new Promise(async function (resolve, reject){
+            let guildData = (isLean ? await guildsData.findOne(param).populate("membersData").lean() : await guildsData.findOne(param).populate("membersData"));
+            if(guildData){
+                resolve(guildData);
+            } else {
+                guildData = new guildsData(param);
+                await guildData.save();
+                resolve(guildData.toJSON());
+            }
+        });
+    }
+
+    
+    // This function is used to resolve a user from a string
+    async resolveUser(search){
+        let user = null;
+        if(!search || typeof search !== "string") return;
+        // Try ID search
+        if(search.match(/^<@!?(\d+)>$/)){
+            let id = search.match(/^<@!?(\d+)>$/)[1];
+            user = this.users.fetch(id).catch((err) => {});
+            if(user) return user;
+        }
+        // Try username search
+        if(search.match(/^!?(\w+)#(\d+)$/)){
+            let username = search.match(/^!?(\w+)#(\d+)$/)[0];
+            let discriminator = search.match(/^!?(\w+)#(\d+)$/)[1];
+            user = this.users.find((u) => u.username === username && u.discriminator === discriminator);
+            if(user) return user;
+        }
+        user = await this.users.fetch(search).catch(() => {});
+        return user;
+    }
+
+    async resolveMember(search, guild){
+        let member = null;
+        if(!search || typeof search !== "string") return;
+        // Try ID search
+        if(search.match(/^<@!?(\d+)>$/)){
+            let id = search.match(/^<@!?(\d+)>$/)[1];
+            member = await guild.members.fetch(id).catch(() => {});
+            if(member) return member;
+        }
+        // Try username search
+        if(search.match(/^!?(\w+)#(\d+)$/)){
+            guild = await guild.fetch();
+            let username = search.match(/^!?(\w+)#(\d+)$/)[0];
+            let discriminator = search.match(/^!?(\w+)#(\d+)$/)[1];
+            member = guild.members.find((m) => m.user.username === username && m.user.discriminator === discriminator);
+            if(member) return member;
+        }
+        member = await guild.members.fetch(search).catch(() => {});
+        return member;
     }
 
 }
