@@ -34,7 +34,7 @@ class Getconf extends Command {
         }
 
         const headings = message.language.get("CONFIGURATION_HEADINGS"),
-        guildData = await message.client.functions.getGuildData(message.client, guild);
+        guildData = await this.client.findOrCreateGuild({ id: guild.id });
         
         let embed = new Discord.MessageEmbed()
             .setAuthor(guild.name, guild.iconURL())
