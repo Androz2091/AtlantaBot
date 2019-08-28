@@ -191,14 +191,13 @@ module.exports = class {
         client.logger.log(`${message.author.username} (${message.author.id}) ran command ${cmd.help.name}`, "cmd");
         try {
             cmd.run(message, args, data);
-            let Log = require("../base/Log");
-            let log = new Log({
-                command: cmd.help,
+            guild.commands.push({
+                command: cmd.help.name,
                 date: Date.now(),
-                user: message.author.toJSON(),
-                guild: (message.guild ? message.guild.toJSON() : { id:"dm" })
+                user: message.author.id,
+                guild: (message.guild ? message.guild.id : "dm")
             });
-            log.save();
+            await guild.save();
         } catch(e){
             return message.channel.send(message.language.get("ERR_OCCURENCED"));
         }
