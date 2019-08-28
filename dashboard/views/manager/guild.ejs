@@ -1,17 +1,17 @@
 <!DOCTYPE html>
 <html>
 
-	<%- include includes/head %>
+	<%- include ../includes/head %>
 	
 	<body class="hold-transition skin-blue sidebar-mini">
 
 		<div class="wrapper">
 
 			<!-- The header is the topbar -->
-			<%- include includes/header %>
+			<%- include ../includes/header %>
 
 			<!-- The sidebar includes the menu -->
-			<%- include includes/sidebar %>
+			<%- include ../includes/sidebar %>
 
 			<!-- Content Wrapper. Contains page content -->
 			<div class="content-wrapper">
@@ -55,7 +55,7 @@
                                 <div class="box-header with-border">
                                     <h3 class="box-title"><%= language.get("CONFIG_HEADINGS").BASIC %></h3>
                                 </div>
-                                <form role="form" action="/server/<%= guild.id %>/" method="POST">
+                                <form role="form" action="/manage/<%= guild.id %>/" method="POST">
                                     <!-- /.box-header -->
                                     <div class="box-body">
                                         <!-- text input -->
@@ -89,7 +89,7 @@
                                 <div class="box-header with-border">
                                     <h3 class="box-title"><%= language.get("CONFIG_HEADINGS").CHANNELS %></h3>
                                 </div>
-                                <form role="form" action="/server/<%= guild.id %>/" method="POST">
+                                <form role="form" action="/manage/<%= guild.id %>/" method="POST">
                                     <!-- /.box-header -->
                                     <div class="box-body">
                                         <!-- select -->
@@ -159,7 +159,7 @@
                                 <div class="box-header with-border">
                                     <h3 class="box-title"><%= language.get("CONFIG_HEADINGS").WELCOME %></h3>
                                 </div>
-                                <form role="form" action="/server/<%= guild.id %>/" method="POST">
+                                <form role="form" action="/manage/<%= guild.id %>/" method="POST">
                                     <!-- /.box-header -->
                                     <div class="box-body">
                                         <!-- text input -->
@@ -212,7 +212,7 @@
                                 <div class="box-header with-border">
                                     <h3 class="box-title"><%= language.get("CONFIG_HEADINGS").GOODBYE %></h3>
                                 </div>
-                                <form role="form" action="/server/<%= guild.id %>/" method="POST">
+                                <form role="form" action="/manage/<%= guild.id %>/" method="POST">
                                     <!-- /.box-header -->
                                     <div class="box-body">
                                         <!-- text input -->
@@ -265,7 +265,7 @@
                                 <div class="box-header with-border">
                                     <h3 class="box-title"><%= language.get("CONFIG_HEADINGS").AUTOROLE %></h3>
                                 </div>
-                                <form role="form" action="/server/<%= guild.id %>/" method="POST">
+                                <form role="form" action="/manage/<%= guild.id %>/" method="POST">
                                     <!-- /.box-header -->
                                     <div class="box-body">
                                         <!-- select -->
@@ -305,7 +305,7 @@
 			</div>
             <!-- /.content-wrapper -->
             
-            <%- include includes/footer %>
+            <%- include ../includes/footer %>
 		</div>
 		<!-- ./wrapper -->
 	</body>
