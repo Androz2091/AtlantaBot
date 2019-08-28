@@ -18,7 +18,7 @@ router.get("/:serverID", CheckAuth, async(req, res) => {
     // Fetch guild informations
     let guildInfos = await utils.fetchGuild(guild.id, req.client, req.user.guilds);
 
-    res.render("guild", {
+    res.render("manager/guild", {
         guild: guildInfos,
         user: req.userInfos,
         language: req.language,
@@ -142,7 +142,7 @@ router.post("/:serverID", CheckAuth, async(req, res) => {
     guildData.markModified("plugins");
     await guildData.save();
 
-    res.redirect(303, "/server/"+guild.id);
+    res.redirect(303, "/manage/"+guild.id);
 });
 
 module.exports = router;
