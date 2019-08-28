@@ -50,7 +50,7 @@ class Ban extends Command {
         await user.send(message.language.get("BAN_SUCCESS_DM", user, message, reason)).catch((err) => {});
 
         // Ban the user
-        message.guild.members.ban(user).then(() => {
+        message.guild.members.ban(user, { reason } ).then(() => {
 
             // Send a success message in the current channel
             message.channel.send(message.language.get("BAN_SUCCESS_CHANNEL", user, message, reason));
