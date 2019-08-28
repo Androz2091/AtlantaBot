@@ -23,12 +23,12 @@ class Ban extends Command {
 
     async run (message, args, data) {
         
-        let user = message.mentions.users.first() || await message.client.users.fetch(args[0]).catch((err) => {});
-        let memberData = message.guild.members.get(user.id) ? await this.client.findOrCreateMember({ id: user.id, guildID: message.guild.id }) : null;
-
+        let user = await this.client.resolveUser(args[0]);
         if(!user){
             return message.channel.send(message.language.get("ERR_INVALID_MEMBER"));
         }
+        
+        let memberData = message.guild.members.get(user.id) ? await this.client.findOrCreateMember({ id: user.id, guildID: message.guild.id }) : null;
 
         // If the user is already banned
         let banned = await message.guild.fetchBans();
