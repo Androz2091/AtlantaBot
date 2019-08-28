@@ -30,8 +30,11 @@
             <li class="treeview menu-open">
                 <li><a href="/selector"><i class="fa fa-home"></i> <span><%= language.get("SELECTOR") %></span></a></li>
             </li>
+        </ul>
+        <ul class="sidebar-menu" data-widget="tree">
+            <li class="header"><%= language.get("UTILS").SERVERS_SETTINGS.toUpperCase() %></li>
             <li class="treeview">
-                <a href="/server/">
+                <a href="/manage/">
                 <i class="fa fa-server"></i>
                 <span><%= language.get("SERVERS_LIST") %></span>
                 <span class="pull-right-container">
@@ -41,16 +44,38 @@
                 <% if(user.displayedGuilds){ %>
                     <ul class="treeview-menu">
                         <% user.displayedGuilds.forEach((guild) => { %>
-                            <li><a href="<%= guild.url %>"><i class="fa fa-circle-o text-<%= guild.owner ? 'blue' : 'grey' %>"></i> <%= guild.name %></a></li>
+                            <li><a href="<%= guild.settingsUrl %>"><i class="fa fa-circle-o text-<%= guild.owner ? 'blue' : 'grey' %>"></i> <%= guild.name %></a></li>
                         <% }); %>
                     </ul> 
                 <% } %>
             </li>
         </ul>
         <ul class="sidebar-menu" data-widget="tree">
-            <li class="header"><%= language.get("UTILS").ECONOMY.toUpperCase() %></li>
+            <li class="header"><%= language.get("UTILS").STATS.toUpperCase() %></li>
             <li class="treeview menu-open">
-                <li><a href="/profile"><i class="fa fa-user"></i> <span><%= language.get("UTILS").LEADERBOARD %></span></a></li>
+                <li><a href="/stats"><i class="fa fa-globe"></i> <span><%= language.get("UTILS").GLOBAL_STATS %></span></a></li>
+                <li class="treeview">
+                    <a href="/stats/">
+                    <i class="fa fa-server"></i>
+                    <span><%= language.get("SERVERS_LIST") %></span>
+                    <span class="pull-right-container">
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                    </a>
+                    <% if(user.displayedGuilds){ %>
+                        <ul class="treeview-menu">
+                            <% user.displayedGuilds.forEach((guild) => { %>
+                                <li><a href="<%= guild.statsUrl %>"><i class="fa fa-circle-o text-<%= guild.owner ? 'blue' : 'grey' %>"></i> <%= guild.name %></a></li>
+                            <% }); %>
+                        </ul> 
+                    <% } %>
+                </li>
+            </li>
+        </ul>
+        <ul class="sidebar-menu" data-widget="tree">
+            <li class="header"><%= language.get("UTILS").PROFILE.toUpperCase() %></li>
+            <li class="treeview menu-open">
+                <li><a href="/settings"><i class="fa fa-gear"></i> <span><%= language.get("UTILS").SETTINGS %></span></a></li>
             </li>
         </ul>
     </section>
