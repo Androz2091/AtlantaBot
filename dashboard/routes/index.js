@@ -14,10 +14,4 @@ router.get("/selector", CheckAuth, async(req, res) => {
     });
 });
 
-router.get("/language", CheckAuth, async(req, res) => {
-    let newLanguage = (req.user.locale === "en" ? "fr" : "en");
-    req.user.locale = newLanguage;
-    res.redirect(`${req.query.redirect}`);
-});
-
 module.exports = router;
