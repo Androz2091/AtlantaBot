@@ -41,7 +41,8 @@ module.exports = class {
 				YOUR_PROFILE: "Your profile",
 				UPDATE: "Update",
 				SERVERS: "Servers",
-				MANAGE: "Manage",
+				MANAGE: "Setup",
+				STATS: "Statistics",
 				COMMANDS: "Commands",
 				HOME: "Accueil",
 				SANCTIONS: "Sanctions",
@@ -50,8 +51,15 @@ module.exports = class {
 				NO_CHANNEL: "No channel",
 				PROFILE: "Profile",
 				LEADERBOARD: "Ranking",
+				GLOBAL_LEADERBOARD: "Global ranking",
 				ECONOMY: "Economy",
-				KNOW_MORE: "More information"
+				KNOW_MORE: "More information",
+				SETTINGS: "Settings",
+				SERVERS_SETTINGS: "Servers settings",
+				GLOBAL_STATS: "Global",
+				COMMANDS_USAGE: "Use of commands",
+				WEBSITE: "Website",
+				DISCONNECT: "Disconnect me"
 			},
 			
 			/* DBL VOTES */
@@ -1472,7 +1480,11 @@ module.exports = class {
 			FIRST_LEAD_MONEY: "1st of the ranking \"Credits\"",
 			FIRST_LEAD_LEVEL: "1st of the ranking \"Level\"",
 			FIRST_LEAD_REP: "1st of the ranking \"Reputation\"",
-			VIEW_PUB_PROFILE: "View my public profile"
+			VIEW_PUB_PROFILE: "View my public profile",
+			SETTINGS_HEADINGS: [
+				"🇬🇧 Language",
+				"Logout"
+			]
 
         }
     }
