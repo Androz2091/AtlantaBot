@@ -142,9 +142,7 @@ class Atlanta extends Client {
         // Try username search
         if(search.match(/^!?(\w+)#(\d+)$/)){
             guild = await guild.fetch();
-            let username = search.match(/^!?(\w+)#(\d+)$/)[0];
-            let discriminator = search.match(/^!?(\w+)#(\d+)$/)[1];
-            member = guild.members.find((m) => m.user.username === username && m.user.discriminator === discriminator);
+            member = guild.members.find((m) => m.user.tag === search);
             if(member) return member;
         }
         member = await guild.members.fetch(search).catch(() => {});
