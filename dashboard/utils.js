@@ -26,7 +26,8 @@ async function fetchUser(userData, client, query){
             if(perms.has("MANAGE_GUILD")){
                 guild.admin = true;
             }
-            guild.url = (client.guilds.get(guild.id) ? `/server/${guild.id}/` : `https://discordapp.com/oauth2/authorize?client_id=${client.user.id}&scope=bot&permissions=2146958847&guild_id=${guild.id}`);
+            guild.settingsUrl = (client.guilds.get(guild.id) ? `/manage/${guild.id}/` : `https://discordapp.com/oauth2/authorize?client_id=${client.user.id}&scope=bot&permissions=2146958847&guild_id=${guild.id}`);
+            guild.statsUrl = (client.guilds.get(guild.id) ? `/stats/${guild.id}/` : `https://discordapp.com/oauth2/authorize?client_id=${client.user.id}&scope=bot&permissions=2146958847&guild_id=${guild.id}`);
             guild.iconURL = (guild.icon ? `https://cdn.discordapp.com/icons/${guild.id}/${guild.icon}.png?size=128` : "https://discordemoji.com/assets/emoji/discordcry.png");
             guild.displayed = (query ? guild.name.toLowerCase().includes(query.toLowerCase()) : true);
         });
@@ -46,19 +47,10 @@ async function fetchUser(userData, client, query){
  * Get the leaderboard for money, level and reputation
  * @param {object} client The Discord client instance
  * @param {number} amount The amount of members to displays in each category (optional)
+ * @param {array} leaderboard An array of user data
  * @returns {object}
  */
-async function getLeaderboard(client, amount){
-    let leaderboard = [];
-    let users = await client.usersData.find({}).lean();
-    users.forEach((user) => {
-        leaderboard.push({
-            id: user.id,
-            money: user.money || 0,
-            rep: user.rep || 0,
-            level: parseInt(user.level, 10)
-        });
-    });
+async function getLeaderboard(client, amount, leaderboard){
     let leaderboards = {
         money: sortArrayOfObjects("money", leaderboard),
         level: sortArrayOfObjects("level", leaderboard),
@@ -83,7 +75,7 @@ async function getLeaderboard(client, amount){
 async function fetchUsers(array, client) {
     return new Promise((resolve, reject) => {
         let users = [];
-        array.forEach((element) => {
+        array.filter((e) => e.id).forEach((element) => {
             client.users.fetch(element.id).then((user) => {
                 user.username = user.username.replace(/[\W_]+/g," ");
                 if(user.username.length > 13){
@@ -107,4 +99,4 @@ function sortArrayOfObjects(key, arr){
     });
 }
 
-module.exports = { fetchUser, getLeaderboard, fetchGuild };
+module.exports = { fetchUser, fetchUsers, getLeaderboard, fetchGuild };
