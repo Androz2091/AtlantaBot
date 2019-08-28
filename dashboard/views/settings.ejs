@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+
+    <%- include includes/head %>
+    
+    <!-- bootstrap datepicker -->
+    <link rel="stylesheet" href="/bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css">
+
+	<body class="hold-transition skin-blue sidebar-mini">
+
+		<div class="wrapper">
+
+			<!-- The header is the topbar -->
+			<%- include includes/header %>
+
+			<!-- The sidebar includes the menu -->
+			<%- include includes/sidebar %>
+
+			<!-- Content Wrapper. Contains page content -->
+			<div class="content-wrapper">
+
+				<!-- Content Header (Page header) -->
+				<section class="content-header">
+					<h1> <%= language.get("UTILS").SETTINGS %> <small> Version 1.0.0-beta </small> </h1>
+				</section>
+
+				<!-- Main content -->
+                <section class="content">
+    
+                    <!-- Info boxes -->
+                    <div class="row">
+                        <div class="col-md-12">
+                            <!-- general form elements -->
+                            <div class="box box-primary">
+                                <div class="box-header with-border">
+                                    <h3 class="box-title"><%= language.get("UTILS").YOUR_PROFILE %></h3>
+                                </div>
+                                <!-- /.box-header -->
+                                <!-- form start -->
+                                <form role="form" action="/settings" method="POST">
+                                    <div class="box-body">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label><%= language.get("PROFILE_HEADINGS").BIO %></label>
+                                                    <input name="bio" class="form-control" placeholder="<%= user.bio || language.get('NO_BIO') %>">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label><%= language.get("PROFILE_HEADINGS").BIRTHDATE %></label>
+                                                    <div class="input-group date">
+                                                        <div class="input-group-addon">
+                                                        <i class="fa fa-calendar"></i>
+                                                        </div>
+                                                        <input type="text" name="birthdate" class="form-control pull-right" id="datepicker" placeholder="<%= language.printDate(new Date(user.birthdate)) %>">
+                                                    </div>
+                                                    <!-- /.input group -->
+                                                </div>
+                                                <!-- /.form group -->
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- /.box-body -->
+                                    <div class="box-footer">
+                                        <button type="submit" class="btn btn-primary"><%= language.get("UTILS").UPDATE %></button>
+                                    </div>
+                                </form>
+                            </div>
+                          <!-- /.box -->
+                        </div>
+                        <!-- ./col -->
+                        <div class="col-md-12">
+                            <!-- general form elements -->
+                            <div class="box box-primary">
+                                <div class="box-header with-border">
+                                    <h3 class="box-title"><%= language.get("UTILS").WEBSITE %></h3>
+                                </div>
+                                <!-- /.box-header -->
+                                <!-- form start -->
+                                <form role="form" action="/settings" method="POST">
+                                    <div class="box-body">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label><%= language.get("SETTINGS_HEADINGS")[0] %></label>
+                                                    <select class="form-control" name="language">
+                                                        <% if(language.getLang() === "french"){ %>
+                                                            <option selected="selected"><%= language.get("UTILS").FRENCH %></option>
+                                                            <option><%= language.get("UTILS").ENGLISH %></options>
+                                                        <% } else { %>
+                                                        <option><%= language.get("UTILS").FRENCH %></option>
+                                                        <option selected="selected"><%= language.get("UTILS").ENGLISH %></options>
+                                                        <% } %>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label><i class="fa fa-sign-out"> </i><%= language.get("SETTINGS_HEADINGS")[1] %></i></label>
+                                                    <div>
+                                                        <a href="/logout"><button type="button" class="btn btn-danger"><%= language.get("UTILS").DISCONNECT %></button></a>
+                                                    </div>
+                                                    <!-- /.input group -->
+                                                </div>
+                                                <!-- /.form group -->
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- /.box-body -->
+                                    <div class="box-footer">
+                                        <button type="submit" class="btn btn-primary"><%= language.get("UTILS").UPDATE %></button>
+                                    </div>
+                                </form>
+                            </div>
+                            <!-- /.box -->
+                        </div>
+                        <!-- ./col -->
+                    </div>
+                    <!-- /.row -->
+                </section>
+                <!-- /.content -->
+            </div>
+            <!-- /.content-wrapper -->
+            <%- include includes/footer %>
+		</div>
+        <!-- ./wrapper -->
+        <!-- bootstrap datepicker -->
+        <script src="/bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
+        <!-- ChartJS -->
+        <script src="/bower_components/chart.js/Chart.js"></script>
+        <script>
+            $(function(){
+                $("#datepicker").datepicker({
+                    autoclose: true
+                });
+            });
+        </script>
+	</body>
+</html>
