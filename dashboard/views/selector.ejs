@@ -42,12 +42,8 @@
 								</div>
 								<!-- /.box-body -->
 								<div class="box-footer">
-									<a href="<%= guild.url %>">
-										<button type="button" class="btn btn-block btn-info">
-											<%= language.get("UTILS").MANAGE %>
-											<i class="fa fa-arrow-circle-right"></i>
-										</button>
-									</a>
+									<a href="<%= guild.settingsUrl %>"><button class="btn btn-success"><%= language.get("UTILS").MANAGE %></button></a>
+									<a href="<%= guild.statsUrl %>"><button type="submit" name="welcomeUpdate" class="btn btn-primary"><%= language.get("UTILS").STATS %></button></a>
 								</div>
 								<!-- /.box-footer -->
 							</div>
