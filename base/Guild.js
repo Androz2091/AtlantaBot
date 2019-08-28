@@ -59,5 +59,6 @@ module.exports = mongoose.model("Guild", new Schema({
     }},
     casesCount: { type: Number, default: 0 },
     ignoredChannels: { type: Array, default: [] }, // Channels ignored by the bot
-    customCommands: { type: Array, default: [] } // Custom commands of the guild
+    customCommands: { type: Array, default: [] }, // Custom commands of the guild
+    commands: { type: Array, default: [] } // Commands logs
 }));
