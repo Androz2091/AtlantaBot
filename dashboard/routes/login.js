@@ -7,7 +7,7 @@ Discord = require("discord.js");
 
 // Gets login page
 router.get("/", passport.authenticate("discord", { failureRedirect: config.dashboard.failureURL }), async function(req, res) {
-    if(!req.user.id){
+    if(!req.user.id || !req.user.guilds){
         res.redirect("/");
     }
     let logsChannel = req.client.channels.get(config.dashboard.logs);
