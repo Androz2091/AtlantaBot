@@ -22,8 +22,9 @@ module.exports.load = async(client) => {
     userRouter = require("./routes/user"),
     loginRouter = require("./routes/login"),
     logoutRouter = require("./routes/logout"),
-    profileRouter = require("./routes/profile"),
-    guildRouter = require("./routes/guild");
+    settingsRouter = require("./routes/settings"),
+    guildStatsRouter = require("./routes/guild-stats"),
+    guildManagerRouter = require("./routes/guild-manager");
 
     /* App configuration */
     app
@@ -58,8 +59,9 @@ module.exports.load = async(client) => {
     })
     .use("/login", loginRouter)
     .use("/logout", logoutRouter)
-    .use("/server", guildRouter)
-    .use("/profile", profileRouter)
+    .use("/manage", guildManagerRouter)
+    .use("/stats", guildStatsRouter)
+    .use("/settings", settingsRouter)
     .use("/user", userRouter)
     .use("/", mainRouter)
     .use(CheckAuth, function(req, res, next){
@@ -71,6 +73,7 @@ module.exports.load = async(client) => {
     })
     .use(CheckAuth, function(err, req, res, next) {
         console.error(err.stack);
+        if(!req.user) return res.redirect("/");
         res.status(500).render("500", {
             user: req.userInfos,
             language: req.language,
