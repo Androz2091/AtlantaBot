@@ -19,29 +19,10 @@
             <ul class="nav navbar-nav">
                 <!-- User Account: style can be found in dropdown.less -->
                 <li class="dropdown user user-menu">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown">
                         <img src="<%= user.displayAvatarURL %>" class="user-image" alt="User Image">
                         <span class="hidden-xs"><%= user.tag %></span>
                     </a>
-                    <ul class="dropdown-menu">
-                        <!-- User image -->
-                        <li class="user-header">
-                        <img src="<%= user.displayAvatarURL %>" class="img-circle" alt="User Image">
-                        <p>
-                            <%= user.tag %>
-                            <small><%= language.get("REGISTERED_FROM", language.printDate(new Date(user.registeredAt))) %></small>
-                        </p>
-                        </li>
-                        <!-- Menu Footer-->
-                        <li class="user-footer">
-                            <div class="pull-left">
-                                <a href="/language?redirect=<%= currentURL %>" class="btn btn-default btn-flat"><%= language.get("SWITCH_LANG") %></a>
-                            </div>
-                            <div class="pull-right">
-                                <a href="/logout" class="btn btn-default btn-flat"><%= language.get("UTILS").SIGN_OUT %></a>
-                            </div>
-                        </li>
-                    </ul>
                 </li>
             </ul>
         </div>
