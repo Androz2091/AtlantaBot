@@ -7,7 +7,7 @@ Here's the list of Atlanta commands. This one contains more than **100 commands*
 **Usage**: The arguments/options that the command takes in parameters  
 **Cooldown**: The time that must elapse between each command so that it can be executed again by the user
 
-### General (22 commands)
+### General (23 commands)
 
 | Name             | Description                                                              | Usage                          | Cooldown  |
 | ---------------- | ------------------------------------------------------------------------ | ------------------------------ | --------- |
@@ -29,6 +29,7 @@ Here's the list of Atlanta commands. This one contains more than **100 commands*
 | **serverinfo**   | Displays information about the server!                                   | serverinfo [ID/Name]           | 3 seconds |
 | **setafk**       | Become an AFK (members who mention you will receive a message)           | setafk [reason]                | 3 seconds |
 | **someone**      | Pick a random member on the server!                                      | someone                        | 1 seconds |
+| **staff**        | Displays the list of server staff members!                               | staff                          | 3 seconds |
 | **stats**        | Display the stats of the bot!                                            | stats                          | 3 seconds |
 | **suggest**      | Send your suggestion to the channel defined for this!                    | suggest [message]              | 5 seconds |
 | **translate**    | I'm translating your text!                                               | translate [language] [message] | 8 seconds |
@@ -127,16 +128,6 @@ Here's the list of Atlanta commands. This one contains more than **100 commands*
 | **number**    | Find the number I chose!                                                                      | number                          | 5 seconds |
 | **random**    | Randomly pick one of the choices you give me!                                                 | random [choice1/choice2/etc...] | 5 seconds |
 
-### Music (5 commands)
-
-| Name      | Description                                  | Usage        | Cooldown  |
-| --------- | -------------------------------------------- | ------------ | --------- |
-| **np**    | Displays information about the current song! | np           | 5 seconds |
-| **play**  | Play music!                                  | play [title] | 5 seconds |
-| **queue** | Displays the queue                           | queue        | 5 seconds |
-| **skip**  | Play the next song!                          | skip         | 5 seconds |
-| **stop**  | Stop the music in progress!                  | stop         | 5 seconds |
-
 ### Owner (5 commands)
 
 | Name             | Description                                                                                     | Usage                        | Cooldown  |
@@ -146,4 +137,14 @@ Here's the list of Atlanta commands. This one contains more than **100 commands*
 | **getinvite**    | Generates an invitation to the server in question. Make sure you make good use of this command. | getinvite [ID/Name]          | 3 seconds |
 | **reload**       | Reload a bot command!                                                                           | reload [name-of-the-command] | 3 seconds |
 | **servers-list** | Displays the list of the servers of the bot!                                                    | servers-list                 | 5 seconds |
+
+### Music (5 commands)
+
+| Name      | Description                                  | Usage        | Cooldown  |
+| --------- | -------------------------------------------- | ------------ | --------- |
+| **np**    | Displays information about the current song! | np           | 5 seconds |
+| **play**  | Play music!                                  | play [title] | 5 seconds |
+| **queue** | Displays the queue                           | queue        | 5 seconds |
+| **skip**  | Play the next song!                          | skip         | 5 seconds |
+| **stop**  | Stop the music in progress!                  | stop         | 5 seconds |
 

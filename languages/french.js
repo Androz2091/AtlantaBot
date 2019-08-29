@@ -420,6 +420,21 @@ module.exports = class {
 				`${e.ip} IP complète`
 			],
 
+			/* STAFF COMMAND */
+
+			// Utils
+			STAFF_DESCRIPTION: "Affiche la liste des membres du staff du serveur !",
+			STAFF_USAGE: "staff",
+			STAFF_EXAMPLES: "$staff",
+			// Content
+			STAFF_TITLE: (guildName) => `Staff de ${guildName}`,
+			STAFF_HEADINGS: {
+				ADMIN: "Administrateurs",
+				MOD: "Modérateurs"
+			},
+			STAFF_NO_ADMIN: "Aucun administrateur",
+			STAFF_NO_MOD: "Aucun modérateur",
+			
 			/* JOKE COMMAND */
 
 			// Utils
