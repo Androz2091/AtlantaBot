@@ -16,7 +16,7 @@ module.exports = mongoose.model("Member", new mongoose.Schema({
     registeredAt: { type: Number, default: Date.now() }, // Registered date of the member
 
     /* COOLDOWN */
-    cooldowns: { type: Object, default: {
+    cooldowns: { type: Object, default: {
         work: 0,
         rep: 0,
         steal: 0
