@@ -78,9 +78,15 @@ class Configuration extends Command {
                 message.language.get("CONFIGURATION_AUTOMOD", guildData.plugins.automod.ignored)
             :   headings[7][1]
         );
+
+        embed.addField(headings[8][0],
+            (!guildData.plugins.autoDeleteModCommands) ?
+                message.language.get("CONFIGURATION_AUTODELETEMOD")
+            :   headings[8][1]
+        );
         
 
-        embed.addField(headings[8][0], headings[8][1]);
+        embed.addField(headings[9][0], headings[9][1]);
 
         // Then, send the embed in the current channel
         message.channel.send(embed);

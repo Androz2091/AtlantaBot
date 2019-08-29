@@ -584,6 +584,7 @@ module.exports = class {
 				[ "Salons" ],
 				[ "Avertissements" ],
 				[ "Automodération", "Automodération désactivée" ],
+				[ "Auto-suppression commandes", "Auto-suppression des commandes de modération désactivée" ],
 				[ "Éditer votre configuration", `[Cliquez ici pour accéder au dashboard !](${c.dashboard.baseURL})`]
 			],
 			CONFIGURATION_AUTOROLE: (roleID) => `Rôle : <@&${roleID}>`,
@@ -594,6 +595,7 @@ module.exports = class {
 			CONFIGURATION_FORTNITESHOP: (channelID) => `Boutique Fortnite : ${channelID ? `<#${channelID}>` : "Indéfini" }`,
 			CONFIGURATION_AUTOMOD: (ignoredChannels) => `${ignoredChannels.length > 0 ? `Salon ignorés : ${ignoredChannels.map((ch) => `<#${ch}>`)}` : "Aucun salon ignoré."}`,
 			CONFIGURATION_WARNS: (kick, ban) => `${kick ? `**Expulsion**: au bout de **${kick}** avertissements.` : "**Expulsion**: Non définie."}\n${ban ? `**Bannissement**: au bout de **${ban}** avertissements.` : "**Bannissement**: Non défini."}`,
+			CONFIGURATION_AUTODELETEMOD: "Auto-suppression des commandes de modération activée",
 
 			/* IGNORE COMMAND */
 
@@ -1317,6 +1319,18 @@ module.exports = class {
 			// Errors
 			SANCTIONS_ERR_NOTHING: "Ce membre n'a commis aucune infraction.",
 			PRINT_SANCTION: (sData) => `Modérateur: <@${sData.moderator}>\nRaison: ${sData.reason}`,
+
+			/* DELETEMOD COMMAND */
+
+			// Utils
+			DELETEMOD_DESCRIPTION: "Active ou désactive l'auto suppression des commandes de modération !",
+			DELETEMOD_USAGE: "deletemod [on/off]",
+			DELETEMOD_EXAMPLE: "$deletemod on",
+			// Errors
+			DELETEMOD_ERR_STATUS: `${e.error} | Vous devez préciser \`on\` ou \`off\` !`,
+			// Content
+			DELETEMOD_SUCCESS_ENABLED: `${e.success} | Les commandes de modération seront automatiquement supprimées !`,
+			DELETEMOD_SUCCESS_DISABLED: `${e.success} | Les commandes de modération ne seront plus automatiquement supprimées !`,
 
 			/* MODOGS EMBEDS */
 			MODLOGS_TYPES: {

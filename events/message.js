@@ -191,6 +191,9 @@ module.exports = class {
         client.logger.log(`${message.author.username} (${message.author.id}) ran command ${cmd.help.name}`, "cmd");
         try {
             cmd.run(message, args, data);
+            if(cmd.help.category === "Moderation" && data.guild.autoDeleteModCommands){
+                message.delete();
+            }
             guild.commands.push({
                 command: cmd.help.name,
                 date: Date.now(),

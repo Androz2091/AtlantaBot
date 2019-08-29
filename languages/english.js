@@ -659,6 +659,7 @@ module.exports = class {
 				[ "Channels" ],
 				[ "Warns" ],
 				[ "Automoderation", "Automoderation disabled" ],
+				[ "Auto-delete commands", "Auto-deletion of moderation commands disabled" ],
 				[ "Edit your configuration", `[Clic here to go on the dashboard!](${c.dashboard.baseURL})`]
 			],
 			CONFIGURATION_AUTOROLE: (roleID) => `Role : <@&${roleID}>`,
@@ -669,6 +670,7 @@ module.exports = class {
 			CONFIGURATION_FORTNITESHOP: (channelID) => `Fortnite Shop : ${channelID ? `<#${channelID}>` : "Not defined" }`,
 			CONFIGURATION_AUTOMOD: (ignoredChannels) => `${ignoredChannels.length > 0 ? `Salon ignorés : ${ignoredChannels.map((ch) => `<#${ch}>`)}` : "Aucun salon ignoré."}`,
 			CONFIGURATION_WARNS: (kick, ban) => `${kick ? `**Expulsion**: after **${kick}** warnings.` : "**Expulsion**: Not defined."}\n${ban ? `**Banishment**: after **${ban}** warnings.` : "**Banishment**: Not defined."}`,
+			CONFIGURATION_AUTODELETEMOD: "Auto-deletion of moderation commands enabled",
 
 			/* IGNORE COMMAND */
 
@@ -1262,6 +1264,18 @@ module.exports = class {
 			// Errors
 			SANCTIONS_ERR_NOTHING: "This member has not committed any infractions.",
 			PRINT_SANCTION: (sData) => `Moderator: <@${sData.moderator}>\nReason: ${sData.reason}`,
+
+			/* DELETEMOD COMMAND */
+
+			// Utils
+			DELETEMOD_DESCRIPTION: "Enables or disables the auto deletion of moderation commands!",
+			DELETEMOD_USAGE: "deletemod [on/off]",
+			DELETEMOD_EXAMPLE: "$deletemod on",
+			// Errors
+			DELETEMOD_ERR_STATUS: `${e.error} | You must specify \`on\` or \`off\` !`,
+			// Content
+			DELETEMOD_SUCCESS_ENABLED: `${e.success} | Moderation commands will be automatically deleted!`,
+			DELETEMOD_SUCCESS_DISABLED: `${e.success} | Moderation commands will no longer be automatically deleted!`,
 
 			/* WARN COMMAND */
 

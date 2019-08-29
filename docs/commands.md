@@ -1,5 +1,5 @@
 # Commands  
-Here's the list of Atlanta commands. This one contains more than **90 commands** in **8 categories**!  
+Here's the list of Atlanta commands. This one contains more than **100 commands** in **8 categories**!  
 
 #### Contents of the table  
 **Name**: The name of the command  
@@ -34,7 +34,7 @@ Here's the list of Atlanta commands. This one contains more than **90 commands**
 | **translate**    | I'm translating your text!                                               | translate [language] [message] | 8 seconds |
 | **userinfo**     | Displays user information!                                               | userinfo (@user/userID)        | 5 seconds |
 
-### Administration (17 commands)
+### Administration (18 commands)
 
 | Name                | Description                                                   | Usage                            | Cooldown   |
 | ------------------- | ------------------------------------------------------------- | -------------------------------- | ---------- |
@@ -45,6 +45,7 @@ Here's the list of Atlanta commands. This one contains more than **90 commands**
 | **backup**          | Manage your server backups in an ergonomic and efficient way! | backup [create/load/infos]       | 30 seconds |
 | **configuration**   | Displays the server configuration                             | configuration                    | 3 seconds  |
 | **delcommand**      | Remove a custom command from the server!                      | delcommand [name-of-the-command] | 3 seconds  |
+| **deletemod**       | Enables or disables the auto deletion of moderation commands! | deletemod [on/off]               | 3 seconds  |
 | **goodbye**         | Send a goodbye message to a pre-defined channel!              | goodbye                          | 3 seconds  |
 | **ignore**          | Disables or activates commands in the mentioned channel       | ignore [#channel]                | 3 seconds  |
 | **purge**           | Kick out inactive members!                                    | purge [days]                     | 5 seconds  |
