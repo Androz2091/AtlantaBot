@@ -27,7 +27,7 @@
     "cron": "^1.7.1",
     "dblapi.js": "^2.3.0",
     "deepl-scraper": "^1.0.8",
-    "discord-backup": "^1.0.4",
+    "discord-backup": "^1.1.0",
     "discord-giveaways": "^2.1.19",
     "discord.js": "github:discordjs/discord.js",
     "ejs": "^2.6.2",
