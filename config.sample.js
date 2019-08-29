@@ -63,8 +63,6 @@ module.exports = {
 		// RE: https://img.icons8.com/color/96/000000/processor.png
 		version: "XXXXXXXXXXX",
 		// RE: https://img.icons8.com/color/96/000000/installing-updates.png
-		online: "XXXXXXXXXXX",
-		// RE: https://img.icons8.com/color/96/000000/connection-status-on.png
 		link: "XXXXXXXXXXX",
 		// RE: https://img.icons8.com/color/96/000000/link.png
 		voice: "XXXXXXXXXXX",
@@ -129,8 +127,14 @@ module.exports = {
 		// RE: https://img.icons8.com/color/344/edit-property.png
 		patreon: "XXXXXXXXXXX",
 		// RE: https://cdn6.aptoide.com/imgs/2/8/e/28e759bcb1e00ad978afdf443e60c11e_icon.png
-		server: "XXXXXXXXXXX"
+		server: "XXXXXXXXXXX",
 		// RE: https://img.icons8.com/color/96/000000/root-server.png
+		status: {
+			idle: "XXXXXXXXXXX",
+			dnd: "XXXXXXXXXXX",
+			offline: "XXXXXXXXXXX",
+			online: "XXXXXXXXXXX"
+		}
 	},
 	/* The others utils links */
 	others: {

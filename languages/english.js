@@ -289,7 +289,7 @@ module.exports = class {
 				`${e.avatar} Avatar`,
 				`${e.calendar} Creation`,
 				`${e.games} Game`,
-				`${e.online} Status`,
+				`${e.status.online} Status`,
 				`${e.up} Role`,
 				`${e.calendar2} Arrival`,
 				`${e.pencil} Nickname`,
@@ -418,7 +418,7 @@ module.exports = class {
 				`${e.version} Version`,
 				`${e.minecraft} Currently connected`,
 				`${e.users} Maximum`,
-				`${e.online} Status`,
+				`${e.status.online} Status`,
 				`${e.ip} Full IP`
 			],
 
@@ -1083,7 +1083,7 @@ module.exports = class {
 				`${e.stats} • __Statistics__`,
 				`${e.version} • __Version__`,
 				`${e.ram} • __RAM__`,
-				`${e.online} • __Online__`,
+				`${e.status.online} • __Online__`,
 				`${e.voice} • __Music__`,
 				":heart: • __Acknowledgements & credits__",
 				`${e.link} • __Links__`,
