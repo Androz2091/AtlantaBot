@@ -60,5 +60,7 @@ module.exports = mongoose.model("Guild", new Schema({
     casesCount: { type: Number, default: 0 },
     ignoredChannels: { type: Array, default: [] }, // Channels ignored by the bot
     customCommands: { type: Array, default: [] }, // Custom commands of the guild
-    commands: { type: Array, default: [] } // Commands logs
+    commands: { type: Array, default: [] }, // Commands logs
+    autoDeleteModCommands: { type: Boolean, default: false }, // Whether to auto delete moderation commands
+    disabledCategories: { type: Array, default: [] } // Disabled categories
 }));
