@@ -67,7 +67,7 @@ class Atlanta extends Client {
             } else {
                 userData = new usersData(param);
                 await userData.save();
-                resolve(userData.toJSON());
+                resolve((isLean ? userData.toJSON() : userData));
             }
         });
     }
