@@ -108,9 +108,9 @@ class FindWords extends Command {
                         let time = message.language.convertMs(Date.now() - createdAt);
                         let user = await message.client.users.fetch(winnerID);
                         message.channel.send(message.language.get("FINDWORDS_STATS", user.username, nbGames, time, participants.length, participants.map((p) => "<@"+p+">").join("\n")));
-                        if(participants.length > 1){
+                        if(participants.length > 1 && !data.guild.disabledCategories.includes("Economy")){
                             message.channel.send(message.language.get("FINDWORDS_MONEY", user.username));
-                            let userdata = await message.client.usersData.findOne({id: user.id});
+                            let userdata = await message.client.findOrCreateMember({ id: user.id, guildID: message.guild.id });
                             userdata.money = userdata.money + 15;
                             userdata.save();
                         }
