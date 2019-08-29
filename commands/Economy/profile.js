@@ -54,6 +54,7 @@ class Profile extends Command {
         await asyncForEach(commonsGuilds.array(), async (guild) => {
             let memberData = await client.findOrCreateMember({ id: member.id, guildID: guild.id });
             globalMoney+=memberData.money;
+            globalMoney+=memberData.bankSold;
         });
 
         let profileEmbed = new Discord.MessageEmbed()
