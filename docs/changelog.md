@@ -8,14 +8,16 @@ All notable changes to this project will be documented in this file.
 
 *   New `fortniteshop` command
 *   New Fornite Shop channel, in which a shop image made with canvas is sent every morning
+*   New `staff` command to get the staff members list of a guild
+*   New `deletemod` command if you want that the moderation commands will be deleted automatically
 
 ### Dashboard
 
 *   New `Statistics` tab
-    *   New `Global Stats` page
-    *   New `Guild Stats` page
+    *   New `Global Stats` page to get the global stats of Atlanta
+    *   New `Guild Stats` page to get the stats of a specific guild
     *   New `Stats` button on the selector page
-*   New `settings` page
+*   New `settings` page to configure your profile and the website (language, logout, etc...)
 
 ### Economy
 
