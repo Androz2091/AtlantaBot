@@ -99,7 +99,8 @@ module.exports = class {
 			ERR_A_GAME_ALREADY_LAUNCHED: `${e.error} | Because of the lags and bugs due to the findwords and the number, it is impossible to run two games at the same time, even if they are on two different servers. There is a game currently running on another server, so please wait a few minutes and then try again. We are sorry, but people were abusing this command by spamming it on lots of servers.`,
 			ERR_OCCURENCED: `${e.error} | An error has occurred, please try again in a few minutes.`,
 			ERR_CMD_COOLDOWN: (seconds) => `${e.error} | You must wait **${seconds}** second(s) to be able to run this command again!`,
-			
+			ERR_SANCTION_YOURSELF: `${e.error} | You can't sanction yourself!`,
+
 			/* PING COMMAND */
 
 			// Utils

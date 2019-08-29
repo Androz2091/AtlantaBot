@@ -30,6 +30,10 @@ class Ban extends Command {
         
         let memberData = message.guild.members.get(user.id) ? await this.client.findOrCreateMember({ id: user.id, guildID: message.guild.id }) : null;
 
+        if(user.id === message.author.id){
+            return message.channel.send(message.language.get("ERR_SANCTION_YOURSELF"));
+        }
+
         // If the user is already banned
         let banned = await message.guild.fetchBans();
         if(banned.some((m) => m.user.id === user.id)){

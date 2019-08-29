@@ -28,6 +28,11 @@ class Mute extends Command {
         if(!member){
             return message.channel.send(message.language.get("ERR_INVALID_MEMBER"));
         }
+
+        if(member.id === message.author.id){
+            return message.channel.send(message.language.get("ERR_SANCTION_YOURSELF"));
+        }
+
         let memberData = await this.client.findOrCreateMember({ id: member.id, guildID: message.guild.id });
 
         let time = args[1];

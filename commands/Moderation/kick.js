@@ -29,6 +29,9 @@ class Kick extends Command {
         }
         let memberData = await this.client.findOrCreateMember({ id: member.id, guildID: message.guild.id });
 
+        if(member.id === message.author.id){
+            return message.channel.send(message.language.get("ERR_SANCTION_YOURSELF"));
+        }
         
         // Gets the kcik reason
         let reason = args.slice(1).join(" ");
