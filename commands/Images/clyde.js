@@ -37,7 +37,7 @@ class Clyde extends Command {
             message.channel.send(attachment);
             m.delete();
         } catch(e){
-            console.log(e)
+            console.log(e);
             m.edit(message.language.get("ERR_OCCURENCED"));
         }
 

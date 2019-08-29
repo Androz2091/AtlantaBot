@@ -26,12 +26,9 @@ class Hates extends Command {
             return message.channel.send(message.language.get("ERR_COMMAND_DISABLED"));
         }
 
-        let options = { format: "png", size: 512 };
-        let avatarURL = message.mentions.users.first() ?
-        message.mentions.users.first().displayAvatarURL(options)
-        : message.author.displayAvatarURL(options);
+        let user = await this.client.resolveUser(args[0]) || message.author;
         let m = await message.channel.send(message.language.get("UTILS").PLEASE_WAIT);
-        let buffer = await message.client.IdiotAPI.hates(avatarURL);
+        let buffer = await message.client.IdiotAPI.hates(user.displayAvatarURL({ format: "png", size: 512 }));
         let attachment = new Discord.MessageAttachment(buffer, "hates.png");
         m.delete();
         message.channel.send(attachment);

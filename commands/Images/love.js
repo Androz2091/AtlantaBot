@@ -22,21 +22,15 @@ class Love extends Command {
     }
 
     async run (message, args, data) {
-
-        let options = { format: "png", size: 512 };
-
-        let user1 = message.mentions.users.first();
-        if(!user1){
-            return message.channel.send(message.language.get("ERR_INVALID_MEMBER"));
-        }
-        let avatarURL1 = user1.displayAvatarURL(options);
-
-        let user2 = message.mentions.users.filter((u) => u.id !== user1.id).first() || message.author;
-        let avatarURL2 = user2.displayAvatarURL(options);
+        
+        let users = [
+            await this.client.resolveUser(args[0]) || message.author,
+            await this.client.resolveUser(args[1]) || message.author
+        ];
 
         let m = await message.channel.send(message.language.get("UTILS").PLEASE_WAIT);
         try {
-            let res = await fetch(encodeURI(`https://nekobot.xyz/api/imagegen?type=ship&user1=${avatarURL1}&user2=${avatarURL2}`));
+            let res = await fetch(encodeURI(`https://nekobot.xyz/api/imagegen?type=ship&user1=${users[0].displayAvatarURL({ format: "png", size: 512 })}&user2=${users[1].displayAvatarURL({ format: "png", size: 512 })}`));
             let json = await res.json();
             let attachment = new Discord.MessageAttachment(json.message, "love.png");
             message.channel.send(attachment);

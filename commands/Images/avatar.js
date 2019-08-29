@@ -22,14 +22,10 @@ class Avatar extends Command {
 
     async run (message, args, data) {
 
-        let options = { format: "png", size: 512 };
-        let avatarURL = message.mentions.users.first() ?
-        message.mentions.users.first().displayAvatarURL(options)
-        : message.author.displayAvatarURL(options);
-        if(message.content.includes("-v")){
-            message.channel.send("<"+avatarURL+">");
-        }
-        let attachment = new Discord.MessageAttachment(avatarURL, "avatar.png");
+        let user = await this.client.resolveUser(args[0]);
+        if(!user) user = message.author;
+        if(message.content.includes("-v")) message.channel.send("<"+avatarURL+">");
+        let attachment = new Discord.MessageAttachment(user.displayAvatarURL({ format: "png", size: 512 }), "avatar.png");
         message.channel.send(attachment);
 
     }

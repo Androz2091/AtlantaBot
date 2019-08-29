@@ -23,31 +23,28 @@ class Phcomment extends Command {
 
     async run (message, args, data) {
 
-        let user = message.author;
+        let user = await this.client.resolveUser(args[0]);
         let text = args.join(" ");
 
-        if(message.mentions.users.first()){
+        if(user){
             text = args.slice(1).join(" ");
-            user = message.mentions.users.first();
+        } else {
+            user = message.author;
         }
 
         if(!text){
             return message.channel.send(message.language.get("PHCOMMENT_ERR_TEXT"));
         }
 
-        let options = { format: "png", size: 512 };
-        let avatarURL = user.displayAvatarURL(options);
-        let username = user.username;
-
         let m = await message.channel.send(message.language.get("UTILS").PLEASE_WAIT);
         try {
-            let res = await fetch(encodeURI(`https://nekobot.xyz/api/imagegen?type=phcomment&username=${username}&image=${avatarURL}&text=${text}`));
+            let res = await fetch(encodeURI(`https://nekobot.xyz/api/imagegen?type=phcomment&username=${user.username}&image=${user.displayAvatarURL({ format: "png", size: 512 })}&text=${text}`));
             let json = await res.json();
             let attachment = new Discord.MessageAttachment(json.message, "phcomment.png");
             message.channel.send(attachment);
             m.delete();
         } catch(e){
-            console.log(e)
+            console.log(e);
             m.edit(message.language.get("ERR_OCCURENCED"));
         }
 
