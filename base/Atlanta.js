@@ -88,7 +88,7 @@ class Atlanta extends Client {
                     guild.membersData.push(memberData._id);
                     await guild.save();
                 }
-                resolve(memberData.toJSON());
+                resolve((isLean ? memberData.toJSON() : memberData));
             }
         });
     }
