@@ -24,7 +24,7 @@ class Rep extends Command {
     async run (message, args, data) {
 
         // if the member is already in the cooldown db
-        let isInCooldown = data.users[0].cooldowns.rep;
+        let isInCooldown = data.memberData.cooldowns.rep;
         if(isInCooldown){
             /*if the timestamp recorded in the database indicating 
             when the member will be able to execute the order again 
@@ -34,7 +34,7 @@ class Rep extends Command {
             }
         }
 
-        let user = message.mentions.users.first();
+        let user = await this.client.resolveUser(args[0]);
         if(!user){
             return message.channel.send(message.language.get("ERR_INVALID_MEMBER"));
         }
@@ -46,12 +46,14 @@ class Rep extends Command {
         }
 
         // Records in the database the time when the member will be able to execute the command again (in 12 hours)
-        let toWait = Date.now() + 43200000;
-        data.users[0].cooldowns.rep = toWait;
-        data.users[0].save();
+        let toWait = Date.now() + 21600000;
+        data.memberData.cooldowns.rep = toWait;
+        data.memberData.markModified("cooldowns");
+        data.memberData.save();
         
-        data.users[1].rep++;
-        data.users[1].save();
+        let userData = await this.client.findOrCreateUser({ id: user.id });
+        userData.rep++;
+        await userData.save();
 
         message.channel.send(message.language.get("REP_SUCCESS", user.username));
 
