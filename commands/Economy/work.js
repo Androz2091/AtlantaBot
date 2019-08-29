@@ -11,8 +11,8 @@ class Work extends Command {
             examples: (language) => language.get("WORK_EXAMPLES"),
             dirname: __dirname,
             enabled: true,
-            guildOnly: false,
-            aliases: [ "salaire", "salary", "travail" ],
+            guildOnly: true,
+            aliases: [ "salaire", "salary", "travail", "daily", "dailies" ],
             memberPermissions: [],
             botPermissions: [ "SEND_MESSAGES", "EMBED_LINKS" ],
             nsfw: false,
@@ -24,7 +24,7 @@ class Work extends Command {
     async run (message, args, data) {
 
         // if the member is already in the cooldown db
-        let isInCooldown = data.users[0].cooldowns.work;
+        let isInCooldown = data.memberData.cooldowns.work;
         if(isInCooldown){
             /*if the timestamp recorded in the database indicating 
             when the member will be able to execute the order again 
@@ -35,8 +35,8 @@ class Work extends Command {
         }
 
         // Records in the database the time when the member will be able to execute the command again (in 12 hours)
-        let toWait = Date.now() + 43200000;
-        data.users[0].cooldowns.work = toWait;
+        let toWait = Date.now() + 21600000;
+        data.memberData.cooldowns.work = toWait;
 
         let embed = new Discord.MessageEmbed()
             .setAuthor(message.language.get("WORK_CLAIMED_TITLE"), message.author.displayAvatarURL())
@@ -45,8 +45,9 @@ class Work extends Command {
             .setColor(data.config.embed.color)
             .setTimestamp();
 
-        data.users[0].money = data.users[0].money + 200;
-        data.users[0].save();
+        data.memberData.markModified("cooldowns");
+        data.memberData.money += 200;
+        data.memberData.save();
 
         // Send the embed in the current channel
         message.channel.send(embed);
