@@ -14,29 +14,6 @@ module.exports = mongoose.model("User", new mongoose.Schema({
 
     /* STATS */
     registeredAt: { type: Number, default: Date.now() }, // Registered date of the user
-    stats: { type: Object, default: { // Game stats for the user
-        slots: {
-            wins: 0,
-            defeats: 0,
-            moneyWon: 0,
-            moneyLost: 0
-        },
-        findwords: {
-            wins: 0,
-            defeats: 0,
-            moneyWon: 0
-        },
-        number: {
-            wins: 0,
-            defeats: 0,
-            moneyWon: 0
-        },
-        steal: {
-            successes: 0,
-            failures: 0,
-            stolen: 0
-        }
-    }},
 
     /* OTHER INFORMATIONS */
     afk: { type: String, default: null }, // Whether the member is AFK
