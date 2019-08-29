@@ -776,8 +776,13 @@ module.exports = class {
 			WORK_USAGE: "work",
 			WORK_EXAMPLES: "$work",
 			// Content
-			WORK_CLAIMED_TITLE: "Salaire",
-			WORK_CLAIMED_CONTENT: "200 crédits ajoutés à votre compte !",
+			WORK_CLAIMED_HEADINGS: [
+				"Salaire",
+				"Série"
+			],
+			WORK_CLAIMED_SALARY: (amount) => `${amount} crédits ajoutés à votre compte !`,
+			WORK_AWARD: ":tada: Vous avez gagné 200 crédits bonus !",
+			WORK_FOOTER: "Terminez le mot AWARD pour gagner 200 crédits bonus !",
 			// Errors
 			WORK_ERR_COOLDOWN: (delay) => `${e.error} | Vous devez attendre ${delay} avant de pouvoir de nouveau travailler !`,
 

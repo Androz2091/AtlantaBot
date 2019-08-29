@@ -59,7 +59,8 @@ module.exports = class {
 				GLOBAL_STATS: "Global",
 				COMMANDS_USAGE: "Use of commands",
 				WEBSITE: "Website",
-				DISCONNECT: "Disconnect me"
+				DISCONNECT: "Disconnect me",
+				STREAK: "Streak"
 			},
 			
 			/* DBL VOTES */
@@ -889,8 +890,13 @@ module.exports = class {
 			WORK_USAGE: "work",
 			WORK_EXAMPLES: "$work",
 			// Content
-			WORK_CLAIMED_TITLE: "Salary",
-			WORK_CLAIMED_CONTENT: "200 credits added to your account!",
+			WORK_CLAIMED_HEADINGS: [
+				"Salary",
+				"Streak"
+			],
+			WORK_CLAIMED_SALARY: (amount) => `${amount} credits added to your account!`,
+			WORK_AWARD: ":tada: You have won 200 bonus credits!",
+			WORK_FOOTER: "Complete the word AWARD to win 200 bonus credits!",
 			// Errors
 			WORK_ERR_COOLDOWN: (delay) => `${e.error} | You have to wait ${delay} before you can work again!`,
 
