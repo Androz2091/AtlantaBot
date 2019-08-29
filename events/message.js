@@ -197,8 +197,10 @@ module.exports = class {
                 user: message.author.id,
                 guild: (message.guild ? message.guild.id : "dm")
             });
+            await this.client.wait(100);
             await guild.save();
         } catch(e){
+            console.error(e);
             return message.channel.send(message.language.get("ERR_OCCURENCED"));
         }
     }
