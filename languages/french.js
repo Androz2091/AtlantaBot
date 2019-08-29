@@ -53,7 +53,6 @@ module.exports = class {
 				GLOBAL_LEADERBOARD: "Classement global",
 				ECONOMY: "Économie",
 				KNOW_MORE: "En savoir plus",
-				PROFILE: "Profil",
 				SETTINGS: "Paramètres",
 				SERVERS_SETTINGS: "Paramètres des serveurs",
 				GLOBAL_STATS: "Globales",
