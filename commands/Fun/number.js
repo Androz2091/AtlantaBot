@@ -66,7 +66,7 @@ class Number extends Command {
             if(parseInt(msg.content) === number){
                 let time = message.language.convertMs(Date.now() - createdAt);
                 message.channel.send(message.language.get("NUMBER_STATS", msg.author, number, time, participants.length, participants.map((p) => "<@"+p+">").join("\n")));
-                if(!data.guild.disabledCategories.includes("Economy")){
+                if(data.guild.disabledCategories && !data.guild.disabledCategories.includes("Economy")){
                     message.channel.send(message.language.get("NUMBER_CONGRATS", msg.author.id));
                     let userdata = await message.client.findOrCreateMember({ id: msg.author.id, guildID: message.author.id });
                     userdata.money = userdata.money + 10;
