@@ -11,7 +11,7 @@ class Credits extends Command {
             examples: (language) => language.get("MONEY_EXAMPLES"),
             dirname: __dirname,
             enabled: true,
-            guildOnly: false,
+            guildOnly: true,
             aliases: [ "credits", "balance" ],
             memberPermissions: [],
             botPermissions: [ "SEND_MESSAGES", "EMBED_LINKS" ],
@@ -29,7 +29,7 @@ class Credits extends Command {
             return message.channel.send(message.language.get("ERR_BOT_USER"));
         }
 
-        let userData = (message.author === user) ? data.users[0] : data.users[1]; 
+        let userData = (message.author === user) ? data.memberData : await this.client.findOrCreateMember({ id: user.id, guildID: message.guild.id }); 
 
         let embed = new Discord.MessageEmbed()
             .setAuthor(message.language.get("CREDITS_TITLE", user.tag), user.displayAvatarURL())
