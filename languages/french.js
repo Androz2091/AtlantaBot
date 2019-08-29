@@ -709,6 +709,18 @@ module.exports = class {
 			// Content
 			DELCOMMAND_SUCCESS: (cmd) => `${e.success} | La commande ${cmd} a bien été enlevée du serveur !`,
 
+			/* RELOAD COMMAND */
+
+			// Utils
+			RELOAD_DESCRIPTION: "Reload une commande du bot !",
+			RELOAD_USAGE: "reload [nom-de-la-commande]",
+			RELOAD_EXAMPLES: "$reload ping",
+			// Errors
+			RELOAD_ERR_CMD: `${e.error} | Veuillez entrer le nom de la commande que vous souhaitez reload !`,
+			RELOAD_ERR_NOT_FOUND: (cmd) => `${e.error} | Aucune commande trouvée pour \`${cmd}\` !`,
+			// Content
+			RELOAD_SUCCESS: (cmd) => `${e.success} | La commande ${cmd} a bien été reload !`,
+
 			/* PROFILE COMMAND */
 
 			// Utils
@@ -726,7 +738,8 @@ module.exports = class {
 			PROFILE_TITLE: (username) => `Profil de ${username}`,
 			PROFILE_HEADINGS:{
 				MONEY:"💰 Argent local",
-				GLOBAL_MONEY:"💳 Argent global",
+				GLOBAL_MONEY:"🌍 Argent global",
+				BANK: "💳 Banque",
 				REP: "🎩 Réputation",
 				REGISTERED_AT: "📅 Enregistré",
 				LEVEL:"📊 Niveau",
@@ -816,6 +829,30 @@ module.exports = class {
 				`:oncoming_police_car: | La police t'a pris sur le fait, impossible de nier, ton amende est de **${lose}** crédits. **${won}** crédits de compensation seront versés à **${member.user.username}**.`,
 				`:police_car: | Mauvaise nouvelle... **${member.user.username}** a appelé la police à temps. Ton amende est de **${lose}** crédits et **${won}** crédits de compensation seront versés à **${member.user.username}**.`
 			],
+
+			/* DEPOSIT COMMAND */
+
+			// Utils
+			DEPOSIT_DESCRIPTION: "Déposez votre argent à la banque",
+			DEPOSIT_USAGE: "deposit [montant]",
+			DEPOSIT_EXAMPLES: "$deposit 400",
+			// Errors
+			DEPOSIT_ERR_AMOUNT: `${e.error} | Veuillez préciser un montant à déposer à la banque !`,
+			DEPOSIT_ERR_AMOUNT_TOO_HIGH: (money) => `${e.error} | Vous ne disposez pas de \`${money}\` crédits !`,
+			// Content
+			DEPOSIT_SUCCESS: (money) => `${e.success} | **${money}** crédits déposés à la banque !`,
+
+			/* WITHDRAW COMMAND */
+
+			// Utils
+			WITHDRAW_DESCRIPTION: "Retirez de l'argent !",
+			WITHDRAW_USAGE: "withdraw [montant]",
+			WITHDRAW_EXAMPLES: "$withdraw 400",
+			// Errors
+			WITHDRAW_ERR_AMOUNT: `${e.error} | Veuillez préciser un montant à retirer !`,
+			WITHDRAW_ERR_AMOUNT_TOO_HIGH: (money) => `${e.error} | Vous ne disposez pas de \`${money}\` crédits à la banque !`,
+			// Content
+			WITHDRAW_SUCCESS: (money) => `${e.success} | **${money}** crédits retirés !`,
 
 			/* PAY COMMAND */
 

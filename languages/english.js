@@ -821,6 +821,18 @@ module.exports = class {
 			// Content
 			DELCOMMAND_SUCCESS: (cmd) => `${e.success} | The ${cmd} command has been removed from the server!`,
 
+			/* RELOAD COMMAND */
+
+			// Utils
+			RELOAD_DESCRIPTION: "Reload a bot command!",
+			RELOAD_USAGE: "reload [name-of-the-command]",
+			RELOAD_EXAMPLES: "$reload ping",
+			// Errors
+			RELOAD_ERR_CMD: `${e.error} | Please enter the name of the command you want to reload!`,
+			RELOAD_ERR_NOT_FOUND: (cmd) => `${e.error} | No command found for \`${cmd}\` !`,
+			// Content
+			RELOAD_SUCCESS: (cmd) => `${e.success} | The command ${cmd} has been reloaded!`,
+
 			/* PROFILE COMMAND */
 
 			// Utils
@@ -837,7 +849,9 @@ module.exports = class {
 			// Headings
 			PROFILE_TITLE: (username) => `Profile of ${username}`,
 			PROFILE_HEADINGS:{
-				MONEY:"💰 Money",
+				MONEY:"💰 Local money",
+				GLOBAL_MONEY:"🌍 Total money",
+				BANK: "💳 Bank",
 				REP: "🎩 Reputation",
 				REGISTERED_AT: "📅 Registered",
 				LEVEL:"📊 Level",
@@ -928,6 +942,18 @@ module.exports = class {
 				`:police_car: | Bad news.... **${member.user.username}** called the police in time. Your fine is **${lose}** credits and **${won}** offset credits will be paid to **${member.user.username}**.`
 			],
 
+			/* DEPOSIT COMMAND */
+
+			// Utils
+			DEPOSIT_DESCRIPTION: "Deposit your money at the bank",
+			DEPOSIT_USAGE: "deposit [amount]",
+			DEPOSIT_EXAMPLES: "$deposit 400",
+			// Errors
+			DEPOSIT_ERR_AMOUNT: `${e.error} | Please specify an amount to be deposited at the bank!`,
+			DEPOSIT_ERR_AMOUNT_TOO_HIGH: (money) => `${e.error} | You don't have \`${money}\` credits!`,
+			// Content
+			DEPOSIT_SUCCESS: (money) => `${e.success} | **${money}** credits deposited in the bank!`,
+
 			/* PAY COMMAND */
 
 			// Utils
@@ -940,6 +966,18 @@ module.exports = class {
 			PAY_ERR_AMOUNT_TOO_HIGH: (amount, username) => `${e.error} | You don't have enough credits to pay ${amount} credits to ${username} !`,
 			// Content
 			PAY_SUCCESS: (amount, username) => `${e.success} | You paid ${amount} credits to ${username} !`,
+
+			/* WITHDRAW COMMAND */
+
+			// Utils
+			WITHDRAW_DESCRIPTION: "Withdraw money!",
+			WITHDRAW_USAGE: "withdraw [amount]",
+			WITHDRAW_EXAMPLES: "$withdraw 400",
+			// Errors
+			WITHDRAW_ERR_AMOUNT: `${e.error} | Please specify an amount to be withdrawn!`,
+			WITHDRAW_ERR_AMOUNT_TOO_HIGH: (money) => `${e.error} | You do not have \`${money}\` credits at the bank!`,
+			// Content
+			WITHDRAW_SUCCESS: (money) => `${e.success} | **${money}** credits withdrawn!`,
 
 			/* BIRTHDATE COMMAND */
 
