@@ -2,12 +2,29 @@
 
 All notable changes to this project will be documented in this file.
 
-## [5.0.0]
+## [4.5.0]
 
 ### Added
 
 *   New `fortniteshop` command
 *   New Fornite Shop channel, in which a shop image made with canvas is sent every morning
+
+### Dashboard
+
+*   New `Statistics` tab
+    *   New `Global Stats` page
+    *   New `Guild Stats` page
+    *   New `Stats` button on the selector page
+*   New `settings` page
+
+### Economy
+
+*   Economy is now guild based
+*   New `steal` command
+*   New `deposit` command
+*   New `withdraw` command
+*   `profile` command was edited
+*   `work` and `rep` cooldown is now 6h instead of 12h
 
 ## [4.0.0] - 2019-01-08
 
