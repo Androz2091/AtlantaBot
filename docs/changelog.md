@@ -27,6 +27,7 @@ All notable changes to this project will be documented in this file.
 *   New `withdraw` command
 *   `profile` command was edited
 *   `work` and `rep` cooldown is now 6h instead of 12h
+*   Add `work` streak
 
 ## [4.0.0] - 2019-01-08
 
