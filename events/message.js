@@ -27,7 +27,7 @@ module.exports = class {
         
         let client = this.client;
         data.config = client.config;
-
+    
         // Gets guild data
         let guild = await client.findOrCreateGuild({ id: message.guild.id });
         data.guild = guild;

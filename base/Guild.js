@@ -8,7 +8,8 @@ module.exports = mongoose.model("Guild", new Schema({
     id: { type: String }, // Discord ID of the guild
     
     /* MEMBERSDATA */
-    membersData: [{ type: Schema.Types.ObjectId, ref: "Member" }], // Members data of the guild
+    membersData: { type: Object, default: {} }, // Members data of the guild
+    members: [{ type: Schema.Types.ObjectId, ref: "Member" }],
 
     /* CONFIGURATION */
     language: { type: String, default: config.defaultLanguage }, // Language of the guild

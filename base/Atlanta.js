@@ -85,7 +85,7 @@ class Atlanta extends Client {
                 await memberData.save();
                 let guild = await guildsData.findOne({ id: param.guildID });
                 if(guild){
-                    guild.membersData.push(memberData._id);
+                    guild.members.push(memberData._id);
                     await guild.save();
                 }
                 resolve((isLean ? memberData.toJSON() : memberData));
