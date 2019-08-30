@@ -1344,7 +1344,7 @@ module.exports = class {
 			// Utils
 			SANCTIONS_DESCRIPTION: "Affiche la liste des infractions commises par un membre !",
 			SANCTIONS_USAGE: "sanctions [@membre]",
-			SANCTIONS_EXAMPLE: "$sanctions @Androz#2091",
+			SANCTIONS_EXAMPLES: "$sanctions @Androz#2091",
 			// Errors
 			SANCTIONS_ERR_NOTHING: "Ce membre n'a commis aucune infraction.",
 			PRINT_SANCTION: (sData) => `Modérateur: <@${sData.moderator}>\nRaison: ${sData.reason}`,
@@ -1354,7 +1354,7 @@ module.exports = class {
 			// Utils
 			DELETEMOD_DESCRIPTION: "Active ou désactive l'auto suppression des commandes de modération !",
 			DELETEMOD_USAGE: "deletemod [on/off]",
-			DELETEMOD_EXAMPLE: "$deletemod on",
+			DELETEMOD_EXAMPLES: "$deletemod on",
 			// Errors
 			DELETEMOD_ERR_STATUS: `${e.error} | Vous devez préciser \`on\` ou \`off\` !`,
 			// Content
