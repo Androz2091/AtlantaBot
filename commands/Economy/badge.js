@@ -37,7 +37,7 @@ class Badge extends Command {
         }
 
         const badges = require("../../config.js").badges;
-        let bought = data.users[0].badges;
+        let bought = data.userData.badges;
 
         // If the member wants to buy
         if(args[0]){
@@ -46,15 +46,16 @@ class Badge extends Command {
             if(!found){
                 return message.channel.send(message.language.get("BADGE_ERR_NOT_FOUND", badgeName));
             }
-            if(data.users[0].badges.some((b) => b.emoji === found.emoji)){
+            if(data.userData.badges.some((b) => b.emoji === found.emoji)){
                 return message.channel.send(message.language.get("BADGE_ERR_BOUGHT"));
             }
-            if(data.users[0].money < found.price){
+            if(data.userData.money < found.price){
                 return message.channel.send(message.language.get("BADGE_ERR_PRICE"));
             }
-            data.users[0].badges.push(found);
-            data.users[0].money = data.users[0].money - found.price;
-            data.users[0].save();
+            data.userData.badges.push(found);
+            data.memberData.money = data.memberData.money - found.price;
+            data.memberData.save();
+            data.userData.save();
             return message.channel.send(message.language.get("BADGE_SUCCESS", found));
         }
 

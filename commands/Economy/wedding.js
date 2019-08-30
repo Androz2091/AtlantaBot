@@ -27,17 +27,18 @@ class Wedding extends Command {
     async run (message, args, data) {
 
         // Gets the first mentionned member
-        let member = message.mentions.members.first();
+        let member = await this.client.resolveMember(args[0], message.guild);
         if(!member){
             return message.channel.send(message.language.get("ERR_INVALID_MEMBER"));
         }
         
         // if the message author is already wedded
-        if(data.users[0].lover){
+        if(data.userData.lover){
             return message.channel.send(message.language.get("WEDDING_ERR_AUTHOR_MARRIED", data.guild.prefix));
         }
+        let userData = await this.client.findOrCreateUser({ id: member.id });
         // if the member is already wedded
-        if(data.users[1].lover){
+        if(userData.lover){
             return message.channel.send(message.language.get('WEDDING_ERR_MEMBER_MARRIED', member.user.username));
         }
 
@@ -90,10 +91,10 @@ class Wedding extends Command {
                 return message.channel.send(message.language.get("WEDDING_ERR_TIMEOUT", member));
             }
             if(accepted){
-                data.users[0].lover = member.id;
-                data.users[0].save();
-                data.users[1].lover = message.author.id;
-                data.users[1].save();
+                data.userData.lover = member.id;
+                data.userData.save();
+                userData.lover = message.author.id;
+                userData.save();
                 return message.channel.send(message.language.get("WEDDING_SUCCESS", message.author, member));
             } else {
                 return message.channel.send(message.language.get("WEDDING_ERR_DENIED", message.author, member));

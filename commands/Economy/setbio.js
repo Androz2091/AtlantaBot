@@ -29,8 +29,8 @@ class Setbio extends Command {
         if(bio.length > 100){
             return message.channel.send(message.language.get("SETBIO_ERR_CARACT"));
         }
-        data.users[0].bio = bio;
-        data.users[0].save();
+        data.userData.bio = bio;
+        data.userData.save();
         message.channel.send(message.language.get("SETBIO_SUCCESS"));
     }
 

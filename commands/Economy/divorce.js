@@ -24,18 +24,18 @@ class Divorce extends Command {
     async run (message, args, data) {
         
         // Check if the message author is wedded
-        if(!data.users[0].lover){
+        if(!data.userData.lover){
             return message.channel.send(message.language.get("DIVORCE_ERR_NOT_WEDDED"));
         }
 
         // Updates db
         
-        let user = message.client.users.get(data.users[0].lover) || await message.client.users.fetch(data.users[0].lover);
+        let user = message.client.users.get(data.userData.lover) || await message.client.users.fetch(data.userData.lover);
         
-        data.users[0].lover = null;
-        data.users[0].save();
+        data.userData.lover = null;
+        data.userData.save();
 
-        let oldLover = await message.client.usersData.findOne({id:user.id});
+        let oldLover = await message.client.findOrCreateUser({ id:user.id });
         oldLover.lover = null;
         oldLover.save();
 

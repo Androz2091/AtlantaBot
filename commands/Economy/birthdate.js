@@ -54,8 +54,8 @@ class Birthdate extends Command {
             return message.channel.send(message.language.get("BIRTHDATE_ERR_TOO_LOW"));
         }
 
-        data.users[0].birthdate = d;
-        data.users[0].save();
+        data.userData.birthdate = d;
+        data.userData.save();
         
         message.channel.send(message.language.get("BIRTHDATE_SUCCESS", message.language.printDate(d)));
 
