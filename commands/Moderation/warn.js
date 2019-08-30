@@ -54,7 +54,7 @@ class Warn extends Command {
             moderator: message.author,
             date: Date.now(),
             case: data.guild.casesCount,
-            reason,
+            reason
         };
 
         let headings = message.language.get("MODLOGS_HEADINGS");
@@ -87,6 +87,16 @@ class Warn extends Command {
             member.send(message.language.get("WARN_SUCCESS_DM", message, reason));
             message.channel.send(message.language.get("WARN_SUCCESS", member, reason));
         }
+
+        memberData.sanctions.push({
+            case: data.guild.casesCount,
+            moderator: message.author.id,
+            channel: message.channel.id,
+            type: "warn",
+            date: Date.now(),
+            reason
+        });
+        memberData.save();
 
         if(data.guild.plugins.modlogs){
             let channel = message.guild.channels.get(data.guild.plugins.modlogs);

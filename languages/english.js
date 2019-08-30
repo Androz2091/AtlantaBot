@@ -1312,6 +1312,15 @@ module.exports = class {
 			WARN_SUCCESS_DM: (msg, reason) => `${e.warn} | You've just been warned on **${msg.guild.name}** by **${msg.author.tag}** for **${reason}** !`,
 			WARN_SUCCESS: (member, reason) => `${e.success} | **${member.user.tag}** has been warned by private messages for **${reason}** !`,
 
+			/* CLEARWARNS COMMAND */
+
+			// Utils
+			CLEARWARNS_DESCRIPTION: "Deletes all warns of a member!",
+			CLEARWARNS_USAGE: "clearwarns [@member]",
+			CLEARWARNS_EXAMPLES: "$clearwarns @Androz#2091",
+			// Content
+			CLEARWARNS_SUCCESS: `${e.success} | Warns deleted!`,
+
 			/* SETWARNS COMMAND */
 
 			// Utils

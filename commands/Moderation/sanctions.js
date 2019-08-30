@@ -25,7 +25,7 @@ class Sanctions extends Command {
         
         let user = await this.client.resolveUser(args[0]);
         if(!user){
-            return message.channel.send(message.language.get("ERR_INVALID_USER"));
+            return message.channel.send(message.language.get("ERR_INVALID_MEMBER"));
         }
         let memberData = await this.client.findOrCreateMember({ id: user.id, guildID: message.guild.id });
 
