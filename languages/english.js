@@ -1453,7 +1453,7 @@ module.exports = class {
 			FORTNITE_USAGE: "fortnite [psn/xbl/pc] [pseudo]",
 			FORTNITE_EXAMPLES: "$fortnite pc Ninja",
 			// Errors
-			FORTNITE_ERR_PLATFORM: `${e.error} | Enter a valid platform: \`psn\`, \`pc\` ou \`xbl\` !`,
+			FORTNITE_ERR_PLATFORM: `${e.error} | Enter a valid platform: \`psn\`, \`pc\` or \`xbl\` !`,
 			FORTNITE_ERR_USERNAME: `${e.error} | Enter a valid pseudo epic games!`,
 			FORTNITE_ERR_NOT_FOUND: (platform, username) => `${e.error} | Player \`${username}\` not found on the platform \`${platform}\`!`,
 			// Content
