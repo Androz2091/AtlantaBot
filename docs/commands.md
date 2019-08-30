@@ -78,6 +78,25 @@ Here's the list of Atlanta commands. This one contains more than **100 commands*
 | **withdraw**    | Withdraw money!                                                           | withdraw [amount]                | 1 seconds  |
 | **work**        | Work and earn money!                                                      | work                             | 3 seconds  |
 
+### Moderation (14 commands)
+
+| Name             | Description                                                                             | Usage                                                              | Cooldown  |
+| ---------------- | --------------------------------------------------------------------------------------- | ------------------------------------------------------------------ | --------- |
+| **announcement** | Send an announcement in the current channel!                                            | announcement [text]                                                | 3 seconds |
+| **ban**          | Banished the mentioned member!                                                          | ban [@user] (reason)                                               | 3 seconds |
+| **checkinvites** | Check if members do not have an ad for their Discord server in their presence!          | checkinvites                                                       | 3 seconds |
+| **clear**        | Deletes messages very quickly!                                                          | clear[number-of-messages] (@member)                                | 3 seconds |
+| **clearwarns**   | Deletes all warns of a member!                                                          | clearwarns [@member]                                               | 3 seconds |
+| **giveaway**     | Manage your giveaways simply!                                                           | giveaway [create/reroll/delete/end] (time) (winners count) (prize) | 5 seconds |
+| **kick**         | Kick out the mentioned member!                                                          | kick [@user] (reason)                                              | 3 seconds |
+| **mute**         | Prevents the member from sending messages and connecting by voice for a period of time! | mute [@member] [time]                                              | 3 seconds |
+| **poll**         | Launch a survey in the current channel!                                                 | poll [question]                                                    | 3 seconds |
+| **sanctions**    | Displays the list of infractions committed by a member!                                 | sanctions [@member]                                                | 3 seconds |
+| **setwarns**     | Define the sanctions that members will get after a certain number of warns!             | setwarns [kick/ban] [number/reset]                                 | 3 seconds |
+| **unban**        | Unban the user from the server!                                                         | unban [userID/user#0000]                                           | 3 seconds |
+| **unmute**       | Unmute the mentioned member!                                                            | unmute [@member]                                                   | 3 seconds |
+| **warn**         | Warn a member in private messages                                                       | warn [@member] [reason]                                            | 3 seconds |
+
 ### Images (13 commands)
 
 | Name          | Description                                             | Usage                      | Cooldown  |
@@ -96,24 +115,6 @@ Here's the list of Atlanta commands. This one contains more than **100 commands*
 | **triggered** | Generates a "triggered" image using the Anidiots API    | triggered (@member)        | 5 seconds |
 | **tweet**     | Generate a tweet of a person of your choice on Twitter! | tweet [@twitter] [text]    | 5 seconds |
 
-### Moderation (13 commands)
-
-| Name             | Description                                                                             | Usage                                                              | Cooldown  |
-| ---------------- | --------------------------------------------------------------------------------------- | ------------------------------------------------------------------ | --------- |
-| **announcement** | Send an announcement in the current channel!                                            | announcement [text]                                                | 3 seconds |
-| **ban**          | Banished the mentioned member!                                                          | ban [@user] (reason)                                               | 3 seconds |
-| **checkinvites** | Check if members do not have an ad for their Discord server in their presence!          | checkinvites                                                       | 3 seconds |
-| **clear**        | Deletes messages very quickly!                                                          | clear[number-of-messages] (@member)                                | 3 seconds |
-| **giveaway**     | Manage your giveaways simply!                                                           | giveaway [create/reroll/delete/end] (time) (winners count) (prize) | 5 seconds |
-| **kick**         | Kick out the mentioned member!                                                          | kick [@user] (reason)                                              | 3 seconds |
-| **mute**         | Prevents the member from sending messages and connecting by voice for a period of time! | mute [@member] [time]                                              | 3 seconds |
-| **poll**         | Launch a survey in the current channel!                                                 | poll [question]                                                    | 3 seconds |
-| **sanctions**    | Displays the list of infractions committed by a member!                                 | sanctions [@member]                                                | 3 seconds |
-| **setwarns**     | Define the sanctions that members will get after a certain number of warns!             | setwarns [kick/ban] [number/reset]                                 | 3 seconds |
-| **unban**        | Unban the user from the server!                                                         | unban [userID/user#0000]                                           | 3 seconds |
-| **unmute**       | Unmute the mentioned member!                                                            | unmute [@member]                                                   | 3 seconds |
-| **warn**         | Warn a member in private messages                                                       | warn [@member] [reason]                                            | 3 seconds |
-
 ### Fun (9 commands)
 
 | Name          | Description                                                                                   | Usage                           | Cooldown  |
@@ -128,16 +129,6 @@ Here's the list of Atlanta commands. This one contains more than **100 commands*
 | **number**    | Find the number I chose!                                                                      | number                          | 5 seconds |
 | **random**    | Randomly pick one of the choices you give me!                                                 | random [choice1/choice2/etc...] | 5 seconds |
 
-### Owner (5 commands)
-
-| Name             | Description                                                                                     | Usage                        | Cooldown  |
-| ---------------- | ----------------------------------------------------------------------------------------------- | ---------------------------- | --------- |
-| **eval**         | Executes the code                                                                               | eval [code]                  | 3 seconds |
-| **getconf**      | Displays the configuration of a server                                                          | getconf [server ID]          | 3 seconds |
-| **getinvite**    | Generates an invitation to the server in question. Make sure you make good use of this command. | getinvite [ID/Name]          | 3 seconds |
-| **reload**       | Reload a bot command!                                                                           | reload [name-of-the-command] | 3 seconds |
-| **servers-list** | Displays the list of the servers of the bot!                                                    | servers-list                 | 5 seconds |
-
 ### Music (5 commands)
 
 | Name      | Description                                  | Usage        | Cooldown  |
@@ -147,4 +138,14 @@ Here's the list of Atlanta commands. This one contains more than **100 commands*
 | **queue** | Displays the queue                           | queue        | 5 seconds |
 | **skip**  | Play the next song!                          | skip         | 5 seconds |
 | **stop**  | Stop the music in progress!                  | stop         | 5 seconds |
+
+### Owner (5 commands)
+
+| Name             | Description                                                                                     | Usage                        | Cooldown  |
+| ---------------- | ----------------------------------------------------------------------------------------------- | ---------------------------- | --------- |
+| **eval**         | Executes the code                                                                               | eval [code]                  | 3 seconds |
+| **getconf**      | Displays the configuration of a server                                                          | getconf [server ID]          | 3 seconds |
+| **getinvite**    | Generates an invitation to the server in question. Make sure you make good use of this command. | getinvite [ID/Name]          | 3 seconds |
+| **reload**       | Reload a bot command!                                                                           | reload [name-of-the-command] | 3 seconds |
+| **servers-list** | Displays the list of the servers of the bot!                                                    | servers-list                 | 5 seconds |
 
