@@ -1,3 +1,4 @@
+const Discord = require("discord.js");
 /* THIS CHECK IF THERE IS A REMIND MUST BE SENT */
 
 module.exports = {
