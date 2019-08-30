@@ -4,48 +4,6 @@ CheckAuth = require("../auth/CheckAuth"),
 router = express.Router();
 const generator = require("colors-generator");
 
-router.get("/", CheckAuth, async(req, res) => {
-    const usersData = await req.client.usersData.find().lean();
-    const membersData = await req.client.membersData.find().lean();
-    const allUsers = [];
-    usersData.forEach((user) => {
-        let userData = {};
-        let members = membersData.filter((m) => m.id === user.id);
-        if(members.length > 0){
-            userData.money = members.map((m) => m.money).reduce((a, b) => a+b);
-            userData.level = members.map((m) => m.level).reduce((a, b) => a+b);
-        } else {
-            userData.level = 0, userData.money = 0;
-        }
-        userData.rep = user.rep;
-        userData.id = user.id;
-        allUsers.push(userData);
-    });
-    let leaderboards = {
-        money: sortArrayOfObjects("money", allUsers),
-        level: sortArrayOfObjects("level", allUsers),
-        rep: sortArrayOfObjects("rep", allUsers)
-    };
-    for(let cat in leaderboards){
-        let e = leaderboards[cat];
-        if(e.length > 10) e.length = 10;
-    }
-    let stats = { money: await utils.fetchUsers(leaderboards.money, req.client), level: await utils.fetchUsers(leaderboards.level, req.client), rep: await utils.fetchUsers(leaderboards.rep, req.client) };
-    let guilds = await req.client.guildsData.find().lean();
-    let commands = new Array();
-    guilds.forEach((g) => commands.push(g.commands));
-    commands = commands.flat();
-    res.render("stats/global", {
-        stats,
-        commands: getCommands(commands.filter((c) => c.date > Date.now()-604800000)),
-        commandsUsage: getCommandsUsage(commands),
-        user: req.userInfos,
-        client: req.client,
-        language: req.language,
-        currentURL: `${req.client.config.dashboard.baseURL}/${req.originalUrl}`,
-    });
-});
-
 router.get("/:serverID", CheckAuth, async(req, res) => {
     // Check if the user has the permissions to edit this guild
     let guild = req.client.guilds.get(req.params.serverID);
