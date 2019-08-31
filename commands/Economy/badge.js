@@ -49,7 +49,7 @@ class Badge extends Command {
             if(data.userData.badges.some((b) => b.emoji === found.emoji)){
                 return message.channel.send(message.language.get("BADGE_ERR_BOUGHT"));
             }
-            if(data.userData.money < found.price){
+            if(data.memberData.money < found.price){
                 return message.channel.send(message.language.get("BADGE_ERR_PRICE"));
             }
             data.userData.badges.push(found);
