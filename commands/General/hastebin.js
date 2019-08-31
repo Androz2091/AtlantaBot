@@ -30,7 +30,7 @@ class Hastebin extends Command {
         }
 
         try {
-            let res = await fetch("https://www.hastebin.com/documents", {
+            let res = await fetch("https://hasteb.in/documents", {
                 method: "POST",
                 body: content,
                 headers: { "Content-Type": "text/plain" }
