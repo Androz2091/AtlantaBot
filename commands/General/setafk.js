@@ -30,8 +30,8 @@ class Setafk extends Command {
         // Send success message
         message.channel.send(message.language.get("SETAFK_SUCCESS", reason));
 
-        data.users[0].afk = reason;
-        data.users[0].save();
+        data.userData.afk = reason;
+        data.userData.save();
 
     }
 

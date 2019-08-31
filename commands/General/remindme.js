@@ -39,13 +39,13 @@ class Remindme extends Command {
             sendAt: Date.now()+ms(time)
         };
 
-        if(!data.users[0].reminds){
-            data.users[0].reminds = [];
+        if(!data.userData.reminds){
+            data.userData.reminds = [];
         }
         
-        data.users[0].reminds.push(rData);
-        data.users[0].markModified("reminds");
-        data.users[0].save();
+        data.userData.reminds.push(rData);
+        data.userData.markModified("reminds");
+        data.userData.save();
 
         // Send success message
         message.channel.send(message.language.get("REMINDME_SAVED"));
