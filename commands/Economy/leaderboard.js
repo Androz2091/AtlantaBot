@@ -11,7 +11,7 @@ class Leaderboard extends Command {
             usage: (language) => language.get("LEADERBOARD_USAGE"),
             examples: (language) => language.get("LEADERBOARD_EXAMPLES"),
             dirname: __dirname,
-            enabled: false,
+            enabled: true,
             guildOnly: true,
             aliases: [ "lb" ],
             memberPermissions: [],
@@ -25,25 +25,21 @@ class Leaderboard extends Command {
     async run (message, args, data) {
         
         let isOnlyOnMobile = (message.author.presence.clientStatus ? JSON.stringify(Object.keys(message.author.presence.clientStatus)) === JSON.stringify([ "mobile" ]) : false);
-        if(isOnlyOnMobile){
-            return message.channel.send(message.language.get("LEADERBOARD_ERR_MOBILE"));
-        }
 
         let leaderboard = [];
 
-        let users = await message.client.usersData.find().lean();
+        let users = await this.client.membersData.find({ guildID: message.guild.id }).lean();
 
         users.forEach((user) => {
             leaderboard.push({
                 id: user.id,
-                credits: user.money || 0,
-                rep: user.rep,
+                credits: (user.money || 0)+(user.bankSold || 0),
                 level: parseInt(user.level, 10)
             });
         });
         
         let type = args[0];
-        if(!type || (type !== "credits" && type !== "rep" && type !== "level")){
+        if(!type || (type !== "credits" && type !== "level")){
             return message.channel.send(message.language.get("LEADERBOARD_ERR_TYPE"));
         }
 
@@ -57,12 +53,12 @@ class Leaderboard extends Command {
             table.setHeading("#", message.language.get("UTILS").USER, message.language.get("UTILS").CREDITS, message.language.get("UTILS").LEVEL, message.language.get("UTILS").REP);
             order.push("credits", "level", "rep");
         }
-        // Sort the array by reputation
+        /* Sort the array by reputation
         if(args[0].toLowerCase() === "rep"){
             leaderboard = message.client.functions.sortByKey(leaderboard, "rep");
             table.setHeading("#", message.language.get("UTILS").USER, message.language.get("UTILS").REP, message.language.get("UTILS").LEVEL, message.language.get("UTILS").CREDITS);
             order.push("rep", "level", "credits");
-        }
+        }*/
         // Sort the array by level
         if(args[0].toLowerCase() === "level"){
             leaderboard = message.client.functions.sortByKey(leaderboard, "level");
@@ -85,7 +81,7 @@ class Leaderboard extends Command {
                         if(username.length > 20){
                             username = username.substr(0, 20);
                         }
-                        table.addRow(index++, username, element[order[0]], element[order[1]], element[order[2]]);
+                        table.addRow(index++, username, element[order[0]], element[order[1]]);
                     });
                 });
                 resolve(table);
