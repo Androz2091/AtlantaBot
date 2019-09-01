@@ -16,11 +16,9 @@ module.exports = {
             let dbl = new DBL(client.config.apiKeys.dbl, { webhookPort: client.config.votes.port, webhookAuth: client.config.votes.password });
             dbl.webhook.on("vote", async (vote) => {
                 let dUser = await client.users.fetch(vote.user);
-                let userData = await client.usersData.findOne({id:vote.user});
-                if(userData){
-                    userData.money = userData.money + 40;
-                    userData.save();
-                }
+                let member = await client.findOrCreateMember({ id: vote.user, guildID: client.config.support.id });
+                member.money = member.money + 40;
+                member.save();
                 let language = new(require(`../languages/${client.config.defaultLanguage}`));
                 dUser.send(language.get("VOTE_THANKS", dUser)).catch((err) => {});
                 let logsChannel = client.channels.get(client.config.votes.channel);
