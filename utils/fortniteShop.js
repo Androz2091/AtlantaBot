@@ -785,7 +785,7 @@ async function init(client) {
     
     new CronJob("30 1 2 * * *", async function() {
         if(!client.config.apiKeys.fortniteFNBR || client.config.apiKeys.fortniteFNBR === "") return;
-        checkImage(client);
+        await checkImage(client);
         client.guilds.forEach(async (guild) => {
             let guildData = await client.findOrCreateGuild({ id: guild.id });
             let language = new(require("../languages/"+guildData.language+".js"));
