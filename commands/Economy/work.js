@@ -75,7 +75,7 @@ class Work extends Command {
             .addField(message.language.get("WORK_CLAIMED_HEADINGS")[1], award.join(""));
         }
 
-        data.memberData.money = data.memberData.money + 200;
+        data.memberData.money = data.memberData.money + won;
         data.memberData.save();
 
         // Send the embed in the current channel
