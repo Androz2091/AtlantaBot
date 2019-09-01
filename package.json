@@ -28,7 +28,7 @@
     "dblapi.js": "^2.3.0",
     "deepl-scraper": "^1.0.8",
     "discord-backup": "^1.1.0",
-    "discord-giveaways": "^2.2.0",
+    "discord-giveaways": "^2.3.0",
     "discord.js": "github:discordjs/discord.js",
     "ejs": "^2.6.2",
     "express": "^4.17.1",
