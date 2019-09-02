@@ -444,6 +444,17 @@ module.exports = class {
 			// Content
 			JOKE_FOOTER: "blague.xyz | Par Skiz#0001",
 
+			/* FML COMMAND */
+
+			// Utils
+			FML_DESCRIPTION: "Affiche une VDM au hasard",
+			FML_USAGE: "fml",
+			FML_EXAMPLES: "$fml\n$vdm",
+			// Content
+			FML_TITLE: "VDM | viedemerde.fr",
+			FML_URL: "https://www.viedemerde.fr/aleatoire",
+			FML_ERROR: "Une erreur est survenue pendant la récupération de la VDM",
+
 			/* 8BALL COMMAND */
 
 			// Utils
