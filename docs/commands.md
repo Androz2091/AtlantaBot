@@ -115,7 +115,7 @@ Here's the list of Atlanta commands. This one contains more than **100 commands*
 | **triggered** | Generates a "triggered" image using the Anidiots API    | triggered (@member)        | 5 seconds |
 | **tweet**     | Generate a tweet of a person of your choice on Twitter! | tweet [@twitter] [text]    | 5 seconds |
 
-### Fun (9 commands)
+### Fun (10 commands)
 
 | Name          | Description                                                                                   | Usage                           | Cooldown  |
 | ------------- | --------------------------------------------------------------------------------------------- | ------------------------------- | --------- |
@@ -123,6 +123,7 @@ Here's the list of Atlanta commands. This one contains more than **100 commands*
 | **ascii**     | Turn your text into ascii characters!                                                         | ascii [text]                    | 5 seconds |
 | **findwords** | Start a game of findwords, a game where you have to find words!                               | findwords                       | 5 seconds |
 | **flip**      | I roll the dice for you!                                                                      | flip                            | 1 seconds |
+| **fml**       | Displays a random FML                                                                         | fml                             | 3 seconds |
 | **joke**      | Displays a joke in French                                                                     | joke                            | 3 seconds |
 | **lmg**       | Returns a link to lmgtfy.com                                                                  | lmg [question]                  | 1 seconds |
 | **lovecalc**  | How much love is there between two people? *This is a fun command, not to be taken seriously* | lovecalc [@member1] (@member2)  | 1 seconds |
