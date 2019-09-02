@@ -1184,6 +1184,7 @@ module.exports = class {
 			BAN_ERR_PERMISSIONS: `${e.error} | Une erreur est survenue... vérifiez que j'ai bien les permissions de bannir ce membre et réessayez !`,
 			BAN_SUCCESS_DM: (user, msg, reason) => `${e.error} | Bonjour <@${user.id}>,\nVous venez d'être banni de **${msg.guild.name}** par **${msg.author.tag}** pour **${reason}** !`,
 			BAN_SUCCESS_CHANNEL: (user, msg, reason) => `${e.success} | **${user.username}** vient d'être banni de **${msg.guild.name}** par **${msg.author.tag}** pour **${reason}** !`,
+			BAN_TITLE_LOGS: (caseNumber) => `Ban | Cas #${caseNumber}`,
 
 			/* KICK COMMAND */
 
