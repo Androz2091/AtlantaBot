@@ -27,7 +27,7 @@ class Calc extends Command {
 
         let result;
         try {
-            result = math.evaluate(args.join(" ").replace(/[x]/gi, "*").replace(/[,]/g, "."));
+            result = math.evaluate(args.join(" ").replace(/[x]/gi, "*").replace(/[,]/g, ".").replace(/[÷]/gi, "/"));
         } catch (e) {
             return message.channel.send(message.language.get("CALC_ERROR"));
         }
@@ -35,7 +35,7 @@ class Calc extends Command {
         let embed = new Discord.MessageEmbed()
             .setColor(data.config.embed.color)
             .setAuthor(message.language.get("CALC_TITLE"), this.client.user.displayAvatarURL())
-            .addField(message.language.get("CALC_OPERATION"), `\`\`\`Js\n${args.join("").replace(/[x]/gi, "*").replace(/[,]/g, ".")}\`\`\``)
+            .addField(message.language.get("CALC_OPERATION"), `\`\`\`Js\n${args.join("").replace(/[x]/gi, "*").replace(/[,]/g, ".").replace(/[÷]/gi, "/")}\`\`\``)
             .addField(message.language.get("CALC_RESULT"), `\`\`\`Js\n${result}\`\`\``)
             .setFooter(data.config.embed.footer);
         message.channel.send(embed);
