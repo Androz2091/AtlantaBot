@@ -124,22 +124,25 @@ router.post("/:serverID", CheckAuth, async(req, res) => {
         await guildData.save();
     }
 
-    if(data.suggestions === req.language.get("UTILS").NO_CHANNEL){
-        guildData.plugins.suggestions = false;
-    } else {
-        guildData.plugins.suggestions = guild.channels.find((ch) => "#"+ch.name === data.suggestions).id;
+    if(data.hasOwnProperty("suggestions")){
+        if(data.suggestions === req.language.get("UTILS").NO_CHANNEL){
+            guildData.plugins.suggestions = false;
+        } else {
+            guildData.plugins.suggestions = guild.channels.find((ch) => "#"+ch.name === data.suggestions).id;
+        }
+        if(data.modlogs === req.language.get("UTILS").NO_CHANNEL){
+            guildData.plugins.modlogs = false;
+        } else {
+            guildData.plugins.modlogs = guild.channels.find((ch) => "#"+ch.name === data.modlogs).id;
+        }
+        if(data.fortniteshop === req.language.get("UTILS").NO_CHANNEL){
+            guildData.plugins.fortniteshop = false;
+        } else {
+            guildData.plugins.fortniteshop = guild.channels.find((ch) => "#"+ch.name === data.fortniteshop).id;
+        }
+        guildData.markModified("plugins");
     }
-    if(data.modlogs === req.language.get("UTILS").NO_CHANNEL){
-        guildData.plugins.modlogs = false;
-    } else {
-        guildData.plugins.modlogs = guild.channels.find((ch) => "#"+ch.name === data.modlogs).id;
-    }
-    if(data.fortniteshop === req.language.get("UTILS").NO_CHANNEL){
-        guildData.plugins.fortniteshop = false;
-    } else {
-        guildData.plugins.fortniteshop = guild.channels.find((ch) => "#"+ch.name === data.fortniteshop).id;
-    }
-    guildData.markModified("plugins");
+    
     await guildData.save();
 
     res.redirect(303, "/manage/"+guild.id);
