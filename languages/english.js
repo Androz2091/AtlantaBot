@@ -447,6 +447,17 @@ module.exports = class {
 			// Content
 			JOKE_FOOTER: "blague.xyz | By Skiz#0001",
 
+			/* FML COMMAND */
+
+			// Utils
+			FML_DESCRIPTION: "Displays a random FML",
+			FML_USAGE: "fml",
+			FML_EXAMPLES: "$fml\n$vdm",
+			// Content
+			FML_TITLE: "FML | fmylife.com",
+			FML_URL: "https://www.fmylife.com/random",
+			FML_ERROR: `${e.error} | An error occurred during the recovery of the FML`,
+
 			/* 8BALL COMMAND */
 
 			// Utils
