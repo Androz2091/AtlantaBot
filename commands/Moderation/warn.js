@@ -42,7 +42,7 @@ class Warn extends Command {
         }
 
         // Gets current member sanctions
-        let sanctions = memberData.sanctions.length;
+        let sanctions = memberData.sanctions.filter((s) => s.type === "warn").length;
         let banCount = data.guild.plugins.warnsSanctions.ban;
         let kickCount = data.guild.plugins.warnsSanctions.kick;
         

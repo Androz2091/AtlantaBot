@@ -1,14 +1,14 @@
 const Command = require("../../base/Command.js"),
 Discord = require('discord.js');
 
-class Clearwarns extends Command {
+class Clearsanctions extends Command {
 
     constructor (client) {
         super(client, {
-            name: "clearwarns",
-            description: (language) => language.get("CLEARWARNS_DESCRIPTION"),
-            usage: (language) => language.get("CLEARWARNS_USAGE"),
-            examples: (language) => language.get("CLEARWARNS_EXAMPLES"),
+            name: "clear-sanctions",
+            description: (language) => language.get("CLEARSANCTIONS_DESCRIPTION"),
+            usage: (language) => language.get("CLEARSANCTIONS_USAGE"),
+            examples: (language) => language.get("CLEARSANCTIONS_EXAMPLES"),
             dirname: __dirname,
             enabled: true,
             guildOnly: true,
@@ -33,9 +33,9 @@ class Clearwarns extends Command {
         let memberData = await this.client.findOrCreateMember({ id: member.id, guildID: message.guild.id });
         memberData.sanctions = [];
         memberData.save();
-        message.channel.send(message.language.get("CLEARWARNS_SUCCESS"));
+        message.channel.send(message.language.get("CLEARSANCTIONS_SUCCESS"));
     }
 
 }
 
-module.exports = Clearwarns;
+module.exports = Clearsanctions;

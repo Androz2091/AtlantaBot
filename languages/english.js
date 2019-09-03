@@ -1324,14 +1324,14 @@ module.exports = class {
 			WARN_SUCCESS: (member, reason) => `${e.success} | **${member.user.tag}** has been warned by private messages for **${reason}** !`,
 			WARN_TITLE_LOGS: (caseNumber) => `Warn | Case #${caseNumber}`,
 
-			/* CLEARWARNS COMMAND */
+			/* CLEARSANCTIONS COMMAND */
 
 			// Utils
-			CLEARWARNS_DESCRIPTION: "Deletes all warns of a member!",
-			CLEARWARNS_USAGE: "clearwarns [@member]",
-			CLEARWARNS_EXAMPLES: "$clearwarns @Androz#2091",
+			CLEARSANCTIONS_DESCRIPTION: "Deletes all sanctions of a member!",
+			CLEARSANCTIONS_USAGE: "clear-sanctions [@member]",
+			CLEARSANCTIONS_EXAMPLES: "$clear-sanctions @Androz#2091",
 			// Content
-			CLEARWARNS_SUCCESS: `${e.success} | Warns deleted!`,
+			CLEARSANCTIONS_SUCCESS: `${e.success} | Sanctions deleted!`,
 
 			/* SETWARNS COMMAND */
 

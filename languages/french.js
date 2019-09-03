@@ -1260,14 +1260,14 @@ module.exports = class {
 			WARN_SUCCESS: (member, reason) => `${e.success} | **${member.user.tag}** a été averti par messages privés pour **${reason}** !`,
 			WARN_TITLE_LOGS: (caseNumber) => `Avertissement | Cas #${caseNumber}`,
 
-			/* CLEARWARNS COMMAND */
+			/* CLEARSANCTIONS COMMAND */
 
 			// Utils
-			CLEARWARNS_DESCRIPTION: "Supprime tous les avertissements d'un membre !",
-			CLEARWARNS_USAGE: "clearwarns [@membre]",
-			CLEARWARNS_EXAMPLES: "$clearwarns @Androz#2091",
+			CLEARSANCTIONS_DESCRIPTION: "Supprime toutes les sanctions d'un membre !",
+			CLEARSANCTIONS_USAGE: "clear-sanctions [@membre]",
+			CLEARSANCTIONS_EXAMPLES: "$clear-sanctions @Androz#2091",
 			// Content
-			CLEARWARNS_SUCCESS: `${e.success} | Avertissements supprimés !`,
+			CLEARSANCTIONS_SUCCESS: `${e.success} | Sanctions supprimées !`,
 
 			/* SETWARNS COMMAND */
 
