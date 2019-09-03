@@ -50,9 +50,10 @@ class Warn extends Command {
         data.guild.save();
 
         let caseInfo = {
-            channel: message.channel,
-            moderator: message.author,
+            channel: message.channel.id,
+            moderator: message.author.id,
             date: Date.now(),
+            type: "warn",
             case: data.guild.casesCount,
             reason
         };
@@ -60,13 +61,14 @@ class Warn extends Command {
         let headings = message.language.get("MODLOGS_HEADINGS");
         let embed = new Discord.MessageEmbed()
             .addField(headings.USER, `\`${member.user.tag}\` (${member.user.toString()})`)
-            .addField(headings.MODERATOR, `\`${message.author.tag}\` (${message.author.toString()}`);
+            .addField(headings.MODERATOR, `\`${message.author.tag}\` (${message.author.toString()}`)
+            .addField(headings.REASON, reason, true);
 
         if(banCount){
             if(sanctions >= banCount){
                 member.send(message.language.get("BAN_SUCCESS_DM", member.user, message, reason));
                 caseInfo.type = "ban";
-                embed.setAuthor(message.language.get("BAN_TITLE_LOGS"), data.guild.casesCount)
+                embed.setAuthor(message.language.get("BAN_TITLE_LOGS", data.guild.casesCount))
                 .setColor("#e02316");
                 message.guild.members.ban(member).catch((err) => {});
                 message.channel.send(message.language.get("WARN_AUTOBAN", member, banCount));
@@ -75,27 +77,20 @@ class Warn extends Command {
             if(sanctions >= kickCount){
                 member.send(message.language.get("KICK_SUCCESS_DM", member.user, message, reason));
                 caseInfo.type = "kick";
-                embed.setAuthor(message.language.get("KICK_TITLE_LOGS"), data.guild.casesCount)
+                embed.setAuthor(message.language.get("KICK_TITLE_LOGS", data.guild.casesCount))
                 .setColor("#e88709");
                 message.guild.members.kick(member).catch((err) => {});
                 message.channel.send(message.language.get("WARN_AUTOKICK", member, banCount));
             }
         } else {
             caseInfo.type = "warn";
-            embed.setAuthor(message.language.get("WARN_TITLE_LOGS"), data.guild.casesCount)
+            embed.setAuthor(message.language.get("WARN_TITLE_LOGS", data.guild.casesCount))
             .setColor("#8c14e2");
             member.send(message.language.get("WARN_SUCCESS_DM", message, reason));
             message.channel.send(message.language.get("WARN_SUCCESS", member, reason));
         }
 
-        memberData.sanctions.push({
-            case: data.guild.casesCount,
-            moderator: message.author.id,
-            channel: message.channel.id,
-            type: "warn",
-            date: Date.now(),
-            reason
-        });
+        memberData.sanctions.push(caseInfo);
         memberData.save();
 
         if(data.guild.plugins.modlogs){

@@ -1258,6 +1258,7 @@ module.exports = class {
 			WARN_AUTOKICK: (member, number) => `${e.success} | **${member.user.tag}** a été expulsé automatiquement car il avait plus de **${number}** warns !`,
 			WARN_SUCCESS_DM: (msg, reason) => `${e.warn} | Vous venez d'être averti sur **${msg.guild.name}** par **${msg.author.tag}** pour **${reason}** !`,
 			WARN_SUCCESS: (member, reason) => `${e.success} | **${member.user.tag}** a été averti par messages privés pour **${reason}** !`,
+			WARN_TITLE_LOGS: (caseNumber) => `Avertissement | Cas #${caseNumber}`,
 
 			/* CLEARWARNS COMMAND */
 
