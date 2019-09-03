@@ -57,6 +57,7 @@ class Clear extends Command {
         if(messages.length > amount){
             messages.length = parseInt(amount, 10);
         }
+        messages = messages.filter((m) => !m.pinned);
         amount++;
 
         message.channel.bulkDelete(messages, true);
