@@ -953,7 +953,7 @@ module.exports = class {
 			LEADERBOARD_EXAMPLES: "$leaderboard credits\n$leaderboard levels",
 			// Errors
 			LEADERBOARD_ERR_TYPE: `${e.error} | Please enter a type of leaderboard! (\`credits\`, \`level\` ou \`rep\`)`,
-			LEADERBOARD_ERR_MOBILE: `:confused: We have detected that you are using a phone.... The leaderboard is not yet available directly on Discord for mobiles but you can still access it on the dashboard: <${c.dashboard.baseURL}>`,
+			LEADERBOARD_WARN_PHONE: `:confused: We have detected that you are using a phone.... The leaderboard may not display well on small screens. Try to switch to landscape (or go on the dashboard)!`,
 
 			/* STEAL COMMAND */
 

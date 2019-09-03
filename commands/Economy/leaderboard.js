@@ -26,48 +26,54 @@ class Leaderboard extends Command {
         
         let isOnlyOnMobile = (message.author.presence.clientStatus ? JSON.stringify(Object.keys(message.author.presence.clientStatus)) === JSON.stringify([ "mobile" ]) : false);
 
-        let leaderboard = [];
-
-        let users = await this.client.membersData.find({ guildID: message.guild.id }).lean();
-
-        users.forEach((user) => {
-            leaderboard.push({
-                id: user.id,
-                credits: (user.money || 0)+(user.bankSold || 0),
-                level: parseInt(user.level, 10)
-            });
-        });
-        
         let type = args[0];
-        if(!type || (type !== "credits" && type !== "level")){
+        if(!type || (type !== "credits" && type !== "level" && type !== "rep")){
             return message.channel.send(message.language.get("LEADERBOARD_ERR_TYPE"));
         }
 
-        let table = new AsciiTable("LEADERBOARD");
-        
-        let order = [];
+        if(type === "credits"){
+            let members = await this.client.membersData.find({ guildID: message.guild.id }).lean(),
+            membersLeaderboard = members.map((m) => {
+                return {
+                    id: m.id,
+                    value: m.money+m.bankSold
+                };
+            }).sort((a,b) => b.value - a.value);
+            let table = new AsciiTable("LEADERBOARD");
+            table.setHeading("#", message.language.get("UTILS").USER, message.language.get("UTILS").CREDITS);
+            if(membersLeaderboard.length > 20) membersLeaderboard.length = 20;
+            let newTable = await fetchUsers(membersLeaderboard, table, message.client);
+            message.channel.send("```"+newTable.toString()+"```");
+        } else if(type === "level"){
+            let members = await this.client.membersData.find({ guildID: message.guild.id }).lean(),
+            membersLeaderboard = members.map((m) => {
+                return {
+                    id: m.id,
+                    value: m.level
+                };
+            }).sort((a,b) => b.value - a.value);
+            let table = new AsciiTable("LEADERBOARD");
+            table.setHeading("#", message.language.get("UTILS").USER, message.language.get("UTILS").LEVEL);
+            if(membersLeaderboard.length > 20) membersLeaderboard.length = 20;
+            let newTable = await fetchUsers(membersLeaderboard, table, message.client);
+            message.channel.send("```"+newTable.toString()+"```");
+        } else if(type === "rep"){
+            let users = await this.client.usersData.find().lean(),
+            usersLeaderboard = users.map((u) => {
+                return {
+                    id: u.id,
+                    value: u.rep
+                };
+            }).sort((a,b) => b.value - a.value);
+            let table = new AsciiTable("LEADERBOARD");
+            table.setHeading("#", message.language.get("UTILS").USER, message.language.get("UTILS").LEVEL);
+            if(usersLeaderboard.length > 20) usersLeaderboard.length = 20;
+            let newTable = await fetchUsers(usersLeaderboard, table, message.client);
+            message.channel.send("```"+newTable.toString()+"```");
+        }
 
-        // Sort the array by money
-        if(args[0].toLowerCase() === "credits"){
-            leaderboard = message.client.functions.sortByKey(leaderboard, "credits");
-            table.setHeading("#", message.language.get("UTILS").USER, message.language.get("UTILS").CREDITS, message.language.get("UTILS").LEVEL, message.language.get("UTILS").REP);
-            order.push("credits", "level", "rep");
-        }
-        /* Sort the array by reputation
-        if(args[0].toLowerCase() === "rep"){
-            leaderboard = message.client.functions.sortByKey(leaderboard, "rep");
-            table.setHeading("#", message.language.get("UTILS").USER, message.language.get("UTILS").REP, message.language.get("UTILS").LEVEL, message.language.get("UTILS").CREDITS);
-            order.push("rep", "level", "credits");
-        }*/
-        // Sort the array by level
-        if(args[0].toLowerCase() === "level"){
-            leaderboard = message.client.functions.sortByKey(leaderboard, "level");
-            table.setHeading("#", message.language.get("UTILS").USER, message.language.get("UTILS").LEVEL, message.language.get("UTILS").REP, message.language.get("UTILS").CREDITS);
-            order.push("level", "rep", "credits");
-        }
-        
-        if(leaderboard.length > 20){
-            leaderboard.length = 20;
+        if(isOnlyOnMobile){
+            message.channel.send("LEADERBOARD_WARN_PHONE");
         }
         
         async function fetchUsers(array, table, client) {
@@ -81,16 +87,12 @@ class Leaderboard extends Command {
                         if(username.length > 20){
                             username = username.substr(0, 20);
                         }
-                        table.addRow(index++, username, element[order[0]], element[order[1]]);
+                        table.addRow(index++, username, element.value);
                     });
                 });
                 resolve(table);
             });
         }
-
-        fetchUsers(leaderboard, table, message.client).then((newTable) => {
-            message.channel.send("```"+newTable.toString()+"```");
-        });
     }
 
 }
