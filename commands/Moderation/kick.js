@@ -23,15 +23,16 @@ class Kick extends Command {
 
     async run (message, args, data) {
 
-        let member = await resolveMember(args[0]);
+        let member = await this.client.resolveMember(args[0], message.guild);
         if(!member){
             return message.channel.send(message.language.get("ERR_INVALID_MEMBER"));
         }
-        let memberData = await this.client.findOrCreateMember({ id: member.id, guildID: message.guild.id });
 
         if(member.id === message.author.id){
             return message.channel.send(message.language.get("ERR_SANCTION_YOURSELF"));
         }
+        
+        let memberData = await this.client.findOrCreateMember({ id: member.id, guildID: message.guild.id });
         
         // Gets the kcik reason
         let reason = args.slice(1).join(" ");
@@ -55,8 +56,8 @@ class Kick extends Command {
             data.guild.save();
 
             let caseInfo = {
-                channel: message.channel,
-                moderator: message.author,
+                channel: message.channel.id,
+                moderator: message.author.id,
                 date: Date.now(),
                 type: "kick",
                 case: data.guild.casesCount,
@@ -65,7 +66,7 @@ class Kick extends Command {
             
             memberData.sanctions.push(caseInfo);
             memberData.save();
-
+            
             if(data.guild.plugins.modlogs){
                 let channel = message.guild.channels.get(data.guild.plugins.modlogs);
                 if(!channel) return;
