@@ -60,7 +60,7 @@ class Mute extends Command {
         data.guild.casesCount++;
 
         let caseInfo = {
-            channel: message.channel.name,
+            channel: message.channel.id,
             moderator: message.author.id,
             date: Date.now(),
             type: "mute",
