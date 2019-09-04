@@ -12,7 +12,7 @@ class Deposit extends Command {
             dirname: __dirname,
             enabled: true,
             guildOnly: true,
-            aliases: [ "bank", "banque" ],
+            aliases: [ "bank", "banque", "dep" ],
             memberPermissions: [],
             botPermissions: [ "SEND_MESSAGES", "EMBED_LINKS" ],
             nsfw: false,
@@ -24,10 +24,15 @@ class Deposit extends Command {
     async run (message, args, data) {
         
         let amount = args[0];
-        if(isNaN(amount) || parseInt(amount, 10) < 1){
-            return message.channel.send(message.language.get("DEPOSIT_ERR_AMOUNT"));
+
+        if(args[0] === "all" && parseInt(data.memberData.money, 10) > 0){
+            amount = parseInt(data.memberData.money, 10);
+        } else {
+            if(isNaN(amount) || parseInt(amount, 10) < 1){
+                return message.channel.send(message.language.get("DEPOSIT_ERR_AMOUNT"));
+            }
+            amount = parseInt(amount, 10);
         }
-        amount = parseInt(amount, 10);
         
         if(data.memberData.money < amount){
             return message.channel.send(message.language.get("DEPOSIT_ERR_AMOUNT_TOO_HIGH", amount));
