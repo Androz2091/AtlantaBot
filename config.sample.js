@@ -139,6 +139,16 @@ module.exports = {
 			online: "XXXXXXXXXXX"
 			// RE: https://i.goopics.net/QdGW0.png
 		},
+		letters: {
+			a: "XXXXXXXXXXX",
+			// RE: https://i.goopics.net/RNemO.png
+			w: "XXXXXXXXXXX",
+			// RE: https://i.goopics.net/AyKOA.png
+			r: "XXXXXXXXXXX",
+			// RE: https://i.goopics.net/7PKen.png
+			d: "XXXXXXXXXXX"
+			// RE: https://i.goopics.net/vAgj7.png
+		},
 		categories: {
 			administration: "XXXXXXXXXXX",
 			// RE: https://img.icons8.com/color/96/000000/horizontal-settings-mixer.png
