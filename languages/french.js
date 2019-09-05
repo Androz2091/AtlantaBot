@@ -993,7 +993,7 @@ module.exports = class {
 			STATS_DESC: `${c.botname} est un bot open source développé par ${c.owner.name} !`,
 			STATS_ONLINE: (time) => `Depuis ${time}`,
 			STATS_VC: (nb) => `Musique en cours sur \`${nb}\` serveurs`,
-			STATS_CREDITS: "Merci à `https://icones8.fr/icons/`, tous les emojis (ou presque) viennent de ce site !\n__**Donateurs**__:\n- `xixi52#0001` **GOD**\n- `Marty#3994` **GOD**\n- `🍮_Lucas_🍮#6171` **SUPPORTER**",
+			STATS_CREDITS: "Merci à `https://icones8.fr/icons/`, tous les emojis (ou presque) viennent de ce site !\n__**Donateurs**__:\n- `xixi52#0001` **GOD**\n- `Marty#3994` **GOD**\n- `\"</Synaro/>\"#2019` **GOD**\n- `🍮_Lucas_🍮#6171` **SUPPORTER**",
 			STATS_LINKS: (url, id) => `[Donate](${c.others.donate}) ● [Invite](https://discordapp.com/oauth2/authorize?client_id=${id}&scope=bot&permissions=2146958847) ● [Serveur](${url}) ● [Github](${c.others.github})`,
 			// Headings
 			STATS_HEADINGS:[
