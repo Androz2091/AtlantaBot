@@ -31,7 +31,7 @@ class Help extends Command {
             // if the command doesn't exist, error message
             let cmd = message.client.commands.get(args[0]) || message.client.commands.get(message.client.aliases.get(args[0]));
             if(!cmd && isCustom){
-                return message.channel.send(message.language.get("HELP_ERR_CMD_CUSTOMIZED"), args[0]);
+                return message.channel.send(message.language.get("HELP_ERR_CMD_CUSTOMIZED", args[0]));
             } else if(!cmd){
                 return message.channel.send(message.language.get("HELP_ERR_NOT_FOUND", args[0]));
             }
