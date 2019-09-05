@@ -29,19 +29,20 @@ class Credits extends Command {
 
     async run (message, args, data) {
         
-        let user = message.mentions.users.size > 0 ? message.mentions.users.first() : message.author,
-        client = this.client;
+        let member = await this.client.resolveMember(args[0], message.guild);
+        if(!member) member = message.member;
+        let user = member.user;
 
         if(user.bot){
             return message.channel.send(message.language.get("ERR_BOT_USER"));
         }
 
-        let memberData = (message.author === user) ? data.memberData : await client.findOrCreateMember({ id: user.id, guildID: message.guild.id }); 
+        let memberData = (message.author === user) ? data.memberData : await this.client.findOrCreateMember({ id: user.id, guildID: message.guild.id }); 
 
-        let commonsGuilds = client.guilds.filter((g) => g.members.get(user.id));
+        let commonsGuilds = this.client.guilds.filter((g) => g.members.get(user.id));
         let globalMoney = 0;
         await asyncForEach(commonsGuilds.array(), async (guild) => {
-            let memberData = await client.findOrCreateMember({ id: user.id, guildID: guild.id });
+            let memberData = await this.client.findOrCreateMember({ id: user.id, guildID: guild.id });
             globalMoney+=memberData.money;
             globalMoney+=memberData.bankSold;
         });
