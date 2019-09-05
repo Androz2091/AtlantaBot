@@ -829,7 +829,6 @@ module.exports = class {
 			MONEY_EXAMPLES: "$money\n$money @user#0000",
 			// Content
 			CREDITS_TITLE: (username) => `Crédits de ${username}`,
-			CREDITS_CONTENT: (credits, username) => `Actuellement **${credits}** crédits sur le compte de **${username}** !`,
 
 			/* LEADERBOARD COMMAND */
 
