@@ -138,6 +138,26 @@ module.exports = {
 			// RE: https://i.goopics.net/WRPWl.png
 			online: "XXXXXXXXXXX"
 			// RE: https://i.goopics.net/QdGW0.png
+		},
+		categories: {
+			administration: "XXXXXXXXXXX",
+			// RE: https://img.icons8.com/color/96/000000/horizontal-settings-mixer.png
+			economy: "XXXXXXXXXXX",
+			// RE: https://img.icons8.com/color/96/000000/banknotes.png
+			fun: "XXXXXXXXXXX",
+			// RE: https://img.icons8.com/color/96/000000/smiling.png
+			general: "XXXXXXXXXXX",
+			// RE: https://i.goopics.net/3X5oq.png
+			images: "XXXXXXXXXXX",
+			// RE: https://img.icons8.com/color/96/000000/picture.png
+			moderation: "XXXXXXXXXXX",
+			// RE: https://img.icons8.com/color/96/000000/police-badge.png
+			music: "XXXXXXXXXXX",
+			// RE: https://img.icons8.com/color/96/000000/musically.png
+			owner: "XXXXXXXXXXX",
+			// RE: https://img.icons8.com/color/96/000000/queen-uk.png
+			custom: "XXXXXXXXXXX"
+			// RE: https://img.icons8.com/color/96/000000/request-service.png
 		}
 	},
 	/* The others utils links */
