@@ -55,7 +55,6 @@ class Help extends Command {
         }
 
         const categories = [];
-        const emojis = message.client.guilds.get(message.client.config.support.id).emojis;
         const commands = message.client.commands;
 
         commands.forEach((command) => {
@@ -67,19 +66,19 @@ class Help extends Command {
             }
         });
 
+        let emojis = this.client.config.emojis
+
         let embed = new Discord.MessageEmbed()
             .setDescription(message.language.get("HELP_EDESCRIPTION", data.guild.prefix))
             .setColor(data.config.embed.color)
             .setFooter(data.config.embed.footer);
         categories.sort().forEach((cat) => {
-            let emoji = emojis.find((e) => e.name === cat.toLowerCase()+"_category_atlanta");
             let tCommands = commands.filter((cmd) => cmd.help.category === cat);
-            embed.addField((emoji ? emoji.toString() : "")+" "+cat+" - ("+tCommands.size+")", tCommands.map((cmd) => "`"+cmd.help.name+"`").join(", "));
+            embed.addField(emojis.categories[cat.toLowerCase()]+" "+cat+" - ("+tCommands.size+")", tCommands.map((cmd) => "`"+cmd.help.name+"`").join(", "));
         });
         if(message.guild){
             if(data.guild.customCommands.length > 0){
-                let emoji = emojis.find((e) => e.name === "custom_category_atlanta");
-                embed.addField((emoji ? emoji.toString() : "")+" "+message.guild.name+" | "+message.language.get("UTILS").CUSTOM_COMMANDS+" - ("+data.guild.customCommands.length+")", data.guild.customCommands.map((cmd) => "`"+cmd.name+"`").join(", "));
+                embed.addField(emojis.categories.custom+" "+message.guild.name+" | "+message.language.get("UTILS").CUSTOM_COMMANDS+" - ("+data.guild.customCommands.length+")", data.guild.customCommands.map((cmd) => "`"+cmd.name+"`").join(", "));
             }
         }
         let inviteURL = message.client.config.supportURL || await message.client.functions.supportLink(message.client).catch((err) => {});
