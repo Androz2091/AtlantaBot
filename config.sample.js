@@ -131,9 +131,13 @@ module.exports = {
 		// RE: https://img.icons8.com/color/96/000000/root-server.png
 		status: {
 			idle: "XXXXXXXXXXX",
+			// RE: https://i.goopics.net/bRVWW.png
 			dnd: "XXXXXXXXXXX",
+			// RE: https://i.goopics.net/lWN3A.png
 			offline: "XXXXXXXXXXX",
+			// RE: https://i.goopics.net/WRPWl.png
 			online: "XXXXXXXXXXX"
+			// RE: https://i.goopics.net/QdGW0.png
 		}
 	},
 	/* The others utils links */
