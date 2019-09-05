@@ -73,7 +73,7 @@ class Leaderboard extends Command {
         }
 
         if(isOnlyOnMobile){
-            message.channel.send("LEADERBOARD_WARN_PHONE");
+            message.channel.send(message.language.get("LEADERBOARD_WARN_PHONE"));
         }
         
         async function fetchUsers(array, table, client) {
