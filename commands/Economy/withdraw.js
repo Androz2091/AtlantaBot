@@ -24,10 +24,19 @@ class Withdraw extends Command {
     async run (message, args, data) {
         
         let amount = args[0];
-        if(isNaN(amount) || parseInt(amount, 10) < 1){
-            return message.channel.send(message.language.get("WITHDRAW_ERR_AMOUNT"));
+
+        if(!(parseInt(data.memberData.bankSold, 10) > 0)) {
+            return message.channel.send(message.language.get("WITHDRAW_ERR_NO_MONEY"));
         }
-        amount = parseInt(amount, 10);
+
+        if(args[0] === "all"){
+            amount = parseInt(data.memberData.bankSold, 10);
+        } else {
+            if(isNaN(amount) || parseInt(amount, 10) < 1){
+                return message.channel.send(message.language.get("WITHDRAW_ERR_AMOUNT"));
+            }
+            amount = parseInt(amount, 10);
+        }
         
         if(data.memberData.bankSold < amount){
             return message.channel.send(message.language.get("WITHDRAW_ERR_AMOUNT_TOO_HIGH", amount));
