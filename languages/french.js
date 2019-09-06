@@ -870,6 +870,7 @@ module.exports = class {
 			DEPOSIT_EXAMPLES: "$deposit 400",
 			// Errors
 			DEPOSIT_ERR_AMOUNT: `${e.error} | Veuillez préciser un montant à déposer à la banque !`,
+			DEPOSIT_ERR_NO_MONEY: `${e.error} | Vous n’avez pas de crédit !`,
 			DEPOSIT_ERR_AMOUNT_TOO_HIGH: (money) => `${e.error} | Vous ne disposez pas de \`${money}\` crédits !`,
 			// Content
 			DEPOSIT_SUCCESS: (money) => `${e.success} | **${money}** crédits déposés à la banque !`,
@@ -882,6 +883,7 @@ module.exports = class {
 			WITHDRAW_EXAMPLES: "$withdraw 400",
 			// Errors
 			WITHDRAW_ERR_AMOUNT: `${e.error} | Veuillez préciser un montant à retirer !`,
+			WITHDRAW_ERR_NO_MONEY: `${e.error} | Vous n’avez pas de crédit à la banque !`,
 			WITHDRAW_ERR_AMOUNT_TOO_HIGH: (money) => `${e.error} | Vous ne disposez pas de \`${money}\` crédits à la banque !`,
 			// Content
 			WITHDRAW_SUCCESS: (money) => `${e.success} | **${money}** crédits retirés !`,
