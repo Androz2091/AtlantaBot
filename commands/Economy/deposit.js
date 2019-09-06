@@ -25,7 +25,11 @@ class Deposit extends Command {
         
         let amount = args[0];
 
-        if(args[0] === "all" && parseInt(data.memberData.money, 10) > 0){
+        if(!(parseInt(data.memberData.money, 10) > 0)) {
+            return message.channel.send(message.language.get("DEPOSIT_ERR_NO_MONEY"));
+        }
+
+        if(args[0] === "all"){
             amount = parseInt(data.memberData.money, 10);
         } else {
             if(isNaN(amount) || parseInt(amount, 10) < 1){
