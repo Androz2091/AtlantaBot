@@ -1616,8 +1616,8 @@ module.exports = class {
         let day = pdate.getDate();
         let monthIndex = pdate.getMonth();
         let year = pdate.getFullYear();
-        let hour = pdate.getHours();
-        let minute = pdate.getMinutes();
+        let hour = pdate.getHours() < 10 ? "0" + pdate.getHours() : pdate.getHours();
+        let minute = pdate.getMinutes() < 10 ? "0" + pdate.getMinutes() : pdate.getMinutes();
 
         let thedate = (isLongDate) ? day + " " + monthNames[monthIndex] + " " + year + " at " + hour + "h" + minute 
         : day + " " + monthNames[monthIndex] + " " + year
