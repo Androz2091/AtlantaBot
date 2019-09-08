@@ -69,7 +69,11 @@ async function writeImage(client){
         
             /* BACKGROUND */
             let background = await Canvas.loadImage("./assets/img/fortnite/shop/background.png");
-            ctx.drawImage(background, 0, 0, 3268, 2027);
+            if(canvas.height > 2026) {
+                ctx.drawImage(background, 0, 0, canvas.height * 3268 / 2027, canvas.height);
+            } else {
+                ctx.drawImage(background, 0, 0, 3268, 2027);
+            }
             // Draw title
             ctx.fillStyle = "#ffffff";
             ctx.font = "70px Burbank";
