@@ -670,6 +670,19 @@ module.exports = class {
 			// Content
 			QUEUE_TITLE: `${e.playlist} Playlist`,
 
+			/* LYRICS COMMAND */
+
+			// Utils
+			LYRICS_DESCRIPTION: "Displays the lyrics of a song",
+			LYRICS_USAGE: "lyrics [song-name]",
+			LYRICS_EXAMPLES: "$lyrics Skyfall",
+			// Content
+			LYRICS_TITLE: (songName) => `🎤 Lyrics of ${songName}`,
+			LYRICS_NEXT: (link) => `\n**And more...** (${link})[Click here for the rest]`,
+			// Errors
+			LYRICS_ERR_SONG_NAME: `${e.error} | Please enter a song name!`,
+			LYRICS_ERR_NO_LYRICS: (songName) => `${e.error} | No lyrics found for \`${songName}\` !`,
+
 			/* CONFIGURATION COMMAND */
 
 			// Utils

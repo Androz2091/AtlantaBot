@@ -1161,6 +1161,19 @@ module.exports = class {
 			// Content
 			QUEUE_TITLE: `${e.playlist} Playlist`,
 
+			/* LYRICS COMMAND */
+
+			// Utils
+			LYRICS_DESCRIPTION: "Affiche les paroles d'une chanson",
+			LYRICS_USAGE: "lyrics [nom-de-la-chanson]",
+			LYRICS_EXAMPLES: "$lyrics Skyfall",
+			// Content
+			LYRICS_TITLE: (songName) => `🎤 Paroles de ${songName}`,
+			LYRICS_NEXT: (link) => `\n**Et plus...** (${link})[Cliquez ici pour la suite]`,
+			// Errors
+			LYRICS_ERR_SONG_NAME: `${e.error} | Veuillez entrer un nom de chanson !`,
+			LYRICS_ERR_NO_LYRICS: (songName) => `${e.error} | Aucune parole trouvée pour \`${songName}\` !`,
+
 			/* TRANSLATE COMMAND  */
 
 			// Utils
