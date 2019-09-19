@@ -23,7 +23,7 @@ class Addcommand extends Command {
 
     async run (message, args, data) {
         
-        let name = args[0];
+        let name = args[0].split("\n")[0];
         if(!name){
             return message.channel.send(message.language.get("ADDCOMMAND_ERR_NAME"));
         }
@@ -32,7 +32,7 @@ class Addcommand extends Command {
             return message.channel.send(message.language.get("ADDCOMMAND_ERR_EXISTS", name));
         }
 
-        let answer = args.slice(1).join(" ");
+        let answer = (args[0].split("\n")[1] || "") + args.slice(1).join(" ");
         if(!answer){
             return message.channel.send(message.language.get("ADDCOMMAND_ERR_ANSWER"));
         }
