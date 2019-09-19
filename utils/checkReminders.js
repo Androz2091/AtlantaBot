@@ -10,7 +10,10 @@ module.exports = {
     init(client){
         setInterval(async function(){
             let language = new(require(`../languages/${client.config.defaultLanguage}`));
+            console.log("Fetching reminders db...");
+            const s = Date.now()
             let users = await client.usersData.find().lean();
+            console.log('After reminders db fetch... ('+String(Date.now()-s)+"ms)")
             let dateNow = Date.now();
             users.forEach(async (user) => {
                 let dUser = client.users.get(user.id);

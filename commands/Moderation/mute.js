@@ -76,7 +76,7 @@ class Mute extends Command {
 
         memberData.markModified("sanctions");
         memberData.markModified("mute");
-        memberData.save();
+        await memberData.save();
 
         await data.guild.save();
 

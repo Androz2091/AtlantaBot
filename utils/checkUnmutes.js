@@ -12,7 +12,7 @@ module.exports = {
         setInterval(function(){
             client.guilds.forEach(async (guild) => {
                 let guildData = await client.findOrCreateGuild({ id: guild.id });
-                guildData.members.filter((m) => m && m.mute && m.mute.muted).filter((m) => m.mute.endDate < Date.now()).forEach(async (memberData) => {
+                guildData.members.filter((m) => m.mute && m.mute.muted && (m.mute.endDate < Date.now())).forEach(async (memberData) => {
                     let member = await guild.members.fetch(memberData.id);
                     if(member){
                         guild.channels.forEach((channel) => {

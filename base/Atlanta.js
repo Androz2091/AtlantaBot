@@ -97,7 +97,7 @@ class Atlanta extends Client {
     async findOrCreateGuild(param, isLean){
         let guildsData = this.guildsData;
         return new Promise(async function (resolve, reject){
-            let guildData = (isLean ? await guildsData.findOne(param).populate("membersData").lean() : await guildsData.findOne(param).populate("membersData"));
+            let guildData = (isLean ? await guildsData.findOne(param).populate("members").lean() : await guildsData.findOne(param).populate("members"));
             if(guildData){
                 resolve(guildData);
             } else {
