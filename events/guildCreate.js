@@ -1,4 +1,5 @@
-const Discord = require("discord.js");
+const Discord = require("discord.js"),
+proUsers = require("../../assets/json/pro_users.json");
 
 module.exports = class {
 
@@ -7,6 +8,13 @@ module.exports = class {
     }
     
     async run (guild) {
+
+        if(this.client.config.proMode){
+            if(!proUsers.includes(guild.ownerID) || this.guilds.filter((g) => g.ownerID === guild.ownerID) > 1){
+                this.client.logger.log(guild.ownerID+" tried to invite Atlanta on its server.");
+                return guild.leave();
+            }
+        }
         
         guild = await guild.fetch();
 
