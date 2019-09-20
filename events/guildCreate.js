@@ -1,5 +1,5 @@
 const Discord = require("discord.js"),
-proUsers = require("../../assets/json/pro_users.json");
+proUsers = require("../assets/json/pro_users.json");
 
 module.exports = class {
 
