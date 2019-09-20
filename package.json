@@ -24,7 +24,7 @@
     "canvas": "^2.6.0",
     "chalk": "^2.4.2",
     "colors-generator": "^0.3.4",
-    "cron": "^1.7.1",
+    "cron": "^1.7.2",
     "dblapi.js": "^2.3.0",
     "deepl-scraper": "^1.0.8",
     "discord-backup": "^1.1.0",
