@@ -11,6 +11,7 @@ module.exports = {
         setInterval(async function(){
             let language = new(require(`../languages/${client.config.defaultLanguage}`));
             let users = await client.usersData.find({ reminds: { $gt: [] } }).lean();
+            let dateNow = Date.now();
             users.forEach(async (user) => {
                 let dUser = client.users.get(user.id);
                 if(dUser){
