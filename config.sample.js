@@ -209,5 +209,11 @@ module.exports = {
 			name: "my website : atlanta-bot.fr",
 			type: "PLAYING"
 		}
+	],
+	proMode: false, // Whether the bot is in pro mode (only users in the proUsers array will be able to invite the bot)
+	/* The pro users */
+	proUsers: [
+		"DiscordUser ID",
+		"Another DiscordUser ID"
 	]
 }

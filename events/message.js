@@ -24,7 +24,13 @@ module.exports = class {
         if(message.guild && !message.member){
             await message.guild.members.fetch(message.author.id);
         }
-        
+
+        if(this.client.config.proMode){
+            if((!this.client.config.proUsers.includes(message.guild.ownerID) || this.guilds.filter((g) => g.ownerID === message.guild.ownerID) > 1) && guild.ownerID !== this.config.owner.id){
+                return guild.leave();
+            }
+        }
+
         let client = this.client;
         data.config = client.config;
     
