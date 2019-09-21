@@ -98,41 +98,52 @@ async function writeImage(client){
         
             if(shop.data.daily.length < 9 && shop.data.featured.length < 9) {
                 for(let i = 0; i < shop.data.featured.length; i++) {
+                    let card = `./assets/img/fortnite/shop/card_${shop.data.featured[i].rarity}.png`;
                     if(i & 1) {
                         if(shop.data.featured[i].images.featured) {
-                            let background = await Canvas.loadImage(`./assets/img/fortnite/shop/card_${shop.data.featured[i].rarity}.png`);
+                            if(fs.existsSync(card)) {
+                                let background = await Canvas.loadImage(card);
                                 ctx.drawImage(background, 313, 51 + (149 * i), 268, 268);
-                                let item = await Canvas.loadImage(shop.data.featured[i].images.featured);
-                                ctx.drawImage(item, 313 + 3, 51 + 3 + (149 * i), 262, 262);
-                                let itemDesc = await Canvas.loadImage("./assets/img/fortnite/shop/card_itemdesc.png");
-                                ctx.drawImage(itemDesc, 313 + 3, 51 + 192 + (149 * i), 262, 73);
-                                ctx.font = applyItemName(canvas, shop.data.featured[i].name);
-                                ctx.fillStyle = "#ffffff";
-                                ctx.textAlign = "center";
-                                ctx.fillText(shop.data.featured[i].name, 313 + 134, 51 + 192 + 32 + (149 * i));
-                                let price = shop.data.featured[i].price.replace(/[,]/gi, ""),
-                                vbuck = await Canvas.loadImage(shop.data.featured[i].priceIconLink);
-                                ctx.textAlign = "left";
-                                ctx.font = "30px Burbank";
-                                if(price >= 1000) {
-                                    ctx.drawImage(vbuck, 313 + 93, 51 + 192 + 42 + (149 * i), 25, 25);
-                                    ctx.fillText(shop.data.featured[i].price, 313 + 122, 51 + 192 + 65 + (149 * i));
-                                }
-                                if(price >= 100 && price < 1000) {
-                                    ctx.drawImage(vbuck, 313 + 100, 51 + 192 + 42 + (149 * i), 25, 25);
-                                    ctx.fillText(shop.data.featured[i].price, 313 + 129, 51 + 192 + 65 + (149 * i));
-                                }
-                                if(price >= 10 && price < 100) {
-                                    ctx.drawImage(vbuck, 313 + 107, 51 + 192 + 42 + (149 * i), 25, 25);
-                                    ctx.fillText(shop.data.featured[i].price, 313 + 136, 51 + 192 + 65 + (149 * i));
-                                }
-                                if(price >= 0 && price < 10) {
-                                    ctx.drawImage(vbuck, 313 + 114, 51 + 192 + 42 + (149 * i), 25, 25);
-                                    ctx.fillText(shop.data.featured[i].price, 313 + 143, 51 + 192 + 65 + (149 * i));
-                                }
+                            } else {
+                                let background = await Canvas.loadImage("./assets/img/fortnite/shop/card_common.png");
+                                ctx.drawImage(background, 313, 51 + (149 * i), 268, 268);
+                            }
+                            let item = await Canvas.loadImage(shop.data.featured[i].images.featured);
+                            ctx.drawImage(item, 313 + 3, 51 + 3 + (149 * i), 262, 262);
+                            let itemDesc = await Canvas.loadImage("./assets/img/fortnite/shop/card_itemdesc.png");
+                            ctx.drawImage(itemDesc, 313 + 3, 51 + 192 + (149 * i), 262, 73);
+                            ctx.font = applyItemName(canvas, shop.data.featured[i].name);
+                            ctx.fillStyle = "#ffffff";
+                            ctx.textAlign = "center";
+                            ctx.fillText(shop.data.featured[i].name, 313 + 134, 51 + 192 + 32 + (149 * i));
+                            let price = shop.data.featured[i].price.replace(/[,]/gi, ""),
+                            vbuck = await Canvas.loadImage(shop.data.featured[i].priceIconLink);
+                            ctx.textAlign = "left";
+                            ctx.font = "30px Burbank";
+                            if(price >= 1000) {
+                                ctx.drawImage(vbuck, 313 + 93, 51 + 192 + 42 + (149 * i), 25, 25);
+                                ctx.fillText(shop.data.featured[i].price, 313 + 122, 51 + 192 + 65 + (149 * i));
+                            }
+                            if(price >= 100 && price < 1000) {
+                                ctx.drawImage(vbuck, 313 + 100, 51 + 192 + 42 + (149 * i), 25, 25);
+                                ctx.fillText(shop.data.featured[i].price, 313 + 129, 51 + 192 + 65 + (149 * i));
+                            }
+                            if(price >= 10 && price < 100) {
+                                ctx.drawImage(vbuck, 313 + 107, 51 + 192 + 42 + (149 * i), 25, 25);
+                                ctx.fillText(shop.data.featured[i].price, 313 + 136, 51 + 192 + 65 + (149 * i));
+                            }
+                            if(price >= 0 && price < 10) {
+                                ctx.drawImage(vbuck, 313 + 114, 51 + 192 + 42 + (149 * i), 25, 25);
+                                ctx.fillText(shop.data.featured[i].price, 313 + 143, 51 + 192 + 65 + (149 * i));
+                            }
                         } else {
-                            let background = await Canvas.loadImage(`./assets/img/fortnite/shop/card_${shop.data.featured[i].rarity}.png`);
-                            ctx.drawImage(background, 313, 51 + (149 * i), 268, 268);
+                            if(fs.existsSync(card)) {
+                                let background = await Canvas.loadImage(card);
+                                ctx.drawImage(background, 313, 51 + (149 * i), 268, 268);
+                            } else {
+                                let background = await Canvas.loadImage("./assets/img/fortnite/shop/card_common.png");
+                                ctx.drawImage(background, 313, 51 + (149 * i), 268, 268);
+                            }
                             let item = await Canvas.loadImage(shop.data.featured[i].images.icon);
                             ctx.drawImage(item, 313 + 3, 51 + 3 + (149 * i), 262, 262);
                             let itemDesc = await Canvas.loadImage("./assets/img/fortnite/shop/card_itemdesc.png");
@@ -164,8 +175,13 @@ async function writeImage(client){
                         }
                     } else {
                         if(shop.data.featured[i].images.featured) {
-                            let background = await Canvas.loadImage(`./assets/img/fortnite/shop/card_${shop.data.featured[i].rarity}.png`);
-                            ctx.drawImage(background, 15, 200 + (149 * i), 268, 268);
+                            if(fs.existsSync(card)) {
+                                let background = await Canvas.loadImage(card);
+                                ctx.drawImage(background, 15, 200 + (149 * i), 268, 268);
+                            } else {
+                                let background = await Canvas.loadImage("./assets/img/fortnite/shop/card_common.png");
+                                ctx.drawImage(background, 15, 200 + (149 * i), 268, 268);
+                            }
                             let item = await Canvas.loadImage(shop.data.featured[i].images.featured);
                             ctx.drawImage(item, 15 + 3, 200 + 3 + (149 * i), 262, 262);
                             let itemDesc = await Canvas.loadImage("./assets/img/fortnite/shop/card_itemdesc.png");
@@ -195,8 +211,13 @@ async function writeImage(client){
                                 ctx.fillText(shop.data.featured[i].price, 15 + 143, 200 + 192 + 65 + (149 * i));
                             }
                         } else {
-                            let background = await Canvas.loadImage(`./assets/img/fortnite/shop/card_${shop.data.featured[i].rarity}.png`);
-                            ctx.drawImage(background, 15, 200 + (149 * i), 268, 268);
+                            if(fs.existsSync(card)) {
+                                let background = await Canvas.loadImage(card);
+                                ctx.drawImage(background, 15, 200 + (149 * i), 268, 268);
+                            } else {
+                                let background = await Canvas.loadImage("./assets/img/fortnite/shop/card_common.png");
+                                ctx.drawImage(background, 15, 200 + (149 * i), 268, 268);
+                            }
                             let item = await Canvas.loadImage(shop.data.featured[i].images.icon);
                             ctx.drawImage(item, 15 + 3, 200 + 3 + (149 * i), 262, 262);
                             let itemDesc = await Canvas.loadImage("./assets/img/fortnite/shop/card_itemdesc.png");
@@ -229,10 +250,16 @@ async function writeImage(client){
                     }
                 }
                 for(let i = 0; i < shop.data.daily.length; i++) {
+                    let card = `./assets/img/fortnite/shop/card_${shop.data.daily[i].rarity}.png`;
                     if(i & 1) {
                         if(shop.data.daily[i].images.daily) {
-                            let background = await Canvas.loadImage(`./assets/img/fortnite/shop/card_${shop.data.daily[i].rarity}.png`);
-                            ctx.drawImage(background, 938, 51 + (149 * i), 268, 268);
+                            if(fs.existsSync(card)) {
+                                let background = await Canvas.loadImage(card);
+                                ctx.drawImage(background, 938, 51 + (149 * i), 268, 268);
+                            } else {
+                                let background = await Canvas.loadImage("./assets/img/fortnite/shop/card_common.png");
+                                ctx.drawImage(background, 938, 51 + (149 * i), 268, 268);
+                            }
                             let item = await Canvas.loadImage(shop.data.daily[i].images.daily);
                             ctx.drawImage(item, 938 + 3, 51 + 3 + (149 * i), 262, 262);
                             let itemDesc = await Canvas.loadImage("./assets/img/fortnite/shop/card_itemdesc.png");
@@ -262,8 +289,13 @@ async function writeImage(client){
                                 ctx.fillText(shop.data.daily[i].price, 938 + 143, 51 + 192 + 65 + (149 * i));
                             }
                         } else {
-                            let background = await Canvas.loadImage(`./assets/img/fortnite/shop/card_${shop.data.daily[i].rarity}.png`);
-                            ctx.drawImage(background, 938, 51 + (149 * i), 268, 268);
+                            if(fs.existsSync(card)) {
+                                let background = await Canvas.loadImage(card);
+                                ctx.drawImage(background, 938, 51 + (149 * i), 268, 268);
+                            } else {
+                                let background = await Canvas.loadImage("./assets/img/fortnite/shop/card_common.png");
+                                ctx.drawImage(background, 938, 51 + (149 * i), 268, 268);
+                            }
                             let item = await Canvas.loadImage(shop.data.daily[i].images.icon);
                             ctx.drawImage(item, 938 + 3, 51 + 3 + (149 * i), 262, 262);
                             let itemDesc = await Canvas.loadImage("./assets/img/fortnite/shop/card_itemdesc.png");
@@ -295,8 +327,13 @@ async function writeImage(client){
                         }
                     } else {
                         if(shop.data.daily[i].images.daily) {
-                            let background = await Canvas.loadImage(`./assets/img/fortnite/shop/card_${shop.data.daily[i].rarity}.png`);
-                            ctx.drawImage(background, 640, 200 + (149 * i), 268, 268);
+                            if(fs.existsSync(card)) {
+                                let background = await Canvas.loadImage(card);
+                                ctx.drawImage(background, 640, 200 + (149 * i), 268, 268);
+                            } else {
+                                let background = await Canvas.loadImage("./assets/img/fortnite/shop/card_common.png");
+                                ctx.drawImage(background, 640, 200 + (149 * i), 268, 268);
+                            }
                             let item = await Canvas.loadImage(shop.data.daily[i].images.daily);
                             ctx.drawImage(item, 640 + 3, 200 + 3 + (149 * i), 262, 262);
                             let itemDesc = await Canvas.loadImage("./assets/img/fortnite/shop/card_itemdesc.png");
@@ -326,8 +363,13 @@ async function writeImage(client){
                                 ctx.fillText(shop.data.daily[i].price, 640 + 143, 200 + 192 + 65 + (149 * i));
                             }
                         } else {
-                            let background = await Canvas.loadImage(`./assets/img/fortnite/shop/card_${shop.data.daily[i].rarity}.png`);
-                            ctx.drawImage(background, 640, 200 + (149 * i), 268, 268);
+                            if(fs.existsSync(card)) {
+                                let background = await Canvas.loadImage(card);
+                                ctx.drawImage(background, 640, 200 + (149 * i), 268, 268);
+                            } else {
+                                let background = await Canvas.loadImage("./assets/img/fortnite/shop/card_common.png");
+                                ctx.drawImage(background, 640, 200 + (149 * i), 268, 268);
+                            }
                             let item = await Canvas.loadImage(shop.data.daily[i].images.icon);
                             ctx.drawImage(item, 640 + 3, 200 + 3 + (149 * i), 262, 262);
                             let itemDesc = await Canvas.loadImage("./assets/img/fortnite/shop/card_itemdesc.png");
@@ -367,9 +409,15 @@ async function writeImage(client){
                     i2Daily = Math.ceil((shop.data.daily.length - i1Daily) / 2),
                     i3Daily = Math.ceil(shop.data.daily.length - (i1Daily + i2Daily));
                 for(let i = 0; i < i1Featured; i++) {
+                    let card = `./assets/img/fortnite/shop/card_${shop.data.featured[i].rarity}.png`;
                     if(shop.data.featured[i].images.featured) {
-                        let background = await Canvas.loadImage(`./assets/img/fortnite/shop/card_${shop.data.featured[i].rarity}.png`);
-                        ctx.drawImage(background, 15, 200 + (298 * i), 268, 268);
+                        if(fs.existsSync(card)) {
+                            let background = await Canvas.loadImage(card);
+                            ctx.drawImage(background, 15, 200 + (298 * i), 268, 268);
+                        } else {
+                            let background = await Canvas.loadImage("./assets/img/fortnite/shop/card_common.png");
+                            ctx.drawImage(background, 15, 200 + (298 * i), 268, 268);
+                        }
                         let item = await Canvas.loadImage(shop.data.featured[i].images.featured);
                         ctx.drawImage(item, 15 + 3, 200 + 3 + (298 * i), 262, 262);
                         let itemDesc = await Canvas.loadImage("./assets/img/fortnite/shop/card_itemdesc.png");
@@ -399,8 +447,13 @@ async function writeImage(client){
                             ctx.fillText(shop.data.featured[i].price, 15 + 143, 200 + 192 + 65 + (298 * i));
                         }
                     } else {
-                        let background = await Canvas.loadImage(`./assets/img/fortnite/shop/card_${shop.data.featured[i].rarity}.png`);
-                        ctx.drawImage(background, 15, 200 + (298 * i), 268, 268);
+                        if(fs.existsSync(card)) {
+                            let background = await Canvas.loadImage(card);
+                            ctx.drawImage(background, 15, 200 + (298 * i), 268, 268);
+                        } else {
+                            let background = await Canvas.loadImage("./assets/img/fortnite/shop/card_common.png");
+                            ctx.drawImage(background, 15, 200 + (298 * i), 268, 268);
+                        }
                         let item = await Canvas.loadImage(shop.data.featured[i].images.icon);
                         ctx.drawImage(item, 15 + 3, 200 + 3 + (298 * i), 262, 262);
                         let itemDesc = await Canvas.loadImage("./assets/img/fortnite/shop/card_itemdesc.png");
@@ -432,9 +485,15 @@ async function writeImage(client){
                     }
                 }
                 for(let i = i1Featured; i < i1Featured + i2Featured; i++) {
+                    let card = `./assets/img/fortnite/shop/card_${shop.data.featured[i].rarity}.png`;
                     if(shop.data.featured[i].images.featured) {
-                        let background = await Canvas.loadImage(`./assets/img/fortnite/shop/card_${shop.data.featured[i].rarity}.png`);
-                        ctx.drawImage(background, 313, 200 + (298 * (i - i1Featured)), 268, 268);
+                        if(fs.existsSync(card)) {
+                            let background = await Canvas.loadImage(card);
+                            ctx.drawImage(background, 313, 200 + (298 * (i - i1Featured)), 268, 268);
+                        } else {
+                            let background = await Canvas.loadImage("./assets/img/fortnite/shop/card_common.png");
+                            ctx.drawImage(background, 313, 200 + (298 * (i - i1Featured)), 268, 268);
+                        }
                         let item = await Canvas.loadImage(shop.data.featured[i].images.featured);
                         ctx.drawImage(item, 313 + 3, 200 + 3 + (298 * (i - i1Featured)), 262, 262);
                         let itemDesc = await Canvas.loadImage("./assets/img/fortnite/shop/card_itemdesc.png");
@@ -464,8 +523,13 @@ async function writeImage(client){
                             ctx.fillText(shop.data.featured[i].price, 313 + 143, 200 + 192 + 65 + (298 * (i - i1Featured)));
                         }
                     } else {
-                        let background = await Canvas.loadImage(`./assets/img/fortnite/shop/card_${shop.data.featured[i].rarity}.png`);
-                        ctx.drawImage(background, 313, 200 + (298 * (i - i1Featured)), 268, 268);
+                        if(fs.existsSync(card)) {
+                            let background = await Canvas.loadImage(card);
+                            ctx.drawImage(background, 313, 200 + (298 * (i - i1Featured)), 268, 268);
+                        } else {
+                            let background = await Canvas.loadImage("./assets/img/fortnite/shop/card_common.png");
+                            ctx.drawImage(background, 313, 200 + (298 * (i - i1Featured)), 268, 268);
+                        }
                         let item = await Canvas.loadImage(shop.data.featured[i].images.icon);
                         ctx.drawImage(item, 313 + 3, 200 + 3 + (298 * (i - i1Featured)), 262, 262);
                         let itemDesc = await Canvas.loadImage("./assets/img/fortnite/shop/card_itemdesc.png");
@@ -497,9 +561,15 @@ async function writeImage(client){
                     }
                 }
                 for(let i = i1Featured + i2Featured; i < i1Featured + i2Featured + i3Featured; i++) {
+                    let card = `./assets/img/fortnite/shop/card_${shop.data.featured[i].rarity}.png`;
                     if(shop.data.featured[i].images.featured) {
-                        let background = await Canvas.loadImage(`./assets/img/fortnite/shop/card_${shop.data.featured[i].rarity}.png`);
-                        ctx.drawImage(background, 611, 200 + (298 * (i - (i1Featured + i2Featured))), 268, 268);
+                        if(fs.existsSync(card)) {
+                            let background = await Canvas.loadImage(card);
+                            ctx.drawImage(background, 611, 200 + (298 * (i - (i1Featured + i2Featured))), 268, 268);
+                        } else {
+                            let background = await Canvas.loadImage("./assets/img/fortnite/shop/card_common.png");
+                            ctx.drawImage(background, 611, 200 + (298 * (i - (i1Featured + i2Featured))), 268, 268);
+                        }
                         let item = await Canvas.loadImage(shop.data.featured[i].images.featured);
                         ctx.drawImage(item, 611 + 3, 200 + 3 + (298 * (i - (i1Featured + i2Featured))), 262, 262);
                         let itemDesc = await Canvas.loadImage("./assets/img/fortnite/shop/card_itemdesc.png");
@@ -529,8 +599,13 @@ async function writeImage(client){
                             ctx.fillText(shop.data.featured[i].price, 611 + 143, 200 + 192 + 65 + (298 * (i - (i1Featured + i2Featured))));
                         }
                     } else {
-                        let background = await Canvas.loadImage(`./assets/img/fortnite/shop/card_${shop.data.featured[i].rarity}.png`);
-                        ctx.drawImage(background, 611, 200 + (298 * (i - (i1Featured + i2Featured))), 268, 268);
+                        if(fs.existsSync(card)) {
+                            let background = await Canvas.loadImage(card);
+                            ctx.drawImage(background, 611, 200 + (298 * (i - (i1Featured + i2Featured))), 268, 268);
+                        } else {
+                            let background = await Canvas.loadImage("./assets/img/fortnite/shop/card_common.png");
+                            ctx.drawImage(background, 611, 200 + (298 * (i - (i1Featured + i2Featured))), 268, 268);
+                        }
                         let item = await Canvas.loadImage(shop.data.featured[i].images.icon);
                         ctx.drawImage(item, 611 + 3, 200 + 3 + (298 * (i - (i1Featured + i2Featured))), 262, 262);
                         let itemDesc = await Canvas.loadImage("./assets/img/fortnite/shop/card_itemdesc.png");
@@ -562,7 +637,15 @@ async function writeImage(client){
                     }
                 }
                 for(let i = 0; i < i1Daily; i++) {
+                    let card = `./assets/img/fortnite/shop/card_${shop.data.daily[i].rarity}.png`;
                     if(shop.data.daily[i].images.daily) {
+                        if(fs.existsSync(card)) {
+                            let background = await Canvas.loadImage(card);
+                            ctx.drawImage(background, 939, 200 + (298 * i), 268, 268);
+                        } else {
+                            let background = await Canvas.loadImage("./assets/img/fortnite/shop/card_common.png");
+                            ctx.drawImage(background, 939, 200 + (298 * i), 268, 268);
+                        }
                         let background = await Canvas.loadImage(`./assets/img/fortnite/shop/card_${shop.data.daily[i].rarity}.png`);
                         ctx.drawImage(background, 939, 200 + (298 * i), 268, 268);
                         let item = await Canvas.loadImage(shop.data.featured[i].images.featured);
@@ -594,8 +677,13 @@ async function writeImage(client){
                             ctx.fillText(shop.data.daily[i].price, 939 + 143, 200 + 192 + 65 + (298 * i));
                         }
                     } else {
-                        let background = await Canvas.loadImage(`./assets/img/fortnite/shop/card_${shop.data.daily[i].rarity}.png`);
-                        ctx.drawImage(background, 939, 200 + (298 * i), 268, 268);
+                        if(fs.existsSync(card)) {
+                            let background = await Canvas.loadImage(card);
+                            ctx.drawImage(background, 939, 200 + (298 * i), 268, 268);
+                        } else {
+                            let background = await Canvas.loadImage("./assets/img/fortnite/shop/card_common.png");
+                            ctx.drawImage(background, 939, 200 + (298 * i), 268, 268);
+                        }
                         let item = await Canvas.loadImage(shop.data.daily[i].images.icon);
                         ctx.drawImage(item, 939 + 3, 200 + 3 + (298 * i), 262, 262);
                         let itemDesc = await Canvas.loadImage("./assets/img/fortnite/shop/card_itemdesc.png");
@@ -627,9 +715,15 @@ async function writeImage(client){
                     }
                 }
                 for(let i = i1Daily; i < i1Daily + i2Daily; i++) {
+                    let card = `./assets/img/fortnite/shop/card_${shop.data.daily[i].rarity}.png`;
                     if(shop.data.daily[i].images.daily) {
-                        let background = await Canvas.loadImage(`./assets/img/fortnite/shop/card_${shop.data.daily[i].rarity}.png`);
-                        ctx.drawImage(background, 1237, 200 + (298 * (i - i1Daily)), 268, 268);
+                        if(fs.existsSync(card)) {
+                            let background = await Canvas.loadImage(card);
+                            ctx.drawImage(background, 1237, 200 + (298 * (i - i1Daily)), 268, 268);
+                        } else {
+                            let background = await Canvas.loadImage("./assets/img/fortnite/shop/card_common.png");
+                            ctx.drawImage(background, 1237, 200 + (298 * (i - i1Daily)), 268, 268);
+                        }
                         let item = await Canvas.loadImage(shop.data.daily[i].images.daily);
                         ctx.drawImage(item, 1237 + 3, 200 + 3 + (298 * (i - i1Daily)), 262, 262);
                         let itemDesc = await Canvas.loadImage("./assets/img/fortnite/shop/card_itemdesc.png");
@@ -659,8 +753,13 @@ async function writeImage(client){
                             ctx.fillText(shop.data.daily[i].price, 1237 + 143, 200 + 192 + 65 + (298 * (i - i1Daily)));
                         }
                     } else {
-                        let background = await Canvas.loadImage(`./assets/img/fortnite/shop/card_${shop.data.daily[i].rarity}.png`);
-                        ctx.drawImage(background, 1237, 200 + (298 * (i - i1Daily)), 268, 268);
+                        if(fs.existsSync(card)) {
+                            let background = await Canvas.loadImage(card);
+                            ctx.drawImage(background, 1237, 200 + (298 * (i - i1Daily)), 268, 268);
+                        } else {
+                            let background = await Canvas.loadImage("./assets/img/fortnite/shop/card_common.png");
+                            ctx.drawImage(background, 1237, 200 + (298 * (i - i1Daily)), 268, 268);
+                        }
                         let item = await Canvas.loadImage(shop.data.daily[i].images.icon);
                         ctx.drawImage(item, 1237 + 3, 200 + 3 + (298 * (i - i1Daily)), 262, 262);
                         let itemDesc = await Canvas.loadImage("./assets/img/fortnite/shop/card_itemdesc.png");
@@ -692,9 +791,15 @@ async function writeImage(client){
                     }
                 }
                 for(let i = i1Daily + i2Daily; i < i1Daily + i2Daily + i3Daily; i++) {
+                    let card = `./assets/img/fortnite/shop/card_${shop.data.daily[i].rarity}.png`;
                     if(shop.data.daily[i].images.daily) {
-                        let background = await Canvas.loadImage(`./assets/img/fortnite/shop/card_${shop.data.daily[i].rarity}.png`);
-                        ctx.drawImage(background, 1535, 200 + (298 * (i - (i1Daily + i2Daily))), 268, 268);
+                        if(fs.existsSync(card)) {
+                            let background = await Canvas.loadImage(card);
+                            ctx.drawImage(background, 1535, 200 + (298 * (i - (i1Daily + i2Daily))), 268, 268);
+                        } else {
+                            let background = await Canvas.loadImage("./assets/img/fortnite/shop/card_common.png");
+                            ctx.drawImage(background, 1535, 200 + (298 * (i - (i1Daily + i2Daily))), 268, 268);
+                        }
                         let item = await Canvas.loadImage(shop.data.daily[i].images.daily);
                         ctx.drawImage(item, 1535 + 3, 200 + 3 + (298 * (i - (i1Daily + i2Daily))), 262, 262);
                         let itemDesc = await Canvas.loadImage("./assets/img/fortnite/shop/card_itemdesc.png");
@@ -724,8 +829,13 @@ async function writeImage(client){
                             ctx.fillText(shop.data.daily[i].price, 1535 + 143, 200 + 192 + 65 + (298 * (i - (i1Daily + i2Daily))));
                         }
                     } else {
-                        let background = await Canvas.loadImage(`./assets/img/fortnite/shop/card_${shop.data.daily[i].rarity}.png`);
-                        ctx.drawImage(background, 1535, 200 + (298 * (i - (i1Daily + i2Daily))), 268, 268);
+                        if(fs.existsSync(card)) {
+                            let background = await Canvas.loadImage(card);
+                            ctx.drawImage(background, 1535, 200 + (298 * (i - (i1Daily + i2Daily))), 268, 268);
+                        } else {
+                            let background = await Canvas.loadImage("./assets/img/fortnite/shop/card_common.png");
+                            ctx.drawImage(background, 1535, 200 + (298 * (i - (i1Daily + i2Daily))), 268, 268);
+                        }
                         let item = await Canvas.loadImage(shop.data.daily[i].images.icon);
                         ctx.drawImage(item, 1535 + 3, 200 + 3 + (298 * (i - (i1Daily + i2Daily))), 262, 262);
                         let itemDesc = await Canvas.loadImage("./assets/img/fortnite/shop/card_itemdesc.png");
