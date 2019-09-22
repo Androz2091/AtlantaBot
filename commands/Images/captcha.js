@@ -26,7 +26,7 @@ class Captcha extends Command {
         let user = await this.client.resolveUser(args[0]) || message.author;
         let m = await message.channel.send(message.language.get("UTILS").PLEASE_WAIT);
         try {
-            let res = await fetch(encodeURI(`https://nekobot.xyz/api/imagegen?type=captcha&username=${user.username}&url=${user.displayAvatarURl({ format: "png", size: 512 })}`));
+            let res = await fetch(encodeURI(`https://nekobot.xyz/api/imagegen?type=captcha&username=${user.username}&url=${user.displayAvatarURL({ format: "png", size: 512 })}`));
             let json = await res.json();
             let attachment = new Discord.MessageAttachment(json.message, "captcha.png");
             message.channel.send(attachment);
