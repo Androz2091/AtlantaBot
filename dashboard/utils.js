@@ -8,7 +8,7 @@ const Discord = require("discord.js");
  */
 async function fetchGuild(guildID, client, guilds){
     let guild = client.guilds.get(guildID);
-    let conf = await client.guildsData.findOne({id:guild.id});
+    let conf = await client.findOrCreateGuild({id:guild.id});
     return { ...guild, ...conf.toJSON(), ...guilds.find((g) => g.id === guild.id) };
 }
 
