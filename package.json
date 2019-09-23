@@ -1,6 +1,6 @@
 {
   "name": "atlantabot",
-  "version": "4.5.2",
+  "version": "4.5.3",
   "description": "A very complete Discord bot (more than 70 commands) that uses the Discordjs API!",
   "main": "atlanta.js",
   "scripts": {
@@ -19,7 +19,7 @@
   "dependencies": {
     "ascii-art": "^1.5.1",
     "ascii-table": "0.0.9",
-    "blague.xyz": "^1.0.3",
+    "blague.xyz": "^1.0.5",
     "body-parser": "^1.19.0",
     "canvas": "^2.6.0",
     "chalk": "^2.4.2",
