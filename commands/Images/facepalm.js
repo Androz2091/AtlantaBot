@@ -1,4 +1,5 @@
 const Command = require("../../base/Command.js"),
+Canvas = require("canvas"),
 Discord = require("discord.js");
 
 class Facepalm extends Command {
@@ -21,15 +22,26 @@ class Facepalm extends Command {
     }
 
     async run (message, args, data) {
-        
-        if(!message.client.IdiotAPI){
-            return message.channel.send(message.language.get("ERR_COMMAND_DISABLED"));
-        }
 
-        let user = await this.client.resolveUser(args[0]) || message.author;
-        let m = await message.channel.send(message.language.get("UTILS").PLEASE_WAIT);
-        let buffer = await message.client.IdiotAPI.facepalm(user.displayAvatarURl({ format: "png", size: 512 }));
-        let attachment = new Discord.MessageAttachment(buffer, "facepalm.png");
+        let user = await this.client.resolveUser(args[0]) || message.author,
+        m = await message.channel.send(message.language.get("UTILS").PLEASE_WAIT),
+        canvas = Canvas.createCanvas(632, 357),
+        ctx = canvas.getContext("2d");
+        
+        // Draw background for transparent avatar
+        ctx.fillStyle = "black";
+        ctx.fillRect(0, 0, 632, 357);
+
+        // Draw avatar
+        let avatar = await Canvas.loadImage(user.displayAvatarURL({ format: "png", size: 512 }));
+        ctx.drawImage(avatar, 199, 112, 235, 235);
+        
+        // Draw layer
+        let layer = await Canvas.loadImage("./assets/img/facepalm.png");
+        ctx.drawImage(layer, 0, 0, 632, 357);
+
+        let attachment = new Discord.MessageAttachment(canvas.toBuffer(), "facepalm.png");
+
         m.delete();
         message.channel.send(attachment);
 
