@@ -78,7 +78,7 @@ Here's the list of Atlanta commands. This one contains more than **100 commands*
 | **withdraw**    | Withdraw money!                                                           | withdraw [amount]                | 1 seconds  |
 | **work**        | Work and earn money!                                                      | work                             | 3 seconds  |
 
-### Moderation (14 commands)
+### Moderation (15 commands)
 
 | Name                | Description                                                                             | Usage                                                              | Cooldown  |
 | ------------------- | --------------------------------------------------------------------------------------- | ------------------------------------------------------------------ | --------- |
@@ -89,6 +89,7 @@ Here's the list of Atlanta commands. This one contains more than **100 commands*
 | **clear-sanctions** | Deletes all sanctions of a member!                                                      | clear-sanctions [@member]                                          | 3 seconds |
 | **giveaway**        | Manage your giveaways simply!                                                           | giveaway [create/reroll/delete/end] (time) (winners count) (prize) | 5 seconds |
 | **kick**            | Kick out the mentioned member!                                                          | kick [@user] (reason)                                              | 3 seconds |
+| **mention-role**    | Mention a role and then disable the possibility of mentioning                           | mentionrole [name]                                                 | 3 seconds |
 | **mute**            | Prevents the member from sending messages and connecting by voice for a period of time! | mute [@member] [time]                                              | 3 seconds |
 | **poll**            | Launch a survey in the current channel!                                                 | poll [question]                                                    | 3 seconds |
 | **sanctions**       | Displays the list of infractions committed by a member!                                 | sanctions [@member]                                                | 3 seconds |
