@@ -326,6 +326,15 @@ module.exports = class {
 			SERVERINFO_NO_AFK: "Aucun salon AFK",
 			SERVERINFO_CHANNELS: (channels) => `${channels.filter((ch) => ch.type === "voice").size} vocaux | ${channels.filter((ch) => ch.type === "text").size} textuels | ${channels.filter((ch) => ch.type === "category").size} catégories`,
 
+			/* MENTIONROLE COMMAND */
+
+			// Utils
+			MENTIONROLE_DESCRIPTION: "Mentionne un rôle puis désactive la possibilité de mentionner",
+			MENTIONROLE_USAGE: "mentionrole [nom]",
+			MENTIONROLE_EXAMPLES: "$mentionrole Membres",
+			// Errors
+			MENTIONROLE_NOT_FOUND: `${e.error} | Vous devez entrer un rôle à mentionner !`,
+
 			/* UNBAN COMMAND */
 
 			// Utils
