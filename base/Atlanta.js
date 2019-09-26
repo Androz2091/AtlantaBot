@@ -149,6 +149,22 @@ class Atlanta extends Client {
         return member;
     }
 
+    async resolveRole(search, guild){
+        let role = null;
+        if(!search || typeof search !== "string") return;
+        // Try ID search
+        if(search.match(/^<@&!?(\d+)>$/)){
+            let id = search.match(/^<@&!?(\d+)>$/)[1];
+            role = guild.roles.get(id);
+            if(role) return role;
+        }
+        // Try name search
+        role = guild.roles.find((r) => search === r.name);
+        if(role) return role;
+        role = guild.roles.get(search);
+        return role;
+    }
+
 }
 
 module.exports = Atlanta;
