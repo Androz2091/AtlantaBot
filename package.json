@@ -39,7 +39,7 @@
     "gamedig": "^2.0.14",
     "idiotic-api": "^0.2.11",
     "markdown-table": "^1.1.3",
-    "mathjs": "^6.2.1",
+    "mathjs": "^6.2.2",
     "md5": "^2.2.1",
     "mongoose": "^5.7.1",
     "node-opus": "^0.3.2",
