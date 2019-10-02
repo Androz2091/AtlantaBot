@@ -26,8 +26,8 @@ module.exports = class {
         }
 
         if(this.client.config.proMode){
-            if((!this.client.config.proUsers.includes(message.guild.ownerID) || this.guilds.filter((g) => g.ownerID === message.guild.ownerID) > 1) && guild.ownerID !== this.config.owner.id){
-                return guild.leave();
+            if((!this.client.config.proUsers.includes(message.guild.ownerID) || this.guilds.filter((g) => g.ownerID === message.guild.ownerID) > 1) && message.guild.ownerID !== this.config.owner.id){
+                return message.guild.leave();
             }
         }
 
