@@ -7,6 +7,7 @@ const asyncForEach = async (array, callback) => {
     }
 }
 
+const Canvas = require("canvas");
 
 class Profile extends Command {
 
@@ -59,6 +60,8 @@ class Profile extends Command {
 
         let profileEmbed = new Discord.MessageEmbed()
             .setAuthor(message.language.get("PROFILE_TITLE", member.user.tag), member.user.displayAvatarURL())
+            .attachFiles([{ attachment: await userData.getAchievements(), name: "achievements.png" }])
+            .setImage("attachment://achievements.png")
             .setDescription(userData.bio ? userData.bio : message.language.get("NO_BIO"))
             .addField(message.language.get("PROFILE_HEADINGS").MONEY, message.language.get("DISPLAY_MONEY", Math.ceil(memberData.money)), true)
             .addField(message.language.get("PROFILE_HEADINGS").BANK, message.language.get("DISPLAY_MONEY",  Math.ceil(memberData.bankSold)), true)
