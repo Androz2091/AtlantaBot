@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [5.0.0]
+
+### Added
+
+*   `serverinfo` command now displays the number of boosts of the server
+
 ## [4.5.0]
 
 ### Added
