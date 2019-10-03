@@ -129,6 +129,8 @@ module.exports = {
 		// RE: https://cdn6.aptoide.com/imgs/2/8/e/28e759bcb1e00ad978afdf443e60c11e_icon.png
 		server: "XXXXXXXXXXX",
 		// RE: https://img.icons8.com/color/96/000000/root-server.png
+		boost: "XXXXXXXXXXX",
+		// RE: https://i.goopics.net/w7LAR.png
 		status: {
 			idle: "XXXXXXXXXXX",
 			// RE: https://i.goopics.net/bRVWW.png
