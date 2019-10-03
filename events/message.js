@@ -195,20 +195,19 @@ module.exports = class {
         cmdCooldown[message.author.id][cmd.help.name] = Date.now() + cmd.conf.cooldown;
 
         client.logger.log(`${message.author.username} (${message.author.id}) ran command ${cmd.help.name}`, "cmd");
+
+        let log = new this.client.logs({
+            commandName: cmd.help.name,
+            author: { username: message.author.username, discriminator: message.author.discriminator, id: message.author.id },
+            guild: { name: message.guild ? message.guild.name : "dm", id: message.guild ? message.guild.id : "dm" }
+        });
+        log.save();
+
         try {
             cmd.run(message, args, data);
             if(cmd.help.category === "Moderation" && data.guild.autoDeleteModCommands){
                 message.delete();
             }
-            guild.commands.push({
-                command: cmd.help.name,
-                date: Date.now(),
-                user: message.author.id,
-                guild: (message.guild ? message.guild.id : "dm")
-            });
-            setTimeout(() => {
-                guild.save();
-            }, 3000);
         } catch(e){
             console.error(e);
             return message.channel.send(message.language.get("ERR_OCCURENCED"));
