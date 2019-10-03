@@ -15,6 +15,18 @@ module.exports = mongoose.model("User", new mongoose.Schema({
     /* STATS */
     registeredAt: { type: Number, default: Date.now() }, // Registered date of the user
 
+    /* ACHIEVEMENTS */
+    achievements: { type: Object, default: {
+        married: false,
+        work: false,
+        firstCommand: false,
+        slots: false,
+        tip: false,
+        rep: false,
+        invite: false,
+        leaderboard: false
+    }},
+
     /* OTHER INFORMATIONS */
     afk: { type: String, default: null }, // Whether the member is AFK
     reminds: { type: Array, default: [] }, // the reminds of the user
