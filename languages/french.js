@@ -320,7 +320,8 @@ module.exports = class {
 				`${e.channels} Salons`,
 				`${e.afk} Salon AFK`,
 				`${e.id} ID`,
-				`${e.crown} Fondateur`
+				`${e.crown} Fondateur`,
+				`${e.boost} Boosts`
 			],
 			SERVERINFO_MEMBERCOUNT: (members) => `${members.filter((m) => !m.user.bot).size} membres | ${members.filter((m) => m.user.bot).size} bots`,
 			SERVERINFO_NO_AFK: "Aucun salon AFK",
