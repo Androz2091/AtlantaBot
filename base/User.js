@@ -36,7 +36,7 @@ const userSchema = new mongoose.Schema({
 });
 
 userSchema.method("getAchievements", async function(){
-    let canvas = Canvas.createCanvas(1700, 230),
+    let canvas = Canvas.createCanvas(1800, 250),
     ctx = canvas.getContext("2d");
     let images = [
         await Canvas.loadImage("./assets/img/achievements/achievement"+(this.achievements.work ? "_colored" : "")+"1.png"),
