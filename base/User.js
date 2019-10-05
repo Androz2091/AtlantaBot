@@ -18,14 +18,52 @@ const userSchema = new mongoose.Schema({
 
     /* ACHIEVEMENTS */
     achievements: { type: Object, default: {
-        married: false,
-        work: false,
-        firstCommand: false,
-        slots: false,
-        tip: false,
-        rep: false,
-        invite: false,
-        leaderboard: false
+        married: {
+            achieved: false,
+            progress: {}
+        },
+        work: {
+            achieved: false,
+            progress: {
+                now: 0,
+                total: 10
+            }
+        },
+        firstCommand: {
+            achieved: false,
+            progress: {
+                now: 0,
+                total: 1
+            }
+        },
+        slots: {
+            achieved: false,
+            progress: {
+                now: 0,
+                total: 5
+            }
+        },
+        tip: {
+            achieved: false,
+            progress: {
+                now: 0,
+                total: 1
+            }
+        },
+        rep: {
+            achieved: false,
+            progress: {
+                now: 0,
+                total: 20
+            },
+        },
+        invite: {
+            achieved: false,
+            progress: {
+                now: 0,
+                total: 1
+            }
+        }
     }},
 
     /* OTHER INFORMATIONS */
@@ -39,14 +77,13 @@ userSchema.method("getAchievements", async function(){
     let canvas = Canvas.createCanvas(1800, 250),
     ctx = canvas.getContext("2d");
     let images = [
-        await Canvas.loadImage("./assets/img/achievements/achievement"+(this.achievements.work ? "_colored" : "")+"1.png"),
-        await Canvas.loadImage("./assets/img/achievements/achievement"+(this.achievements.firstCommand ? "_colored" : "")+"2.png"),
-        await Canvas.loadImage("./assets/img/achievements/achievement"+(this.achievements.leaderboard ? "_colored" : "")+"3.png"),
-        await Canvas.loadImage("./assets/img/achievements/achievement"+(this.achievements.married ? "_colored" : "")+"4.png"),
-        await Canvas.loadImage("./assets/img/achievements/achievement"+(this.achievements.slots ? "_colored" : "")+"5.png"),
-        await Canvas.loadImage("./assets/img/achievements/achievement"+(this.achievements.tip ? "_colored" : "")+"6.png"),
-        await Canvas.loadImage("./assets/img/achievements/achievement"+(this.achievements.rep ? "_colored" : "")+"7.png"),
-        await Canvas.loadImage("./assets/img/achievements/achievement"+(this.achievements.invite ? "_colored" : "")+"8.png")
+        await Canvas.loadImage("./assets/img/achievements/achievement"+(this.achievements.work.achieved ? "_colored" : "")+"1.png"),
+        await Canvas.loadImage("./assets/img/achievements/achievement"+(this.achievements.firstCommand.achieved ? "_colored" : "")+"2.png"),
+        await Canvas.loadImage("./assets/img/achievements/achievement"+(this.achievements.leaderboard.achieved ? "_colored" : "")+"3.png"),
+        await Canvas.loadImage("./assets/img/achievements/achievement"+(this.achievements.married.achieved ? "_colored" : "")+"4.png"),
+        await Canvas.loadImage("./assets/img/achievements/achievement"+(this.achievements.slots.achieved ? "_colored" : "")+"5.png"),
+        await Canvas.loadImage("./assets/img/achievements/achievement"+(this.achievements.tip.achieved ? "_colored" : "")+"6.png"),
+        await Canvas.loadImage("./assets/img/achievements/achievement"+(this.achievements.rep.achieved ? "_colored" : "")+"7.png")
     ];
     let dim = 0;
     for(let i = 0; i < images.length; i++){
