@@ -72,7 +72,7 @@ class Profile extends Command {
             .addField(message.language.get("PROFILE_HEADINGS").REGISTERED_AT, message.language.printDate(new Date(memberData.registeredAt)), true)
             .addField(message.language.get("PROFILE_HEADINGS").BIRTHDATE, (!userData.birthdate ? message.language.get("NO_BIRTHDATE") : message.language.printDate(new Date(userData.birthdate))), true)
             .addField(message.language.get("PROFILE_HEADINGS").MARRIED, (!userData.lover ? message.language.get("NO_PARTNER") : message.client.users.get(userData.lover).tag), true)
-            .addField(message.language.get("PROFILE_HEADINGS").BADGES, (userData.badges.length > 0 ? "=> "+userData.badges.map((b) => b.emoji).join(" ") : message.language.get("NO_BADGE")))
+            .addField(message.language.get("PROFILE_HEADINGS").ACHIEVEMENTS, message.language.get("PROFILE_ACHIEVEMENTS", data.guild.prefix))
             .setColor(data.config.embed.color) // Sets the color of the embed
             .setFooter(data.config.embed.footer) // Sets the footer of the embed
             .setTimestamp();
