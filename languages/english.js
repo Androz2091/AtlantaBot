@@ -913,9 +913,10 @@ module.exports = class {
 				MARRIED: "❤️ Married",
 				INVITER: "🤵 Invitor",
 				PSEUDO: "📝 Pseudo",
-				BADGES: "🔥 Badges",
+				ACHIEVEMENTS: "🔥 Achievements",
 				BIO: "🔖 Biography"
 			},
+			PROFILE_ACHIEVEMENTS: (prefix) => `Get more information with \`${prefix}achievements\`!`,
 			
 			/* WORK COMMAND */
 
