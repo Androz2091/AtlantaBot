@@ -14,7 +14,7 @@ class Clear extends Command {
             guildOnly: true,
             aliases: [ "clear", "bulkdelete" ],
             memberPermissions: [ "MANAGE_MESSAGES" ],
-            botPermissions: [ "SEND_MESSAGES", "EMBED_LINKS" ],
+            botPermissions: [ "SEND_MESSAGES", "EMBED_LINKS", "MANAGE_MESSAGES" ],
             nsfw: false,
             ownerOnly: false,
             cooldown: 3000
