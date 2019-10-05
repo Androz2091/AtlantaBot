@@ -30,7 +30,7 @@ class Work extends Command {
             when the member will be able to execute the order again 
             is greater than the current date, display an error message */
             if(isInCooldown > Date.now()){
-                return message.channel.send(message.language.get("WORK_ERR_COOLDOWN", message.language.convertMs(isInCooldown - Date.now())));
+                 message.channel.send(message.language.get("WORK_ERR_COOLDOWN", message.language.convertMs(isInCooldown - Date.now())));
             }
         }
 
@@ -78,8 +78,24 @@ class Work extends Command {
         data.memberData.money = data.memberData.money + won;
         data.memberData.save();
 
+        let messageOptions = { embed };
+        if(!data.userData.achievements.work.achieved){
+            data.userData.achievements.work.progress.now += 1;
+            if(data.userData.achievements.work.progress.now === data.userData.achievements.work.progress.total){
+                messageOptions.files = [
+                    {
+                        name: "unlocked.png",
+                        attachment: "./assets/img/achievements/achievement_unlocked1.png"
+                    }
+                ];
+                data.userData.achievements.work.achieved = true;
+            }
+            data.userData.markModified("achievements.work");
+            data.userData.save();
+        }
+
         // Send the embed in the current channel
-        message.channel.send(embed);
+        message.channel.send(messageOptions);
 
     }
 
