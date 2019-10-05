@@ -79,11 +79,11 @@ userSchema.method("getAchievements", async function(){
     let images = [
         await Canvas.loadImage("./assets/img/achievements/achievement"+(this.achievements.work.achieved ? "_colored" : "")+"1.png"),
         await Canvas.loadImage("./assets/img/achievements/achievement"+(this.achievements.firstCommand.achieved ? "_colored" : "")+"2.png"),
-        await Canvas.loadImage("./assets/img/achievements/achievement"+(this.achievements.leaderboard.achieved ? "_colored" : "")+"3.png"),
-        await Canvas.loadImage("./assets/img/achievements/achievement"+(this.achievements.married.achieved ? "_colored" : "")+"4.png"),
-        await Canvas.loadImage("./assets/img/achievements/achievement"+(this.achievements.slots.achieved ? "_colored" : "")+"5.png"),
-        await Canvas.loadImage("./assets/img/achievements/achievement"+(this.achievements.tip.achieved ? "_colored" : "")+"6.png"),
-        await Canvas.loadImage("./assets/img/achievements/achievement"+(this.achievements.rep.achieved ? "_colored" : "")+"7.png")
+        await Canvas.loadImage("./assets/img/achievements/achievement"+(this.achievements.married.achieved ? "_colored" : "")+"3.png"),
+        await Canvas.loadImage("./assets/img/achievements/achievement"+(this.achievements.slots.achieved ? "_colored" : "")+"4.png"),
+        await Canvas.loadImage("./assets/img/achievements/achievement"+(this.achievements.tip.achieved ? "_colored" : "")+"5.png"),
+        await Canvas.loadImage("./assets/img/achievements/achievement"+(this.achievements.rep.achieved ? "_colored" : "")+"6.png"),
+        await Canvas.loadImage("./assets/img/achievements/achievement"+(this.achievements.invite.achieved ? "_colored" : "")+"7.png")
     ];
     let dim = 0;
     for(let i = 0; i < images.length; i++){
