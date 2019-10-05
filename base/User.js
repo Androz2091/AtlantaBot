@@ -20,7 +20,10 @@ const userSchema = new mongoose.Schema({
     achievements: { type: Object, default: {
         married: {
             achieved: false,
-            progress: {}
+            progress: {
+                now: 0,
+                total: 1
+            }
         },
         work: {
             achieved: false,
