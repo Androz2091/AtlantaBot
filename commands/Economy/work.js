@@ -30,7 +30,7 @@ class Work extends Command {
             when the member will be able to execute the order again 
             is greater than the current date, display an error message */
             if(isInCooldown > Date.now()){
-                 message.channel.send(message.language.get("WORK_ERR_COOLDOWN", message.language.convertMs(isInCooldown - Date.now())));
+                return message.channel.send(message.language.get("WORK_ERR_COOLDOWN", message.language.convertMs(isInCooldown - Date.now())));
             }
         }
 
