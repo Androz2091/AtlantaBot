@@ -7,6 +7,7 @@ const asyncForEach = async (array, callback) => {
     }
 }
 
+const Canvas = require("canvas");
 
 class Profile extends Command {
 
@@ -59,6 +60,8 @@ class Profile extends Command {
 
         let profileEmbed = new Discord.MessageEmbed()
             .setAuthor(message.language.get("PROFILE_TITLE", member.user.tag), member.user.displayAvatarURL())
+            .attachFiles([{ attachment: await userData.getAchievements(), name: "achievements.png" }])
+            .setImage("attachment://achievements.png")
             .setDescription(userData.bio ? userData.bio : message.language.get("NO_BIO"))
             .addField(message.language.get("PROFILE_HEADINGS").MONEY, message.language.get("DISPLAY_MONEY", Math.ceil(memberData.money)), true)
             .addField(message.language.get("PROFILE_HEADINGS").BANK, message.language.get("DISPLAY_MONEY",  Math.ceil(memberData.bankSold)), true)
@@ -69,7 +72,7 @@ class Profile extends Command {
             .addField(message.language.get("PROFILE_HEADINGS").REGISTERED_AT, message.language.printDate(new Date(memberData.registeredAt)), true)
             .addField(message.language.get("PROFILE_HEADINGS").BIRTHDATE, (!userData.birthdate ? message.language.get("NO_BIRTHDATE") : message.language.printDate(new Date(userData.birthdate))), true)
             .addField(message.language.get("PROFILE_HEADINGS").MARRIED, (!userData.lover ? message.language.get("NO_PARTNER") : message.client.users.get(userData.lover).tag), true)
-            .addField(message.language.get("PROFILE_HEADINGS").BADGES, (userData.badges.length > 0 ? "=> "+userData.badges.map((b) => b.emoji).join(" ") : message.language.get("NO_BADGE")))
+            .addField(message.language.get("PROFILE_HEADINGS").ACHIEVEMENTS, message.language.get("PROFILE_ACHIEVEMENTS", data.guild.prefix))
             .setColor(data.config.embed.color) // Sets the color of the embed
             .setFooter(data.config.embed.footer) // Sets the footer of the embed
             .setTimestamp();

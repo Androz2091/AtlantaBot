@@ -84,7 +84,7 @@ class Wedding extends Command {
             }
         });
 
-        collector.on("end", (collected, accepted) => {
+        collector.on("end", async (collected, accepted) => {
             // Delete request 
             delete pendings[message.author.id];
             if(accepted === "time"){
@@ -92,9 +92,34 @@ class Wedding extends Command {
             }
             if(accepted){
                 data.userData.lover = member.id;
-                data.userData.save();
+                await data.userData.save();
                 userData.lover = message.author.id;
-                userData.save();
+                await userData.save();
+                let messageOptions = {
+                    content: `${member.toString()} :heart: ${message.author.toString()}`,
+                    files: [
+                        {
+                            name: "unlocked.png",
+                            attachment: "./assets/img/achievements/achievement_unlocked3.png"
+                        }
+                    ]
+                };
+                let sent = false;
+                if(!userData.achievements.married.achieved){
+                    message.channel.send(messageOptions);
+                    sent = true;
+                    userData.achievements.married.achieved = true;
+                    userData.achievements.married.progress.now = 1;
+                    userData.markModified("achievements.married");
+                    userData.save();
+                }
+                if(!data.userData.achievements.married.achieved){
+                    if(!sent) message.channel.send(messageOptions);
+                    data.userData.achievements.married.achieved = true;
+                    data.userData.achievements.married.progress.now = 1;
+                    data.userData.markModified("achievements.married");
+                    data.userData.save();
+                }
                 return message.channel.send(message.language.get("WEDDING_SUCCESS", message.author, member));
             } else {
                 return message.channel.send(message.language.get("WEDDING_ERR_DENIED", message.author, member));

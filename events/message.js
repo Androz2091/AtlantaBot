@@ -203,6 +203,19 @@ module.exports = class {
         });
         log.save();
 
+        if(!data.userData.achievements.firstCommand.achieved){
+            data.userData.achievements.firstCommand.progress.now = 1;
+            data.userData.achievements.firstCommand.achieved = true;
+            data.userData.markModified("achievements.firstCommand");
+            await data.userData.save();
+            await message.channel.send({ files: [
+                {
+                    name: "unlocked.png",
+                    attachment: "./assets/img/achievements/achievement_unlocked2.png"
+                }
+            ]});
+        }
+
         try {
             cmd.run(message, args, data);
             if(cmd.help.category === "Moderation" && data.guild.autoDeleteModCommands){
