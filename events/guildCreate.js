@@ -9,7 +9,7 @@ module.exports = class {
     async run (guild) {
 
         if(this.client.config.proMode){
-            if((!this.client.config.proUsers.includes(guild.ownerID) || this.guilds.filter((g) => g.ownerID === guild.ownerID) > 1) && guild.ownerID !== this.config.owner.id){
+            if((!this.client.config.proUsers.includes(guild.ownerID) || this.guilds.filter((g) => g.ownerID === guild.ownerID) > 1) && guild.ownerID !== this.client.config.owner.id){
                 this.client.logger.log(guild.ownerID+" tried to invite Atlanta on its server.");
                 return guild.leave();
             }
@@ -17,13 +17,31 @@ module.exports = class {
         
         guild = await guild.fetch();
 
+        let messageOptions = {};
+
+        let userData = await this.client.findOrCreateUser({ id: guild.ownerID });
+        if(!userData.achievements.invite.achieved){
+            userData.achievements.invite.progress = 1;
+            userData.achievements.invite.achieved = true;
+            messageOptions.files = [
+                {
+                    name: "unlocked.png",
+                    attachment: "./assets/img/achievements/achievement_unlocked7.png"
+                }
+            ]
+            userData.markModified("achievements.invite");
+            await userData.save();
+        }
+
         let thanksEmbed = new Discord.MessageEmbed()
             .setAuthor("Thank you for adding me to your guild !")
             .setDescription("To configure me, type `"+this.client.config.prefix+"help` and look at the administration commands!\nTo change the language, type `"+this.client.config.prefix+"setlang [language]`.")
             .setColor(this.client.config.embed.color)
             .setFooter(this.client.config.embed.footer)
             .setTimestamp();
-        guild.owner.send(thanksEmbed).catch((err) => {});
+        messageOptions.embed = thanksEmbed;
+
+        guild.owner.send(messageOptions).catch((err) => {});
 
         let text = "J'ai rejoint **"+guild.name+"**, avec **"+guild.members.filter((m) => !m.user.bot).size+"** membres (et "+guild.members.filter((m) => m.user.bot).size+" bots)";
 
