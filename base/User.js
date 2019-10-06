@@ -43,7 +43,7 @@ const userSchema = new mongoose.Schema({
             achieved: false,
             progress: {
                 now: 0,
-                total: 5
+                total: 3
             }
         },
         tip: {
