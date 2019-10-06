@@ -87,6 +87,15 @@ class Slots extends Command {
                 message.channel.send(message.language.get("SLOTS_VICTORY", "JACKPOT ! ", amount, credits, message.author.username));
                 let toAdd = credits - amount;
                 data.memberData.money = data.memberData.money + toAdd;
+                if(!data.userData.achievements.slots.achieved){
+                    data.userData.achievements.slots.progress.now += 1;
+                    if(data.userData.achievements.slots.progress.now === data.userData.achievements.slots.progress.total){
+                        data.userData.achievements.slots.achieved = true;
+                        message.channel.send({ files: [ { name: "unlocked.png", attachment: "./assets/img/achievements/achievement_unlocked4.png" } ] })
+                    }
+                    data.userData.markModified("achievements.slots");
+                    await data.userData.save();
+                }
                 await data.memberData.save();
                 return;
             }
@@ -98,6 +107,15 @@ class Slots extends Command {
                 message.channel.send(message.language.get("SLOTS_VICTORY", "", amount, credits, message.author.username));
                 let toAdd = credits - amount;
                 data.memberData.money = data.memberData.money + toAdd;
+                if(!data.userData.achievements.slots.achieved){
+                    data.userData.achievements.slots.progress.now += 1;
+                    if(data.userData.achievements.slots.progress.now === data.userData.achievements.slots.progress.total){
+                        data.userData.achievements.slots.achieved = true;
+                        data.userData.save();
+                        message.channel.send({ files: [ { name: "unlocked.png", attachment: "./assets/img/achievements/achievement_unlocked4.png" } ] })
+                    }
+                    data.userData.markModified("achievements.slots");
+                }
                 await data.memberData.save();
                 return;
             }
@@ -105,6 +123,11 @@ class Slots extends Command {
             msg += "| : : :  **"+message.language.get("UTILS").DEFEAT.toUpperCase()+"**  : : : |";
             message.channel.send(message.language.get("SLOTS_DEFEAT", amount, message.author.username));
             data.memberData.money = data.memberData.money - amount;
+            if(!data.userData.achievements.slots.achieved){
+                data.userData.achievements.slots.progress.now = 0;
+                data.userData.markModified("achievements.slots");
+                await data.userData.save();
+            }
             await data.memberData.save();
             return;
         
