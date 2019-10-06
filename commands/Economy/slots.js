@@ -111,10 +111,10 @@ class Slots extends Command {
                     data.userData.achievements.slots.progress.now += 1;
                     if(data.userData.achievements.slots.progress.now === data.userData.achievements.slots.progress.total){
                         data.userData.achievements.slots.achieved = true;
-                        data.userData.save();
                         message.channel.send({ files: [ { name: "unlocked.png", attachment: "./assets/img/achievements/achievement_unlocked4.png" } ] })
                     }
                     data.userData.markModified("achievements.slots");
+                    await data.userData.save();
                 }
                 await data.memberData.save();
                 return;
