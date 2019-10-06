@@ -8,7 +8,6 @@ const userSchema = new mongoose.Schema({
 
     /* ECONOMY (GLOBAL) */
     rep: { type: Number, default: 0 }, // Reputation points of the user
-    badges: { type: Array, default: [] }, // Badges of the user
     bio: { type: String }, // Biography of the user
     birthdate: { type: Number }, // Birthdate of the user (the timestamp)
     lover: { type: String }, // The person with whom the user is in a relationship

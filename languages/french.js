@@ -790,7 +790,6 @@ module.exports = class {
 			DISPLAY_MONEY: (money) => `**${money}** crédit(s)`,
 			NO_PARTNER: "Célibataire",
 			NO_BIRTHDATE: "Indéfini",
-			NO_BADGE: "Aucun badge.",
 			// Headings
 			PROFILE_TITLE: (username) => `Profil de ${username}`,
 			PROFILE_HEADINGS:{
@@ -989,29 +988,6 @@ module.exports = class {
 			SLOTS_VICTORY: (text, amount, won, username) => `${text}**${username}** a utilisé ${amount} crédit(s) et a gagné ${won} crédit(s) !`,
 			// Errors
 			SLOTS_ERR_TOO_HIGH: (money) => `${e.error} | Vous ne disposez pas de ${money} crédit(s).`,
-
-			/* BADGE COMMAND */
-
-			// Utils
-			BADGE_DESCRIPTION: "Achetez des badges qui apparaîtront sur votre profil !",
-			BADGE_USAGE: "badge (nom-du-badge)",
-			BADGE_EXAMPLES: "$badge\n$badge France",
-			// Content
-			BADGE_EMBED_TITLE: `Badges ${c.botname}`,
-			BADGE_EMBED_DESCRIPTION: (prefix) => `Pour acheter un badge, tapez \`${prefix}badge [nom-du-badge]\``,
-			BADGE_FORMAT: (badge) => `Badge : ${badge.emoji}\nNom : ${badge.name}\nPrix : ${badge.price} crédits\n--------\n`,
-			BADGE_FORMAT_BOUGHT: (badge) => `Badge : ${badge.emoji}\nNom : ${badge.name}\nDéjà acheté (${badge.price} crédits)\n--------\n`,
-			BADGE_SUCCESS: (badge) => `${e.success} | Vous venez d'acheter le badge ${badge.name} (${badge.emoji}) pour ${badge.price} crédits !`,
-			// Errors
-			BADGE_ERR_NOT_FOUND: (text) => `${e.error} | Aucun badge trouvé pour \`${text}\``,
-			BADGE_ERR_PRICE: `${e.error} | Vous n'avez pas assez de crédits pour acheter ce badge !`,
-			BADGE_ERR_BOUGHT: `${e.error} | Vous possédez déjà ce badge !`,
-			// Headings
-			BADGE_HEADINGS: {
-				flags: "Drapeaux",
-				games: "Jeux",
-				others: "Autres"
-			},
 
 			/* STATS COMMAND */
 
