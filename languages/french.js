@@ -242,6 +242,25 @@ module.exports = class {
 				`${total} membres`
 			],
 
+			/* ACHIEVEMENTS COMMAND */
+			
+			// Utils
+			ACHIEVEMENTS_DESCRIPTION: "Affiche la liste de toutes les réalisations !",
+			ACHIEVEMENTS_USAGE: "achievements",
+			ACHIEVEMENTS_EXAMPLES: "$achievements",
+			// Content
+			ACHIEVEMENTS_DESC: [
+				"Ecrivez votre première commande !",
+				"Réclamez 10 fois votre salaire !",
+				"Trouvez votre moitié et mariez-vous !",
+				"Gagnez 3 fois de suite aux machines à sous !",
+				"Maintenez Atlanta en vie en laissant un pourboire!",
+				"Atteignez 20 points de réputation !",
+				"Invitez Atlanta sur votre serveur !"
+			],
+			ACHIEVEMENTS_TITLE: "🔥 Réalisations",
+			ACHIEVEMENTS_PROGRESS: (progressData) => `Progression : ${progressData.now}/${progressData.total} (${Math.round(100 * (progressData.now/progressData.total))}%)`,
+
 			/* SETAFK COMMAND */
 
 			// Utils

@@ -244,6 +244,25 @@ module.exports = class {
 				`${total} members`
 			],
 
+			/* ACHIEVEMENTS COMMAND */
+			
+			// Utils
+			ACHIEVEMENTS_DESCRIPTION: "Displays the list of all the achievements!",
+			ACHIEVEMENTS_USAGE: "achievements",
+			ACHIEVEMENTS_EXAMPLES: "$achievements",
+			// Content
+			ACHIEVEMENTS_DESC: [
+				"Write your first command!",
+				"Claim 10 times your salary!",
+				"Find your half and marry!",
+				"Win 3 times in a row in slots!",
+				"Keep Atlanta alive by tipping!",
+				"Reach 20 reputation points!",
+				"Invite Atlanta on your server!"
+			],
+			ACHIEVEMENTS_TITLE: "🔥 Achievements",
+			ACHIEVEMENTS_PROGRESS: (progressData) => `Progress: ${progressData.now}/${progressData.total} (${Math.round(100 * (progressData.now/progressData.total))}%)`,
+
 			/* SETAFK COMMAND */
 
 			// Utils
