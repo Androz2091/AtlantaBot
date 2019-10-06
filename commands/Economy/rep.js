@@ -53,6 +53,14 @@ class Rep extends Command {
         
         let userData = await this.client.findOrCreateUser({ id: user.id });
         userData.rep++;
+        if(!userData.achievements.rep.achieved){
+            userData.achievements.rep.progress.now = userData.rep;
+            if(userData.achievements.rep.progress.now === userData.achievements.rep.progress.total){
+                userData.achievements.rep.achieved = true;
+                message.channel.send({ files: [ { name: "unlocked.png", attachment: "./assets/img/achievements/achievement_unlocked6.png"}]});
+            }
+            userData.markModified("achievements.rep");
+        }
         await userData.save();
 
         message.channel.send(message.language.get("REP_SUCCESS", user.username));
