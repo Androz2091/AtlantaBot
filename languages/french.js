@@ -849,24 +849,24 @@ module.exports = class {
 			LEADERBOARD_ERR_TYPE: `${e.error} | Veuillez entrer un type de leaderboard ! (\`credits\`, \`level\` ou \`rep\`)`,
 			LEADERBOARD_WARN_PHONE: `:confused: Nous avons detecté que vous utilisez un téléphone... Le leaderboard peut mal s'afficher sur les petits écrans. Essayez de passer en paysage (ou allez sur le dashboard) !`,
 
-			/* STEAL COMMAND */
+			/* ROB COMMAND */
 
 			// Utils
-			STEAL_DESCRIPTION: "Essayez de voler un membre !",
-			STEAL_USAGE: "steal [@membre] [crédits]",
-			STEAL_EXAMPLES: "$steal @Androz#2091 100",
+			ROB_DESCRIPTION: "Essayez de piller un membre !",
+			ROB_USAGE: "rob [@membre] [crédits]",
+			ROB_EXAMPLES: "$rob @Androz#2091 100",
 			// Errors
-			STEAL_ERR_YOURSELF: `${e.error} | Vous ne pouvez pas vous piller vous-même !`,
-			STEAL_ERR_AMOUNT: (member) => `${e.error} | Veuillez entrer un montant valide à piller à **${member.user.tag}** !`,
-			STEAL_ERR_AMOUNT_MEMBER: (member, money) => `${e.error} | **${member.user.username}** ne dispose pas de **${money}** crédits !`,
-			STEAL_ERR_NO_MONEY: (needed) => `${e.error} | Vous devez avoir plus de **${needed}** crédits pour tenter ce pillage !`,
-			STEAL_ERR_CLDWN: (member) => `:spy: **${member.user.username}** est sur ses gardes... Patientez un peu et réessayez !`,
+			ROB_ERR_YOURSELF: `${e.error} | Vous ne pouvez pas vous piller vous-même !`,
+			ROB_ERR_AMOUNT: (member) => `${e.error} | Veuillez entrer un montant valide à piller à **${member.user.tag}** !`,
+			ROB_ERR_AMOUNT_MEMBER: (member, money) => `${e.error} | **${member.user.username}** ne dispose pas de **${money}** crédits !`,
+			ROB_ERR_NO_MONEY: (needed) => `${e.error} | Vous devez avoir plus de **${needed}** crédits pour tenter ce pillage !`,
+			ROB_ERR_CLDWN: (member) => `:spy: **${member.user.username}** est sur ses gardes... Patientez un peu et réessayez !`,
 			// Content
-			STEAL_WON: (stealed, member) => [
-				`:tada: | Félicitations ! La police n'a pas été assez rapide pour t'empêcher de voler **${stealed}** crédits à **${member.user.username}** !`,
-				`:confused: | **${member.user.username}** ? Mauvaise nouvelle. Tu viens de te faire piller **${stealed}** crédits !`,
+			ROB_WON: (robbed, member) => [
+				`:tada: | Félicitations ! La police n'a pas été assez rapide pour t'empêcher de piller **${robbed}** crédits à **${member.user.username}** !`,
+				`:confused: | **${member.user.username}** ? Mauvaise nouvelle. Tu viens de te faire piller **${robbed}** crédits !`,
 			],
-			STEAL_LOSE: (lose, member, won) => [
+			ROB_LOSE: (lose, member, won) => [
 				`:oncoming_police_car: | La police t'a pris sur le fait, impossible de nier, ton amende est de **${lose}** crédits. **${won}** crédits de compensation seront versés à **${member.user.username}**.`,
 				`:police_car: | Mauvaise nouvelle... **${member.user.username}** a appelé la police à temps. Ton amende est de **${lose}** crédits et **${won}** crédits de compensation seront versés à **${member.user.username}**.`
 			],
