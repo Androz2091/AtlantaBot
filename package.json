@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/Androz2091/AtlantaBot#readme",
   "dependencies": {
+    "amethyste-api": "github:Androz2091/amethyste-api",
     "ascii-art": "^1.5.1",
     "ascii-table": "0.0.9",
     "blague.xyz": "^1.0.6",
@@ -37,7 +38,6 @@
     "fortnite": "^4.3.2",
     "fortnite-9812": "^1.0.4",
     "gamedig": "^2.0.14",
-    "idiotic-api": "^0.2.11",
     "markdown-table": "^1.1.3",
     "mathjs": "^6.2.2",
     "md5": "^2.2.1",

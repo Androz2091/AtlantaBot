@@ -46,8 +46,8 @@ module.exports = {
 		dbl: "XXXXXXXXXXX",
 		// SIMPLE YOUTUBE API: https://console.developers.google.com/
 		simpleYoutube: "XXXXXXXXXXX",
-		// ANIDIOTS: https://discord.gg/PgCR8Rg
-		anidiots: "XXXXXXXXXXX"
+		// AMETHYSTE: https://api.amethyste.moe
+		amethyste: "XXXXXXXXXXX"
 	},
 	/* The emojis that are required for certain commands */
 	emojis: {
