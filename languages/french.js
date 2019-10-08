@@ -1028,6 +1028,13 @@ module.exports = class {
 			JAIL_USAGE: "jail (@membre)",
 			JAIL_EXAMPLES: "$jail\n$jail @Androz#2091",
 
+			/* MISSION COMMAND */
+
+			// Utils
+			MISSION_DESCRIPTION: "Génère une image de type \"mission\" grâce à l'API Améthyste",
+			MISSION_USAGE: "mission (@membre)",
+			MISSION_EXAMPLES: "$mission\n$mission @Androz#2091",
+
 			/* CAPTCHA COMMAND */
 
 			// Utils
