@@ -1063,6 +1063,13 @@ module.exports = class {
 			TRIGGERED_USAGE: "triggered (@membre)",
 			TRIGGERED_EXAMPLES: "$triggered\n$triggered @Androz#2091",
 
+			/* WANTED COMMAND */
+
+			// Utils
+			WANTED_DESCRIPTION: "Génère une image de type \"wanted\" grâce à l'API Améthyste",
+			WANTED_USAGE: "wanted (@membre)",
+			WANTED_EXAMPLES: "$wanted\n$wanted @Androz#2091",
+
 			/* CAPTCHA COMMAND */
 
 			// Utils
