@@ -2,14 +2,14 @@ const Command = require("../../base/Command.js"),
 Discord = require("discord.js"),
 fetch = require("node-fetch");
 
-class Minimize extends Command {
+class ShortURL extends Command {
 
     constructor (client) {
         super(client, {
-            name: "minimize",
-            description: (language) => language.get("MINIMIZE_DESCRIPTION"),
-            usage: (language) => language.get("MINIMIZE_USAGE"),
-            examples: (language) => language.get("MINIMIZE_EXAMPLES"),
+            name: "shorturl",
+            description: (language) => language.get("SHORTURL_DESCRIPTION"),
+            usage: (language) => language.get("SHORTURL_USAGE"),
+            examples: (language) => language.get("SHORTURL_EXAMPLES"),
             dirname: __dirname,
             enabled: true,
             guildOnly: false,
@@ -26,14 +26,14 @@ class Minimize extends Command {
     
         let url = args[0];
         if(!url){
-            return message.channel.send(message.language.get("MINIMIZE_ERR_INVALID_URL"));
+            return message.channel.send(message.language.get("SHORTURL_ERR_INVALID_URL"));
         }
 
         let res = await fetch(`https://is.gd/create.php?format=simple&url=${encodeURI(url)}`);
         let body = await res.text();
 
         if(body === "Error: Please enter a valid URL to shorten"){
-            return message.channel.send(message.language.get("MINIMIZE_ERR_INVALID_URL"));
+            return message.channel.send(message.language.get("SHORTURL_ERR_INVALID_URL"));
         }
 
         let embed = new Discord.MessageEmbed()
@@ -46,4 +46,4 @@ class Minimize extends Command {
 
 }
 
-module.exports = Minimize;
+module.exports = ShortURL;

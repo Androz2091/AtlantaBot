@@ -397,14 +397,14 @@ module.exports = class {
 				`${e.help} Support`
 			],
 
-			/* MINIMIZE COMMAND */
+			/* SHORTURL COMMAND */
 
 			// Utils
-			MINIMIZE_DESCRIPTION: "Raccourci votre lien !",
-			MINIMIZE_USAGE: "minimize [url]",
-			MINIMIZE_EXAMPLES: "$minimize https://google.fr",
+			SHORTURL_DESCRIPTION: "Raccourci votre lien !",
+			SHORTURL_USAGE: "shorturl [url]",
+			SHORTURL_EXAMPLES: "$shorturl https://google.fr",
 			// Errors
-			MINIMIZE_ERR_INVALID_URL: `${e.error} | Veuillez entrer une URL valide !`,
+			SHORTURL_ERR_INVALID_URL: `${e.error} | Veuillez entrer une URL valide !`,
 
 			/* MINECRAFT COMMAND */
 
