@@ -15,6 +15,12 @@ module.exports = mongoose.model("User", new mongoose.Schema({
     /* STATS */
     registeredAt: { type: Number, default: Date.now() }, // Registered date of the user
 
+
+    /* COOLDOWN */
+    cooldowns: { type: Object, default: {
+        rep: 0
+    }},
+
     /* OTHER INFORMATIONS */
     afk: { type: String, default: null }, // Whether the member is AFK
     reminds: { type: Array, default: [] }, // the reminds of the user

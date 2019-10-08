@@ -65,7 +65,7 @@ class Play extends Command {
                 .setColor(data.config.embed.color)
                 .setFooter(data.config.embed.footer);
             message.channel.send(embed);
-            await message.channel.awaitMessages((m) => m.content > 0 && m.content < 11, { max: 1, time: 20000, errors: ["time"] }).then(async (answers) => {
+            await message.channel.awaitMessages((m) => m.content > 0 && m.content < 8, { max: 1, time: 20000, errors: ["time"] }).then(async (answers) => {
                 let index = parseInt(answers.first().content, 10);
                 video = await youtube.getVideoByID(videos[index-1].id);
                 return music.handleVideo(message.client, video, message, voice, data);

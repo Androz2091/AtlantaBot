@@ -13,7 +13,7 @@ class Lyrics extends Command {
             examples: (language) => language.get("LYRICS_EXAMPLES"),
             dirname: __dirname,
             enabled: true,
-            guildOnly: true,
+            guildOnly: false,
             aliases: [ "paroles" ],
             memberPermissions: [],
             botPermissions: [ "SEND_MESSAGES", "EMBED_LINKS" ],
