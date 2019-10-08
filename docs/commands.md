@@ -58,27 +58,6 @@ Here's the list of Atlanta commands. This one contains more than **100 commands*
 | **slowmode**        | Define a cooldown in a channel                                | slowmode [#channel] (time)       | 3 seconds  |
 | **welcome**         | Send a welcome message to a pre-defined channel!              | welcome                          | 3 seconds  |
 
-### Economy (16 commands)
-
-| Name             | Description                                                               | Usage                            | Cooldown   |
-| ---------------- | ------------------------------------------------------------------------- | -------------------------------- | ---------- |
-| **achievements** | Displays the list of all the achievements!                                | achievements                     | 1 seconds  |
-| **badge**        | Buy badges that will appear on your profile!                              | badge (name-of-the-badge)        | 3 seconds  |
-| **birthdate**    | Set your birthday date (which will appear on your profile)                | birthdate (date)                 | 1 seconds  |
-| **deposit**      | Deposit your money at the bank                                            | deposit [amount]                 | 1 seconds  |
-| **divorce**      | Divorce the person you are currently married to!                          | divorce                          | 3 seconds  |
-| **leaderboard**  | Displays users who have the most credits, levels or reputation points!    | leaderboard [rep/levels/credits] | 5 seconds  |
-| **money**        | Displays your credits                                                     | money (@member)                  | 1 seconds  |
-| **pay**          | Pay a member with credits!                                                | pay [@user#0000] [amount]        | 10 seconds |
-| **profile**      | Displays the profile of the mentioned user (or the author of the message) | profile (@user#0000)             | 3 seconds  |
-| **rep**          | Give a member a reputation point!                                         | rep [@user#0000]                 | 3 seconds  |
-| **setbio**       |                                                                           |                                  | 5 seconds  |
-| **slots**        | An equivalent to the Casino!                                              | slots [amount]                   | 3 seconds  |
-| **steal**        | Try stealing a member!                                                    | steal [@membre] [amount]         | 1 seconds  |
-| **wedding**      | Marry the person of your choice!                                          | wedding [@user#0000]             | 10 seconds |
-| **withdraw**     | Withdraw money!                                                           | withdraw [amount]                | 1 seconds  |
-| **work**         | Work and earn money!                                                      | work                             | 3 seconds  |
-
 ### Moderation (15 commands)
 
 | Name                | Description                                                                             | Usage                                                              | Cooldown  |
@@ -98,6 +77,26 @@ Here's the list of Atlanta commands. This one contains more than **100 commands*
 | **unban**           | Unban the user from the server!                                                         | unban [userID/user#0000]                                           | 3 seconds |
 | **unmute**          | Unmute the mentioned member!                                                            | unmute [@member]                                                   | 3 seconds |
 | **warn**            | Warn a member in private messages                                                       | warn [@member] [reason]                                            | 3 seconds |
+
+### Economy (15 commands)
+
+| Name             | Description                                                               | Usage                            | Cooldown   |
+| ---------------- | ------------------------------------------------------------------------- | -------------------------------- | ---------- |
+| **achievements** | Displays the list of all the achievements!                                | achievements                     | 1 seconds  |
+| **birthdate**    | Set your birthday date (which will appear on your profile)                | birthdate (date)                 | 1 seconds  |
+| **deposit**      | Deposit your money at the bank                                            | deposit [amount]                 | 1 seconds  |
+| **divorce**      | Divorce the person you are currently married to!                          | divorce                          | 3 seconds  |
+| **leaderboard**  | Displays users who have the most credits, levels or reputation points!    | leaderboard [rep/levels/credits] | 5 seconds  |
+| **money**        | Displays your credits                                                     | money (@member)                  | 1 seconds  |
+| **pay**          | Pay a member with credits!                                                | pay [@user#0000] [amount]        | 10 seconds |
+| **profile**      | Displays the profile of the mentioned user (or the author of the message) | profile (@user#0000)             | 3 seconds  |
+| **rep**          | Give a member a reputation point!                                         | rep [@user#0000]                 | 3 seconds  |
+| **setbio**       |                                                                           |                                  | 5 seconds  |
+| **slots**        | An equivalent to the Casino!                                              | slots [amount]                   | 3 seconds  |
+| **steal**        | Try stealing a member!                                                    | steal [@membre] [amount]         | 1 seconds  |
+| **wedding**      | Marry the person of your choice!                                          | wedding [@user#0000]             | 10 seconds |
+| **withdraw**     | Withdraw money!                                                           | withdraw [amount]                | 1 seconds  |
+| **work**         | Work and earn money!                                                      | work                             | 3 seconds  |
 
 ### Images (13 commands)
 
