@@ -420,14 +420,14 @@ module.exports = class {
 				`${e.help} Support`
 			],
 
-			/* MINIMIZE COMMAND */
+			/* SHORTURL COMMAND */
 
 			// Utils
-			MINIMIZE_DESCRIPTION: "Shorten your link!",
-			MINIMIZE_USAGE: "minimize [url]",
-			MINIMIZE_EXAMPLES: "$minimize https://google.fr",
+			SHORTURL_DESCRIPTION: "Shorten your link!",
+			SHORTURL_USAGE: "shorturl [url]",
+			SHORTURL_EXAMPLES: "$shorturl https://google.fr",
 			// Errors
-			MINIMIZE_ERR_INVALID_URL: `${e.error} | Please enter a valid URL!`,
+			SHORTURL_ERR_INVALID_URL: `${e.error} | Please enter a valid URL!`,
 
 			/* MINECRAFT COMMAND */
 
@@ -996,24 +996,24 @@ module.exports = class {
 			LEADERBOARD_ERR_TYPE: `${e.error} | Please enter a type of leaderboard! (\`credits\`, \`level\` ou \`rep\`)`,
 			LEADERBOARD_WARN_PHONE: `:confused: We have detected that you are using a phone.... The leaderboard may not display well on small screens. Try to switch to landscape (or go on the dashboard)!`,
 
-			/* STEAL COMMAND */
+			/* ROB COMMAND */
 
 			// Utils
-			STEAL_DESCRIPTION: "Try stealing a member!",
-			STEAL_USAGE: "steal [@membre] [amount]",
-			STEAL_EXAMPLES: "$steal @Androz#2091 100",
+			ROB_DESCRIPTION: "Try to rob a member!",
+			ROB_USAGE: "rob [@membre] [amount]",
+			ROB_EXAMPLES: "$rob @Androz#2091 100",
 			// Errors
-			STEAL_ERR_YOURSELF: `${e.error} | You can't robbed yourself!`,
-			STEAL_ERR_AMOUNT: (member) => `${e.error} | Please enter a valid amount to be robbed to **${member.user.tag}** !`,
-			STEAL_ERR_AMOUNT_MEMBER: (member, money) => `${e.error} | **${member.user.username}** does not have **${money}** credits !`,
-			STEAL_ERR_NO_MONEY: (needed) => `${e.error} | You must have more than **${needed}** credits to attempt this robbery!`,
-			STEAL_ERR_CLDWN: (member) => `:spy: **${member.user.username}** is on guard.... Wait a while and try again!`,
+			ROB_ERR_YOURSELF: `${e.error} | You can't robbed yourself!`,
+			ROB_ERR_AMOUNT: (member) => `${e.error} | Please enter a valid amount to be robbed to **${member.user.tag}** !`,
+			ROB_ERR_AMOUNT_MEMBER: (member, money) => `${e.error} | **${member.user.username}** does not have **${money}** credits !`,
+			ROB_ERR_NO_MONEY: (needed) => `${e.error} | You must have more than **${needed}** credits to attempt this robbery!`,
+			ROB_ERR_CLDWN: (member) => `:spy: **${member.user.username}** is on guard.... Wait a while and try again!`,
 			// Content
-			STEAL_WON: (stealed, member) => [
-				`:tada: | Congratulations! The police weren't fast enough to stop you from stealing **${stealed}** credits to **${member.user.username}** !`,
-				`:confused: | **${member.user.username}** ? Bad news. You just got robbed **${stealed}** credits!`,
+			ROB_WON: (robbed, member) => [
+				`:tada: | Congratulations! The police weren't fast enough to stop you from robbing **${robbed}** credits to **${member.user.username}** !`,
+				`:confused: | **${member.user.username}** ? Bad news. You just got robbed **${robbed}** credits!`,
 			],
-			STEAL_LOSE: (lose, member, won) => [
+			ROB_LOSE: (lose, member, won) => [
 				`:oncoming_police_car: | The police caught you in the act, impossible to deny, your fine is **${lose}** credits. **${won}** offset credits will be paid to **${member.user.username}**.`,
 				`:police_car: | Bad news.... **${member.user.username}** called the police in time. Your fine is **${lose}** credits and **${won}** offset credits will be paid to **${member.user.username}**.`
 			],

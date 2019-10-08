@@ -68,6 +68,11 @@ const userSchema = new mongoose.Schema({
         }
     }},
 
+    /* COOLDOWN */
+    cooldowns: { type: Object, default: {
+        rep: 0
+    }},
+
     /* OTHER INFORMATIONS */
     afk: { type: String, default: null }, // Whether the member is AFK
     reminds: { type: Array, default: [] }, // the reminds of the user

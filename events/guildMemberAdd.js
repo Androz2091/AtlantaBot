@@ -25,6 +25,17 @@ module.exports = class {
 
             let guildData = await this.client.findOrCreateGuild({ id: guild.id });
 
+            let memberData = await this.client.findOrCreateMember({ id: member.id, guildID: guild.id });
+            if(memberData.mute.muted && memberData.mute.endDate > Date.now()){
+                guild.channels.forEach((channel) => {
+                    channel.updateOverwrite(member.id, {
+                        SEND_MESSAGES: false,
+                        ADD_REACTIONS: false,
+                        CONNECT: false
+                    }).catch((err) => {});
+                });
+            }
+
             // Check if the autorole is enabled
             if(guildData.plugins.autorole.enabled){
                 member.roles.add(guildData.plugins.autorole.role).catch((err) => {});

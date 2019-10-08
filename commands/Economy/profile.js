@@ -19,7 +19,7 @@ class Profile extends Command {
             examples: (language) => language.get("PROFILE_EXAMPLES"),
             dirname: __dirname,
             enabled: true,
-            guildOnly: false,
+            guildOnly: true,
             aliases: [ "profil" ],
             memberPermissions: [],
             botPermissions: [ "SEND_MESSAGES", "EMBED_LINKS" ],

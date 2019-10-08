@@ -25,7 +25,7 @@ module.exports = class {
             await message.guild.members.fetch(message.author.id);
         }
 
-        if(this.client.config.proMode){
+        if(this.client.config.proMode && message.guild){
             if((!this.client.config.proUsers.includes(message.guild.ownerID) || this.guilds.filter((g) => g.ownerID === message.guild.ownerID) > 1) && message.guild.ownerID !== this.client.config.owner.id){
                 return message.guild.leave();
             }
@@ -34,26 +34,30 @@ module.exports = class {
         let client = this.client;
         data.config = client.config;
     
-        // Gets guild data
-        let guild = await client.findOrCreateGuild({ id: message.guild.id });
-        data.guild = guild;
+        if(message.guild){
+            // Gets guild data
+            let guild = await client.findOrCreateGuild({ id: message.guild.id });
+            data.guild = guild;
+        }
 
         // Gets language
-        let language = new(require(`../languages/${guild.language}.js`));
+        let language = new(require(`../languages/${data.guild ? data.guild.language : this.client.config.defaultLanguage}.js`));
         message.language = language;
 
         // Check if the bot was mentionned
         if(message.content.match(new RegExp(`^<@!?${client.user.id}>( |)$`))){
-            return message.reply(language.get("PREFIX_INFO", guild.prefix));
+            return message.reply(language.get("PREFIX_INFO", guild.prefix || ""));
         }
 
-        if(message.content === "@someone"){
+        if(message.content === "@someone" && message.guild){
             return client.commands.get("someone").run(message, null, data);
         }
 
-        // Gets the data of the member
-        let memberData = await client.findOrCreateMember({ id: message.author.id, guildID: message.guild.id });
-        data.memberData = memberData;
+        if(message.guild){
+            // Gets the data of the member
+            let memberData = await client.findOrCreateMember({ id: message.author.id, guildID: message.guild.id });
+            data.memberData = memberData;
+        }
 
         let userData = await client.findOrCreateUser({ id: message.author.id });
         data.userData = userData;

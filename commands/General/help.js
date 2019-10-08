@@ -37,12 +37,12 @@ class Help extends Command {
             }
 
             // Replace $ caract with the server prefix
-            let examples = cmd.help.examples(message.language).replace(/[$_]/g, data.guild.prefix);
+            let examples = cmd.help.examples(message.language).replace(/[$_]/g, data.guild ? data.guild.prefix : "");
 
             // Creates the help embed
             let groupEmbed = new Discord.MessageEmbed()
                 .setAuthor(message.language.get("HELP_HEADINGS")[0]+" "+cmd.help.name)
-                .addField(message.language.get("HELP_HEADINGS")[1], data.guild.prefix+cmd.help.usage(message.language))
+                .addField(message.language.get("HELP_HEADINGS")[1], (data.guild ? data.guild.prefix : "")+cmd.help.usage(message.language))
                 .addField(message.language.get("HELP_HEADINGS")[2], examples)
                 .addField(message.language.get("HELP_HEADINGS")[3], cmd.help.category)
                 .addField(message.language.get("HELP_HEADINGS")[4], cmd.help.description(message.language))
@@ -70,7 +70,7 @@ class Help extends Command {
         let emojis = this.client.config.emojis
 
         let embed = new Discord.MessageEmbed()
-            .setDescription(message.language.get("HELP_EDESCRIPTION", data.guild.prefix))
+            .setDescription(message.language.get("HELP_EDESCRIPTION", data.guild ? data.guild.prefix : ""))
             .setColor(data.config.embed.color)
             .setFooter(data.config.embed.footer);
         categories.sort().forEach((cat) => {

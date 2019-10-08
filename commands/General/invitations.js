@@ -23,12 +23,12 @@ class Invitations extends Command {
 
     async run (message, args, data) {
 
-        let member = (message.mentions.members.first()) ? message.mentions.members.first() : message.member;
+        let member = await this.client.resolveMember(args[0]);
 
         // Gets the invites
         let invites = await message.guild.fetchInvites().catch((err) => {});
         
-        let memberInvites = invites.filter((i) => i.inviter.id === member.user.id);
+        let memberInvites = invites.filter((i) => i.inviter && i.inviter.id === member.user.id);
 
         if(memberInvites.size <= 0){
             return message.channel.send(message.language.get("INVITATIONS_ERR_NO_INVITE", (member === message.member ? null : member)));
