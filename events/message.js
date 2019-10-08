@@ -205,14 +205,14 @@ module.exports = class {
                 message.delete();
             }
             if(message.guild){
-                guild.commands.push({
+                data.guild.commands.push({
                     command: cmd.help.name,
                     date: Date.now(),
                     user: message.author.id,
                     guild: (message.guild ? message.guild.id : "dm")
                 });
                 setTimeout(() => {
-                    guild.save();
+                    data.guild.save();
                 }, 3000);
             }
         } catch(e){
