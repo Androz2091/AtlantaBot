@@ -1049,6 +1049,13 @@ module.exports = class {
 			SCARY_USAGE: "scary (@membre)",
 			SCARY_EXAMPLES: "$scary\n$scary @Androz#2091",
 
+			/* TOBECONTINUED COMMAND */
+
+			// Utils
+			TOBECONTINUED_DESCRIPTION: "Génère une image de type \"tobecontinued\" grâce à l'API Améthyste",
+			TOBECONTINUED_USAGE: "tobecontinued (@membre)",
+			TOBECONTINUED_EXAMPLES: "$tobecontinued\n$tobecontinued @Androz#2091",
+
 			/* CAPTCHA COMMAND */
 
 			// Utils
