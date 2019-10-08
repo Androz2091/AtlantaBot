@@ -24,7 +24,7 @@ class Rep extends Command {
     async run (message, args, data) {
 
         // if the member is already in the cooldown db
-        let isInCooldown = data.memberData.cooldowns.rep;
+        let isInCooldown = (data.userData.cooldowns || { rep: 0 }).rep;
         if(isInCooldown){
             /*if the timestamp recorded in the database indicating 
             when the member will be able to execute the order again 
@@ -47,9 +47,10 @@ class Rep extends Command {
 
         // Records in the database the time when the member will be able to execute the command again (in 12 hours)
         let toWait = Date.now() + 21600000;
-        data.memberData.cooldowns.rep = toWait;
-        data.memberData.markModified("cooldowns");
-        data.memberData.save();
+        data.userData.cooldowns = {};
+        data.userData.cooldowns.rep = toWait;
+        data.userData.markModified("cooldowns");
+        data.userData.save();
         
         let userData = await this.client.findOrCreateUser({ id: user.id });
         userData.rep++;

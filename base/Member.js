@@ -19,7 +19,6 @@ module.exports = mongoose.model("Member", new mongoose.Schema({
     /* COOLDOWN */
     cooldowns: { type: Object, default: {
         work: 0,
-        rep: 0,
         steal: 0
     }},
 

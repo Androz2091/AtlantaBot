@@ -8,6 +8,8 @@ All notable changes to this project will be documented in this file.
 
 *   If a member is muted and leaves and returns, he will always be muted
 *   User game is now displayed in the userinfo command
+*   Fix `invitations` command
+*   Rep cooldown is now user based and not member based
 
 ## [4.5.0]
 
