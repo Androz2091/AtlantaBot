@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file.
 
+## [4.5.10]
+
+### Fixed
+
+*   If a member is muted and leaves and returns, he will always be muted
+*   User game is now displayed in the userinfo command
+
 ## [4.5.0]
 
 ### Added
