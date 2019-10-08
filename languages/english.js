@@ -1184,6 +1184,12 @@ module.exports = class {
 			TOBECONTINUED_USAGE: "tobecontinued (@member)",
 			TOBECONTINUED_EXAMPLES: "$tobecontinued\n$tobecontinued @Androz#2091",
 
+			/* TRIGGERED COMMAND */
+
+			// Utils
+			TRIGGERED_DESCRIPTION: "Generates a \"triggered\" image using the Améthyste API",
+			TRIGGERED_USAGE: "triggered (@member)",
+			TRIGGERED_EXAMPLES: "$triggered\n$triggered @Androz#2091",
 
 			/* CAPTCHA COMMAND */
 
