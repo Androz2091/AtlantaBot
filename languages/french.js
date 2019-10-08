@@ -1014,47 +1014,12 @@ module.exports = class {
 				`${e.link} • __Liens__`,
 			],
 
-			/* FACEPALM COMMAND */
+			/* FIRE COMMAND */
 
 			// Utils
-			FACEPALM_DESCRIPTION: "Génère une image de type \"facepalm\" grâce à l'API Anidiots",
-			FACEPALM_USAGE: "facepalm (@membre)",
-			FACEPALM_EXAMPLES: "$facepalm\n$facepalm @Androz#2091",
-
-			/* HATES COMMAND */
-
-			// Utils
-			HATES_DESCRIPTION: "Génère une image de type \"hates\" grâce à l'API Anidiots",
-			HATES_USAGE: "hates (@membre)",
-			HATES_EXAMPLES: "$hates\n$hates @Androz#2091",
-			
-			/* GARBAGE COMMAND */
-
-			// Utils
-			GARBAGE_DESCRIPTION: "Génère une image de type \"garbage\" grâce à l'API Anidiots",
-			GARBAGE_USAGE: "garbage (@membre)",
-			GARBAGE_EXAMPLES: "$garbage\n$garbage @Androz#2091",
-
-			/* RESPECT COMMAND */
-
-			// Utils
-			RESPECT_DESCRIPTION: "Génère une image de type \"respect\" grâce à l'API Anidiots",
-			RESPECT_USAGE: "respect (@membre)",
-			RESPECT_EXAMPLES: "$respect\n$respect @Androz#2091",
-
-			/* SHIT COMMAND */
-
-			// Utils
-			SHIT_DESCRIPTION: "Génère une image de type \"shit\" grâce à l'API Anidiots",
-			SHIT_USAGE: "shit (@membre)",
-			SHIT_EXAMPLES: "$shit\n$shit @Androz#2091",
-
-			/* TRIGGERED COMMAND */
-
-			// Utils
-			TRIGGERED_DESCRIPTION: "Génère une image de type \"triggered\" grâce à l'API Anidiots",
-			TRIGGERED_USAGE: "triggered (@membre)",
-			TRIGGERED_EXAMPLES: "$triggered\n$triggered @Androz#2091",
+			FIRE_DESCRIPTION: "Génère une image de type \"fire\" grâce à l'API Améthyste",
+			FIRE_USAGE: "fire (@membre)",
+			FIRE_EXAMPLES: "$fire\n$fire @Androz#2091",
 
 			/* CAPTCHA COMMAND */
 

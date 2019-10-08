@@ -58,26 +58,6 @@ Here's the list of Atlanta commands. This one contains more than **100 commands*
 | **slowmode**        | Define a cooldown in a channel                                | slowmode [#channel] (time)       | 3 seconds  |
 | **welcome**         | Send a welcome message to a pre-defined channel!              | welcome                          | 3 seconds  |
 
-### Moderation (15 commands)
-
-| Name                | Description                                                                             | Usage                                                              | Cooldown  |
-| ------------------- | --------------------------------------------------------------------------------------- | ------------------------------------------------------------------ | --------- |
-| **announcement**    | Send an announcement in the current channel!                                            | announcement [text]                                                | 3 seconds |
-| **ban**             | Banished the mentioned member!                                                          | ban [@user] (reason)                                               | 3 seconds |
-| **checkinvites**    | Check if members do not have an ad for their Discord server in their presence!          | checkinvites                                                       | 3 seconds |
-| **clear**           | Deletes messages very quickly!                                                          | clear[number-of-messages] (@member)                                | 3 seconds |
-| **clear-sanctions** | Deletes all sanctions of a member!                                                      | clear-sanctions [@member]                                          | 3 seconds |
-| **giveaway**        | Manage your giveaways simply!                                                           | giveaway [create/reroll/delete/end] (time) (winners count) (prize) | 5 seconds |
-| **kick**            | Kick out the mentioned member!                                                          | kick [@user] (reason)                                              | 3 seconds |
-| **mention-role**    | Mention a role and then disable the possibility of mentioning                           | mentionrole [name]                                                 | 3 seconds |
-| **mute**            | Prevents the member from sending messages and connecting by voice for a period of time! | mute [@member] [time]                                              | 3 seconds |
-| **poll**            | Launch a survey in the current channel!                                                 | poll [question]                                                    | 3 seconds |
-| **sanctions**       | Displays the list of infractions committed by a member!                                 | sanctions [@member]                                                | 3 seconds |
-| **setwarns**        | Define the sanctions that members will get after a certain number of warns!             | setwarns [kick/ban] [number/reset]                                 | 3 seconds |
-| **unban**           | Unban the user from the server!                                                         | unban [userID/user#0000]                                           | 3 seconds |
-| **unmute**          | Unmute the mentioned member!                                                            | unmute [@member]                                                   | 3 seconds |
-| **warn**            | Warn a member in private messages                                                       | warn [@member] [reason]                                            | 3 seconds |
-
 ### Economy (15 commands)
 
 | Name             | Description                                                               | Usage                            | Cooldown   |
@@ -98,23 +78,25 @@ Here's the list of Atlanta commands. This one contains more than **100 commands*
 | **withdraw**     | Withdraw money!                                                           | withdraw [amount]                | 1 seconds  |
 | **work**         | Work and earn money!                                                      | work                             | 3 seconds  |
 
-### Images (13 commands)
+### Moderation (15 commands)
 
-| Name          | Description                                             | Usage                      | Cooldown  |
-| ------------- | ------------------------------------------------------- | -------------------------- | --------- |
-| **avatar**    | Displays the avatar of the mentionned member            | avatar (@member)           | 5 seconds |
-| **captcha**   | Generates a "triggered" image using the Nekobot API     | captcha (@member)          | 5 seconds |
-| **clyde**     | Generates a "clyde" image using the Nekobot API         | clyde [text]               | 5 seconds |
-| **facepalm**  | Generates a "facepalm" image using the Anidiots API     | facepalm (@member)         | 5 seconds |
-| **garbage**   | Generates a "garbage" image using the Anidiots API      | garbage (@member)          | 5 seconds |
-| **hates**     | Generates a "hates" image using the Anidiots API        | hates (@member)            | 5 seconds |
-| **love**      | Generates a "love" image using the Nekobot API          | love [@user1] (@user2)     | 5 seconds |
-| **phcomment** | Generates a "phcomment" image using the Nekobot API     | phcomment (@member) (text) | 5 seconds |
-| **qrcode**    | Generates a QR Code with your text!                     | qrcode [text]              | 3 seconds |
-| **respect**   | Generates a "respect" image using the Anidiots API      | respect (@member)          | 5 seconds |
-| **shit**      | Generates a "respect" image using the Anidiots API      | shit (@member)             | 5 seconds |
-| **triggered** | Generates a "triggered" image using the Anidiots API    | triggered (@member)        | 5 seconds |
-| **tweet**     | Generate a tweet of a person of your choice on Twitter! | tweet [@twitter] [text]    | 5 seconds |
+| Name                | Description                                                                             | Usage                                                              | Cooldown  |
+| ------------------- | --------------------------------------------------------------------------------------- | ------------------------------------------------------------------ | --------- |
+| **announcement**    | Send an announcement in the current channel!                                            | announcement [text]                                                | 3 seconds |
+| **ban**             | Banished the mentioned member!                                                          | ban [@user] (reason)                                               | 3 seconds |
+| **checkinvites**    | Check if members do not have an ad for their Discord server in their presence!          | checkinvites                                                       | 3 seconds |
+| **clear**           | Deletes messages very quickly!                                                          | clear[number-of-messages] (@member)                                | 3 seconds |
+| **clear-sanctions** | Deletes all sanctions of a member!                                                      | clear-sanctions [@member]                                          | 3 seconds |
+| **giveaway**        | Manage your giveaways simply!                                                           | giveaway [create/reroll/delete/end] (time) (winners count) (prize) | 5 seconds |
+| **kick**            | Kick out the mentioned member!                                                          | kick [@user] (reason)                                              | 3 seconds |
+| **mention-role**    | Mention a role and then disable the possibility of mentioning                           | mentionrole [name]                                                 | 3 seconds |
+| **mute**            | Prevents the member from sending messages and connecting by voice for a period of time! | mute [@member] [time]                                              | 3 seconds |
+| **poll**            | Launch a survey in the current channel!                                                 | poll [question]                                                    | 3 seconds |
+| **sanctions**       | Displays the list of infractions committed by a member!                                 | sanctions [@member]                                                | 3 seconds |
+| **setwarns**        | Define the sanctions that members will get after a certain number of warns!             | setwarns [kick/ban] [number/reset]                                 | 3 seconds |
+| **unban**           | Unban the user from the server!                                                         | unban [userID/user#0000]                                           | 3 seconds |
+| **unmute**          | Unmute the mentioned member!                                                            | unmute [@member]                                                   | 3 seconds |
+| **warn**            | Warn a member in private messages                                                       | warn [@member] [reason]                                            | 3 seconds |
 
 ### Fun (10 commands)
 
@@ -130,6 +112,20 @@ Here's the list of Atlanta commands. This one contains more than **100 commands*
 | **lovecalc**  | How much love is there between two people? *This is a fun command, not to be taken seriously* | lovecalc [@member1] (@member2)  | 1 seconds |
 | **number**    | Find the number I chose!                                                                      | number                          | 5 seconds |
 | **random**    | Randomly pick one of the choices you give me!                                                 | random [choice1/choice2/etc...] | 5 seconds |
+
+### Images (9 commands)
+
+| Name          | Description                                             | Usage                      | Cooldown  |
+| ------------- | ------------------------------------------------------- | -------------------------- | --------- |
+| **avatar**    | Displays the avatar of the mentionned member            | avatar (@member)           | 5 seconds |
+| **captcha**   | Generates a "triggered" image using the Nekobot API     | captcha (@member)          | 5 seconds |
+| **clyde**     | Generates a "clyde" image using the Nekobot API         | clyde [text]               | 5 seconds |
+| **facepalm**  | Generates a "facepalm" image using the Anidiots API     | facepalm (@member)         | 5 seconds |
+| **fire**      |                                                         |                            | 5 seconds |
+| **love**      | Generates a "love" image using the Nekobot API          | love [@user1] (@user2)     | 5 seconds |
+| **phcomment** | Generates a "phcomment" image using the Nekobot API     | phcomment (@member) (text) | 5 seconds |
+| **qrcode**    | Generates a QR Code with your text!                     | qrcode [text]              | 3 seconds |
+| **tweet**     | Generate a tweet of a person of your choice on Twitter! | tweet [@twitter] [text]    | 5 seconds |
 
 ### Music (6 commands)
 
