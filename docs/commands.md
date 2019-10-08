@@ -113,15 +113,16 @@ Here's the list of Atlanta commands. This one contains more than **100 commands*
 | **number**    | Find the number I chose!                                                                      | number                          | 5 seconds |
 | **random**    | Randomly pick one of the choices you give me!                                                 | random [choice1/choice2/etc...] | 5 seconds |
 
-### Images (9 commands)
+### Images (10 commands)
 
 | Name          | Description                                             | Usage                      | Cooldown  |
 | ------------- | ------------------------------------------------------- | -------------------------- | --------- |
 | **avatar**    | Displays the avatar of the mentionned member            | avatar (@member)           | 5 seconds |
 | **captcha**   | Generates a "triggered" image using the Nekobot API     | captcha (@member)          | 5 seconds |
 | **clyde**     | Generates a "clyde" image using the Nekobot API         | clyde [text]               | 5 seconds |
-| **facepalm**  | Generates a "facepalm" image using the Anidiots API     | facepalm (@member)         | 5 seconds |
-| **fire**      |                                                         |                            | 5 seconds |
+| **facepalm**  |                                                         |                            | 5 seconds |
+| **fire**      | Generates a "fire" image using the Améthyste API        | fire (@member)             | 5 seconds |
+| **jail**      | Generates a "jail" image using the Améthyste API        | jail (@member)             | 5 seconds |
 | **love**      | Generates a "love" image using the Nekobot API          | love [@user1] (@user2)     | 5 seconds |
 | **phcomment** | Generates a "phcomment" image using the Nekobot API     | phcomment (@member) (text) | 5 seconds |
 | **qrcode**    | Generates a QR Code with your text!                     | qrcode [text]              | 3 seconds |

@@ -1021,6 +1021,13 @@ module.exports = class {
 			FIRE_USAGE: "fire (@membre)",
 			FIRE_EXAMPLES: "$fire\n$fire @Androz#2091",
 
+			/* JAIL COMMAND */
+
+			// Utils
+			JAIL_DESCRIPTION: "Génère une image de type \"jail\" grâce à l'API Améthyste",
+			JAIL_USAGE: "jail (@membre)",
+			JAIL_EXAMPLES: "$jail\n$jail @Androz#2091",
+
 			/* CAPTCHA COMMAND */
 
 			// Utils
