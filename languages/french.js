@@ -1042,6 +1042,13 @@ module.exports = class {
 			RIP_USAGE: "rip (@membre)",
 			RIP_EXAMPLES: "$rip\n$rip @Androz#2091",
 
+			/* SCARY COMMAND */
+
+			// Utils
+			SCARY_DESCRIPTION: "Génère une image de type \"scary\" grâce à l'API Améthyste",
+			SCARY_USAGE: "scary (@membre)",
+			SCARY_EXAMPLES: "$scary\n$scary @Androz#2091",
+
 			/* CAPTCHA COMMAND */
 
 			// Utils
