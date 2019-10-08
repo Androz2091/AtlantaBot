@@ -1,7 +1,7 @@
 const util = require("util"),
 fs = require("fs"),
 readdir = util.promisify(fs.readdir),
-Idiot = require("idiotic-api"),
+AmeClient = require("amethyste-api"),
 mongoose = require("mongoose");
 
 // Load Atlanta class
@@ -43,8 +43,8 @@ const init = async () => {
         client.logger.log("Unable to connect to the Mongodb database. Error:"+err, "error");
     });
 
-    if(client.config.apiKeys.anidiots){
-        client.IdiotAPI = new Idiot.Client(client.config.apiKeys.anidiots, { dev: true });
+    if(client.config.apiKeys.amethyste){
+        client.AmeAPI = new AmeClient(client.config.apiKeys.amethyste);
     }
 
 };

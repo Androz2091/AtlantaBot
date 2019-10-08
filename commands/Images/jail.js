@@ -1,13 +1,13 @@
 const Command = require("../../base/Command.js"),
 Discord = require("discord.js");
 
-class Shit extends Command {
+class Jail extends Command {
     constructor (client) {
         super(client, {
-            name: "shit",
-            description: (language) => language.get("SHIT_DESCRIPTION"),
-            usage: (language) => language.get("SHIT_USAGE"),
-            examples: (language) => language.get("SHIT_EXAMPLES"),
+            name: "jail",
+            description: (language) => language.get("JAIL_DESCRIPTION"),
+            usage: (language) => language.get("JAIL_USAGE"),
+            examples: (language) => language.get("JAIL_EXAMPLES"),
             dirname: __dirname,
             enabled: true,
             guildOnly: false,
@@ -21,15 +21,11 @@ class Shit extends Command {
     }
 
     async run (message, args, data) {
-        
-        if(!message.client.IdiotAPI){
-            return message.channel.send(message.language.get("ERR_COMMAND_DISABLED"));
-        }
 
         let user = await this.client.resolveUser(args[0]) || message.author;
         let m = await message.channel.send(message.language.get("UTILS").PLEASE_WAIT);
-        let buffer = await message.client.IdiotAPI.stepped(user.displayAvatarURL({ format: "png", size: 512 }));
-        let attachment = new Discord.MessageAttachment(buffer, "shit.png");
+        let buffer = await this.client.AmeAPI.generate("jail", { url: user.displayAvatarURL({ format: "png", size: 1024 }) });
+        let attachment = new Discord.MessageAttachment(buffer, "jail.png");
         m.delete();
         message.channel.send(attachment);
 
@@ -37,4 +33,4 @@ class Shit extends Command {
 
 }
 
-module.exports = Shit;
+module.exports = Jail;

@@ -1,13 +1,13 @@
 const Command = require("../../base/Command.js"),
 Discord = require("discord.js");
 
-class Respect extends Command {
+class Wanted extends Command {
     constructor (client) {
         super(client, {
-            name: "respect",
-            description: (language) => language.get("RESPECT_DESCRIPTION"),
-            usage: (language) => language.get("RESPECT_USAGE"),
-            examples: (language) => language.get("RESPECT_EXAMPLES"),
+            name: "wanted",
+            description: (language) => language.get("WANTED_DESCRIPTION"),
+            usage: (language) => language.get("WANTED_USAGE"),
+            examples: (language) => language.get("WANTED_EXAMPLES"),
             dirname: __dirname,
             enabled: true,
             guildOnly: false,
@@ -21,15 +21,11 @@ class Respect extends Command {
     }
 
     async run (message, args, data) {
-        
-        if(!message.client.IdiotAPI){
-            return message.channel.send(message.language.get("ERR_COMMAND_DISABLED"));
-        }
 
         let user = await this.client.resolveUser(args[0]) || message.author;
         let m = await message.channel.send(message.language.get("UTILS").PLEASE_WAIT);
-        let buffer = await message.client.IdiotAPI.respect(user.displayAvatarURL({ format: "png", size: 128 }));
-        let attachment = new Discord.MessageAttachment(buffer, "respect.png");
+        let buffer = await this.client.AmeAPI.generate("wanted", { url: user.displayAvatarURL({ format: "png", size: 512 }) });
+        let attachment = new Discord.MessageAttachment(buffer, "wanted.png");
         m.delete();
         message.channel.send(attachment);
 
@@ -37,4 +33,4 @@ class Respect extends Command {
 
 }
 
-module.exports = Respect;
+module.exports = Wanted;

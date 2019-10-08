@@ -1,13 +1,13 @@
 const Command = require("../../base/Command.js"),
 Discord = require("discord.js");
 
-class Triggered extends Command {
+class Fire extends Command {
     constructor (client) {
         super(client, {
-            name: "triggered",
-            description: (language) => language.get("TRIGGERED_DESCRIPTION"),
-            usage: (language) => language.get("TRIGGERED_USAGE"),
-            examples: (language) => language.get("TRIGGERED_EXAMPLES"),
+            name: "fire",
+            description: (language) => language.get("FIRE_DESCRIPTION"),
+            usage: (language) => language.get("FIRE_USAGE"),
+            examples: (language) => language.get("FIRE_EXAMPLES"),
             dirname: __dirname,
             enabled: true,
             guildOnly: false,
@@ -24,8 +24,8 @@ class Triggered extends Command {
 
         let user = await this.client.resolveUser(args[0]) || message.author;
         let m = await message.channel.send(message.language.get("UTILS").PLEASE_WAIT);
-        let buffer = await this.client.AmeAPI.generate("triggered", { url: user.displayAvatarURL({ format: "png", size: 512 }), sepia: "true", invert: "true" });
-        let attachment = new Discord.MessageAttachment(buffer, "triggered.gif");
+        let buffer = await this.client.AmeAPI.generate("fire", { url: user.displayAvatarURL({ format: "png", size: 512 }) });
+        let attachment = new Discord.MessageAttachment(buffer, "fire.png");
         m.delete();
         message.channel.send(attachment);
 
@@ -33,4 +33,4 @@ class Triggered extends Command {
 
 }
 
-module.exports = Triggered;
+module.exports = Fire;

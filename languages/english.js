@@ -1141,47 +1141,69 @@ module.exports = class {
 				`${e.link} • __Links__`,
 			],
 
-			/* FACEPALM COMMAND */
+			
+			/* FIRE COMMAND */
 
 			// Utils
-			FACEPALM_DESCRIPTION: "Generates a \"facepalm\" image using the Anidiots API",
-			FACEPALM_USAGE: "facepalm (@member)",
-			FACEPALM_EXAMPLES: "$facepalm\n$facepalm @Androz#2091",
+			FIRE_DESCRIPTION: "Generates a \"fire\" image using the Améthyste API",
+			FIRE_USAGE: "fire (@member)",
+			FIRE_EXAMPLES: "$fire\n$fire @Androz#2091",
 
-			/* HATES COMMAND */
-
-			// Utils
-			HATES_DESCRIPTION: "Generates a \"hates\" image using the Anidiots API",
-			HATES_USAGE: "hates (@member)",
-			HATES_EXAMPLES: "$hates\n$hates @Androz#2091",
-
-			/* GARBAGE COMMAND */
+			/* JAIL COMMAND */
 
 			// Utils
-			GARBAGE_DESCRIPTION: "Generates a \"garbage\" image using the Anidiots API",
-			GARBAGE_USAGE: "garbage (@member)",
-			GARBAGE_EXAMPLES: "$garbage\n$garbage @Androz#2091",
+			JAIL_DESCRIPTION: "Generates a \"jail\" image using the Améthyste API",
+			JAIL_USAGE: "jail (@member)",
+			JAIL_EXAMPLES: "$jail\n$jail @Androz#2091",
 
-			/* RESPECT COMMAND */
-
-			// Utils
-			RESPECT_DESCRIPTION: "Generates a \"respect\" image using the Anidiots API",
-			RESPECT_USAGE: "respect (@member)",
-			RESPECT_EXAMPLES: "$respect\n$respect @Androz#2091",
-
-			/* SHIT COMMAND */
+			/* MISSION COMMAND */
 
 			// Utils
-			SHIT_DESCRIPTION: "Generates a \"respect\" image using the Anidiots API",
-			SHIT_USAGE: "shit (@member)",
-			SHIT_EXAMPLES: "$shit\n$shit @Androz#2091",
+			MISSION_DESCRIPTION: "Generates a \"mission\" image using the Améthyste API",
+			MISSION_USAGE: "mission (@member)",
+			MISSION_EXAMPLES: "$mission\n$mission @Androz#2091",
+
+			/* RIP COMMAND */
+
+			// Utils
+			RIP_DESCRIPTION: "Generates a \"rip\" image using the Améthyste API",
+			RIP_USAGE: "rip (@member)",
+			RIP_EXAMPLES: "$rip\n$rip @Androz#2091",
+
+			/* SCARY COMMAND */
+
+			// Utils
+			SCARY_DESCRIPTION: "Generates a \"scary\" image using the Améthyste API",
+			SCARY_USAGE: "scary (@member)",
+			SCARY_EXAMPLES: "$scary\n$scary @Androz#2091",
+
+			/* TOBECONTINUED COMMAND */
+
+			// Utils
+			TOBECONTINUED_DESCRIPTION: "Generates a \"tobecontinued\" image using the Améthyste API",
+			TOBECONTINUED_USAGE: "tobecontinued (@member)",
+			TOBECONTINUED_EXAMPLES: "$tobecontinued\n$tobecontinued @Androz#2091",
 
 			/* TRIGGERED COMMAND */
 
 			// Utils
-			TRIGGERED_DESCRIPTION: "Generates a \"triggered\" image using the Anidiots API",
+			TRIGGERED_DESCRIPTION: "Generates a \"triggered\" image using the Améthyste API",
 			TRIGGERED_USAGE: "triggered (@member)",
 			TRIGGERED_EXAMPLES: "$triggered\n$triggered @Androz#2091",
+
+			/* WANTED COMMAND */
+
+			// Utils
+			WANTED_DESCRIPTION: "Generates a \"wanted\" image using the Améthyste API",
+			WANTED_USAGE: "wanted (@member)",
+			WANTED_EXAMPLES: "$wanted\n$wanted @Androz#2091",
+
+			/* WASTED COMMAND */
+
+			// Utils
+			WASTED_DESCRIPTION: "Generates a \"wasted\" image using the Améthyste API",
+			WASTED_USAGE: "wasted (@member)",
+			WASTED_EXAMPLES: "$wasted\n$wasted @Androz#2091",
 
 			/* CAPTCHA COMMAND */
 
