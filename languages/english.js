@@ -1198,6 +1198,13 @@ module.exports = class {
 			WANTED_USAGE: "wanted (@member)",
 			WANTED_EXAMPLES: "$wanted\n$wanted @Androz#2091",
 
+			/* WASTED COMMAND */
+
+			// Utils
+			WASTED_DESCRIPTION: "Generates a \"wasted\" image using the Améthyste API",
+			WASTED_USAGE: "wasted (@member)",
+			WASTED_EXAMPLES: "$wasted\n$wasted @Androz#2091",
+
 			/* CAPTCHA COMMAND */
 
 			// Utils

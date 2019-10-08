@@ -58,7 +58,7 @@ Here's the list of Atlanta commands. This one contains more than **100 commands*
 | **slowmode**        | Define a cooldown in a channel                                | slowmode [#channel] (time)       | 3 seconds  |
 | **welcome**         | Send a welcome message to a pre-defined channel!              | welcome                          | 3 seconds  |
 
-### Images (16 commands)
+### Images (17 commands)
 
 | Name              | Description                                               | Usage                      | Cooldown  |
 | ----------------- | --------------------------------------------------------- | -------------------------- | --------- |
@@ -78,6 +78,7 @@ Here's the list of Atlanta commands. This one contains more than **100 commands*
 | **triggered**     | Generates a "triggered" image using the Améthyste API     | triggered (@member)        | 5 seconds |
 | **tweet**         | Generate a tweet of a person of your choice on Twitter!   | tweet [@twitter] [text]    | 5 seconds |
 | **wanted**        | Generates a "wanted" image using the Améthyste API        | wanted (@member)           | 5 seconds |
+| **wasted**        | Generates a "wasted" image using the Améthyste API        | wasted (@member)           | 5 seconds |
 
 ### Moderation (15 commands)
 
