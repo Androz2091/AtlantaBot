@@ -1163,6 +1163,13 @@ module.exports = class {
 			MISSION_USAGE: "mission (@member)",
 			MISSION_EXAMPLES: "$mission\n$mission @Androz#2091",
 
+			/* RIP COMMAND */
+
+			// Utils
+			RIP_DESCRIPTION: "Generates a \"rip\" image using the Améthyste API",
+			RIP_USAGE: "rip (@member)",
+			RIP_EXAMPLES: "$rip\n$rip @Androz#2091",
+
 			/* CAPTCHA COMMAND */
 
 			// Utils
