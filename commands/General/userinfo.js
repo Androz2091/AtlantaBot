@@ -64,7 +64,7 @@ class Userinfo extends Command {
             .setFooter(data.config.embed.footer);
 
         if(displayPresence){
-            embed.addField(message.language.get("USERINFO_FIELDS")[5], (user.presence.game ? user.presence.game.name : message.language.get("USERINFO_NO_GAME")), true)
+            embed.addField(message.language.get("USERINFO_FIELDS")[5], (user.presence.activity ? user.presence.activity.name : message.language.get("USERINFO_NO_GAME")), true)
             .addField(message.language.get("USERINFO_FIELDS")[6], message.language.get("UTILS").STATUS[user.presence.status], true);
         }
             
