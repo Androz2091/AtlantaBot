@@ -543,6 +543,18 @@ module.exports = class {
 			// Errors
 			LMG_ERR_QUESTION: `${e.error} | You must specify a search!`,
 
+			/* APITOKEN COMMAND */
+
+			// Utils
+			APITOKEN_DESCRIPTION: "Send your token back to use the Atlanta API!",
+			APITOKEN_USAGE: "apitoken (regenerate)",
+			APITOKEN_EXAMPLES: "$apitoken\n$apitoken regenerate",
+			// Content
+			APITOKEN_DM_SUCCESS: `:incoming_envelope:: | API key sent by private messages!`,
+			APITOKEN_DM_SUCCESS_REGENERATE: `:incoming_envelope: | New API key sent by private messages!`,
+			APITOKEN_SUCCESS: (token) => `:key: | Your API key is \`${token}\` !`,
+			APITOKEN_SUCCESS_REGENERATE: (token) => `:key: | Regenerated API key! Your API key is now \`${token}\`.`,
+
 			/* LOVECALC COMMAND */
 
 			// Utils
