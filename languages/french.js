@@ -540,6 +540,18 @@ module.exports = class {
 			// Errors
 			LMG_ERR_QUESTION: `${e.error} | Vous devez préciser une recherche !`,
 
+			/* APITOKEN COMMAND */
+
+			// Utils
+			APITOKEN_DESCRIPTION: "Renvoie votre token pour utiliser l'API d'Atlanta !",
+			APITOKEN_USAGE: "apitoken (regenerate)",
+			APITOKEN_EXAMPLES: "$apitoken\n$apitoken regenerate",
+			// Content
+			APITOKEN_DM_SUCCESS: `:incoming_envelope: | Clé d'API envoyée par messages privés !`,
+			APITOKEN_DM_SUCCESS_REGENERATE: `:incoming_envelope: | Nouvelle clé d'API envoyée par messages privés !`,
+			APITOKEN_SUCCESS: (token) => `:key: | Votre clé d'API est \`${token}\` !`,
+			APITOKEN_SUCCESS_REGENERATE: (token) => `:key: | Clé d'API regénérée ! Votre clé d'API est maintenant \`${token}\`.`,
+
 			/* LOVECALC COMMAND */
 
 			// Utils
