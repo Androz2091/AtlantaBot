@@ -260,6 +260,15 @@ module.exports = class {
 			],
 			ACHIEVEMENTS_TITLE: "🔥 Réalisations",
 			ACHIEVEMENTS_PROGRESS: (progressData) => `Progression : ${progressData.now}/${progressData.total} (${Math.round(100 * (progressData.now/progressData.total))}%)`,
+			
+			/* TCL COMMAND */
+
+			// Utils
+			TCL_DESCRIPTION: "Affiche le dernier tweet de @lesjoiesducode !",
+			TCL_USAGE: "tcl",
+			TCL_EXAMPLES: "$tcl",
+			// Content
+			TCL_TITLE: "🔥 Dernier tweet de @lesjoiesducode !",
 
 			/* SETAFK COMMAND */
 
