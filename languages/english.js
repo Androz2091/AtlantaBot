@@ -244,6 +244,15 @@ module.exports = class {
 				`${total} members`
 			],
 
+			/* TCL COMMAND */
+
+			// Utils
+			TCL_DESCRIPTION: "Display the last tweet of @thecodinglove !",
+			TCL_USAGE: "tcl",
+			TCL_EXAMPLES: "$tcl",
+			// Content
+			TCL_TITLE: "🔥 Last tweet of @thecodinglove !",
+
 			/* SETAFK COMMAND */
 
 			// Utils
