@@ -13,7 +13,7 @@ class Tcl extends Command {
             dirname: __dirname,
             enabled: true,
             guildOnly: false,
-            aliases: [ "jdc" ],
+            aliases: [ "ljc" ],
             memberPermissions: [],
             botPermissions: [ "SEND_MESSAGES", "EMBED_LINKS" ],
             nsfw: false,
