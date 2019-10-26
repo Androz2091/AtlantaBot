@@ -121,7 +121,50 @@ Here's the list of Atlanta commands. This one contains more than **110 commands*
 | **unmute**          | Unmute the mentioned member!                                                            | unmute [@member]                                                   | 3 seconds |
 | **warn**            | Warn a member in private messages                                                       | warn [@member] [reason]                                            | 3 seconds |
 
+<<<<<<< HEAD
 ### Fun (10 commands)
+=======
+### Economy (15 commands)
+
+<<<<<<< HEAD
+| Name             | Description                                                               | Usage                            | Cooldown   |
+| ---------------- | ------------------------------------------------------------------------- | -------------------------------- | ---------- |
+| **achievements** | Displays the list of all the achievements!                                | achievements                     | 1 seconds  |
+| **birthdate**    | Set your birthday date (which will appear on your profile)                | birthdate (date)                 | 1 seconds  |
+| **deposit**      | Deposit your money at the bank                                            | deposit [amount]                 | 1 seconds  |
+| **divorce**      | Divorce the person you are currently married to!                          | divorce                          | 3 seconds  |
+| **leaderboard**  | Displays users who have the most credits, levels or reputation points!    | leaderboard [rep/levels/credits] | 5 seconds  |
+| **money**        | Displays your credits                                                     | money (@member)                  | 1 seconds  |
+| **pay**          | Pay a member with credits!                                                | pay [@user#0000] [amount]        | 10 seconds |
+| **profile**      | Displays the profile of the mentioned user (or the author of the message) | profile (@user#0000)             | 3 seconds  |
+| **rep**          | Give a member a reputation point!                                         | rep [@user#0000]                 | 3 seconds  |
+| **setbio**       |                                                                           |                                  | 5 seconds  |
+| **slots**        | An equivalent to the Casino!                                              | slots [amount]                   | 3 seconds  |
+| **steal**        | Try stealing a member!                                                    | steal [@membre] [amount]         | 1 seconds  |
+| **wedding**      | Marry the person of your choice!                                          | wedding [@user#0000]             | 10 seconds |
+| **withdraw**     | Withdraw money!                                                           | withdraw [amount]                | 1 seconds  |
+| **work**         | Work and earn money!                                                      | work                             | 3 seconds  |
+
+| Name            | Description                                                               | Usage                            | Cooldown   |
+| --------------- | ------------------------------------------------------------------------- | -------------------------------- | ---------- |
+| **badge**       | Buy badges that will appear on your profile!                              | badge (name-of-the-badge)        | 3 seconds  |
+| **birthdate**   | Set your birthday date (which will appear on your profile)                | birthdate (date)                 | 1 seconds  |
+| **deposit**     | Deposit your money at the bank                                            | deposit [amount]                 | 1 seconds  |
+| **divorce**     | Divorce the person you are currently married to!                          | divorce                          | 3 seconds  |
+| **leaderboard** | Displays users who have the most credits, levels or reputation points!    | leaderboard [rep/levels/credits] | 5 seconds  |
+| **money**       | Displays your credits                                                     | money (@member)                  | 1 seconds  |
+| **pay**         | Pay a member with credits!                                                | pay [@user#0000] [amount]        | 10 seconds |
+| **profile**     | Displays the profile of the mentioned user (or the author of the message) | profile (@user#0000)             | 3 seconds  |
+| **rep**         | Give a member a reputation point!                                         | rep [@user#0000]                 | 3 seconds  |
+| **rob**         | Try to rob a member!                                                      | rob [@membre] [amount]           | 1 seconds  |
+| **setbio**      |                                                                           |                                  | 5 seconds  |
+| **slots**       | An equivalent to the Casino!                                              | slots [amount]                   | 3 seconds  |
+| **wedding**     | Marry the person of your choice!                                          | wedding [@user#0000]             | 10 seconds |
+| **withdraw**    | Withdraw money!                                                           | withdraw [amount]                | 1 seconds  |
+| **work**        | Work and earn money!                                                      | work                             | 3 seconds  |
+
+### Fun (11 commands)
+>>>>>>> 22b1d8bd43e8bef74f339cc4b03d3a1063c2c916
 
 | Name          | Description                                                                                   | Usage                           | Cooldown  |
 | ------------- | --------------------------------------------------------------------------------------------- | ------------------------------- | --------- |
@@ -135,6 +178,7 @@ Here's the list of Atlanta commands. This one contains more than **110 commands*
 | **lovecalc**  | How much love is there between two people? *This is a fun command, not to be taken seriously* | lovecalc [@member1] (@member2)  | 1 seconds |
 | **number**    | Find the number I chose!                                                                      | number                          | 5 seconds |
 | **random**    | Randomly pick one of the choices you give me!                                                 | random [choice1/choice2/etc...] | 5 seconds |
+| **tcl**       | Display the last tweet of @thecodinglove !                                                    | tcl                             | 3 seconds |
 
 ### Music (6 commands)
 
