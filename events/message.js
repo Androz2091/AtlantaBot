@@ -46,7 +46,7 @@ module.exports = class {
 
         // Check if the bot was mentionned
         if(message.content.match(new RegExp(`^<@!?${client.user.id}>( |)$`))){
-            return message.reply(language.get("PREFIX_INFO", guild.prefix || ""));
+            return message.reply(language.get("PREFIX_INFO", data.guild.prefix || ""));
         }
 
         if(message.content === "@someone" && message.guild){
