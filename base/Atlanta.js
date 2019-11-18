@@ -119,7 +119,7 @@ class Atlanta extends Client {
             let id = search.match(/^<@!?(\d+)>$/)[1];
             user = this.users.fetch(id).catch((err) => {});
             if(user) return user;
-        }
+        } else
         // Try username search
         if(search.match(/^!?(\w+)#(\d+)$/)){
             let username = search.match(/^!?(\w+)#(\d+)$/)[0];
@@ -139,7 +139,7 @@ class Atlanta extends Client {
             let id = search.match(/^<@!?(\d+)>$/)[1];
             member = await guild.members.fetch(id).catch(() => {});
             if(member) return member;
-        }
+        } else 
         // Try username search
         if(search.match(/^!?(\w+)#(\d+)$/)){
             guild = await guild.fetch();
