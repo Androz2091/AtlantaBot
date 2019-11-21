@@ -30,7 +30,7 @@ class Fml extends Command {
             if(res.ok){
             res.text().then(async body => {
                 let $ = cheerio.load(body),
-                content = await $(".article-contents").children("a").first().text(),
+                content = await $(".article-contents").children("a").first().text().replace(/[\n]/gi, " ").replace(" -", "-"),
                 credits = await $(".panel.panel-classic").children("div").first().text(),
                 embed = new Discord.MessageEmbed()
                 .setAuthor(message.language.get("FML_TITLE"), this.client.user.displayAvatarURL())

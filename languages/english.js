@@ -121,7 +121,7 @@ module.exports = class {
 			HELP_ERR_NOT_FOUND: (cmd) => `${e.error} | Unable to find command \`${cmd}\`!`,
 			HELP_ERR_CMD_CUSTOMIZED: (cmd) => `${e.error} | The \`${cmd}\` command has no help because it is customized.`,
 			// Content
-			HELP_EDESCRIPTION: (prefix) => `● To get help on an command type \`${prefix}help <commande>\`!`,
+			HELP_EDESCRIPTION: (prefix) => `● To get help on an command type \`${prefix}help <command>\`!`,
 			HELP_TITLE: `${c.botname} | Commands`,
 			HELP_NO_ALIASES: "No aliases.",
 			// Headings
