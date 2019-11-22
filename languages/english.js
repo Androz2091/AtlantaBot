@@ -385,6 +385,25 @@ module.exports = class {
 			EVAL_USAGE: "eval [code]",
 			EVAL_EXAMPLES: "$eval message.channel.send('Hey');",
 
+			/* REPORT COMMAND */
+			REPORT_DESCRIPTION: "Send your report to the channel defined for this!",
+			REPORT_USAGE: "report [@user] [reason]",
+			REPORT_EXAMPLES: "$report @Androz#2091 Breaking the rules",
+			// Errors
+			REPORT_ERR_NO_CHANNEL: `${e.error} | No suggestion channel defined!`,
+			REPORT_ERR_NO_REP: `${e.error} | Please enter a reason`,
+			REPORT_ERR_NO_USER: `${e.error} | Please enter a user`,
+			//Headings
+			REPORT_HEADINGS: [
+				"Author",
+				"Date",
+				"Content",
+				"Reporting"
+			],
+			// Content
+			REPORT_TITLE: (user) => `Report - ${user.tag}`,
+			REPORT_SUCCESS: (channel) => `${e.success} | Your report is public in ${channel} !`,
+
 			/* GETINVITE COMMAND */
 
 			// Utils
