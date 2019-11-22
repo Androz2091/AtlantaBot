@@ -402,7 +402,7 @@ module.exports = class {
 			],
 			// Content
 			REPORT_TITLE: (user) => `Report - ${user.tag}`,
-			REPORT_SUCCESS: (channel) => `${e.success} | Your report is public in ${channel} !`,
+			REPORT_SUCCESS: (channel) => `${e.success} | Your report has been sent in ${channel} !`,
 
 			/* GETINVITE COMMAND */
 
