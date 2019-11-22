@@ -51,6 +51,7 @@ module.exports = mongoose.model("Guild", new Schema({
         },
         suggestions: false, // the channel in which the suggestions will be sent
         modlogs: false, // the channel in which the moderation logs (mute, kick, ban, etc...) will be sent
+        reports: false, // the channel in which the reports will be sent
         fortniteshop: false, // the channel in which the fortnite shop image will be sent at 2.05am
         logs: false // the channel in which the logs (message deleted, etc...) will be sent
     }},
