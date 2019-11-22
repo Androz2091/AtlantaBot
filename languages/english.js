@@ -776,6 +776,7 @@ module.exports = class {
 			CONFIGURATION_GOODBYE: (withImage, channelID) => `Channel : <#${channelID}>\nImage : ${withImage ? "Yes" : "No"}`,
 			CONFIGURATION_MODLOGS: (channelID) => `Moderation logs : ${channelID ? `<#${channelID}>` : "Not defined"}`,
 			CONFIGURATION_SUGGESTIONS: (channelID) => `Suggestions : ${channelID ? `<#${channelID}>` : "Not defined" }`,
+			CONFIGURATION_REPORTS: (channelID) => `Reports : ${channelID ? `<#${channelID}>` : "Not defined" }`,
 			CONFIGURATION_FORTNITESHOP: (channelID) => `Fortnite Shop : ${channelID ? `<#${channelID}>` : "Not defined" }`,
 			CONFIGURATION_AUTOMOD: (ignoredChannels) => `${ignoredChannels.length > 0 ? `Salon ignorés : ${ignoredChannels.map((ch) => `<#${ch}>`)}` : "Aucun salon ignoré."}`,
 			CONFIGURATION_WARNS: (kick, ban) => `${kick ? `**Expulsion**: after **${kick}** warnings.` : "**Expulsion**: Not defined."}\n${ban ? `**Banishment**: after **${ban}** warnings.` : "**Banishment**: Not defined."}`,
@@ -1499,6 +1500,13 @@ module.exports = class {
 			// Content
 			SETSUGGESTS_SUCCESS: (channel) => `${e.success} | The suggestions channel is now ${channel} !`,
 
+			/* SETREPORTS COMMAND */
+			SETREPORTS_DESCRIPTION: "Define the reports channel!",
+			SETREPORTS_USAGE: "setreports (#channel)",
+			SETREPORTS_EXAMPLES: "$setreports #general\n$setreports",
+			// Content
+			SETREPORTS_SUCCESS: (channel) => `${e.success} | The reports channel is now ${channel} !`,
+			
 			/* ADDEMOTE COMMAND */
 
 			// Utils
@@ -1647,6 +1655,7 @@ module.exports = class {
 				WITHIMAGE_GOODBYE: "Include a great goodbye image",
 				SUGGESTIONS: "Suggestions",
 				MODLOGS: "Moderation logs",
+				REPORTS: "Reports",
 				FORTNITESHOP: "Fortnite shop"
 			},
 			ENABLE_MESSAGES: "Enable messages",
