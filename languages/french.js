@@ -391,6 +391,7 @@ module.exports = class {
 			REPORT_ERR_NO_CHANNEL: `${e.error} | Aucun salon de signalement défini !`,
 			REPORT_ERR_NO_REP: `${e.error} | Veuillez entrer une raison pour votre signalement !`,
 			REPORT_ERR_NO_USER: `${e.error} | Veuillez mentionner l'utilisateur à signaler !`,
+			REPORT_ERR_USER_YOURSELF: `${e.error} | Vous ne pouvez pas vous signaler vous-même !`,
 			//Headings
 			REPORT_HEADINGS: [
 				"Auteur",
