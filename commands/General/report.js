@@ -41,6 +41,9 @@ class Report extends Command {
         if(!rep){
             return message.channel.send(message.language.get("REPORT_ERR_NO_REP"));
         }
+        if(member.id === message.author.id){
+            return message.channel.send(message.language.get("REPORT_ERR_USER_YOURSELF"));
+        }
 
         let embed = new Discord.MessageEmbed()
             .setAuthor(message.language.get("REPORT_TITLE", message.author), message.author.displayAvatarURL())
@@ -48,7 +51,7 @@ class Report extends Command {
             .addField(message.language.get("REPORT_HEADINGS")[1], message.language.printDate(new Date(Date.now()), true), true)
             .addBlankField()
             .addField(message.language.get("REPORT_HEADINGS")[2], "**"+rep+"**", true)
-            .addField(message.language.get("REPORT_HEADINGS")[3], "**"+member+"**", true)
+            .addField(message.language.get("REPORT_HEADINGS")[3], `\`${member.user.tag}\` (${member.user.toString()})`, true)
             .setColor(data.config.embed.color)
             .setFooter(data.config.embed.footer);
 
