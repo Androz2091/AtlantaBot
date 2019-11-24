@@ -390,9 +390,9 @@ module.exports = class {
 			REPORT_USAGE: "report [@user] [reason]",
 			REPORT_EXAMPLES: "$report @Androz#2091 Breaking the rules",
 			// Errors
-			REPORT_ERR_NO_CHANNEL: `${e.error} | No suggestion channel defined!`,
-			REPORT_ERR_NO_REP: `${e.error} | Please enter a reason`,
-			REPORT_ERR_NO_USER: `${e.error} | Please enter a user`,
+			REPORT_ERR_NO_CHANNEL: `${e.error} | No report channel defined!`,
+			REPORT_ERR_NO_REP: `${e.error} | Please enter a reason for your report!`,
+			REPORT_ERR_NO_USER: `${e.error} | Please mention the user you want report!`,
 			//Headings
 			REPORT_HEADINGS: [
 				"Author",
