@@ -21,7 +21,7 @@ module.exports = class {
 
         let userData = await this.client.findOrCreateUser({ id: guild.ownerID });
         if(!userData.achievements.invite.achieved){
-            userData.achievements.invite.progress = 1;
+            userData.achievements.invite.progress.now += 1;
             userData.achievements.invite.achieved = true;
             messageOptions.files = [
                 {
