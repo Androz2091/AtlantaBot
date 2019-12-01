@@ -31,7 +31,7 @@
     "discord-backup": "^1.1.2",
     "discord-giveaways": "^2.3.0",
     "discord.js": "github:discordjs/discord.js",
-    "ejs": "^2.7.1",
+    "ejs": "^3.0.1",
     "express": "^4.17.1",
     "express-session": "^1.17.0",
     "ffmpeg-static": "^2.7.0",
