@@ -755,7 +755,7 @@ module.exports = class {
 			// Utils
 			SLOWMODE_DESCRIPTION: "Définissez un cooldown dans un salon",
 			SLOWMODE_USAGE: "slowmode [#salon] (temps)",
-			SLOWMODE_EXAMPELS: "$slowmode #général 10m\n$slowmode #général",
+			SLOWMODE_EXAMPLES: "$slowmode #général 10m\n$slowmode #général",
 			// Errors
 			SLOWMODE_PLEASE_WAIT: (time, channel) => `${e.error} | Le salon ${channel} est en slowmode ! Veuillez attendre ${time} pour pouvoir poster un nouveau message !`,
 			// Content

@@ -882,7 +882,7 @@ module.exports = class {
 			// Utils
 			SLOWMODE_DESCRIPTION: "Define a cooldown in a channel",
 			SLOWMODE_USAGE: "slowmode [#channel] (time)",
-			SLOWMODE_EXAMPELS: "$slowmode #general 10m\n$slowmode #general",
+			SLOWMODE_EXAMPLES: "$slowmode #general 10m\n$slowmode #general",
 			// Errors
 			SLOWMODE_PLEASE_WAIT: (time, channel) => `${e.error} | The channel ${channel} is in slowmode! Please wait ${time} to be able to post a new message!`,
 			// Content
