@@ -10,7 +10,7 @@ You need to clone the `config.sample.js` file and to rename it to `config.js`. Y
 
 Obtain the necessary API keys:
 
-*   [Anidiots](https://discord.gg/PgCR8Rg) API key is used for welcome and goodbye images
+*   [Amethyste](https://api.amethyste.moe/register) API key is used for some images command
 *   [FortniteTracker](https://fortnitetracker.com/site-api) API key is used for the fortnite stats command
 *   [Discordbots](https://discordbots.org/api/docs#mybots) API key is used for stats posting and votes rewards
 *   [SimpleYoutube](https://console.developers.google.com/) API key is used to search videos on Youtube (play command)
@@ -19,7 +19,7 @@ Obtain the necessary API keys:
 If you do not have some API keys, such as the Discordbots key, leave the fields empty, the commands/features that use them will be automatically disabled.
 {% endhint %}
 
-For emojis, you must add them on one of your bot's servers and enter the string of the emoji (<:emojiName:emojiID>). If you are lazy to add them, you can join [**this server**](https://discord.gg/9ANfwes) on which you will only have to add your bot to access a bank of emojis!
+For emojis, you must add them on one of your bot's servers and enter the string of the emoji (<:emojiName:emojiID>). If you are lazy to add them, you can join [**this server**](https://emojis.atlanta-bot.fr) on which you will only have to add your bot to access a bank of emojis!
 
 ## Install dependencies
 
