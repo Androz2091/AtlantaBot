@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/Androz2091/AtlantaBot#readme",
   "dependencies": {
+    "@k3rn31p4nic/google-translate-api": "github:k3rn31p4nic/google-translate-api",
     "amethyste-api": "github:Androz2091/amethyste-api",
     "ascii-art": "^2.1.0",
     "ascii-table": "0.0.9",
@@ -27,7 +28,6 @@
     "colors-generator": "^0.3.4",
     "cron": "^1.7.2",
     "dblapi.js": "^2.3.0",
-    "deepl-scraper": "^1.0.8",
     "discord-backup": "^1.1.2",
     "discord-giveaways": "^2.4.0",
     "discord.js": "github:discordjs/discord.js",
