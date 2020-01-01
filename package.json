@@ -47,6 +47,6 @@
     "passport": "^0.4.0",
     "passport-discord": "^0.1.3",
     "simple-youtube-api": "^5.2.1",
-    "ytdl-core": "^1.0.3"
+    "ytdl-core": "^1.0.5"
   }
 }
