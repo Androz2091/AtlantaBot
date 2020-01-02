@@ -10,3 +10,6 @@ assets/img/fortnite/shop/**/*.png
 
 # DB
 giveaways.json
+
+# Mac OS files
+.DS_Store
