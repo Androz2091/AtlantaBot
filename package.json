@@ -19,7 +19,7 @@
   "dependencies": {
     "@k3rn31p4nic/google-translate-api": "github:k3rn31p4nic/google-translate-api",
     "amethyste-api": "github:Androz2091/amethyste-api",
-    "ascii-art": "^2.1.0",
+    "ascii-art": "^2.5.0",
     "ascii-table": "0.0.9",
     "blague.xyz": "^1.0.6",
     "body-parser": "^1.19.0",
