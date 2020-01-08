@@ -14,3 +14,6 @@ giveaways.json
 
 # Mac OS files
 .DS_Store
+
+# PM2
+report*.json
