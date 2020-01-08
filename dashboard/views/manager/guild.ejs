@@ -1,17 +1,17 @@
 <!DOCTYPE html>
 <html>
 
-	<%- include ../includes/head %>
+	<%- include('../includes/head') %>
 	
 	<body class="hold-transition skin-blue sidebar-mini">
 
 		<div class="wrapper">
 
 			<!-- The header is the topbar -->
-			<%- include ../includes/header %>
+			<%- include('../includes/header') %>
 
 			<!-- The sidebar includes the menu -->
-			<%- include ../includes/sidebar %>
+			<%- include('../includes/sidebar') %>
 
 			<!-- Content Wrapper. Contains page content -->
 			<div class="content-wrapper">
@@ -96,8 +96,8 @@
                                         <div class="form-group">
                                             <label><%= language.get("CONFIG_FIELDS").SUGGESTIONS %></label>
                                             <select class="form-control" name="suggestions">
-                                                <% if(guild.plugins.suggestions && client.channels.get(guild.plugins.suggestions)){ %>
-                                                    <option selected="selected">#<%= client.channels.get(guild.plugins.suggestions).name %></option>
+                                                <% if(guild.plugins.suggestions && bot.channels.get(guild.plugins.suggestions)){ %>
+                                                    <option selected="selected">#<%= bot.channels.get(guild.plugins.suggestions).name %></option>
                                                     <% guild.channels.filter((ch) => ch.type === "text" && ch.id !== guild.plugins.suggestions).forEach((ch) => { %>
                                                         <option>#<%= ch.name %></option>
                                                     <% }); %>
@@ -113,8 +113,8 @@
                                         <div class="form-group">
                                             <label><%= language.get("CONFIG_FIELDS").MODLOGS %></label>
                                             <select class="form-control" name="modlogs">
-                                                <% if(guild.plugins.modlogs && client.channels.get(guild.plugins.modlogs)){ %>
-                                                    <option selected="selected">#<%= client.channels.get(guild.plugins.modlogs).name %></option>
+                                                <% if(guild.plugins.modlogs && bot.channels.get(guild.plugins.modlogs)){ %>
+                                                    <option selected="selected">#<%= bot.channels.get(guild.plugins.modlogs).name %></option>
                                                     <% guild.channels.filter((ch) => ch.type === "text" && ch.id !== guild.plugins.modlogs).forEach((ch) => { %>
                                                         <option>#<%= ch.name %></option>
                                                     <% }); %>
@@ -130,8 +130,8 @@
                                         <div class="form-group">
                                             <label><%= language.get("CONFIG_FIELDS").FORTNITESHOP %></label>
                                             <select class="form-control" name="fortniteshop">
-                                                <% if(guild.plugins.fortniteshop && client.channels.get(guild.plugins.fortniteshop)){ %>
-                                                    <option selected="selected">#<%= client.channels.get(guild.plugins.fortniteshop).name %></option>
+                                                <% if(guild.plugins.fortniteshop && bot.channels.get(guild.plugins.fortniteshop)){ %>
+                                                    <option selected="selected">#<%= bot.channels.get(guild.plugins.fortniteshop).name %></option>
                                                     <% guild.channels.filter((ch) => ch.type === "text" && ch.id !== guild.plugins.fortniteshop).forEach((ch) => { %>
                                                         <option>#<%= ch.name %></option>
                                                     <% }); %>
@@ -172,7 +172,7 @@
                                             <label><%= language.get("CONFIG_FIELDS").CHANNEL %></label>
                                             <select class="form-control" name="channel">
                                                 <% if(guild.plugins.welcome.enabled){ %>
-                                                    <option selected="selected">#<%= client.channels.get(guild.plugins.welcome.channel).name %></option>
+                                                    <option selected="selected">#<%= bot.channels.get(guild.plugins.welcome.channel).name %></option>
                                                     <% guild.channels.filter((ch) => ch.id !== guild.plugins.welcome.channel && ch.type === "text").forEach((ch) => { %>
                                                         <option>#<%= ch.name %></option>
                                                     <% }); } else { %>
@@ -225,7 +225,7 @@
                                             <label><%= language.get("CONFIG_FIELDS").CHANNEL %></label>
                                             <select class="form-control" name="channel">
                                                 <% if(guild.plugins.goodbye.enabled){ %>
-                                                    <option selected="selected">#<%= client.channels.get(guild.plugins.goodbye.channel).name %></option>
+                                                    <option selected="selected">#<%= bot.channels.get(guild.plugins.goodbye.channel).name %></option>
                                                     <% guild.channels.filter((ch) => ch.id !== guild.plugins.goodbye.channel && ch.type === "text").forEach((ch) => { %>
                                                         <option>#<%= ch.name %></option>
                                                     <% }); } else { %>
@@ -305,7 +305,7 @@
 			</div>
             <!-- /.content-wrapper -->
             
-            <%- include ../includes/footer %>
+            <%- include('../includes/footer') %>
 		</div>
 		<!-- ./wrapper -->
 	</body>

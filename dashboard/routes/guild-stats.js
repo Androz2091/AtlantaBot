@@ -35,7 +35,6 @@ router.get("/:serverID", CheckAuth, async(req, res) => {
         commands: getCommands(guildInfos.commands.filter((c) => c.date > Date.now()-604800000)),
         commandsUsage: getCommandsUsage(guildInfos.commands),
         user: req.userInfos,
-        client: req.client,
         language: req.language,
         currentURL: `${req.client.config.dashboard.baseURL}/${req.originalUrl}`,
     });

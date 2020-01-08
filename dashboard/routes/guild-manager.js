@@ -22,7 +22,7 @@ router.get("/:serverID", CheckAuth, async(req, res) => {
         guild: guildInfos,
         user: req.userInfos,
         language: req.language,
-        client: req.client,
+        bot: req.client,
         currentURL: `${req.client.config.dashboard.baseURL}/${req.originalUrl}`
     });
 
