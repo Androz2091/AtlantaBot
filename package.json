@@ -29,7 +29,7 @@
     "cron": "^1.7.2",
     "dblapi.js": "^2.3.0",
     "discord-backup": "^1.1.2",
-    "discord-giveaways": "^2.4.0",
+    "discord-giveaways": "^2.4.4",
     "discord.js": "github:discordjs/discord.js",
     "ejs": "^3.0.1",
     "express": "^4.17.1",
@@ -44,7 +44,7 @@
     "md5": "^2.2.1",
     "mongoose": "^5.8.5",
     "node-opus": "^0.3.3",
-    "passport": "^0.4.0",
+    "passport": "^0.4.1",
     "passport-discord": "^0.1.3",
     "simple-youtube-api": "^5.2.1",
     "ytdl-core": "^1.0.3"
