@@ -3,6 +3,7 @@ config.js
 
 # Node modules
 node_modules
+package-lock.json
 
 # Fortnite Shop images
 assets/img/fortnite/shop/**/*.png
