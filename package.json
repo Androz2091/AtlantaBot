@@ -28,7 +28,7 @@
     "colors-generator": "^0.3.4",
     "cron": "^1.7.2",
     "dblapi.js": "^2.3.0",
-    "discord-backup": "^1.1.2",
+    "discord-backup": "^2.0.3",
     "discord-giveaways": "^2.4.4",
     "discord.js": "github:discordjs/discord.js",
     "ejs": "^3.0.1",
