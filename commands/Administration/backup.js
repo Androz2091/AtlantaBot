@@ -56,7 +56,7 @@ class Backup extends Command {
                 // Load the backup
                 backup.load(backupID, message.guild).then(() => {
                     // When the backup is loaded, delete them from the server
-                    backup.delete(backupID);
+                    backup.remove(backupID);
                     message.author.send(message.language.get("BACKUP_LOAD_SUCCESS"));
                 }).catch((err) => {
                     // If an error occurenced
@@ -75,13 +75,13 @@ class Backup extends Command {
                 let embed = new Discord.MessageEmbed()
                     .setAuthor(message.language.get("BACKUP_HEADINGS")[0])
                     // Display the backup ID
-                    .addField(message.language.get("BACKUP_HEADINGS")[1], backupInfos.ID, true)
+                    .addField(message.language.get("BACKUP_HEADINGS")[1], backupInfos.id, true)
                     // Displays the server from which this backup comes
-                    .addField(message.language.get("BACKUP_HEADINGS")[2], backupInfos.guildID, true)
+                    .addField(message.language.get("BACKUP_HEADINGS")[2], backupInfos.data.guildID, true)
                     // Display the size (in mb) of the backup
-                    .addField(message.language.get("BACKUP_HEADINGS")[3], backupInfos.size, true)
+                    .addField(message.language.get("BACKUP_HEADINGS")[3], backupInfos.size+" mb", true)
                     // Display when the backup was created
-                    .addField(message.language.get("BACKUP_HEADINGS")[4], message.language.printDate(new Date(backupInfos.createdTimestamp)), true)
+                    .addField(message.language.get("BACKUP_HEADINGS")[4], message.language.printDate(new Date(backupInfos.data.createdTimestamp)), true)
                     .setColor(data.config.embed.color)
                     .setFooter(data.config.embed.footer);
                 message.channel.send(embed);
