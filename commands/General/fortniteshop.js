@@ -28,7 +28,7 @@ class Fortniteshop extends Command {
             return message.channel.send(message.language.get("ERR_COMMAND_DISABLED"));
         }
 
-        let fortniteShop = require("../../utils/fortniteShop.js"),
+        let fortniteShop = require("../../helpers/fortniteShop.js"),
         path = `./assets/img/fortnite/shop/${message.language.getLang()}/${fortniteShop.getFileName()}.png`,
         m = await message.channel.send(message.language.get("UTILS").PLEASE_WAIT);
 

@@ -16,23 +16,23 @@ module.exports = class {
         client.logger.log(`${client.user.tag}, ready to serve ${client.users.size} users in ${client.guilds.size} servers.`, "ready");
 
         /* DiscordBots.org STATS */
-        let discordbotsorg = require("../utils/discordbots.org.js");
+        let discordbotsorg = require("../helpers/discordbots.org.js");
         discordbotsorg.init(client);
 
         /* UNMUTE USERS */
-        let checkUnmutes = require("../utils/checkUnmutes.js");
+        let checkUnmutes = require("../helpers/checkUnmutes.js");
         checkUnmutes.init(client);
 
         /* SEND REMIND */
-        let checkReminders = require("../utils/checkReminders.js");
+        let checkReminders = require("../helpers/checkReminders.js");
         checkReminders.init(client);
 
         /* DAILY SHOP FORTNITE */
-        let fortniteShop = require("../utils/fortniteShop.js");
+        let fortniteShop = require("../helpers/fortniteShop.js");
         fortniteShop.init(client);
 
         /* AUTO UPDATE DOCS */
-        let autoUpdateDocs = require("../utils/autoUpdateDocs.js");
+        let autoUpdateDocs = require("../helpers/autoUpdateDocs.js");
         autoUpdateDocs.update(client);
 
         // Start the dashboard

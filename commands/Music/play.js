@@ -3,7 +3,7 @@ Discord = require("discord.js"),
 ytdl = require("ytdl-core"),
 Youtube = require("simple-youtube-api");
 
-const music = require("../../utils/music.js");
+const music = require("../../helpers/music.js");
 
 class Play extends Command {
 

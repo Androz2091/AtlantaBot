@@ -10,9 +10,9 @@ class Atlanta extends Client {
         this.config = require("../config"); // Load the config file
         this.commands = new Collection(); // Creates new commands collection
         this.aliases = new Collection(); // Creates new command aliases collection
-        this.logger = require("../utils/logger"); // Load the logger file
+        this.logger = require("../helpers/logger"); // Load the logger file
         this.wait = util.promisify(setTimeout); // client.wait(1000) - Wait 1 second
-        this.functions = require("../utils/functions"); // Load the functions file
+        this.functions = require("../helpers/functions"); // Load the functions file
         this.guildsData = require("../base/Guild"); // Guild mongoose model
         this.usersData = require("../base/User"); // User mongoose model
         this.membersData = require("../base/Member"); // Member mongoose model
