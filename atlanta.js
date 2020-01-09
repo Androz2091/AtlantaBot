@@ -1,4 +1,5 @@
-const util = require("util"),
+const { Client: Joker } = require("blague.xyz"),
+util = require("util"),
 fs = require("fs"),
 readdir = util.promisify(fs.readdir),
 AmeClient = require("amethyste-api"),
@@ -45,6 +46,12 @@ const init = async () => {
 
     if(client.config.apiKeys.amethyste){
         client.AmeAPI = new AmeClient(client.config.apiKeys.amethyste);
+    }
+
+    if(client.config.apiKeys.blagueXYZ){
+        client.joker = new Joker(client.config.apiKeys.blagueXYZ, {
+            defaultLanguage: "en"
+        });
     }
 
 };
