@@ -1,7 +1,5 @@
 const Command = require("../../base/Command.js"),
-Discord = require("discord.js"),
-Joker = require("blague.xyz"),
-joker = new Joker();
+Discord = require("discord.js");
 
 class Joke extends Command {
 
@@ -25,7 +23,7 @@ class Joke extends Command {
 
     async run (message, args, data) {
 
-        let joke = await joker.random();
+        let joke = await this.client.joker.randomJoke(message.language.getLang().substr(0, 2));
 
         let embed = new Discord.MessageEmbed()
             .setDescription(`${joke.toDiscordSpoils()}`)
