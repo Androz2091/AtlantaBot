@@ -38,6 +38,8 @@ module.exports = {
 	},
 	/* The API keys that are required for certain commands */
 	apiKeys: {
+		// BLAGUE.XYZ: https://blague.xyz/
+		blagueXYZ: "XXXXXXXXXXX",
 		// FORTNITE TRN: https://fortnitetracker.com/site-api
 		fortniteTRN: "XXXXXXXXXXX",
 		// FORTNITE FNBR: https://fnbr.co/api/docs
