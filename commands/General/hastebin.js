@@ -40,7 +40,7 @@ class Hastebin extends Command {
             if(!json.key){
                 return message.channel.send(message.language.get("ERR_OCCURENCED"));
             }
-            let url = "https://hastebin.com/"+json.key+".js";
+            let url = "https://hasteb.in/"+json.key+".js";
 
             let embed = new Discord.MessageEmbed()
                 .setAuthor(message.language.get("HASTEBIN_TITLE"))
