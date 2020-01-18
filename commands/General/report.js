@@ -33,6 +33,10 @@ class Report extends Command {
             return message.channel.send(message.language.get("ERR_INVALID_MEMBER"));
         }
 
+        if(member.id === message.author.id){
+            return message.channel.send(message.language.get("REPORT_ERR_USER_YOURSELF"));
+        }
+ 
         if(member.user.bot){
             return message.channel.send(message.language.get("ERR_BOT_USER"));
         }
@@ -41,13 +45,10 @@ class Report extends Command {
         if(!rep){
             return message.channel.send(message.language.get("REPORT_ERR_NO_REP"));
         }
-        if(member.id === message.author.id){
-            return message.channel.send(message.language.get("REPORT_ERR_USER_YOURSELF"));
-        }
 
         let embed = new Discord.MessageEmbed()
             .setAuthor(message.language.get("REPORT_TITLE", message.author), message.author.displayAvatarURL())
-            .addField(message.language.get("REPORT_HEADINGS")[0], `\`${message.author.username}#${message.author.discriminator}\``, true)
+            .addField(message.language.get("REPORT_HEADINGS")[0], message.author.tag, true)
             .addField(message.language.get("REPORT_HEADINGS")[1], message.language.printDate(new Date(Date.now()), true), true)
             .addBlankField()
             .addField(message.language.get("REPORT_HEADINGS")[2], "**"+rep+"**", true)
