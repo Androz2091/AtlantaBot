@@ -23,15 +23,19 @@ class Stop extends Command {
 
     async run (message, args, data) {
 
-        let queue = message.client.queues.get(message.guild.id);
+        if(!data.config.apiKeys.simpleYoutube || data.config.apiKeys.simpleYoutube.length === "") {
+            return message.channel.send(message.language.get("ERR_COMMAND_DISABLED"));
+        }
+        
+        let queue = await this.client.player.getQueue(message.guild.id);
+
+        if(!queue){
+            return message.channel.send(message.language.get("PLAY_ERR_NOT_PLAYING"));
+        }
 
         let voice = message.member.voice.channel;
         if(!voice){
             return message.channel.send(message.language.get("PLAY_ERR_VOICE_CHANNEL"));
-        }
-
-        if(!queue){
-            return message.channel.send(message.language.get("PLAY_ERR_NOT_PLAYING"));
         }
 
         let members = voice.members.filter((m) => m.id !== message.client.user.id);
@@ -71,7 +75,7 @@ class Stop extends Command {
             collector.on("collect", (reaction, user) => {
                 let haveVoted = reaction.count-1;
                 if(haveVoted >= mustVote){
-                    stop();
+                    this.client.player.stop(message.guild.id);
                     embed.setDescription(message.language.get("STOP_CONTENT_COMPLETE"));
                     m.edit(embed);
                     collector.stop(true);
@@ -88,16 +92,9 @@ class Stop extends Command {
             });
 
         } else {
-            stop();
+            this.client.player.stop(message.guild.id);
             embed.setDescription(message.language.get("STOP_CONTENT_COMPLETE"));
             m.edit(embed);
-        }
-        
-        function stop(){
-            // Reset song array
-            queue.songs = [];
-            queue.stopped = true;
-            queue.connection.dispatcher.end();
         }
         
     }

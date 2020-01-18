@@ -23,15 +23,19 @@ class Skip extends Command {
 
     async run (message, args, data) {
 
-        let queue = message.client.queues.get(message.guild.id);
+        if(!data.config.apiKeys.simpleYoutube || data.config.apiKeys.simpleYoutube.length === "") {
+            return message.channel.send(message.language.get("ERR_COMMAND_DISABLED"));
+        }
+        
+        let queue = this.client.player.getQueue(message.guild.id);
+
+        if(!queue){
+            return message.channel.send(message.language.get("PLAY_ERR_NOT_PLAYING"));
+        }
 
         let voice = message.member.voice.channel;
         if (!voice){
             return message.channel.send(message.language.get("PLAY_ERR_VOICE_CHANNEL"));
-        }
-
-        if(!queue){
-            return message.channel.send(message.language.get("PLAY_ERR_NOT_PLAYING"));
         }
 
         if(!queue.songs[1]){
@@ -76,7 +80,7 @@ class Skip extends Command {
             collector.on("collect", (reaction, user) => {
                 let haveVoted = reaction.count-1;
                 if(haveVoted >= mustVote){
-                    skip();
+                    this.client.player.skip(message.guild.id);
                     embed.setDescription(message.language.get("SKIP_CONTENT_COMPLETE", queue.songs[1].title));
                     m.edit(embed);
                     collector.stop(true);
@@ -93,13 +97,9 @@ class Skip extends Command {
             });
 
         } else {
-            skip();
+            this.client.player.skip(message.guild.id);
             embed.setDescription(message.language.get("SKIP_CONTENT_COMPLETE", queue.songs[1].title));
             m.edit(embed);
-        }
-
-        function skip(){
-            queue.connection.dispatcher.end();
         }
         
     }

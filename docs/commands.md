@@ -7,7 +7,7 @@ Here's the list of Atlanta commands. This one contains more than **110 commands*
 **Usage**: The arguments/options that the command takes in parameters  
 **Cooldown**: The time that must elapse between each command so that it can be executed again by the user
 
-### General (24 commands)
+### General (25 commands)
 
 | Name             | Description                                                              | Usage                          | Cooldown  |
 | ---------------- | ------------------------------------------------------------------------ | ------------------------------ | --------- |
@@ -26,6 +26,7 @@ Here's the list of Atlanta commands. This one contains more than **110 commands*
 | **ping**         | Displays bot latency                                                     | ping                           | 1 seconds |
 | **quote**        | Quote a message in the channel!                                          | quote [messageID] [channel]    | 5 seconds |
 | **remindme**     | Define a reminder!                                                       | remindme [reason]              | 3 seconds |
+| **report**       | Send your report to the channel defined for this!                        | report [@user] [reason]        | 5 seconds |
 | **serverinfo**   | Displays information about the server!                                   | serverinfo [ID/Name]           | 3 seconds |
 | **setafk**       | Become an AFK (members who mention you will receive a message)           | setafk [reason]                | 3 seconds |
 | **shorturl**     | Shorten your link!                                                       | shorturl [url]                 | 5 seconds |
@@ -36,7 +37,7 @@ Here's the list of Atlanta commands. This one contains more than **110 commands*
 | **translate**    | I'm translating your text!                                               | translate [language] [message] | 8 seconds |
 | **userinfo**     | Displays user information!                                               | userinfo (@user/userID)        | 5 seconds |
 
-### Administration (18 commands)
+### Administration (19 commands)
 
 | Name                | Description                                                   | Usage                            | Cooldown   |
 | ------------------- | ------------------------------------------------------------- | -------------------------------- | ---------- |
@@ -55,6 +56,7 @@ Here's the list of Atlanta commands. This one contains more than **110 commands*
 | **setlang**         | Change the server language!                                   | setlang [french/english]         | 3 seconds  |
 | **setmodlogs**      | Define the log channel!                                       | setmodlogs (#channel)            | 3 seconds  |
 | **setprefix**       | Changes the server prefix                                     | setprefix [prefix]               | 3 seconds  |
+| **setreports**      | Define the reports channel!                                   | setreports (#channel)            | 3 seconds  |
 | **setsuggests**     | Define the suggestion channel!                                | setsuggests (#channel)           | 3 seconds  |
 | **slowmode**        | Define a cooldown in a channel                                | slowmode [#channel] (time)       | 3 seconds  |
 | **welcome**         | Send a welcome message to a pre-defined channel!              | welcome                          | 3 seconds  |

@@ -1,9 +1,5 @@
 const Command = require("../../base/Command.js"),
-Discord = require("discord.js"),
-ytdl = require("ytdl-core"),
-Youtube = require("simple-youtube-api");
-
-const music = require("../../helpers/music.js");
+Discord = require("discord.js");
 
 class Play extends Command {
 
@@ -31,8 +27,6 @@ class Play extends Command {
             return message.channel.send(message.language.get("ERR_COMMAND_DISABLED"));
         }
 
-        const youtube = new Youtube(this.client.config.apiKeys.simpleYoutube);
-
         let name = args.join(" ");
         if(!name){
             return message.channel.send(message.language.get("PLAY_ERR_NO_NAME"));
@@ -51,10 +45,11 @@ class Play extends Command {
             return message.channel.send(message.language.get("PLAY_ERR_PERMS"));
         }
 
+        let youtube = this.client.player.SYA;
         let video = await youtube.getVideo(url).catch((err) => {});
 
         if(video){
-            return music.handleVideo(message.client, video, message, voice, data);
+            return this.client.player.play(voice, url);
         }
 
         try {
@@ -68,7 +63,7 @@ class Play extends Command {
             await message.channel.awaitMessages((m) => m.content > 0 && m.content < 8, { max: 1, time: 20000, errors: ["time"] }).then(async (answers) => {
                 let index = parseInt(answers.first().content, 10);
                 video = await youtube.getVideoByID(videos[index-1].id);
-                return music.handleVideo(message.client, video, message, voice, data);
+                return this.client.player.play(voice, video.url);
             }).catch((e) => {
                 console.log(e);
                 return message.channel.send(message.language.get("PLAY_ERR_TIMEOUT"));

@@ -54,6 +54,11 @@ const init = async () => {
         });
     }
 
+    if(client.config.apiKeys.simpleYoutube){
+        const { Player } = require("discord-player");
+        client.player = new Player(client, client.config.apiKeys.simpleYoutube);
+    }
+
 };
 
 init();

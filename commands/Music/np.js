@@ -23,7 +23,7 @@ class Np extends Command {
 
     async run (message, args, data) {
 
-        let queue = message.client.queues.get(message.guild.id);
+        let queue = this.client.player.getQueue(message.guild.id);
 
         let voice = message.member.voice.channel;
         if (!voice){
@@ -35,15 +35,15 @@ class Np extends Command {
         }
 
         // Gets the current song
-        let song = queue.songs[0];
+        let song = await this.client.player.nowPlaying(message.guild.id)
 
         // Generate discord embed to display song informations
         const embed = new Discord.MessageEmbed()
             .setAuthor(message.language.get("PLAY_PLAYING_TITLE"))
-            .setThumbnail(song.raw.snippet.thumbnails.default.url)
-            .addField(message.language.get("PLAY_HEADINGS")[0], song.title, true)
-            .addField(message.language.get("PLAY_HEADINGS")[1], song.channel, true)
-            .addField(message.language.get("PLAY_HEADINGS")[6], message.language.convertMs(song.ms), true)
+            .setThumbnail(song.thumbnail)
+            .addField(message.language.get("PLAY_HEADINGS")[0], song.name, true)
+            .addField(message.language.get("PLAY_HEADINGS")[1], song.author, true)
+            .addField(message.language.get("PLAY_HEADINGS")[6], message.language.convertMs(song.duration), true)
             .addField(message.language.get("PLAY_HEADINGS")[5], song.raw.snippet.description ? (song.raw.snippet.description.substring(0, 150)+"\n"+message.language.get("UTILS").ANDMORE) : message.language.get("NP_ERR_NO_DESC"), true)
             .setTimestamp()
             .setColor(data.config.embed.color)

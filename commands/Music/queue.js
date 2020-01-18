@@ -23,22 +23,23 @@ class Queue extends Command {
 
     async run (message, args, data) {
 
-        let queue = message.client.queues.get(message.guild.id);
+        if(!data.config.apiKeys.simpleYoutube || data.config.apiKeys.simpleYoutube.length === "") {
+            return message.channel.send(message.language.get("ERR_COMMAND_DISABLED"));
+        }
+        
+        let queue = this.client.player.getQueue(message.guild.id);
+
+        if(!queue){
+            return message.channel.send(message.language.get("PLAY_ERR_NOT_PLAYING"));
+        }
 
         let voice = message.member.voice.channel;
         if (!voice){
             return message.channel.send(message.language.get("PLAY_ERR_VOICE_CHANNEL"));
         }
 
-        if(!queue){
-            return message.channel.send(message.language.get("PLAY_ERR_NOT_PLAYING"));
-        }
-
-        let index = 0;
         let sQueue = queue.songs.map((song) => {
-            let title = song.title;
-            let author = song.channel;
-            return `**${message.language.get("UTILS").TITLE}**: ${title}\n**${message.language.get("UTILS").AUTHOR}**: ${author}`;
+            return `**${message.language.get("UTILS").TITLE}**: ${song.name}\n**${message.language.get("UTILS").AUTHOR}**: ${song.author}`;
         });
 
         // Generate discord embed to display the songs list
