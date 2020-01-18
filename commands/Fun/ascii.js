@@ -1,6 +1,9 @@
 const Command = require("../../base/Command.js"),
-Discord = require("discord.js"),
-ascii = require("ascii-art");
+Discord = require("discord.js");
+
+const figlet = require("figlet");
+const { promisify } = require("util");
+const figletAsync = promisify(figlet);
 
 class Ascii extends Command {
 
@@ -29,9 +32,8 @@ class Ascii extends Command {
             return message.channel.send(message.language.get("ASCII_ERR_TEXT"));
         }
     
-        ascii.font(text, "Doom", function(rendered){
-            message.channel.send("```"+rendered+"```");
-        });
+        let rendered = await figletAsync(text);
+        message.channel.send("```"+rendered+"```");
 
     }
 

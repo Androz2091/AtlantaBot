@@ -19,7 +19,6 @@
   "dependencies": {
     "@k3rn31p4nic/google-translate-api": "github:k3rn31p4nic/google-translate-api",
     "amethyste-api": "github:Androz2091/amethyste-api",
-    "ascii-art": "^2.5.0",
     "ascii-table": "0.0.9",
     "blague.xyz": "^2.0.4",
     "body-parser": "^1.19.0",
@@ -35,6 +34,7 @@
     "express": "^4.17.1",
     "express-session": "^1.17.0",
     "ffmpeg-static": "^3.0.0",
+    "figlet": "^1.2.4",
     "fortnite": "^4.3.2",
     "fortnite-9812": "^1.0.4",
     "gamedig": "^2.0.14",
