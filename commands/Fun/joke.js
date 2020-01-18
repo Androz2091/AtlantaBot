@@ -23,6 +23,10 @@ class Joke extends Command {
 
     async run (message, args, data) {
 
+        if(!data.config.apiKeys.blagueXYZ || data.config.apiKeys.blagueXYZ.length === "") {
+            return message.channel.send(message.language.get("ERR_COMMAND_DISABLED"));
+        }
+
         let joke = await this.client.joker.randomJoke(message.language.getLang().substr(0, 2));
 
         let embed = new Discord.MessageEmbed()
