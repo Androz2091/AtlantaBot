@@ -382,6 +382,26 @@ module.exports = class {
 			EVAL_DESCRIPTION: "Exécute le code",
 			EVAL_USAGE: "eval [code]",
 			EVAL_EXAMPLES: "$eval message.channel.send('Coucou');",
+			
+			/* REPORT COMMAND */
+			REPORT_DESCRIPTION: "Envoyez votre signalement dans le salon défini pour cela !",
+			REPORT_USAGE: "report [@user] [raison]",
+			REPORT_EXAMPLES: "$report @Androz#2091 Règles non respectées",
+			// Errors
+			REPORT_ERR_NO_CHANNEL: `${e.error} | Aucun salon de signalement défini !`,
+			REPORT_ERR_NO_REP: `${e.error} | Veuillez entrer une raison pour votre signalement !`,
+			REPORT_ERR_NO_USER: `${e.error} | Veuillez mentionner l'utilisateur à signaler !`,
+			REPORT_ERR_USER_YOURSELF: `${e.error} | Vous ne pouvez pas vous signaler vous-même !`,
+			//Headings
+			REPORT_HEADINGS: [
+				"Auteur",
+				"Date",
+				"Contenu",
+				"Signalement"
+			],
+			// Content
+			REPORT_TITLE: (user) => `Signalement - ${user.tag}`,
+			REPORT_SUCCESS: (channel) => `${e.success} | Votre rapport a été envoyé dans ${channel} !`,
 
 			/* GETINVITE COMMAND */
 
@@ -668,6 +688,7 @@ module.exports = class {
 			CONFIGURATION_GOODBYE: (withImage, channelID) => `Salon : <#${channelID}>\nImage : ${withImage ? "Oui" : "Non"}`,
 			CONFIGURATION_MODLOGS: (channelID) => `Logs modération : ${channelID ? `<#${channelID}>` : "Indéfini"}`,
 			CONFIGURATION_SUGGESTIONS: (channelID) => `Suggestions : ${channelID ? `<#${channelID}>` : "Indéfini" }`,
+			CONFIGURATION_REPORTS: (channelID) => `Signalements : ${channelID ? `<#${channelID}>` : "Non défini" }`,
 			CONFIGURATION_FORTNITESHOP: (channelID) => `Boutique Fortnite : ${channelID ? `<#${channelID}>` : "Indéfini" }`,
 			CONFIGURATION_AUTOMOD: (ignoredChannels) => `${ignoredChannels.length > 0 ? `Salon ignorés : ${ignoredChannels.map((ch) => `<#${ch}>`)}` : "Aucun salon ignoré."}`,
 			CONFIGURATION_WARNS: (kick, ban) => `${kick ? `**Expulsion**: au bout de **${kick}** avertissements.` : "**Expulsion**: Non définie."}\n${ban ? `**Bannissement**: au bout de **${ban}** avertissements.` : "**Bannissement**: Non défini."}`,
@@ -1483,6 +1504,13 @@ module.exports = class {
 			// Content
 			SETSUGGESTS_SUCCESS: (channel) => `${e.success} | Le salon des suggestions est maintenant ${channel} !`,
 
+			/* SETREPORTS COMMAND */
+			SETREPORTS_DESCRIPTION: "Définissez un salon de signalements!",
+			SETREPORTS_USAGE: "setreports (#salon)",
+			SETREPORTS_EXAMPLES: "$setreports #general\n$setreports",
+			// Content
+			SETREPORTS_SUCCESS: (channel) => `${e.success} | Le salon des signalements est maintenant ${channel} !`,
+			
 			/* ADDEMOTE COMMAND */
 
 			// Utils
@@ -1631,6 +1659,7 @@ module.exports = class {
 				WITHIMAGE_GOODBYE: "Inclure une superbe image d'au revoir",
 				SUGGESTIONS: "Suggestions",
 				MODLOGS: "Logs de modération",
+				REPORTS: "Signalements",
 				FORTNITESHOP: "Boutique Fortnite"
 			},
 			ENABLE_MESSAGES: "Activer les messages",
