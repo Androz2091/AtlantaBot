@@ -76,6 +76,7 @@ class Getconf extends Command {
         embed.addField(headings[5][0],
             message.language.get("CONFIGURATION_MODLOGS", guildData.plugins.modlogs)+"\n"+
             message.language.get("CONFIGURATION_SUGGESTIONS", guildData.plugins.suggestions)+"\n"+
+            message.language.get("CONFIGURATION_REPORTS", guildData.plugins.reports)+"\n"+
             message.language.get("CONFIGURATION_FORTNITESHOP", guildData.plugins.fortniteshop)
         );
         

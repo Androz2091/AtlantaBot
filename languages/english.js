@@ -385,6 +385,26 @@ module.exports = class {
 			EVAL_USAGE: "eval [code]",
 			EVAL_EXAMPLES: "$eval message.channel.send('Hey');",
 
+			/* REPORT COMMAND */
+			REPORT_DESCRIPTION: "Send your report to the channel defined for this!",
+			REPORT_USAGE: "report [@user] [reason]",
+			REPORT_EXAMPLES: "$report @Androz#2091 Breaking the rules",
+			// Errors
+			REPORT_ERR_NO_CHANNEL: `${e.error} | No report channel defined!`,
+			REPORT_ERR_NO_REP: `${e.error} | Please enter a reason for your report!`,
+			REPORT_ERR_NO_USER: `${e.error} | Please mention the user you want report!`,
+			REPORT_ERR_USER_YOURSELF: `${e.error} | You can't report yourself`,
+			//Headings
+			REPORT_HEADINGS: [
+				"Author",
+				"Date",
+				"Content",
+				"Reporting"
+			],
+			// Content
+			REPORT_TITLE: (user) => `Report - ${user.tag}`,
+			REPORT_SUCCESS: (channel) => `${e.success} | Your report has been sent in ${channel} !`,
+
 			/* GETINVITE COMMAND */
 
 			// Utils
@@ -757,6 +777,7 @@ module.exports = class {
 			CONFIGURATION_GOODBYE: (withImage, channelID) => `Channel : <#${channelID}>\nImage : ${withImage ? "Yes" : "No"}`,
 			CONFIGURATION_MODLOGS: (channelID) => `Moderation logs : ${channelID ? `<#${channelID}>` : "Not defined"}`,
 			CONFIGURATION_SUGGESTIONS: (channelID) => `Suggestions : ${channelID ? `<#${channelID}>` : "Not defined" }`,
+			CONFIGURATION_REPORTS: (channelID) => `Reports : ${channelID ? `<#${channelID}>` : "Not defined" }`,
 			CONFIGURATION_FORTNITESHOP: (channelID) => `Fortnite Shop : ${channelID ? `<#${channelID}>` : "Not defined" }`,
 			CONFIGURATION_AUTOMOD: (ignoredChannels) => `${ignoredChannels.length > 0 ? `Salon ignorés : ${ignoredChannels.map((ch) => `<#${ch}>`)}` : "Aucun salon ignoré."}`,
 			CONFIGURATION_WARNS: (kick, ban) => `${kick ? `**Expulsion**: after **${kick}** warnings.` : "**Expulsion**: Not defined."}\n${ban ? `**Banishment**: after **${ban}** warnings.` : "**Banishment**: Not defined."}`,
@@ -1480,6 +1501,13 @@ module.exports = class {
 			// Content
 			SETSUGGESTS_SUCCESS: (channel) => `${e.success} | The suggestions channel is now ${channel} !`,
 
+			/* SETREPORTS COMMAND */
+			SETREPORTS_DESCRIPTION: "Define the reports channel!",
+			SETREPORTS_USAGE: "setreports (#channel)",
+			SETREPORTS_EXAMPLES: "$setreports #general\n$setreports",
+			// Content
+			SETREPORTS_SUCCESS: (channel) => `${e.success} | The reports channel is now ${channel} !`,
+			
 			/* ADDEMOTE COMMAND */
 
 			// Utils
@@ -1628,6 +1656,7 @@ module.exports = class {
 				WITHIMAGE_GOODBYE: "Include a great goodbye image",
 				SUGGESTIONS: "Suggestions",
 				MODLOGS: "Moderation logs",
+				REPORTS: "Reports",
 				FORTNITESHOP: "Fortnite shop"
 			},
 			ENABLE_MESSAGES: "Enable messages",
