@@ -139,16 +139,17 @@ Here's the list of Atlanta commands. This one contains more than **110 commands*
 | **random**    | Randomly pick one of the choices you give me!                                                 | random [choice1/choice2/etc...] | 5 seconds |
 | **tcl**       | Display the last tweet of @thecodinglove !                                                    | tcl                             | 3 seconds |
 
-### Music (6 commands)
+### Music (7 commands)
 
-| Name       | Description                                  | Usage              | Cooldown  |
-| ---------- | -------------------------------------------- | ------------------ | --------- |
-| **lyrics** | Displays the lyrics of a song                | lyrics [song-name] | 5 seconds |
-| **np**     | Displays information about the current song! | np                 | 5 seconds |
-| **play**   | Play music!                                  | play [title]       | 5 seconds |
-| **queue**  | Displays the queue                           | queue              | 5 seconds |
-| **skip**   | Play the next song!                          | skip               | 5 seconds |
-| **stop**   | Stop the music in progress!                  | stop               | 5 seconds |
+| Name       | Description                                  | Usage        | Cooldown  |
+| ---------- | -------------------------------------------- | ------------ | --------- |
+| **np**     | Displays information about the current song! | np           | 5 seconds |
+| **pause**  |                                              | pause        | 5 seconds |
+| **play**   | Play music!                                  | play [title] | 5 seconds |
+| **queue**  | Displays the queue                           | queue        | 5 seconds |
+| **resume** |                                              | resume       | 5 seconds |
+| **skip**   | Play the next song!                          | skip         | 5 seconds |
+| **stop**   | Stop the music in progress!                  | stop         | 5 seconds |
 
 ### Owner (5 commands)
 
