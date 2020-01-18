@@ -1187,6 +1187,8 @@ module.exports = class {
 				`${e.desc} Description`,
 				`${e.time} Durée`
 			],
+			PLAY_SUCCESS: (song) => `▶️ ${song.name} en cours de lecture...`,
+			PLAY_ADDED_TO_QUEUE: (song) => `🎵 ${song.name} ajouté à la queue!`,
 
 			/* STOP COMMAND */
 
@@ -1229,6 +1231,24 @@ module.exports = class {
 			QUEUE_EXAMPLES: "$queue",
 			// Content
 			QUEUE_TITLE: `${e.playlist} Playlist`,
+
+			/* PAUSE COMMAND */
+			
+			// Utils
+			PAUSE_DESCPRIPTION: "Met la chanson actuelle en pause",
+			PAUSE_USAGE: "pause",
+			PAUSE_EXAMPLES: "$pause",
+			// Content
+			PAUSE_SUCCESS: "⏸️ Musique en pause.",
+
+			/* RESUME COMMAND */
+			
+			// Utils
+			RESUME_DESCPRIPTION: "Reprend la musique actuelle",
+			RESUME_USAGE: "resume",
+			RESUME_EXAMPLES: "$resume",
+			// Content
+			RESUME_SUCCESS: "▶️ Musique de nouveau en cours de lecture.",
 
 			/* LYRICS COMMAND */
 
