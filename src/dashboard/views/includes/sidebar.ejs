@@ -1,0 +1,92 @@
+<!-- Left side column. contains the logo and sidebar -->
+<aside class="main-sidebar">
+    <!-- sidebar: style can be found in sidebar.less -->
+    <section class="sidebar">
+        <!-- Sidebar user panel -->
+        <div class="user-panel">
+        <div class="pull-left image">
+            <img src="<%= user.displayAvatarURL %>" class="img-circle" alt="User Image">
+        </div>
+        <div class="pull-left info">
+            <p><%= user.username %></p>
+            <a href="#"><i class="fa fa-circle text-<%= user.status === 'dnd' ? 'danger' : user.status === 'idle' ? 'warning' : user.status === 'online' ? 'success' : ''%>"></i> <%= language.get("UTILS").STATUS[user.status] %></a>
+        </div>
+        </div>
+        <!-- search form -->
+        <form action="/selector" method="get" class="sidebar-form">
+        <div class="input-group">
+            <input type="text" name="q" class="form-control" placeholder="<%= language.get('SEARCH_SERVERS') %>">
+            <span class="input-group-btn">
+                <button type="submit" id="search-btn" class="btn btn-flat">
+                    <i class="fa fa-search"></i>
+                </button>
+            </span>
+        </div>
+        </form>
+        <!-- /.search form -->
+        <!-- sidebar menu: : style can be found in sidebar.less -->
+        <ul class="sidebar-menu" data-widget="tree">
+            <li class="header"><%= language.get("SERVERS_MANAGEMENT") %></li>
+            <li class="treeview menu-open">
+                <li><a href="/selector"><i class="fa fa-home"></i> <span><%= language.get("SELECTOR") %></span></a></li>
+            </li>
+        </ul>
+        <ul class="sidebar-menu" data-widget="tree">
+            <li class="header"><%= language.get("UTILS").SERVERS_SETTINGS.toUpperCase() %></li>
+            <li class="treeview">
+                <a href="/manage/">
+                <i class="fa fa-server"></i>
+                <span><%= language.get("SERVERS_LIST") %></span>
+                <span class="pull-right-container">
+                    <i class="fa fa-angle-left pull-right"></i>
+                </span>
+                </a>
+                <% if(user.displayedGuilds){ %>
+                    <ul class="treeview-menu">
+                        <% user.displayedGuilds.forEach((guild) => { %>
+                            <li><a href="<%= guild.settingsUrl %>"><i class="fa fa-circle-o text-<%= guild.owner ? 'blue' : 'grey' %>"></i> <%= guild.name %></a></li>
+                        <% }); %>
+                    </ul> 
+                <% } %>
+            </li>
+        </ul>
+        <ul class="sidebar-menu" data-widget="tree">
+            <li class="header"><%= language.get("UTILS").STATS.toUpperCase() %></li>
+            <li class="treeview menu-open">
+                <li class="treeview">
+                    <a href="/stats/">
+                    <i class="fa fa-server"></i>
+                    <span><%= language.get("SERVERS_LIST") %></span>
+                    <span class="pull-right-container">
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                    </a>
+                    <% if(user.displayedGuilds){ %>
+                        <ul class="treeview-menu">
+                            <% user.displayedGuilds.forEach((guild) => { %>
+                                <li><a href="<%= guild.statsUrl %>"><i class="fa fa-circle-o text-<%= guild.owner ? 'blue' : 'grey' %>"></i> <%= guild.name %></a></li>
+                            <% }); %>
+                        </ul> 
+                    <% } %>
+                </li>
+            </li>
+        </ul>
+        <ul class="sidebar-menu" data-widget="tree">
+            <li class="header"><%= language.get("UTILS").PROFILE.toUpperCase() %></li>
+            <li class="treeview menu-open">
+                <li><a href="/settings"><i class="fa fa-gear"></i> <span><%= language.get("UTILS").SETTINGS %></span></a></li>
+            </li>
+        </ul>
+    </section>
+    <!-- /.sidebar -->
+</aside>
+
+<script>
+    $(document).ready(function() {
+        // get current URL path and assign 'active' class
+        let pathname = window.location.pathname;
+        $(`.sidebar-menu > li > a[href="${pathname}"]`).parent().addClass("active");
+        $(`.sidebar-menu > li > ul > li > a[href="${window.location.pathname}"]`).parent().addClass("active");
+        $(`.sidebar-menu > li > a[href="/${window.location.pathname.split("/")[1]}/"]`).parent().addClass("active");
+    });
+</script>
