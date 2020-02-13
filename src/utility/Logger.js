@@ -1,4 +1,4 @@
-const { bgBlue, black, green } = require("chalk");
+const chalk = require("chalk");
 
 const dateTimePad = (value, digits) => {
     let number = value;
@@ -29,23 +29,27 @@ const log = (message, type, tDate) => {
     switch (type) {
         case "debug":
             return console.log(
-                `${date} ${green(type.toUpperCase())} ${message} `
+                `${date} ${chalk.green(type.toUpperCase())} ${message} `
             );
         case "info":
             return console.log(
-                `${date} ${bgBlue(type.toUpperCase())} ${message} `
+                `${date} ${chalk.bgBlue(type.toUpperCase())} ${message} `
             );
         case "warn":
             return console.log(
-                `${date} ${black.bgYellow(type.toUpperCase())} ${message} `
+                `${date} ${chalk.black.bgYellow(type.toUpperCase())} ${message} `
             );
         case "error":
             return console.log(
-                `${date} ${black.bgRed(type.toUpperCase())} ${message} `
+                `${date} ${chalk.black.bgRed(type.toUpperCase())} ${message} `
+            );
+        case "ipc":
+            return console.log(
+                `${date} ${chalk.bgHex("#8A2BE2")(type.toUpperCase())} ${message}`
             );
         default:
             throw new TypeError(
-                "Log type must be either debug, info, warn or error."
+                "Log type must be either debug, info, ipc, warn or error."
             );
     }
 };
