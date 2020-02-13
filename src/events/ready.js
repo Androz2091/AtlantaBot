@@ -9,10 +9,11 @@ module.exports = class Ready extends Event {
     }
 
     async execute() {
-        let client = this.client;
+        const client = this.client;
 
+        // Logs some informations using the logger file
         client.logger.info(
-            `${client.user.tag}, ready to serve ${client.users.size} users in ${client.guilds.size} servers.`
+            `${client.user.tag}, ready to serve ${client.users.cache.size} users in ${client.guilds.cache.size} servers.`
         );
 
         /* DiscordBots.org STATS 
@@ -40,26 +41,20 @@ module.exports = class Ready extends Event {
             client.dashboard.load(client);
         }
 
-        // Start update of giveaways
+        /*
         let giveawaysOptions = {
             updateCountdownEvery: 15000,
             ignoreIfHasPermission: ["ADMINISTRATOR"],
             storage: require("path").resolve() + "/giveaways.json"
         };
-        giveaways.launch(client, giveawaysOptions);
+        giveaways.launch(client, giveawaysOptions);*/
 
         // Update the game every 20s
         const { status } = this.client.config,
             version = this.client.version;
         let i = 0;
         setInterval(function() {
-            let toDisplay =
-                status[parseInt(i, 10)].name.replace(
-                    "{serversCount}",
-                    client.guilds.size
-                ) +
-                " | v" +
-                version;
+            let toDisplay = `${status[parseInt(i, 10)].name.replace("{serversCount}", client.guilds.cache.size)} | v${version}}`;
             client.user.setActivity(toDisplay, {
                 type: status[parseInt(i, 10)].type
             });

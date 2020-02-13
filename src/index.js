@@ -1,5 +1,6 @@
 require("./utility/Extenders");
 
+const { Client: VezaClient } = require("veza");
 const { Client, Collection } = require("discord.js");
 const fetch = require("node-fetch");
 
@@ -16,7 +17,7 @@ const CommandHandler = require("./handlers/Commands");
 const EventHandler = require("./handlers/Events");
 
 module.exports = class AtlantaCluster extends Client {
-    constructor(node) {
+    constructor() {
         super({
             messageCacheMaxSize: 150,
             messageCacheLifetime: 1800,
@@ -26,10 +27,10 @@ module.exports = class AtlantaCluster extends Client {
             partials: ["MESSAGE"]
         });
 
-        this.node = node;
-
         this.config = config;
         this.version = version;
+        this.shard = process.env.SHARDS || '0';
+        this.shardCount = process.env.SHARD_COUNT || '1';
         this.logger = require("./utility/Logger");
 
         this.handlers = {};
@@ -60,7 +61,29 @@ module.exports = class AtlantaCluster extends Client {
                 "ms",
             "info"
         );
-        super.login(this.config.token);
+        if(this.config.clustered){
+            this.node = new VezaClient(`atlantabot-shard-${this.shard}`)
+            .on("error", (error, client) =>
+                console.error(`[IPC] Error from ${client.name}:`, error)
+            )
+            .on("disconnect", client =>
+                this.logger.log(`[IPC] Disconnected from ${client.name}, "ipc`)
+            )
+            .on("ready", (client) => {
+                this.logger.log("Connected to "+client.name, "ipc");
+                super.login(this.config.token);
+            })
+            .on("message", async message => {
+                if (message.data.event === "collectData") {
+                    message.reply(eval(`this.${message.data.data}`));
+                } else if (message.data.event === "shardCount") {
+                    message.reply(client.shardCount);
+                }
+            });
+            this.node.connectTo(this.config.nodePort);
+        } else {
+            super.login(this.config.token);
+        }
     }
 
     fetchData(property) {
