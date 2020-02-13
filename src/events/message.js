@@ -44,7 +44,7 @@ module.exports = class Message extends Event {
             );
 
             // Check guild settings
-            const guild = (message.guild.settings = await this.client.handlers.database.getGuild(
+            const guild = (message.guild.settings = await this.client.handlers.database.fetchGuild(
                 message.guild.id
             ));
 
