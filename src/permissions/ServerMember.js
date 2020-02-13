@@ -1,11 +1,10 @@
-const PermissionLevel = require('../structures/PermissionLevel');
-const Constants = require('../utility/Constants');
+const PermissionLevel = require("../structures/PermissionLevel");
+const Constants = require("../utility/Constants");
 
 module.exports = class extends PermissionLevel {
-
-    constructor(){
+    constructor() {
         super({
-            title: 'Server Member',
+            title: "Server Member",
             level: Constants.PermissionsLevels.SERVER_MEMBER
         });
     }
@@ -13,4 +12,4 @@ module.exports = class extends PermissionLevel {
     check(_guild, _member) {
         return true;
     }
-}
+};

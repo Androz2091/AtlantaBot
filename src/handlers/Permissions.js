@@ -12,7 +12,7 @@ module.exports = class PermissionsHandler {
 
     init() {
         const start = Date.now();
-        
+
         klaw(join(__dirname, "..", "permissions"))
             .on("data", item => {
                 const file = parse(item.path);
@@ -28,7 +28,8 @@ module.exports = class PermissionsHandler {
             .on("end", () => {
                 this.levels = this.levels.sort((a, b) => b.level - a.level);
                 this.client.logger.info(
-                    `Loaded ${this.levels.size} Permissions in ${Date.now() - start}ms`
+                    `Loaded ${this.levels.size} Permissions in ${Date.now() -
+                        start}ms`
                 );
             });
     }

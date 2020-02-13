@@ -26,10 +26,10 @@ const PermissionsLevels = {
 };
 
 const PermissionsRoleTitles = {
-    ADMINISTRATOR: 'Atlanta Administrator',
-    MODERATOR: 'Atlanta Moderator',
-    DJ: 'Atlanta DJ',
-    BLACKLIST: 'Atlanta Blacklist'
+    ADMINISTRATOR: "Atlanta Administrator",
+    MODERATOR: "Atlanta Moderator",
+    DJ: "Atlanta DJ",
+    BLACKLIST: "Atlanta Blacklist"
 };
 
 const Emojis = {

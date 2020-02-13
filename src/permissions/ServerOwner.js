@@ -1,11 +1,10 @@
-const PermissionLevel = require('../structures/PermissionLevel');
-const Constants = require('../utility/Constants');
+const PermissionLevel = require("../structures/PermissionLevel");
+const Constants = require("../utility/Constants");
 
 module.exports = class extends PermissionLevel {
-
-    constructor(){
+    constructor() {
         super({
-            title: 'Server Owner',
+            title: "Server Owner",
             level: Constants.PermissionsLevels.SERVER_OWNER
         });
     }
@@ -13,4 +12,4 @@ module.exports = class extends PermissionLevel {
     check(guild, member) {
         return guild.ownerID === member.id;
     }
-}
+};
