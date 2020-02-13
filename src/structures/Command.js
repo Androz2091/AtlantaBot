@@ -3,16 +3,16 @@ const Constants = require("../utility/Constants");
 
 module.exports = class Command {
     constructor(
-        client,
         {
-            name,
             enabled = true,
             aliases = new Array(),
             guildOnly = true,
             permission = Constants.PermissionsLevels.ATLANTA_MAINTAINER,
             nsfw = false
         },
-        path = ""
+        client,
+        name,
+        path
     ) {
         let category = path.split(sep)[
             parseInt(path.split(sep).length - 1, 10)

@@ -1,15 +1,13 @@
 const Command = require("../../structures/Command"),
-Discord = require("discord.js");
-const Constants = require("../../utility/Constants");
+Constants = require("../../utility/Constants");
 
-class Ping extends Command {
+module.exports = class extends Command {
 
-    constructor (client, name, path) {
-        super(client, {
-            name: "ping",
+    constructor (...args) {
+        super({
             aliases: [ "pong", "latency" ],
-            permission: Constants.PermissionsLevels.ATLANTA_MAINTAINER        
-        }, path);
+            permission: Constants.PermissionsLevels.SERVER_MEMBER        
+        }, ...args);
     }
 
     async execute (message) {
@@ -23,6 +21,4 @@ class Ping extends Command {
         });
     }
 
-}
-
-module.exports = Ping;
+};
