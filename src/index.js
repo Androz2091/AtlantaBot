@@ -29,8 +29,8 @@ module.exports = class AtlantaCluster extends Client {
 
         this.config = config;
         this.version = version;
-        this.shard = process.env.SHARDS || '0';
-        this.shardCount = process.env.SHARD_COUNT || '1';
+        this.shard = process.env.SHARDS || "0";
+        this.shardCount = process.env.SHARD_COUNT || "1";
         this.logger = require("./utility/Logger");
 
         this.handlers = {};
@@ -38,6 +38,7 @@ module.exports = class AtlantaCluster extends Client {
         this.handlers.tasks = new TaskHandler(this);
         this.handlers.permissions = new PermissionsHandler(this);
 
+        this.helpers = {};
         this.functions = new FunctionHandler(this);
         this.commands = new CommandHandler(this);
         this.events = new EventHandler(this);
@@ -61,29 +62,8 @@ module.exports = class AtlantaCluster extends Client {
                 "ms",
             "info"
         );
-        if(this.config.clustered){
-            this.node = new VezaClient(`atlantabot-shard-${this.shard}`)
-            .on("error", (error, client) =>
-                console.error(`[IPC] Error from ${client.name}:`, error)
-            )
-            .on("disconnect", client =>
-                this.logger.log(`[IPC] Disconnected from ${client.name}, "ipc`)
-            )
-            .on("ready", (client) => {
-                this.logger.log("Connected to "+client.name, "ipc");
-                super.login(this.config.token);
-            })
-            .on("message", async message => {
-                if (message.data.event === "collectData") {
-                    message.reply(eval(`this.${message.data.data}`));
-                } else if (message.data.event === "shardCount") {
-                    message.reply(client.shardCount);
-                }
-            });
-            this.node.connectTo(this.config.nodePort);
-        } else {
-            super.login(this.config.token);
-        }
+        if (this.config.clustered) await this.createVezaClient();
+        super.login(this.config.token);
     }
 
     fetchData(property) {
@@ -120,6 +100,32 @@ module.exports = class AtlantaCluster extends Client {
             })
         }).catch(err => {
             if (err) console.error(`DiscordBots Stats Transfer Failed ${err}`);
+        });
+    }
+
+    async createVezaClient() {
+        return new Promise(resolve => {
+            this.node = new VezaClient(`atlantabot-shard-${this.shard}`)
+                .on("error", (error, client) =>
+                    console.error(`[IPC] Error from ${client.name}:`, error)
+                )
+                .on("disconnect", client =>
+                    this.logger.log(
+                        `[IPC] Disconnected from ${client.name}, "ipc`
+                    )
+                )
+                .on("ready", client => {
+                    this.logger.log("Connected to " + client.name, "ipc");
+                    resolve();
+                })
+                .on("message", async message => {
+                    if (message.data.event === "collectData") {
+                        message.reply(eval(`this.${message.data.data}`));
+                    } else if (message.data.event === "shardCount") {
+                        message.reply(client.shardCount);
+                    }
+                })
+                .connectTo(this.config.nodePort);
         });
     }
 };
