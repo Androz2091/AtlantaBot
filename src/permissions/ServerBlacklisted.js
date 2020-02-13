@@ -11,8 +11,7 @@ module.exports = class extends PermissionLevel {
     }
 
     check(guild, member) {
-        const roleIDs = this.fetchRoles(guild, 'blacklist');
-
-        return roleIDs.some(id => member.roles.cache.has(id));
+        const roleID = this.fetchRole(guild, 'blacklist');
+        return (roleID ? member.roles.cache.has(roleID) : false);
     }
 }

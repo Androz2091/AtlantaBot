@@ -11,8 +11,7 @@ module.exports = class extends PermissionLevel {
     }
 
     check(guild, member) {
-        const roleIDs = this.fetchRoles(guild, 'moderator');
-
-        return roleIDs.some(id => member.roles.cache.has(id));
+        const roleID = this.fetchRole(guild, 'moderator');
+        return (roleID ? member.roles.has(roleID) : false);
     }
 }

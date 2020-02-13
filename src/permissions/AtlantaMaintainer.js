@@ -11,6 +11,6 @@ module.exports = class extends PermissionLevel {
     }
 
     check(_guild, member) {
-        return this.client.config.maintainers.includes(member.id);
+        return member.client.config.maintainers.includes(member.id);
     }
 }

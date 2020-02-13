@@ -9,11 +9,7 @@ module.exports = class PermissionLevel {
         if (options.staffOverride) this.staffOverride = options.staffOverride;
     }
 
-    fetchRoles(guild, permission) {
-        const pool = guild.settings.roles[permission].filter(role =>
-            guild.roles.cache.has(role)
-        );
-
+    fetchRole(guild, permission) {
         let roleName;
         switch (permission) {
             case "blacklist":
@@ -32,9 +28,8 @@ module.exports = class PermissionLevel {
         const permRole = guild.roles.cache.find(
             role => role.name.toLowerCase() === roleName
         );
-        if (permRole && !pool.includes(permRole.id)) pool.push(permRole.id);
 
-        return pool;
+        return permRole ? permRole.id : null;
     }
 
     check(_guild, _member) {
