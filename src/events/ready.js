@@ -10,6 +10,7 @@ module.exports = class Ready extends Event {
 
     async execute() {
         const client = this.client;
+        client.handlers.database.initCache();
 
         // Logs some informations using the logger file
         client.logger.info(
@@ -54,7 +55,10 @@ module.exports = class Ready extends Event {
             version = this.client.version;
         let i = 0;
         setInterval(function() {
-            let toDisplay = `${status[parseInt(i, 10)].name.replace("{serversCount}", client.guilds.cache.size)} | v${version}}`;
+            let toDisplay = `${status[parseInt(i, 10)].name.replace(
+                "{serversCount}",
+                client.guilds.cache.size
+            )} | v${version}}`;
             client.user.setActivity(toDisplay, {
                 type: status[parseInt(i, 10)].type
             });
