@@ -4,21 +4,22 @@ const Constants = require("../../utility/Constants");
 
 class Ping extends Command {
 
-    constructor (client) {
+    constructor (client, name, path) {
         super(client, {
             name: "ping",
-            path: __dirname,
-            description: (language) => language.get("PING_DESCRIPTION"),
-            usage: (language) => language.get("PING_USAGE"),
-            examples: (language) => language.get("PING_EXAMPLES"),
             aliases: [ "pong", "latency" ],
-            permissions: ["ADMINISTRATOR"]         
-        });
+            permission: Constants.PermissionsLevels.ATLANTA_MAINTAINER        
+        }, path);
     }
 
     async execute (message) {
-        message.channel.send(message.language.get("PING", 0.0000)).then((m) => {
-            m.edit(message.language.get("PING", m.createdTimestamp - message.createdTimestamp));
+        let msg = await message.sendT("core/ping:RESPONSE", {
+            command: '..',
+            api: this.client.ws.ping
+        });
+        await msg.editT("core/ping:RESPONSE", {
+            command: msg.createdTimestamp - message.createdTimestamp,
+            api: Math.floor(this.client.ws.ping)
         });
     }
 
