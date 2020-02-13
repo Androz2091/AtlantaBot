@@ -13,6 +13,15 @@ module.exports = class DatabaseHandler {
         this.userCache = new Collection();
     }
 
+    async initCache() {
+        await this.client.helpers.asyncForEach.execute(
+            this.client.guilds.cache.array(),
+            async guild => {
+                await this.fetchGuild(guild.id);
+            }
+        );
+    }
+
     // Make a new query to the db
     query(string) {
         return new Promise((resolve, reject) => {
@@ -27,7 +36,7 @@ module.exports = class DatabaseHandler {
     }
 
     // Create or get a user
-    getUser(userID, forceFetch) {
+    fetchUser(userID, forceFetch) {
         return new Promise(async resolve => {
             // If the user is in the cache
             if (this.userCache.get(userID) && !forceFetch)
@@ -48,7 +57,7 @@ module.exports = class DatabaseHandler {
     }
 
     // Create or get a guild
-    getGuild(guildID, forceFetch) {
+    fetchGuild(guildID, forceFetch) {
         return new Promise(async resolve => {
             // If the guild is in the cache
             if (this.guildCache.get(guildID) && !forceFetch)
