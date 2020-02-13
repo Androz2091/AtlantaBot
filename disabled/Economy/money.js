@@ -39,7 +39,7 @@ class Credits extends Command {
 
         let memberData = (message.author === user) ? data.memberData : await this.client.findOrCreateMember({ id: user.id, guildID: message.guild.id }); 
 
-        let commonsGuilds = this.client.guilds.filter((g) => g.members.get(user.id));
+        let commonsGuilds = this.client.guilds.filter((g) => g.members.cache.get(user.id));
         let globalMoney = 0;
         await asyncForEach(commonsGuilds.array(), async (guild) => {
             let memberData = await this.client.findOrCreateMember({ id: user.id, guildID: guild.id });

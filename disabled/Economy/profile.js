@@ -50,7 +50,7 @@ class Profile extends Command {
             await message.client.users.fetch(userData.lover, true);
         }
 
-        let commonsGuilds = client.guilds.filter((g) => g.members.get(member.id));
+        let commonsGuilds = client.guilds.filter((g) => g.members.cache.get(member.id));
         let globalMoney = 0;
         await asyncForEach(commonsGuilds.array(), async (guild) => {
             let memberData = await client.findOrCreateMember({ id: member.id, guildID: guild.id });

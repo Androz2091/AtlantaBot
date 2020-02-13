@@ -62,7 +62,7 @@ class Skip extends Command {
             m.edit(embed);
     
             let filter = (reaction, user) => {
-                let member = message.guild.members.get(user.id);
+                let member = message.guild.members.cache.get(user.id);
                 let voiceChannel = member.voice.channel;
                 if(voiceChannel){
                     if(voiceChannel.id === voice.id){
