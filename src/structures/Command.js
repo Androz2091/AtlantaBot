@@ -1,4 +1,5 @@
 const { sep } = require("path");
+const Constants = require("../utility/Constants");
 
 module.exports = class Command {
     constructor(
@@ -14,7 +15,7 @@ module.exports = class Command {
             enabled = true,
             aliases = new Array(),
             guildOnly = true,
-            permissions = new Array(),
+            permission = Constants.PermissionsLevels.ATLANTA_MAINTAINER,
             nsfw = false
         }
     ) {
@@ -27,7 +28,7 @@ module.exports = class Command {
             enabled,
             aliases,
             guildOnly,
-            permissions,
+            permission,
             nsfw
         };
         this.help = {
