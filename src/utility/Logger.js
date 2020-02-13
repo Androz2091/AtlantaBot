@@ -37,7 +37,9 @@ const log = (message, type, tDate) => {
             );
         case "warn":
             return console.log(
-                `${date} ${chalk.black.bgYellow(type.toUpperCase())} ${message} `
+                `${date} ${chalk.black.bgYellow(
+                    type.toUpperCase()
+                )} ${message} `
             );
         case "error":
             return console.log(
@@ -45,7 +47,9 @@ const log = (message, type, tDate) => {
             );
         case "ipc":
             return console.log(
-                `${date} ${chalk.bgHex("#8A2BE2")(type.toUpperCase())} ${message}`
+                `${date} ${chalk.bgHex("#8A2BE2")(
+                    type.toUpperCase()
+                )} ${message}`
             );
         default:
             throw new TypeError(
