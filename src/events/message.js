@@ -10,10 +10,11 @@ module.exports = class Message extends Event {
     }
 
     async execute(message) {
+        if (message.author.bot) return;
+        const startAt = Date.now();
         if (message.channel.type === "dm") {
             if (!message.content.startsWith(this.client.config.prefix)) return;
 
-            message.language = new (require(`../languages/${this.client.config.defaultLanguage}.js`))();
             const command = await this.client.commands.fetch(
                 message.content
                     .split(" ")[0]
@@ -46,7 +47,6 @@ module.exports = class Message extends Event {
             const guild = (message.guild.settings = await this.client.handlers.database.getGuild(
                 message.guild.id
             ));
-            const language = (message.language = new (require(`../languages/${guild.language}.js`))());
 
             if (
                 new RegExp(`^<@!?${this.client.user.id}>$`).test(
@@ -54,7 +54,7 @@ module.exports = class Message extends Event {
                 )
             )
                 return message.reply(
-                    language.get("PREFIX_INFO", guild.prefix || "")
+                    message.translate("misc:PREFIX", { prefix: guild.prefix })
                 );
 
             if (
@@ -69,12 +69,14 @@ module.exports = class Message extends Event {
                     )
                 ) {
                     if (
-                        userPermissions.level < Constants.PermissionsLevels.SERVER_MODERATOR
+                        userPermissions.level <
+                        Constants.PermissionsLevels.SERVER_MODERATOR
                     ) {
                         message.delete();
                         message.author.send("```" + message.content + "```");
-                        return message.channel.send(
-                            message.language.get("AUTOMOD_MSG", message)
+                        return message.sendT(
+                            "moderation/automod:INVITE_POSTED",
+                            { user: message.author }
                         );
                     }
                 }
@@ -109,20 +111,6 @@ module.exports = class Message extends Event {
                 return;
             }
 
-            const neededPermissions = [];
-            command.conf.permissions.forEach(perm => {
-                if (!message.channel.permissionsFor(message.member).has(perm)) {
-                    neededPermissions.push(perm);
-                }
-            });
-            if (neededPermissions.length > 0) {
-                return message.channel.send(
-                    language.get(
-                        "ERR_MISSING_MEMBER_PERMS",
-                        neededPermissions.map(p => `\`${p}\``).join(", ")
-                    )
-                );
-            }
             if (
                 guild.ignoredChannels.includes(message.channel.id) &&
                 !message.member.hasPermission("MANAGE_MESSAGES")
@@ -130,27 +118,48 @@ module.exports = class Message extends Event {
                 return (
                     message.delete() &&
                     message.author.send(
-                        language.get(
-                            "ERR_UNAUTHORIZED_CHANNEL",
-                            message.channel
-                        )
+                        message.translate("misc:CHANNEL_IGNORED", {
+                            channel: message.channel
+                        })
                     )
                 );
             }
 
             if (
-                !message.channel
-                    .permissionsFor(message.member)
-                    .has("MENTION_EVERYONE") &&
+                userPermissions.level <
+                    Constants.PermissionsLevels.SERVER_MODERATOR &&
                 (message.content.includes("@everyone") ||
                     message.content.includes("@here"))
             ) {
-                return message.channel.send(language.get("ERR_EVERYONE"));
-            }
-            if (!message.channel.nsfw && command.conf.nsfw) {
-                return message.channel.send(language.get("ERR_NOT_NSFW"));
+                return message.sendT("misc:EVERYONE_MENTION", {}, "error");
             }
 
+            if (!message.channel.nsfw && command.nsfw) {
+                return message.sendT("NSFW", {}, "error");
+            }
+
+            if (
+                userPermissions.level < command.permission ||
+                (actualUserPermissions.level < command.permission &&
+                    actualUserPermissions.level !==
+                        Constants.PermissionsLevels.SERVER_BLACKLISTED &&
+                    command.permission <=
+                        Constants.PermissionsLevels.SERVER_OWNER)
+            ) {
+                const requiredLevel = this.client.handlers.permissions.levels.get(
+                    command.permission
+                );
+                return message.error(
+                    message.translate("misc:MISSING_PERMS", {
+                        requiredLevel: requiredLevel.level,
+                        requiredTitle: requiredLevel.title,
+                        userLevel: actualUserPermissions.level,
+                        userTitle: actualUserPermissions.title
+                    })
+                );
+            }
+
+            console.log(`Request handled in ${Date.now() - startAt}ms`);
             command.execute(message, args);
         }
         /*
