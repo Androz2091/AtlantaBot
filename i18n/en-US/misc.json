@@ -1,0 +1,6 @@
+{
+  "MISSING_PERMS": "Your permission level is too low to execute that command. The command requires permission level {{requiredLevel}} (`{{requiredTitle}}`) and you are level {{userLevel}} (`{{userTitle}}`).",
+  "PREFIX": "this server's prefix is {{prefix}}.",
+  "CHANNEL_IGNORED": "Commands aren't allowed in {{channel}}.",
+  "EVERYONE_MENTION": "You aren't allowed to mention everyone or here in commands."
+}

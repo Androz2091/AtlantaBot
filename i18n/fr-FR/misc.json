@@ -1,3 +1,4 @@
 {
-    "PREFIX": "le préfixe de ce serveur est `{{prefix}}` !"
+  "MISSING_PERMS": "Votre niveau de permission est trop bas pour exécuter cette commande. La commande nécessite le niveau de permission {{requiredLevel}} (`{{requiredTitle}}`) et vous êtes de niveau {{userLevel}} (`{{userTitle}}`). ",
+  "PREFIX": "le préfixe de ce serveur est {{prefix}}."
 }
