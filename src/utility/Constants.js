@@ -21,7 +21,7 @@ const PermissionsLevels = {
     SERVER_DJ: 1,
     SERVER_MODERATOR: 2,
     SERVER_ADMINISTRATOR: 3,
-    SERVER_OWNE: 4,
+    SERVER_OWNER: 4,
     ATLANTA_MAINTAINER: 10
 };
 
