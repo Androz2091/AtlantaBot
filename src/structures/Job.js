@@ -3,7 +3,13 @@ const { CronJob } = require("cron");
 module.exports = class Job {
     constructor(client, cronTime = "* * * * * *") {
         this.client = client;
-        this.cronJob = new CronJob('* * * * * *', this.execute, null, true, 'America/Los_Angeles');
+        this.cronJob = new CronJob(
+            "* * * * * *",
+            this.execute,
+            null,
+            true,
+            "America/Los_Angeles"
+        );
     }
 
     execute() {

@@ -25,10 +25,10 @@ module.exports = class Jobs {
             })
             .on("end", () => {
                 this.client.logger.info(
-                    `Loaded ${Object.keys(this.jobs).length} Jobs in ${Date.now() -
-                        start}ms`
+                    `Loaded ${
+                        Object.keys(this.jobs).length
+                    } Jobs in ${Date.now() - start}ms`
                 );
             });
     }
-
 };
