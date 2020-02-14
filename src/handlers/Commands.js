@@ -19,16 +19,16 @@ module.exports = class CommandHandler extends Collection {
                 const file = parse(item.path);
                 if (!file.ext || file.ext !== ".js") return;
 
-                const req = (r => r.default || r)(
+                const Command = (r => r.default || r)(
                     require(join(file.dir, file.base))
                 );
-                const newReq = new req(
+                const command = new Command(
                     this.client,
                     file.name,
                     join(file.dir, file.base)
                 );
 
-                this.set(file.name, newReq);
+                this.set(file.name, command);
             })
             .on("end", () => {
                 this.client.logger.info(
