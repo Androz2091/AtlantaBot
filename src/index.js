@@ -10,9 +10,9 @@ const { version } = require("../package.json");
 const i18n = require("./i18n");
 
 const DatabaseHandler = require("./handlers/Database");
-const TaskHandler = require("./handlers/Tasks");
 const PermissionsHandler = require("./handlers/Permissions");
 const FunctionHandler = require("./handlers/Functions");
+const JobHandler = require("./handlers/Jobs");
 const CommandHandler = require("./handlers/Commands");
 const EventHandler = require("./handlers/Events");
 
@@ -35,11 +35,11 @@ module.exports = class AtlantaCluster extends Client {
 
         this.handlers = {};
         this.handlers.database = new DatabaseHandler(this);
-        this.handlers.tasks = new TaskHandler(this);
         this.handlers.permissions = new PermissionsHandler(this);
 
         this.helpers = {};
         this.functions = new FunctionHandler(this);
+        this.jobs = new JobHandler(this);
         this.commands = new CommandHandler(this);
         this.events = new EventHandler(this);
 
