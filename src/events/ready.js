@@ -1,5 +1,6 @@
 const Discord = require("discord.js"),
     giveaways = require("discord-giveaways");
+const AtlantaDashboard = require("../dashboard/app");
 
 const Event = require("../structures/Event");
 
@@ -11,6 +12,12 @@ module.exports = class Ready extends Event {
     async execute() {
         const client = this.client;
         client.handlers.database.initCache();
+        if (
+            client.config.dashboard.enabled &&
+            (!client.sharded || client.shard.ids.includes(0))
+        ) {
+            client.dashboard = new AtlantaDashboard(client);
+        }
 
         // Logs some informations using the logger file
         client.logger.info(
@@ -37,11 +44,6 @@ module.exports = class Ready extends Event {
         let autoUpdateDocs = require("../helpers/autoUpdateDocs.js");
         autoUpdateDocs.update(client); */
 
-        // Start the dashboard
-        if (client.config.dashboard.enabled) {
-            client.dashboard.load(client);
-        }
-
         /*
         let giveawaysOptions = {
             updateCountdownEvery: 15000,
@@ -54,10 +56,11 @@ module.exports = class Ready extends Event {
         const { status } = this.client.config,
             version = this.client.version;
         let i = 0;
-        setInterval(function() {
+        setInterval(async () => {
+            const guildCount = await client.fetchData("guilds.cache.size");
             let toDisplay = `${status[parseInt(i, 10)].name.replace(
                 "{serversCount}",
-                client.guilds.cache.size
+                guildCount
             )} | v${version}}`;
             client.user.setActivity(toDisplay, {
                 type: status[parseInt(i, 10)].type
