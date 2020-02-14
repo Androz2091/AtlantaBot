@@ -29,9 +29,8 @@ module.exports = class AtlantaCluster extends Client {
 
         this.config = config;
         this.version = version;
-        this.shard = process.env.SHARDS || "0";
-        this.shardCount = process.env.SHARD_COUNT || "1";
         this.logger = require("./utility/Logger");
+        this.sharded = Boolean(process.env.SHARDS);
 
         this.handlers = {};
         this.handlers.database = new DatabaseHandler(this);
@@ -62,21 +61,17 @@ module.exports = class AtlantaCluster extends Client {
                 "ms",
             "info"
         );
-        if (this.config.clustered) await this.createVezaClient();
         super.login(this.config.token);
     }
 
-    fetchData(property) {
-        if (!this.node) return eval(`this.${property}`);
-
-        return this.node.sendTo(
-            "manager",
-            {
-                event: "collectData",
-                data: property
-            },
-            { receptive: true }
-        );
+    async fetchData(property) {
+        if (!this.config.sharded) return eval(`this.${property}`);
+        else {
+            const results = await this.shard.broadcastEval(
+                `eval('this.'+${property}+')`
+            );
+            return results.reduce((p, c) => p + c);
+        }
     }
 
     get usedRAM() {
@@ -100,32 +95,6 @@ module.exports = class AtlantaCluster extends Client {
             })
         }).catch(err => {
             if (err) console.error(`DiscordBots Stats Transfer Failed ${err}`);
-        });
-    }
-
-    async createVezaClient() {
-        return new Promise(resolve => {
-            this.node = new VezaClient(`atlantabot-shard-${this.shard}`)
-                .on("error", (error, client) =>
-                    console.error(`[IPC] Error from ${client.name}:`, error)
-                )
-                .on("disconnect", client =>
-                    this.logger.log(
-                        `[IPC] Disconnected from ${client.name}, "ipc`
-                    )
-                )
-                .on("ready", client => {
-                    this.logger.log("Connected to " + client.name, "ipc");
-                    resolve();
-                })
-                .on("message", async message => {
-                    if (message.data.event === "collectData") {
-                        message.reply(eval(`this.${message.data.data}`));
-                    } else if (message.data.event === "shardCount") {
-                        message.reply(client.shardCount);
-                    }
-                })
-                .connectTo(this.config.nodePort);
         });
     }
 };
