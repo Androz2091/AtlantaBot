@@ -67,10 +67,16 @@ module.exports = class AtlantaCluster extends Client {
     async fetchData(property) {
         if (!this.config.sharded) return eval(`this.${property}`);
         else {
-            const results = await this.shard.broadcastEval(
-                `eval('this.'+${property}+')`
-            );
+            const results = await this.shard.fetchClientValues(property);
             return results.reduce((p, c) => p + c);
+        }
+    }
+
+    async broadcastEval(evalStr) {
+        if (!this.config.sharded) return [ eval(evalStr) ];
+        else {
+            const results = await this.shard.broadcastEval(evalStr);
+            return results;
         }
     }
 
