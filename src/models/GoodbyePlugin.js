@@ -1,0 +1,52 @@
+class GoodbyePlugin {
+    constructor(guild, data = {}) {
+        this.guild = guild;
+        this.handler = guild.handler;
+        this.inserted = data !== {};
+        // Whether the plugin is enabled
+        this.enabled = data.enabled || false;
+        // The goodbye channel
+        this.channelID = data.channel || null;
+        // The goodbye message
+        this.message = data.message || null;
+        // Whether to send an image with the message
+        this.withImage = data.withImage || null;
+    }
+
+    // Returns a string with the plugin's data
+    get data() {
+        return JSON.stringify({
+            enabled: this.enabled,
+            channel: this.channelID,
+            message: this.message,
+            withImage: this.withImage
+        });
+    }
+
+    // Update the plugin data
+    async updateData() {
+        await this.handler.query(`
+            UPDATE guild_plugins
+            SET plugin_data = '${this.data}'
+            WHERE
+            guild_id = '${this.guild.id}' AND
+            plugin_name = 'goodbye';
+        `);
+        return this;
+    }
+
+    // Insert the plugin in the db if it doesn't exist
+    async insert() {
+        if (!this.inserted) {
+            await this.handler.query(`
+                INSERT INTO guild_plugins
+                (guild_id, plugin_name, plugin_data) VALUES
+                ('${this.guild.id}', 'goodbye', '${this.data}');
+            `);
+            this.inserted = true;
+        }
+        return this;
+    }
+}
+
+module.exports = GoodbyePlugin;
