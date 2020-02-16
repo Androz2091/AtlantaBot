@@ -41,15 +41,14 @@ module.exports = class DatabaseHandler {
             // If the user is in the cache
             if (this.userCache.get(userID) && !forceFetch)
                 return resolve(this.userCache.get(userID));
-            const results = await this.query(
-                `SELECT * FROM users WHERE id= '${userID}'`
+            let { rows } = await this.query(
+                `SELECT * FROM users WHERE user_id = '${userID}'`
             );
-            if (results.rows.length === 0) {
-                results = await this.query(
-                    `INSERT INTO users (id, registered_at) VALUES ('${userID}', '${new Date().toISOString()}') RETURNING *`
-                );
-            }
-            const user = new User(results.rows[0], this);
+            const user = new User(userID, rows[0], this);
+            // Insert the user into the database if it's needed
+            if (!user.inserted) await user.insert();
+            // Fetch user reminds, etc...
+            await user.fetch();
             resolve(user);
             // Add the user to the cache
             this.userCache.set(userID, user);
