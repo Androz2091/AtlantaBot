@@ -43,7 +43,6 @@ module.exports = class CommandHandler extends Collection {
         if (this.has(name)) return this.get(name);
         const commandAlias = this.find(c => c.aliases.includes(name));
         if (commandAlias) return commandAlias;
-        return alias ? this.get(alias.command) : null;
     }
 
     reload(command) {
