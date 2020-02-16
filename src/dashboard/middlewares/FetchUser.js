@@ -9,7 +9,6 @@ module.exports = async (req, _res, next) => {
         const guildJSON = await req.client.broadcastEval(`const guild = this.guilds.cache.get('${guild.id}'); if(guild) guild.toJSON();`, true);
         guild.baseInviteURL = `https://discordapp.com/oauth2/authorize?client_id=${req.client.user.id}&scope=bot&permissions=2146958847&guild_id=${guild.id}&response_type=code&redirect_uri=${encodeURIComponent(req.client.config.dashboard.baseURL+"/auth/callback")}&state`;
         guild.manageURL = (guildJSON ? `/manage/${guild.id}` : `${baseInviteURL}=manage:${guild.id}`);
-        guild.statsURL = (guildJSON ? `/stats/${guild.id}` : `${baseInviteURL}=stats:${guild.id}`);
         guild.inviteURL = `${guild.baseInviteURL}=null`;
         guild.iconURL = (guild.icon ? `https://cdn.discordapp.com/icons/${guild.id}/${guild.icon}.png?size=128` : "https://discordemoji.com/assets/emoji/discordcry.png");
     });
