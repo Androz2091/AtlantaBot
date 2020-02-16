@@ -1,31 +1,71 @@
 <header class="main-header">
-
-    <!-- Logo -->
-    <a href="/" class="logo">
-        <!-- mini logo for sidebar mini 50x50 pixels -->
-        <span class="logo-mini"><b>A</b></span>
-        <!-- logo for regular state and mobile devices -->
-        <span class="logo-lg"><b>Atlanta</b></span>
-    </a>
-
-    <!-- Header Navbar: style can be found in header.less -->
     <nav class="navbar navbar-static-top">
-        <!-- Sidebar toggle button-->
-        <a class="sidebar-toggle" data-toggle="push-menu" role="button">
-            <span class="sr-only">Toggle navigation</span>
-        </a>
+        <div class="container">
+        <div class="navbar-header">
+            <a href="/selector" class="navbar-brand"><b>Atlanta</b> Dashboard</a>
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse">
+            <i class="fa fa-bars"></i>
+            </button>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse pull-left" id="navbar-collapse">
+            <ul class="nav navbar-nav">
+            <li id="select"><a href="/selector"><%= translate("dashboard/selector:TITLE") %> <span class="sr-only">(current)</span></a></li>
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><%= translate("common:HELP") %> <span class="caret"></span></a>
+                <ul class="dropdown-menu" role="menu">
+                <li><a target="_blank" href="https://docs.manage-invite.xyz"><%= translate("common:DOC") %></a></li>
+                <li><a target="_blank" href="https://discord.gg/N99PJgE"><%= translate("common:SUPPORT") %></a></li>
+                </ul>
+            </li>
+            </ul>
+        </div>
+
+        <!-- /.navbar-collapse -->
         <!-- Navbar Right Menu -->
         <div class="navbar-custom-menu">
             <ul class="nav navbar-nav">
-                <!-- User Account: style can be found in dropdown.less -->
-                <li class="dropdown user user-menu">
-                    <a class="dropdown-toggle" data-toggle="dropdown">
-                        <img src="<%= user.displayAvatarURL %>" class="user-image" alt="User Image">
-                        <span class="hidden-xs"><%= user.tag %></span>
-                    </a>
+            <li class="dropdown language-selector">
+                <% if(locale === "en"){ %>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-close-others="true">English</a>
+                    <ul class="dropdown-menu pull-right">
+                        <li><a class="dropdown-item" href="/language?new=fr_FR&url=<%= currentURL %>"><span>Français</span></a></li>
+                    </ul>
+                <% } else if(locale === "fr") { %>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-close-others="true">Français</a>
+                    <ul class="dropdown-menu pull-right">
+                        <li><a class="dropdown-item" href="/language?new=en_US&url=<%= currentURL %>"><span>English</span></a></li>
+                    </ul>
+                <% } %>
+            </li>
+            <!-- User Account Menu -->
+            <li class="dropdown user user-menu">
+                <!-- Menu Toggle Button -->
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                <!-- The user image in the navbar-->
+                <img src="<%= user.displayAvatarURL %>" class="user-image" alt="User Image">
+                <!-- hidden-xs hides the username on small devices so only the image appears. -->
+                <span class="hidden-xs"><%= user.tag %></span>
+                </a>
+                <ul class="dropdown-menu">
+                <!-- The user image in the menu -->
+                <li class="user-header">
+                    <img src="<%= user.displayAvatarURL %>" class="img-circle" alt="User Image">
+                    <p> <%= user.username %> </p>
                 </li>
+                <!-- Menu Footer-->
+                <li class="user-footer">
+                    <div class="pull-left">
+                    <a href="/auth/logout" class="btn btn-default btn-flat"><%= translate("common:SIGN_OUT") %></a>
+                    </div>
+                </li>
+                </ul>
+            </li>
             </ul>
         </div>
+        <!-- /.navbar-custom-menu -->
+        </div>
+        <!-- /.container-fluid -->
     </nav>
-
 </header>
