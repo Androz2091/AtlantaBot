@@ -2,6 +2,7 @@ const { Collection } = require("discord.js");
 
 const AutomodPlugin = require("./AutomodPlugin");
 const WelcomePlugin = require("./WelcomePlugin");
+const GoodbyePlugin = require("./GoodbyePlugin");
 
 module.exports = class Guild {
     constructor(guildID, data = {}, handler) {
@@ -24,7 +25,7 @@ module.exports = class Guild {
     async fetch() {
         if (this.fetched) return;
         // Fetch or fill plugins
-        this.plugins = new Collection();
+        this.plugins = {};
         await this.fetchPlugins(false, this.data.guild_plugins);
         // Fetch custom commands
         this.customCommands = new Collection();
@@ -32,6 +33,9 @@ module.exports = class Guild {
         // Fetch ignored channels
         this.ignoredChannels = [];
         await this.fetchIgnoredChannels();
+        // Fetch command logs
+        this.commandLogs = [];
+        await this.fetchCommandLogs();
         this.fetched = true;
     }
 
@@ -44,24 +48,23 @@ module.exports = class Guild {
             `);
             pluginsData = rows;
         }
-        this.plugins.set(
-            "welcome",
-            new WelcomePlugin(
-                this,
-                pluginsData.find(p => p.plugin_name === "welcome")
-            )
+        this.plugins.welcome = new WelcomePlugin(
+            this,
+            pluginsData.find(p => p.plugin_name === "welcome").plugin_data
         );
-        //this.plugins.set("goodbye", new GoodbyePlugin(this, pluginsData.find((p) => p.plugin_name === "goodbye")));
+        this.plugins.goodbye = new GoodbyePlugin(
+            this,
+            pluginsData.find(p => p.plugin_name === "goodbye").plugin_data
+        );
         //this.plugins.set("autorole", new AutorolePlugin(this, pluginsData.find((p) => p.plugin_name === "autorole")));
-        this.plugins.set(
-            "automod",
-            new AutomodPlugin(
-                this,
-                pluginsData.find(p => p.plugin_name === "automod")
-            )
+        this.plugins.automod = new AutomodPlugin(
+            this,
+            pluginsData.find(p => p.plugin_name === "automod").plugin_data
         );
         //this.plugins.set("warnsSanctions", new WarnsSanctions(this, pluginsData.find((p) => p.plugin_name === "warnsSanctions")));
-        this.plugins.each(p => p.insert());
+        Object.keys(this.plugins).forEach(pName =>
+            this.plugins[pName].insert()
+        );
         return this.plugins;
     }
 
@@ -90,6 +93,41 @@ module.exports = class Guild {
             );
         });
         return this.customCommands;
+    }
+
+    // Fetch and fill command logs
+    async fetchCommandLogs() {
+        const { rows } = await this.handler.query(`
+            SELECT * FROM guild_cmd_logs
+            WHERE guild_id = '${this.id}';
+        `);
+        rows.forEach(cmdLog => {
+            this.commandLogs.push({
+                name: cmdLog.cmd_name,
+                channelID: cmdLog.cmd_channel_id,
+                userID: cmdLog.user_id,
+                date: cmdLog.cmd_date
+            });
+        });
+        return this.customCommands;
+    }
+
+    // Add a command log
+    async addCommandLog(name, channelID, userID, date = new Date()) {
+        await this.handler.query(`
+            INSERT INTO guild_cmd_logs
+            (guild_id, cmd_name, cmd_channel_id, cmd_user_id, cmd_date) VALUES
+            ('${
+                this.id
+            }', '${name}', '${channelID}', '${userID}', '${date.toISOString()}');
+        `);
+        this.commandLogs.push({
+            name,
+            channelID,
+            userID,
+            date
+        });
+        return this;
     }
 
     // Update the guild language
