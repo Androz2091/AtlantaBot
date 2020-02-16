@@ -19,9 +19,9 @@ class AtlantaDashboard {
     }
 
     _setup() {
-        this.app.set("views", "views");
+        this.app.set("views", join(__dirname, "views"));
         this.app.set("view engine", "ejs");
-        this.app.use(express.static("public"));
+        this.app.use(express.static(join(__dirname, "public")));
         this.app.set("port", this.client.config.dashboard.port || 3000);
         this.app.use(
             session({
@@ -34,7 +34,7 @@ class AtlantaDashboard {
         );
         this.app.use(express.json());
         this.app.use(express.urlencoded({ extended: false }));
-        this.app.use((req, res, next) => {
+        this.app.use((req, _res, next) => {
             req.dashboard = this;
             req.client = this.client;
             req.config = this.client.config;
