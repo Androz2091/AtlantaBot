@@ -58,10 +58,8 @@ module.exports = class Message extends Event {
                 );
 
             if (
-                guild.plugins.get("automod").enabled &&
-                !guild.plugins
-                    .get("automod")
-                    .ignored.includes(message.channel.id)
+                guild.plugins.automod.enabled &&
+                !guild.plugins.automod.ignored.includes(message.channel.id)
             ) {
                 if (
                     /(discord\.(gg|io|me|li)\/.+|discordapp\.com\/invite\/.+)/i.test(
@@ -161,6 +159,12 @@ module.exports = class Message extends Event {
 
             console.log(`Request handled in ${Date.now() - startAt}ms`);
             command.execute(message, args);
+            guild.addCommandLog(
+                command.name,
+                message.channel.id,
+                message.author.id,
+                new Date()
+            );
         }
         /*
 
