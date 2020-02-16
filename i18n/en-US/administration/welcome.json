@@ -1,0 +1,3 @@
+{
+    "DEFAULT_MESSAGE": "Welcome {user} in {server}! We're now {membercount}. Your account was created {createdat}."
+}

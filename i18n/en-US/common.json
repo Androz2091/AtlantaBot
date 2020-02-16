@@ -8,5 +8,15 @@
     "HELP": "Help",
     "DOC": "Documentation",
     "SUPPORT": "Support server",
-    "SIGN_OUT": "Sign out"
+    "SIGN_OUT": "Sign out",
+    "MEMBERS": "Members",
+    "PREFIX": "Prefix",
+    "UPDATE": "Update",
+    "DISABLE": "Disable",
+    "ENABLE": "Enable",
+    "LANGUAGE": "Language",
+    "CONFIRM": "Confirm",
+    "CANCEL": "Cancel",
+    "MESSAGE": "Message",
+    "CHANNEL": "Channel"
 }

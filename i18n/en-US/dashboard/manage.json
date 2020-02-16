@@ -1,0 +1,11 @@
+{
+    "CONF": "Configuration",
+    "ANALYTICS": "Analytics",
+    "BASIC": "Basic configuration",
+    "WELCOME": "Welcome configuration",
+    "GOODBYE": "Goodbye configuration",
+    "ADD_IMAGE": "Add an image with the message",
+    "LEAVE_GUILD": "Leave server",
+    "LEAVE_GUILD_MODAL_TITLE": "Do you really want Atlanta to leave this server?",
+    "LEAVE_GUILD_MODAL_CONTENT": "The server configuration and the server data will be kept."
+}
