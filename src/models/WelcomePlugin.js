@@ -4,7 +4,7 @@ class WelcomePlugin {
         this.handler = guild.handler;
         this.inserted = data !== {};
         // Whether the plugin is enabled
-        this.enabled = data.enabled || true;
+        this.enabled = data.enabled || false;
         // The welcome channel
         this.channelID = data.channel || null;
         // The welcome message
