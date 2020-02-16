@@ -1,2 +1,12 @@
 {
+    "MANAGE": "Manage",
+    "STATS": "Stats",
+    "STATUS_ONLINE": "Online",
+    "STATUS_OFFLINE": "Offline",
+    "STATUS_DND": "Do not disturb",
+    "STATUS_IDLE": "Idle",
+    "HELP": "Help",
+    "DOC": "Documentation",
+    "SUPPORT": "Support server",
+    "SIGN_OUT": "Sign out"
 }
