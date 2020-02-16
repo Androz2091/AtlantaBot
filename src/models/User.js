@@ -25,7 +25,7 @@ module.exports = class User {
         this.fetched = true;
     }
 
-    get loggedDashboard () {
+    get loggedDashboard() {
         return this.dashboardConnections.length > 0;
     }
 
@@ -44,11 +44,13 @@ module.exports = class User {
         return this.dashboardConnections;
     }
 
-    async addDashboardConnection(state, date = new Date()){
+    async addDashboardConnection(state, date = new Date()) {
         await this.handler.query(`
             INSERT INTO user_dashboard_connections
             (user_id, con_date, con_state) VALUES
-            ('${this.id}', '${date.toISOString()}', ${state ? `'${state}'` : "null"});
+            ('${this.id}', '${date.toISOString()}', ${
+            state ? `'${state}'` : "null"
+        });
         `);
         this.dashboardConnections.push({
             date,
