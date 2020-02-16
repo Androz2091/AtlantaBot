@@ -120,7 +120,7 @@ module.exports = class Guild {
             await this.handler.query(`
                 INSERT INTO guilds
                 (guild_id, guild_prefix, guild_language, guild_registered_at) VALUES
-                ('${this.guild.id}', '${this.prefix}', '${this.language}', ${this.registeredAt});
+                ('${this.id}', '${this.prefix}', '${this.language}', ${this.registeredAt});
             `);
             this.inserted = true;
         }
