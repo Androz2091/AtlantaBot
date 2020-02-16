@@ -1,38 +1,42 @@
 <!DOCTYPE html>
 <html>
 
-	<%- include('includes/head') %>
+<%- include ('includes/head') %>
 
-	<body class="hold-transition skin-blue sidebar-mini">
+<!-- ADD THE CLASS layout-top-nav TO REMOVE THE SIDEBAR. -->
+<body class="hold-transition skin-blue layout-top-nav">
+<div class="wrapper">
 
-		<div class="wrapper">
+  <%- include ('includes/header') %>
 
-			<!-- The header is the topbar -->
-			<%- include('includes/header') %>
+  <!-- Full Width Column -->
+  <div class="content-wrapper">
+    <div class="container">
+      <!-- Content Header (Page header) -->
+      <section class="content-header">
+        <h1>
+          <%= translate("dashboard/selector:TITLE") %>
+        </h1>
+        <ol class="breadcrumb">
+          <li><a href="/selector"><i class="fa fa-home"></i><%= translate("dashboard/selector:TITLE") %></a></li>
+        </ol>
+      </section>
 
-			<!-- The sidebar includes the menu -->
-			<%- include('includes/sidebar') %>
-
-			<!-- Content Wrapper. Contains page content -->
-			<div class="content-wrapper">
-
-				<!-- Content Header (Page header) -->
-				<section class="content-header">
-					<h1> <%= language.get("SELECTOR") %> <small> Version 1.0.0-beta </small> </h1>
-					<ol class="breadcrumb">
-						<li class="active"><a href="/"><i class="fa fa-home"></i> <%= language.get("SELECTOR") %></a></li>
-					</ol>
-				</section>
-
-				<section class="content">
-
-					<% if(user.displayedGuilds){ user.displayedGuilds.forEach(function(guild) { %>
+      <!-- Main content -->
+      <section class="content">
+				<% if(!hasJoinedSupport){ %>
+					<div class="callout callout-warning">
+						<h4>Hey, <strong><%= user.username %></strong></h4>
+						<p>Looks like you're not on our support server. Join it by clicking <a target="_blank" href="<%= discord %>">here</a>!</p>
+					</div>
+				<% } %>
+          		<% if(user.manageableGuilds){ user.manageableGuilds.forEach((guild) => { %>
 						<!-- Displays 4 servers by line -->
 						<div class="col-md-3">
 							<div class="box box-solid">
 								<div class="box-header with-border text-center">
 									<i class="fas fa-crown"></i>    
-									<h3 class="box-title"><%= guild.name %></h3>
+									<h3 class="box-title"><%= guild.name.length > 25 ? guild.name.substr(0, 23)+"..." : guild.name %></h3>
 								</div>
 								<!-- /.box-header -->
 								<div class="box-body">
@@ -42,8 +46,7 @@
 								</div>
 								<!-- /.box-body -->
 								<div class="box-footer">
-									<a href="<%= guild.settingsUrl %>"><button class="btn btn-success"><%= language.get("UTILS").MANAGE %></button></a>
-									<a href="<%= guild.statsUrl %>"><button type="submit" name="welcomeUpdate" class="btn btn-primary"><%= language.get("UTILS").STATS %></button></a>
+									<a href="<%= guild.manageURL %>"><button class="btn btn-success btn-block"><%= translate("common:MANAGE") %></button></a>
 								</div>
 								<!-- /.box-footer -->
 							</div>
@@ -54,7 +57,7 @@
 						<div class="col-md-12">
 							<div class="box box-warning">
 								<div class="box-header with-border">
-									<h3 class="box-title"><%= language.get("ERR_NO_SERVER_FOUND") %></h3>
+									<h3 class="box-title"><%= translate("dashboard/selector:NO_SERVER_FOUND_TITLE") %></h3>
 									<div class="box-tools pull-right">
 									<button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
 									</button>
@@ -63,7 +66,7 @@
 								</div>
 								<!-- /.box-header -->
 								<div class="box-body">
-									<%= language.get("ERR_NO_SERVER_FOUND_CONTENT") %>
+									<%= translate("dashboard/selector:NO_SERVER_FOUND_CONTENT") %>
 								</div>
 								<!-- /.box-body -->
 							</div>
@@ -71,13 +74,16 @@
 						</div>
 					<% } %>
 					</div>
-				</section>
-				
-				<!-- Footer includes credits and version -->
-				<%- include('includes/footer') %>
-			</div>
-			<!-- /.content-wrapper -->
-		</div>
-		<!-- ./wrapper -->
-	</body>
+      </section>
+      <!-- /.content -->
+    </div>
+    <!-- /.container -->
+  </div>
+  <!-- /.content-wrapper -->
+
+  <%- include ('includes/footer') %>
+
+</div>
+<!-- ./wrapper -->
+</body>
 </html>
