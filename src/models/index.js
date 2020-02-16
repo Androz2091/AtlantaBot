@@ -6,5 +6,6 @@ module.exports = {
     Guild: require("./Guild"),
     // Guild plugins
     AutomodPlugin: require("./AutomodPlugin"),
-    WelcomePlugin: require("./WelcomePlugin")
+    WelcomePlugin: require("./WelcomePlugin"),
+    GoodbyePlugin: require("./GoodbyePlugin")
 };
