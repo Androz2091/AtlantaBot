@@ -9,9 +9,9 @@ module.exports = class User {
         // Whether the user is fetched
         this.fetched = false;
         // User birthdate
-        this.birthdate = '';
+        this.birthdate = "";
         // User biography
-        this.bio = '';
+        this.bio = "";
         // User reputation
         this.rep = 0;
         // Timestamp of the user creation date (in the database)

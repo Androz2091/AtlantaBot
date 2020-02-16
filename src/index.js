@@ -72,10 +72,10 @@ module.exports = class AtlantaCluster extends Client {
     }
 
     async broadcastEval(evalStr, onlyOneValid) {
-        if (!this.config.sharded) return [ eval(evalStr) ];
+        if (!this.config.sharded) return [eval(evalStr)];
         else {
             const results = await this.shard.broadcastEval(evalStr);
-            if(onlyOneValid) return results.find((r) => r);
+            if (onlyOneValid) return results.find(r => r);
             return results;
         }
     }

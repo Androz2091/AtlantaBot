@@ -1,5 +1,4 @@
 module.exports = {
-
     // User
     User: require("./User"),
 
