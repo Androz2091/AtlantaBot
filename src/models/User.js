@@ -20,14 +20,41 @@ module.exports = class User {
 
     async fetch() {
         if (this.fetched) return;
-        this.reminds = [];
-        await this.fetchReminds();
+        this.dashboardConnections = [];
+        await this.fetchDashboardConnections();
         this.fetched = true;
     }
 
-    // Fetch and fill reminds
-    async fetchReminds() {
-        return;
+    get loggedDashboard () {
+        return this.dashboardConnections.length > 0;
+    }
+
+    // Fetch and fill dashboard connections
+    async fetchDashboardConnections() {
+        const { rows } = await this.handler.query(`
+            SELECT * FROM user_dashboard_connections
+            WHERE user_id = '${this.id}';
+        `);
+        rows.forEach(dashboardConnection => {
+            this.dashboardConnections.push({
+                date: dashboardConnection.con_date,
+                state: dashboardConnection.con_state
+            });
+        });
+        return this.dashboardConnections;
+    }
+
+    async addDashboardConnection(state, date = new Date()){
+        await this.handler.query(`
+            INSERT INTO user_dashboard_connections
+            (user_id, con_date, con_state) VALUES
+            ('${this.id}', '${date.toISOString()}', ${state ? `'${state}'` : "null"});
+        `);
+        this.dashboardConnections.push({
+            date,
+            state
+        });
+        return this;
     }
 
     // Insert the guild in the db if it doesn't exist

@@ -16,7 +16,8 @@ module.exports.Router = class Callback extends Router {
                 }
             }
             if(!req.query.code) return res.redirect(req.client.config.dashboard.failureURL);
-            const redirectURL = req.dashboard.states[req.query.state] || "/selector";
+            const state = req.dashboard.states[req.query.state];
+            const redirectURL = state || "/selector";
             let response = await fetch(`https://discordapp.com/api/oauth2/token?grant_type=authorization_code&code=${req.query.code}&redirect_uri=${req.client.config.dashboard.baseURL}/auth/callback`, {
                 method: "POST",
                 headers: {
@@ -66,13 +67,17 @@ module.exports.Router = class Callback extends Router {
                 ... { guilds }
             };
             const user = await req.client.users.fetch(req.session.user.id);
-            const embed = JSON.stringify({
-                color: req.client.config.color,
-                author: {
-                    name: user.tag+" connected to the dashboard!"
-                }
-            }).replace(/'/g, "''");
-            req.client.broadcastEval(`let channel = this.channels.cache.get(this.config.dashboard.logs); if(channel) channel.send({ embed: JSON.parse('${embed}') });`);
+            const userDB = await req.client.handlers.database.fetchUser(req.session.user.id);
+            if(!userDB.loggedDashboard){
+                const embed = JSON.stringify({
+                    color: req.client.config.color,
+                    author: {
+                        name: user.tag+" connected to the dashboard!"
+                    }
+                }).replace(/'/g, "''");
+                req.client.broadcastEval(`let channel = this.channels.cache.get(this.config.dashboard.logs); if(channel) channel.send({ embed: JSON.parse('${embed}') });`);
+            }
+            userDB.addDashboardConnection(state, new Date());
             req.session.authenticated = true;
             res.redirect(redirectURL);
         });
