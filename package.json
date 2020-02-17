@@ -28,7 +28,7 @@
     "cron": "^1.7.2",
     "dblapi.js": "^2.3.0",
     "discord-backup": "^2.0.3",
-    "discord-giveaways": "^2.4.4",
+    "discord-giveaways": "^3.2.0",
     "discord-player": "^1.3.2",
     "discord.js": "github:discordjs/discord.js#fe7df708e44e0280dfaf0f8e457b154781bb5140",
     "ejs": "^3.0.1",
