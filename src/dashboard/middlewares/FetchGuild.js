@@ -133,6 +133,20 @@ module.exports = async (req, res, next) => {
     guildJSON.commandsCountData.forEach((_cmdData, index) => {
         guildJSON.commandsCountData[index].color = colors[index];
     });
+    guildJSON.commandsPeriodsData = [];
+    guildDB.commandLogs.sort((a,b) => new Date(a.date).getTime() - new Date(b.date).getTime()).forEach(logEntry => {
+        const date = new Date(logEntry.date);
+        const formattedDate = `${date.getDate()}/${date.getMonth()+1}`;
+        if (!guildJSON.commandsPeriodsData.some(o => o.label === formattedDate)) {
+            guildJSON.commandsPeriodsData.push({
+                label: formattedDate,
+                value: guildDB.commandLogs.filter((l) => {
+                    const tdate = new Date(l.date);
+                    return formattedDate === `${tdate.getDate()}/${tdate.getMonth()+1}`                    
+                }).length
+            });
+        }
+    });
     const formattedGuild = {
         ...guildJSON,
         ...{ channels: guildChannelsJSON },
