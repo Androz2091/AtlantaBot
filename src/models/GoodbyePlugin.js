@@ -20,7 +20,7 @@ class GoodbyePlugin {
             channel: this.channelID,
             message: this.message,
             withImage: this.withImage
-        });
+        }).replace(/'/g, "''");
     }
 
     // Update the plugin data
