@@ -100,6 +100,18 @@ module.exports = async (req, res, next) => {
     fetchChannels("fortniteshop");
     fetchChannels("modlogs");
     fetchChannels("reports");
+    guildJSON.commandsData = [];
+    guildDB.commandLogs.forEach((logEntry) => {
+        const commandName = logEntry.name;
+        if(!guildJSON.commandsData.some((o) => o.name === commandName)){
+            guildJSON.commandsData.push({
+                name: commandName,
+                count: guildDB.commandLogs.filter((l) => l.name === commandName).length,
+                percent: (guildDB.commandLogs.filter((l) => l.name === commandName).length*100)/guildDB.commandLogs.length
+            });
+        }
+    });
+    guildJSON.commandsData = guildJSON.commandsData.sort((a, b) =>  b.count - a.count);
     const formattedGuild = {
         ...guildJSON,
         ...{ channels: guildChannelsJSON },

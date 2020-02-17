@@ -226,6 +226,50 @@
 							</div>
 						</div>
 					</section>
+					<div class="container">
+						<!-- Content Header (Page header) -->
+						<section class="content-header">
+							<h1>
+								<%= translate("dashboard/manage:ANALYTICS") %>
+							</h1>
+						</section>
+						<!-- Main content -->
+						<section class="content">
+							<div class="row">
+								<div class="col-md-6">
+									<div class="box box-warning">
+										<div class="box-header with-border">
+										  <h3 class="box-title"><%= translate("dashboard/manage:COMMANDS") %></h3>
+										</div>
+										<!-- /.box-header -->
+										<div class="box-body">
+										  <table class="table table-bordered">
+											<tr>
+											  <th style="width: 10px">#</th>
+											  <th><%= translate("common:COMMAND") %></th>
+											  <th><%= translate("dashboard/manage:USES_PERCENT") %></th>
+											  <th style="width: 40px"><%= translate("common:USES") %></th>
+											</tr>
+											<% guild.commandsData.forEach((cmd, index) => { %>
+												<tr>
+													<td><%= index+1 %></td>
+													<td><%= guild.prefix %><%= cmd.name %></td>
+													<td>
+														<div class="progress progress-xs">
+														  <div class="progress-bar progress-bar-success" style="width: <%- cmd.percent %>%"></div>
+														</div>
+													</td>
+													<td><span class="badge bg-red"><%= cmd.count %></span></td>
+												</tr>
+											<% }); %>
+											</tr>
+										  </table>
+										</div>
+										<!-- /.box-body -->
+									  </div>
+								</div>
+							</div>
+						</section>
 					<%- include ('includes/footer') %>
 				</div>
 			</div>
