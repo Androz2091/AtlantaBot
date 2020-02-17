@@ -77,10 +77,10 @@
 												<select class="form-control" name="language">
 													<% if(guild.language === "fr-FR"){ %>
 														<option selected="selected" value="fr-FR">Français</option>
-														<option value="en-US">English (US)</options>
+														<option value="en-US">English (US)</option>
 													<% } else { %>
 														<option value="fr-FR">Français</option>
-														<option selected="selected" value="en-US">English (US)</options>
+														<option selected="selected" value="en-US">English (US)</option>
 													<% } %>
 												</select>
 											</div>
@@ -237,39 +237,18 @@
 						<section class="content">
 							<div class="row">
 								<div class="col-md-6">
-									<div class="box box-warning">
+									<div class="box box-danger">
 										<div class="box-header with-border">
-										  <h3 class="box-title"><%= translate("dashboard/manage:COMMANDS") %></h3>
+										  	<h3 class="box-title"><%= translate("dashboard/manage:COMMANDS") %></h3>
 										</div>
-										<!-- /.box-header -->
 										<div class="box-body">
-										  <table class="table table-bordered">
-											<tr>
-											  <th style="width: 10px">#</th>
-											  <th><%= translate("common:COMMAND") %></th>
-											  <th><%= translate("dashboard/manage:USES_PERCENT") %></th>
-											  <th style="width: 40px"><%= translate("common:USES") %></th>
-											</tr>
-											<% guild.commandsData.forEach((cmd, index) => { %>
-												<tr>
-													<td><%= index+1 %></td>
-													<td><%= guild.prefix %><%= cmd.name %></td>
-													<td>
-														<div class="progress progress-xs">
-														  <div class="progress-bar progress-bar-success" style="width: <%- cmd.percent %>%"></div>
-														</div>
-													</td>
-													<td><span class="badge bg-red"><%= cmd.count %></span></td>
-												</tr>
-											<% }); %>
-											</tr>
-										  </table>
+											<canvas id="commands-count-chart" style="height:250px"></canvas>
 										</div>
-										<!-- /.box-body -->
-									  </div>
+									</div>
 								</div>
 							</div>
 						</section>
+					</div>
 					<%- include ('includes/footer') %>
 				</div>
 			</div>
@@ -281,6 +260,26 @@
 				checkboxClass: 'icheckbox_minimal-blue',
 				radioClass   : 'iradio_minimal-blue'
 			})
+			$(function () {
+				const commandsCountChartCanvas = $('#commands-count-chart').get(0).getContext('2d');
+				const commandsCountChart       = new Chart(commandsCountChartCanvas);
+				const commandCountAnalytics = JSON.parse(`<%- JSON.stringify(guild.commandsCountData) %>`);
+				const commandCountData        = commandCountAnalytics;
+				const commandCountOptions     = {
+					tooltipTemplate: "<%%= label %%>: <%%= value %%>%",
+					segmentShowStroke    : true,
+					segmentStrokeColor   : '#fff',
+					segmentStrokeWidth   : 2,
+					percentageInnerCutout: 50,
+					animationSteps       : 100,
+					animationEasing      : 'easeOutBounce',
+					animateRotate        : true,
+					animateScale         : false,
+					responsive           : true,
+					maintainAspectRatio  : true
+				}
+				commandsCountChart.Doughnut(commandCountData, commandCountOptions);
+			});
 		</script>
     </body>
 </html>

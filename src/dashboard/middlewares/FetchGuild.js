@@ -1,4 +1,5 @@
 const Discord = require("discord.js");
+const randomColor = require("randomcolor");
 
 module.exports = async (req, res, next) => {
     // Guild ID
@@ -76,22 +77,30 @@ module.exports = async (req, res, next) => {
     guildChannelsJSON.forEach((channel, index) => {
         guildChannelsJSON[index].formattedName = `#${channel.name}`;
     });
-    const fetchChannels = (name) => {
+    const fetchChannels = name => {
         let selected, others;
         // If the channel is defined
-        if(guildDB.specialChannels[name]){
-            const channel = guildChannelsJSON.find((c) => c.id === guildDB.specialChannels[name]);
-            if(channel){
+        if (guildDB.specialChannels[name]) {
+            const channel = guildChannelsJSON.find(
+                c => c.id === guildDB.specialChannels[name]
+            );
+            if (channel) {
                 selected = channel;
-                others = guildChannelsJSON.filter((c) => c.id !== channel.id && c.type === "text");
-                others.push({ formattedName: req.translate("common:NO_CHANNEL") });
+                others = guildChannelsJSON.filter(
+                    c => c.id !== channel.id && c.type === "text"
+                );
+                others.push({
+                    formattedName: req.translate("common:NO_CHANNEL")
+                });
             } else {
-                selected = { formattedName: req.translate("common:NO_CHANNEL") };
+                selected = {
+                    formattedName: req.translate("common:NO_CHANNEL")
+                };
                 others = guildChannelsJSON;
             }
         } else {
             selected = { formattedName: req.translate("common:NO_CHANNEL") };
-            others = guildChannelsJSON.filter((c) => c.type === "text");
+            others = guildChannelsJSON.filter(c => c.type === "text");
         }
         guildJSON[`${name}SelectedChannel`] = selected;
         guildJSON[`${name}OtherChannels`] = others;
@@ -100,18 +109,30 @@ module.exports = async (req, res, next) => {
     fetchChannels("fortniteshop");
     fetchChannels("modlogs");
     fetchChannels("reports");
-    guildJSON.commandsData = [];
-    guildDB.commandLogs.forEach((logEntry) => {
+    guildJSON.commandsCountData = [];
+    guildDB.commandLogs.forEach(logEntry => {
         const commandName = logEntry.name;
-        if(!guildJSON.commandsData.some((o) => o.name === commandName)){
-            guildJSON.commandsData.push({
-                name: commandName,
-                count: guildDB.commandLogs.filter((l) => l.name === commandName).length,
-                percent: (guildDB.commandLogs.filter((l) => l.name === commandName).length*100)/guildDB.commandLogs.length
+        if (!guildJSON.commandsCountData.some(o => o.label === commandName)) {
+            guildJSON.commandsCountData.push({
+                label: commandName,
+                value:
+                    (guildDB.commandLogs.filter(l => l.name === commandName)
+                        .length *
+                        100) /
+                    guildDB.commandLogs.length
             });
         }
     });
-    guildJSON.commandsData = guildJSON.commandsData.sort((a, b) =>  b.count - a.count);
+    guildJSON.commandsCountData = guildJSON.commandsCountData.sort(
+        (a, b) => b.count - a.count
+    );
+    const colors = randomColor({
+        count: guildJSON.commandsCountData.length,
+        luminosity: "bright"
+    });
+    guildJSON.commandsCountData.forEach((_cmdData, index) => {
+        guildJSON.commandsCountData[index].color = colors[index];
+    });
     const formattedGuild = {
         ...guildJSON,
         ...{ channels: guildChannelsJSON },
