@@ -48,35 +48,40 @@ class AtlantaDashboard {
         const path = join(__dirname, ".", "routes");
 
         klaw(path)
-        .on("data", item => {
-            const file = parse(item.path);
-            if (!file.ext || file.ext !== ".js") return;
+            .on("data", item => {
+                const file = parse(item.path);
+                if (!file.ext || file.ext !== ".js") return;
 
-            const { name, Router } = (r => r.default || r)(
-                require(join(file.dir, file.base))
-            );
+                const { name, Router } = (r => r.default || r)(
+                    require(join(file.dir, file.base))
+                );
 
-            this.app.use(name, new Router());
-        })
-        .on("end", () => {
-            this.app.use([CheckAuth, FetchUser], (req, res, next) => {
-                res.status(404).render("404", {
-                    user: req.userData,
-                    translate: req.translate,
-                    locale: req.locale,
-                    currentURL: `${req.protocol}://${req.get("host")}${req.originalUrl}`
-                });
+                this.app.use(name, new Router());
             })
-            .use([CheckAuth, FetchUser], (err, req, res, next) => {
-                console.error(err.stack);
-                res.status(500).render("500", {
-                    user: req.userData,
-                    translate: req.translate,
-                    locale: req.locale,
-                    currentURL: `${req.protocol}://${req.get("host")}${req.originalUrl}`
-                });
-            }); 
-        });
+            .on("end", () => {
+                this.app
+                    .use([CheckAuth, FetchUser], (req, res, next) => {
+                        res.status(404).render("404", {
+                            user: req.userData,
+                            translate: req.translate,
+                            locale: req.locale,
+                            currentURL: `${req.protocol}://${req.get("host")}${
+                                req.originalUrl
+                            }`
+                        });
+                    })
+                    .use([CheckAuth, FetchUser], (err, req, res, next) => {
+                        console.error(err.stack);
+                        res.status(500).render("500", {
+                            user: req.userData,
+                            translate: req.translate,
+                            locale: req.locale,
+                            currentURL: `${req.protocol}://${req.get("host")}${
+                                req.originalUrl
+                            }`
+                        });
+                    });
+            });
     }
 
     _start() {
