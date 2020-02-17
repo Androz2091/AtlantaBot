@@ -8,5 +8,7 @@
     "ADD_IMAGE": "Add an image with the message",
     "LEAVE_GUILD": "Leave server",
     "LEAVE_GUILD_MODAL_TITLE": "Do you really want Atlanta to leave this server?",
-    "LEAVE_GUILD_MODAL_CONTENT": "The server configuration and the server data will be kept."
+    "LEAVE_GUILD_MODAL_CONTENT": "The server configuration and the server data will be kept.",
+    "COMMANDS": "Commands usage",
+    "USES_PERCENT": "Uses (percent)"
 }
