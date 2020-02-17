@@ -30,12 +30,12 @@
                 <% if(locale === "en"){ %>
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-close-others="true">English</a>
                     <ul class="dropdown-menu pull-right">
-                        <li><a class="dropdown-item" href="/language?new=fr_FR&url=<%= currentURL %>"><span>Français</span></a></li>
+                        <li><a class="dropdown-item" href="/language?new=fr-FR&url=<%= currentURL %>"><span>Français</span></a></li>
                     </ul>
                 <% } else if(locale === "fr") { %>
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-close-others="true">Français</a>
                     <ul class="dropdown-menu pull-right">
-                        <li><a class="dropdown-item" href="/language?new=en_US&url=<%= currentURL %>"><span>English</span></a></li>
+                        <li><a class="dropdown-item" href="/language?new=en-US&url=<%= currentURL %>"><span>English</span></a></li>
                     </ul>
                 <% } %>
             </li>
