@@ -1,4 +1,4 @@
-const { Router } = require('express');
+const { Router } = require("express");
 const CheckAuth = require("../middlewares/CheckAuth");
 const FetchUser = require("../middlewares/FetchUser");
 const Constants = require("../../utility/Constants");
@@ -6,7 +6,7 @@ const Constants = require("../../utility/Constants");
 module.exports.Router = class Selector extends Router {
     constructor() {
         super();
-        this.get('/', [CheckAuth, FetchUser], (req, res) => {
+        this.get("/", [CheckAuth, FetchUser], (req, res) => {
             res.render("selector", {
                 user: req.userData,
                 translate: req.translate,
@@ -19,4 +19,4 @@ module.exports.Router = class Selector extends Router {
     }
 };
 
-module.exports.name = '/selector';
+module.exports.name = "/selector";

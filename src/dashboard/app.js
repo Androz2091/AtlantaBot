@@ -3,6 +3,8 @@ const session = require("express-session");
 const { readdir } = require("fs");
 const { join, parse, sep } = require("path");
 const klaw = require("klaw");
+const CheckAuth = require("./middlewares/CheckAuth");
+const FetchUser = require("./middlewares/FetchUser");
 
 class AtlantaDashboard {
     constructor(client) {
@@ -33,7 +35,7 @@ class AtlantaDashboard {
             })
         );
         this.app.use(express.json());
-        this.app.use(express.urlencoded({ extended: false }));
+        this.app.use(express.urlencoded({ extended: true }));
         this.app.use((req, _res, next) => {
             req.dashboard = this;
             req.client = this.client;
@@ -45,7 +47,8 @@ class AtlantaDashboard {
     _loadRoutes() {
         const path = join(__dirname, ".", "routes");
 
-        klaw(path).on("data", item => {
+        klaw(path)
+        .on("data", item => {
             const file = parse(item.path);
             if (!file.ext || file.ext !== ".js") return;
 
@@ -54,6 +57,25 @@ class AtlantaDashboard {
             );
 
             this.app.use(name, new Router());
+        })
+        .on("end", () => {
+            this.app.use([CheckAuth, FetchUser], (req, res, next) => {
+                res.status(404).render("404", {
+                    user: req.userData,
+                    translate: req.translate,
+                    locale: req.locale,
+                    currentURL: `${req.protocol}://${req.get("host")}${req.originalUrl}`
+                });
+            })
+            .use([CheckAuth, FetchUser], (err, req, res, next) => {
+                console.error(err.stack);
+                res.status(500).render("500", {
+                    user: req.userData,
+                    translate: req.translate,
+                    locale: req.locale,
+                    currentURL: `${req.protocol}://${req.get("host")}${req.originalUrl}`
+                });
+            }); 
         });
     }
 

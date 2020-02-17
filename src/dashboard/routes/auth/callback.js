@@ -1,6 +1,7 @@
 const { Router } = require('express');
 const fetch = require("node-fetch");
 const btoa = require("btoa");
+const wait = (time) => new Promise((r) => setTimeout(r, time));
 
 module.exports.Router = class Callback extends Router {
     constructor() {
@@ -10,7 +11,7 @@ module.exports.Router = class Callback extends Router {
                 if(req.query.code){
                     const guildID = req.query.state.substr("invite".length, req.query.state.length);
                     req.client.knownGuilds.push({ id: guildID, user: req.user.id });
-                    return res.redirect(`/manage/${guildID}`);
+                    return res.redirect(`/guild/manage/${guildID}`);
                 } else {
                     return res.redirect("/selector");
                 }
@@ -42,7 +43,7 @@ module.exports.Router = class Callback extends Router {
                         }
                     });
                     const json = await response.json();
-                    if(json.retry_after) await req.client.helpers.wait(json.retry_after);
+                    if(json.retry_after) await wait(json.retry_after);
                     else userData.infos = json;
                 }
                 /* User guilds */
@@ -54,7 +55,7 @@ module.exports.Router = class Callback extends Router {
                         }
                     });
                     let json = await response.json();
-                    if(json.retry_after) await req.client.helpers.wait(json.retry_after);
+                    if(json.retry_after) await wait(json.retry_after);
                     else userData.guilds = json;
                 }
             }

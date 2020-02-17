@@ -5,7 +5,7 @@ module.exports.Router = class Login extends Router {
         super();
         this.get('/', (req, res) => {
             if(!req.session.authenticated){
-                return res.redirect(`https://discordapp.com/api/oauth2/authorize?client_id=${req.client.user.id}&scope=identify%20guilds&response_type=code&redirect_uri=${encodeURIComponent(req.client.config.dashboard.baseURL+"/auth/callback")}&state=${req.query.state || "null"}`);
+                return res.redirect(`https://discordapp.com/api/oauth2/authorize?client_id=${req.client.user.id}&scope=identify%20guilds&response_type=code&redirect_uri=${encodeURIComponent(req.client.config.dashboard.baseURL+"/auth/callback")}&state=${req.query.state || "null"}&prompt=none`);
             }
             res.redirect("/selector");
         });

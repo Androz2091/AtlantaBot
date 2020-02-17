@@ -1,20 +1,12 @@
 <!DOCTYPE html>
 <html>
-
-	<%- include('includes/head') %>
-	
-    <body class="hold-transition skin-blue sidebar-mini">
-        
+    <%- include ('includes/head') %>
+    <!-- ADD THE CLASS layout-top-nav TO REMOVE THE SIDEBAR. -->
+    <body class="hold-transition skin-blue layout-top-nav">
         <div class="wrapper">
-        
-            <!-- The header is the topbar -->
-            <%- include('includes/header') %>
-
-            <!-- The sidebar includes the menu -->
-            <%- include('includes/sidebar') %>
-
-            <!-- Content Wrapper. Contains page content -->
-            <div class="content-wrapper">
+			<%- include ('includes/header') %>
+			<!-- Full Width Column -->
+			<div class="content-wrapper">
 
             <!-- Content Header (Page header) -->
             <section class="content-header">
@@ -35,17 +27,9 @@
 							<%= language.get("ERR_SOMETING_WENT_WRONG_CONTENT") %>
 						</p>
 
-						<form class="search-form" action="/selector">
-							<div class="input-group">
-								<input type="text" name="q" class="form-control" placeholder="<%= language.get('SEARCH_SERVERS') %>">
-
-								<div class="input-group-btn">
-									<button type="submit" class="btn btn-danger btn-flat"><i class="fa fa-search"></i>
-									</button>
-								</div>
-							</div>
-							<!-- /.input-group -->
-						</form>
+						<a href="/selector">
+							<button type="button" class="btn bg-orange margin" type="button"><%= translate("dashboard/errors:BACK_SELECTOR") %></button>
+						</a>
 					</div>
 					<!-- /.error-content -->
 				</div>

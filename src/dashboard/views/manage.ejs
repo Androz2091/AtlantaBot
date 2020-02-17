@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html>
+    <%- include ('includes/head') %>
+    <!-- ADD THE CLASS layout-top-nav TO REMOVE THE SIDEBAR. -->
+    <body class="hold-transition skin-blue layout-top-nav">
+        <div class="wrapper">
+			<%- include ('includes/header') %>
+			<!-- Full Width Column -->
+			<div class="content-wrapper">
+				<div class="container">
+					<!-- Content Header (Page header) -->
+					<section class="content-header">
+						<h1>
+							<%= translate("dashboard/manage:CONF") %>
+						</h1>
+						<ol class="breadcrumb">
+							<li><a href="/selector"><i class="fa fa-home"></i><%= translate("dashboard/selector:TITLE") %></a></li>
+							<li><a href="/guild/manage/<%= guild.id %>"><i class="fa fa-edit"></i><%= guild.name %></a></li>
+						</ol>
+					</section>
+					<!-- Main content -->
+					<section class="content">
+						<div class="row">
+							<div class="col-md-6">
+								<!-- Guild Card (membercount) -->
+								<div class="card card-widget widget-user-2">
+									<div class="widget-user-header bg-yellow">
+										<div class="widget-user-image">
+											<img class="img-circle elevation-2" src="<%= guild.iconURL %>" alt="Guild Icon">
+										</div>
+										<h3 class="widget-user-username"><%= guild.name %></h3>
+										<h5 class="widget-user-desc"><%= guild.memberCount + " " + translate("common:MEMBERS").toLowerCase()  %></h5>
+									</div>
+								</div>
+								<!-- Guild actions -->
+								<div class="box box-warning">
+									<div class="box-footer">
+										<button class="btn btn-primary" type="button" class="btn btn-info" data-toggle="modal" data-target="#leave-guild-modal"><%= translate("dashboard/manage:LEAVE_GUILD") %></button>
+									</div>
+									<div class="modal fade" id="leave-guild-modal">
+										<div class="modal-dialog">
+											<div class="modal-content">
+												<div class="modal-header">
+													<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+													<span aria-hidden="true">&times;</span></button>
+													<h4 class="modal-title"><%= translate("dashboard/manage:LEAVE_GUILD_MODAL_TITLE") %></h4>
+												</div>
+												<div class="modal-body">
+													<p><%= translate("dashboard/manage:LEAVE_GUILD_MODAL_CONTENT") %></p>
+												</div>
+												<div class="modal-footer">
+													<button type="button" class="btn btn-default pull-left" data-dismiss="modal"><%= translate("common:CANCEL") %></button>
+													<form method="post" action="/guild/manage/<%= guild.id %>/leave">
+														<button type="submit" class="btn btn-danger"><%= translate("common:CONFIRM") %></button>
+													</form>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+								<!-- Basic conf -->
+								<div class="box box-warning">
+									<div class="box-header with-border">
+										<h3 class="box-title"><%= translate("dashboard/manage:BASIC") %></h3>
+									</div>
+									<form role="form" action="/guild/manage/<%= guild.id %>/basic" method="POST">
+										<!-- /.box-header -->
+										<div class="box-body">
+											<!-- text input -->
+											<div class="form-group">
+												<label><%= translate("common:PREFIX") %></label>
+												<input type="text" name="prefix" class="form-control" placeholder="<%= guild.prefix %>">
+											</div>
+											<!-- select -->
+											<div class="form-group">
+												<label><%= translate("common:LANGUAGE") %></label>
+												<select class="form-control" name="language">
+													<% if(guild.language === "fr-FR"){ %>
+														<option selected="selected" value="fr-FR">Français</option>
+														<option value="en-US">English (US)</options>
+													<% } else { %>
+														<option value="fr-FR">Français</option>
+														<option selected="selected" value="en-US">English (US)</options>
+													<% } %>
+												</select>
+											</div>
+										</div>
+										<!-- /.box-body -->
+										<div class="box-footer">
+											<button type="submit" class="btn btn-primary"><%= translate("common:UPDATE") %></button>
+										</div>
+									</form>
+								</div>	
+							</div>
+							<div class="col-md-6">
+								<!-- Special channels conf -->
+								<div class="box box-warning">
+									<div class="box-header with-border">
+										<h3 class="box-title"><%= translate("dashboard/manage:SPECIAL_CHANNELS") %></h3>
+									</div>
+									<form role="form" action="/guild/manage/<%= guild.id %>/channels" method="POST">
+										<div class="box-body">
+											<div class="form-group">
+												<label><%= translate("common:SUGGESTIONS") %></label>
+												<select class="form-control" name="suggestions">
+													<option selected="selected"><%= guild.suggestionsSelectedChannel.formattedName %></option>
+														<% guild.suggestionsOtherChannels.forEach((channel) => { %>
+															<option><%= channel.formattedName %></option>
+														<% }); %>
+												</select>
+											</div>
+											<div class="form-group">
+												<label><%= translate("common:FORTNITESHOP") %></label>
+												<select class="form-control" name="fortniteshop">
+													<option selected="selected"><%= guild.fortniteshopSelectedChannel.formattedName %></option>
+														<% guild.fortniteshopOtherChannels.forEach((channel) => { %>
+															<option><%= channel.formattedName %></option>
+														<% }); %>
+												</select>
+											</div>
+											<div class="form-group">
+												<label><%= translate("common:MODLOGS") %></label>
+												<select class="form-control" name="modlogs">
+													<option selected="selected"><%= guild.modlogsSelectedChannel.formattedName %></option>
+														<% guild.modlogsOtherChannels.forEach((channel) => { %>
+															<option><%= channel.formattedName %></option>
+														<% }); %>
+												</select>
+											</div>
+											<div class="form-group">
+												<label><%= translate("common:REPORTS") %></label>
+												<select class="form-control" name="reports">
+													<option selected="selected"><%= guild.reportsSelectedChannel.formattedName %></option>
+														<% guild.reportsOtherChannels.forEach((channel) => { %>
+															<option><%= channel.formattedName %></option>
+														<% }); %>
+												</select>
+											</div>
+										</div>
+										<div class="box-footer">
+											<button type="submit" class="btn btn-primary"><%= translate("common:UPDATE") %></button>
+										</div>
+									</form>
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-6">
+								<!-- Welcome configuration -->
+								<div class="box box-danger">
+									<div class="box-header with-border">
+										<h3 class="box-title"><%= translate("dashboard/manage:WELCOME") %></h3>
+										<form role="form" action="/guild/manage/<%= guild.id %>/welcome" method="POST">
+											<div class="box-body">
+												<div class="form-group">
+													<label><%= translate("common:MESSAGE") %></label>
+													<textarea rows="3" name="message" class="form-control" required><%= guild.plugins.welcome.message || translate("administration/welcome:DEFAULT_MESSAGE") %></textarea>
+												</div>
+												<div class="form-group">
+													<label><%= translate("common:CHANNEL") %></label>
+													<select class="form-control" name="channel">
+														<option selected="selected">#<%= guild.welcomeSelectedChannel %></option>
+														<% guild.welcomeOtherChannels.forEach((ch) => { %>
+															<option>#<%= ch.name %></option>
+														<% }); %>
+													</select>
+												</div>
+												<label>
+													<% if(guild.plugins.welcome.withImage){ %>
+														<input name="withImage" type="checkbox" class="minimal" checked>
+													<% } else { %>
+														<input name="withImage" type="checkbox" class="minimal">
+													<% } %>
+													&nbsp;<%= translate("dashboard/manage:ADD_IMAGE") %>
+												</label>
+												</div>
+											</div>
+											<div class="box-footer">
+												<% if(guild.plugins.welcome.enabled){ %>
+													<button type="submit" name="disable" class="btn btn-danger"><%= translate("common:DISABLE") %></button>
+													<button type="submit" name="update" class="btn btn-primary pull-right"><%= translate("common:UPDATE") %></button>
+												<% } else { %>
+													<button type="submit" name="enable" class="btn btn-success"><%= translate("common:ENABLE") %></button>
+												<% } %>
+											</div>
+										</form>
+								</div>
+							</div>
+							<div class="col-md-6">
+								<!-- Goodbye configuration -->
+								<div class="box box-danger">
+									<div class="box-header with-border">
+										<h3 class="box-title"><%= translate("dashboard/manage:GOODBYE") %></h3>
+										<form role="form" action="/guild/manage/<%= guild.id %>/goodbye" method="POST">
+											<div class="box-body">
+												<div class="form-group">
+													<label><%= translate("common:MESSAGE") %></label>
+													<textarea rows="3" name="message" class="form-control" required><%= guild.plugins.goodbye.message || translate("administration/goodbye:DEFAULT_MESSAGE") %></textarea>
+												</div>
+												<div class="form-group">
+													<label><%= translate("common:CHANNEL") %></label>
+													<select class="form-control" name="channel">
+														<option selected="selected">#<%= guild.goodbyeSelectedChannel %></option>
+														<% guild.goodbyeOtherChannels.forEach((ch) => { %>
+															<option>#<%= ch.name %></option>
+														<% }); %>
+													</select>
+												</div>
+												<label>
+													<input name="withImage" type="checkbox" class="minimal"> 
+													&nbsp;<%= translate("dashboard/manage:ADD_IMAGE") %>
+												</label>
+												</div>
+											</div>
+											<div class="box-footer">
+												<% if(guild.plugins.goodbye.enabled){ %>
+													<button type="submit" name="disable" class="btn btn-danger"><%= translate("common:DISABLE") %></button>
+													<button type="submit" name="update" class="btn btn-primary pull-right"><%= translate("common:UPDATE") %></button>
+												<% } else { %>
+													<button type="submit" name="enable" class="btn btn-success"><%= translate("common:ENABLE") %></button>
+												<% } %>
+											</div>
+										</form>
+									</div>
+								</div>
+							</div>
+						</div>
+					</section>
+					<%- include ('includes/footer') %>
+				</div>
+			</div>
+		</div>
+		<!-- ./wrapper -->
+		<script src="/plugins/iCheck/icheck.min.js"></script>
+		<script>
+			$('input[type="checkbox"].minimal, input[type="radio"].minimal').iCheck({
+				checkboxClass: 'icheckbox_minimal-blue',
+				radioClass   : 'iradio_minimal-blue'
+			})
+		</script>
+    </body>
+</html>
