@@ -16,7 +16,7 @@ module.exports.Router = class Manage extends Router {
                 user: req.userData,
                 translate: req.translate,
                 locale: req.locale,
-                currentURL: `${req.client.config.dashboard.baseURL}/${req.originalUrl}`
+                currentURL: `${req.client.config.dashboard.baseURL}${req.originalUrl}`
             });
         });
         this.get('/:guildID/:type', (req, res) => {

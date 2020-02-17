@@ -11,7 +11,7 @@ module.exports.Router = class Selector extends Router {
                 user: req.userData,
                 translate: req.translate,
                 locale: req.locale,
-                currentURL: `${req.client.config.dashboard.baseURL}/${req.originalUrl}`,
+                currentURL: `${req.client.config.dashboard.baseURL}${req.originalUrl}`,
                 hasJoinedSupport: req.hasJoinedSupport,
                 discord: Constants.Links.SERVER
             });
