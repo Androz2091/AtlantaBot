@@ -18,5 +18,10 @@
     "CONFIRM": "Confirm",
     "CANCEL": "Cancel",
     "MESSAGE": "Message",
-    "CHANNEL": "Channel"
+    "CHANNEL": "Channel",
+    "NO_CHANNEL": "No channel",
+    "SUGGESTIONS": "Suggestions",
+    "FORTNITESHOP": "Fortnite Shop",
+    "MODLOGS": "Moderation Logs",
+    "REPORTS": "Reports"
 }

@@ -4,6 +4,7 @@
     "BASIC": "Basic configuration",
     "WELCOME": "Welcome configuration",
     "GOODBYE": "Goodbye configuration",
+    "SPECIAL_CHANNELS": "Special channels configuration",
     "ADD_IMAGE": "Add an image with the message",
     "LEAVE_GUILD": "Leave server",
     "LEAVE_GUILD_MODAL_TITLE": "Do you really want Atlanta to leave this server?",
