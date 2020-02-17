@@ -36,6 +36,9 @@ module.exports = class Guild {
         // Fetch command logs
         this.commandLogs = [];
         await this.fetchCommandLogs();
+        // Fetch special channels
+        this.specialChannels = {};
+        await this.fetchSpecialChannels();
         this.fetched = true;
     }
 
@@ -66,6 +69,40 @@ module.exports = class Guild {
             this.plugins[pName].insert()
         );
         return this.plugins;
+    }
+
+    // Fetch and fill special channels
+    async fetchSpecialChannels() {
+        const { rows } = await this.handler.query(`
+            SELECT * from guild_channels
+            WHERE guild_id = '${this.id}';
+        `);
+        rows.forEach(channelData => {
+            this.specialChannels[channelData.setting_name] =
+                channelData.setting_value;
+        });
+        return this;
+    }
+
+    // Define a special channels
+    async setSpecialChannel(name, value) {
+        const alreadyCreated = this.specialChannels.hasOwnProperty(name);
+        const formattedValue = !value ? "null" : `'${value}'`;
+        if (alreadyCreated) {
+            await this.handler.query(`
+                UPDATE guild_channels
+                SET setting_value = ${alreadyCreated}
+                WHERE guild_id = '${this.id}';
+            `);
+        } else {
+            await this.handler.query(`
+                INSERT INTO guild_channels
+                (guild_id, setting_name, setting_value) VALUES
+                ('${this.id}', '${name}', ${formattedValue});
+            `);
+        }
+        this.specialChannels[name] = value;
+        return this;
     }
 
     // Fetch and fill ignored channels
