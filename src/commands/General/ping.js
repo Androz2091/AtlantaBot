@@ -1,18 +1,20 @@
 const Command = require("../../structures/Command"),
-Constants = require("../../utility/Constants");
+    Constants = require("../../utility/Constants");
 
 module.exports = class extends Command {
-
-    constructor (...args) {
-        super({
-            aliases: [ "pong", "latency" ],
-            permission: Constants.PermissionsLevels.SERVER_MEMBER        
-        }, ...args);
+    constructor(...args) {
+        super(
+            {
+                aliases: ["pong", "latency"],
+                permission: Constants.PermissionsLevels.SERVER_MEMBER
+            },
+            ...args
+        );
     }
 
-    async execute (message) {
+    async execute(message) {
         let msg = await message.sendT("core/ping:RESPONSE", {
-            command: '..',
+            command: "..",
             api: this.client.ws.ping
         });
         await msg.editT("core/ping:RESPONSE", {
@@ -20,5 +22,4 @@ module.exports = class extends Command {
             api: Math.floor(this.client.ws.ping)
         });
     }
-
 };
