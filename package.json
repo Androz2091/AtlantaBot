@@ -5,7 +5,7 @@
     "main": "atlanta.js",
     "scripts": {
         "test": "node atlanta.js",
-        "format": "prettier --tab-width 4 --write *.js src/**/*.js src/*.js"
+        "format": "prettier --tab-width 4 --write *.js src/**/*.js src/**/**/*.js src/*.js"
     },
     "repository": {
         "type": "git",
@@ -51,6 +51,7 @@
         "node-fetch": "^2.6.0",
         "node-opus": "^0.3.3",
         "pg": "^7.18.1",
+        "randomcolor": "^0.5.4",
         "simple-youtube-api": "^5.2.1",
         "ytdl-core": "^1.0.6"
     },
