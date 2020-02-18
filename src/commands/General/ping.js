@@ -13,11 +13,11 @@ module.exports = class extends Command {
     }
 
     async execute(message) {
-        let msg = await message.sendT("core/ping:RESPONSE", {
+        let msg = await message.sendT("general/ping:RESPONSE", {
             command: "..",
             api: this.client.ws.ping
         });
-        await msg.editT("core/ping:RESPONSE", {
+        await msg.editT("general/ping:RESPONSE", {
             command: msg.createdTimestamp - message.createdTimestamp,
             api: Math.floor(this.client.ws.ping)
         });
