@@ -9,12 +9,12 @@ Message.prototype.translate = function(key, args) {
     return language(key, args);
 };
 
-Message.prototype.error = function(content, send) {
+Message.prototype.error = function(content, send = true) {
     const updatedContent = `${Constants.Emojis.ERROR} | ${content}`;
     return send ? this.channel.send(updatedContent) : updatedContent;
 };
 
-Message.prototype.success = function(content, send) {
+Message.prototype.success = function(content, send = true) {
     const updatedContent = `${Constants.Emojis.SUCCESS} | ${content}`;
     return send ? this.channel.send(updatedContent) : updatedContent;
 };
@@ -30,9 +30,9 @@ Message.prototype.sendT = function(key, args, type) {
 Message.prototype.editT = function(key, args, type) {
     let updatedContent = "";
     if (type === "error")
-        updatedContent = this.error(this.translate(key, args), false);
+        updatedContent = this.error(this.translate(key, args), true);
     if (type === "success")
-        updatedContent = this.success(this.translate(key, args), false);
+        updatedContent = this.success(this.translate(key, args), true);
     else updatedContent = this.translate(key, args);
     return this.edit(updatedContent);
 };
