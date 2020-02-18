@@ -115,11 +115,12 @@ module.exports = async (req, res, next) => {
         if (!guildJSON.commandsCountData.some(o => o.label === commandName)) {
             guildJSON.commandsCountData.push({
                 label: commandName,
-                value:
-                    Math.round((guildDB.commandLogs.filter(l => l.name === commandName)
+                value: Math.round(
+                    (guildDB.commandLogs.filter(l => l.name === commandName)
                         .length *
                         100) /
-                    guildDB.commandLogs.length)
+                        guildDB.commandLogs.length
+                )
             });
         }
     });
@@ -134,19 +135,28 @@ module.exports = async (req, res, next) => {
         guildJSON.commandsCountData[index].color = colors[index];
     });
     guildJSON.commandsPeriodsData = [];
-    guildDB.commandLogs.sort((a,b) => new Date(a.date).getTime() - new Date(b.date).getTime()).forEach(logEntry => {
-        const date = new Date(logEntry.date);
-        const formattedDate = `${date.getDate()}/${date.getMonth()+1}`;
-        if (!guildJSON.commandsPeriodsData.some(o => o.label === formattedDate)) {
-            guildJSON.commandsPeriodsData.push({
-                label: formattedDate,
-                value: guildDB.commandLogs.filter((l) => {
-                    const tdate = new Date(l.date);
-                    return formattedDate === `${tdate.getDate()}/${tdate.getMonth()+1}`                    
-                }).length
-            });
-        }
-    });
+    guildDB.commandLogs
+        .sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime())
+        .forEach(logEntry => {
+            const date = new Date(logEntry.date);
+            const formattedDate = `${date.getDate()}/${date.getMonth() + 1}`;
+            if (
+                !guildJSON.commandsPeriodsData.some(
+                    o => o.label === formattedDate
+                )
+            ) {
+                guildJSON.commandsPeriodsData.push({
+                    label: formattedDate,
+                    value: guildDB.commandLogs.filter(l => {
+                        const tdate = new Date(l.date);
+                        return (
+                            formattedDate ===
+                            `${tdate.getDate()}/${tdate.getMonth() + 1}`
+                        );
+                    }).length
+                });
+            }
+        });
     const formattedGuild = {
         ...guildJSON,
         ...{ channels: guildChannelsJSON },
