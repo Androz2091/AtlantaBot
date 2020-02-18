@@ -116,10 +116,10 @@ module.exports = async (req, res, next) => {
             guildJSON.commandsCountData.push({
                 label: commandName,
                 value:
-                    (guildDB.commandLogs.filter(l => l.name === commandName)
+                    Math.round((guildDB.commandLogs.filter(l => l.name === commandName)
                         .length *
                         100) /
-                    guildDB.commandLogs.length
+                    guildDB.commandLogs.length)
             });
         }
     });
