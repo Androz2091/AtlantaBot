@@ -1,4 +1,4 @@
-<img width="150" height="150" align="left" style="float: left; margin: 0 10px 0 0;" alt="Atlanta" src="https://i.goopics.net/lEENx.png">
+<img width="150" height="150" style="float: left; margin: 0 10px 0 0;" alt="Atlanta" src="https://i.goopics.net/lEENx.png">
 
 # Atlanta
 
@@ -76,12 +76,16 @@ You must follow the [installation guide](https://www.atlanta-bot.fr/installation
 -   [Github](https://github.com/AtlantaBot)
 -   [Dashboard](https://dashboard.atlanta-bot.fr)
 
+## Credits
+
+<img width="30" height="30" style="float: left; margin: 0 10px 0 0;" src="https://avatars3.githubusercontent.com/u/42007742?s=200&v=4"></img>
+
+#### TypicalBot
+
+A part of the Atlanta's structure was inspired by [TypicalBot](https://github.com/typicalbot), a wonderful project (really)! Support them on [Patreon](https://patreon.com/typicalbot) or the main contributors on Github: [tjrgg](https://github.com/tjrgg), [nsylke](https://github.com/nsylke).
+
 ## Contributing
 
 Before **creating an issue**, please ensure that it hasn't already been reported/suggested, and double-check the [F.A.Q](https://www.atlanta-bot.fr/faq).  
 And if you have a question, please ask it in the [Discord server](https://discord.atlanta-bot.fr/) instead of opening an issue.
 If you wish to contribute to the Atlanta codebase or documentation, feel free to fork the repository and submit a pull request!
-
-## License
-
-Atlanta is licensed under the GPL 3.0 license. See the file `LICENSE` for more information. If you plan to use any part of this source code in your own bot, I would be grateful if you would include some form of credit somewhere.
