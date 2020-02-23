@@ -1,4 +1,4 @@
-const Command = require("../../base/Command"),
+const Command = require("../../structures/Command"),
     Constants = require("../../utility/Constants");
 
 module.exports = class extends Command {
