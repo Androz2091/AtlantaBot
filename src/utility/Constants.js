@@ -1,12 +1,11 @@
 const Links = {
-    BASE: "https://www.atlanta-bot.fr/",
-    OAUTH: "https://invite.atlanta-bot.fr/",
+    BASE: "https://www.atlanta-bot.fr",
+    OAUTH: "https://invite.atlanta-bot.fr",
     SERVER: "https://discord.atlanta-bot.fr",
     DONATE: "https://patreon.com/Androz2091",
-    INSTALLATION: "https://www.atlanta-bot.fr/",
-    DASHBOARD: "https://dashboard.atlanta-bot.fr/",
-    ICON:
-        "https://images.discordapp.net/avatars/557445719892688897/493287b030b312513a7849b1aca12ee6.png?size=512"
+    INSTALLATION: "https://www.atlanta-bot.fr",
+    DASHBOARD: "https://dashboard.atlanta-bot.fr",
+    GITHUB: "https://github.com/Androz2091/AtlantaBot"
 };
 
 const Colors = {
@@ -89,14 +88,14 @@ const Emojis = {
         D: "<:atlanta_d:616628944942268456>"
     },
     CATEGORIES: {
-        ADMIN: "<:administration_category_atlanta:599210716116811777>",
+        ADMINISTRATION: "<:administration_category_atlanta:599210716116811777>",
         ECONOMY: "<:economy_category_atlanta:599208373937766410>",
         FUN: "<:fun_category_atlanta:599210365351362561>",
         GENERAL: "<:general_category_atlanta:599209407816925184>",
         IMAGES: "<:images_category_atlanta:599226332081029127>",
-        MOD: "<:moderation_category_atlanta:599209643465637928>",
+        MODERATION: "<:moderation_category_atlanta:599209643465637928>",
         MUSIC: "<:music_category_atlanta:599210024773877772>",
-        OWNER: "<:owner_category_atlanta:599209806288388109>",
+        MAINTAINERS: "<:owner_category_atlanta:599209806288388109>",
         CUSTOM: "<:custom_category_atlanta:600662241829978112>"
     }
 };
