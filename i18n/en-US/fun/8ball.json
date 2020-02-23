@@ -1,6 +1,6 @@
 {
     "DESCRIPTION": "I'm telling you the truth!",
-    "USAGE": "[question]",
+    "USAGE": "{{prefix}}8ball [question]",
     "EXAMPLES": "{{prefix}}8ball Is Atlanta the best Discord bot?",
     "ERR_QUESTION": "You have to enter a question to ask me!",
     "RESPONSE_1": "I'm sure of it.",
