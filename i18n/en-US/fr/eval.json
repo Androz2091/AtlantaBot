@@ -1,0 +1,5 @@
+{
+    "DESCRIPTION": "Execute javascript code.",
+    "USAGE": "{{prefix}}eval [code]",
+    "EXAMPLES": "{{prefix}}eval this.client.user.username"
+}
