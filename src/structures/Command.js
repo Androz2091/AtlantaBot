@@ -15,7 +15,7 @@ module.exports = class Command {
         path
     ) {
         let category = path.split(sep)[
-            parseInt(path.split(sep).length - 1, 10)
+            parseInt(path.split(sep).length - 2, 10)
         ];
         this.client = client;
         this.name = name;
