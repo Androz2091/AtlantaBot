@@ -1,0 +1,7 @@
+{
+    "DESCRIPTION": "I roll the dice for you!",
+    "USAGE": "{{prefix}}",
+    "EXAMPLES": "{{prefix}} dice",
+    "HEADS": ":game_die: | Heads!",
+    "TAILS": ":game_die: | Tails!"
+}
