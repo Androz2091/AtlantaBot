@@ -15,7 +15,7 @@ module.exports = class extends Command {
         );
     }
 
-    async execute (message, args, data) {
+    async execute (message, args) {
 
         const text = args.join(" ");
         if(!text || text.length > 20){
