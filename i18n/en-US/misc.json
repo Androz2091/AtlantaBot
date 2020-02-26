@@ -3,5 +3,6 @@
   "PREFIX": "this server's prefix is {{prefix}}.",
   "CHANNEL_IGNORED": "Commands aren't allowed in {{channel}}.",
   "EVERYONE_MENTION": "You aren't allowed to mention everyone or here in commands.",
-  "STATS_FOOTER": "[Dashboard]({{dashboardLink}}) ● [Donate]({{donateLink}}) ● [Invite]({{inviteLink}}) ● [Server]({{supportLink}}) ● [Github]({{githubLink}})"
+  "STATS_FOOTER": "[Dashboard]({{dashboardLink}}) ● [Donate]({{donateLink}}) ● [Invite]({{inviteLink}}) ● [Server]({{supportLink}}) ● [Github]({{githubLink}})",
+  "COMMAND_DISABLED": "This command is currently disabled!"
 }
