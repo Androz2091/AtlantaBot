@@ -12,21 +12,21 @@ module.exports = class extends Command {
         );
     }
 
-    async execute (message, args) {
-
+    async execute(message, args) {
         // Gets the answers by spliting on "/"
         const answers = args.join(" ").split("/");
-        if(answers.length < 2) return message.sendT("fun/choice:MISSING", null, "error");
-        if(answers.some((answer) => !answer)) return message.sendT("fun/choice:EMPTY", null, "error")
+        if (answers.length < 2)
+            return message.sendT("fun/choice:MISSING", null, "error");
+        if (answers.some(answer => !answer))
+            return message.sendT("fun/choice:EMPTY", null, "error");
 
         let m = await message.sendT("fun/choice:PROGRESS", null, "loading");
-        
+
         setTimeout(() => {
             m.editT("fun/choice:DONE", null, "success");
-            const result = answers[parseInt(Math.floor(Math.random() * answers.length))];
-            message.channel.send("```"+result+"```");
+            const result =
+                answers[parseInt(Math.floor(Math.random() * answers.length))];
+            message.channel.send("```" + result + "```");
         }, 1500);
-
     }
-
-}
+};

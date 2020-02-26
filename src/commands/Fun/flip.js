@@ -12,9 +12,10 @@ module.exports = class extends Command {
         );
     }
 
-    async execute (message) {
-        const isHeads = (Math.random() > 0.5);
-        isHeads ? message.sendT("fun/flip:HEADS") : message.sendT("fun/flip:TAILS");
+    async execute(message) {
+        const isHeads = Math.random() > 0.5;
+        isHeads
+            ? message.sendT("fun/flip:HEADS")
+            : message.sendT("fun/flip:TAILS");
     }
-
-}
+};

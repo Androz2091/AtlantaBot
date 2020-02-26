@@ -15,16 +15,13 @@ module.exports = class extends Command {
         );
     }
 
-    async execute (message, args) {
-
+    async execute(message, args) {
         const text = args.join(" ");
-        if(!text || text.length > 20){
+        if (!text || text.length > 20) {
             return message.sendT("fun/ascii:TEXT_MISSING", null, "error");
         }
-    
+
         const rendered = await figletAsync(text);
-        message.channel.send("```"+rendered+"```");
-
+        message.channel.send("```" + rendered + "```");
     }
-
-}
+};
