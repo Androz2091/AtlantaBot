@@ -8,6 +8,8 @@ const { version } = require("../package.json");
 
 const i18n = require("./i18n");
 
+const { Client: Joker } = require("blague.xyz");
+
 const DatabaseHandler = require("./handlers/Database");
 const PermissionsHandler = require("./handlers/Permissions");
 const FunctionHandler = require("./handlers/Functions");
@@ -45,6 +47,10 @@ module.exports = class AtlantaCluster extends Client {
         this.caches.bans = new Collection();
         this.caches.unbans = new Collection();
         this.caches.softbans = new Collection();
+
+        this.joker = new Joker(this.config.apiKeys.blagueXYZ, {
+            defaultLang: "en"
+        });
 
         this.login();
     }
