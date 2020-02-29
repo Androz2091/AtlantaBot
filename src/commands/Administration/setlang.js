@@ -13,23 +13,20 @@ module.exports = class extends Command {
     }
 
     async execute(message, args) {
-
-        if(!args[0]){
+        if (!args[0]) {
             return message.error("administration/setlang:INVALID_LANGUAGE");
         }
 
-        if(args[0] === "french"){
+        if (args[0] === "french") {
             await message.guild.settings.setLanguage("fr-FR");
             return message.success("administration/setlang:SUCCESS");
         }
-        
-        if(args[0] === "english"){
+
+        if (args[0] === "english") {
             await message.guild.settings.setLanguage("en-US");
             return message.success("administration/setlang:SUCCESS");
         }
-        
-        return message.error("administration/setlang:INVALID_LANGUAGE");
-        
-    }
 
-}
+        return message.error("administration/setlang:INVALID_LANGUAGE");
+    }
+};
