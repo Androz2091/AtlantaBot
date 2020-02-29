@@ -69,22 +69,16 @@ module.exports = class extends Command {
                 collector.stop(msg.author.username);
             }
             if (parseInt(msg.content) < number) {
-                message.error(
-                    "fun/number:BIG",
-                    {
-                        user: message.author,
-                        number: parsedNumber
-                    }
-                );
+                message.error("fun/number:BIG", {
+                    user: message.author,
+                    number: parsedNumber
+                });
             }
             if (parseInt(msg.content) > number) {
-                message.error(
-                    "fun/number:SMALL",
-                    {
-                        user: message.author,
-                        number: parsedNumber
-                    }
-                );
+                message.error("fun/number:SMALL", {
+                    user: message.author,
+                    number: parsedNumber
+                });
             }
         });
 

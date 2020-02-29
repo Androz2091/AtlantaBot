@@ -15,8 +15,7 @@ module.exports = class extends Command {
     async execute(message, args) {
         // Gets the answers by spliting on "/"
         const answers = args.join(" ").split("/");
-        if (answers.length < 2)
-            return message.error("fun/choice:MISSING");
+        if (answers.length < 2) return message.error("fun/choice:MISSING");
         if (answers.some(answer => !answer))
             return message.error("fun/choice:EMPTY");
 

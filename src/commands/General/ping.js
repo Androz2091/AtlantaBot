@@ -17,9 +17,13 @@ module.exports = class extends Command {
             command: "..",
             api: this.client.ws.ping
         });
-        await msg.sendT("general/ping:RESPONSE", {
-            command: msg.createdTimestamp - message.createdTimestamp,
-            api: Math.floor(this.client.ws.ping)
-        }, true);
+        await msg.sendT(
+            "general/ping:RESPONSE",
+            {
+                command: msg.createdTimestamp - message.createdTimestamp,
+                api: Math.floor(this.client.ws.ping)
+            },
+            true
+        );
     }
 };
