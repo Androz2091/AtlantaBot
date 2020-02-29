@@ -1,6 +1,0 @@
-{
-    "DESCRIPTION": "Affiche la latence d'Atlanta.",
-    "USAGE": "ping",
-    "EXAMPLES": "{{prefix}}ping",
-	"RESPONSE": ":alarm_clock: Temps d'execution de la commande : {{command}}ms | Latence de l'API Discord : {{api}}ms"
-}
