@@ -21,3 +21,7 @@ report*.json
 
 # Vscode
 .vscode
+
+# Lavalink
+src/lavalink/logs/
+src/lavalink/application.yml
