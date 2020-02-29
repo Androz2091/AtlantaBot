@@ -14,7 +14,7 @@ module.exports = class extends Command {
 
     async execute(message, args) {
         const question = args.join(" ");
-        if (!question) return message.sendT("fun/lmg:MISSING", null, "error");
+        if (!question) return message.error("fun/lmg:MISSING");
         const encodedQuestion = question.replace(/[' '_]/g, "+");
         await message.channel.send(`http://lmgtfy.com/?q=${encodedQuestion}`);
         message.delete().catch(() => {});

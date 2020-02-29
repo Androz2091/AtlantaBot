@@ -129,11 +129,11 @@ module.exports = class Message extends Event {
                 (message.content.includes("@everyone") ||
                     message.content.includes("@here"))
             ) {
-                return message.sendT("misc:EVERYONE_MENTION", {}, "error");
+                return message.error("misc:EVERYONE_MENTION");
             }
 
             if (!message.channel.nsfw && command.nsfw) {
-                return message.sendT("NSFW", {}, "error");
+                return message.error("NSFW");
             }
 
             if (

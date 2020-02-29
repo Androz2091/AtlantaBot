@@ -16,14 +16,14 @@ module.exports = class extends Command {
         // Gets the answers by spliting on "/"
         const answers = args.join(" ").split("/");
         if (answers.length < 2)
-            return message.sendT("fun/choice:MISSING", null, "error");
+            return message.error("fun/choice:MISSING");
         if (answers.some(answer => !answer))
-            return message.sendT("fun/choice:EMPTY", null, "error");
+            return message.error("fun/choice:EMPTY");
 
-        let m = await message.sendT("fun/choice:PROGRESS", null, "loading");
+        let m = await message.loading("fun/choice:PROGRESS");
 
         setTimeout(() => {
-            m.editT("fun/choice:DONE", null, "success");
+            m.success("fun/choice:DONE", null, true);
             const result =
                 answers[parseInt(Math.floor(Math.random() * answers.length))];
             message.channel.send("```" + result + "```");

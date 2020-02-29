@@ -14,7 +14,7 @@ module.exports = class extends Command {
 
     async execute(message, args) {
         if (!args[0] || !message.content.endsWith("?")) {
-            return message.sendT("fun/8ball:ERR_QUESTION", null, "error");
+            return message.error("fun/8ball:ERR_QUESTION");
         }
 
         const answerNO = parseInt(Math.floor(Math.random() * 10), 10);

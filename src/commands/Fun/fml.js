@@ -14,7 +14,7 @@ module.exports = class extends Command {
 
     async execute(message) {
         if (!this.client.config.apiKeys.blagueXYZ)
-            return message.sendT("misc:COMMAND_DISABLED", null, "error");
+            return message.error("misc:COMMAND_DISABLED");
 
         const fml = await this.client.joker.randomVDM(
             message.guild.settings.language.substr(0, 2)

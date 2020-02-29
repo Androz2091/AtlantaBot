@@ -20,7 +20,7 @@ module.exports = class extends Command {
                 .filter(m => m.id !== firstMember.id)
                 .first() || message.member;
         if (!firstMember || !secondMember)
-            return message.sendT("fun/lovecalc:MISSING", null, "error");
+            return message.error("fun/lovecalc:MISSING");
 
         const members = [firstMember, secondMember].sort(
             (a, b) => parseInt(a.id, 10) - parseInt(b.id, 10)

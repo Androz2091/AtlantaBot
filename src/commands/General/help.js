@@ -24,10 +24,9 @@ module.exports = class extends Command {
             // If the command doesn't exist
             const cmd = this.client.commands.fetch(args[0]);
             if (!cmd && isCustom) {
-                return message.sendT(
+                return message.error(
                     "general/help:CUSTOM",
-                    { cmd: args[0] },
-                    "error"
+                    { cmd: args[0] }
                 );
             } else if (!cmd) {
                 return message.sentT(

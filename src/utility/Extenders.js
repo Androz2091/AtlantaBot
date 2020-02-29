@@ -15,30 +15,19 @@ Message.prototype.translate = function(key, args) {
     return language(key, args);
 };
 
-Message.prototype.error = function(content, send = true) {
-    const updatedContent = `${Constants.Emojis.ERROR} | ${content}`;
-    return send ? this.channel.send(updatedContent) : updatedContent;
+// Translate and send the message with an error emoji
+Message.prototype.error = function(key, args, edit = false) {
+    const updatedContent = `${Constants.Emojis.ERROR} | ${this.translate(key, args)}`;
+    return edit ? this.edit(updatedContent) : this.channel.send(updatedContent);
 };
 
-Message.prototype.success = function(content, send = true) {
-    const updatedContent = `${Constants.Emojis.SUCCESS} | ${content}`;
-    return send ? this.channel.send(updatedContent) : updatedContent;
+// Translate and send the message with a success emoji
+Message.prototype.success = function(key, args, edit = false) {
+    const updatedContent = `${Constants.Emojis.SUCCESS} | ${this.translate(key, args)}`;
+    return edit ? this.edit(updatedContent) : this.channel.send(updatedContent);
 };
 
 // Translate and send the message
-Message.prototype.sendT = function(key, args, type) {
-    if (type === "error") return this.error(this.translate(key, args));
-    if (type === "success") return this.success(this.translate(key, args));
-    else return this.channel.send(this.translate(key, args));
-};
-
-// Translate and edit the message
-Message.prototype.editT = function(key, args, type) {
-    let updatedContent = "";
-    if (type === "error")
-        updatedContent = this.error(this.translate(key, args), true);
-    if (type === "success")
-        updatedContent = this.success(this.translate(key, args), true);
-    else updatedContent = this.translate(key, args);
-    return this.edit(updatedContent);
+Message.prototype.sendT = function(key, args, edit = false) {
+    return edit ? this.edit(this.translate(key, args)) : this.channel.send(this.translate(key, args));
 };

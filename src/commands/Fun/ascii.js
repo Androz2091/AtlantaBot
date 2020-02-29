@@ -18,7 +18,7 @@ module.exports = class extends Command {
     async execute(message, args) {
         const text = args.join(" ");
         if (!text || text.length > 20) {
-            return message.sendT("fun/ascii:TEXT_MISSING", null, "error");
+            return message.error("fun/ascii:TEXT_MISSING");
         }
 
         const rendered = await figletAsync(text);

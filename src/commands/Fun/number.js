@@ -16,7 +16,7 @@ module.exports = class extends Command {
 
     async execute(message) {
         if (currentGames[message.guild.id]) {
-            return message.sendT("fun/number:GAME_RUNNING", null, "error");
+            return message.error("fun/number:GAME_RUNNING");
         }
 
         const participants = [];
@@ -69,23 +69,21 @@ module.exports = class extends Command {
                 collector.stop(msg.author.username);
             }
             if (parseInt(msg.content) < number) {
-                message.sendT(
+                message.error(
                     "fun/number:BIG",
                     {
                         user: message.author,
                         number: parsedNumber
-                    },
-                    "error"
+                    }
                 );
             }
             if (parseInt(msg.content) > number) {
-                message.sendT(
+                message.error(
                     "fun/number:SMALL",
                     {
                         user: message.author,
                         number: parsedNumber
-                    },
-                    "error"
+                    }
                 );
             }
         });
@@ -93,7 +91,7 @@ module.exports = class extends Command {
         collector.on("end", (_collected, reason) => {
             delete currentGames[message.guild.id];
             if (reason === "time") {
-                return message.sendT("fun/number:DEFEAT", { number }, "error");
+                return message.error("fun/number:DEFEAT", { number });
             }
         });
     }
