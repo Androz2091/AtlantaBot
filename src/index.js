@@ -8,6 +8,7 @@ const { version } = require("../package.json");
 
 const i18n = require("./i18n");
 
+const { ErelaClient } = require("erela.js");
 const { Client: Joker } = require("blague.xyz");
 
 const DatabaseHandler = require("./handlers/Database");
@@ -66,7 +67,8 @@ module.exports = class AtlantaCluster extends Client {
                 "ms",
             "info"
         );
-        super.login(this.config.token);
+        await super.login(this.config.token);
+        this.initErelaClient();
     }
 
     async fetchData(property) {
@@ -93,6 +95,29 @@ module.exports = class AtlantaCluster extends Client {
 
     get totalRAM() {
         return Math.round(process.memoryUsage().heapTotal / 1048576);
+    }
+
+    async initErelaClient() {
+        class AtlantaErelaClient extends ErelaClient {
+            sendWS(data) {
+                const guild = this.client.guilds.cache.get(data.d.guild_id);
+                if (guild) {
+                    const { shard } = this.client.guilds.cache.get(guild.id);
+                    shard.send(data);
+                }
+            }
+        }
+        this.music = new AtlantaErelaClient(this, this.config.music.nodes)
+            .on("nodeError", () => console.error)
+            .on("nodeConnect", () => console.log("Successfully created a new Node."))
+            .on("queueEnd", async player => {
+                const embed = new Discord.MessageEmbed()
+                .setDescription(
+                    "Queue Has Ended"
+                );
+                player.textChannel.send(embed);
+                return client.music.players.destroy(player.guild.id);
+            });
     }
 
     async sendStatistics() {
