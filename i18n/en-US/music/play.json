@@ -1,0 +1,16 @@
+{
+    "DESCRIPTION": "Play a song from Youtube in your voice channel!",
+    "USAGE": "{{prefix}}play (search)",
+    "EXAMPLES": "{{prefix}}play Despacito",
+    "NO_VOICE_CHANNEL": "You must be connected in a voice channel!",
+    "VOICE_CHANNEL_CONNECT": " I can't connect into your voice channel!",
+    "MISSING_SONG_NAME": "Please enter a song name to search for (or a link)!",
+    "STREAMS_NOT_SUPPORTED": "Youtube Streams aren't supported!",
+    "RESULTS_FOOTER": "Please enter a value to select one of the search results from 1 to 10.",
+    "NOW_PLAYING": "Now playing {{songName}}",
+    "QUEUED": "Queued {{songName}}",
+    "CANCELLED": "Cancelled selection",
+    "PLAYLIST_LOADED": "Queued {{count}} songs",
+    "ERROR": "An error occured during the request to Youtube...",
+    "NOT_PLAYING": "No songs currently playing in this server."
+}
