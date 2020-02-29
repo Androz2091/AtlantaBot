@@ -14,29 +14,39 @@ module.exports = class extends Command {
     }
 
     async execute(message) {
-
         const firstMember = message.mentions.members.first();
-        const secondMember = message.mentions.members.filter((m) => m.id !== firstMember.id).first() || message.member;
-        if(!firstMember || !secondMember) return message.sendT("fun/lovecalc:MISSING", null, "error");
+        const secondMember =
+            message.mentions.members
+                .filter(m => m.id !== firstMember.id)
+                .first() || message.member;
+        if (!firstMember || !secondMember)
+            return message.sendT("fun/lovecalc:MISSING", null, "error");
 
-        const members = [ firstMember, secondMember ].sort((a, b) => parseInt(a.id, 10) - parseInt(b.id, 10));
-        const hash = md5(`${members[0].id}${members[1].user.username}${members[0].user.username}${members[1].id}`);
+        const members = [firstMember, secondMember].sort(
+            (a, b) => parseInt(a.id, 10) - parseInt(b.id, 10)
+        );
+        const hash = md5(
+            `${members[0].id}${members[1].user.username}${members[0].user.username}${members[1].id}`
+        );
 
-        const string = hash.split("").filter((e) => !isNaN(e)).join("");
+        const string = hash
+            .split("")
+            .filter(e => !isNaN(e))
+            .join("");
         const percent = parseInt(string.substr(0, 2), 10);
-        
+
         let embed = new Discord.MessageEmbed()
             .setAuthor("❤️ LoveCalc")
-            .setDescription(message.translate("fun/lovecalc:CONTENT", {
-                percent,
-                firstUsername: firstMember.user.username,
-                secondUsername: secondMember.user.username
-            }))
+            .setDescription(
+                message.translate("fun/lovecalc:CONTENT", {
+                    percent,
+                    firstUsername: firstMember.user.username,
+                    secondUsername: secondMember.user.username
+                })
+            )
             .setColor(this.client.config.embed.color)
             .setFooter(this.client.config.embed.footer);
-        
-        message.channel.send(embed);
-        
-    }
 
-}
+        message.channel.send(embed);
+    }
+};

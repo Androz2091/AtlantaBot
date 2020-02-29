@@ -13,7 +13,6 @@ module.exports = class extends Command {
     }
 
     async execute(message) {
-
         if (!this.client.config.apiKeys.blagueXYZ)
             return message.sendT("misc:COMMAND_DISABLED", null, "error");
 
@@ -27,7 +26,5 @@ module.exports = class extends Command {
             .setColor(this.client.config.embed.color);
 
         message.channel.send(embed);
-
     }
-
-}
+};
