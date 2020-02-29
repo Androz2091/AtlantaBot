@@ -1,0 +1,7 @@
+{
+    "DESCRIPTION": "Change the server language!",
+    "USAGE": "{{prefix}}setlang [french/english]",
+    "EXAMPLES": "{{prefix}}setlang french\n$setlang english",
+    "INVALID_LANGUAGE": "Please enter a valid language (`french` or `english`)!",
+    "SUCCESS": ":flag_gb: | The language of this server is now English!"
+}
