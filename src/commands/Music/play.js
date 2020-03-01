@@ -31,7 +31,8 @@ module.exports = class extends Command {
         const res = await this.client.music.search(
             args.join(" "),
             message.author
-        ).catch(() => {
+        ).catch((e) => {
+            console.error(e)
             const loadFailedEmbed = new Discord.MessageEmbed()
                 .setDescription(message.translate("music/play:ERROR"))
                 .errorColor();
@@ -56,6 +57,15 @@ module.exports = class extends Command {
                 // Add the song to the queue and play it
                 player.queue.add(res.tracks[0]);
                 if (!player.playing) player.play();
+                const nowPlayingEmbed = new Discord.MessageEmbed()
+                    .setDescription(
+                        message.translate("music/play:NOW_PLAYING", {
+                            songName: res.tracks[0].title
+                        })
+                    )
+                    .setImage(res.tracks[0].thumbnail)
+                    .defaultColor();
+                return message.channel.send(nowPlayingEmbed);
             }
         }
 
@@ -99,6 +109,7 @@ module.exports = class extends Command {
                                 songName: track.title
                             })
                         )
+                        .setImage(track.thumbnail)
                         .defaultColor();
                     return message.channel.send(nowPlayingEmbed);
                 } else {
@@ -140,6 +151,7 @@ module.exports = class extends Command {
                             songName: res.playlist.tracks[0].title
                         })
                     )
+                    .setImage(res.playlist.tracks[0].thumbnail)
                     .defaultColor();
                 message.channel.send(nowPlayingEmbed);
             }
