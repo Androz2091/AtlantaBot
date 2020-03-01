@@ -1,6 +1,6 @@
 require("./utility/Extenders");
 
-const { Client, Collection } = require("discord.js");
+const { Client, Collection, MessageEmbed } = require("discord.js");
 const fetch = require("node-fetch");
 
 const config = require("../config");
@@ -58,10 +58,10 @@ module.exports = class AtlantaCluster extends Client {
 
     async login() {
         let startAt = Date.now();
-        this.translate = await i18n();
+        this.translations = await i18n();
         this.logger.log(
             "Loaded " +
-                this.translate.size +
+                this.translations.size +
                 " languages in " +
                 (Date.now() - startAt) +
                 "ms",
@@ -97,6 +97,12 @@ module.exports = class AtlantaCluster extends Client {
         return Math.round(process.memoryUsage().heapTotal / 1048576);
     }
 
+    translate(languageName, key, args){
+        const language = this.translations.get(languageName);
+        if (!language) throw "Message: Invalid language set in settings.";
+        return language(key, args);
+    }
+
     async initErelaClient() {
         class AtlantaErelaClient extends ErelaClient {
             sendWS(data) {
@@ -109,14 +115,26 @@ module.exports = class AtlantaCluster extends Client {
         }
         this.music = new AtlantaErelaClient(this, this.config.music.nodes)
             .on("nodeError", () => console.error)
-            .on("nodeConnect", () => console.log("Successfully created a new Node."))
-            .on("queueEnd", async player => {
-                const embed = new Discord.MessageEmbed()
+            .on("nodeConnect", () => this.logger.log("Successfully created a new Node.", "info"))
+            .on("trackStart", async (player, track) => {
+                const guildData = await this.handlers.database.fetchGuild(player.guild.id);
+                const nowPlayingEmbed = new MessageEmbed()
                 .setDescription(
-                    "Queue Has Ended"
-                );
+                    this.translate(guildData.language, "music/play:NOW_PLAYING", {
+                        songName: `[${track.title}](${track.uri})`
+                    })
+                )
+                .setImage(track.thumbnail.replace("default", "hqdefault"))
+                .defaultColor();
+                player.textChannel.send(nowPlayingEmbed);
+            })
+            .on("queueEnd", async player => {
+                const guildData = await this.handlers.database.fetchGuild(player.guild.id);
+                const embed = new MessageEmbed()
+                .setDescription(this.translate(guildData.language, "music/play:QUEUE_ENDED"))
+                .errorColor();
                 player.textChannel.send(embed);
-                return client.music.players.destroy(player.guild.id);
+                return this.music.players.destroy(player.guild.id);
             });
     }
 

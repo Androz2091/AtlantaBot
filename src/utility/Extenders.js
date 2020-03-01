@@ -2,13 +2,13 @@ const { Guild, Message, MessageEmbed } = require("discord.js");
 const Constants = require("../utility/Constants");
 
 Guild.prototype.translate = function(key, args) {
-    const language = this.client.translate.get(this.settings.language);
+    const language = this.client.translations.get(this.settings.language);
     if (!language) throw "Message: Invalid language set in settings.";
     return language(key, args);
 };
 
 Message.prototype.translate = function(key, args) {
-    const language = this.client.translate.get(
+    const language = this.client.translations.get(
         this.guild ? this.guild.settings.language : "en-US"
     );
     if (!language) throw "Message: Invalid language set in settings.";
