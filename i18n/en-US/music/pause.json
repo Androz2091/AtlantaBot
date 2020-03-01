@@ -1,0 +1,6 @@
+{
+    "DESCRIPTION": "Pause the current song!",
+    "USAGE": "{{prefix}}pause",
+    "EXAMPLES": "{{prefix}}pause",
+    "PAUSED": "{{songName}} paused!"
+}
