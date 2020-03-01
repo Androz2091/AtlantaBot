@@ -1,10 +1,11 @@
 const { join, parse } = require("path");
 const klaw = require("klaw");
+const { Collection } = require("discord.js");
 
-module.exports = class Jobs {
+module.exports = class Jobs extends Collection {
     constructor(client) {
+        super();
         this.client = client;
-        this.jobs = {};
         this.init();
     }
 
@@ -21,12 +22,12 @@ module.exports = class Jobs {
                 );
                 const job = new Job(this.client);
 
-                this.jobs[file.name] = job;
+                this.set(file.name, job);
             })
             .on("end", () => {
                 this.client.logger.info(
                     `Loaded ${
-                        Object.keys(this.jobs).length
+                        this.size
                     } Jobs in ${Date.now() - start}ms`
                 );
             });

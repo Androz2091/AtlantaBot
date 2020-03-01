@@ -138,19 +138,4 @@ module.exports = class AtlantaCluster extends Client {
             });
     }
 
-    async sendStatistics() {
-        fetch(`https://discordbots.org/api/bots/${this.user.id}/stats`, {
-            method: "post",
-            headers: {
-                Authorization: this.config.apis.discordbots
-            },
-            body: JSON.stringify({
-                server_count: this.guilds
-                    .filter(g => g.shardID === shardID)
-                    .size.toString()
-            })
-        }).catch(err => {
-            if (err) console.error(`DiscordBots Stats Transfer Failed ${err}`);
-        });
-    }
 };

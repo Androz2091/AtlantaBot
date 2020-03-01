@@ -24,6 +24,8 @@ module.exports = class Ready extends Event {
             `${client.user.tag}, ready to serve ${client.users.cache.size} users in ${client.guilds.cache.size} servers.`
         );
 
+        this.client.jobs.get("discord-bots").execute();
+
         /* DiscordBots.org STATS 
         let discordbotsorg = require("../helpers/discordbots.org.js");
         discordbotsorg.init(client);
