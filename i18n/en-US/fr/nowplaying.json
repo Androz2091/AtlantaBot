@@ -1,0 +1,6 @@
+{
+    "DESCRIPTION": "Show the current song!",
+    "USAGE": "{{prefix}}nowplaying",
+    "EXAMPLES": "{{prefix}}nowplaying",
+    "CONTENT": "Currently playing {{songName}}\n__Duration__: {{current}}/{{total}}\n__Added by__: {{songRequester}}"
+}
