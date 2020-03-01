@@ -1,4 +1,4 @@
-const { Guild, Message } = require("discord.js");
+const { Guild, Message, MessageEmbed } = require("discord.js");
 const Constants = require("../utility/Constants");
 
 Guild.prototype.translate = function(key, args) {
@@ -16,26 +16,59 @@ Message.prototype.translate = function(key, args) {
 };
 
 // Translate and send the message with an error emoji
-Message.prototype.error = function(key, args, edit = false) {
-    const updatedContent = `${Constants.Emojis.ERROR} | ${this.translate(
-        key,
-        args
-    )}`;
-    return edit ? this.edit(updatedContent) : this.channel.send(updatedContent);
+Message.prototype.error = function(key, args, edit = false, embed = false) {
+    if(embed && this.channel.permissionsFor(this.guild.me).has("EMBED_LINKS")){
+        const embed = {
+            color: Constants.Colors.ERROR,
+            description: this.translate(key, args)
+        };
+        return edit ? this.edit({ embed }) : this.channel.send({ embed });
+     } else {
+        const updatedContent = `${Constants.Emojis.ERROR} | ${this.translate(key, args)}`;
+        return edit ? this.edit(updatedContent) : this.channel.send(updatedContent);
+    }
 };
 
 // Translate and send the message with a success emoji
-Message.prototype.success = function(key, args, edit = false) {
-    const updatedContent = `${Constants.Emojis.SUCCESS} | ${this.translate(
-        key,
-        args
-    )}`;
-    return edit ? this.edit(updatedContent) : this.channel.send(updatedContent);
+Message.prototype.success = function(key, args, edit = false, embed = false) {
+    if(embed && this.channel.permissionsFor(this.guild.me).has("EMBED_LINKS")){
+        const embed = {
+            color: Constants.Colors.SUCCESS,
+            description: this.translate(key, args)
+        };
+        return edit ? this.edit({ embed }) : this.channel.send({ embed });
+     } else {
+        const updatedContent = `${Constants.Emojis.SUCCESS} | ${this.translate(key, args)}`;
+        return edit ? this.edit(updatedContent) : this.channel.send(updatedContent);
+    }
 };
 
+
 // Translate and send the message
-Message.prototype.sendT = function(key, args, edit = false) {
-    return edit
-        ? this.edit(this.translate(key, args))
-        : this.channel.send(this.translate(key, args));
+Message.prototype.success = function(key, args, edit = false, embed = false) {
+    if(embed && this.channel.permissionsFor(this.guild.me).has("EMBED_LINKS")){
+        const embed = {
+            color: Constants.Colors.DEFAULT,
+            description: this.translate(key, args)
+        };
+        return edit ? this.edit({ embed }) : this.channel.send({ embed });
+     } else {
+        const updatedContent = `${Constants.Emojis.DEFAULT} | ${this.translate(key, args)}`;
+        return edit ? this.edit(updatedContent) : this.channel.send(updatedContent);
+    }
+};
+
+MessageEmbed.prototype.errorColor = function() {
+    this.setColor(Constants.Colors.ERROR);
+    return this;
+};
+
+MessageEmbed.prototype.successColor = function() {
+    this.setColor(Constants.Colors.SUCCESS);
+    return this;
+};
+
+MessageEmbed.prototype.defaultColor = function() {
+    this.setColor(Constants.Colors.DEFAULT);
+    return this;
 };

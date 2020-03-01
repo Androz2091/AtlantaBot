@@ -1,0 +1,10 @@
+{
+    "DESCRIPTION": "Shows the queue of the server",
+    "USAGE": "{{prefix}}queue",
+    "EXAMPLES": "{{prefix}}queue",
+    "EMPTY": "The queue of the server is actually empty.",
+    "CURRENTLY_PLAYING": "Currently playing",
+    "PAGE_PROMPT": "{{user}}, to what queue page would you like to jump?",
+    "TITLE": "Queue of {{guild}}",
+    "SONG": "{{songTitle}} | {{songDuration}} | Added by {{songRequester}}"
+}

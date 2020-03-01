@@ -31,6 +31,7 @@
         "dblapi.js": "^2.3.0",
         "discord-backup": "^2.0.3",
         "discord-giveaways": "^2.4.4",
+        "discord-paginationembed": "^2.0.0-beta.4",
         "discord-player": "^1.3.2",
         "discord.js": "discordjs/discord.js",
         "ejs": "^3.0.1",

@@ -9,7 +9,7 @@ const Links = {
 };
 
 const Colors = {
-    DEFAULT: 0x00adff,
+    DEFAULT: 0x0091fc,
     SUCCESS: 0x00ff00,
     ERROR: 0xff0000
 };
