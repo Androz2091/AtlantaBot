@@ -19,7 +19,8 @@ module.exports = class extends Command {
         if(!channel || channel.id !== player.voiceChannel.id) return message.error("music/play:NO_VOICE_CHANNEL", null, false, true);
         if(!args[0] || (!args[0].endsWith("%") && isNaN(args[0]))) return message.error("music/volume:MISSING", null, false, true);
         const currentVolume = player.volume;
-        const newVolume = parseInt((args[0].endsWith("%") ? args[0].substr(args[0].length - 1, args[0].length) : args[0]));
+        const sentVolume = parseInt((args[0].endsWith("%") ? args[0].substr(0, args[0].length-1) : args[0]));
+        const newVolume = sentVolume >= 100 ? 100 : sentVolume <= 0 ? 1 : sentVolume;
         player.setVolume(newVolume);
         const changedEmbed = new Discord.MessageEmbed()
         .setDescription(message.translate("music/volume:CHANGED", {
