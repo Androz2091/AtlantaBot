@@ -1,0 +1,7 @@
+{
+    "DESCRIPTION": "Change the music volume!",
+    "USAGE": "{{prefix}}volume [percent]",
+    "EXAMPLES": "{{prefix}}volume 10%",
+    "MISSING": "You must specify a valid percentage!",
+    "CHANGED": "Music volume changed from {{oldPercent}}% to {{newPercent}}%!"
+}
