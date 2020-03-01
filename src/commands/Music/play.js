@@ -28,11 +28,12 @@ module.exports = class extends Command {
             voiceChannel: channel,
             selfDeaf: true
         });
+        let errored = false;
         const res = await this.client.music.search(
             args.join(" "),
             message.author
-        ).catch((e) => {
-            console.error(e)
+        ).catch(() => {
+            errored = true;
             const loadFailedEmbed = new Discord.MessageEmbed()
                 .setDescription(message.translate("music/play:ERROR"))
                 .errorColor();
@@ -56,16 +57,18 @@ module.exports = class extends Command {
             } else {
                 // Add the song to the queue and play it
                 player.queue.add(res.tracks[0]);
-                if (!player.playing) player.play();
-                const nowPlayingEmbed = new Discord.MessageEmbed()
-                    .setDescription(
-                        message.translate("music/play:NOW_PLAYING", {
-                            songName: res.tracks[0].title
-                        })
-                    )
-                    .setImage(res.tracks[0].thumbnail)
-                    .defaultColor();
-                return message.channel.send(nowPlayingEmbed);
+                if (!player.playing){
+                    player.play();
+                } else {
+                    const queuedEmbed = new Discord.MessageEmbed()
+                        .setDescription(
+                            message.translate("music/play:QUEUED", {
+                                songName: res.tracks[0].title
+                            })
+                        )
+                        .defaultColor();
+                    return message.channel.send(queuedEmbed);
+                }
             }
         }
 
@@ -103,15 +106,6 @@ module.exports = class extends Command {
                 player.queue.add(track);
                 if (!player.playing) {
                     player.play();
-                    const nowPlayingEmbed = new Discord.MessageEmbed()
-                        .setDescription(
-                            message.translate("music/play:NOW_PLAYING", {
-                                songName: track.title
-                            })
-                        )
-                        .setImage(track.thumbnail)
-                        .defaultColor();
-                    return message.channel.send(nowPlayingEmbed);
                 } else {
                     const queuedEmbed = new Discord.MessageEmbed()
                         .setDescription(
@@ -145,15 +139,6 @@ module.exports = class extends Command {
             let playing = player.playing;
             if (!playing) {
                 player.play();
-                const nowPlayingEmbed = new Discord.MessageEmbed()
-                    .setDescription(
-                        message.translate("music/play:NOW_PLAYING", {
-                            songName: res.playlist.tracks[0].title
-                        })
-                    )
-                    .setImage(res.playlist.tracks[0].thumbnail)
-                    .defaultColor();
-                message.channel.send(nowPlayingEmbed);
             }
             const playlistLoaded = new Discord.MessageEmbed()
                 .setDescription(
@@ -165,7 +150,7 @@ module.exports = class extends Command {
             return message.channel.send(playlistLoaded);
         }
 
-        else {
+        else if(!errored){
             const loadFailedEmbed = new Discord.MessageEmbed()
                 .setDescription(message.translate("music/play:ERROR"))
                 .errorColor();
