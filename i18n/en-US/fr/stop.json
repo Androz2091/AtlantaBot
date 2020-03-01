@@ -1,0 +1,6 @@
+{
+    "DESCRIPTION": "Stop the music in this server!",
+    "USAGE": "{{prefix}}stop",
+    "EXAMPLES": "{{prefix}}stop",
+    "STOPPED": "Music successfully stopped!"
+}
