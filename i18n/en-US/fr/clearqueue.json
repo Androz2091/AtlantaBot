@@ -1,0 +1,6 @@
+{
+    "DESCRIPTION": "Clear the server queue!",
+    "USAGE": "{{prefix}}clearqueue",
+    "EXAMPLES": "{{prefix}}clearqueue",
+    "CLEARED": "Cleared {{count}} songs from the queue!"
+}
