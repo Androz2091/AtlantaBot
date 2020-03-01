@@ -1,0 +1,8 @@
+{
+    "DESCRIPTION": "Seek to a certain point in the current track.",
+    "USAGE": "{{prefix}}seek [time]",
+    "EXAMPLES": "{{prefix}}seek 10s",
+    "MISSING": "You must specify a valid time to seek!",
+    "SEEKED": "Seeked {{time}}!",
+    "CANNOT_SEEK": "Can't seek {{time}} because the song isn't long enough"
+}
