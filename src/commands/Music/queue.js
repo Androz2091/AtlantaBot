@@ -44,12 +44,14 @@ module.exports = class extends Command {
         .setChannel(message.channel)
         .setPageIndicator(false)
         .setPage(1)
+        .setDisabledNavigationEmojis(["DELETE"])
         .setColor(Constants.Colors.DEFAULT)
         .setClientAssets({ prompt: message.translate("music/queue:PAGE_PROMPT", {
             user: message.author.toString()
         })})
         .setAuthor(message.translate("music/queue:TITLE", {
-            guild: message.guild.name
+            guild: message.guild.name,
+            duration: this.client.helpers.convertTime.execute(message.guild, player.queue.map((t) => t.duration).reduce((p, c) => p + c))
         }), message.guild.iconURL());
 
         pagination.build();
