@@ -1,0 +1,10 @@
+{
+    "DESCRIPTION": "Skip the current song!",
+    "USAGE": "{{prefix}}skip",
+    "EXAMPLES": "{{prefix}}skip",
+    "SKIPPED": "Skipped {{songName}}!",
+    "REQUEST": "Skip request",
+    "VOTE_NEEDED": "Votes: {{current}}/{{needed}}\nUse the skip command to vote.\n\nUsers allowed to vote:\n{{users}}",
+    "ALREADY_VOTED": "You already voted to skip that song!",
+    "USER_VOTED": "{{username}} (has voted)"
+}
