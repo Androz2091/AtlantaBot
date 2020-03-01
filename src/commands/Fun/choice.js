@@ -19,7 +19,7 @@ module.exports = class extends Command {
         if (answers.some(answer => !answer))
             return message.error("fun/choice:EMPTY");
 
-        let m = await message.loading("fun/choice:PROGRESS");
+        let m = await message.sendT("fun/choice:PROGRESS", null, false, false, "loading");
 
         setTimeout(() => {
             m.success("fun/choice:DONE", null, true);
