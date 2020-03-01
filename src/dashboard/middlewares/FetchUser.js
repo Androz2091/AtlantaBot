@@ -49,8 +49,8 @@ module.exports = async (req, _res, next) => {
     };
     // Add translate
     req.locale = sessionUser.locale;
-    req.translate = req.client.translate.get(
-        Array.from(req.client.translate).find(l =>
+    req.translate = req.client.translations.get(
+        Array.from(req.client.translations).find(l =>
             l[0].includes(sessionUser.locale)
         )[0]
     );
