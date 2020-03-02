@@ -10,6 +10,7 @@ module.exports = class DiscordBotsJob extends Job {
     }
 
     execute(){
+        this.client.logger.log("Posting Discordbots stats...", "info");
         if(!this.client.config.apiKeys.discordbots) return;
         fetch(`https://discordbots.org/api/bots/${this.client.user.id}/stats`, {
             method: "post",
