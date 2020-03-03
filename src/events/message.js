@@ -104,8 +104,8 @@ module.exports = class Message extends Event {
             const cmdName = args.shift().toLowerCase();
             const command = await this.client.commands.fetch(cmdName, guild);
             if (!command) {
-                const customCommand = guild.customCommands.get(cmdName);
-                if (customCommand) message.channel.send(customCommand.reply);
+                const customCommandAnswer = guild.customCommands.get(cmdName);
+                if (customCommandAnswer) message.channel.send(customCommandAnswer);
                 return;
             }
 
