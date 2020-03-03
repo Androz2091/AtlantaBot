@@ -1,0 +1,8 @@
+{
+    "DESCRIPTION": "Delete a custom command from the server!",
+    "USAGE": "{{prefix}}delcommand [name]",
+    "EXAMPLES": "{{prefix}}addcommand hello",
+    "MISSING": "Please provide a command name!",
+    "UNKNOWN_COMMAND": "Command **{{prefix}}{{commandName}}** doesn't exist!",
+    "SUCCESS": "Command **{{prefix}}{{commandName}}** deleted!"
+}
