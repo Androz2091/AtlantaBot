@@ -117,6 +117,28 @@ module.exports = class Guild {
         return this.ignoredChannels;
     }
 
+    // Add a channel to the ignored channels
+    async addIgnoredChannel(channelID) {
+        await this.handler.query(`
+            INSERT INTO guild_ignored_channels
+            (guild_id, channel_id) VALUES
+            ('${this.id}', '${channelID}');
+        `);
+        this.ignoredChannels.push(channelID);
+        return this;
+    }
+
+    // Delete a channel from the ignored channels
+    async deleteIgnoredChannel(channelID) {
+        await this.handler.query(`
+            DELETE FROM guild_ignored_channels
+            WHERE guild_id = '${this.id}'
+            AND channel_id = '${channelID}';
+        `);
+        this.ignoredChannels = this.ignoredChannels.filter((chID) => chID !== channelID);
+        return this;
+    }
+
     // Fetch and fill custom commands
     async fetchCustomCommands() {
         const { rows } = await this.handler.query(`
@@ -137,14 +159,12 @@ module.exports = class Guild {
         await this.handler.query(`
             INSERT INTO guild_custom_commands
             (guild_id, cmd_name, cmd_reply) VALUES
-            ('${
-                this.id
-            }', '${name}', '${answer}');
+            ('${this.id}', '${name}', '${answer}');
         `);
         this.customCommands.set(name, answer);
         return this;
     }
-    
+
     // Delete a custom command
     async deleteCustomCommand(name) {
         await this.handler.query(`
