@@ -1,0 +1,8 @@
+{
+    "DESCRIPTION": "Enable or disable commands in some channels of the server!",
+    "USAGE": "{{prefix}}ignore [channel]",
+    "EXAMPLES": "{{prefix}}ignore #general",
+    "INVALID_CHANNEL": "You must specify a valid channel in which the commands will be or not enabled!",
+    "SUCCESS_ENABLED": "Commands in **{{channel}}** are now allowed!",
+    "SUCCESS_DISABLED": "Commands in **{{channel}}** are now not allowed!"
+}
