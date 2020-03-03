@@ -1,9 +1,7 @@
 const { CronJob } = require("cron");
 
 module.exports = class Job {
-    constructor(client, {
-        time = "* * * * * "
-    }) {
+    constructor(client, { time = "* * * * * " }) {
         this.client = client;
         this.time = time;
         this.cronJob = new CronJob(

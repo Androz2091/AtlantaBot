@@ -97,7 +97,7 @@ module.exports = class AtlantaCluster extends Client {
         return Math.round(process.memoryUsage().heapTotal / 1048576);
     }
 
-    translate(languageName, key, args){
+    translate(languageName, key, args) {
         const language = this.translations.get(languageName);
         if (!language) throw "Message: Invalid language set in settings.";
         return language(key, args);
@@ -115,27 +115,41 @@ module.exports = class AtlantaCluster extends Client {
         }
         this.music = new AtlantaErelaClient(this, this.config.music.nodes)
             .on("nodeError", () => console.error)
-            .on("nodeConnect", () => this.logger.log("Successfully created a new Node.", "info"))
+            .on("nodeConnect", () =>
+                this.logger.log("Successfully created a new Node.", "info")
+            )
             .on("trackStart", async (player, track) => {
-                const guildData = await this.handlers.database.fetchGuild(player.guild.id);
+                const guildData = await this.handlers.database.fetchGuild(
+                    player.guild.id
+                );
                 const nowPlayingEmbed = new MessageEmbed()
-                .setDescription(
-                    this.translate(guildData.language, "music/play:NOW_PLAYING", {
-                        songName: `[${track.title}](${track.uri})`
-                    })
-                )
-                .setImage(track.thumbnail.replace("default", "hqdefault"))
-                .defaultColor();
+                    .setDescription(
+                        this.translate(
+                            guildData.language,
+                            "music/play:NOW_PLAYING",
+                            {
+                                songName: `[${track.title}](${track.uri})`
+                            }
+                        )
+                    )
+                    .setImage(track.thumbnail.replace("default", "hqdefault"))
+                    .defaultColor();
                 player.textChannel.send(nowPlayingEmbed);
             })
             .on("queueEnd", async player => {
-                const guildData = await this.handlers.database.fetchGuild(player.guild.id);
+                const guildData = await this.handlers.database.fetchGuild(
+                    player.guild.id
+                );
                 const embed = new MessageEmbed()
-                .setDescription(this.translate(guildData.language, "music/play:QUEUE_ENDED"))
-                .errorColor();
+                    .setDescription(
+                        this.translate(
+                            guildData.language,
+                            "music/play:QUEUE_ENDED"
+                        )
+                    )
+                    .errorColor();
                 player.textChannel.send(embed);
                 return this.music.players.destroy(player.guild.id);
             });
     }
-
 };

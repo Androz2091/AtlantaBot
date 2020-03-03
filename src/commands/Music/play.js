@@ -14,13 +14,30 @@ module.exports = class extends Command {
 
     async execute(message, args) {
         const { channel } = message.member.voice;
-        if (!channel) return message.error("music/play:NO_VOICE_CHANNEL", null, false, true);
+        if (!channel)
+            return message.error(
+                "music/play:NO_VOICE_CHANNEL",
+                null,
+                false,
+                true
+            );
 
         const permissions = channel.permissionsFor(this.client.user);
         if (!permissions.has("CONNECT") || !permissions.has("SPEAK"))
-            return message.error("music/play:VOICE_CHANNEL_CONNECT", null, false, true);
+            return message.error(
+                "music/play:VOICE_CHANNEL_CONNECT",
+                null,
+                false,
+                true
+            );
 
-        if (!args[0]) return message.error("music/play:MISSING_SONG_NAME", null, false, true);
+        if (!args[0])
+            return message.error(
+                "music/play:MISSING_SONG_NAME",
+                null,
+                false,
+                true
+            );
 
         const player = this.client.music.players.spawn({
             guild: message.guild,
@@ -29,17 +46,16 @@ module.exports = class extends Command {
             selfDeaf: true
         });
         let errored = false;
-        const res = await this.client.music.search(
-            args.join(" "),
-            message.author
-        ).catch(() => {
-            errored = true;
-            const loadFailedEmbed = new Discord.MessageEmbed()
-                .setDescription(message.translate("music/play:ERROR"))
-                .errorColor();
-            return message.channel.send(loadFailedEmbed);
-        });
-        if(!res) return;
+        const res = await this.client.music
+            .search(args.join(" "), message.author)
+            .catch(() => {
+                errored = true;
+                const loadFailedEmbed = new Discord.MessageEmbed()
+                    .setDescription(message.translate("music/play:ERROR"))
+                    .errorColor();
+                return message.channel.send(loadFailedEmbed);
+            });
+        if (!res) return;
 
         // If a track was found
         if (res.loadType === "TRACK_LOADED") {
@@ -57,7 +73,7 @@ module.exports = class extends Command {
             } else {
                 // Add the song to the queue and play it
                 player.queue.add(res.tracks[0]);
-                if (!player.playing){
+                if (!player.playing) {
                     player.play();
                 } else {
                     const queuedEmbed = new Discord.MessageEmbed()
@@ -130,9 +146,7 @@ module.exports = class extends Command {
                     return message.channel.send(cancelledEmbed);
                 }
             });
-        }
-
-        else if (res.loadType === "PLAYLIST_LOADED") {
+        } else if (res.loadType === "PLAYLIST_LOADED") {
             res.playlist.tracks.forEach(track => {
                 player.queue.add(track);
             });
@@ -143,14 +157,14 @@ module.exports = class extends Command {
             const playlistLoaded = new Discord.MessageEmbed()
                 .setDescription(
                     message.translate("music/play:PLAYLIST_LOADED", {
-                        count: playing ? res.playlist.tracks.length : res.playlist.tracks.length - 1
+                        count: playing
+                            ? res.playlist.tracks.length
+                            : res.playlist.tracks.length - 1
                     })
                 )
                 .defaultColor();
             return message.channel.send(playlistLoaded);
-        }
-
-        else if(!errored){
+        } else if (!errored) {
             const loadFailedEmbed = new Discord.MessageEmbed()
                 .setDescription(message.translate("music/play:ERROR"))
                 .errorColor();

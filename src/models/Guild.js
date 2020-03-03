@@ -135,7 +135,9 @@ module.exports = class Guild {
             WHERE guild_id = '${this.id}'
             AND channel_id = '${channelID}';
         `);
-        this.ignoredChannels = this.ignoredChannels.filter((chID) => chID !== channelID);
+        this.ignoredChannels = this.ignoredChannels.filter(
+            chID => chID !== channelID
+        );
         return this;
     }
 

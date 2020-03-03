@@ -26,9 +26,7 @@ module.exports = class Jobs extends Collection {
             })
             .on("end", () => {
                 this.client.logger.info(
-                    `Loaded ${
-                        this.size
-                    } Jobs in ${Date.now() - start}ms`
+                    `Loaded ${this.size} Jobs in ${Date.now() - start}ms`
                 );
             });
     }
