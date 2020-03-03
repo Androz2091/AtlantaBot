@@ -132,6 +132,30 @@ module.exports = class Guild {
         return this.customCommands;
     }
 
+    // Add a custom command
+    async addCustomCommand({ name, answer }) {
+        await this.handler.query(`
+            INSERT INTO guild_custom_commands
+            (guild_id, cmd_name, cmd_reply) VALUES
+            ('${
+                this.id
+            }', '${name}', '${answer}');
+        `);
+        this.customCommands.set(name, answer);
+        return this;
+    }
+    
+    // Delete a custom command
+    async deleteCustomCommand(name) {
+        await this.handler.query(`
+            DELETE FROM guild_custom_commands
+            WHERE guild_id = '${this.id}'
+            AND cmd_name = '${name}';
+        `);
+        this.customCommands.delete(name);
+        return this;
+    }
+
     // Fetch and fill command logs
     async fetchCommandLogs() {
         const { rows } = await this.handler.query(`
@@ -150,7 +174,7 @@ module.exports = class Guild {
     }
 
     // Add a command log
-    async addCommandLog(name, channelID, userID, date = new Date()) {
+    async addCommandLog({ name, channelID, userID, date = new Date() }) {
         await this.handler.query(`
             INSERT INTO guild_cmd_logs
             (guild_id, cmd_name, cmd_channel_id, cmd_user_id, cmd_date) VALUES
