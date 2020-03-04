@@ -21,5 +21,4 @@ module.exports = class Message extends Event {
         player.textChannel.send(embed);
         return this.music.players.destroy(player.guild.id);
     }
-
 };

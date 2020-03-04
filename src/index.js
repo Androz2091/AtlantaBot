@@ -113,11 +113,11 @@ module.exports = class AtlantaCluster extends Client {
             }
         }
         this.music = new AtlantaErelaClient(this, this.config.music.nodes)
-            .on("nodeError", (msg) => {
+            .on("nodeError", msg => {
                 console.error(msg);
             })
             .on("nodeConnect", () => {
-                this.logger.log("Successfully created a new Node.", "info")
+                this.logger.log("Successfully created a new Node.", "info");
             })
             .on("trackError", async (player, track, msg) => {
                 this.emit("trackError", player, track, msg);
@@ -125,7 +125,7 @@ module.exports = class AtlantaCluster extends Client {
             .on("trackStart", async (player, track) => {
                 this.emit("trackStart", player, track);
             })
-            .on("queueEnd", async (player) => {
+            .on("queueEnd", async player => {
                 this.emit("trackStart", player);
             });
     }

@@ -24,5 +24,4 @@ module.exports = class Message extends Event {
             .defaultColor();
         player.textChannel.send(nowPlayingEmbed);
     }
-
 };
