@@ -8,13 +8,14 @@ module.exports = class extends Command {
     constructor(...args) {
         super(
             {
-                permission: Constants.PermissionsLevels.SERVER_MEMBER
+                userPermissionLevel: Constants.PermissionsLevels.SERVER_MEMBER,
+                clientPermissions: [ "EMBED_LINKS" ]
             },
             ...args
         );
     }
 
-    async execute(message, args) {
+    async execute(message) {
         const { channel } = message.member.voice;
         const player = this.client.music.players.get(message.guild.id);
         if (!player)

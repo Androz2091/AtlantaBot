@@ -138,24 +138,29 @@ module.exports = class Message extends Event {
             }
 
             if (
-                userPermissions.level < command.permission ||
-                (actualUserPermissions.level < command.permission &&
+                userPermissions.level < command.userPermissionLevel ||
+                (actualUserPermissions.level < command.userPermissionLevel &&
                     actualUserPermissions.level !==
                         Constants.PermissionsLevels.SERVER_BLACKLISTED &&
-                    command.permission <=
+                    command.userPermissionLevel <=
                         Constants.PermissionsLevels.SERVER_OWNER)
             ) {
                 const requiredLevel = this.client.handlers.permissions.levels.get(
-                    command.permission
+                    command.userPermissionLevel
                 );
-                return message.error(
-                    message.translate("misc:MISSING_PERMS", {
-                        requiredLevel: requiredLevel.level,
-                        requiredTitle: requiredLevel.title,
-                        userLevel: actualUserPermissions.level,
-                        userTitle: actualUserPermissions.title
-                    })
-                );
+                return message.error("misc:MISSING_PERMS", {
+                    requiredLevel: requiredLevel.level,
+                    requiredTitle: requiredLevel.title,
+                    userLevel: actualUserPermissions.level,
+                    userTitle: actualUserPermissions.title
+                });
+            }
+
+            const requiredPermissions = command.clientPermissions.filter((perm) => !message.channel.permissionsFor(message.guild.me).has(perm));
+            if(requiredPermissions.length > 0){
+                return message.error("misc:MISSING_PERMS_BOT", {
+                    permissions: requiredPermissions.map((p) => "`"+p+"`").join(", ")
+                });
             }
 
             console.log(`Request handled in ${Date.now() - startAt}ms`);

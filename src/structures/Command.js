@@ -7,7 +7,8 @@ module.exports = class Command {
             enabled = true,
             aliases = new Array(),
             guildOnly = true,
-            permission = Constants.PermissionsLevels.ATLANTA_MAINTAINER,
+            userPermissionLevel = Constants.PermissionsLevels.ATLANTA_MAINTAINER,
+            clientPermissions = new Array(),
             nsfw = false
         },
         client,
@@ -24,7 +25,8 @@ module.exports = class Command {
         this.enabled = enabled;
         this.aliases = aliases;
         this.guildOnly = guildOnly;
-        this.permission = permission;
+        this.userPermissionLevel = userPermissionLevel;
+        this.clientPermissions = clientPermissions;
         this.nsfw = nsfw;
     }
 

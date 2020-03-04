@@ -8,7 +8,8 @@ module.exports = class extends Command {
     constructor(...args) {
         super(
             {
-                permission: Constants.PermissionsLevels.SERVER_MEMBER
+                userPermissionLevel: Constants.PermissionsLevels.SERVER_MEMBER,
+                clientPermissions: [ "EMBED_LINKS" ]
             },
             ...args
         );

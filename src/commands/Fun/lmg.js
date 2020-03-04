@@ -6,7 +6,7 @@ module.exports = class extends Command {
         super(
             {
                 aliases: ["lmgtfy"],
-                permission: Constants.PermissionsLevels.SERVER_MEMBER
+                userPermissionLevel: Constants.PermissionsLevels.SERVER_MEMBER
             },
             ...args
         );

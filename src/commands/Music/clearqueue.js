@@ -6,7 +6,8 @@ module.exports = class extends Command {
     constructor(...args) {
         super(
             {
-                permission: Constants.PermissionsLevels.SERVER_DJ
+                userPermissionLevel: Constants.PermissionsLevels.SERVER_DJ,
+                clientPermissions: [ "EMBED_LINKS" ]
             },
             ...args
         );
