@@ -13,5 +13,6 @@
     "PLAYLIST_LOADED": "Queued {{count}} songs",
     "ERROR": "An error occured during the request to Youtube...",
     "NOT_PLAYING": "No songs currently playing in this server.",
-    "QUEUE_ENDED": "Queue has ended. No more music to play..."
+    "QUEUE_ENDED": "Queue has ended. No more music to play...",
+    "ERROR_COPYRIGHT": "{{songName}} can't be played because Youtube has blocked it (for copyright reasons)."
 }
