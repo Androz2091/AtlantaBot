@@ -4,7 +4,7 @@ const Discord = require("discord.js"),
 const Constants = require("../utility/Constants");
 const Event = require("../structures/Event");
 
-module.exports = class Message extends Event {
+module.exports = class extends Event {
     constructor(...args) {
         super(...args);
     }
@@ -156,10 +156,15 @@ module.exports = class Message extends Event {
                 });
             }
 
-            const requiredPermissions = command.clientPermissions.filter((perm) => !message.channel.permissionsFor(message.guild.me).has(perm));
-            if(requiredPermissions.length > 0){
+            const requiredPermissions = command.clientPermissions.filter(
+                perm =>
+                    !message.channel.permissionsFor(message.guild.me).has(perm)
+            );
+            if (requiredPermissions.length > 0) {
                 return message.error("misc:MISSING_PERMS_BOT", {
-                    permissions: requiredPermissions.map((p) => "`"+p+"`").join(", ")
+                    permissions: requiredPermissions
+                        .map(p => "`" + p + "`")
+                        .join(", ")
                 });
             }
 
