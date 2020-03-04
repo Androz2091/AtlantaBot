@@ -25,5 +25,7 @@
     "MODLOGS": "Moderation Logs",
     "REPORTS": "Reports",
     "COMMAND": "Command",
-    "USES": "Uses"
+    "USES": "Uses",
+    "YES": "Yes",
+    "NO": "No"
 }
