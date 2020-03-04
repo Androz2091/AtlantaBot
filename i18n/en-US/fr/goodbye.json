@@ -10,5 +10,5 @@
     "FORM_3": "It works! Do you want a great goodbye image to be sent too? Answer with \"yes\" or \"no\"!",
     "FORM_SUCCESS": "Goodbye messages enabled in {{channel}} ! Type `{{prefix}}goodbye test` to test the goodbye message!",
     "MAX_CHARACT": "Your message must not exceed 1800 characters!",
-    "DISABLED": "Goodbye messages have just been deactivated! Type `{{prefix}}configuration` to see the new configuration!"
+    "DISABLED": "Goodbye messages have just been disabled! Type `{{prefix}}configuration` to see the new configuration!"
 }
