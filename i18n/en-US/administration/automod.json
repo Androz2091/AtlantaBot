@@ -1,0 +1,9 @@
+{
+    "DESCRIPTION": "Enable/Disable auto moderation in the server!",
+    "USAGE": "{{prefix}}automod [on/off] (#channel)",
+    "EXAMPLES": "{{prefix}}automod on\n{{prefix}}automod off\n{{prefix}}automod off #channel",
+    "MISSING": "Please specify a valid status! (`on` or `off`)",
+    "ENABLED": "Auto moderation enabled in the server. Invite links will be automatically deleted! You can disable auto moderation in a specific channel by typing `{{prefix}}automod off #channel-to-ignore`!",
+    "DISABLED": "Auto moderation disabled in the server!",
+    "DISABLED_CHANNEL": "Auto moderation disabled in **{{channel}}**!"
+}
