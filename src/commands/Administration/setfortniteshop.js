@@ -14,12 +14,8 @@ module.exports = class extends Command {
     }
 
     async execute(message, args) {
-        if (
-            !this.client.config.apiKeys.fortniteFNBR ||
-            this.client.config.apiKeys.fortniteFNBR.length === ""
-        ) {
+        if (!this.client.config.apiKeys.fortniteFNBR)
             return message.error("misc:COMMAND_DISABLED");
-        }
 
         const currentFortniteShopChannel =
             message.guild.settings.specialChannels.fortniteshop;
