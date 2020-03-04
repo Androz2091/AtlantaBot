@@ -1,6 +1,7 @@
 const { Collection } = require("discord.js");
 
 const AutomodPlugin = require("./AutomodPlugin");
+const AutorolePlugin = require("./AutorolePlugin");
 const WelcomePlugin = require("./WelcomePlugin");
 const GoodbyePlugin = require("./GoodbyePlugin");
 
@@ -59,7 +60,10 @@ module.exports = class Guild {
             this,
             pluginsData.find(p => p.plugin_name === "goodbye").plugin_data
         );
-        //this.plugins.set("autorole", new AutorolePlugin(this, pluginsData.find((p) => p.plugin_name === "autorole")));
+        this.plugins.autorole = new AutorolePlugin(
+            this,
+            pluginsData.find(p => p.plugin_name === "autorole").plugin_data
+        );
         this.plugins.automod = new AutomodPlugin(
             this,
             pluginsData.find(p => p.plugin_name === "automod").plugin_data
