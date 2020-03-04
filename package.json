@@ -30,6 +30,7 @@
         "cron": "^1.7.2",
         "dblapi.js": "^2.3.0",
         "discord-backup": "^2.0.3",
+        "discord-canvas": "^1.1.0",
         "discord-giveaways": "^2.4.4",
         "discord-paginationembed": "^2.0.0-beta.4",
         "discord-player": "^1.3.2",
