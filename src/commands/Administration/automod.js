@@ -6,7 +6,8 @@ module.exports = class extends Command {
     constructor(...args) {
         super(
             {
-                userPermissionLevel: Constants.PermissionsLevels.SERVER_MODERATOR
+                userPermissionLevel:
+                    Constants.PermissionsLevels.SERVER_MODERATOR
             },
             ...args
         );
@@ -14,7 +15,7 @@ module.exports = class extends Command {
 
     async execute(message, args) {
         const status = args[0];
-        if(!status || (status !== "on" && status !== "off")){
+        if (!status || (status !== "on" && status !== "off")) {
             return message.error("administration/automod:MISSING");
         }
 
@@ -24,16 +25,18 @@ module.exports = class extends Command {
             channelType: "text"
         });
 
-        if(status === "on"){
+        if (status === "on") {
             message.guild.settings.plugins.automod.enabled = true;
             message.guild.settings.plugins.automod.ignored = [];
             await message.guild.settings.plugins.automod.updateData();
             message.success("administration/automod:ENABLED", {
                 prefix: message.guild.settings.prefix
             });
-        } else if (status === "off"){
-            if(sentChannel){
-                message.guild.settings.plugins.automod.ignored.push(sentChannel.id);
+        } else if (status === "off") {
+            if (sentChannel) {
+                message.guild.settings.plugins.automod.ignored.push(
+                    sentChannel.id
+                );
                 await message.guild.settings.plugins.automod.updateData();
                 message.success("administration/automod:DISABLED_CHANNEL", {
                     channel: sentChannel.toString()
@@ -48,5 +51,4 @@ module.exports = class extends Command {
             }
         }
     }
-
-}
+};

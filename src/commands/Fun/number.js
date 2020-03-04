@@ -9,7 +9,7 @@ module.exports = class extends Command {
         super(
             {
                 userPermissionLevel: Constants.PermissionsLevels.SERVER_MEMBER,
-                clientPermissions: [ "EMBED_LINKS" ]
+                clientPermissions: ["EMBED_LINKS"]
             },
             ...args
         );

@@ -5,7 +5,8 @@ module.exports = class extends Command {
     constructor(...args) {
         super(
             {
-                userPermissionLevel: Constants.PermissionsLevels.ATLANTA_MAINTAINER
+                userPermissionLevel:
+                    Constants.PermissionsLevels.ATLANTA_MAINTAINER
             },
             ...args
         );

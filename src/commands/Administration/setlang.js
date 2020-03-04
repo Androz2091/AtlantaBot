@@ -6,7 +6,8 @@ module.exports = class extends Command {
         super(
             {
                 aliases: ["setlanguage"],
-                userPermissionLevel: Constants.PermissionsLevels.SERVER_MODERATOR
+                userPermissionLevel:
+                    Constants.PermissionsLevels.SERVER_MODERATOR
             },
             ...args
         );

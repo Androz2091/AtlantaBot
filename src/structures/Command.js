@@ -7,7 +7,8 @@ module.exports = class Command {
             enabled = true,
             aliases = new Array(),
             guildOnly = true,
-            userPermissionLevel = Constants.PermissionsLevels.ATLANTA_MAINTAINER,
+            userPermissionLevel = Constants.PermissionsLevels
+                .ATLANTA_MAINTAINER,
             clientPermissions = new Array(),
             nsfw = false
         },
