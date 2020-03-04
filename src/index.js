@@ -1,7 +1,6 @@
 require("./utility/Extenders");
 
-const { Client, Collection, MessageEmbed } = require("discord.js");
-const fetch = require("node-fetch");
+const { Client, Collection } = require("discord.js");
 
 const config = require("../config");
 const { version } = require("../package.json");
@@ -114,42 +113,20 @@ module.exports = class AtlantaCluster extends Client {
             }
         }
         this.music = new AtlantaErelaClient(this, this.config.music.nodes)
-            .on("nodeError", () => console.error)
-            .on("nodeConnect", () =>
-                this.logger.log("Successfully created a new Node.", "info")
-            )
-            .on("trackStart", async (player, track) => {
-                const guildData = await this.handlers.database.fetchGuild(
-                    player.guild.id
-                );
-                const nowPlayingEmbed = new MessageEmbed()
-                    .setDescription(
-                        this.translate(
-                            guildData.language,
-                            "music/play:NOW_PLAYING",
-                            {
-                                songName: `[${track.title}](${track.uri})`
-                            }
-                        )
-                    )
-                    .setImage(track.thumbnail.replace("default", "hqdefault"))
-                    .defaultColor();
-                player.textChannel.send(nowPlayingEmbed);
+            .on("nodeError", (msg) => {
+                console.error(msg);
             })
-            .on("queueEnd", async player => {
-                const guildData = await this.handlers.database.fetchGuild(
-                    player.guild.id
-                );
-                const embed = new MessageEmbed()
-                    .setDescription(
-                        this.translate(
-                            guildData.language,
-                            "music/play:QUEUE_ENDED"
-                        )
-                    )
-                    .errorColor();
-                player.textChannel.send(embed);
-                return this.music.players.destroy(player.guild.id);
+            .on("nodeConnect", () => {
+                this.logger.log("Successfully created a new Node.", "info")
+            })
+            .on("trackError", async (player, track, msg) => {
+                this.emit("trackError", player, track, msg);
+            })
+            .on("trackStart", async (player, track) => {
+                this.emit("trackStart", player, track);
+            })
+            .on("queueEnd", async (player) => {
+                this.emit("trackStart", player);
             });
     }
 };
