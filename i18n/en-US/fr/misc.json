@@ -5,5 +5,8 @@
   "CHANNEL_IGNORED": "Commands aren't allowed in {{channel}}.",
   "EVERYONE_MENTION": "You aren't allowed to mention everyone or here in commands.",
   "STATS_FOOTER": "[Dashboard]({{dashboardLink}}) ● [Donate]({{donateLink}}) ● [Invite]({{inviteLink}}) ● [Server]({{supportLink}}) ● [Github]({{githubLink}})",
-  "COMMAND_DISABLED": "This command is currently disabled!"
+  "COMMAND_DISABLED": "This command is currently disabled!",
+  "INVALID_YES_NO": "You must send \"yes\" or \"no\"!",
+  "INVALID_CHANNEL": "You must send a valid channel!",
+  "TIMEOUT": "Time's up! Please retype the command!"
 }
