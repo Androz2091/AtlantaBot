@@ -27,5 +27,6 @@
     "COMMAND": "Command",
     "USES": "Uses",
     "YES": "Yes",
-    "NO": "No"
+    "NO": "No",
+    "NOT_DEFINED": "Not defined"
 }
