@@ -8,5 +8,7 @@
   "COMMAND_DISABLED": "This command is currently disabled!",
   "INVALID_YES_NO": "You must send \"yes\" or \"no\"!",
   "INVALID_CHANNEL": "You must send a valid channel!",
-  "TIMEOUT": "Time's up! Please retype the command!"
+  "TIMEOUT": "Time's up! Please retype the command!",
+  "UNKNOWN_COMMAND": "Unknown command `{{command}}`. Type `{{prefix}}help` to get the list of all the commands.",
+  "COMMAND_GUILDONLY": "This command must be run in a server!"
 }
