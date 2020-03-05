@@ -15,15 +15,12 @@ module.exports = class extends Event {
         if (message.channel.type === "dm") {
             if (!message.content.startsWith(this.client.config.prefix)) return;
 
-            const command = await this.client.commands.fetch(
-                message.content
-                    .split(" ")[0]
-                    .slice(this.client.config.prefix.length)
-            );
             const args = message.content
                 .slice(this.client.config.prefix.length)
                 .trim()
                 .split(/ +/g);
+
+            const command = await this.client.commands.fetch(args.shift().toLowerCase());
 
             if (!command || command.guildOnly) return;
 
