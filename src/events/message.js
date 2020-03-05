@@ -10,8 +10,8 @@ module.exports = class extends Event {
     }
 
     async execute(message) {
-        if (message.author.bot) return;
         const startAt = Date.now();
+        if (message.author.bot) return;
         if (message.channel.type === "dm") {
             if (!message.content.startsWith(this.client.config.prefix)) return;
 
@@ -20,10 +20,16 @@ module.exports = class extends Event {
                     .split(" ")[0]
                     .slice(this.client.config.prefix.length)
             );
+            const args = message.content
+                .slice(this.client.config.prefix.length)
+                .trim()
+                .split(/ +/g);
 
-            if (!command || !command.dm) return;
+            if (!command || command.guildOnly) return;
 
-            command.execute(message);
+            command.execute(message, args, {
+                processTime: Date.now()-startAt
+            });
         } else {
             if (
                 !message.guild.available ||
@@ -169,7 +175,9 @@ module.exports = class extends Event {
             }
 
             console.log(`Request handled in ${Date.now() - startAt}ms`);
-            command.execute(message, args);
+            command.execute(message, args, {
+                processTime: Date.now()-startAt
+            });
             guild.addCommandLog(
                 command.name,
                 message.channel.id,
