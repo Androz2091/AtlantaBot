@@ -95,8 +95,9 @@ module.exports = class Guild {
         if (alreadyCreated) {
             await this.handler.query(`
                 UPDATE guild_channels
-                SET setting_value = ${alreadyCreated}
-                WHERE guild_id = '${this.id}';
+                SET setting_value = ${formattedValue}
+                WHERE setting_name = '${name}'
+                AND guild_id = '${this.id}';
             `);
         } else {
             await this.handler.query(`
