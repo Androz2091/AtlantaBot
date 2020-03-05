@@ -75,6 +75,17 @@ module.exports = class Guild {
         return this.plugins;
     }
 
+    // Enable or disable auto deletion of mod commands
+    async updateAutoDeleteModCommands(value){
+        await this.handler.query(`
+            UPDATE guilds
+            SET guild_del_mod_cmd = ${value}
+            WHERE guild_id = '${this.id}';
+        `);
+        this.autoDeleteModCommand = value;
+        return this;
+    }
+
     // Fetch and fill special channels
     async fetchSpecialChannels() {
         const { rows } = await this.handler.query(`

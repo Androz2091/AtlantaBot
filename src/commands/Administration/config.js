@@ -93,6 +93,13 @@ module.exports = class extends Command {
             :   message.translate("administration/config:AUTOMOD_DISABLED")
         );
 
+        // Auto-delete mod commands
+        embed.addField(message.translate("administration/config:AUTODELETEMOD"),
+            (!message.guild.settings.autoDeleteModCommands) ?
+                message.translate("administration/config:AUTODELETEMOD_ENABLED")
+            :   message.translate("administration/config:AUTODELETEMOD_DISABLED")
+        );
+
         // Dashboard link
         embed.addField(message.translate("administration/config:DASHBOARD_TITLE"), `[${message.translate("administration/config:DASHBOARD_CONTENT")}](${Constants.Links.DASHBOARD})`);
 
@@ -100,12 +107,6 @@ module.exports = class extends Command {
     }
 
 }
-
-/*embed.addField(headings[8][0],
-    (!guildData.plugins.autoDeleteModCommands) ?
-        message.language.get("CONFIGURATION_AUTODELETEMOD")
-    :   headings[8][1]
-);*/
 
 /*embed.addField(headings[4][0],
     (guildData.slowmode.channels.length > 0) ?

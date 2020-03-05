@@ -21,7 +21,10 @@
     "REPORTS": "Reports: {{channel}}",
     "AUTOMOD_TITLE": "Auto-moderation",
     "AUTOMOD_CONTENT": "Auto-moderation enabled. Ignored channels: {{channels}}",
-    "AUTOMOD_DISABLED": "Auto-moderation disabled",
+    "AUTOMOD_DISABLED": "Auto-moderation disabled.",
+    "AUTODELETEMOD": "Auto delete mod commands",
+    "AUTODELETEMOD_ENABLED": "Auto deletion of moderation commands enabled.",
+    "AUTODELETEMOD_DISABLED": "Auto deletion of moderation commands disabled.",
     "DASHBOARD_TITLE": "Edit your configuration",
     "DASHBOARD_CONTENT": "Click here to go on the dashboard!"
 }

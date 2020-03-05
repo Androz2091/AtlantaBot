@@ -184,6 +184,8 @@ module.exports = class extends Event {
                 message.author.id,
                 new Date()
             );
+            // Auto delete mod commands
+            if(guild.autoDeleteModCommands && command.category === "Moderation") message.delete();
         }
         /*
 
