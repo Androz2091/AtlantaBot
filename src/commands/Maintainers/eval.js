@@ -6,7 +6,8 @@ module.exports = class extends Command {
         super(
             {
                 userPermissionLevel:
-                    Constants.PermissionsLevels.ATLANTA_MAINTAINER
+                    Constants.PermissionsLevels.ATLANTA_MAINTAINER,
+                guildOnly: false
             },
             ...args
         );

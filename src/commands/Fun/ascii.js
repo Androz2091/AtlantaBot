@@ -9,7 +9,8 @@ module.exports = class extends Command {
     constructor(...args) {
         super(
             {
-                userPermissionLevel: Constants.PermissionsLevels.SERVER_MEMBER
+                userPermissionLevel: Constants.PermissionsLevels.SERVER_MEMBER,
+                guildOnly: false
             },
             ...args
         );

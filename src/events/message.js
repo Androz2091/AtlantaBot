@@ -20,9 +20,15 @@ module.exports = class extends Event {
                 .trim()
                 .split(/ +/g);
 
-            const command = await this.client.commands.fetch(args.shift().toLowerCase());
+            const commandName = args.shift().toLowerCase();
+            const command = await this.client.commands.fetch(commandName);
 
-            if (!command || command.guildOnly) return;
+            if (!command) return message.error("misc:UNKNOWN_COMMAND", {
+                prefix: this.client.config.prefix,
+                command: commandName
+            });
+
+            if (command.guildOnly) return message.error("misc:COMMAND_GUILDONLY");
 
             command.execute(message, args, {
                 processTime: Date.now()-startAt
