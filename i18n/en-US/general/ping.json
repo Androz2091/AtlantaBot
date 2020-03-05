@@ -2,5 +2,5 @@
     "DESCRIPTION": "Shows Atlanta's latency",
     "USAGE": "{{prefix}}ping",
     "EXAMPLES": "{{prefix}}ping",
-	"RESPONSE": ":alarm_clock: Command Execution Time : {{command}}ms | Discord API Latency : {{api}}ms"
+	"RESPONSE": ":alarm_clock: Command Execution Time : {{command}}ms | Discord API Latency : {{api}}ms | Processing time: {{processTime}}ms"
 }

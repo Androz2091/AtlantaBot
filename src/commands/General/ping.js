@@ -6,22 +6,25 @@ module.exports = class extends Command {
         super(
             {
                 aliases: ["pong", "latency"],
-                userPermissionLevel: Constants.PermissionsLevels.SERVER_MEMBER
+                userPermissionLevel: Constants.PermissionsLevels.SERVER_MEMBER,
+                guildOnly: false
             },
             ...args
         );
     }
 
-    async execute(message) {
+    async execute(message, _args, data) {
         let msg = await message.sendT("general/ping:RESPONSE", {
-            command: "..",
-            api: this.client.ws.ping
+            command: "000",
+            api: this.client.ws.ping,
+            processTime: data.processTime
         });
         await msg.sendT(
             "general/ping:RESPONSE",
             {
                 command: msg.createdTimestamp - message.createdTimestamp,
-                api: Math.floor(this.client.ws.ping)
+                api: Math.floor(this.client.ws.ping),
+                processTime: data.processTime
             },
             true
         );
