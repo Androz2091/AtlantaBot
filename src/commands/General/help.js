@@ -7,7 +7,8 @@ module.exports = class extends Command {
         super(
             {
                 userPermissionLevel: Constants.PermissionsLevels.SERVER_MEMBER,
-                clientPermissions: ["EMBED_LINKS"]
+                clientPermissions: ["EMBED_LINKS"],
+                guildOnly: false
             },
             ...args
         );
@@ -16,11 +17,11 @@ module.exports = class extends Command {
     async execute(message, args) {
         // If a command is specified
         if (args[0]) {
-            const isCustom = message.guild.settings.customCommands
+            const isCustom = message.guild ? message.guild.settings.customCommands
                 ? message.guild.settings.customCommands.find(
                       c => c.name === args[0]
                   )
-                : false;
+                : false : false;
 
             // If the command doesn't exist
             const cmd = this.client.commands.fetch(args[0]);
@@ -40,7 +41,7 @@ module.exports = class extends Command {
             const usage = message.translate(
                 `${cmd.category.toLowerCase()}/${cmd.name}:USAGE`,
                 {
-                    prefix: message.guild.settings
+                    prefix: message.guild
                         ? message.guild.settings.prefix
                         : ""
                 }
@@ -48,7 +49,7 @@ module.exports = class extends Command {
             const examples = message.translate(
                 `${cmd.category.toLowerCase()}/${cmd.name}:EXAMPLES`,
                 {
-                    prefix: message.guild.settings
+                    prefix: message.guild
                         ? message.guild.settings.prefix
                         : ""
                 }
@@ -58,7 +59,7 @@ module.exports = class extends Command {
             let groupEmbed = new Discord.MessageEmbed()
                 .setAuthor(
                     message.translate("general/help:CMD_TITLE", {
-                        prefix: message.guild.settings
+                        prefix: message.guild
                             ? message.guild.settings.prefix
                             : "",
                         cmd: cmd.name
@@ -81,7 +82,7 @@ module.exports = class extends Command {
                 )
                 .addField(
                     message.translate("general/help:FIELD_PERMISSIONS"),
-                    this.client.handlers.permissions.levels.get(cmd.permission)
+                    this.client.handlers.permissions.levels.get(cmd.userPermissionLevel)
                         .title
                 )
                 .setColor(this.client.config.embed.color)
@@ -108,7 +109,7 @@ module.exports = class extends Command {
         const embed = new Discord.MessageEmbed()
             .setDescription(
                 message.translate("general/help:INFO", {
-                    prefix: message.guild.settings
+                    prefix: message.guild
                         ? message.guild.settings.prefix
                         : ""
                 })
