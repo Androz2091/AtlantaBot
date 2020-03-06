@@ -1,0 +1,7 @@
+{
+    "DESCRIPTION": "Shows the money of a member!",
+    "USAGE": "{{prefix}}money (@member)",
+    "EXAMPLES": "{{prefix}}money\n{{prefix}}money Androz#2091",
+    "ERROR_BOT": "Bots can't have money!",
+    "TITLE": "Credits of {{username}}"
+}
