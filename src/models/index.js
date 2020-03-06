@@ -2,6 +2,9 @@ module.exports = {
     // User
     User: require("./User"),
 
+    // Member
+    Member: require("./Member"),
+
     // Guild
     Guild: require("./Guild"),
     // Guild plugins
