@@ -29,6 +29,40 @@ const resolveChannel = async ({ message, search, channelType }) => {
     return;
 };
 
+const resolveMember = async ({ message, search, useMessageContent = true }) => {
+    const contentToCheck = search || (useMessageContent ? message.content : null);
+    if (!contentToCheck || typeof contentToCheck !== "string") return;
+    // Try by parsing the search
+    if (contentToCheck.match(/^<@!?(\d+)>$/)) {
+        const [, userID] = contentToCheck.match(/^<@!?(\d+)>$/);
+        const memberFound = await message.guild.members.fetch(userID).catch(() => {});
+        if (memberFound)
+            return memberFound;
+    }
+    // Try with ID
+    if (await message.guild.members.fetch(search).catch(() => {})) {
+        const memberFound = await message.guild.members.fetch(search);
+        if (memberFound)
+            return memberFound;
+    }
+    // Try with name with @
+    await message.guild.members.fetch({
+        query: search
+    });
+    if (
+        message.guild.members.cache.some(
+            member => member.user.tag === search || member.user.username === search
+        )
+    ) {
+        const memberFound = message.guild.members.cache.find(
+            member => member.user.tag === search || member.user.username === search
+        );
+        if (memberFound)
+            return memberFound;
+    }
+    return;
+};
+
 const resolveRole = async ({ message, search }) => {
     const contentToCheck = search || message.content;
     if (!contentToCheck || typeof contentToCheck !== "string") return;
@@ -62,5 +96,6 @@ const resolveRole = async ({ message, search }) => {
 
 module.exports = {
     resolveChannel,
+    resolveMember,
     resolveRole
 };
