@@ -59,7 +59,7 @@ module.exports = class User {
         return this;
     }
 
-    // Insert the guild in the db if it doesn't exist
+    // Insert the user in the db if it doesn't exist
     async insert() {
         if (!this.inserted) {
             await this.handler.query(`
