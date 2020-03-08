@@ -9,11 +9,11 @@ module.exports = class User {
         // Whether the user is fetched
         this.fetched = false;
         // User birthdate
-        this.birthdate = "";
+        this.birthdate = data.user_birthdate || "";
         // User biography
-        this.bio = "";
+        this.bio = data.user_bio ||"";
         // User reputation
-        this.rep = 0;
+        this.rep = data.user_rep || 0;
         // Timestamp of the user creation date (in the database)
         this.registeredAt = data.guild_registered_at || Date.now();
     }
@@ -27,6 +27,16 @@ module.exports = class User {
 
     get loggedDashboard() {
         return this.dashboardConnections.length > 0;
+    }
+
+    async setBio(newBio){
+        await this.handler.query(`
+            UPDATE users
+            SET user_bio = '${newBio}'
+            WHERE user_id = '${this.id}';
+        `);
+        this.bio = newBio;
+        return this;
     }
 
     // Fetch and fill dashboard connections
