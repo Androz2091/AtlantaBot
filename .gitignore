@@ -1,9 +1,10 @@
 # Bot Configuration
 /config.js
 
-# Node modules
+# Node
 node_modules
 package-lock.json
+yarn.lock
 
 # Fortnite Shop images
 assets/img/fortnite/shop/**/*.png
