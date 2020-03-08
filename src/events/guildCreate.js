@@ -54,7 +54,7 @@ module.exports = class {
             .setTimestamp();
         messageOptions.embed = thanksEmbed;
 
-        guild.owner.send(messageOptions).catch(err => {});
+        guild.owner.send(messageOptions).catch(() => {});
 
         let text =
             "J'ai rejoint **" +
