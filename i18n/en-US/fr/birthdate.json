@@ -1,0 +1,10 @@
+{
+    "DESCRIPTION": "Changes your birthdate on your profile!",
+    "USAGE": "{{prefix}}birthdate [date]",
+    "EXAMPLES": "{{prefix}}birthdate 22/05/2000",
+    "MISSING_DATE": "You must specify a date! (for example 22/05/2000)",
+    "INVALID_DATE": "Looks like your date is not valid! It must be formatted like 22/05/2000 (day/month/year)",
+    "INVALID_DATE_TOO_LOW": "I don't really think you're over 80... If so, please contact us (contact@atlanta-bot.fr) :upside_down:",
+    "INVALID_DATE_TOO_HIGH": "I don't really think you haven't been born yet... If so, please contact us (contact@atlanta-bot.fr) :upside_down:",
+    "SUCCESS": "Your birthdate has been set to {{birthdate}}!"
+}
