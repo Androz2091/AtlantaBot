@@ -9,9 +9,9 @@ module.exports = class User {
         // Whether the user is fetched
         this.fetched = false;
         // User birthdate
-        this.birthdate = data.user_birthdate || "";
+        this.birthdate = data.user_birthdate || null;
         // User biography
-        this.bio = data.user_bio ||"";
+        this.bio = data.user_bio || "";
         // User reputation
         this.rep = data.user_rep || 0;
         // Timestamp of the user creation date (in the database)
@@ -36,6 +36,16 @@ module.exports = class User {
             WHERE user_id = '${this.id}';
         `);
         this.bio = newBio;
+        return this;
+    }
+
+    async setBirthdate(newDate){
+        await this.handler.query(`
+            UPDATE users
+            SET user_birthdate = '${newDate.toISOString()}'
+            WHERE user_id = '${this.id}';
+        `);
+        this.birthdate = newDate.toISOString();
         return this;
     }
 
@@ -74,8 +84,8 @@ module.exports = class User {
         if (!this.inserted) {
             await this.handler.query(`
                 INSERT INTO users
-                (user_id, user_birthdate, user_rep, user_registered_at, user_bio) VALUES
-                ('${this.id}', '${this.birthdate}', '${this.rep}', ${this.registeredAt}, '${this.bio}');
+                (user_id, user_rep, user_registered_at, user_bio ${this.birthdate ? `, user_birthdate` : ""}) VALUES
+                ('${this.id}', '${this.rep}', ${this.registeredAt}, '${this.bio}' ${this.birthdate ? `, '${this.birthdate}` : ""});
             `);
             this.inserted = true;
         }
