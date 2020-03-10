@@ -22,6 +22,11 @@ module.exports = class User {
         if (this.fetched) return;
         this.dashboardConnections = [];
         await this.fetchDashboardConnections();
+        this.relationShips = {
+            current: null,
+            old: []
+        };
+        await this.fetchRelationShips();
         this.fetched = true;
     }
 
@@ -46,6 +51,47 @@ module.exports = class User {
             WHERE user_id = '${this.id}';
         `);
         this.birthdate = newDate.toISOString();
+        return this;
+    }
+
+    // Fetch and fill relation ships
+    async fetchRelationShips() {
+        const { rows } = await this.handler.query(`
+            SELECT * FROM user_relationships
+            WHERE user_id_1 = '${this.id}'
+            OR user_id_2 = '${this.id}';
+        `);
+        rows.forEach((relationShipData, i) => {
+            const relationShip = {
+                createdAt: new Date(relationShipData.created_at).getTime(),
+                endedAt: new Date(relationShipData.ended_at).getTime(),
+                relationShipCreator: relationShipData.user_id_1 === this.id
+            };
+            if(relationShip.relationShipCreator){
+                relationShip.partnerID === relationShipData.user_id_2;
+            } else {
+                relationShip.partnerID = relationShipData.user_id_1;
+            }
+            if(i === 0 && !i.date_fin){
+                this.relationShips.current = relationShip;
+            } else {
+                this.relationShips.old.push(relationShip);
+            }
+        });
+        return this.relationShips;
+    }
+
+    async createRelationShip({ creator, partner, date = new Date() }, published) {
+        if(!published) await this.handler.query(`
+            INSERT INTO user_relationships
+            (user_id_1, user_id_2, created_at) VALUES
+            ('${creator ? this.id : partner}', '${creator ? partner : this.id}', '${date.toISOString()}');
+        `);
+        this.relationShips.current = {
+            createdAt: date.toISOString(),
+            partnerID: partner,
+            relationShipCreator: creator
+        };
         return this;
     }
 
