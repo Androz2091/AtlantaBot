@@ -12,6 +12,6 @@
     "REQUEST_MEMBER_TO_AMEMBER": "**{{firstUsername}} has already sent a request to **{{secondUsername}}** ! Wait until **{{secondUsernam}}** accepts or refuses the request from **{{firstUsername}}** or until it expires and try again!",
     "TIMEOUT": "{{username}} did not answer.... Wait until he/she is connected and then try again!",
     "SUCCESS": "🎉 Congratulations! **{{creator}}** and **{{partner}}** you are now married!",
-    "DEFINED": "{{creator}}, I have some bad news... {{partner}} refused your proposal.",
+    "DENIED": "{{creator}}, I have some bad news... {{partner}} refused your proposal.",
     "REQUEST": "{{to}}, do you agree to marry {{from}}? Answer with \"yes\" or \"no\"!"
 }

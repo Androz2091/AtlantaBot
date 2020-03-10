@@ -28,7 +28,7 @@ module.exports = class extends Command {
         }
 
         // Gets the message author data 
-        const userData = await this.client.handlers.database.fetchUser(member.id);
+        const userData = await this.client.handlers.database.fetchUser(message.author.id);
         
         // If the message author is already married
         if(userData.relationShips.current){
@@ -60,23 +60,23 @@ module.exports = class extends Command {
             const receiver = pendings[requester];
             // If the member already sent a request to someone
             if(requester === message.author.id){
-                const user =  this.client.users.get(receiver) || await this.client.users.fetch(receiver);
+                const user =  this.client.users.cache.get(receiver) || await this.client.users.fetch(receiver);
                 return message.error("economy/marry:REQUEST_AUTHOR_TO_AMEMBER", {
                     username: user.tag
                 });
             } else if (receiver === message.author.id){ // If there is a pending request for this member
-                const user =  message.client.users.get(requester) || await message.client.users.fetch(requester);
+                const user =  message.client.users.cache.get(requester) || await message.client.users.fetch(requester);
                 return message.error("economy/marry:REQUEST_AMEMBER_TO_AUTHOR", {
                     username: user.tag
                 });
             } else if(requester === member.id){ // If the asked member has sent pending request
-                const user = this.client.users.get(receiver) || await this.client.users.fetch(receiver);
+                const user = this.client.users.cache.get(receiver) || await this.client.users.fetch(receiver);
                 return message.error("economy/marry:REQUEST_AMEMBER_TO_MEMBER", {
                     firstUsername: member.user.tag,
                     secondUsername: user.tag
                 });
             } else if (receiver === member.id){ // If there is a pending request for the asked member
-                const user = this.client.users.get(requester) || await this.client.users.fetch(requester);
+                const user = this.client.users.cache.get(requester) || await this.client.users.fetch(requester);
                 return message.error("economy/marry:REQUEST_MEMBER_TO_AMEMBER", {
                     firstUsername: member.user.tag,
                     secondUsername: user.tag
@@ -126,7 +126,7 @@ module.exports = class extends Command {
                     creator: false,
                     partner: message.author.id,
                     date: createdAt
-                });
+                }, true);
                 /*let messageOptions = {
                     content: `${member.toString()} :heart: ${message.author.toString()}`,
                     files: [
