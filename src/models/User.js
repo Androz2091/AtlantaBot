@@ -68,11 +68,11 @@ module.exports = class User {
                 relationShipCreator: relationShipData.user_id_1 === this.id
             };
             if(relationShip.relationShipCreator){
-                relationShip.partnerID === relationShipData.user_id_2;
+                relationShip.partnerID = relationShipData.user_id_2;
             } else {
                 relationShip.partnerID = relationShipData.user_id_1;
             }
-            if(i === 0 && !i.date_fin){
+            if(!relationShipData.ended_at){
                 this.relationShips.current = relationShip;
             } else {
                 this.relationShips.old.push(relationShip);
@@ -92,6 +92,20 @@ module.exports = class User {
             partnerID: partner,
             relationShipCreator: creator
         };
+        return this;
+    }
+
+    async destroyRelationShip(date = new Date(), published){
+        if(!published) await this.handler.query(`
+            UPDATE user_relationships
+            SET ended_at = '${date.toISOString()}'
+            WHERE user_id_1 = '${this.relationShips.current.relationShipCreator ? this.id : this.relationShips.current.partnerID}'
+            AND user_id_2 = '${this.relationShips.current.relationShipCreator ? this.relationShips.current.partnerID : this.id}'
+            AND ended_at = null;
+        `);
+        this.relationShips.current.endDate = date.getTime();
+        this.relationShips.old.push(this.relationShips.current);
+        this.relationShips.current = null;
         return this;
     }
 
