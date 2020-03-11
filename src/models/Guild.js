@@ -9,7 +9,7 @@ module.exports = class Guild {
     constructor(guildID, data = {}, handler) {
         this.id = guildID;
         this.handler = handler;
-        this.inserted = data !== {};
+        this.inserted = Object.keys(data).length !== 0;
         this.data = data;
         // Whether the guild is fetched
         this.fetched = false;

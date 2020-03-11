@@ -2,7 +2,7 @@ class AutorolePlugin {
     constructor(guild, data = {}) {
         this.guild = guild;
         this.handler = guild.handler;
-        this.inserted = data !== {};
+        this.inserted = Object.keys(data).length !== 0;
         // Whether the plugin is enabled
         this.enabled = data.enabled || false;
         // The role ID

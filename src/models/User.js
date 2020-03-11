@@ -4,7 +4,7 @@ module.exports = class User {
     constructor(userID, data = {}, handler) {
         this.id = userID;
         this.handler = handler;
-        this.inserted = data !== {};
+        this.inserted = Object.keys(data).length !== 0;
         this.data = data;
         // Whether the user is fetched
         this.fetched = false;
