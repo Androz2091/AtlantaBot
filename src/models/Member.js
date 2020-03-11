@@ -35,7 +35,7 @@ module.exports = class Member {
         return lvl;
     }
 
-    async addXP(exp) {
+    addXP(exp) {
         this.expCached = true;
         this.exp += exp;
     }
