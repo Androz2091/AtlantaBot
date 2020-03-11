@@ -5,7 +5,7 @@ module.exports = class Member {
         this.id = userID;
         this.guildID = guildID
         this.handler = handler;
-        this.inserted = data !== {};
+        this.inserted = Object.keys(data).length !== 0;
         this.data = data;
         // Whether the member is fetched
         this.fetched = false;
@@ -22,7 +22,33 @@ module.exports = class Member {
         this.calcMoney();
         this.cooldowns = {};
         await this.fetchCooldowns();
+        this.expCached = false;
         this.fetched = true;
+    }
+
+    get level() {
+        const checkIfAbleTo = (level, xp) => {
+            return (5 / 6 * level * (2 * level * level + 27 * level + 91)) <= xp;
+        }
+        let lvl = 0;
+        while(checkIfAbleTo(lvl, this.exp)) lvl++;
+        return lvl;
+    }
+
+    async addXP(exp) {
+        this.expCached = true;
+        this.exp += exp;
+    }
+
+    async updateExp() {
+        await this.handler.query(`
+            UPDATE members
+            SET exp = ${this.exp}
+            WHERE user_id = '${this.id}'
+            AND guild_id = '${this.guildID}';
+        `);
+        this.expCached = false;
+        return this;
     }
 
     async setWorkStreak(value){
@@ -114,8 +140,8 @@ module.exports = class Member {
         if (!this.inserted) {
             await this.handler.query(`
                 INSERT INTO members
-                (user_id, guild_id, exp) VALUES
-                ('${this.id}', '${this.guildID}', ${this.exp});
+                (user_id, guild_id, exp, work_streak) VALUES
+                ('${this.id}', '${this.guildID}', ${this.exp}, ${this.workStreak});
             `);
             this.inserted = true;
         }
