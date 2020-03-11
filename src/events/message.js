@@ -1,5 +1,4 @@
-const Discord = require("discord.js"),
-    xpCooldown = {};
+const xpCooldown = {};
 
 const Constants = require("../utility/Constants");
 const Event = require("../structures/Event");
@@ -98,6 +97,9 @@ module.exports = class extends Event {
                 Constants.PermissionsLevels.SERVER_BLACKLISTED
             )
                 return;
+
+            updateXp(message.member);
+
             if (
                 !message.member.hasPermission("MANAGE_MESSAGES") &&
                 guild.ignoredChannels.includes(message.channel.id)
@@ -365,43 +367,11 @@ module.exports = class extends Event {
     }
 };
 
-/**
- * xp
- * This function update userdata by adding xp
- */
-
-async function updateXp(msg, data) {
-    // Gets the user informations
-    let points = parseInt(data.memberData.exp);
-    let level = parseInt(data.memberData.level);
-
-    // if the member is already in the cooldown db
-    let isInCooldown = xpCooldown[msg.author.id];
-    if (isInCooldown) {
-        if (isInCooldown > Date.now()) {
-            return;
-        }
-    }
-    // Records in the database the time when the member will be able to win xp again (3min)
-    let toWait = Date.now() + 60000;
-    xpCooldown[msg.author.id] = toWait;
-
-    // Gets a random number between 10 and 5
-    let won =
-        Math.floor(Math.random() * (Math.floor(10) - Math.ceil(5))) +
-        Math.ceil(5);
-
-    let newXp = parseInt(points + won, 10);
-
-    // calculation how many xp it takes for the next new one
-    let neededXp = 5 * (level * level) + 80 * level + 100;
-
-    // check if the member up to the next level
-    if (newXp > neededXp) {
-        data.memberData.level = parseInt(level + 1, 10);
-    }
-
-    // Update user data
-    data.memberData.exp = parseInt(newXp, 10);
-    await data.memberData.save();
+async function updateXp(member) {
+    const isInCooldown = xpCooldown[member.id];
+    if (isInCooldown && isInCooldown > Date.now()) return;
+    const toWait = Date.now() + 60000;
+    xpCooldown[member.id] = toWait;
+    const memberData = await member.client.handlers.database.fetchMember(member.id, member.guild.id);
+    memberData.addXP(Math.floor(Math.random() * (Math.floor(10) - Math.ceil(5))) + Math.ceil(5));
 }
