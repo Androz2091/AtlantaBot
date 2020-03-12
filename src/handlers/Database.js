@@ -42,7 +42,7 @@ module.exports = class DatabaseHandler {
             // If the user is in the cache
             if (this.userCache.get(userID) && !forceFetch)
                 return resolve(this.userCache.get(userID));
-            let { rows } = await this.query(
+            const { rows } = await this.query(
                 `SELECT * FROM users WHERE user_id = '${userID}'`
             );
             const user = new User(userID, rows[0], this);
@@ -62,7 +62,7 @@ module.exports = class DatabaseHandler {
             // If the guild is in the cache
             if (this.guildCache.get(guildID) && !forceFetch)
                 return resolve(this.guildCache.get(guildID));
-            let { rows } = await this.query(
+            const { rows } = await this.query(
                 `SELECT * FROM guilds WHERE guild_id = '${guildID}'`
             );
             const guild = new Guild(guildID, rows[0], this);
@@ -82,7 +82,7 @@ module.exports = class DatabaseHandler {
             // If the member is in the cache
             if (this.memberCache.get(`${memberID}${guildID}`) && !forceFetch)
                 return resolve(this.memberCache.get(`${memberID}${guildID}`));
-            let { rows } = await this.query(`
+            const { rows } = await this.query(`
                 SELECT * FROM members
                 WHERE user_id = '${memberID}'
                 AND guild_id = '${guildID}';
@@ -95,6 +95,29 @@ module.exports = class DatabaseHandler {
             resolve(member);
             // Add the member to the cache
             this.memberCache.set(`${memberID}${guildID}`, member);
+        });
+    }
+
+    // Get members
+    fetchMembers(memberID, forceFetch) {
+        return new Promise(async resolve => {
+            const { rows } = await this.query(`
+                SELECT * FROM members
+                WHERE user_id = '${memberID}';
+            `);
+            const membersData = [];
+            await this.client.helpers.asyncForEach.execute(rows, async (memberData) => {
+                // If the member is in the cache
+                if (this.memberCache.get(`${memberID}${memberData.guild_id}`) && !forceFetch)
+                    return membersData.push(this.memberCache.get(`${memberID}${memberData.guild_id}`));
+                const member = new Member(memberID, memberData.guild_id, memberData, this);
+                // Fetch money, etc...
+                await member.fetch();
+                membersData.push(member);
+                // Add the member to the cache
+                this.memberCache.set(`${memberID}${memberData.guild_id}`, member);
+            });
+            resolve(membersData);
         });
     }
 };
