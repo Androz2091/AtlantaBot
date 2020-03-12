@@ -41,11 +41,11 @@ module.exports = class extends Event {
             )
                 return;
 
-            const userPermissions = await this.client.handlers.permissions.fetch(
+            const userPermissions = message.userPermissions = await this.client.handlers.permissions.fetch(
                 message.guild,
                 message.author.id
             );
-            const actualUserPermissions = await this.client.handlers.permissions.fetch(
+            const actualUserPermissions = message.actualUserPermissions = await this.client.handlers.permissions.fetch(
                 message.guild,
                 message.author.id,
                 true
