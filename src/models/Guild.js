@@ -204,7 +204,7 @@ module.exports = class Guild {
             this.commandLogs.push({
                 name: cmdLog.cmd_name,
                 channelID: cmdLog.cmd_channel_id,
-                userID: cmdLog.user_id,
+                userID: cmdLog.cmd_user_id,
                 date: cmdLog.cmd_date
             });
         });
