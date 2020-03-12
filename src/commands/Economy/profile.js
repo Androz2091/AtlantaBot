@@ -71,6 +71,7 @@ module.exports = class extends Command {
             .addField(message.translate("economy/profile:LOVER"), (userData.lover ? lover.tag : message.translate("economy/profile:NO_LOVER")), true)
             .addField(message.translate("economy/profile:COMMANDS"), message.guild.settings.commandLogs.filter((c) => c.userID === member.id).length, true)
             .addField(message.translate("economy/profile:PERMISSIONS"), message.userPermissions.title, true)
+            //.addField(message.language.get("PROFILE_HEADINGS").ACHIEVEMENTS, message.language.get("PROFILE_ACHIEVEMENTS", data.guild.prefix))
             .setColor(this.client.config.embed.color) // Sets the color of the embed
             .setFooter(this.client.config.embed.footer) // Sets the footer of the embed
             .setTimestamp();
