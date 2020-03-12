@@ -126,7 +126,7 @@ module.exports = class Member {
 
     calcMoney() {
         this.cash = (this.transactions.map((t) => t.credit - t.debit).length > 0 ? this.transactions.map((t) => t.credit-t.debit) : [0]).reduce((p, c) => p + c);
-        this.bank = (this.transactions.filter((t) => t.action === "bank_transfer").map((t) => t.debit + t.credit).length ? this.transactions.filter((t) => t.action === "bank_transfer").map((t) => t.debit + t.credit) : [0]).reduce((p, c) => p + c);
+        this.bank = (this.transactions.filter((t) => t.action === "bank").map((t) => t.debit - t.credit).length ? this.transactions.filter((t) => t.action === "bank").map((t) => t.debit - t.credit) : [0]).reduce((p, c) => p + c);
     }
 
     // Insert the member in the db if it doesn't exist
