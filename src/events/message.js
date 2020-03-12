@@ -373,5 +373,5 @@ async function updateXp(member) {
     const toWait = Date.now() + 60000;
     xpCooldown[member.id] = toWait;
     const memberData = await member.client.handlers.database.fetchMember(member.id, member.guild.id);
-    memberData.addXP(Math.floor(Math.random() * (Math.floor(10) - Math.ceil(5))) + Math.ceil(5));
+    memberData.updateExp(memberData.exp + Math.floor(Math.random() * (Math.floor(10) - Math.ceil(5))) + Math.ceil(5));
 }

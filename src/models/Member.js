@@ -22,7 +22,6 @@ module.exports = class Member {
         this.calcMoney();
         this.cooldowns = {};
         await this.fetchCooldowns();
-        this.expCached = false;
         this.fetched = true;
     }
 
@@ -35,19 +34,14 @@ module.exports = class Member {
         return lvl;
     }
 
-    addXP(exp) {
-        this.expCached = true;
-        this.exp += exp;
-    }
-
-    async updateExp() {
+    async updateExp(newXP) {
         await this.handler.query(`
             UPDATE members
-            SET exp = ${this.exp}
+            SET exp = ${newXP}
             WHERE user_id = '${this.id}'
             AND guild_id = '${this.guildID}';
         `);
-        this.expCached = false;
+        this.newXP = newXP;
         return this;
     }
 
