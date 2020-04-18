@@ -24,6 +24,7 @@ class Invitations extends Command {
     async run (message, args, data) {
 
         let member = await this.client.resolveMember(args[0]);
+        if (!member) member = message.member;
 
         // Gets the invites
         let invites = await message.guild.fetchInvites().catch((err) => {});
