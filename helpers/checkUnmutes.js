@@ -10,6 +10,7 @@ module.exports = {
      */
     init(client){
         setInterval(async () => {
+            if(client.membersData === undefined) return;
             let muted = await client.membersData.find({ "mute.muted": true, "mute.endDate": { $lte: Date.now() } });
             muted.forEach(async (memberData) => {
                 let guild = client.guilds.get(memberData.guildID);
