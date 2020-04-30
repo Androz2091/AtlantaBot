@@ -19,6 +19,11 @@ class Atlanta extends Client {
         this.logs = require("../base/Log"); // Log mongoose model
         this.dashboard = require("../dashboard/app"); // Dashboard app
         this.queues = new Collection(); // This collection will be used for the music
+
+        this.databaseCache = {};
+        this.databaseCache.users = new Collection();
+        this.databaseCache.guilds = new Collection();
+        this.databaseCache.members = new Collection();
     }
 
     // This function is used to load a command and add it to the collection
@@ -59,52 +64,63 @@ class Atlanta extends Client {
     }
 
     // This function is used to find a user data or create it
-    async findOrCreateUser(param, isLean){
-        let usersData = this.usersData;
-        return new Promise(async function (resolve, reject){
-            let userData = (isLean ? await usersData.findOne(param).lean() : await usersData.findOne(param));
-            if(userData){
-                resolve(userData);
+    async findOrCreateUser({ id: userID }, isLean){
+        return new Promise(async (resolve) => {
+            if(this.databaseCache.users.get(userID)){
+                resolve(isLean ? this.databaseCache.users.get(userID).toJSON() : this.databaseCache.users.get(userID));
             } else {
-                userData = new usersData(param);
-                await userData.save();
-                resolve((isLean ? userData.toJSON() : userData));
+                let userData = (isLean ? await this.usersData.findOne({ id: userID }).lean() : await this.usersData.findOne({ id: userID }));
+                if(userData){
+                    resolve(userData);
+                } else {
+                    userData = new this.usersData({ id: userID });
+                    await userData.save();
+                    resolve((isLean ? userData.toJSON() : userData));
+                }
+                this.databaseCache.users.set(userID, userData);
             }
         });
     }
 
     // This function is used to find a member data or create it
-    async findOrCreateMember(param, isLean){
-        let membersData = this.membersData;
-        let guildsData = this.guildsData;
-        return new Promise(async function (resolve, reject){
-            let memberData = (isLean ? await membersData.findOne(param).lean() : await membersData.findOne(param));
-            if(memberData){
-                resolve(memberData);
+    async findOrCreateMember({ id: memberID, guildID }, isLean){
+        return new Promise(async (resolve) => {
+            if(this.databaseCache.members.get()){
+                resolve(isLean ? this.databaseCache.members.get(`${memberID}${guildID}`).toJSON() : this.databaseCache.members.get(`${memberID}${guildID}`));
             } else {
-                memberData = new membersData(param);
-                await memberData.save();
-                let guild = await guildsData.findOne({ id: param.guildID });
-                if(guild){
-                    guild.members.push(memberData._id);
-                    await guild.save();
+                let memberData = (isLean ? await this.membersData.findOne({ id: memberID, guildID }).lean() : await this.membersData.findOne({ id: memberID, guildID }));
+                if(memberData){
+                    resolve(memberData);
+                } else {
+                    memberData = new this.membersData({ id: memberID, guildID: guildID });
+                    await memberData.save();
+                    let guild = await this.findOrCreateGuild({ id: guildID });
+                    if(guild){
+                        guild.members.push(memberData._id);
+                        await guild.save();
+                    }
+                    resolve((isLean ? memberData.toJSON() : memberData));
                 }
-                resolve((isLean ? memberData.toJSON() : memberData));
+                this.databaseCache.members.set(`${memberID}${guildID}`, memberData);
             }
         });
     }
 
     // This function is used to find a guild data or create it
-    async findOrCreateGuild(param, isLean){
-        let guildsData = this.guildsData;
-        return new Promise(async function (resolve, reject){
-            let guildData = (isLean ? await guildsData.findOne(param).populate("members").lean() : await guildsData.findOne(param).populate("members"));
-            if(guildData){
-                resolve(guildData);
+    async findOrCreateGuild({ id: guildID }, isLean){
+        return new Promise(async (resolve) => {
+            if(this.databaseCache.guilds.get(guildID)){
+                resolve(isLean ? this.databaseCache.guilds.get(guildID).toJSON() : this.databaseCache.guilds.get(guildID));
             } else {
-                guildData = new guildsData(param);
-                await guildData.save();
-                resolve(guildData.toJSON());
+                let guildData = (isLean ? await this.guildsData.findOne({ id: guildID }).populate("members").lean() : await this.guildsData.findOne({ id: guildID }).populate("members"));
+                if(guildData){
+                    resolve(guildData);
+                } else {
+                    guildData = new this.guildsData({ id: guildID });
+                    await guildData.save();
+                    resolve(guildData.toJSON());
+                }
+                this.databaseCache.guilds.set(guildID, guildData);
             }
         });
     }
