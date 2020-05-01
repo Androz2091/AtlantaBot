@@ -23,7 +23,7 @@
     "blague.xyz": "^2.0.4",
     "body-parser": "^1.19.0",
     "canvas": "^2.6.1",
-    "chalk": "^3.0.0",
+    "chalk": "^4.0.0",
     "colors-generator": "^0.3.4",
     "cron": "^1.7.2",
     "dblapi.js": "^2.3.0",
@@ -34,7 +34,7 @@
     "ejs": "^3.0.1",
     "express": "^4.17.1",
     "express-session": "^1.17.0",
-    "ffmpeg-static": "^3.0.0",
+    "ffmpeg-static": "^4.2.0",
     "figlet": "^1.2.4",
     "fortnite": "^4.3.2",
     "fortnite-9812": "^1.0.4",
@@ -48,6 +48,6 @@
     "passport": "^0.4.1",
     "passport-discord": "^0.1.3",
     "simple-youtube-api": "^5.2.1",
-    "ytdl-core": "^1.0.6"
+    "ytdl-core": "^2.1.1"
   }
 }
