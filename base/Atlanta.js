@@ -118,7 +118,7 @@ class Atlanta extends Client {
                 } else {
                     guildData = new this.guildsData({ id: guildID });
                     await guildData.save();
-                    resolve(guildData.toJSON());
+                    resolve(isLean ? guildData.toJSON() : guildData);
                 }
                 this.databaseCache.guilds.set(guildID, guildData);
             }
