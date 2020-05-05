@@ -23,21 +23,27 @@ class Addemote extends Command {
 
     async run (message, args, data) {
 
-        let url = args[0];
-        if(!url){
-            return message.channel.send(message.language.get("ADDEMOTE_ERR_URL"));
+        const URL = args[0];
+        if (!URL) {
+            return message.error("administration/addemoji:MISSING_URL");
         }
 
-        let name = args[1];
-        if(!name){
-            return message.channel.send(message.language.get("ADDEMOTE_ERR_NAME"));
+        const name = args[1].replace(/[^a-z0-9]/gi, "");
+        if (!name) {
+            return message.error("administration/addemoji:MISSING_NAME");
         }
 
-        message.guild.emojis.create(url, name).then((emote) => {
-            message.channel.send(message.language.get("ADDEMOTE_SUCCESS", emote));
-        }).catch((err) => {
-            return message.channel.send(message.language.get("ADDEMOTE_ERROR"));
-        });
+        message.guild.emojis
+            .create(URL, name)
+            .then(emoji => {
+                message.success("administration/addemoji:SUCCESS", {
+                    emojiName: emoji.name,
+                    emojiString: emoji.toString()
+                });
+            })
+            .catch(() => {
+                message.error("administration/addemoji:ERROR");
+            });
     }
 
 }
