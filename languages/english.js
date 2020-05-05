@@ -905,7 +905,7 @@ module.exports = class {
 			GOODBYE_EXAMPLES: "$goodbye",
 			// Content
 			GOODBYE_DISABLED: (prefix) => `${e.success} | The goodbye messages have just been deactivated! Type \`${prefix}configuration\` to see the current configuration!`,
-			GOODBYE_TEST_SUCCESS: `${e.success} | Test effectué !`,
+			GOODBYE_TEST_SUCCESS: `${e.success} | Test performed!`,
 			GOODBYE_FORM_CHANNEL: (author) => `Hello ${author} ! In which channel will the goodbye messages be sent? (mention a channel)`,
 			GOODBYE_FORM_MESSAGE: (channel, msg) => `All right! The messages will therefore be sent in ${channel}. Enter the goodbye message below: \n\n\nInfos:\\n\n\nMention: {user}\nMembers: {membercount}\nServer: {server}\nFor example, "Goodbye {user} ! It's sad, without you we're only {membercount} on {server} !" will give "Goodbye ${msg.author.username}#${msg.author.discriminator} ! It's sad, without you we're only ${msg.guild.memberCount} on ${msg.guild.name} !".`,
 			GOODBYE_FORM_IMAGE: `It works! Do you want a great welcome image to be sent at the same time? Answer with "yes" or "no"!`,
