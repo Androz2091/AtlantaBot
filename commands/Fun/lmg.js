@@ -6,9 +6,6 @@ class Lmg extends Command {
     constructor (client) {
         super(client, {
             name: "lmg",
-            description: (language) => language.get("LMG_DESCRIPTION"),
-            usage: (language) => language.get("LMG_USAGE"),
-            examples: (language) => language.get("LMG_EXAMPLES"),
             dirname: __dirname,
             enabled: true,
             guildOnly: false,
@@ -22,15 +19,11 @@ class Lmg extends Command {
     }
 
     async run (message, args, data) {
-
-        let question = args.join(" ");
-        if(!question){
-            return message.channel.send(message.language.get("LMG_ERR_QUESTION"));
-        }
-        question = question.replace(/[' '_]/g, "+");
-        await message.channel.send("http://lmgtfy.com/?q="+question);
-        message.delete();
-
+        const question = args.join(" ");
+        if (!question) return message.error("fun/lmg:MISSING");
+        const encodedQuestion = question.replace(/[' '_]/g, "+");
+        await message.channel.send(`http://lmgtfy.com/?q=${encodedQuestion}`);
+        message.delete().catch(() => {});
     }
 
 }
