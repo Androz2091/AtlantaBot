@@ -1,0 +1,9 @@
+{
+    "DESCRIPTION": "Randomly pick one of the choices you give me!",
+    "USAGE": "{{prefix}}choice [choice1/choice2/etc...]",
+    "EXAMPLES": "{{prefix}}choice Fire/Wind/Water",
+    "MISSING": "You must enter more than two choices!",
+    "EMPTY": "One of your choices seems to be empty.... Please try again!",
+    "PROGRESS": "Choice being made...",
+    "DONE": "Here is my choice:"
+}
