@@ -1,14 +1,11 @@
 const Command = require("../../base/Command.js"),
 Discord = require("discord.js");
 
-class Addemote extends Command {
+class Addemoji extends Command {
 
     constructor (client) {
         super(client, {
-            name: "addemote",
-            description: (language) => language.get("ADDEMOTE_DESCRIPTION"),
-            usage: (language) => language.get("ADDEMOTE_USAGE"),
-            examples: (language) => language.get("ADDEMOTE_EXAMPLES"),
+            name: "addemoji",
             dirname: __dirname,
             enabled: true,
             guildOnly: true,
@@ -48,4 +45,4 @@ class Addemote extends Command {
 
 }
 
-module.exports = Addemote;
+module.exports = Addemoji;
