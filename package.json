@@ -39,6 +39,8 @@
     "fortnite": "^4.3.2",
     "fortnite-9812": "^1.0.4",
     "gamedig": "^2.0.14",
+    "i18next": "^19.4.4",
+    "i18next-node-fs-backend": "^2.1.3",
     "latest-tweets": "github:noffle/latest-tweets",
     "markdown-table": "^1.1.3",
     "mathjs": "^6.5.0",
