@@ -30,7 +30,6 @@ class Ascii extends Command {
 
         const rendered = await figletAsync(text);
         message.channel.send("```" + rendered + "```");
-    }
 
     }
 
