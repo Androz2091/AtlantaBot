@@ -23,73 +23,105 @@ class Configuration extends Command {
 
     async run (message, args, data) {
 
-        const headings = message.language.get("CONFIGURATION_HEADINGS"),
-        guildData = data.guild;
-        
-        let embed = new Discord.MessageEmbed()
+        const guildData = data.guild;
+
+        const embed = new Discord.MessageEmbed()
             .setAuthor(message.guild.name, message.guild.iconURL())
-            .setColor(data.config.embed.color)
-            .setFooter(data.config.embed.footer);
+            .setColor(this.client.config.embed.color)
+            .setFooter(this.client.config.embed.footer);
 
-        embed.addField(message.language.get("UTILS").PREFIX, data.guild.prefix);
+        // Guild prefix
+        embed.addField(message.translate("administration/configuration:PREFIX_TITLE"), guildData.prefix);
 
-        embed.addField(headings[0][0],
+        // Ignored channels
+        embed.addField(message.translate("administration/configuration:IGNORED_CHANNELS_TITLE"),
             (guildData.ignoredChannels.length > 0) ?
-            guildData.ignoredChannels.map((ch) => "<#"+ch+">").join(", ")
-            : headings[0][1]
+                guildData.ignoredChannels.map((ch) => `<#${ch}>`).join(", ")
+            :   message.translate("administration/configuration:NO_IGNORED_CHANNELS")
         );
     
-        embed.addField(headings[1][0], 
+        // Autorole plugin
+        embed.addField(message.translate("administration/configuration:AUTOROLE_TITLE"), 
             (guildData.plugins.autorole.enabled) ?
-                message.language.get("CONFIGURATION_AUTOROLE", guildData.plugins.autorole.role)
-            :   headings[1][1]
+                message.translate("administration/configuration:AUTOROLE_CONTENT", {
+                    roleName: `<@&${guildData.plugins.autorole.role}>`
+                })
+            :   message.translate("administration/configuration:AUTOROLE_DISABLED")
         );
         
-        embed.addField(headings[2][0],
+        // Welcome plugin
+        embed.addField(message.translate("administration/configuration:WELCOME_TITLE"),
             (guildData.plugins.welcome.enabled) ?
-                message.language.get("CONFIGURATION_WELCOME", guildData.plugins.welcome.withImage, guildData.plugins.welcome.channel)
-            :   headings[2][1]
+                message.translate("administration/configuration:WELCOME_CONTENT", {
+                    channel: `<#${guildData.plugins.welcome.channel}>`,
+                    withImage: guildData.plugins.welcome.withImage ? message.translate("common:YES") : message.translate("common:NO")
+                })
+            :   message.translate("administration/configuration:WELCOME_DISABLED")
         );
             
-        embed.addField(headings[3][0],
+        // Goodbye plugin
+        embed.addField(message.translate("administration/configuration:GOODBYE_TITLE"),
             (guildData.plugins.goodbye.enabled) ?
-                message.language.get("CONFIGURATION_GOODBYE", guildData.plugins.goodbye.withImage, guildData.plugins.goodbye.channel)
-            :   headings[3][1]
+                message.translate("administration/configuration:GOODBYE_CONTENT", {
+                    channel: `<#${guildData.plugins.goodbye.channelID}>`,
+                    withImage: guildData.plugins.goodbye.withImage ? message.translate("common:YES") : message.translate("common:NO")
+                })
+            :   message.translate("administration/configuration:GOODBYE_DISABLED")
         );
 
-        embed.addField(headings[4][0],
-            (guildData.slowmode.channels.length > 0) ?
-                guildData.slowmode.channels.map((ch) => `<#${ch.id}> (${message.language.convertMs(ch.time)})\n`)
-            :   headings[4][1]
+        // Special channels
+        embed.addField(message.translate("administration/configuration:SPECIAL_CHANNELS"),
+            message.translate("administration/configuration:MODLOGS", {
+                channel:    guildData.plugins.modlogs
+                            ? `<#${guildData.plugins.modlogs}>`
+                            : message.translate("common:NOT_DEFINED")
+            }) + "\n" +
+            message.translate("administration/configuration:FORTNITESHOP", {
+                channel:    guildData.plugins.fortniteshop
+                            ? `<#${guildData.plugins.fortniteshop}>`
+                            : message.translate("common:NOT_DEFINED")
+            }) + "\n" +
+            message.translate("administration/configuration:SUGGESTIONS", {
+                channel:    guildData.plugins.suggestions
+                            ? `<#${guildData.plugins.suggestions}>`
+                            : message.translate("common:NOT_DEFINED")
+            }) + "\n" +
+            message.translate("administration/configuration:REPORTS", {
+                channel:    guildData.plugins.reports
+                            ? `<#${guildData.plugins.reports}>`
+                            : message.translate("common:NOT_DEFINED")
+            })
+        );
+        
+        // Auto sanctions
+        embed.addField(message.translate("administration/configuration:AUTO_SANCTIONS"),
+            ((guildData.plugins.warnsSanctions.kick) ?
+                message.translate("administration/configuration:KICK_CONTENT", guildData.plugins.warnsSanctions.kick)
+            :   message.translate("administration/configuration:KICK_NOT_DEFINED")) + "\n" +
+            ((guildData.plugins.warnsSanctions.ban) ?
+                message.translate("administration/configuration:BAN_CONTENT", guildData.plugins.warnsSanctions.ban)
+                :   message.translate("administration/configuration:BAN_NOT_DEFINED"))
         );
 
-        embed.addField(headings[5][0],
-            message.language.get("CONFIGURATION_MODLOGS", guildData.plugins.modlogs)+"\n"+
-            message.language.get("CONFIGURATION_SUGGESTIONS", guildData.plugins.suggestions)+"\n"+
-            message.language.get("CONFIGURATION_REPORTS", guildData.plugins.reports)+"\n"+
-            message.language.get("CONFIGURATION_FORTNITESHOP", guildData.plugins.fortniteshop)
-        );
-        
-        embed.addField(headings[6][0],
-            message.language.get("CONFIGURATION_WARNS", guildData.plugins.warnsSanctions.kick, guildData.plugins.warnsSanctions.ban)
-        );
-        
-        embed.addField(headings[7][0],
+        // Automod plugin
+        embed.addField(message.translate("administration/configuration:AUTOMOD_TITLE"),
             (guildData.plugins.automod.enabled) ?
-                message.language.get("CONFIGURATION_AUTOMOD", guildData.plugins.automod.ignored)
-            :   headings[7][1]
+                message.translate("administration/configuration:AUTOMOD_CONTENT", {
+                    channels: guildData.plugins.automod.ignored.map((ch) => `<#${ch}>`)
+                })
+            :   message.translate("administration/configuration:AUTOMOD_DISABLED")
         );
 
-        embed.addField(headings[8][0],
-            (!guildData.plugins.autoDeleteModCommands) ?
-                message.language.get("CONFIGURATION_AUTODELETEMOD")
-            :   headings[8][1]
+        // Auto-delete mod commands
+        embed.addField(message.translate("administration/configuration:AUTODELETEMOD"),
+            (!message.guild.autoDeleteModCommands) ?
+                message.translate("administration/configuration:AUTODELETEMOD_ENABLED")
+            :   message.translate("administration/configuration:AUTODELETEMOD_DISABLED")
         );
-        
 
-        embed.addField(headings[9][0], headings[9][1]);
+        // Dashboard link
+        embed.addField(message.translate("administration/configuration:DASHBOARD_TITLE"), `[${message.translate("administration/configuration:DASHBOARD_CONTENT")}](${this.client.config.supportURL})`);
 
-        // Then, send the embed in the current channel
         message.channel.send(embed);
     }
 
