@@ -7,6 +7,10 @@ const resolveLanguage = (language) => {
             "en-US";
 };
 
+Guild.prototype.getLanguage = function() {
+    return resolveLanguage(this.data.language);
+}
+
 Guild.prototype.translate = function(key, args) {
     const language = this.client.translations.get(resolveLanguage(this.data.language));
     if (!language) throw "Message: Invalid language set in data.";
