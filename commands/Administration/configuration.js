@@ -6,9 +6,6 @@ class Configuration extends Command {
     constructor (client) {
         super(client, {
             name: "configuration",
-            description: (language) => language.get("CONFIGURATION_DESCRIPTION"),
-            usage: (language) => language.get("CONFIGURATION_USAGE"),
-            examples: (language) => language.get("CONFIGURATION_EXAMPLES"),
             dirname: __dirname,
             enabled: true,
             guildOnly: true,
