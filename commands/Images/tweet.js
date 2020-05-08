@@ -24,25 +24,27 @@ class Tweet extends Command {
         let user = args[0];
         let text = args.slice(1).join(" ");
 
-        let m = await message.channel.send(message.language.get("UTILS").PLEASE_WAIT);
+        let m = await message.sendT("misc:PLEASE_WAIT", null, false, false, "loading");
 
         if(!user){
-            return m.edit(message.language.get("TWEET_ERR_USERNAME"));
+            return m.error("images/tweet:MISSING_USERNAME");
         }
 
         if(!text){
-            return m.edit(message.language.get("TWEET_ERR_TEXT"));
+            return m.error("images/tweet:MISSING_TEXT");
         }
 
         try {
             let res = await fetch(encodeURI(`https://nekobot.xyz/api/imagegen?type=tweet&username=${user}&text=${text}`));
             let json = await res.json();
             let attachment = new Discord.MessageAttachment(json.message, "tweet.png");
-            await message.channel.send(message.language.get("TWEET_CONTENT", user), attachment);
+            await message.channel.send(message.translate("images/tweet:SUCCESS", {
+                user
+            }), attachment);
             m.delete();
         } catch(e){
             console.log(e)
-            m.edit(message.language.get("ERR_OCCURENCED"));
+            m.error("misc:ERROR_OCCURRED", null, false, false, true);
         }
 
     }

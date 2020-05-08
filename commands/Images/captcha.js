@@ -21,7 +21,7 @@ class Captcha extends Command {
     async run (message, args, data) {
         
         let user = await this.client.resolveUser(args[0]) || message.author;
-        let m = await message.channel.send(message.language.get("UTILS").PLEASE_WAIT);
+        let m = await message.sendT("misc:PLEASE_WAIT", null, false, false, "loading");
         try {
             let res = await fetch(encodeURI(`https://nekobot.xyz/api/imagegen?type=captcha&username=${user.username}&url=${user.displayAvatarURL({ format: "png", size: 512 })}`));
             let json = await res.json();
@@ -30,7 +30,7 @@ class Captcha extends Command {
             m.delete();
         } catch(e){
             console.log(e);
-            m.sendT("misc:ERR_OCCURED", null, true);
+            m.error("misc:ERR_OCCURRED", null, true);
         }
 
     }

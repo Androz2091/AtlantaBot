@@ -21,7 +21,7 @@ class Facepalm extends Command {
     async run (message, args, data) {
 
         let user = await this.client.resolveUser(args[0]) || message.author,
-        m = await message.channel.send(message.language.get("UTILS").PLEASE_WAIT),
+        m = await message.sendT("misc:PLEASE_WAIT", null, false, false, "loading");
         canvas = Canvas.createCanvas(632, 357),
         ctx = canvas.getContext("2d");
         

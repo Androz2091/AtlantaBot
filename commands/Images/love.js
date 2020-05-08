@@ -25,7 +25,7 @@ class Love extends Command {
             await this.client.resolveUser(args[1]) || message.author
         ];
 
-        let m = await message.channel.send(message.language.get("UTILS").PLEASE_WAIT);
+        let m = await message.sendT("misc:PLEASE_WAIT", null, false, false, "loading");
         try {
             let res = await fetch(encodeURI(`https://nekobot.xyz/api/imagegen?type=ship&user1=${users[0].displayAvatarURL({ format: "png", size: 512 })}&user2=${users[1].displayAvatarURL({ format: "png", size: 512 })}`));
             let json = await res.json();
@@ -34,7 +34,7 @@ class Love extends Command {
             m.delete();
         } catch(e){
             console.log(e)
-            m.edit(message.language.get("ERR_OCCURENCED"));
+            m.error("misc:ERROR_OCCURRED", null, true);
         }
 
     }

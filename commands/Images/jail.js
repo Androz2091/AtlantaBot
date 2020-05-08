@@ -20,7 +20,7 @@ class Jail extends Command {
     async run (message, args, data) {
 
         let user = await this.client.resolveUser(args[0]) || message.author;
-        let m = await message.channel.send(message.language.get("UTILS").PLEASE_WAIT);
+        let m = await message.sendT("misc:PLEASE_WAIT", null, false, false, "loading");
         let buffer = await this.client.AmeAPI.generate("jail", { url: user.displayAvatarURL({ format: "png", size: 1024 }) });
         let attachment = new Discord.MessageAttachment(buffer, "jail.png");
         m.delete();
