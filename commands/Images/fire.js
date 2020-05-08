@@ -5,9 +5,6 @@ class Fire extends Command {
     constructor (client) {
         super(client, {
             name: "fire",
-            description: (language) => language.get("FIRE_DESCRIPTION"),
-            usage: (language) => language.get("FIRE_USAGE"),
-            examples: (language) => language.get("FIRE_EXAMPLES"),
             dirname: __dirname,
             enabled: true,
             guildOnly: false,

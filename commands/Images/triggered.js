@@ -5,9 +5,6 @@ class Triggered extends Command {
     constructor (client) {
         super(client, {
             name: "triggered",
-            description: (language) => language.get("TRIGGERED_DESCRIPTION"),
-            usage: (language) => language.get("TRIGGERED_USAGE"),
-            examples: (language) => language.get("TRIGGERED_EXAMPLES"),
             dirname: __dirname,
             enabled: true,
             guildOnly: false,

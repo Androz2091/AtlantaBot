@@ -5,9 +5,6 @@ class Avatar extends Command {
     constructor (client) {
         super(client, {
             name: "avatar",
-            description: (language) => language.get("AVATAR_DESCRIPTION"),
-            usage: (language) => language.get("AVATAR_USAGE"),
-            examples: (language) => language.get("AVATAR_EXAMPLES"),
             dirname: __dirname,
             enabled: true,
             guildOnly: false,

@@ -5,9 +5,6 @@ class Tobecontinued extends Command {
     constructor (client) {
         super(client, {
             name: "tobecontinued",
-            description: (language) => language.get("TOBECONTINUED_DESCRIPTION"),
-            usage: (language) => language.get("TOBECONTINUED_USAGE"),
-            examples: (language) => language.get("TOBECONTINUED_EXAMPLES"),
             dirname: __dirname,
             enabled: true,
             guildOnly: false,

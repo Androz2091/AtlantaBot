@@ -6,9 +6,6 @@ class Phcomment extends Command {
     constructor (client) {
         super(client, {
             name: "phcomment",
-            description: (language) => language.get("PHCOMMENT_DESCRIPTION"),
-            usage: (language) => language.get("PHCOMMENT_USAGE"),
-            examples: (language) => language.get("PHCOMMENT_EXAMPLES"),
             dirname: __dirname,
             enabled: true,
             guildOnly: false,

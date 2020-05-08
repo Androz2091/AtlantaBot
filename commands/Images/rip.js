@@ -5,9 +5,6 @@ class Rip extends Command {
     constructor (client) {
         super(client, {
             name: "rip",
-            description: (language) => language.get("RIP_DESCRIPTION"),
-            usage: (language) => language.get("RIP_USAGE"),
-            examples: (language) => language.get("RIP_EXAMPLES"),
             dirname: __dirname,
             enabled: true,
             guildOnly: false,

@@ -5,9 +5,6 @@ class Wanted extends Command {
     constructor (client) {
         super(client, {
             name: "wanted",
-            description: (language) => language.get("WANTED_DESCRIPTION"),
-            usage: (language) => language.get("WANTED_USAGE"),
-            examples: (language) => language.get("WANTED_EXAMPLES"),
             dirname: __dirname,
             enabled: true,
             guildOnly: false,

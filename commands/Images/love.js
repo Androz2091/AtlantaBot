@@ -6,9 +6,6 @@ class Love extends Command {
     constructor (client) {
         super(client, {
             name: "love",
-            description: (language) => language.get("LOVE_DESCRIPTION"),
-            usage: (language) => language.get("LOVE_USAGE"),
-            examples: (language) => language.get("LOVE_EXAMPLES"),
             dirname: __dirname,
             enabled: true,
             guildOnly: false,

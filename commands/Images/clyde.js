@@ -6,9 +6,6 @@ class Clyde extends Command {
     constructor (client) {
         super(client, {
             name: "clyde",
-            description: (language) => language.get("CLYDE_DESCRIPTION"),
-            usage: (language) => language.get("CLYDE_USAGE"),
-            examples: (language) => language.get("CLYDE_EXAMPLES"),
             dirname: __dirname,
             enabled: true,
             guildOnly: false,

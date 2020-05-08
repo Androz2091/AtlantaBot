@@ -6,9 +6,6 @@ class Captcha extends Command {
     constructor (client) {
         super(client, {
             name: "captcha",
-            description: (language) => language.get("CAPTCHA_DESCRIPTION"),
-            usage: (language) => language.get("CAPTCHA_USAGE"),
-            examples: (language) => language.get("CAPTCHA_EXAMPLES"),
             dirname: __dirname,
             enabled: true,
             guildOnly: false,
@@ -33,7 +30,7 @@ class Captcha extends Command {
             m.delete();
         } catch(e){
             console.log(e);
-            m.edit(message.language.get("ERR_OCCURENCED"));
+            m.sendT("misc:ERR_OCCURED", null, true);
         }
 
     }

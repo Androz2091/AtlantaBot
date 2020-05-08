@@ -5,9 +5,6 @@ class Scary extends Command {
     constructor (client) {
         super(client, {
             name: "scary",
-            description: (language) => language.get("SCARY_DESCRIPTION"),
-            usage: (language) => language.get("SCARY_USAGE"),
-            examples: (language) => language.get("SCARY_EXAMPLES"),
             dirname: __dirname,
             enabled: true,
             guildOnly: false,

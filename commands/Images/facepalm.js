@@ -6,9 +6,6 @@ class Facepalm extends Command {
     constructor (client) {
         super(client, {
             name: "facepalm",
-            description: (language) => language.get("FACEPALM_DESCRIPTION"),
-            usage: (language) => language.get("FACEPALM_USAGE"),
-            examples: (language) => language.get("FACEPALM_EXAMPLES"),
             dirname: __dirname,
             enabled: true,
             guildOnly: false,

@@ -5,9 +5,6 @@ class Wasted extends Command {
     constructor (client) {
         super(client, {
             name: "wasted",
-            description: (language) => language.get("WASTED_DESCRIPTION"),
-            usage: (language) => language.get("WASTED_USAGE"),
-            examples: (language) => language.get("WASTED_EXAMPLES"),
             dirname: __dirname,
             enabled: true,
             guildOnly: false,

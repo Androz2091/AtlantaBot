@@ -7,9 +7,6 @@ class Tweet extends Command {
     constructor (client) {
         super(client, {
             name: "tweet",
-            description: (language) => language.get("TWEET_DESCRIPTION"),
-            usage: (language) => language.get("TWEET_USAGE"),
-            examples: (language) => language.get("TWEET_EXAMPLES"),
             dirname: __dirname,
             enabled: true,
             guildOnly: false,

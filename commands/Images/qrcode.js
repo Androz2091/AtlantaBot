@@ -6,9 +6,6 @@ class Qrcode extends Command {
     constructor (client) {
         super(client, {
             name: "qrcode",
-            description: (language) => language.get("QRCODE_DESCRIPTION"),
-            usage: (language) => language.get("QRCODE_USAGE"),
-            examples: (language) => language.get("QRCODE_EXAMPLES"),
             dirname: __dirname,
             enabled: true,
             guildOnly: false,

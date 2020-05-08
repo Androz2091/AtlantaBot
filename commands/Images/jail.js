@@ -5,9 +5,6 @@ class Jail extends Command {
     constructor (client) {
         super(client, {
             name: "jail",
-            description: (language) => language.get("JAIL_DESCRIPTION"),
-            usage: (language) => language.get("JAIL_USAGE"),
-            examples: (language) => language.get("JAIL_EXAMPLES"),
             dirname: __dirname,
             enabled: true,
             guildOnly: false,

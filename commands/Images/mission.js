@@ -5,9 +5,6 @@ class Mission extends Command {
     constructor (client) {
         super(client, {
             name: "mission",
-            description: (language) => language.get("MISSION_DESCRIPTION"),
-            usage: (language) => language.get("MISSION_USAGE"),
-            examples: (language) => language.get("MISSION_EXAMPLES"),
             dirname: __dirname,
             enabled: true,
             guildOnly: false,
