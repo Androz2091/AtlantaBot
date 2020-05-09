@@ -24,7 +24,7 @@ class Pause extends Command {
 
         let voice = message.member.voice.channel;
         if (!voice){
-            return message.error("music/play:NO_VOICE_CHANNEL")
+            return message.error("music/play:NO_VOICE_CHANNEL");
         }
 
         if(!queue){
