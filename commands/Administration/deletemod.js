@@ -24,16 +24,16 @@ class Deletemod extends Command {
     async run (message, args, data) {
         let status = args[0];
         if(!status || status !== "on" && status !== "off"){
-            return message.channel.send(message.language.get("DELETEMOD_ERR_STATUS"));
+            return message.error("administration/deletemod:MISSING_STATUS");
         }
         if(status === "on"){
             data.guild.autoDeleteModCommands = true;
             data.guild.save();
-            message.channel.send(message.language.get("DELETEMOD_SUCCESS_ENABLED"));
+            message.error("administration/deletemod:ENABLED");
         } else {
             data.guild.autoDeleteModCommands = false;
             data.guild.save();
-            message.channel.send(message.language.get("DELETEMOD_SUCCESS_ENABLED"));
+            message.error("administration/deletemod:DISABLED");
         }
     }
 
