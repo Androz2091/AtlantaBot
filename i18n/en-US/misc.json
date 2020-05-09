@@ -1,4 +1,6 @@
 {
     "ERR_OCCURRED": "Something went wrong... Please wait and retry!",
-    "PLEASE_WAIT": "Please wait a few seconds..."
+    "PLEASE_WAIT": "Please wait a few seconds...",
+    "COMMAND_DISABLED": "This command is currently disabled!",
+    "TIMES_UP": "Time's up! Please send the command again!"
 }
