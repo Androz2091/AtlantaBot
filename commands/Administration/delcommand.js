@@ -6,9 +6,6 @@ class Delcommand extends Command {
     constructor (client) {
         super(client, {
             name: "delcommand",
-            description: (language) => language.get("DELCOMMAND_DESCRIPTION"),
-            usage: (language) => language.get("DELCOMMAND_USAGE"),
-            examples: (language) => language.get("DELCOMMAND_EXAMPLES"),
             dirname: __dirname,
             enabled: true,
             guildOnly: true,
@@ -25,17 +22,21 @@ class Delcommand extends Command {
 
         let name = args[0];
         if(!name){
-            return message.channel.send(message.language.get("DELCOMMAND_ERR_NAME"));
+            return message.error("administration/delcommand:MISSING_NAME");
         }
 
         if(!data.guild.customCommands.find((c) => c.name === name)){
-            return message.channel.send(message.language.get("DELCOMMAND_EXISTS", name));
+            return message.error("administration/delcommand:UNKNOWN_COMMAND", {
+                commandName: name
+            });
         }
         
         data.guild.customCommands = data.guild.customCommands.filter((c) => c.name !== name);
         data.guild.save();
 
-        message.channel.send(message.language.get("DELCOMMAND_SUCCESS", name));
+        message.success("administration/delcommand:SUCCESS", {
+            commandName: name
+        });
     }
     
 }
