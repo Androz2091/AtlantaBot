@@ -6,9 +6,6 @@ class Stop extends Command {
     constructor (client) {
         super(client, {
             name: "stop",
-            description: (language) => language.get("STOP_DESCRIPTION"),
-            usage: (language) => language.get("STOP_USAGE"),
-            examples: (language) => language.get("STOP_EXAMPLES"),
             dirname: __dirname,
             enabled: true,
             guildOnly: true,
@@ -23,25 +20,21 @@ class Stop extends Command {
 
     async run (message, args, data) {
 
-        if(!data.config.apiKeys.simpleYoutube || data.config.apiKeys.simpleYoutube.length === "") {
-            return message.channel.send(message.language.get("ERR_COMMAND_DISABLED"));
-        }
-        
         let queue = await this.client.player.getQueue(message.guild.id);
-
-        if(!queue){
-            return message.channel.send(message.language.get("PLAY_ERR_NOT_PLAYING"));
-        }
 
         let voice = message.member.voice.channel;
         if(!voice){
-            return message.channel.send(message.language.get("PLAY_ERR_VOICE_CHANNEL"));
+            return message.error("music/play:NO_VOICE_CHANNEL")
+        }
+
+        if(!queue){
+            return message.error("music/play:NOT_PLAYING")
         }
 
         let members = voice.members.filter((m) => m.id !== message.client.user.id);
 
         let embed = new Discord.MessageEmbed()
-            .setAuthor(message.language.get("STOP_TITLE"))
+            .setAuthor(message.translate("music/stop:DESCRIPTION"))
             .setFooter(data.config.embed.footer)
             .setColor(data.config.embed.color);
 
@@ -53,18 +46,17 @@ class Stop extends Command {
 
             let mustVote = Math.floor(members.size/2+1);
 
-            embed.setDescription(message.language.get("STOP_CONTENT", 0, mustVote));
+            embed.setDescription(message.translate("music/stop:VOTE_CONTENT", {
+                voteCount: 0,
+                requiredCount: mustVote
+            }));
             m.edit(embed);
     
             let filter = (reaction, user) => {
                 let member = message.guild.members.get(user.id);
                 let voiceChannel = member.voice.channel;
                 if(voiceChannel){
-                    if(voiceChannel.id === voice.id){
-                        return true;
-                    } else {
-                        return false;
-                    }
+                    return voiceChannel.id === voice.id;
                 }
             };
 
@@ -76,24 +68,27 @@ class Stop extends Command {
                 let haveVoted = reaction.count-1;
                 if(haveVoted >= mustVote){
                     this.client.player.stop(message.guild.id);
-                    embed.setDescription(message.language.get("STOP_CONTENT_COMPLETE"));
+                    embed.setDescription(message.translate("music/stop:SUCCESS"));
                     m.edit(embed);
                     collector.stop(true);
                 } else {
-                    embed.setDescription(message.language.get("STOP_CONTENT", haveVoted, mustVote));
+                    embed.setDescription(message.translate("music/stop:VOTE_CONTENT", {
+                        voteCount: haveVoted,
+                        requiredCount: mustVote
+                    }));
                     m.edit(embed);
                 }
             });
 
             collector.on("end", (collected, isDone) => {
                 if(!isDone){
-                    return message.channel.send(message.language.get("PLAY_ERR_TIMEOUT"));
+                    return message.error("misc:TIMES_UP");
                 }
             });
 
         } else {
             this.client.player.stop(message.guild.id);
-            embed.setDescription(message.language.get("STOP_CONTENT_COMPLETE"));
+            embed.setDescription(message.translate("music/stop:SUCCESS"));
             m.edit(embed);
         }
         
