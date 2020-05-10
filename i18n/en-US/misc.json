@@ -3,5 +3,6 @@
     "PLEASE_WAIT": "Please wait a few seconds...",
     "COMMAND_DISABLED": "This command is currently disabled!",
     "TIMES_UP": "Time's up! Please send the command again!",
-    "INVALID_YES_NO": "You must send \"yes\" or \"no\"!"
+    "INVALID_YES_NO": "You must send \"yes\" or \"no\"!",
+    "INVALID_CHANNEL": "Please specify a valid channel!"
 }
