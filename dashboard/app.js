@@ -9,7 +9,6 @@ module.exports.load = async(client) => {
     /* Init express app */
 
     const express = require("express"),
-    bodyParser = require("body-parser"),
     session = require("express-session"),
     path = require("path"),
     app = express();
@@ -29,8 +28,8 @@ module.exports.load = async(client) => {
     /* App configuration */
     app
     // Body parser (for post method)
-    .use(bodyParser.json())
-    .use(bodyParser.urlencoded({ extended: true }))
+    .use(express.json())
+    .use(express.urlencoded({ extended: true }))
     // Set the engine to html (for ejs template)
     .engine("html", require("ejs").renderFile)
     .set("view engine", "ejs")
