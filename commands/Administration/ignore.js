@@ -30,14 +30,14 @@ class Ignore extends Command {
         if(ignored){
             data.guild.ignoredChannels = data.guild.ignoredChannels.filter((ch) => ch !== channel.id);
             data.guild.save();
-            return message.error("administration/ignore:ALLOWED", {
-                channel
+            return message.success("administration/ignore:ALLOWED", {
+                channel: channel.toString()
             });
         } else if(!ignored){
             data.guild.ignoredChannels.push(channel.id);
             data.guild.save();
-            return message.error("administration/ignore:IGNORED", {
-                channel
+            return message.success("administration/ignore:IGNORED", {
+                channel: channel.toString()
             });
         }
         
