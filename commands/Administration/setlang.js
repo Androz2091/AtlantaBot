@@ -40,7 +40,9 @@ class Setlang extends Command {
         const language = availableLanguages.find((l) => l.name === args[0] || l.aliases.includes(args[0]));
 
         if(!args[0] || !language){
-            return message.error("administration/setlang:MISSING_LANG");
+            return message.error("administration/setlang:MISSING_LANG", {
+                list: "\n\n"+availableLanguages.map((l) => "`"+l.name+"`").join("\n")
+            });
         }
 
         data.guild.language = language.name;

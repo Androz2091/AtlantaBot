@@ -30,6 +30,7 @@ class Setreports extends Command {
 
         if (!sentChannel && areReportsEnabled) {
             data.guild.plugins.reports = null;
+            data.guild.markModified("plugins.reports");
             await data.guild.save();
             return message.success(
                 "administration/setreports:SUCCESS_DISABLED"
@@ -37,6 +38,7 @@ class Setreports extends Command {
         } else {
             const channel = sentChannel || message.channel;
             data.guild.plugins.reports = channel.id;
+            data.guild.markModified("plugins.reports");
             await data.guild.save();
             return message.success(
                 "administration/setreports:SUCCESS_ENABLED",
