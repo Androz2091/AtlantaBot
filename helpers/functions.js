@@ -1,8 +1,8 @@
 const Discord = require("discord.js");
 const moment = require("moment");
-const languages = [ "en", "fr" ];
+const languages = [ "fr" ];
 languages.forEach((l) => {
-    require(`moment/locale/${l}`);
+    require(`moment/locale/${l}.js`);
 });
 
 module.exports = {
@@ -139,9 +139,13 @@ module.exports = {
         return absoluteTime.join(', ');
     },
 
-    printDate(date, guild = {}){
+    printDate(date, guild){
+        const language = guild.language === "en-US"
+        ? "en" : (guild.language.toLowerCase().split('-')[0] === guild.language.toLowerCase().split('-')[1])
+        ? guild.language.substr(0, 2) : guild.language.toLowerCase();
+
         return moment(date)
-        .locale(guild.language ? guild.language.substr(0, 2) : "en")
+        .locale(language)
         .format("LL");
     }
 
