@@ -1,14 +1,28 @@
 const Command = require("../../base/Command.js"),
 Discord = require("discord.js");
 
+const availableLanguages = [
+    {
+        name: "en-US",
+        aliases: [
+            "en_US",
+            "english"
+        ]
+    },
+    {
+        name: "fr-FR",
+        aliases: [
+            "fr_FR",
+            "french"
+        ]
+    }
+];
+
 class Setlang extends Command {
 
     constructor (client) {
         super(client, {
             name: "setlang",
-            description: (language) => language.get("SETLANG_DESCRIPTION"),
-            usage: (language) => language.get("SETLANG_USAGE"),
-            examples: (language) => language.get("SETLANG_EXAMPLES"),
             dirname: __dirname,
             enabled: true,
             guildOnly: true,
@@ -23,23 +37,16 @@ class Setlang extends Command {
 
     async run (message, args, data) {
 
-        if(!args[0]){
-            return message.channel.send(message.language.get("SETLANG_ERR_LANG"));
+        const language = availableLanguages.find((l) => l.name === args[0] || l.aliases.includes(args[0]));
+
+        if(!args[0] || !language){
+            return message.error("administration/setlang:MISSING_LANG");
         }
 
-        if(args[0] === "french"){
-            data.guild.language = "french";
-            await data.guild.save();
-            return message.channel.send(message.language.get("SETLANG_LANGS")[0]);
-        }
+        data.guild.language = language.name;
+        await data.guild.save();
         
-        if(args[0] === "english"){
-            data.guild.language = "english";
-            await data.guild.save();
-            return message.channel.send(message.language.get("SETLANG_LANGS")[1]);
-        }
-        
-        return message.channel.send(message.language.get("SETLANG_ERR_LANG"));
+        return message.sendT("administration/setlang:SUCCESS");
         
     }
 
