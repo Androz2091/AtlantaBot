@@ -6,9 +6,6 @@ class Setmodlogs extends Command {
     constructor (client) {
         super(client, {
             name: "setmodlogs",
-            description: (language) => language.get("SETMODLOGS_DESCRIPTION"),
-            usage: (language) => language.get("SETMODLOGS_USAGE"),
-            examples: (language) => language.get("SETMODLOGS_EXAMPLES"),
             dirname: __dirname,
             enabled: true,
             guildOnly: true,
@@ -29,7 +26,9 @@ class Setmodlogs extends Command {
         data.guild.save();
 
         // Send success message
-        message.channel.send(message.language.get("SETMODLOGS_SUCCESS", channel.id));
+        message.success("administration/setmodlogs:SUCCESS", {
+            channel: channel.toString()
+        });
     }
 
 }
