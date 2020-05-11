@@ -1,4 +1,9 @@
 const Discord = require("discord.js");
+const moment = require("moment");
+const languages = [ "en", "fr" ];
+languages.forEach((l) => {
+    require(`moment/locale/${l}`);
+});
 
 module.exports = {
 
@@ -132,5 +137,12 @@ module.exports = {
         if (s) absoluteTime.push(s);
 
         return absoluteTime.join(', ');
+    },
+
+    printDate(date, guild = {}){
+        return moment(date)
+        .locale(guild.language ? guild.language.substr(0, 2) : "en")
+        .format("LL");
     }
+
 };
