@@ -4,5 +4,6 @@
     "COMMAND_DISABLED": "This command is currently disabled!",
     "TIMES_UP": "Time's up! Please send the command again!",
     "INVALID_YES_NO": "You must send \"yes\" or \"no\"!",
-    "INVALID_CHANNEL": "Please specify a valid channel!"
+    "INVALID_CHANNEL": "Please specify a valid channel!",
+    "INVALID_TIME": "You must enter a valid time! Valid units: `s`, `m`, `h` or `d`"
 }
