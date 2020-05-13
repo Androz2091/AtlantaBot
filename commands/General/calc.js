@@ -34,7 +34,7 @@ class Calc extends Command {
         let embed = new Discord.MessageEmbed()
             .setColor(data.config.embed.color)
             .setAuthor(message.translate("general/calc:TITLE"), this.client.user.displayAvatarURL())
-            .addField(mmessage.translate("general/calc:CALCULATION"), `\`\`\`js\n${args.join("").replace(/[x]/gi, "*").replace(/[,]/g, ".").replace(/[÷]/gi, "/")}\`\`\``)
+            .addField(message.translate("general/calc:CALCULATION"), `\`\`\`js\n${args.join("").replace(/[x]/gi, "*").replace(/[,]/g, ".").replace(/[÷]/gi, "/")}\`\`\``)
             .addField(message.translate("general/calc:RESULT"), `\`\`\`js\n${result}\`\`\``)
             .setFooter(data.config.embed.footer);
         message.channel.send(embed);
