@@ -6,9 +6,6 @@ class Invitations extends Command {
     constructor (client) {
         super(client, {
             name: "invitations",
-            description: (language) => language.get("INVITATIONS_DESCRIPTION"),
-            usage: (language) => language.get("INVITATIONS_USAGE"),
-            examples: (language) => language.get("INVITATIONS_EXAMPLES"),
             dirname: __dirname,
             enabled: true,
             guildOnly: true,
@@ -32,20 +29,37 @@ class Invitations extends Command {
         let memberInvites = invites.filter((i) => i.inviter && i.inviter.id === member.user.id);
 
         if(memberInvites.size <= 0){
-            return message.channel.send(message.language.get("INVITATIONS_ERR_NO_INVITE", (member === message.member ? null : member)));
+            if(member === message.member){
+                return message.error("general/invitations:NOBODY_AUTHOR");
+            } else {
+                return message.error("general/invitations:NOBODY_MEMBER", {
+                    member: member.user.tag
+                });
+            }
         }
 
-        let content = memberInvites.map((i) => message.language.get("INVITATIONS_CODE", i)).join("\n");
+        let content = memberInvites.map((i) => {
+            return message.translate("general/invitations:CODE", {
+                uses: i.uses,
+                code: i.code,
+                channel: i.channel.toString()
+            });
+        }).join("\n");
         let index = 0;
         memberInvites.forEach((invite) => index += invite.uses);
         
         let embed = new Discord.MessageEmbed()
             .setColor(data.config.embed.color)
             .setFooter(data.config.embed.footer)
-            .setAuthor('Invites Tracker')
-            .setDescription(message.language.get("INVITATIONS_TITLE", member, message))
-            .addField(message.language.get("INVITATIONS_FIELDS")[0], message.language.get("INVITATIONS_FIELDS", index)[2])
-            .addField(message.language.get("INVITATIONS_FIELDS")[1], content);
+            .setAuthor(message.translate("general/invitations:TRACKER"))
+            .setDescription(message.translate("general/invitations:TITLE", {
+                member: member.user.tag,
+                guild: message.guild.name
+            }))
+            .addField(message.translate("general/invitations:FIELD_INVITED"), message.translate("general/invitations:FIELD_MEMBERS", {
+                total: index
+            }))
+            .addField(message.translate("general/invitations:FIELD_CODES"), content);
 
         message.channel.send(embed);
     }
