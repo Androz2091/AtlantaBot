@@ -6,9 +6,6 @@ class Invite extends Command {
     constructor (client) {
         super(client, {
             name: "invite",
-            description: (language) => language.get("INVITE_DESCRIPTION"),
-            usage: (language) => language.get("INVITE_USAGE"),
-            examples: (language) => language.get("INVITE_EXAMPLES"),
             dirname: __dirname,
             enabled: true,
             guildOnly: false,
@@ -32,11 +29,13 @@ class Invite extends Command {
         }
         
         let embed = new Discord.MessageEmbed()
-            .setAuthor(message.language.get("INVITE_TITLE"))
-            .setDescription(message.language.get("INVITE_DESC", data.guild.prefix))
-            .addField(message.language.get("INVITE_HEADINGS")[0], inviteLink)
-            .addField(message.language.get("INVITE_HEADINGS")[1], voteURL)
-            .addField(message.language.get("INVITE_HEADINGS")[2], supportURL)
+            .setAuthor(message.translate("general/invite:LINKS"))
+            .setDescription(message.translate("general/invite:TIP", {
+                prefix: data.guild.prefix
+            }))
+            .addField(message.translate("general/invite:ADD"), inviteLink)
+            .addField(message.translate("general/invite:VOTE"), voteURL)
+            .addField(message.translate("general/invite:SUPPORT"), supportURL)
             .setColor(data.config.embed.color)
             .setFooter(data.config.embed.footer);
         
