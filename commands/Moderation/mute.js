@@ -29,6 +29,10 @@ class Mute extends Command {
             return message.channel.send(message.language.get("ERR_INVALID_MEMBER"));
         }
 
+       if(member.user.bot){
+            return message.channel.send(message.language.get("ERR_BOT_USER"));
+        }
+
         if(member.id === message.author.id){
             return message.channel.send(message.language.get("ERR_SANCTION_YOURSELF"));
         }
