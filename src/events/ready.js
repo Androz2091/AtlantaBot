@@ -12,12 +12,23 @@ module.exports = class Ready extends Event {
     async execute() {
         const client = this.client;
         client.handlers.database.initCache();
-        if (
-            client.config.dashboard.enabled &&
-            (!client.sharded || client.shard.ids.includes(0))
-        ) {
-            client.dashboard = new AtlantaDashboard(client);
-        }
+        // If dashboard is enabled
+        if (client.config.dashboard.enabled) {
+            // Check every 30 seconds if dashboard is uninitialized
+            const timeout = setInterval(async () => {
+                if (!(await client.fetchInitializer).some((v) => v)) {
+                    client.initializer = true;
+                    client.dashboard = new AtlantaDashboard(client);
+                    clearInterval(timeout);
+                };
+            }, 30000);
+            // Initialize dashboard If it is not done yet
+            if (!(await client.fetchInitializer).some((v) => v)) {
+                client.initializer = true;
+                client.dashboard = new AtlantaDashboard(client);
+                clearInterval(timeout);
+            };
+        };
 
         // Logs some informations using the logger file
         client.logger.info(
