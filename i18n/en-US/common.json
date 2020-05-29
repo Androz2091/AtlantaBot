@@ -12,5 +12,7 @@
     "MEMBERS": "Members",
     "CHANNELS": "Channels",
     "ID": "ID",
-    "OWNER": "Owner"
+    "OWNER": "Owner",
+    "USERNAME": "Username",
+    "DISCRIMINATOR": "Discriminator"
 }
