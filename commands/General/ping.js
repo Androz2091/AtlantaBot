@@ -6,9 +6,6 @@ class Ping extends Command {
     constructor (client) {
         super(client, {
             name: "ping",
-            description: (language) => language.get("PING_DESCRIPTION"),
-            usage: (language) => language.get("PING_USAGE"),
-            examples: (language) => language.get("PING_EXAMPLES"),
             dirname: __dirname,
             enabled: true,
             guildOnly: false,
@@ -22,8 +19,12 @@ class Ping extends Command {
     }
 
     async run (message, args, data) {
-        message.channel.send(message.language.get("PING", 0.0000)).then((m) => {
-            m.edit(message.language.get("PING", m.createdTimestamp - message.createdTimestamp));
+        message.sendT("general/ping:CONTENT", {
+            ping: "..."
+        }).then((m) => {
+            m.sendT("general/ping:CONTENT", {
+                ping: m.createdTimestamp - message.createdTimestamp
+            }, true);
         });
     }
 
