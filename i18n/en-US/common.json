@@ -2,5 +2,10 @@
     "YES": "Yes",
     "NO": "No",
     "NOT_DEFINED": "Not defined",
-    "AND_MORE": "And more..."
+    "AND_MORE": "And more...",
+    "AUTHOR": "Author",
+    "DATE": "Date",
+    "CONTENT": "Content",
+    "REASON": "Reason",
+    "USER": "Utilisateur"
 }
