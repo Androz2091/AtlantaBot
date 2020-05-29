@@ -7,5 +7,10 @@
     "DATE": "Date",
     "CONTENT": "Content",
     "REASON": "Reason",
-    "USER": "Utilisateur"
+    "USER": "User",
+    "CREATION": "Creation",
+    "MEMBERS": "Members",
+    "CHANNELS": "Channels",
+    "ID": "ID",
+    "OWNER": "Owner"
 }
