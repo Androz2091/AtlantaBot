@@ -14,5 +14,6 @@
     "ID": "ID",
     "OWNER": "Owner",
     "USERNAME": "Username",
-    "DISCRIMINATOR": "Discriminator"
+    "DISCRIMINATOR": "Discriminator",
+    "STATS": "Stats"
 }
