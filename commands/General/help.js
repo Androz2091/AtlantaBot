@@ -50,8 +50,6 @@ class Help extends Command {
                         : ""
                 }
             );
-            // Replace $ caract with the server prefix
-            let examples = cmd.help.examples(message.language).replace(/[$_]/g, data.guild ? data.guild.prefix : "");
 
            // Creates the help embed
            let groupEmbed = new Discord.MessageEmbed()
@@ -124,7 +122,7 @@ class Help extends Command {
         embed.addField("\u200B", message.translate("misc:STATS_FOOTER", {
             donateLink: "https://patreon.com/Androz2091",
             dashboardLink: "https://dashboard.atlanta-bot.fr",
-            inviteLink: message.client.generateInvite(),
+            inviteLink: await message.client.generateInvite("ADMINISTRATOR"),
             githubLink: "https://github.com/Androz2091",
             supportLink: "https://discord.atlanta-bot.fr"
         }));
