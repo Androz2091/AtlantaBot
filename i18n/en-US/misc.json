@@ -5,5 +5,6 @@
     "TIMES_UP": "Time's up! Please send the command again!",
     "INVALID_YES_NO": "You must send \"yes\" or \"no\"!",
     "INVALID_CHANNEL": "Please specify a valid channel!",
-    "INVALID_TIME": "You must enter a valid time! Valid units: `s`, `m`, `h` or `d`"
+    "INVALID_TIME": "You must enter a valid time! Valid units: `s`, `m`, `h` or `d`",
+    "STATS_FOOTER": "[Dashboard]({{dashboardLink}}) ● [Donate]({{donateLink}}) ● [Invite]({{inviteLink}}) ● [Server]({{supportLink}}) ● [Github]({{githubLink}})"
 }
