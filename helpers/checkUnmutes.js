@@ -30,7 +30,7 @@ module.exports = {
                     let permOverwrites = channel.permissionOverwrites.get(member.id);
                     if(permOverwrites) permOverwrites.delete();
                 });
-                let language = new(require(`../languages/${guildData.language}`));
+                let language = new(require(`../old_languages/${guildData.language}`));
                 let embed = new Discord.MessageEmbed()
                     .setDescription(language.get("UNMUTE_SUCCESS", memberData.id, memberData.mute.case))
                     .setColor("#f44271")

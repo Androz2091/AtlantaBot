@@ -2,7 +2,7 @@ const config = require("../config"),
 Discord = require("discord.js"),
 utils = require("./utils"),
 CheckAuth = require("./auth/CheckAuth"),
-availableLanguages = require("fs").readdirSync("languages/");
+availableLanguages = require("fs").readdirSync("old_languages/");
 
 module.exports.load = async(client) => {
 
@@ -50,7 +50,7 @@ module.exports.load = async(client) => {
         req.client = client;
         let userLang = req.user ? req.user.locale : "en";
         let lang = availableLanguages.find((l) => l.startsWith(userLang)) || "english";
-        let Language = require("../languages/"+lang);
+        let Language = require("../old_languages/"+lang);
         req.language = new Language();
         if(req.user && req.url !== "/"){
             req.userInfos = await utils.fetchUser(req.user, req.client, req.query.q);

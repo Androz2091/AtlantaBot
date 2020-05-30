@@ -7,7 +7,7 @@ const { resolve } = require("path");
 // Register assets fonts
 Canvas.registerFont(resolve("./assets/fonts/Burbank-Big-Condensed-Bold-Font.otf"), { family: "Burbank" });
 
-const langList = fs.readdirSync("./languages/").map((f) => f.split(".")[0]);
+const langList = fs.readdirSync("./old_languages/").map((f) => f.split(".")[0]);
 
 const applyItemName = (canvas, text) => {
     const ctx = canvas.getContext("2d");
@@ -56,7 +56,7 @@ async function writeImage(client){
     return new Promise(async function(resolve, reject){
         let count = 0;
         langList.forEach(async (lang) => {
-            const language = new(require(`../languages/${lang}.js`)),
+            const language = new(require(`../old_languages/${lang}.js`)),
             path = `./assets/img/fortnite/shop/${lang}/${getFileName()}.png`,
             fortniteClient = new fortnite.Client({ fnbrToken: client.config.apiKeys.fortniteFNBR });
 
@@ -888,7 +888,7 @@ async function init(client) {
         await writeImage(client);
         client.guilds.forEach(async (guild) => {
             let guildData = await client.findOrCreateGuild({ id: guild.id });
-            let language = new(require("../languages/"+guildData.language+".js"));
+            let language = new(require("../old_languages/"+guildData.language+".js"));
             let path = `./assets/img/fortnite/shop/${language.getLang()}/${getFileName()}.png`;
             if(guildData.plugins.fortniteshop && fs.existsSync(path)) {
                 let fnChannel = client.channels.get(guildData.plugins.fortniteshop);

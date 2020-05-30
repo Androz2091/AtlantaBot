@@ -7,81 +7,78 @@ Here's the list of Atlanta commands. This one contains more than **110 commands*
 **Usage**: The arguments/options that the command takes in parameters  
 **Cooldown**: The time that must elapse between each command so that it can be executed again by the user
 
-### General (25 commands)
+### General (23 commands)
 
-| Name             | Description                                                              | Usage                          | Cooldown  |
-| ---------------- | ------------------------------------------------------------------------ | ------------------------------ | --------- |
-| **api-token**    | Send your token back to use the Atlanta API!                             | apitoken (regenerate)          | 1 seconds |
-| **calc**         | A calculator capable of solving complex operations and converting units! | calc [calculation]             | 1 seconds |
-| **fortnite**     | Displays a player's Fortnite stats!                                      | fortnite [psn/xbl/pc] [pseudo] | 1 seconds |
-| **fortniteshop** | Displays the fortnite items shop!                                        | fortniteshop                   | 1 seconds |
-| **github**       | Displays the information from the Atlanta github!                        | github                         | 5 seconds |
-| **hastebin**     | Upload your text on hastebin !                                           | hastebin [text]                | 5 seconds |
-| **help**         | Displays the help of commands or the help of a particular command        | help (command)                 | 5 seconds |
-| **invitations**  | Displays the number of people you have invited to the server!            | invitations (@member)          | 3 seconds |
-| **invite**       | Displays the links of Atlanta!                                           | invite (copy)                  | 5 seconds |
-| **minecraft**    | Displays information about the Minecraft server!                         | minecraft [ip]                 | 3 seconds |
-| **partners**     | Displays Atlanta partners                                                | partners                       | 1 seconds |
-| **permissions**  | Displays the member's permissions in the channel                         | permissions (@member)          | 1 seconds |
-| **ping**         | Displays bot latency                                                     | ping                           | 1 seconds |
-| **quote**        | Quote a message in the channel!                                          | quote [messageID] [channel]    | 5 seconds |
-| **remindme**     | Define a reminder!                                                       | remindme [reason]              | 3 seconds |
-| **report**       | Send your report to the channel defined for this!                        | report [@user] [reason]        | 5 seconds |
-| **serverinfo**   | Displays information about the server!                                   | serverinfo [ID/Name]           | 3 seconds |
-| **setafk**       | Become an AFK (members who mention you will receive a message)           | setafk [reason]                | 3 seconds |
-| **shorturl**     | Shorten your link!                                                       | shorturl [url]                 | 5 seconds |
-| **someone**      | Pick a random member on the server!                                      | someone                        | 1 seconds |
-| **staff**        | Displays the list of server staff members!                               | staff                          | 3 seconds |
-| **stats**        | Display the stats of the bot!                                            | stats                          | 3 seconds |
-| **suggest**      | Send your suggestion to the channel defined for this!                    | suggest [message]              | 5 seconds |
-| **translate**    | I'm translating your text!                                               | translate [language] [message] | 8 seconds |
-| **userinfo**     | Displays user information!                                               | userinfo (@user/userID)        | 5 seconds |
+| Name             | Description                         | Usage                          | Cooldown  |
+| ---------------- | ----------------------------------- | ------------------------------ | --------- |
+| **calc**         | No description provided             | No usage provided              | 1 seconds |
+| **fortnite**     | Displays a player's Fortnite stats! | fortnite [psn/xbl/pc] [pseudo] | 1 seconds |
+| **fortniteshop** | Displays the fortnite items shop!   | fortniteshop                   | 1 seconds |
+| **github**       | No description provided             | No usage provided              | 5 seconds |
+| **hastebin**     | No description provided             | No usage provided              | 5 seconds |
+| **help**         | No description provided             | No usage provided              | 5 seconds |
+| **invitations**  | No description provided             | No usage provided              | 3 seconds |
+| **invite**       | No description provided             | No usage provided              | 5 seconds |
+| **minecraft**    | No description provided             | No usage provided              | 3 seconds |
+| **permissions**  | No description provided             | No usage provided              | 1 seconds |
+| **ping**         | No description provided             | No usage provided              | 1 seconds |
+| **quote**        | No description provided             | No usage provided              | 5 seconds |
+| **remindme**     | No description provided             | No usage provided              | 3 seconds |
+| **report**       | No description provided             | No usage provided              | 5 seconds |
+| **serverinfo**   | No description provided             | No usage provided              | 3 seconds |
+| **setafk**       | No description provided             | No usage provided              | 3 seconds |
+| **shorturl**     | No description provided             | No usage provided              | 5 seconds |
+| **someone**      | No description provided             | No usage provided              | 1 seconds |
+| **staff**        | No description provided             | No usage provided              | 3 seconds |
+| **stats**        | No description provided             | No usage provided              | 3 seconds |
+| **suggest**      | No description provided             | No usage provided              | 5 seconds |
+| **translate**    | No description provided             | No usage provided              | 8 seconds |
+| **userinfo**     | Displays user information!          | userinfo (@user/userID)        | 5 seconds |
 
-### Administration (19 commands)
+### Administration (18 commands)
 
-| Name                | Description                                                   | Usage                            | Cooldown   |
-| ------------------- | ------------------------------------------------------------- | -------------------------------- | ---------- |
-| **addcommand**      | Add a custom command to the server!                           | addcommand [name] [answer]       | 3 seconds  |
-| **addemote**        | Add an emoji to the server!                                   | addemote [URL] [name]            | 5 seconds  |
-| **automod**         | Enables or disables automatic deletion of discord invitations | automod [on/off] (#channel)      | 5 seconds  |
-| **autorole**        | Enable or disable the autorole on the server!                 | autorole [on/off] (role)         | 5 seconds  |
-| **backup**          | Manage your server backups in an ergonomic and efficient way! | backup [create/load/infos]       | 30 seconds |
-| **configuration**   | Displays the server configuration                             | configuration                    | 3 seconds  |
-| **delcommand**      | Remove a custom command from the server!                      | delcommand [name-of-the-command] | 3 seconds  |
-| **deletemod**       | Enables or disables the auto deletion of moderation commands! | deletemod [on/off]               | 3 seconds  |
-| **goodbye**         | Send a goodbye message to a pre-defined channel!              | goodbye                          | 3 seconds  |
-| **ignore**          | Disables or activates commands in the mentioned channel       | ignore [#channel]                | 3 seconds  |
-| **purge**           | Kick out inactive members!                                    | purge [days]                     | 5 seconds  |
-| **setfortniteshop** | Define the daily Fortnite shop channel!                       | setfortniteshop (#channel)       | 5 seconds  |
-| **setlang**         | Change the server language!                                   | setlang [french/english]         | 3 seconds  |
-| **setmodlogs**      | Define the log channel!                                       | setmodlogs (#channel)            | 3 seconds  |
-| **setprefix**       | Changes the server prefix                                     | setprefix [prefix]               | 3 seconds  |
-| **setreports**      | Define the reports channel!                                   | setreports (#channel)            | 3 seconds  |
-| **setsuggests**     | Define the suggestion channel!                                | setsuggests (#channel)           | 3 seconds  |
-| **slowmode**        | Define a cooldown in a channel                                | slowmode [#channel] (time)       | 3 seconds  |
-| **welcome**         | Send a welcome message to a pre-defined channel!              | welcome                          | 3 seconds  |
+| Name                | Description                                                   | Usage                       | Cooldown   |
+| ------------------- | ------------------------------------------------------------- | --------------------------- | ---------- |
+| **addcommand**      | Add a custom command to the server!                           | addcommand [name] [answer]  | 3 seconds  |
+| **addemoji**        | No description provided                                       | No usage provided           | 5 seconds  |
+| **automod**         | Enables or disables automatic deletion of discord invitations | automod [on/off] (#channel) | 5 seconds  |
+| **autorole**        | No description provided                                       | No usage provided           | 5 seconds  |
+| **backup**          | No description provided                                       | No usage provided           | 30 seconds |
+| **configuration**   | No description provided                                       | No usage provided           | 3 seconds  |
+| **delcommand**      | No description provided                                       | No usage provided           | 3 seconds  |
+| **deletemod**       | Enables or disables the auto deletion of moderation commands! | deletemod [on/off]          | 3 seconds  |
+| **goodbye**         | No description provided                                       | No usage provided           | 3 seconds  |
+| **ignore**          | No description provided                                       | No usage provided           | 3 seconds  |
+| **setfortniteshop** | No description provided                                       | No usage provided           | 5 seconds  |
+| **setlang**         | No description provided                                       | No usage provided           | 3 seconds  |
+| **setmodlogs**      | No description provided                                       | No usage provided           | 3 seconds  |
+| **setprefix**       | No description provided                                       | No usage provided           | 3 seconds  |
+| **setreports**      | No description provided                                       | No usage provided           | 3 seconds  |
+| **setsuggests**     | No description provided                                       | No usage provided           | 3 seconds  |
+| **slowmode**        | No description provided                                       | No usage provided           | 3 seconds  |
+| **welcome**         | Send a welcome message to a pre-defined channel!              | welcome                     | 3 seconds  |
 
 ### Images (17 commands)
 
-| Name              | Description                                               | Usage                      | Cooldown  |
-| ----------------- | --------------------------------------------------------- | -------------------------- | --------- |
-| **avatar**        | Displays the avatar of the mentionned member              | avatar (@member)           | 5 seconds |
-| **captcha**       | Generates a "triggered" image using the Nekobot API       | captcha (@member)          | 5 seconds |
-| **clyde**         | Generates a "clyde" image using the Nekobot API           | clyde [text]               | 5 seconds |
-| **facepalm**      |                                                           |                            | 5 seconds |
-| **fire**          | Generates a "fire" image using the Améthyste API          | fire (@member)             | 5 seconds |
-| **jail**          | Generates a "jail" image using the Améthyste API          | jail (@member)             | 5 seconds |
-| **love**          | Generates a "love" image using the Nekobot API            | love [@user1] (@user2)     | 5 seconds |
-| **mission**       | Generates a "mission" image using the Améthyste API       | mission (@member)          | 5 seconds |
-| **phcomment**     | Generates a "phcomment" image using the Nekobot API       | phcomment (@member) (text) | 5 seconds |
-| **qrcode**        | Generates a QR Code with your text!                       | qrcode [text]              | 3 seconds |
-| **rip**           | Generates a "rip" image using the Améthyste API           | rip (@member)              | 5 seconds |
-| **scary**         | Generates a "scary" image using the Améthyste API         | scary (@member)            | 5 seconds |
-| **tobecontinued** | Generates a "tobecontinued" image using the Améthyste API | tobecontinued (@member)    | 5 seconds |
-| **triggered**     | Generates a "triggered" image using the Améthyste API     | triggered (@member)        | 5 seconds |
-| **tweet**         | Generate a tweet of a person of your choice on Twitter!   | tweet [@twitter] [text]    | 5 seconds |
-| **wanted**        | Generates a "wanted" image using the Améthyste API        | wanted (@member)           | 5 seconds |
-| **wasted**        | Generates a "wasted" image using the Améthyste API        | wasted (@member)           | 5 seconds |
+| Name              | Description             | Usage             | Cooldown  |
+| ----------------- | ----------------------- | ----------------- | --------- |
+| **avatar**        | No description provided | No usage provided | 5 seconds |
+| **captcha**       | No description provided | No usage provided | 5 seconds |
+| **clyde**         | No description provided | No usage provided | 5 seconds |
+| **facepalm**      | No description provided | No usage provided | 5 seconds |
+| **fire**          | No description provided | No usage provided | 5 seconds |
+| **jail**          | No description provided | No usage provided | 5 seconds |
+| **love**          | No description provided | No usage provided | 5 seconds |
+| **mission**       | No description provided | No usage provided | 5 seconds |
+| **phcomment**     | No description provided | No usage provided | 5 seconds |
+| **qrcode**        | No description provided | No usage provided | 3 seconds |
+| **rip**           | No description provided | No usage provided | 5 seconds |
+| **scary**         | No description provided | No usage provided | 5 seconds |
+| **tobecontinued** | No description provided | No usage provided | 5 seconds |
+| **triggered**     | No description provided | No usage provided | 5 seconds |
+| **tweet**         | No description provided | No usage provided | 5 seconds |
+| **wanted**        | No description provided | No usage provided | 5 seconds |
+| **wasted**        | No description provided | No usage provided | 5 seconds |
 
 ### Economy (15 commands)
 
@@ -123,34 +120,33 @@ Here's the list of Atlanta commands. This one contains more than **110 commands*
 | **unmute**          | Unmute the mentioned member!                                                            | unmute [@member]                                                   | 3 seconds |
 | **warn**            | Warn a member in private messages                                                       | warn [@member] [reason]                                            | 3 seconds |
 
-### Fun (11 commands)
+### Fun (10 commands)
 
-| Name          | Description                                                                                   | Usage                           | Cooldown  |
-| ------------- | --------------------------------------------------------------------------------------------- | ------------------------------- | --------- |
-| **8ball**     | I'm telling you the truth!                                                                    | 8ball [question]                | 3 seconds |
-| **ascii**     | Turn your text into ascii characters!                                                         | ascii [text]                    | 5 seconds |
-| **findwords** | Start a game of findwords, a game where you have to find words!                               | findwords                       | 5 seconds |
-| **flip**      | I roll the dice for you!                                                                      | flip                            | 1 seconds |
-| **fml**       | Displays a random FML                                                                         | fml                             | 3 seconds |
-| **joke**      | Displays a joke in French                                                                     | joke                            | 3 seconds |
-| **lmg**       | Returns a link to lmgtfy.com                                                                  | lmg [question]                  | 1 seconds |
-| **lovecalc**  | How much love is there between two people? *This is a fun command, not to be taken seriously* | lovecalc [@member1] (@member2)  | 1 seconds |
-| **number**    | Find the number I chose!                                                                      | number                          | 5 seconds |
-| **random**    | Randomly pick one of the choices you give me!                                                 | random [choice1/choice2/etc...] | 5 seconds |
-| **tcl**       | Display the last tweet of @thecodinglove !                                                    | tcl                             | 3 seconds |
+| Name          | Description               | Usage             | Cooldown  |
+| ------------- | ------------------------- | ----------------- | --------- |
+| **8ball**     | No description provided   | No usage provided | 3 seconds |
+| **ascii**     | No description provided   | No usage provided | 5 seconds |
+| **choice**    | No description provided   | No usage provided | 5 seconds |
+| **findwords** | No description provided   | No usage provided | 5 seconds |
+| **flip**      | No description provided   | No usage provided | 1 seconds |
+| **fml**       | No description provided   | No usage provided | 3 seconds |
+| **joke**      | Displays a joke in French | joke              | 3 seconds |
+| **lmg**       | No description provided   | No usage provided | 1 seconds |
+| **lovecalc**  | No description provided   | No usage provided | 1 seconds |
+| **number**    | Find the number I chose!  | number            | 5 seconds |
 
 ### Music (8 commands)
 
-| Name       | Description                                  | Usage              | Cooldown  |
-| ---------- | -------------------------------------------- | ------------------ | --------- |
-| **lyrics** | Displays the lyrics of a song                | lyrics [song-name] | 5 seconds |
-| **np**     | Displays information about the current song! | np                 | 5 seconds |
-| **pause**  |                                              | pause              | 5 seconds |
-| **play**   | Play music!                                  | play [title]       | 5 seconds |
-| **queue**  | Displays the queue                           | queue              | 5 seconds |
-| **resume** |                                              | resume             | 5 seconds |
-| **skip**   | Play the next song!                          | skip               | 5 seconds |
-| **stop**   | Stop the music in progress!                  | stop               | 5 seconds |
+| Name       | Description             | Usage             | Cooldown  |
+| ---------- | ----------------------- | ----------------- | --------- |
+| **lyrics** | No description provided | No usage provided | 5 seconds |
+| **np**     | No description provided | No usage provided | 5 seconds |
+| **pause**  | No description provided | No usage provided | 5 seconds |
+| **play**   | No description provided | No usage provided | 5 seconds |
+| **queue**  | Displays the queue      | queue             | 5 seconds |
+| **resume** | No description provided | No usage provided | 5 seconds |
+| **skip**   | No description provided | No usage provided | 5 seconds |
+| **stop**   | No description provided | No usage provided | 5 seconds |
 
 ### Owner (5 commands)
 

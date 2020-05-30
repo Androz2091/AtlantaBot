@@ -41,7 +41,7 @@ module.exports = class {
         }
 
         // Gets language
-        let language = new(require(`../languages/${data.guild ? data.guild.language : this.client.config.defaultLanguage}.js`));
+        let language = new(require(`../old_languages/${data.guild ? data.guild.language : this.client.config.defaultLanguage}.js`));
         message.language = language;
 
         // Check if the bot was mentionned
