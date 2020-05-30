@@ -1,6 +1,6 @@
 {
     "DESCRIPTION": "Envoie une VDM aléatoire",
-    "USAGE": "{{prefix}}vdm",
-    "EXAMPLES": "{{prefix}}vdm",
+    "USAGE": "{{prefix}}fml",
+    "EXAMPLES": "{{prefix}}fml",
     "FOOTER": "blague.xyz | Par Skiz#0001"
 }
