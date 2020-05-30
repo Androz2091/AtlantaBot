@@ -1,6 +1,6 @@
 {
-    "DESCRIPTION": "Show commands list or informations about a command.",
-    "USAGE": "{{prefix}}help (command)",
+    "DESCRIPTION": "Afficher la liste des commandes ou des informations sur une commande.",
+    "USAGE": "{{prefix}}help (commande)",
     "EXAMPLES": "{{prefix}}help\n{{prefix}}help ping",
     "CUSTOM": "The `{{cmd}}` command has no help page because it's a custom command.",
     "NOT_FOUND": "No command found for: `{{search}}`",
