@@ -6,9 +6,6 @@ class Divorce extends Command {
     constructor (client) {
         super(client, {
             name: "divorce",
-            description: (language) => language.get("DIVORCE_DESCRIPTION"),
-            usage: (language) => language.get("DIVORCE_USAGE"),
-            examples: (language) => language.get("DIVORCE_EXAMPLES"),
             dirname: __dirname,
             enabled: true,
             guildOnly: false,
@@ -25,7 +22,7 @@ class Divorce extends Command {
         
         // Check if the message author is wedded
         if(!data.userData.lover){
-            return message.channel.send(message.language.get("DIVORCE_ERR_NOT_WEDDED"));
+            return message.error("economy/divorce:NOT_MARRIED"));
         }
 
         // Updates db
@@ -40,7 +37,9 @@ class Divorce extends Command {
         oldLover.save();
 
         // Send success message 
-        message.channel.send(message.language.get("DIVORCE_SUCCESS", user.username));
+        message.success("economy/divorce:SUCCESS", {
+            username: user.username
+        });
 
     }
 
