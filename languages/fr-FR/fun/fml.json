@@ -1,6 +1,6 @@
 {
-    "DESCRIPTION": "Gets a random FML",
-    "USAGE": "{{prefix}}fml",
-    "EXAMPLES": "{{prefix}}fml",
-    "FOOTER": "blague.xyz | By Skiz#0001"
+    "DESCRIPTION": "Envoie une VDM aléatoire",
+    "USAGE": "{{prefix}}vdm",
+    "EXAMPLES": "{{prefix}}vdm",
+    "FOOTER": "blague.xyz | Par Skiz#0001"
 }
