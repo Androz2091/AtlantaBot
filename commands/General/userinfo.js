@@ -55,25 +55,25 @@ class Userinfo extends Command {
         let embed = new Discord.MessageEmbed()
             .setAuthor(user.tag, user.displayAvatarURL())
             .setThumbnail(user.displayAvatarURL())
-            .addField(":man:"+message.translate("common:USERNAME"), user.username, true)
-            .addField(this.client.config.emojis.discriminator+message.translate("common:DISCRIMINATOR"), user.discriminator, true)
-            .addField(this.client.config.emojis.robot+message.translate("common:ROBOT"), (user.bot ? message.translate("common:YES") : message.translate("common:NO")), true)
-            .addField(this.client.config.emojis.calendar+message.translate("common:CREATION"), message.language.printDate(user.createdAt), true)
-            .addField(this.client.config.emojis.avatar+message.translate("common:AVATAR"), user.displayAvatarURL())
+            .addField(":man: "+message.translate("common:USERNAME"), user.username, true)
+            .addField(this.client.config.emojis.discriminator+" "+message.translate("common:DISCRIMINATOR"), user.discriminator, true)
+            .addField(this.client.config.emojis.bot+" "+message.translate("common:ROBOT"), (user.bot ? message.translate("common:YES") : message.translate("common:NO")), true)
+            .addField(this.client.config.emojis.calendar+" "+message.translate("common:CREATION"), message.language.printDate(user.createdAt), true)
+            .addField(this.client.config.emojis.avatar+" "+message.translate("common:AVATAR"), user.displayAvatarURL())
             .setColor(data.config.embed.color)
             .setFooter(data.config.embed.footer);
 
         if(displayPresence){
-            embed.addField(this.client.config.emojis.game+message.translate("common:GAME"), (user.presence.activity ? user.presence.activity.name : message.translate("general/userinfo:NO_GAME")), true)
-            .addField(this.client.config.emojis.status.online+message.translate("common:STATUS"), message.translate("common:STATUS_"+(user.presence.status.toUpperCase())), true);
+            embed.addField(this.client.config.emojis.games+" "+message.translate("common:GAME"), (user.presence.activity ? user.presence.activity.name : message.translate("general/userinfo:NO_GAME")), true)
+            .addField(this.client.config.emojis.status.online+" "+message.translate("common:STATUS"), message.translate("common:STATUS_"+(user.presence.status.toUpperCase())), true);
         }
             
         if(member){
-            embed.addField(this.client.config.emojis.status.up+message.translate("common:ROLE"), (member.roles.highest ? member.roles.highest : message.translate("general/userinfo:NO_ROLE")), true)
-            .addField(this.client.config.emojis.calendar2+message.translate("common:JOIN"), message.language.printDate(member.joinedAt),true)
-            .addField(this.client.config.emojis.color+message.translate("common:COLOR"), member.displayHexColor, true)
-            .addField(this.client.config.emojis.pencil+message.translate("common:NICKNAME"), (member.nickname ? member.nickname : message.translate("general/userinfo:NO_NICKNAME")), true)
-            .addField(this.client.config.emojis.roles+message.translate("common:ROLES"), (
+            embed.addField(this.client.config.emojis.up+" "+message.translate("common:ROLE"), (member.roles.highest ? member.roles.highest : message.translate("general/userinfo:NO_ROLE")), true)
+            .addField(this.client.config.emojis.calendar2+" "+message.translate("common:JOIN"), message.language.printDate(member.joinedAt),true)
+            .addField(this.client.config.emojis.color+" "+message.translate("common:COLOR"), member.displayHexColor, true)
+            .addField(this.client.config.emojis.pencil+" "+message.translate("common:NICKNAME"), (member.nickname ? member.nickname : message.translate("general/userinfo:NO_NICKNAME")), true)
+            .addField(this.client.config.emojis.roles+" "+message.translate("common:ROLES"), (
                 member.roles.size > 10
                 ? member.roles.map((r) => r).slice(0, 9).join(", ")+" "+message.translate("general/userinfo:MORE_ROLES", { count: member.roles.size - 10 })
                 : (member.roles.size < 1) ? message.translate("general/userinfo:NO_ROLE") : member.roles.map((r) => r).join(", ")
@@ -86,15 +86,15 @@ class Userinfo extends Command {
             });
             let data = await res.json();
             if(!data.error){
-                embed.addField(this.client.config.emojis.desc+message.translate("common:DESCRIPTION"), data.shortdesc, true)
-                .addField(this.client.config.emojis.stats+message.translate("common:STATS"), message.translate("BOT_STATS", {
+                embed.addField(this.client.config.emojis.desc+" "+message.translate("common:DESCRIPTION"), data.shortdesc, true)
+                .addField(this.client.config.emojis.stats+" "+message.translate("common:STATS"), message.translate("general/userinfo:BOT_STATS", {
                     votes: data.monthlyPoints || 0,
                     servers: data.server_count || 0,
                     shards: (data.shards || [0]).length,
                     lib: data.lib || "unknown"
                 }), true)
-                .addField(this.client.config.emojis.links+message.translate("common:LINKS"), 
-                    `${data.support ? `[${message.translate("common:SUPPORT")}](${data.support}) | ` : ""}${data.invite ?  `[${message.translate("common:INVITE")}](${data.invite}) | ` : ""}${data.github ?  `[${message.translate("common:GITHUB")}](${data.github}) | ` : ""}${data.website ?  `[${message.translate("common:WEBSITE")}](${data.website})` : ""}`
+                .addField(this.client.config.emojis.link+" "+message.translate("common:LINKS"), 
+                    `${data.support ? `[${message.translate("common:SUPPORT")}](${data.support}) | ` : ""}${data.invite ?  `[${message.translate("common:INVITE")}](${data.invite}) | ` : ""}${data.github ?  `[GitHub](${data.github}) | ` : ""}${data.website ?  `[${message.translate("common:WEBSITE")}](${data.website})` : ""}`
                 , true);
             }
         }
