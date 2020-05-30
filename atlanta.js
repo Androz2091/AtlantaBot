@@ -63,8 +63,8 @@ const init = async () => {
         });
     }
 
-    const i18n = require("./helpers/i18n");
-    client.translations = await i18n();
+    const languages = require("./helpers/languages");
+    client.translations = await languages();
 
 };
 

@@ -19,7 +19,7 @@ module.exports = {
                 let member = await client.findOrCreateMember({ id: vote.user, guildID: client.config.support.id });
                 member.money = member.money + 40;
                 member.save();
-                let language = new(require(`../languages/${client.config.defaultLanguage}`));
+                let language = new(require(`../old_languages/${client.config.defaultLanguage}`));
                 dUser.send(language.get("VOTE_THANKS", dUser)).catch((err) => {});
                 let logsChannel = client.channels.get(client.config.votes.channel);
                 if(logsChannel){
