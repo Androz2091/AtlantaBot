@@ -7,9 +7,6 @@ class Userinfo extends Command {
     constructor (client) {
         super(client, {
             name: "userinfo",
-            description: (language) => language.get("USERINFO_DESCRIPTION"),
-            usage: (language) => language.get("USERINFO_USAGE"),
-            examples: (language) => language.get("USERINFO_EXAMPLES"),
             dirname: __dirname,
             enabled: true,
             guildOnly: false,
