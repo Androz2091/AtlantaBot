@@ -25,26 +25,28 @@ class Pay extends Command {
 
         let member = await this.client.resolveMember(args[0], message.guild);
         if(!member){
-            return message.channel.send(message.language.get("ERR_INVALID_MEMBER"));
+            return message.error("economy/pay:INVALID_MEMBER");
         }
         if(member.user.bot){
-            return message.channel.send(message.language.get("ERR_BOT_USER"));
+            return message.error("economy/pay:BOT_USER");
         }
-
         if(member.id === message.author.id){
-            return message.channel.send(message.language.get("PAY_ERR_YOURSELF"));
+            return message.error("economy/pay:YOURSELF");
+        }
+        const sentAmount = args[1];
+        if(!sentAmount || isNaN(sentAmount) || parseInt(sentAmount, 10) <= 0){
+            return message.error("economy/pay:INVALID_AMOUNT", {
+                username: member.user.tag
+            });
         }
 
-        let toPay = args[1];
-        if(!toPay || parseInt(toPay, 10) <= 0){
-            return message.channel.send(message.language.get("PAY_ERR_INVALID_AMOUNT", member.user.username));
-        }
-        if(isNaN(toPay)){
-            return message.channel.send(message.language.get("ERR_INVALID_NUMBER", toPay));
-        }
+        const amount = Math.ceil(parseInt(sentAmount, 10));
 
-        if(toPay > data.memberData.money){
-            return message.channel.send(message.language.get("PAY_ERR_AMOUNT_TOO_HIGH", toPay, member.user.username));
+        if(amount > memberData.money){
+            return message.error("economy/pay:ENOUGH_MONEY", {
+                amount,
+                username: member.user.tag
+            });
         }
 
         let memberData = await this.client.findOrCreateMember({ id: member.id, guildID: message.guild.id });
@@ -56,7 +58,10 @@ class Pay extends Command {
         memberData.save();
 
         // Send a success message
-        message.channel.send(message.language.get("PAY_SUCCESS", toPay, member.user.username));
+        message.success("economy/pay:SUCCESS", {
+            amount,
+            username: member.user.tag
+        });
 
     }
 
