@@ -1,8 +1,8 @@
 {
-    "DESCRIPTION": "Add a custom command to the server!",
-    "USAGE": "{{prefix}}addcommand [name] [answer]",
-    "EXAMPLES": "{{prefix}}addcommand hello Hello {user}! How are you?",
-    "MISSING_NAME": "Please provide a command name!",
-    "MISSING_ANSWER": "Please provide a command answer!",
-    "SUCCESS": "Command **{{prefix}}{{commandName}}** added!"
+    "DESCRIPTION": "Ajoutez une commande customisée à votre serveur!",
+    "USAGE": "{{prefix}}addcommand [nom] [réponse]",
+    "EXAMPLES": "{{prefix}}addcommand bonjour Bonjour {user}! Comment vas-tu?",
+    "MISSING_NAME": "Entrez un nom de commande!",
+    "MISSING_ANSWER": "Entrez une réponse à la commande!",
+    "SUCCESS": "Commande **{{prefix}}{{commandName}}** ajoutée!"
 }
