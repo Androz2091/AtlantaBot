@@ -1,0 +1,10 @@
+{
+    "ERR_OCCURRED": "Quelque chose s'est mal passé... Merci de patienter puis réessayez!",
+    "PLEASE_WAIT": "Veuillez patienter quelques secondes...",
+    "COMMAND_DISABLED": "Cette commande est actuellement désactivée !",
+    "TIMES_UP": "Le temps est écoulé ! Veuillez envoyer à nouveau la commande !",
+    "INVALID_YES_NO": "Vous devez envoyer \"oui\" ou \"non\" !",
+    "INVALID_CHANNEL": "Veuillez spécifier un salon valide !",
+    "INVALID_TIME": "Vous devez entrer une heure valide ! Unités valides : `s`, `m`, `h` ou `d`",
+    "STATS_FOOTER": "[Dashboard]({{dashboardLink}}) ● [Don]({{donateLink}}) ● [Invitation]({{inviteLink}}) ● [Serveur]({{supportLink}}) ● [Github]({{githubLink}})"
+}
