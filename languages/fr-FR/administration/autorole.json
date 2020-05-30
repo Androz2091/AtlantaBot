@@ -1,8 +1,8 @@
 {
-    "DESCRIPTION": "Enable/Disable the autorole on the server!",
-    "USAGE": "{{prefix}}autorole [on/off] (role)",
-    "EXAMPLES": "{{prefix}}autorole on @Members\n{{prefix}}autorole off",
-    "MISSING_STATUS": "Please specify a valid status! (`on` or `off`)",
+    "DESCRIPTION": "Active/Désactive l'autorôle sur le serveur !",
+    "USAGE": "{{prefix}}autorole [on/off] (rôle)",
+    "EXAMPLES": "{{prefix}}autorole on @Membres\n{{prefix}}autorole off",
+    "MISSING_STATUS": "Merci de spécifier un status valide ! (`on` ou `off`).",
     "MISSING_ROLE": "Please specify a valid role to add to new members!",
     "SUCCESS_ENABLED": "Autorole enabled! New members will receive the **{{roleName}}** role.",
     "SUCCESS_DISABLED": "Autorole disabled! Type `{{prefix}}configuration` to see your new configuration!"
