@@ -1,16 +1,16 @@
 {
-    "DESCRIPTION": "Je te dis la vérité !",
+    "DESCRIPTION": "Je vous dis la vérité !",
     "USAGE": "{{prefix}}8ball [question]",
     "EXAMPLES": "{{prefix}}8ball Est-ce que Atlanta est le meilleur bot Discord ?",
-    "ERR_QUESTION": "Tu dois me poser une question!",
+    "ERR_QUESTION": "Vous devez me poser une question!",
     "RESPONSE_1": "I'm sure of it.",
-    "RESPONSE_2": "c'est définitivement sécurisé.",
+    "RESPONSE_2": "c'est définitivement sûr.",
     "RESPONSE_3": "oui, définitivement.",
-    "RESPONSE_4": "mieux vaut ne pas te le dire maintenant.",
+    "RESPONSE_4": "mieux vaut ne pas vous le dire maintenant.",
     "RESPONSE_5": "ask again later.",
     "RESPONSE_6": "ne comptez pas là-dessus.",
     "RESPONSE_7": "Je ne pense pas.",
-    "RESPONSE_8": "mes sources me disent non.",
+    "RESPONSE_8": "mes sources me disent que non.",
     "RESPONSE_9": "non.",
     "RESPONSE_10": "outlook not so good."
 }
