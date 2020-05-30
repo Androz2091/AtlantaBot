@@ -12,9 +12,6 @@ class Credits extends Command {
     constructor (client) {
         super(client, {
             name: "money",
-            description: (language) => language.get("MONEY_DESCRIPTION"),
-            usage: (language) => language.get("MONEY_USAGE"),
-            examples: (language) => language.get("MONEY_EXAMPLES"),
             dirname: __dirname,
             enabled: true,
             guildOnly: true,
@@ -34,7 +31,7 @@ class Credits extends Command {
         let user = member.user;
 
         if(user.bot){
-            return message.channel.send(message.language.get("ERR_BOT_USER"));
+            return message.error("misc:BOT_USER");
         }
 
         let memberData = (message.author === user) ? data.memberData : await this.client.findOrCreateMember({ id: user.id, guildID: message.guild.id }); 
@@ -47,13 +44,21 @@ class Credits extends Command {
             globalMoney+=memberData.bankSold;
         });
 
-        let embed = new Discord.MessageEmbed()
-            .setAuthor(message.language.get("CREDITS_TITLE", user.tag), user.displayAvatarURL())
-            .addField(message.language.get("PROFILE_HEADINGS").MONEY, message.language.get("DISPLAY_MONEY", Math.ceil(memberData.money)), true)
-            .addField(message.language.get("PROFILE_HEADINGS").BANK, message.language.get("DISPLAY_MONEY",  Math.ceil(memberData.bankSold)), true)
-            .addField(message.language.get("PROFILE_HEADINGS").GLOBAL_MONEY, message.language.get("DISPLAY_MONEY",  Math.ceil(globalMoney)), true)
-            .setColor(data.config.embed.color)
-            .setFooter(data.config.embed.footer)
+        const embed = new Discord.MessageEmbed()
+            .setAuthor(message.translate("economy/money:TITLE", {
+                username: member.user.username
+            }), member.user.displayAvatarURL())
+            .addField(message.translate("economy/profile:CASH"), message.translate("economy/profile:MONEY", {
+                money: memberData.money
+            }), true)
+            .addField(message.translate("economy/profile:BANK"), message.translate("economy/profile:MONEY", {
+                money: memberData.bankSold
+            }), true)
+            .addField(message.translate("economy/profile:GLOBAL"), message.translate("economy/profile:MONEY", {
+                money: globalMoney
+            }), true)
+            .setColor(this.client.config.embed.color)
+            .setFooter(this.client.config.embed.footer);
         message.channel.send(embed);
     }
 
