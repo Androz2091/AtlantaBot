@@ -1,14 +1,12 @@
 const Command = require("../../base/Command.js"),
-Discord = require("discord.js");
+Discord = require("discord.js"),
+Resolvers = require("../../helpers/resolvers");
 
 class Setreports extends Command {
 
     constructor (client) {
         super(client, {
             name: "setreports",
-            description: (language) => language.get("SETREPORTS_DESCRIPTION"),
-            usage: (language) => language.get("SETREPORTS_USAGE"),
-            examples: (language) => language.get("SETREPORTS_EXAMPLES"),
             dirname: __dirname,
             enabled: true,
             guildOnly: true,
@@ -23,12 +21,32 @@ class Setreports extends Command {
 
     async run (message, args, data) {
         
-        let channel = message.mentions.channels.filter((ch) => ch.type === "text" && ch.guild.id === message.guild.id).first() || message.channel;
-        data.guild.plugins.reports = channel.id;
-        data.guild.markModified("plugins.reports");
-        data.guild.save();
+        const areReportsEnabled = Boolean(data.guild.plugins.reports);
+        const sentChannel = await Resolvers.resolveChannel({
+            message,
+            search: args.join(" "),
+            channelType: "text"
+        });
 
-        message.channel.send(message.language.get("SETREPORTS_SUCCESS", channel));
+        if (!sentChannel && areReportsEnabled) {
+            data.guild.plugins.reports = null;
+            data.guild.markModified("plugins.reports");
+            await data.guild.save();
+            return message.success(
+                "administration/setreports:SUCCESS_DISABLED"
+            );
+        } else {
+            const channel = sentChannel || message.channel;
+            data.guild.plugins.reports = channel.id;
+            data.guild.markModified("plugins.reports");
+            await data.guild.save();
+            return message.success(
+                "administration/setreports:SUCCESS_ENABLED",
+                {
+                    channel: channel.toString()
+                }
+            );
+        }
         
     }
 

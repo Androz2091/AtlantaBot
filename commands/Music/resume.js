@@ -6,9 +6,6 @@ class Resume extends Command {
     constructor (client) {
         super(client, {
             name: "resume",
-            description: (language) => language.get("RESUME_DESCRIPTION"),
-            usage: (language) => language.get("RESUME_USAGE"),
-            examples: (language) => language.get("RESUME_EXAMPLES"),
             dirname: __dirname,
             enabled: true,
             guildOnly: true,
@@ -27,19 +24,18 @@ class Resume extends Command {
 
         let voice = message.member.voice.channel;
         if (!voice){
-            return message.channel.send(message.language.get("PLAY_ERR_VOICE_CHANNEL"));
+            return message.error("music/play:NO_VOICE_CHANNEL");
         }
 
         if(!queue){
-            return message.channel.send(message.language.get("PLAY_ERR_NOT_PLAYING"));
+            return message.error("music:play:NOT_PLAYING");
         }
 
         // Gets the current song
         let song = await this.client.player.resume(message.guild.id);
         
         // Send the embed in the current channel
-        message.channel.send(message.language.get("RESUME_SUCCESS"));
-        
+        message.sendT("music/resume:SUCCESS");
     }
 
 }

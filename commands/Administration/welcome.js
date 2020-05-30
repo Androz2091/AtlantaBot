@@ -23,83 +23,109 @@ class Welcome extends Command {
 
     async run (message, args, data) {
 
-        if(args[0] === "test" && data.guild.plugins.welcome.enabled){
-            message.client.emit("guildMemberAdd", message.member);
-            return message.channel.send(message.language.get("WELCOME_TEST_SUCCESS"));
+        if (
+            args[0] === "test" &&
+            data.guild.plugins.welcome.enabled
+        ) {
+            this.client.emit("guildMemberAdd", message.member);
+            return message.success("administration/welcome:TEST_SUCCESS");
         }
 
-        if(data.guild.plugins.welcome.enabled){
+        if (
+            (!args[0] || !["edit", "off"].includes(args[0])) &&
+            data.guild.plugins.welcome.enabled
+        )
+            return message.error("administration/welcome:MISSING_STATUS");
+
+        if (args[0] === "off") {
             data.guild.plugins.welcome = {
                 enabled: false,
                 message: null,
-                channel: null,
+                channelID: null,
                 withImage: null
             };
             data.guild.markModified("plugins.welcome");
             data.guild.save();
-            return message.channel.send(message.language.get("WELCOME_DISABLED", data.guild.prefix));
+            return message.error("administration/welcome:DISABLED", {
+                prefix: data.guild.prefix
+            });
+        } else {
+            let welcome = {
+                enabled: true,
+                channel: null,
+                message: null,
+                withImage: null,
+            };
+
+            message.sendT("administration/welcome:FORM_1", {
+                author: message.author.toString()
+            });
+            const collector = message.channel.createMessageCollector(
+                m => m.author.id === message.author.id,
+                {
+                    time: 120000 // 2 minutes
+                }
+            );
+
+            collector.on("collect", async msg => {
+                // If the message is filled, it means the user sent yes or no for the image
+                if (welcome.message) {
+                    if (
+                        msg.content.toLowerCase() ===
+                        message.translate("common:YES").toLowerCase()
+                    ) {
+                        welcome.withImage = true;
+                    } else if (
+                        msg.content.toLowerCase() ===
+                        message.translate("common:NO").toLowerCase()
+                    ) {
+                        welcome.withImage = false;
+                    } else {
+                        return message.error("misc:INVALID_YES_NO");
+                    }
+                    data.guild.plugins.welcome = welcome;
+                    data.guild.markModified("plugins.welcome");
+                    await data.guild.save();
+                    message.sendT("administration/welcome:FORM_SUCCESS", {
+                        prefix: data.guild.prefix,
+                        channel: `<#${welcome.channel}>`
+                    });
+                    return collector.stop();
+                }
+
+                // If the channel is filled and the message is not, it means the user sent the message
+                if (welcome.channel && !welcome.message) {
+                    if (msg.content.length < 1800) {
+                        welcome.message = msg.content;
+                        return message.sendT("administration/welcome:FORM_3");
+                    }
+                    return message.error("administration/goodbye:MAX_CHARACT");
+                }
+
+                // If the channel is not filled, it means the user sent it
+                if (!welcome.channel) {
+                    const channel = await Resolvers.resolveChannel({
+                        message: msg,
+                        channelType: "text"
+                    });
+                    if (!channel) {
+                        return message.error("misc:INVALID_CHANNEL");
+                    }
+                    welcome.channel = channel.id;
+                    message.sendT("administration/welcome:FORM_2", {
+                        channel: channel.toString(),
+                        author: msg.author.tag,
+                        memberCount: msg.guild.memberCount
+                    });
+                }
+            });
+
+            collector.on("end", (_, reason) => {
+                if (reason === "time") {
+                    return message.error("misc:TIMEOUT");
+                }
+            });
         }
-
-        let welcome = {
-            enabled: true,
-            channel: null,
-            message: null,
-            withImage: null,
-        };
-
-        message.channel.send(message.language.get("WELCOME_FORM_CHANNEL", message.author.username));
-        const collector = message.channel.createMessageCollector((m) => m.author.id === message.author.id, { time: 120000 }); // 2 min
-
-        collector.on("collect", async (msg) => {
-
-            if(welcome.message){
-                if(msg.content.toLowerCase() === message.language.get("UTILS").YES.toLowerCase()){
-                    welcome.withImage = true;
-                    message.channel.send(message.language.get("WELCOME_FORM_SUCCESS", welcome.channel, data.guild.prefix));
-                    data.guild.plugins.welcome = welcome;
-                    data.guild.markModified("plugins.welcome");
-                    await data.guild.save();
-                    return collector.stop();
-                }
-                if(msg.content.toLowerCase() === message.language.get("UTILS").NO.toLowerCase()){
-                    welcome.withImage = false;
-                    message.channel.send(message.language.get("WELCOME_FORM_SUCCESS", welcome.channel, data.guild.prefix));
-                    data.guild.plugins.welcome = welcome;
-                    data.guild.markModified("plugins.welcome");
-                    await data.guild.save();
-                    return collector.stop();
-                }
-                return message.channel.send(message.language.get("ERR_YES_NO"));
-            }
-
-            if(welcome.channel && !welcome.message){
-                if(msg.content.length < 1501){
-                    welcome.message = msg.content;
-                    return message.channel.send(message.language.get("WELCOME_FORM_IMAGE"));
-                }
-                return message.channel.send(message.language.get("WELCOME_ERR_CARACT"));
-            }
-
-            if(!welcome.channel){
-                let channel = msg.mentions.channels.filter((ch) => ch.type === "text" && ch.guild.id === message.guild.id).first();
-                if(!channel){
-                    return message.channel.send(message.language.get("ERR_INVALID_CHANNEL"));
-                }
-                if(channel.guild !== msg.guild){
-                    return;
-                }
-                welcome.channel = channel.id;
-                message.channel.send(message.language.get("WELCOME_FORM_MESSAGE", channel, message));
-            }
-
-        });
-
-        // When the collector is stopped
-        collector.on("end", (collected, reason) => {
-            if(reason === "time"){
-                return message.channel.send(message.language.get("WELCOME_ERR_TIMEOUT"));
-            }
-        });
     }
 
 }

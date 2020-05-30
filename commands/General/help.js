@@ -6,9 +6,6 @@ class Help extends Command {
     constructor (client) {
         super(client, {
             name: "help",
-            description: (language) => language.get("HELP_DESCRIPTION"),
-            usage: (language) => language.get("HELP_USAGE"),
-            examples: (language) => language.get("HELP_EXAMPLES"),
             dirname: __dirname,
             enabled: true,
             guildOnly: false,
@@ -31,25 +28,60 @@ class Help extends Command {
             // if the command doesn't exist, error message
             let cmd = message.client.commands.get(args[0]) || message.client.commands.get(message.client.aliases.get(args[0]));
             if(!cmd && isCustom){
-                return message.channel.send(message.language.get("HELP_ERR_CMD_CUSTOMIZED", args[0]));
+                return message.error("general/help:CUSTOM", {
+                    cmd: args[0]
+                });
             } else if(!cmd){
-                return message.channel.send(message.language.get("HELP_ERR_NOT_FOUND", args[0]));
+                return message.error("general/help:NOT_FOUND", {
+                    search: args[0]
+                });
             }
 
-            // Replace $ caract with the server prefix
-            let examples = cmd.help.examples(message.language).replace(/[$_]/g, data.guild ? data.guild.prefix : "");
+            const description = message.translate(`${cmd.help.category.toLowerCase()}/${cmd.help.name}:DESCRIPTION`);
+            const usage = message.translate(`${cmd.category.toLowerCase()}/${cmd.name}:USAGE`, {
+                    prefix: message.guild
+                        ? data.guild.prefix
+                        : ""
+                }
+            );
+            const examples = message.translate(`${cmd.category.toLowerCase()}/${cmd.name}:EXAMPLES`, {
+                    prefix: message.guild
+                        ? data.guild.prefix
+                        : ""
+                }
+            );
 
-            // Creates the help embed
-            let groupEmbed = new Discord.MessageEmbed()
-                .setAuthor(message.language.get("HELP_HEADINGS")[0]+" "+cmd.help.name)
-                .addField(message.language.get("HELP_HEADINGS")[1], (data.guild ? data.guild.prefix : "")+cmd.help.usage(message.language))
-                .addField(message.language.get("HELP_HEADINGS")[2], examples)
-                .addField(message.language.get("HELP_HEADINGS")[3], cmd.help.category)
-                .addField(message.language.get("HELP_HEADINGS")[4], cmd.help.description(message.language))
-                .addField(message.language.get("HELP_HEADINGS")[5], (cmd.conf.aliases.length > 0) ? cmd.conf.aliases.map((a) => "`"+a+"`").join("\n") : message.language.get("HELP_NO_ALIASES"))
-                .addField(message.language.get("HELP_HEADINGS")[6], (cmd.conf.ownerOnly ? "`OWNER`" : (cmd.conf.memberPermissions.length > 0) ? cmd.conf.memberPermissions.map((a) => "`"+a+"`").join(", ") : "`EVERYONE`"))
-                .setColor(data.config.embed.color)
-                .setFooter(data.config.embed.footer);
+           // Creates the help embed
+           let groupEmbed = new Discord.MessageEmbed()
+            .setAuthor(
+                message.translate("general/help:CMD_TITLE", {
+                    prefix: message.guild
+                        ? data.guild.prefix
+                        : "",
+                    cmd: cmd.name
+                })
+            )
+            .addField(
+                message.translate("general/help:FIELD_DESCRIPTION"),
+                description
+            )
+            .addField(message.translate("general/help:FIELD_USAGE"), usage)
+            .addField(
+                message.translate("general/help:FIELD_EXAMPLES"),
+                examples
+            )
+            .addField(
+                message.translate("general/help:FIELD_ALIASES"),
+                cmd.help.aliases.length > 0
+                    ? cmd.help.map(a => "`" + a + "`").join("\n")
+                    : message.translate("general/help:NO_ALIAS")
+            )
+            .addField(
+                message.translate("general/help:FIELD_PERMISSIONS"),
+                cmd.conf.memberPermissions.map((p) => "`"+p+"`")
+            )
+            .setColor(this.client.config.embed.color)
+            .setFooter(this.client.config.embed.footer);
 
             // and send the embed in the current channel
             return message.channel.send(groupEmbed);
@@ -70,7 +102,11 @@ class Help extends Command {
         let emojis = this.client.config.emojis
 
         let embed = new Discord.MessageEmbed()
-            .setDescription(message.language.get("HELP_EDESCRIPTION", data.guild ? data.guild.prefix : ""))
+            .setDescription(message.translate("general/help:INFO", {
+                prefix: message.guild
+                    ? data.guild.prefix
+                    : ""
+            }))
             .setColor(data.config.embed.color)
             .setFooter(data.config.embed.footer);
         categories.sort().forEach((cat) => {
@@ -82,12 +118,17 @@ class Help extends Command {
                 embed.addField(emojis.categories.custom+" "+message.guild.name+" | "+message.language.get("UTILS").CUSTOM_COMMANDS+" - ("+data.guild.customCommands.length+")", data.guild.customCommands.map((cmd) => "`"+cmd.name+"`").join(", "));
             }
         }
-        let inviteURL = message.client.config.supportURL || await message.client.functions.supportLink(message.client).catch((err) => {});
-        if(!inviteURL){
-            inviteURL = "https://discord.gg/code";
-        }
-        embed.addField("\u200B", message.language.get("STATS_LINKS", inviteURL, message.client.user.id));
-        embed.setAuthor(message.language.get("HELP_TITLE"), message.client.user.displayAvatarURL());
+        
+        embed.addField("\u200B", message.translate("misc:STATS_FOOTER", {
+            donateLink: "https://patreon.com/Androz2091",
+            dashboardLink: "https://dashboard.atlanta-bot.fr",
+            inviteLink: await message.client.generateInvite("ADMINISTRATOR"),
+            githubLink: "https://github.com/Androz2091",
+            supportLink: "https://discord.atlanta-bot.fr"
+        }));
+        embed.setAuthor(message.translate("general/help:TITLE", {
+            name: this.client.user.username
+        }), message.client.user.displayAvatarURL());
         return message.channel.send(embed);
     }
 

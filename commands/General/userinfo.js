@@ -44,7 +44,7 @@ class Userinfo extends Command {
         }
         
         if(!user){
-            return message.channel.send(message.language.get("USERINFO_ERR_ID", args[0]));
+            return message.error("general/userinfo:INVALID_USER");
         }
 
         let member = null;
@@ -55,25 +55,29 @@ class Userinfo extends Command {
         let embed = new Discord.MessageEmbed()
             .setAuthor(user.tag, user.displayAvatarURL())
             .setThumbnail(user.displayAvatarURL())
-            .addField(message.language.get("USERINFO_FIELDS")[0], user.username, true)
-            .addField(message.language.get("USERINFO_FIELDS")[1], user.discriminator, true)
-            .addField(message.language.get("USERINFO_FIELDS")[2], (user.bot ? message.language.get("UTILS").YES : message.language.get("UTILS").NO), true)
-            .addField(message.language.get("USERINFO_FIELDS")[4], message.language.printDate(user.createdAt), true)
-            .addField(message.language.get("USERINFO_FIELDS")[3], user.displayAvatarURL())
+            .addField(":man: "+message.translate("common:USERNAME"), user.username, true)
+            .addField(this.client.config.emojis.discriminator+" "+message.translate("common:DISCRIMINATOR"), user.discriminator, true)
+            .addField(this.client.config.emojis.bot+" "+message.translate("common:ROBOT"), (user.bot ? message.translate("common:YES") : message.translate("common:NO")), true)
+            .addField(this.client.config.emojis.calendar+" "+message.translate("common:CREATION"), message.language.printDate(user.createdAt), true)
+            .addField(this.client.config.emojis.avatar+" "+message.translate("common:AVATAR"), user.displayAvatarURL())
             .setColor(data.config.embed.color)
             .setFooter(data.config.embed.footer);
 
         if(displayPresence){
-            embed.addField(message.language.get("USERINFO_FIELDS")[5], (user.presence.activity ? user.presence.activity.name : message.language.get("USERINFO_NO_GAME")), true)
-            .addField(message.language.get("USERINFO_FIELDS")[6], message.language.get("UTILS").STATUS[user.presence.status], true);
+            embed.addField(this.client.config.emojis.games+" "+message.translate("common:GAME"), (user.presence.activity ? user.presence.activity.name : message.translate("general/userinfo:NO_GAME")), true)
+            .addField(this.client.config.emojis.status.online+" "+message.translate("common:STATUS"), message.translate("common:STATUS_"+(user.presence.status.toUpperCase())), true);
         }
             
         if(member){
-            embed.addField(message.language.get("USERINFO_FIELDS")[7], (member.roles.highest ? member.roles.highest : message.language.get("USERINFO_NO_ROLE")), true)
-            .addField(message.language.get("USERINFO_FIELDS")[8], message.language.printDate(member.joinedAt),true)
-            .addField(message.language.get("USERINFO_FIELDS")[11], member.displayHexColor, true)
-            .addField(message.language.get("USERINFO_FIELDS")[9], (member.nickname ? member.nickname : message.language.get("USERINFO_NO_NICKNAME")), true)
-            .addField(message.language.get("USERINFO_FIELDS")[10], (member.roles.size > 10 ? member.roles.map((r) => r).slice(0, 9).join(", ")+message.language.get("USERINFO_MORE_ROLES", member.roles.size - 10) : (member.roles.size < 1) ? message.language.get("USERINFO_NO_ROLE") : member.roles.map((r) => r).join(", ")));
+            embed.addField(this.client.config.emojis.up+" "+message.translate("common:ROLE"), (member.roles.highest ? member.roles.highest : message.translate("general/userinfo:NO_ROLE")), true)
+            .addField(this.client.config.emojis.calendar2+" "+message.translate("common:JOIN"), message.language.printDate(member.joinedAt),true)
+            .addField(this.client.config.emojis.color+" "+message.translate("common:COLOR"), member.displayHexColor, true)
+            .addField(this.client.config.emojis.pencil+" "+message.translate("common:NICKNAME"), (member.nickname ? member.nickname : message.translate("general/userinfo:NO_NICKNAME")), true)
+            .addField(this.client.config.emojis.roles+" "+message.translate("common:ROLES"), (
+                member.roles.size > 10
+                ? member.roles.map((r) => r).slice(0, 9).join(", ")+" "+message.translate("general/userinfo:MORE_ROLES", { count: member.roles.size - 10 })
+                : (member.roles.size < 1) ? message.translate("general/userinfo:NO_ROLE") : member.roles.map((r) => r).join(", ")
+            ));
         }
 
         if(user.bot && message.client.config.apiKeys.dbl && (message.client.config.apiKeys.dbl !== "")){
@@ -82,9 +86,16 @@ class Userinfo extends Command {
             });
             let data = await res.json();
             if(!data.error){
-                embed.addField(message.language.get("USERINFO_FIELDS")[12], data.shortdesc, true)
-                .addField(message.language.get("USERINFO_FIELDS")[13], message.language.get("USERINFO_STATS", data.monthlyPoints || 0, data.server_count || 0, data.shards || [], data.lib || "unknown"), true)
-                .addField(message.language.get("USERINFO_FIELDS")[14], message.language.get("USERINFO_LINKS", data.support, data.invite, data.github, data.website), true);
+                embed.addField(this.client.config.emojis.desc+" "+message.translate("common:DESCRIPTION"), data.shortdesc, true)
+                .addField(this.client.config.emojis.stats+" "+message.translate("common:STATS"), message.translate("general/userinfo:BOT_STATS", {
+                    votes: data.monthlyPoints || 0,
+                    servers: data.server_count || 0,
+                    shards: (data.shards || [0]).length,
+                    lib: data.lib || "unknown"
+                }), true)
+                .addField(this.client.config.emojis.link+" "+message.translate("common:LINKS"), 
+                    `${data.support ? `[${message.translate("common:SUPPORT")}](${data.support}) | ` : ""}${data.invite ?  `[${message.translate("common:INVITE")}](${data.invite}) | ` : ""}${data.github ?  `[GitHub](${data.github}) | ` : ""}${data.website ?  `[${message.translate("common:WEBSITE")}](${data.website})` : ""}`
+                , true);
             }
         }
 

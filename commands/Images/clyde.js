@@ -6,9 +6,6 @@ class Clyde extends Command {
     constructor (client) {
         super(client, {
             name: "clyde",
-            description: (language) => language.get("CLYDE_DESCRIPTION"),
-            usage: (language) => language.get("CLYDE_USAGE"),
-            examples: (language) => language.get("CLYDE_EXAMPLES"),
             dirname: __dirname,
             enabled: true,
             guildOnly: false,
@@ -26,10 +23,10 @@ class Clyde extends Command {
         let text = args.join(" ");
 
         if(!text){
-            return message.channel.send(message.language.get("CLYDE_ERR_TEXT"));
+            return message.error("images/clyde:MISSING_TEXT");
         }
 
-        let m = await message.channel.send(message.language.get("UTILS").PLEASE_WAIT);
+        let m = await message.sendT("misc:PLEASE_WAIT", null, false, false, "loading");
         try {
             let res = await fetch(encodeURI(`https://nekobot.xyz/api/imagegen?type=clyde&text=${text}`));
             let json = await res.json();
@@ -38,7 +35,7 @@ class Clyde extends Command {
             m.delete();
         } catch(e){
             console.log(e);
-            m.edit(message.language.get("ERR_OCCURENCED"));
+            m.error("misc:ERROR_OCCURRED", null, true);
         }
 
     }

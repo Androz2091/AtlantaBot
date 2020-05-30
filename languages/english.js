@@ -185,7 +185,7 @@ module.exports = class {
 			FINDWORDS_TIMER: `${e.warn} | The game starts in 10 seconds!`,
 			FINDWORDS_QUESTION: (word) => `${e.warn} | 20 seconds to find a word containing "**${word}**" !`,
 			FINDWORDS_CONGRATS: (winner) => `${e.success} | Well done <@${winner}> ! Your word is valid and you were the fastest!`,
-			FINDWORDS_STATS: (username, games, time, number, members) => `:tada: | ${username} won the game !\n\n**Stats of the game: **\n__**Time**__: ${time}\n__**Number of participants**__ : ${number}\n__**Participants**__ : \n${members}`,
+			FINDWORDS_STATS: (username, games, time, number, members) => ``,
 			FINDWORDS_MONEY: (member) => `${member} wins 15 credits! :tada:`,
 
 			/* NUMBER COMMAND */

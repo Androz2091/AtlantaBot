@@ -5,9 +5,6 @@ class Mission extends Command {
     constructor (client) {
         super(client, {
             name: "mission",
-            description: (language) => language.get("MISSION_DESCRIPTION"),
-            usage: (language) => language.get("MISSION_USAGE"),
-            examples: (language) => language.get("MISSION_EXAMPLES"),
             dirname: __dirname,
             enabled: true,
             guildOnly: false,
@@ -23,7 +20,7 @@ class Mission extends Command {
     async run (message, args, data) {
 
         let user = await this.client.resolveUser(args[0]) || message.author;
-        let m = await message.channel.send(message.language.get("UTILS").PLEASE_WAIT);
+        let m = await message.sendT("images/mission:PLEASE_WAIT", null, false, false, "loading");
         let buffer = await this.client.AmeAPI.generate("missionpassed", { url: user.displayAvatarURL({ format: "png", size: 2048 }) });
         let attachment = new Discord.MessageAttachment(buffer, "mission.png");
         m.delete();

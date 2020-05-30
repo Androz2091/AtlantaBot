@@ -5,9 +5,6 @@ class Rip extends Command {
     constructor (client) {
         super(client, {
             name: "rip",
-            description: (language) => language.get("RIP_DESCRIPTION"),
-            usage: (language) => language.get("RIP_USAGE"),
-            examples: (language) => language.get("RIP_EXAMPLES"),
             dirname: __dirname,
             enabled: true,
             guildOnly: false,
@@ -23,7 +20,7 @@ class Rip extends Command {
     async run (message, args, data) {
 
         let user = await this.client.resolveUser(args[0]) || message.author;
-        let m = await message.channel.send(message.language.get("UTILS").PLEASE_WAIT);
+        let m = await message.sendT("misc:PLEASE_WAIT", null, false, false, "loading");
         let buffer = await this.client.AmeAPI.generate("rip", { url: user.displayAvatarURL({ format: "png", size: 512 }) });
         let attachment = new Discord.MessageAttachment(buffer, "rip.png");
         m.delete();

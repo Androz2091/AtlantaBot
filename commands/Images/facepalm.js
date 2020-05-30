@@ -6,9 +6,6 @@ class Facepalm extends Command {
     constructor (client) {
         super(client, {
             name: "facepalm",
-            description: (language) => language.get("FACEPALM_DESCRIPTION"),
-            usage: (language) => language.get("FACEPALM_USAGE"),
-            examples: (language) => language.get("FACEPALM_EXAMPLES"),
             dirname: __dirname,
             enabled: true,
             guildOnly: false,
@@ -24,7 +21,7 @@ class Facepalm extends Command {
     async run (message, args, data) {
 
         let user = await this.client.resolveUser(args[0]) || message.author,
-        m = await message.channel.send(message.language.get("UTILS").PLEASE_WAIT),
+        m = await message.sendT("misc:PLEASE_WAIT", null, false, false, "loading");
         canvas = Canvas.createCanvas(632, 357),
         ctx = canvas.getContext("2d");
         

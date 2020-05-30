@@ -7,9 +7,6 @@ class Slowmode extends Command {
     constructor (client) {
         super(client, {
             name: "slowmode",
-            description: (language) => language.get("SLOWMODE_DESCRIPTION"),
-            usage: (language) => language.get("SLOWMODE_USAGE"),
-            examples: (language) => language.get("SLOWMODE_EXAMPLES"),
             dirname: __dirname,
             enabled: true,
             guildOnly: true,
@@ -26,20 +23,22 @@ class Slowmode extends Command {
 
         let channel = message.mentions.channels.filter((ch) => ch.type === "text" && ch.guild.id === message.guild.id).first();
         if(!channel){
-            return message.channel.send(message.language.get("ERR_INVALID_CHANNEL"));
+            return message.error("misc:INVALID_CHANNEL");
         }
         let time = args[1];
         if(!time){
             if(!data.guild.slowmode.channels.find((ch) => ch.id === channel.id)){
-                return message.channel.send(message.language.get("ERR_INVALID_TIME"));
+                return message.error("misc:INVALID_TIME");
             }
             data.guild.slowmode.channels = data.guild.slowmode.channels.filter((ch) => ch.id !== channel.id);
             data.guild.markModified("slowmode.channels");
             data.guild.save();
-            message.channel.send(message.language.get("SLOWMODE_DISABLED", channel.id));
+            message.success("administration/slowmode:DISABLED", {
+                channel: channel.toString()
+            });
         } else {
             if(isNaN(ms(time))){
-                return message.channel.send(message.language.get("ERR_INVALID_TIME"));
+                return message.error("misc:INVALID_TIME");
             }
             if(data.guild.slowmode.channels.find((ch) => ch.id === channel.id)){
                 data.guild.slowmode.channels = data.guild.slowmode.channels.filter((ch) => ch.id !== channel.id);
@@ -50,7 +49,10 @@ class Slowmode extends Command {
             });
             data.guild.markModified("slowmode.channels");
             data.guild.save();
-            message.channel.send(message.language.get("SLOWMODE_ENABLED", channel.id, time));
+            message.success("administration/slowmode:ENABLED", {
+                channel: channel.toString(),
+                time: this.client.functions.convertTime(message.guild, ms(time))
+            });
         }
     }
 }

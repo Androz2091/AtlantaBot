@@ -37,7 +37,7 @@ module.exports = class {
         if(message.guild){
             // Gets guild data
             let guild = await client.findOrCreateGuild({ id: message.guild.id });
-            data.guild = guild;
+            message.guild.data = data.guild = guild;
         }
 
         // Gets language

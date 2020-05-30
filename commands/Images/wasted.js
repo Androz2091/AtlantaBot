@@ -5,9 +5,6 @@ class Wasted extends Command {
     constructor (client) {
         super(client, {
             name: "wasted",
-            description: (language) => language.get("WASTED_DESCRIPTION"),
-            usage: (language) => language.get("WASTED_USAGE"),
-            examples: (language) => language.get("WASTED_EXAMPLES"),
             dirname: __dirname,
             enabled: true,
             guildOnly: false,
@@ -23,7 +20,7 @@ class Wasted extends Command {
     async run (message, args, data) {
 
         let user = await this.client.resolveUser(args[0]) || message.author;
-        let m = await message.channel.send(message.language.get("UTILS").PLEASE_WAIT);
+        let m = await message.sendT("misc:PLEASE_WAIT", null, false, false, "loading");
         let buffer = await this.client.AmeAPI.generate("wasted", { url: user.displayAvatarURL({ format: "png", size: 512 }) });
         let attachment = new Discord.MessageAttachment(buffer, "wasted.png");
         m.delete();

@@ -8,9 +8,6 @@ class Minecraft extends Command {
     constructor (client) {
         super(client, {
             name: "minecraft",
-            description: (language) => language.get("MINECRAFT_DESCRIPTION"),
-            usage: (language) => language.get("MINECRAFT_USAGE"),
-            examples: (language) => language.get("MINECRAFT_EXAMPLES"),
             dirname: __dirname,
             enabled: true,
             guildOnly: false,
@@ -27,7 +24,7 @@ class Minecraft extends Command {
 
         let ip = args[0];
         if(!ip){
-            return message.channel.send(message.language.get("MINECRAFT_ERR_IP"));
+            return message.error("general/minecraft:MISSING_IP");
         }
 
         let favicon = `https://eu.mc-api.net/v3/server/favicon/${ip}`;
@@ -58,25 +55,31 @@ class Minecraft extends Command {
         }
 
         if(!json){
-            return message.channel.send(message.language.get("MINECRAFT_ERR_OFFLINE"));
+            return message.error("general/minecraft:FAILED");
         }
 
         let imgRes = await fetch("https://www.minecraftskinstealer.com/achievement/a.php?i=2&h=Success&t="+ip);
         let imgAttachment = new Discord.MessageAttachment(await imgRes.buffer(), "success.png");
 
         let mcEmbed = new Discord.MessageEmbed()
-            .setAuthor(message.language.get("MINECRAFT_HEADINGS", ip)[0])
-            .addField(message.language.get("MINECRAFT_HEADINGS", ip)[1],
+            .setAuthor(message.translate("general/minecraft:FIELD_NAME", {
+                ip
+            }))
+            .addField(message.translate("general/minecraft:FIELD_VERSION"),
                 json.raw.version.name || json.raw.server_engine
             )
-            .addField(message.language.get("MINECRAFT_HEADINGS", ip)[2],
-                message.language.get("MINECRAFT_PLAYERS", (json.raw.players ? json.raw.players.online : json.players.length))
+            .addField(message.translate("general/minecraft:FIELD_CONNECTED"),
+                message.translate("general/minecraft:PLAYERS", {
+                    count: (json.raw.players ? json.raw.players.online : json.players.length)
+                })
             )
-            .addField(message.language.get("MINECRAFT_HEADINGS", ip)[3],
-                message.language.get("MINECRAFT_PLAYERS", (json.raw.players ? json.raw.players.max : json.maxplayers))
+            .addField(message.translate("general/minecraft:FIELD_MAX"),
+                message.translate("general/minecraft:PLAYERS", {
+                    count: (json.raw.players ? json.raw.players.max : json.maxplayers)
+                })
             )
-            .addField(message.language.get("MINECRAFT_HEADINGS", ip)[4], message.language.get("MINECRAFT_ONLINE", json.ping))
-            .addField(message.language.get("MINECRAFT_HEADINGS", ip)[5], json.connect)
+            .addField(message.translate("general/minecraft:FIELD_STATUS"), message.translate("general/minecraft:ONLINE"))
+            .addField(message.translate("general/minecraft:FIELD_IP"), json.connect)
             .setColor(data.config.embed.color)
             .setThumbnail(favicon)
             .setFooter(data.config.embed.footer);

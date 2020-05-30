@@ -23,27 +23,35 @@ class Addcommand extends Command {
 
     async run (message, args, data) {
         
-        let name = args[0].split("\n")[0];
-        if(!name){
-            return message.channel.send(message.language.get("ADDCOMMAND_ERR_NAME"));
+        const name = args[0].split("\n")[0];
+        if (!name)
+            return message.error("administration/addcommand:MISSING_NAME");
+
+        if (
+            this.client.commands.get(name) ||
+            this.client.aliases.get(name) ||
+            data.guild.customCommands.find((c) => c.name === name)
+        ) {
+            return message.error(
+                "administration/addcommand:COMMAND_ALREADY_EXISTS"
+            );
         }
 
-        if(this.client.commands.get(name) || this.client.aliases.get(name) || data.guild.customCommands.find((c) => c.name === name)){
-            return message.channel.send(message.language.get("ADDCOMMAND_ERR_EXISTS", name));
+        const answer = (args[0].split("\n")[1] || "") + args.slice(1).join(" ");
+        if (!answer) {
+            return message.error("administration/addcommand:MISSING_ANSWER");
         }
 
-        let answer = (args[0].split("\n")[1] || "") + args.slice(1).join(" ");
-        if(!answer){
-            return message.channel.send(message.language.get("ADDCOMMAND_ERR_ANSWER"));
-        }
-        
         data.guild.customCommands.push({
             name: name.toLowerCase(),
             answer: answer
         });
         data.guild.save();
-        
-        message.channel.send(message.language.get("ADDCOMMAND_SUCCESS", name));
+
+        message.success("administration/addcommand:SUCCESS", {
+            commandName: name,
+            prefix: message.guild.settings.prefix
+        });
     }
     
 }
