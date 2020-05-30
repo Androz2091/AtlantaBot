@@ -6,9 +6,6 @@ class Slots extends Command {
     constructor (client) {
         super(client, {
             name: "slots",
-            description: (language) => language.get("SLOTS_DESCRIPTION"),
-            usage: (language) => language.get("SLOTS_USAGE"),
-            examples: (language) => language.get("SLOTS_EXAMPLES"),
             dirname: __dirname,
             enabled: true,
             guildOnly: true,
@@ -40,7 +37,9 @@ class Slots extends Command {
             amount = 1;
         }
         if(amount > data.memberData.money){
-            return message.channel.send(message.language.get("SLOTS_ERR_TOO_HIGH", amount));
+            return message.error("economy/rob:NOT_ENOUGH", {
+                money: amount
+            });
         }
         amount = Math.round(amount);
         
@@ -54,7 +53,7 @@ class Slots extends Command {
             return Math.round(number);
         }
 
-        let tmsg = await message.channel.send(message.language.get("UTILS").PLEASE_WAIT);
+        let tmsg = await message.sendT("misc:loading", null, false, false, "loading");
         editMsg();
         let interval = setInterval(editMsg, 1000);
         setTimeout(() => {
@@ -81,10 +80,14 @@ class Slots extends Command {
             msg += colonnes[0][i3] + " : " + colonnes[1][j3] + " : "+ colonnes[2][k3] + "\n------------------\n";
             
             if((colonnes[0][i2] == colonnes[1][j2]) && (colonnes[1][j2] == colonnes[2][k2])){
-                msg += "| : : :  **"+message.language.get("UTILS").VICTORY.toUpperCase()+"**  : : : |";
+                msg += "| : : :  **"+(message.translate("common:VICTORY").toUpperCase())+"**  : : : |";
                 tmsg.edit(msg);
                 let credits = getCredits(amount, true);
-                message.channel.send(message.language.get("SLOTS_VICTORY", "JACKPOT ! ", amount, credits, message.author.username));
+                message.channel.send("**!! JACKPOT !!**\n"+message.translate("economy/slots:VICTORY", {
+                    money: amount,
+                    won: credits,
+                    username: message.author.username
+                }));
                 let toAdd = credits - amount;
                 data.memberData.money = data.memberData.money + toAdd;
                 if(!data.userData.achievements.slots.achieved){
@@ -101,10 +104,14 @@ class Slots extends Command {
             }
             
             if(colonnes[0][i2] == colonnes[1][j2] || colonnes[1][j2] == colonnes[2][k2] || colonnes[0][i2] == colonnes[2][k2]){
-                msg += "| : : :  **"+message.language.get("UTILS").VICTORY.toUpperCase()+"**  : : : |";
+                msg += "| : : :  **"+(message.translate("common:VICTORY").toUpperCase())+"**  : : : |";
                 tmsg.edit(msg);
                 let credits = getCredits(amount, false);
-                message.channel.send(message.language.get("SLOTS_VICTORY", "", amount, credits, message.author.username));
+                message.channel.send(message.translate("economy/slots:VICTORY", {
+                    money: amount,
+                    won: credits,
+                    username: message.author.username
+                }));
                 let toAdd = credits - amount;
                 data.memberData.money = data.memberData.money + toAdd;
                 if(!data.userData.achievements.slots.achieved){
@@ -120,8 +127,11 @@ class Slots extends Command {
                 return;
             }
             
-            msg += "| : : :  **"+message.language.get("UTILS").DEFEAT.toUpperCase()+"**  : : : |";
-            message.channel.send(message.language.get("SLOTS_DEFEAT", amount, message.author.username));
+            msg += "| : : :  **"+(message.translate("common:DEFEAT").toUpperCase())+"**  : : : |";
+            message.channel.send(message.translate("economy/slots:DEFEAT", {
+                money: amount,
+                username: message.author.username
+            }));
             data.memberData.money = data.memberData.money - amount;
             if(!data.userData.achievements.slots.achieved){
                 data.userData.achievements.slots.progress.now = 0;

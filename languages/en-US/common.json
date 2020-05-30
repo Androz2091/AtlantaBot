@@ -36,5 +36,7 @@
     "LINKS": "Links",
     "CREDITS": "Credits",
     "LEVEL": "Level",
-    "POINTS": "Points"
+    "POINTS": "Points",
+    "VICTORY": "Victory",
+    "DEFEAT": "Defeat"
 }
