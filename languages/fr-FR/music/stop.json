@@ -1,5 +1,5 @@
 {
-    "DESCRIPTION": "Stop the music",
+    "DESCRIPTION": "Stoppe la music",
     "USAGE": "{{prefix}}stop",
     "EXAMPLES": "{{prefix}}stop",
     "VOTE_CONTENT": "Vote: {{voteCount}}/{{requiredCount}}\nReact with 👍 to stop the music!",
