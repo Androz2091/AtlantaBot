@@ -12,10 +12,12 @@
     "REPUTATION": "🎩 Reputation",
     "REP_POINTS": "**{{points}}** point(s)",
     "LEVEL": "📊 Level",
+    "EXP": "🔮 Expérience",
     "BIRTHDATE": "🎂 Birthdate",
     "NO_BIRTHDATE": "No birthdate available",
     "LOVER": "❤️ Lover",
+    "REGISTERED": "📅 Registered",
     "NO_LOVER": "Single",
-    "COMMANDS": "📨 Commands ran",
-    "PERMISSIONS": "🚓 Permissions"
+    "ACHIEVEMENTS": "🔥 Réalisations",
+    "ACHIEVEMENTS_CONTENT": "Get more information with `{{prefix}}achievements`!"
 }

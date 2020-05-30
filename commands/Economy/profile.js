@@ -14,9 +14,6 @@ class Profile extends Command {
     constructor (client) {
         super(client, {
             name: "profile",
-            description: (language) => language.get("PROFILE_DESCRIPTION"),
-            usage: (language) => language.get("PROFILE_USAGE"),
-            examples: (language) => language.get("PROFILE_EXAMPLES"),
             dirname: __dirname,
             enabled: true,
             guildOnly: true,
@@ -38,7 +35,7 @@ class Profile extends Command {
 
         // Check if the user is a bot
         if(member.user.bot){
-            return message.channel.send(message.language.get("ERR_BOT_USER"));
+            return message.error("economy/profile:BOT_USER");
         }
 
         // Gets the data of the user whose profile you want to display
@@ -62,17 +59,27 @@ class Profile extends Command {
             .setAuthor(message.language.get("PROFILE_TITLE", member.user.tag), member.user.displayAvatarURL())
             .attachFiles([{ attachment: await userData.getAchievements(), name: "achievements.png" }])
             .setImage("attachment://achievements.png")
-            .setDescription(userData.bio ? userData.bio : message.language.get("NO_BIO"))
-            .addField(message.language.get("PROFILE_HEADINGS").MONEY, message.language.get("DISPLAY_MONEY", Math.ceil(memberData.money)), true)
-            .addField(message.language.get("PROFILE_HEADINGS").BANK, message.language.get("DISPLAY_MONEY",  Math.ceil(memberData.bankSold)), true)
-            .addField(message.language.get("PROFILE_HEADINGS").GLOBAL_MONEY, message.language.get("DISPLAY_MONEY",  Math.ceil(globalMoney)), true)
-            .addField(message.language.get("PROFILE_HEADINGS").REP, message.language.get("DISPLAY_REP", userData.rep), true)
-            .addField(message.language.get("PROFILE_HEADINGS").LEVEL, `**${memberData.level}**`, true)
-            .addField(message.language.get("PROFILE_HEADINGS").EXP, `**${memberData.exp}** xp`, true)
-            .addField(message.language.get("PROFILE_HEADINGS").REGISTERED_AT, message.language.printDate(new Date(memberData.registeredAt)), true)
-            .addField(message.language.get("PROFILE_HEADINGS").BIRTHDATE, (!userData.birthdate ? message.language.get("NO_BIRTHDATE") : message.language.printDate(new Date(userData.birthdate))), true)
-            .addField(message.language.get("PROFILE_HEADINGS").MARRIED, (!userData.lover ? message.language.get("NO_PARTNER") : message.client.users.get(userData.lover).tag), true)
-            .addField(message.language.get("PROFILE_HEADINGS").ACHIEVEMENTS, message.language.get("PROFILE_ACHIEVEMENTS", data.guild.prefix))
+            .setDescription(userData.bio ? userData.bio : message.translate("economy/profile:NO_BIO"))
+            .addField(message.translate("economy/profile:CASH"), message.translate("economy/profile:MONEY", {
+                money: memberData.money
+            }), true)
+            .addField(message.translate("economy/profile:BANK"), message.translate("economy/profile:MONEY", {
+                money: memberData.bankSold
+            }), true)
+            .addField(message.translate("economy/profile:GLOBAL"), message.translate("economy/profile:MONEY", {
+                money: globalMoney
+            }), true)
+            .addField(message.translate("economy/profile:REPUTATION"), message.translate("economy/profile:REP_POINTS", {
+                points: userData.rep
+            }), true)
+            .addField(message.translate("economy/profile:LEVEL"), `**${memberData.level}**`, true)
+            .addField(message.translate("economy/profile:EXP"), `**${memberData.exp}** xp`, true)
+            .addField(message.translate("economy/profile:REGISTERED"), message.language.printDate(new Date(memberData.registeredAt)), true)
+            .addField(message.translate("economy/profile:BIRTHDATE"), (!userData.birthdate ? message.translate("economy/profile:NO_BIRTHDATE"): message.language.printDate(new Date(userData.birthdate))), true)
+            .addField(message.translate("economy/profile:LOVER"), (!userData.lover ? message.translate("economy/profile:NO_LOVER") : message.client.users.get(userData.lover).tag), true)
+            .addField(message.translate("economy/profile:ACHIEVEMENTS"), message.translate("economy/profile:ACHIEVEMENTS_CONTENT", {
+                prefix: data.guild.prefix
+            }))
             .setColor(data.config.embed.color) // Sets the color of the embed
             .setFooter(data.config.embed.footer) // Sets the footer of the embed
             .setTimestamp();
