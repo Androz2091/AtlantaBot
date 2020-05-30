@@ -22,7 +22,7 @@ class Divorce extends Command {
         
         // Check if the message author is wedded
         if(!data.userData.lover){
-            return message.error("economy/divorce:NOT_MARRIED"));
+            return message.error("economy/divorce:NOT_MARRIED");
         }
 
         // Updates db
