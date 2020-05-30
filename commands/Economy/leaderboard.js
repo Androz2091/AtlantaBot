@@ -7,9 +7,6 @@ class Leaderboard extends Command {
     constructor (client) {
         super(client, {
             name: "leaderboard",
-            description: (language) => language.get("LEADERBOARD_DESCRIPTION"),
-            usage: (language) => language.get("LEADERBOARD_USAGE"),
-            examples: (language) => language.get("LEADERBOARD_EXAMPLES"),
             dirname: __dirname,
             enabled: true,
             guildOnly: true,
@@ -28,7 +25,7 @@ class Leaderboard extends Command {
 
         let type = args[0];
         if(!type || (type !== "credits" && type !== "level" && type !== "rep")){
-            return message.channel.send(message.language.get("LEADERBOARD_ERR_TYPE"));
+            return message.error("economy/leaderboard:MISSING_TYPE");
         }
 
         if(type === "credits"){
@@ -40,7 +37,7 @@ class Leaderboard extends Command {
                 };
             }).sort((a,b) => b.value - a.value);
             let table = new AsciiTable("LEADERBOARD");
-            table.setHeading("#", message.language.get("UTILS").USER, message.language.get("UTILS").CREDITS);
+            table.setHeading("#", message.translate("common:USER"), message.translate("common:CREDITS"));
             if(membersLeaderboard.length > 20) membersLeaderboard.length = 20;
             let newTable = await fetchUsers(membersLeaderboard, table, message.client);
             message.channel.send("```"+newTable.toString()+"```");
@@ -53,7 +50,7 @@ class Leaderboard extends Command {
                 };
             }).sort((a,b) => b.value - a.value);
             let table = new AsciiTable("LEADERBOARD");
-            table.setHeading("#", message.language.get("UTILS").USER, message.language.get("UTILS").LEVEL);
+            table.setHeading("#", message.translate("common:USER"), message.translate("common:LEVEL"));
             if(membersLeaderboard.length > 20) membersLeaderboard.length = 20;
             let newTable = await fetchUsers(membersLeaderboard, table, message.client);
             message.channel.send("```"+newTable.toString()+"```");
@@ -66,14 +63,14 @@ class Leaderboard extends Command {
                 };
             }).sort((a,b) => b.value - a.value);
             let table = new AsciiTable("LEADERBOARD");
-            table.setHeading("#", message.language.get("UTILS").USER, message.language.get("UTILS").LEVEL);
+            table.setHeading("#", message.translate("common:USER"), message.translate("common:POINTS"));
             if(usersLeaderboard.length > 20) usersLeaderboard.length = 20;
             let newTable = await fetchUsers(usersLeaderboard, table, message.client);
             message.channel.send("```"+newTable.toString()+"```");
         }
 
         if(isOnlyOnMobile){
-            message.channel.send(message.language.get("LEADERBOARD_WARN_PHONE"));
+            message.sendT("economy/leaderboard:MOBILE");
         }
         
         async function fetchUsers(array, table, client) {
