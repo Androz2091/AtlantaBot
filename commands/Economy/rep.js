@@ -6,9 +6,6 @@ class Rep extends Command {
     constructor (client) {
         super(client, {
             name: "rep",
-            description: (language) => language.get("REP_DESCRIPTION"),
-            usage: (language) => language.get("REP_USAGE"),
-            examples: (language) => language.get("REP_EXAMPLES"),
             dirname: __dirname,
             enabled: true,
             guildOnly: true,
@@ -30,19 +27,21 @@ class Rep extends Command {
             when the member will be able to execute the order again 
             is greater than the current date, display an error message */
             if(isInCooldown > Date.now()){
-                return message.channel.send(message.language.get("REP_ERR_COOLDOWN", message.language.convertMs(isInCooldown - Date.now())));
+                return message.error("economy/rep:COOLDOWN", {
+                    time: message.language.convertMs(isInCooldown - Date.now())
+                });
             }
         }
 
         let user = await this.client.resolveUser(args[0]);
         if(!user){
-            return message.channel.send(message.language.get("ERR_INVALID_MEMBER"));
+            return message.error("economy/rep:INVALID_USER");
         }
         if(user.bot){
-            return message.channel.send(message.language.get("ERR_BOT_USER"));
+            return message.error("economy/rep:BOT_USER");
         }
         if(user.id === message.author.id){
-            return message.channel.send(message.language.get("REP_ERR_YOURSELF"));
+            return message.error("economy/rep:YOURSELF");
         }
 
         // Records in the database the time when the member will be able to execute the command again (in 12 hours)
@@ -64,7 +63,9 @@ class Rep extends Command {
         }
         await userData.save();
 
-        message.channel.send(message.language.get("REP_SUCCESS", user.username));
+        message.success("economy/rep:SUCCESS", {
+            username: user.username
+        });
 
     }
 
