@@ -6,5 +6,7 @@
     "INVALID_YES_NO": "You must send \"yes\" or \"no\"!",
     "INVALID_CHANNEL": "Please specify a valid channel!",
     "INVALID_TIME": "You must enter a valid time! Valid units: `s`, `m`, `h` or `d`",
-    "STATS_FOOTER": "[Dashboard]({{dashboardLink}}) ● [Donate]({{donateLink}}) ● [Invite]({{inviteLink}}) ● [Server]({{supportLink}}) ● [Github]({{githubLink}})"
+    "INVALID_NUMBER_RANGE": "Please specify a valid number between **{{min}}** and **{{max}}**!",
+    "STATS_FOOTER": "[Dashboard]({{dashboardLink}}) ● [Donate]({{donateLink}}) ● [Invite]({{inviteLink}}) ● [Server]({{supportLink}}) ● [Github]({{githubLink}})",
+    "BOT_USER": "This user is a bot!"
 }
