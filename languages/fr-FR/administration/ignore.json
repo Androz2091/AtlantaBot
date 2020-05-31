@@ -1,7 +1,7 @@
 {
-    "DESCRIPTION": "Activer ou désactiver les commandes dans un salons",
+    "DESCRIPTION": "Activer ou désactiver les commandes dans un salon",
     "USAGE": "{{prefix}}ignore [salon]",
     "EXAMPLES": "{{prefix}}ignore #salon",
-    "ALLOWED": "Les commandes sont désormais autorisé dans {{channel}} !",
-    "IGNORED": "Les commandes sont désormais interdit dans {{channel}} !"
+    "ALLOWED": "Les commandes sont désormais autorisées dans {{channel}} !",
+    "IGNORED": "Les commandes sont désormais interdites dans {{channel}} !"
 }
