@@ -1,7 +1,7 @@
 {
-    "DESCRIPTION": "Set a cooldown in a channel",
+    "DESCRIPTION": "Configurer un temps entre chaque message dans un salon",
     "USAGE": "{{prefix}}slowmode [#channel] (time)",
     "EXAMPLES": "{{prefix}}slowmode #general 10m\n{{prefix}}slowmode #general",
-    "DISABLED": "Slowmode has been disabled in {{channel}}!",
-    "ENABLED": "Slowmode enabled in {{channel}} with a time of {{time}}!"
+    "DISABLED": "Le mode lent a été désactivé dans {{channel}} !",
+    "ENABLED": "Le mode lent a été activé dans {{channel}} avec un temps de {{time}} !"
 }
