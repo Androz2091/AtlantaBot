@@ -1,5 +1,5 @@
 {
-    "DESCRIPTION": "Send money to someone!",
+    "DESCRIPTION": "Envoie de l'argent à quelqu'un !",
     "USAGE": "{{prefix}}pay [@member] [amount]",
     "EXAMPLES": "{{prefix}}pay Androz#2091 100",
     "INVALID_MEMBER": "You must mention a valid member to pay!",
