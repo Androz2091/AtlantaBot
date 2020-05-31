@@ -16,8 +16,8 @@
     "BIRTHDATE": "🎂 Anniversaire",
     "NO_BIRTHDATE": "Pas d'anniversaire disponible",
     "LOVER": "❤️ Marié(e)",
-    "REGISTERED": "📅 Registered",
-    "NO_LOVER": "Single",
-    "ACHIEVEMENTS": "🔥 Réalisations",
-    "ACHIEVEMENTS_CONTENT": "Get more information with `{{prefix}}achievements`!"
+    "REGISTERED": "📅 Enregistré",
+    "NO_LOVER": "Célibataire",
+    "ACHIEVEMENTS": "🔥 Succès",
+    "ACHIEVEMENTS_CONTENT": "Obtenez plus d'informations avec `{{prefix}}achievements`!"
 }
