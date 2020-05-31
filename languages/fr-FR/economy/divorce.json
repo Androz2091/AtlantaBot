@@ -1,5 +1,5 @@
 {
-    "DESCRIPTION": "Divorce the person you are currently married to!",
+    "DESCRIPTION": "Permet de divorcer avec la personne marié actuellement !",
     "USAGE": "{{prefix}}divorce",
     "EXAMPLES": "{{prefix}}divorce",
     "NOT_MARRIED": "Vous n'êtes pas marié !",
