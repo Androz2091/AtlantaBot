@@ -1,7 +1,7 @@
 {
-    "DESCRIPTION": "I roll the dice for you!",
+    "DESCRIPTION": "Fait un pile ou face !",
     "USAGE": "{{prefix}}flip",
     "EXAMPLES": "{{prefix}}flip",
-    "HEADS": ":game_die: | Heads!",
-    "TAILS": ":game_die: | Tails!"
+    "HEADS": ":game_die: | Pile !",
+    "TAILS": ":game_die: | Face !"
 }
