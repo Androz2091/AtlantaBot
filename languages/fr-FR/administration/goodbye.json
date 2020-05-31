@@ -4,9 +4,9 @@
     "EXAMPLES": "{{prefix}}goodbye",
     "DEFAULT_MESSAGE": "Au revoir {user} ! Nous sommes maintenant {membercount} sans toi... :'(",
     "TEST_SUCCESS": "Test exécuté !",
-    "FORM_1": "Salut {{author}} ! Dans quel salon les messages d'au revoir serons-t'ils envoyés (mentionner un salon)",
-    "FORM_2": "D'accord ! Les messages serons donc envoyé dans {{channel}}. Entre le message d'au revoir ci-dessous:\n\n:information_source: __**Informations:**__\nMentions: {user}\nMembres: {membercount}\nServer: {server}\n\n__Pour exemple:__\n\n\"Au revoir {user}... Nous somme {membercount} !\"\n:arrow_down:\n\"Au revoir {{author}}... Nous somme {{memberCount}} !\".",
-    "FORM_3": "It works! Do you want a great goodbye image to be sent too? Answer with \"yes\" or \"no\"!",
+    "FORM_1": "Salut {{author}} ! Dans quel salon les messages d'au revoir seront-ils envoyés ? (mentionnez un salon)",
+    "FORM_2": "D'accord ! Les messages seront donc envoyés dans {{channel}}. Entrez le message d'au revoir ci-dessous:\n\n:information_source: __**Informations:**__\nMention: {user}\nMembres: {membercount}\nServeur: {server}\n\n__Par exemple:__\n\n\"Au revoir {user}... Nous sommes {membercount} !\"\n:arrow_down:\n\"Au revoir {{author}}... Nous sommes {{memberCount}} !\".",
+    "FORM_3": "Ça marche ! Voulez-vous également envoyer une belle image d'au revoir ? Répondez par \"oui\" ou \"non\" !",
     "FORM_SUCCESS": "Goodbye messages enabled in {{channel}} ! Type `{{prefix}}goodbye test` to test the goodbye message!",
     "MAX_CHARACT": "Your message must not exceed 1800 characters!",
     "DISABLED": "Goodbye messages have just been disabled! Type `{{prefix}}configuration` to see the new configuration!"
