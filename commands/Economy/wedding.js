@@ -15,7 +15,7 @@ class Wedding extends Command {
             dirname: __dirname,
             enabled: true,
             guildOnly: true,
-            aliases: [ "mariage" ],
+            aliases: [ "mariage", "marry" ],
             memberPermissions: [],
             botPermissions: [ "SEND_MESSAGES", "EMBED_LINKS" ],
             nsfw: false,
