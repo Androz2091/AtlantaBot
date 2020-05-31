@@ -4,9 +4,9 @@
     "EXAMPLES": "{{prefix}}number",
     "GAME_START": "Number chosen, you can start!",
     "BIG": "{{user}} | The number is **bigger** than `{{number}}`!",
-    "SMALL": "{{user}} | The number is **smaller** than `{{number}}`!",
-    "WON": "{{winner}} has won 10 credits!",
-    "DEFEAT": "No one could find the number! It was **{{number}}** !",
+    "SMALL": "{{user}} | Le nombre est plus **smaller** que `{{number}}`!",
+    "WON": "{{winner}} a gagné 10 crédits !",
+    "DEFEAT": "Personne n'a trouvé le nombre ! C'étais **{{number}}** !",
     "GAME_STATS": ":tada: | {{winner}} found the number! It was __**{{number}}**__ !\n\n**States of the game: **\n__**Time**__: {{time}}\n__**Number of participants**__ : {{participantCount}}\n__**Participants**__ : \n{{participants}}",
-    "GAME_RUNNING": "A game is already running on this server!"
+    "GAME_RUNNING": "Une partie est déjà en cours sur ce serveur !"
 }
