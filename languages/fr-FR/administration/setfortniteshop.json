@@ -2,6 +2,6 @@
     "DESCRIPTION": "Définissez le salon de la boutique quotidienne de Fortnite !",
     "USAGE": "{{prefix}}setfortniteshop (#salon)",
     "EXAMPLES": "{{prefix}}setfortniteshop #shop\n{{prefix}}setfortniteshop",
-    "DISABLED": "Le magasin quotidien de Fortnite est désactivé !",
-    "ENABLED": "Le magasin quotidien de Fortnite est activé dans le salon {{channel}}!"
+    "DISABLED": "La boutique Fortnite est désactivée !",
+    "ENABLED": "La boutique quotidienne Fortnite est activée dans le salon {{channel}} !"
 }
