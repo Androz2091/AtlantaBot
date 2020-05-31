@@ -1,5 +1,5 @@
 {
-    "DESCRIPTION": "Remove a custom command from the server!",
+    "DESCRIPTION": "Supprime une commande personnalisée du serveur !",
     "USAGE": "{{prefix}}delcommand [name-of-the-command]",
     "EXAMPLES": "{{prefix}}delcommand hey",
     "MISSING_NAME": "Please enter the name of the command you wish to delete!",
