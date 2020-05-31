@@ -1,11 +1,11 @@
 {
-    "DESCRIPTION": "Configurer votre date d'anniversaire ! (celle ci va apparaître sur votre profile)",
+    "DESCRIPTION": "Configurez votre date d'anniversaire ! (celle ci apparaîtra sur votre profil)",
     "USAGE": "{{prefix}}birthdate (date)",
     "EXAMPLES": "{{prefix}}birthdate 01/12/2000",
     "MISSING_DATE": "Veuillez entrer une date valide ! Par exemple, 01/12/2000",
-    "INVALID_DATE": "Vous avez entré une date invalide. Ps: le format de la date dois être : Jours/Mois/Années.\nPar exemple, 01/12/2000 pour le 1 décembre, 2000.",
-    "INVALID_DATE_FORMAT": "Vous avez entré une date invalide. Ps: le format de la date dois être : Jours/Mois/Années.\nPar exemple, 01/12/2000 pour le 1 décembre, 2000.",
+    "INVALID_DATE": "Vous avez entré une date invalide. Rappel: le format de la date doit être : Jour/Mois/Année.\nPar exemple, 01/12/2000 pour le 1 décembre 2000.",
+    "INVALID_DATE_FORMAT": "Vous avez entré une date invalide. Rappel: le format de la date doit être : Jour/Mois/Année.\nPar exemple, 01/12/2000 pour le 1 décembre 2000.",
     "DATE_TOO_HIGH": "Plus de 80 ans ? :eyes:",
-    "DATE_TOO_LOW": "A cette date il est impossible que vous soyez née !",
-    "SUCCESS": "Votre anniversaire à été configuré à cette date : {{date}} !"
+    "DATE_TOO_LOW": "Il est pour l'instant impossible de ne pas être né !",
+    "SUCCESS": "Votre anniversaire a été définie à cette date : {{date}} !"
 }
