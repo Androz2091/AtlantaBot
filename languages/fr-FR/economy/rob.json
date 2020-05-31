@@ -1,9 +1,9 @@
 {
-    "DESCRIPTION": "Try to rob a member!",
+    "DESCRIPTION": "Essayer de voler un membre !",
     "USAGE": "{{prefix}}rob [@membre] [amount]",
     "EXAMPLES": "{{prefix}rob @Androz#2091 100",
-    "YOURSELF": "You can't rob yourself!",
-    "MISSING_AMOUNT": "Please enter a valid amount to be robbed to **{{username}}**!",
+    "YOURSELF": "Vous ne pouvez pas vous voler vous mêmes !",
+    "MISSING_AMOUNT": "Veuillez indiquer un monetnt valide à voler à **{{username}}** !",
     "NOT_ENOUGH_AUTHOR": "You must have more than **{{moneyMin}}** credits to attempt this robbery (you actually have **{{moneyCurrent}}** credits)!",
     "NOT_ENOUGH_MEMBER": "You can't try to rob **{{money}}** credits to **{{username}}** because they don't have as many credits in cash!",
     "COOLDOWN": "🕵️ **{{username}}** is on guard.... Wait a while and try again!",
