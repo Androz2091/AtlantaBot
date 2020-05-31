@@ -34,9 +34,9 @@
     "INVITE": "Invitation",
     "SUPPORT": "Support",
     "LINKS": "Liens",
-    "CREDITS": "Credits",
-    "LEVEL": "Level",
+    "CREDITS": "Crédits",
+    "LEVEL": "Niveau",
     "POINTS": "Points",
-    "VICTORY": "Victory",
-    "DEFEAT": "Defeat"
+    "VICTORY": "Victoire",
+    "DEFEAT": "Défaite"
 }
