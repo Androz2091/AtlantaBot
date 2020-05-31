@@ -39,5 +39,7 @@
     "POINTS": "Points",
     "VICTORY": "Victory",
     "DEFEAT": "Defeat",
-    "MODERATOR": "Moderator"
+    "MODERATOR": "Moderator",
+    "DURATION": "Duration",
+    "EXPIRY": "Expiry"
 }
