@@ -1,6 +1,6 @@
 {
-    "DESCRIPTION": "Set the daily Fortnite shop channel!",
-    "USAGE": "{{prefix}}setfortniteshop (#channel)",
+    "DESCRIPTION": "Définissez le salon de la boutique quotidienne de Fortnite !",
+    "USAGE": "{{prefix}}setfortniteshop (#salon)",
     "EXAMPLES": "{{prefix}}setfortniteshop #shop\n{{prefix}}setfortniteshop",
     "DISABLED": "Daily Fortnite shop disabled!",
     "ENABLED": "Daily Fortnite shop enabled in {{channel}}!"
