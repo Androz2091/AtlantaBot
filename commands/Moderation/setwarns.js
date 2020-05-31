@@ -6,9 +6,6 @@ class Setwarns extends Command {
     constructor (client) {
         super(client, {
             name: "setwarns",
-            description: (language) => language.get("SETWARNS_DESCRIPTION"),
-            usage: (language) => language.get("SETWARNS_USAGE"),
-            examples: (language) => language.get("SETWARNS_EXAMPLES"),
             dirname: __dirname,
             enabled: true,
             guildOnly: true,
@@ -25,7 +22,7 @@ class Setwarns extends Command {
         
         let sanction = args[0];
         if(!sanction || (sanction !== "kick" && sanction !== "ban")){
-            return message.channel.send(message.language.get("SETWARNS_ERR_SANCTION"));
+            return message.error("moderation/setwarns:MISSING_TYPE");
         }
 
         let number = args[1];
@@ -35,35 +32,47 @@ class Setwarns extends Command {
                 data.guild.plugins.warnsSanctions.kick = false;
                 data.guild.markModified("plugins.warnsSanctions");
                 data.guild.save();
-                return message.channel.send(message.language.get("SETWARNS_SUCCESS_RESET_KICK", data.guild.prefix, number));
+                return message.success("moderation/setwarns:SUCCESS_KICK_RESET", {
+                    prefix: data.guild.prefix,
+                    count: number
+                });
             }
             if(sanction === "ban"){
                 data.guild.plugins.warnsSanctions.ban = false;
                 data.guild.markModified("plugins.warnsSanctions");
                 data.guild.save();
-                return message.channel.send(message.language.get("SETWARNS_SUCCESS_RESET_BAN", data.guild.prefix, number));
+                return message.success("moderation/setwarns:SUCCESS_BAN_RESET", {
+                    prefix: data.guild.prefix,
+                    count: number
+                });
             }
         }
 
         if(!number || isNaN(number)){
-            return message.channel.send(message.language.get("ERR_INVALID_NUMBER"));
+            return message.error("misc:INVALID_NUMBER");
         }
         if(number < 1 || number > 10){
-            return message.channel.send(message.language.get("ERR_INVALID_NUMBER_MM", 1, 10));
+            return message.error("misc:INVALID_NUMBER_RANGE", 1, 10);
         }
 
         if(sanction === "kick"){
             data.guild.plugins.warnsSanctions.kick = number;
             data.guild.markModified("plugins.warnsSanctions");
             data.guild.save();
-            return message.channel.send(message.language.get("SETWARNS_SUCCESS_KICK", data.guild.prefix, number));
+            return message.success("moderation/setwarns:SUCCESS_KICK", {
+                prefix: data.guild.prefix,
+                count: number
+            });
         }
 
         if(sanction === "ban"){
             data.guild.plugins.warnsSanctions.ban = number;
             data.guild.markModified("plugins.warnsSanctions");
             data.guild.save();
-            return message.channel.send(message.language.get("SETWARNS_SUCCESS_BAN", data.guild.prefix, number));
+            return message.success("moderation/setwarns:SUCCESS_BAN", {
+                prefix: data.guild.prefix,
+                count: number
+            });
         }
 
     }
