@@ -9,8 +9,8 @@
     "PLAYERS": "{{count}} joueur(s)",
     "FIELD_NAME": "Informations à propos de {{ip}}",
     "FIELD_VERSION": "Version",
-    "FIELD_CONNECTED": "Currently connected",
+    "FIELD_CONNECTED": "Actuellement connecté",
     "FIELD_MAX": "Maximum",
     "FIELD_STATUS": "Status",
-    "FIELD_IP": "Full IP"
+    "FIELD_IP": "IP complète"
 }
