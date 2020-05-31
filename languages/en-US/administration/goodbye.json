@@ -1,5 +1,5 @@
 {
-    "DESCRIPTION": "Enable or disable the auto deletion of moderation commands!",
+    "DESCRIPTION": "Enable or disable the goodbye messages!",
     "USAGE": "{{prefix}}goodbye",
     "EXAMPLES": "{{prefix}}goodbye",
     "DEFAULT_MESSAGE": "Goodbye {user}! We're now {membercount} without you... :'(",
