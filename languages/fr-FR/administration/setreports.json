@@ -1,7 +1,7 @@
 {
-    "DESCRIPTION": "Set the reports channel!",
+    "DESCRIPTION": "Configurer le salon de signalement !",
     "USAGE": "{{prefix}}setreports (#channel)",
     "EXAMPLES": "{{prefix}}setreports #reports\n{{prefix}}setreports",
-    "SUCCESS_ENABLED": "Reports will be sent in **{{channel}}**!",
-    "SUCCESS_DISABLED": "Reports channel deleted!"
+    "SUCCESS_ENABLED": "Les signalement vont êtres envoyé dans **{{channel}}** !",
+    "SUCCESS_DISABLED": "Salon de signalement supprimé !"
 }
