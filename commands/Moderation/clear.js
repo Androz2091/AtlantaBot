@@ -6,9 +6,6 @@ class Clear extends Command {
     constructor (client) {
         super(client, {
             name: "clear",
-            description: (language) => language.get("CLEAR_DESCRIPTION"),
-            usage: (language) => language.get("CLEAR_USAGE"),
-            examples: (language) => language.get("CLEAR_EXAMPLES"),
             dirname: __dirname,
             enabled: true,
             guildOnly: true,
@@ -24,25 +21,24 @@ class Clear extends Command {
     async run (message, args, data) {
 
         if(args[0] === "all"){
-            message.channel.send(message.language.get("CLEAR_CLONE"));
+            message.sendT("moderation/clear:ALL_CONFIRM");
             await message.channel.awaitMessages((m) => (m.author.id === message.author.id) && (m.content === "-confirm"), {
                 max: 1,
                 time: 20000,
                 errors: ["time"]
             }).catch((err) => {
-                // if the author of the commands does not confirm the backup loading
-                return message.channel.send(message.language.get("CLEAR_ERR_TIMEOUT"));
+                return message.error("misc:TIMES_UP");
             });
             let position = message.channel.position;
             let newChannel = await message.channel.clone();
             await message.channel.delete();
             newChannel.setPosition(position);
-            return newChannel.send(message.language.get("CLEAR_DELETED"));
+            return newChannel.send(message.translate("moderation/clear:CHANNEL_CLEARED"));
         }
 
         let amount = args[0];
         if(!amount || isNaN(amount) || parseInt(amount) < 1){
-            return message.channel.send(message.language.get("CLEAR_ERR_AMOUNT"));
+            return message.error("moderation/clear:MISSING_AMOUNT");
         }
 
         await message.delete();
@@ -65,9 +61,14 @@ class Clear extends Command {
         let toDelete = null;
 
         if(user){
-            toDelete = await message.channel.send(message.language.get("CLEAR_SUCCESS_USER", --amount, user));
+            toDelete = await message.success("moderation/clear:CLEARED_MEMBER", {
+                amount: --amount,
+                username: user.tag
+            });
         } else {
-            toDelete = await message.channel.send(message.language.get("CLEAR_SUCCESS", --amount));
+            toDelete = await message.success("moderation/clear:CLEARED", {
+                amount: --amount
+            });
         }
 
         setTimeout(function(){

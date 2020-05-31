@@ -6,9 +6,6 @@ class Clearsanctions extends Command {
     constructor (client) {
         super(client, {
             name: "clear-sanctions",
-            description: (language) => language.get("CLEARSANCTIONS_DESCRIPTION"),
-            usage: (language) => language.get("CLEARSANCTIONS_USAGE"),
-            examples: (language) => language.get("CLEARSANCTIONS_EXAMPLES"),
             dirname: __dirname,
             enabled: true,
             guildOnly: true,
@@ -25,15 +22,14 @@ class Clearsanctions extends Command {
         
         let member = await this.client.resolveMember(args[0], message.guild);
         if(!member){
-            return message.channel.send(message.language.get("ERR_INVALID_MEMBER"));
-        }
-        if(member.user.bot){
-            return message.channel.send(message.language.get("ERR_BOT_USER"));
+            return message.error("moderation/clear-sanctions:MISSING_MEMBER");
         }
         let memberData = await this.client.findOrCreateMember({ id: member.id, guildID: message.guild.id });
         memberData.sanctions = [];
         memberData.save();
-        message.channel.send(message.language.get("CLEARSANCTIONS_SUCCESS"));
+        message.success("moderation/clear-sanctions:SUCCESS", {
+            username: member.user.tag
+        });
     }
 
 }

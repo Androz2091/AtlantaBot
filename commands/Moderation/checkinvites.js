@@ -6,9 +6,6 @@ class Checkinvites extends Command {
     constructor (client) {
         super(client, {
             name: "checkinvites",
-            description: (language) => language.get("CHECKINVITES_DESCRIPTION"),
-            usage: (language) => language.get("CHECKINVITES_USAGE"),
-            examples: (language) => language.get("CHECKINVITES_EXAMPLES"),
             dirname: __dirname,
             enabled: true,
             guildOnly: true,
@@ -29,7 +26,7 @@ class Checkinvites extends Command {
 
         let text = (withInvite.length > 0 ?
             withInvite.map((m) => "`"+m.id+"` ("+m.displayName+") ["+m.user.presence.game.name+"]").join("\n")
-        :   message.language.get("CHECKINVITES_NOT_FOUND"));
+        :   message.translate("moderation/checkinvites:NOBODY"));
 
         let embed = new Discord.MessageEmbed()
             .setDescription(text)
