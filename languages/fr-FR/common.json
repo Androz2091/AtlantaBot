@@ -33,5 +33,10 @@
     "WEBSITE": "Site web",
     "INVITE": "Invitation",
     "SUPPORT": "Support",
-    "LINKS": "Liens"
+    "LINKS": "Liens",
+    "CREDITS": "Credits",
+    "LEVEL": "Level",
+    "POINTS": "Points",
+    "VICTORY": "Victory",
+    "DEFEAT": "Defeat"
 }
