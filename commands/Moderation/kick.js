@@ -6,9 +6,6 @@ class Kick extends Command {
     constructor (client) {
         super(client, {
             name: "kick",
-            description: (language) => language.get("KICK_DESCRIPTION"),
-            usage: (language) => language.get("KICK_USAGE"),
-            examples: (language) => language.get("KICK_EXAMPLES"),
             dirname: __dirname,
             enabled: true,
             guildOnly: true,
@@ -25,11 +22,11 @@ class Kick extends Command {
 
         let member = await this.client.resolveMember(args[0], message.guild);
         if(!member){
-            return message.channel.send(message.language.get("ERR_INVALID_MEMBER"));
+            return message.error("moderation/kick:MISSING_MEMBER");
         }
 
         if(member.id === message.author.id){
-            return message.channel.send(message.language.get("ERR_SANCTION_YOURSELF"));
+            return message.error("moderation/ban:YOURSELF");
         }
         
         let memberData = await this.client.findOrCreateMember({ id: member.id, guildID: message.guild.id });
@@ -37,20 +34,35 @@ class Kick extends Command {
         // Gets the kcik reason
         let reason = args.slice(1).join(" ");
         if(!reason){
-            reason = message.language.get("UTILS").NO_REASON_PROVIDED;
+            reason = message.translate("misc:NO_REASON_PROVIDED");
         }
         
-        if(!member.kickable){
-            return message.channel.send(message.language.get("KICK_ERR_PERMISSIONS"));
+        const memberPosition = member.roles.highest.position;
+        const moderationPosition = message.member.roles.highest.position;
+        if(!(moderationPosition > memberPosition)){
+            return message.error("moderation/ban:SUPERIOR");
+        }
+        if(!member.kickable) {
+            return message.error("moderation/kick:MISSING_PERM");
         }
 
-        await member.send(message.language.get("KICK_SUCCESS_DM", member.user, message, reason)).catch((err) => {});
+        await member.send(message.translate("moderation/kick:KICKED_DM", {
+            username: member.user.tag,
+            server: message.guild.name,
+            moderator: message.author.tag,
+            reason
+        })).catch((err) => {});
 
         // Kick the user
         member.kick(reason).then(() => {
 
             // Send a success message in the current channel
-            message.channel.send(message.language.get("KICK_SUCCESS_CHANNEL", member.user, message, reason));
+            message.sendT("moderation/kick:KICKED", {
+                username: member.user.tag,
+                server: message.guild.name,
+                moderator: message.author.tag,
+                reason
+            });
 
             data.guild.casesCount++;
             data.guild.save();
@@ -70,18 +82,19 @@ class Kick extends Command {
             if(data.guild.plugins.modlogs){
                 let channel = message.guild.channels.get(data.guild.plugins.modlogs);
                 if(!channel) return;
-                let headings = message.language.get("MODLOGS_HEADINGS");
                 let embed = new Discord.MessageEmbed()
-                    .setAuthor(message.language.get("KICK_TITLE_LOGS", data.guild.casesCount))
-                    .addField(headings.USER, `\`${member.user.tag}\` (${member.user.toString()})`, true)
-                    .addField(headings.MODERATOR, `\`${message.author.tag}\` (${message.author.toString()})`, true)
-                    .addField(headings.REASON, reason, true)
+                    .setAuthor(message.translate("moderation/kick:CASE", {
+                        count: data.guild.casesCount
+                    }))
+                    .addField(message.translate("common:USER"), `\`${member.user.tag}\` (${member.user.toString()})`, true)
+                    .addField(message.translate("common:MODERATOR"), `\`${message.author.tag}\` (${message.author.toString()})`, true)
+                    .addField(message.translate("common:REASON"), reason, true)
                     .setColor("#e88709");
                 channel.send(embed);
             }
 
         }).catch((err) => {
-            return message.channel.send(message.language.get("KICK_ERR_PERMISSIONS"));
+            return message.error("moderation/kick:MISSING_PERM");
         });
 
     }

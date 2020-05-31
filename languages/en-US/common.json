@@ -38,5 +38,6 @@
     "LEVEL": "Level",
     "POINTS": "Points",
     "VICTORY": "Victory",
-    "DEFEAT": "Defeat"
+    "DEFEAT": "Defeat",
+    "MODERATOR": "Moderator"
 }
