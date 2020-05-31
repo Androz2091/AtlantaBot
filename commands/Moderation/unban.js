@@ -6,9 +6,6 @@ class Unban extends Command {
     constructor (client) {
         super(client, {
             name: "unban",
-            description: (language) => language.get("UNBAN_DESCRIPTION"),
-            usage: (language) => language.get("UNBAN_USAGE"),
-            examples: (language) => language.get("UNBAN_EXAMPLES"),
             dirname: __dirname,
             enabled: true,
             guildOnly: true,
@@ -26,7 +23,7 @@ class Unban extends Command {
         let user = null;
 
         if(!args[0]){
-            return message.channel.send(message.language.get("ERR_INVALID_ID"));
+            return message.error("moderation/unban:MISSING_ID");
         }
 
         // Check if the arg is an ID or a username
@@ -39,32 +36,42 @@ class Unban extends Command {
                 user = u;
             }).catch((err) => {
                 // if no user found, send an error message
-                return message.channel.send(message.language.get("UNBAN_ERR_ID", args[0]));
+                return message.error("misc:NO_USER_FOUND_ID", {
+                    id: args[0]
+                });
             });
         } else if(!isId) {
             let arr = args[0].split("#");
             if(arr.length < 2){
-                return message.channel.send(message.language.get("UNBAN_ERR_ID", args[0]));
+                return message.error("misc:NO_USER_FOUND_ID", {
+                    id: args[0]
+                });
             }
             user = message.client.users.filter((u) => u.username === arr[0]).find((u) => u.discriminator === arr[1]);
         }
 
         if(!user){
-            return message.channel.send(message.language.get("UNBAN_ERR_ID", args[0]));
+            return message.error("misc:NO_USER_FOUND_ID", {
+                id: args[0]
+            });
         }
 
         // check if the user is banned
         let banned = await message.guild.fetchBans();
         if(!banned.some((e) => e.user.id === user.id)){
-            return message.channel.send(message.language.get("UNBAN_ERR_NOT_BANNED", user));
+            return message.success("moderation/unban:NOT_BANNED", {
+                username: user.tag
+            });
         }
 
         // Unban user
         message.guild.members.unban(user).catch((err) => {});
 
         // Send a success message in the current channel
-        message.channel.send(message.language.get("UNBAN_SUCCESS", user, message));
-
+        message.success("moderation/unban:UNBANNED", {
+            username: user.tag,
+            server: message.guild.name
+        });
 
     }
 
