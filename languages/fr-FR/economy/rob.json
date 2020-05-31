@@ -10,5 +10,5 @@
     "ROB_WON_1": "🎉 | Félicitations ! La police n'a pas été assez rapide pour vous empêcher de voler **{{money}}** crédits à **{{username}}** !",
     "ROB_WON_2": "😕 | **{{username}}** ? Mauvaise nouvelle. Vous venez de vous faire voler **{{money}}** crédits !",
     "ROB_LOSE_1": "🚔 | La police vous a attrapé la main dans le sac, impossible de nier, votre amande est de **{{fine}}** crédits. Une compensation de **{{offset}}** crédits va être envoyé à **{{username}}**.",
-    "ROB_LOSE_2": "🚓 | Bad news.... **{{username}}** called the police in time. Your fine is **{{fine}}** credits and **{{offset}}** offset credits will be paid to **{{username}}**."
+    "ROB_LOSE_2": "🚓 | Mauvaise nouvelle.... **{{username}}** à appelé la police à temps. Votre amande est de **{{fine}}** crédits et une compensations de **{{offset}}** crédits vas être envoyé à **{{username}}**."
 }
