@@ -6,5 +6,7 @@
     "INVALID_YES_NO": "Vous devez envoyer \"oui\" ou \"non\" !",
     "INVALID_CHANNEL": "Veuillez spécifier un salon valide !",
     "INVALID_TIME": "Vous devez entrer une heure valide ! Unités valides : `s`, `m`, `h` ou `d`",
-    "STATS_FOOTER": "[Dashboard]({{dashboardLink}}) ● [Don]({{donateLink}}) ● [Invitation]({{inviteLink}}) ● [Serveur]({{supportLink}}) ● [Github]({{githubLink}})"
+    "INVALID_NUMBER_RANGE": "Please specify a valid number between **{{min}}** and **{{max}}**!",
+    "STATS_FOOTER": "[Dashboard]({{dashboardLink}}) ● [Don]({{donateLink}}) ● [Invitation]({{inviteLink}}) ● [Serveur]({{supportLink}}) ● [Github]({{githubLink}})",
+    "BOT_USER": "This user is a bot!"
 }
