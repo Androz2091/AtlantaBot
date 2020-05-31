@@ -1,7 +1,7 @@
 {
     "DESCRIPTION": "Configurez le salon des signalements !",
     "USAGE": "{{prefix}}setreports (#salon)",
-    "EXAMPLES": "{{prefix}}setreports #reports\n{{prefix}}setreports",
-    "SUCCESS_ENABLED": "Les signalement vont êtres envoyé dans **{{channel}}** !",
-    "SUCCESS_DISABLED": "Salon de signalement supprimé !"
+    "EXAMPLES": "{{prefix}}setreports #signalements\n{{prefix}}setreports",
+    "SUCCESS_ENABLED": "Les signalement seront envoyés dans **{{channel}}** !",
+    "SUCCESS_DISABLED": "Salon des signalements supprimé !"
 }
