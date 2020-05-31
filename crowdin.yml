@@ -11,3 +11,7 @@ files:
     translation: /languages/%locale%/images/%original_file_name%
   - source: /languages/en-US/*.json
     translation: /languages/%locale%/%original_file_name%
+  - source: /languages/en-US/economy/*.json
+    translation: /languages/%locale%/economy/%original_file_name%
+  - source: /languages/en-US/moderation/*.json
+    translation: /languages/%locale%/moderation/%original_file_name%
