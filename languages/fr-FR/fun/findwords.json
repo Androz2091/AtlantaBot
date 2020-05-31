@@ -6,7 +6,7 @@
     "GAME_STARTING": ":timer: | La partie commence dans 10 secondes !",
     "FIND_WORD": "20 secondes pour trouver un mot contenant \"**{{word}}**\"!",
     "WORD_FOUND": "Bravo {{winner}}! Votre mot est valide et vous avez été le plus rapide !",
-    "GAME_STATS": ":tada: | {{winner}} Gagne le match !\n**Résumé de la partie: **\n__**Durée**__: {{duration}}\n__**Nombre de participents**__ : {{participantCount}}\n__**Participents**__ : \n{{participantList}}",
+    "GAME_STATS": ":tada: | {{winner}} Gagne le match !\n**Résumé de la partie: **\n__**Durée**__: {{duration}}\n__**Nombre de participants**__ : {{participantCount}}\n__**participants**__ : \n{{participantList}}",
     "CREDITS": "{{winner}} gagne 15 crédits ! :tada:",
     "NO_WINNER_ALL": "Je ne peux pas définir de gagnant parce que aucun mot n'a été trouvé !",
     "NO_WINNER": "Personne n'a été capable de trouver un mot !"
