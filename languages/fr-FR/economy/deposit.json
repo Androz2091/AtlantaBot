@@ -1,9 +1,9 @@
 {
-    "DESCRIPTION": "Deposit your money in the bank",
+    "DESCRIPTION": "Déposer votre argent en banque",
     "USAGE": "{{prefix}}deposit [amount]",
     "EXAMPLES": "{{prefix}}deposit 400",
-    "MISSING_AMOUNT": "Please specify an amount to be deposited in the bank!",
-    "NO_CREDIT": "You have no credit to deposit in the bank!",
-    "NO_ENOUGH_CREDIT": "You don't have `{{money}}` credits!",
-    "SUCCESS": "**{{money}}** credits deposited in the bank!"
+    "MISSING_AMOUNT": "Veuillez indiquer un montent à déposer en banque !",
+    "NO_CREDIT": "Vous n'avez pas de crédits à déposer en banque !",
+    "NO_ENOUGH_CREDIT": "Tu n'as pas `{{money}}` crédits !",
+    "SUCCESS": "**{{money}}** crédits déposé en banque !"
 }
