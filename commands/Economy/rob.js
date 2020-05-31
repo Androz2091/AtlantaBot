@@ -6,9 +6,6 @@ class Rob extends Command {
     constructor (client) {
         super(client, {
             name: "rob",
-            description: (language) => language.get("ROB_DESCRIPTION"),
-            usage: (language) => language.get("ROB_USAGE"),
-            examples: (language) => language.get("ROB_EXAMPLES"),
             dirname: __dirname,
             enabled: true,
             guildOnly: true,
@@ -25,34 +22,42 @@ class Rob extends Command {
 
         let member = await this.client.resolveMember(args[0], message.guild);
         if(!member){
-            return message.channel.send(message.language.get("ERR_INVALID_MEMBER"));
+            return message.error("economy/rob:MISSING_MEMBER");
         }
 
         if(member.id === message.author.id){
-            return message.channel.send(message.language.get("ROB_ERR_YOURSELF"));
+            return message.error("economy/rob:YOURSELF");
         }
 
         let memberData = await this.client.findOrCreateMember({ id: member.id, guildID: message.guild.id });
         let isInCooldown = memberData.cooldowns.rob || 0;
         if(isInCooldown){
             if(isInCooldown > Date.now()){
-                return message.channel.send(message.language.get("ROB_ERR_CLDWN", member));
+                return message.error("economy/rob:COOLDOWN", {
+                    username: member.user.tag
+                });
             }
         }
 
         let amountToRob = args[1];
         if(!amountToRob || isNaN(amountToRob) || parseInt(amountToRob, 10) <= 0){
-            return message.channel.send(message.language.get("ROB_ERR_AMOUNT", member));
+            return message.error("economy/rob:MISSING_AMOUNT");
         }
         amountToRob = Math.floor(parseInt(amountToRob, 10));
 
         if(amountToRob > memberData.money){
-            return message.channel.send(message.language.get("ROB_ERR_AMOUNT_MEMBER", member, amountToRob));
+            return message.error("economy/rob:NOT_ENOUGH_MEMBER", {
+                username: member.user.username,
+                money: amountToRob
+            });
         }
 
         let potentiallyLose = Math.floor(amountToRob*1.5);
         if(potentiallyLose > data.memberData.money){
-            return message.channel.send(message.language.get("ROB_ERR_NO_MONEY", potentiallyLose));
+            return message.error("economy/rob:NOT_ENOUGH_AUTHOR", {
+                moneyMin: potentiallyLose,
+                moneyCurrent: data.memberData.money
+            });
         }
 
         let itsAWon = Math.floor(this.client.functions.randomNum(0, 100) < 25);
@@ -62,16 +67,23 @@ class Rob extends Command {
             memberData.cooldowns.rob = toWait;
             memberData.markModified("cooldowns");
             await memberData.save();
-            let messages = message.language.get("ROB_WON", amountToRob, member);
-            message.channel.send(messages[Math.floor(this.client.functions.randomNum(0, messages.length))]);
+            const randomNum = Math.floor(this.client.functions.randomNum(0, 2));
+            message.sendT("economy/rob:ROB_WON_"+randomNum, {
+                money: amountToRob,
+                username: member.user.username
+            });
             data.memberData.money += amountToRob;
             memberData.money -= amountToRob, 10;
             memberData.save();
             data.memberData.save();
         } else {
             let won = Math.floor(0.9*amountToRob);
-            let messages = message.language.get("ROB_LOSE", potentiallyLose, member, won)
-            message.channel.send(messages[Math.floor(this.client.functions.randomNum(0, messages.length))]);
+            const randomNum = Math.floor(this.client.functions.randomNum(0, 2));
+            message.sendT("economy/rob:ROB_LOSE_"+randomNum, {
+                fine: potentiallyLose,
+                offset: won,
+                username: member.user.username
+            });
             data.memberData.money -= potentiallyLose;
             memberData.money += won;
             memberData.save();
