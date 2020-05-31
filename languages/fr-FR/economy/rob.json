@@ -4,11 +4,11 @@
     "EXAMPLES": "{{prefix}rob @Androz#2091 100",
     "YOURSELF": "Vous ne pouvez pas vous voler vous mêmes !",
     "MISSING_AMOUNT": "Veuillez indiquer un monetnt valide à voler à **{{username}}** !",
-    "NOT_ENOUGH_AUTHOR": "You must have more than **{{moneyMin}}** credits to attempt this robbery (you actually have **{{moneyCurrent}}** credits)!",
-    "NOT_ENOUGH_MEMBER": "You can't try to rob **{{money}}** credits to **{{username}}** because they don't have as many credits in cash!",
-    "COOLDOWN": "🕵️ **{{username}}** is on guard.... Wait a while and try again!",
-    "ROB_WON_1": "🎉 | Congratulations! The police weren't fast enough to stop you from robbing **{{money}}** credits to **{{username}}**!",
-    "ROB_WON_2": "😕 | **{{username}}** ? Bad news. You just got robbed **{{money}}** credits!",
-    "ROB_LOSE_1": "🚔 | The police caught you in the act, impossible to deny, your fine is **{{fine}}** credits. **{{offset}}** offset credits will be paid to **{{username}}**.",
+    "NOT_ENOUGH_AUTHOR": "Vous devez avoir plus de **{{moneyMin}}** crédits pour faire ce vol (Vous avez actuellement **{{moneyCurrent}}** crédits) !",
+    "NOT_ENOUGH_MEMBER": "Vous ne pouvez pas essayer de voler **{{money}}** crédits à **{{username}}** car il n'a pas autant de crédits sur lui !",
+    "COOLDOWN": "🕵️ **{{username}}** est sur ses gardes.... Attendez un peu réessayer !",
+    "ROB_WON_1": "🎉 | Félicitations ! La police n'a pas été assez rapide pour vous empêcher de voler **{{money}}** crédits à **{{username}}** !",
+    "ROB_WON_2": "😕 | **{{username}}** ? Mauvaise nouvelle. Vous venez de vous faire voler **{{money}}** crédits !",
+    "ROB_LOSE_1": "🚔 | La police vous a attrapé la main dans le sac, impossible de nier, votre amande est de **{{fine}}** crédits. Une compensation de **{{offset}}** crédits va être envoyé à **{{username}}**.",
     "ROB_LOSE_2": "🚓 | Bad news.... **{{username}}** called the police in time. Your fine is **{{fine}}** credits and **{{offset}}** offset credits will be paid to **{{username}}**."
 }
