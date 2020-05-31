@@ -1,0 +1,8 @@
+{
+    "DESCRIPTION": "Prevents the member from sending messages and connecting by voice for a period of time!",
+    "USAGE": "{{prefix}}mute [@member] [time]",
+    "EXAMPLES": "{{prefix}}mute @Androz#2091 Spam",
+    "MUTED_DM": "Hello {{username}},\nYou have just been muted in **{{server}}** by **{{moderator}}** for **{{time}}** for **{{reason}}**!",
+    "MUTED": "**{{username}}** is now muted for **{{time}}** for **{{reason}}** !",
+    "CASE": "Mute | Case #{{count}}"
+}
