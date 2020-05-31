@@ -9,5 +9,5 @@
     "FORM_3": "Ça marche ! Voulez-vous également envoyer une belle image d'au revoir ? Répondez par \"oui\" ou \"non\" !",
     "FORM_SUCCESS": "Message d'au revoir activés dans {{channel}} ! Tapez `{{prefix}}goodbye test` pour tester le message d'au revoir!",
     "MAX_CHARACT": "Votre message ne doit pas dépasser les 1800 caractères !",
-    "DISABLED": "Les message d'au revoir viennent d'être désactivé ! Tapez `{{prefix}}configuration` pour voir la nouvelle configuration !"
+    "DISABLED": "Les message d'au revoir viennent d'être désactivés ! Tapez `{{prefix}}configuration` pour voir la nouvelle configuration !"
 }
