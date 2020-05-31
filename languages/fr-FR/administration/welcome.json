@@ -1,13 +1,13 @@
 {
-    "DESCRIPTION": "Activé/Désactivé le message de bienvenue dans le serveur !",
+    "DESCRIPTION": "Activez/Désactivez le message de bienvenue dans le serveur !",
     "USAGE": "{{prefix}}welcome",
     "EXAMPLES": "{{prefix}}welcome",
-    "MISSING_STATUS": "Veuillez spécifier un statut valide ! (`on` ou `off`)",
-    "DEFAULT_MESSAGE": "Bienvenue {user} dans {server}! Nous sommes maintenant {membercount}. Ton compte a été créé le {createdat}.",
+    "MISSING_STATUS": "Veuillez préciser un statut valide ! (`on` ou `off`)",
+    "DEFAULT_MESSAGE": "Bienvenue {user} dans {server} ! Nous sommes maintenant {membercount}. Ton compte a été créé le {createdat}.",
     "TEST_SUCCESS": "Test exécuté !",
-    "FORM_1": "Bonjour {{author}} ! Dans quel salons le message de bienvenue va être envoyé ? (Mentionner le salon souhaité)",
-    "FORM_2": "D’accord ! Le message va être envoyé dans le salon {{channel}}. Entrer le message de bienvenue souhaité en dessus: \n\n:information_source: __**Informations:**__\nMention: {user}\nMembres: {membercount}\nServeur: {server}\n\n__¨Par exemple:__\n\n\"Bienvenue {user} sur {server}, nous sommes {membercount}!\"\n:arrow_down:\n\"Bienvenue {{author}} sur {{guildName}}, nous sommes {{memberCount}}!\".",
+    "FORM_1": "Bonjour {{author}} ! Dans quel salon le message de bienvenue devra être envoyé ? (mentionnez le salon souhaité)",
+    "FORM_2": "Très bien ! Le message sera envoyé dans le salon {{channel}}. Entrez le message de bienvenue souhaité: \n\n:information_source: __**Informations:**__\nMention: {user}\nMembres: {membercount}\nServeur: {server}\n\n__Par exemple:__\n\n\"Bienvenue {user} sur {server}, nous sommes {membercount} !\"\n:arrow_down:\n\"Bienvenue {{author}} sur {{guildName}}, nous sommes {{memberCount}} !\".",
     "FORM_3": "D'accord ! Voulez-vous également envoyer une belle image de bienvenue ? Répondez par \"oui\" ou \"non\" !",
-    "FORM_SUCCESS": "Message de bienvenue activés dans {{channel}} ! Faite `{{prefix}}welcome test` pour tester le message de bienvenue !",
-    "DISABLED": "Message de bienvenue désactivé ! Faite `{{prefix}}configuration` pour voir la nouvelle configuration !"
+    "FORM_SUCCESS": "Message de bienvenue activés dans {{channel}} ! Tapez `{{prefix}}welcome test` pour tester le message de bienvenue !",
+    "DISABLED": "Messages de bienvenue désactivés ! Tapez `{{prefix}}configuration` pour voir la nouvelle configuration !"
 }
