@@ -1,10 +1,10 @@
 {
-    "DESCRIPTION": "Give a reputation point to someone!",
-    "USAGE": "{{prefix}}rep [user]",
+    "DESCRIPTION": "¡Dale un punto de reputación a alguien!",
+    "USAGE": "{{prefix}}rep [usuario]",
     "EXAMPLES": "{{prefix}}rep @Androz#2091",
-    "COOLDOWN": "You have to wait {{time}} before being able to rep someone!",
-    "INVALID_USER": "You must mention a valid user to whom to give a reputation point!",
-    "BOT_USER": "You can't give a reputation point to a bot!",
-    "YOURSELF": "You can't give yourself a reputation point!",
-    "SUCCESS": "You just gave a reputation point to {{username}}!"
+    "COOLDOWN": "¡Tienes que esperar {{time}} antes de poder puntuar a alguien!",
+    "INVALID_USER": "¡Debe mencionar a un usuario válido a quien otorgar un punto de reputación!",
+    "BOT_USER": "¡No puedes darle un punto de reputación a un bot!",
+    "YOURSELF": "¡No puedes darte un punto de reputación!",
+    "SUCCESS": "¡Acabas de dar un punto de reputación a {{username}}!"
 }
