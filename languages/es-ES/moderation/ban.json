@@ -6,7 +6,7 @@
     "YOURSELF": "¡No puedes sancionarte a ti mismo!",
     "SUPERIOR": "¡No puedes sancionar a un miembro con un rol superior (o igual) al tuyo!",
     "ALREADY_BANNED": "¡**{{username}}** ya está baneado!",
-    "MISSING_PERM": "Se ha producido un error... ¡Ccompruebe que tengo los permisos para banear este miembro y vuelva a intentarlo!",
+    "MISSING_PERM": "Se ha producido un error... ¡Compruebe que tengo los permisos para banear este miembro y vuelva a intentarlo!",
     "BANNED_DM": "Hola {{username}},\n¡Usted acaba de ser baneado de **{{server}}** por **{{moderator}}** a razón de **{{reason}}**!",
     "BANNED": "¡**{{username}}** acaba de ser baneado de **{{server}}** por **{{moderator}}** a razón de **{{reason}}**!",
     "CASE": "Ban | Caso #{{count}}"
