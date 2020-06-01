@@ -2,6 +2,6 @@
     "DESCRIPTION": "Establece el modo pausado en un canal",
     "USAGE": "{{prefix}}slowmode [#canal] (tiempo)",
     "EXAMPLES": "{{prefix}}slowmode #general 10m\n{{prefix}}slowmode #general",
-    "DISABLED": "Slowmode has been disabled in {{channel}}!",
-    "ENABLED": "Slowmode enabled in {{channel}} with a time of {{time}}!"
+    "DISABLED": "¡El modo pausado ha sido desactivado en {{channel}}!",
+    "ENABLED": "¡El modo pausado ha sido activado en {{channel}} con un tiempo de {{time}}!"
 }
