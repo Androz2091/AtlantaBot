@@ -1,12 +1,12 @@
 {
-    "DESCRIPTION": "Claim your salary!",
+    "DESCRIPTION": "¡Reclama tu salario!",
     "USAGE": "{{prefix}}work",
     "EXAMPLES": "{{prefix}}work",
-    "COOLDOWN": " You have to wait {{time}} before you can work again!",
-    "TITLE": "Credits of {{username}}",
-    "AWARD": "Complete the word AWARD to win 200 bonus credits!",
-    "SALARY": "Salary",
-    "SALARY_CONTENT": "{{won}} credits added to your account!",
-    "STREAK": "Streak",
-    "STREAK_CONTENT": "🎉 You have won 200 bonus credits!"
+    "COOLDOWN": " ¡Tienes que esperar {{time}} antes de poder volver a trabajar!",
+    "TITLE": "Créditos de {{username}}",
+    "AWARD": "¡Completa la palabra AWARD para ganar 200 créditos de bonificación!",
+    "SALARY": "Salario",
+    "SALARY_CONTENT": "¡Se agregaron {{won}} créditos a su cuenta!",
+    "STREAK": "Racha",
+    "STREAK_CONTENT": "🎉 ¡Has ganado 200 créditos de bonificación!"
 }
