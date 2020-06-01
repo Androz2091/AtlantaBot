@@ -1,5 +1,5 @@
 {
-    "DESCRIPTION": "Enable or disable automatic deletion of Discord invites",
+    "DESCRIPTION": "Habilita o deshabilita la eliminación automática de las invitaciones de Discord",
     "USAGE": "{{prefix}}automod [on/off] (#channel)",
     "EXAMPLES": "{{prefix}}automod on\n{{prefix}}automod off #general\n{{prefix}}automod off",
     "MISSING_STATUS": "Please enter a valid status! (`on` or `off`)",
