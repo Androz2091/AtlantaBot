@@ -2,7 +2,7 @@
     "DESCRIPTION": "Manage your giveaways easily!",
     "USAGE": "{{prefix}}giveaway [create/reroll/delete/end] (time) (winners count) (prize)",
     "EXAMPLES": "{{prefix}}giveaway create 10m 2 5$ PayPal !\n{{prefix}}giveaway reroll 597812898022031374",
-    "MISSING_STATUS": "You must specify `create`, `reroll` or `delete`!",
+    "MISSING_STATUS": "You must specify `create`, `reroll`, `end` or `delete`!",
     "INVALID_CREATE": "You must enter the information in this format: \n\n`{{prefix}}giveaway create [time] [winners count] [prize]`",
     "MISSING_ID_REROLL": "You must enter the message ID of the giveaway to re-roll!",
     "MISSING_ID_DELETE": "You must enter the message ID of the giveaway to delete!",
