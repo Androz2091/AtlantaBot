@@ -1,17 +1,17 @@
 {
-    "DESCRIPTION": "Shows the stats of the bot!",
+    "DESCRIPTION": "¡Muestra las estadísticas del bot!",
     "USAGE": "{{prefix}}stats",
     "EXAMPLES": "{{prefix}}stats",
-    "COUNTS_TITLE": "• __Statistics__",
-    "COUNTS_CONTENT": "`Servers: {{servers}}`\n`Users: {{users}}`",
-    "VERSIONS_TITLE": "• __Versions__",
+    "COUNTS_TITLE": "• __Estadísticas__",
+    "COUNTS_CONTENT": "`Servidores: {{servers}}`\n`Usuarios: {{users}}`",
+    "VERSIONS_TITLE": "• __Versiones__",
     "RAM_TITLE": "• __RAM__",
     "ONLINE_TITLE": "• __Online__",
-    "ONLINE_CONTENT": "Online for {{time}}",
-    "MUSIC_TITLE": "• __Music__",
-    "MUSIC_CONTENT": "Playing music on `{{count}}` servers",
-    "CREDITS_TITLE": ":heart: • __Acknowledgements & credits__",
-    "CREDITS_CONTENT": "Thanks to `https://icones8.fr/icons/`, all the emojis (or almost) come from this site!\n__**Donators**__:\n- `xixi52#0001` **GOD**\n- `Marty#3994` **GOD**\n- `\"</Synaro/>\"#2019` **GOD**\n- `🍮_Lucas_🍮#6171` **SUPPORTER**",
+    "ONLINE_CONTENT": "Online desde hace {{time}}",
+    "MUSIC_TITLE": "• __Música__",
+    "MUSIC_CONTENT": "Escuchando música en `{{count}}` servidores",
+    "CREDITS_TITLE": ":heart: •Agradecimientos & Créditos__",
+    "CREDITS_CONTENT": "¡Gracias a `https://icones8.fr/icons/`, todos los emojis (o la mayoría) provienen de ahí!\n__**Donantes**__:\n- `xixi52#0001` **GOD**\n- `Marty#3994` **GOD**\n- `\"</Synaro/>\"#2019` **GOD**\n- `🍮_Lucas_🍮#6171` **SUPPORTER**",
     "LINKS_TITLE": "• __Links__",
-    "MADE": "Atlanta is an open source bot developed by Androz#2091!"
+    "MADE": "¡Atlanta es un bot de código abierto desarrollado por Androz#2091!"
 }
