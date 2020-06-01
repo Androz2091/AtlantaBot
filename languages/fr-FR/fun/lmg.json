@@ -1,6 +1,6 @@
 {
     "DESCRIPTION": "Fait une recherche pour vous !",
-    "USAGE": "{{prefix}}lmg [search]",
+    "USAGE": "{{prefix}}lmg [recherche]",
     "EXAMPLES": "{{prefix}}lmg Comment faire un bot Discord ?",
-    "MISSING": "Vous devez spécifié une recherche !"
+    "MISSING": "Vous devez préciser une recherche !"
 }
