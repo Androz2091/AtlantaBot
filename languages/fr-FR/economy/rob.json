@@ -1,14 +1,14 @@
 {
     "DESCRIPTION": "Essayer de voler un membre !",
-    "USAGE": "{{prefix}}rob [@membre] [amount]",
+    "USAGE": "{{prefix}}rob [@membre] [montant]",
     "EXAMPLES": "{{prefix}rob @Androz#2091 100",
-    "YOURSELF": "Vous ne pouvez pas vous voler vous mêmes !",
-    "MISSING_AMOUNT": "Veuillez indiquer un monetnt valide à voler à **{{username}}** !",
-    "NOT_ENOUGH_AUTHOR": "Vous devez avoir plus de **{{moneyMin}}** crédits pour faire ce vol (Vous avez actuellement **{{moneyCurrent}}** crédits) !",
-    "NOT_ENOUGH_MEMBER": "Vous ne pouvez pas essayer de voler **{{money}}** crédits à **{{username}}** car il n'a pas autant de crédits sur lui !",
-    "COOLDOWN": "🕵️ **{{username}}** est sur ses gardes.... Attendez un peu réessayer !",
+    "YOURSELF": "Vous ne pouvez pas vous voler vous-même !",
+    "MISSING_AMOUNT": "Veuillez indiquer un montant valide à voler à **{{username}}** !",
+    "NOT_ENOUGH_AUTHOR": "Vous devez avoir plus de **{{moneyMin}}** crédits pour tenter ce vol (vous avez actuellement **{{moneyCurrent}}** crédits) !",
+    "NOT_ENOUGH_MEMBER": "Vous ne pouvez pas essayer de voler **{{money}}** crédits à **{{username}}** car il n'a pas autant de crédits en cash !",
+    "COOLDOWN": "🕵️ **{{username}}** est sur ses gardes.... Attendez un peu et réessayer !",
     "ROB_WON_1": "🎉 | Félicitations ! La police n'a pas été assez rapide pour vous empêcher de voler **{{money}}** crédits à **{{username}}** !",
     "ROB_WON_2": "😕 | **{{username}}** ? Mauvaise nouvelle. Vous venez de vous faire voler **{{money}}** crédits !",
-    "ROB_LOSE_1": "🚔 | La police vous a attrapé la main dans le sac, impossible de nier, votre amande est de **{{fine}}** crédits. Une compensation de **{{offset}}** crédits va être envoyé à **{{username}}**.",
-    "ROB_LOSE_2": "🚓 | Mauvaise nouvelle.... **{{username}}** à appelé la police à temps. Votre amande est de **{{fine}}** crédits et une compensations de **{{offset}}** crédits vas être envoyé à **{{username}}**."
+    "ROB_LOSE_1": "🚔 | La police vous a attrapé la main dans le sac, impossible de nier, votre amende est de **{{fine}}** crédits. Une compensation de **{{offset}}** crédits va être envoyé à **{{username}}**.",
+    "ROB_LOSE_2": "🚓 | Mauvaise nouvelle.... **{{username}}** a appelé la police à temps. Votre amende est de **{{fine}}** crédits et une compensation de **{{offset}}** crédits va être envoyé à **{{username}}**."
 }
