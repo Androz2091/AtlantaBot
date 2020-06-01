@@ -1,6 +1,6 @@
 {
-    "DESCRIPTION": "Check if members have an ad for their Discord server in their status!",
+    "DESCRIPTION": "¡Compruebe si los miembros tienen un anuncio para su servidor Discord en su estado!",
     "USAGE": "{{prefix}}checkinvites",
     "EXAMPLES": "{{prefix}}checkinvites",
-    "NOBODY": "No member advertises in his game!"
+    "NOBODY": "¡Ningún miembro anuncia su juego!"
 }
