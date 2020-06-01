@@ -1,9 +1,9 @@
 {
-    "DESCRIPTION": "Montre des informations à propos d'un serveur Minecraft !",
+    "DESCRIPTION": "Affiche des informations à propos d'un serveur Minecraft !",
     "USAGE": "{{prefix}}minecraft [ip]",
     "EXAMPLES": "{{prefix}}minecraft mc.hypixel.net",
-    "MISSING_IP": "Veuillez entré une IP valide !",
-    "FAILED": "Le serveur est hors ligne ou à bloqué l’accès !",
+    "MISSING_IP": "Veuillez entrer une IP valide !",
+    "FAILED": "Le serveur est hors ligne ou a bloqué l’accès !",
     "ONLINE": "En ligne",
     "OFFLINE": "Hors ligne",
     "PLAYERS": "{{count}} joueur(s)",
