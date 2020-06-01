@@ -1,6 +1,6 @@
 {
-    "DESCRIPTION": "Set a cooldown in a channel",
-    "USAGE": "{{prefix}}slowmode [#channel] (time)",
+    "DESCRIPTION": "Establece el modo pausado en un canal",
+    "USAGE": "{{prefix}}slowmode [#canal] (tiempo)",
     "EXAMPLES": "{{prefix}}slowmode #general 10m\n{{prefix}}slowmode #general",
     "DISABLED": "Slowmode has been disabled in {{channel}}!",
     "ENABLED": "Slowmode enabled in {{channel}} with a time of {{time}}!"
