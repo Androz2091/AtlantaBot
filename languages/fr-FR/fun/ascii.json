@@ -1,6 +1,6 @@
 {
-    "DESCRIPTION": "Transformer votre texte en caractères ASCII !",
-    "USAGE": "{{prefix}}ascii [text]",
-    "EXAMPLES": "{{prefix}}ascii Bonjours tout le monde!",
-    "TEXT_MISSING": "Veuillez entre un texte valide (moins de 20 caractères) !"
+    "DESCRIPTION": "Transformez votre texte en caractères ascii !",
+    "USAGE": "{{prefix}}ascii [texte]",
+    "EXAMPLES": "{{prefix}}ascii Bonjour tout le monde!",
+    "TEXT_MISSING": "Veuillez entrer un texte valide (moins de 20 caractères) !"
 }
