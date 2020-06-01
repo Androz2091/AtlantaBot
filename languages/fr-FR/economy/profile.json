@@ -1,17 +1,17 @@
 {
-    "DESCRIPTION": "Montre le profile de la personne mentionné (ou le votre)",
-    "USAGE": "{{prefix}}profile [user]",
+    "DESCRIPTION": "Affiche le profil de la personne mentionnée (ou l'auteur du message)",
+    "USAGE": "{{prefix}}profile [utilisateur]",
     "EXAMPLES": "{{prefix}}profile Androz#2091",
-    "TITLE": "Profile de {{username}}",
+    "TITLE": "Profil de {{username}}",
     "NO_BIO": "Pas de biographie disponible",
-    "BOT_USER": "Les bots n'ont pas de profile !",
+    "BOT_USER": "Les bots n'ont pas de profil !",
     "CASH": "💵 Cash",
     "BANK": "💳 Banque",
     "GLOBAL": "🌍 Argent global",
     "MONEY": "**{{money}}** crédit(s)",
     "REPUTATION": "🎩 Réputation",
     "REP_POINTS": "**{{points}}** point(s)",
-    "LEVEL": "📊 Niveaux",
+    "LEVEL": "📊 Niveau",
     "EXP": "🔮 Expérience",
     "BIRTHDATE": "🎂 Anniversaire",
     "NO_BIRTHDATE": "Pas d'anniversaire disponible",
@@ -19,5 +19,5 @@
     "REGISTERED": "📅 Enregistré",
     "NO_LOVER": "Célibataire",
     "ACHIEVEMENTS": "🔥 Succès",
-    "ACHIEVEMENTS_CONTENT": "Obtenez plus d'informations avec `{{prefix}}achievements`!"
+    "ACHIEVEMENTS_CONTENT": "Obtenez plus d'informations avec `{{prefix}}achievements` !"
 }
