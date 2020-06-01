@@ -1,8 +1,8 @@
 {
     "DESCRIPTION": "Le casino d'Atlanta",
-    "USAGE": "{{prefix}}slots [amount]",
+    "USAGE": "{{prefix}}slots [montant]",
     "EXAMPLES": "{{prefix}}slots\n{{prefix}}slots 10",
     "DEFEAT": "**{{username}}** a utilisé {{money}} crédit(s) et a tout perdu.",
-    "VICTORY": "**{{username}}** a utilisé {{money}} crédit(s) et a gagné {{won}} crédit(s)!",
+    "VICTORY": "**{{username}}** a utilisé {{money}} crédit(s) et a gagné {{won}} crédit(s) !",
     "NOT_ENOUGH": "Vous n'avez pas {{money}} crédit(s)."
 }
