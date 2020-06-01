@@ -1,6 +1,6 @@
 {
     "DESCRIPTION": "¡Acorta un enlace!",
     "USAGE": "{{prefix}}shorturl [url]",
-    "EXAMPLES": "{{prefix}}shorturl https://google.fr",
-    "MISSING_URL": "Please enter a valid URL!"
+    "EXAMPLES": "{{prefix}}shorturl https://viralizate.tk",
+    "MISSING_URL": "¡Por favor ingrese una URL válida!"
 }
