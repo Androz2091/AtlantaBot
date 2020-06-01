@@ -1,12 +1,12 @@
 {
-    "DESCRIPTION": "Trouver un nombre que je choisi !",
+    "DESCRIPTION": "Trouvez le nombre que j'ai choisi !",
     "USAGE": "{{prefix}}number",
     "EXAMPLES": "{{prefix}}number",
     "GAME_START": "J'ai choisi le nombre, on peut commencer !",
-    "BIG": "{{user}} | Le nombre est plus **grand** que `{{number}}`!",
-    "SMALL": "{{user}} | Le nombre est plus **petit** que `{{number}}`!",
+    "BIG": "{{user}} | Le nombre est plus **grand** que `{{number}}` !",
+    "SMALL": "{{user}} | Le nombre est plus **petit** que `{{number}}` !",
     "WON": "{{winner}} a gagné 10 crédits !",
-    "DEFEAT": "Personne n'a trouvé le nombre ! C'étais **{{number}}** !",
-    "GAME_STATS": ":tada: | {{winner}} a trouvé le nombre ! C'étais __**{{number}}**__ !\n\n**Résumé de la partie: **\n__**Durée**__: {{time}}\n__**Nombre de participants**__ : {{participantCount}}\n__**participants**__ : \n{{participants}}",
+    "DEFEAT": "Personne n'a trouvé le nombre ! C'était **{{number}}** !",
+    "GAME_STATS": ":tada: | {{winner}} a trouvé le nombre ! C'était __**{{number}}**__ !\n\n**Résumé de la partie :**\n__**Durée**__ : {{time}}\n__**Nombre de participants**__ : {{participantCount}}\n__**Participants**__ : \n{{participants}}",
     "GAME_RUNNING": "Une partie est déjà en cours sur ce serveur !"
 }
