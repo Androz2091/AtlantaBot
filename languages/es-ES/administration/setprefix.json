@@ -1,8 +1,8 @@
 {
-    "DESCRIPTION": "Set the server prefix!",
-    "USAGE": "{{prefix}}setprefix [prefix]",
+    "DESCRIPTION": "¡Establece el prefijo en el servidor!",
+    "USAGE": "{{prefix}}setprefix [prefijo]",
     "EXAMPLES": "{{prefix}}setprefix +",
-    "MISSING_PREFIX": "Please enter a valid prefix!",
-    "TOO_LONG": "The prefix shouldn't exceed 5 characters!",
-    "SUCCESS": "The server prefix has been set to `{{prefix}}`!"
+    "MISSING_PREFIX": "¡Por favor ingrese un prefijo válido!",
+    "TOO_LONG": "¡El prefijo no debe superar los 5 caracteres!",
+    "SUCCESS": "¡El prefijo del servidor se ha establecido en `{{prefix}}`!"
 }
