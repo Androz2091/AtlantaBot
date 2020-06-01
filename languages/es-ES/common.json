@@ -8,13 +8,13 @@
     "CONTENT": "Contenido",
     "REASON": "Razón",
     "USER": "Usuario",
-    "CREATION": "Creation",
+    "CREATION": "Creación",
     "MEMBERS": "Miembros",
     "CHANNELS": "Canales",
     "ID": "ID",
     "OWNER": "Dueño",
     "USERNAME": "Nombre de Usuario",
-    "DISCRIMINATOR": "Discriminator",
+    "DISCRIMINATOR": "Hashtag",
     "STATS": "Estadísticas",
     "ROBOT": "Robot",
     "AVATAR": "Avatar",
@@ -26,7 +26,7 @@
     "STATUS_DND": "No Molestar",
     "ROLE": "Rol",
     "ROLES": "Roles",
-    "JOIN": "Join",
+    "JOIN": "Unión",
     "COLOR": "Color",
     "NICKNAME": "Nombre de Usuario",
     "DESCRIPTION": "Descripción",
@@ -41,5 +41,5 @@
     "DEFEAT": "Derrota",
     "MODERATOR": "Moderador",
     "DURATION": "Duración",
-    "EXPIRY": "Expiry"
+    "EXPIRY": "Expiración"
 }
