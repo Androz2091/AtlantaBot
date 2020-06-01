@@ -1,8 +1,8 @@
 {
-    "DESCRIPTION": "Unmute the mentioned member!",
-    "USAGE": "{{prefix}}unmute [@member]",
+    "DESCRIPTION": "¡Desmutea al miembro mencionado!",
+    "USAGE": "{{prefix}}unmute [@miembro]",
     "EXAMPLES": "{{prefix}unmute @Androz#2091",
-    "MISSING_MEMBER": "Please specify the member you want to unmute!",
-    "NOT_MUTED": "**{{username}}** is not muted to this server!",
-    "SUCCESS": "**{{username}}** has just been unmuted!"
+    "MISSING_MEMBER": "¡Por favor especifique el miembro que desea desmutear!",
+    "NOT_MUTED": "¡**{{username}}** no está muteado en el servidor!",
+    "SUCCESS": "¡**{{username}}** acaba de ser desmuteado!"
 }
