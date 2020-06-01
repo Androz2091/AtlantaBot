@@ -1,9 +1,9 @@
 {
-    "DESCRIPTION": "Choisi aléatoirement un choix que vous me donnez !",
+    "DESCRIPTION": "Choisi aléatoirement un des choix que vous me donnez !",
     "USAGE": "{{prefix}}choice [choix1/choix2/etc...]",
     "EXAMPLES": "{{prefix}}choice Feu/Vent/Eau",
-    "MISSING": "Vous devez entre plus que 2 choix !",
+    "MISSING": "Vous devez entrer plus de 2 choix !",
     "EMPTY": "Un de vos choix semble être vide... Veuillez réessayer !",
-    "PROGRESS": "Je réfléchie...",
+    "PROGRESS": "Choix en cours...",
     "DONE": "Voici mon choix :"
 }
