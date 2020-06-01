@@ -1,7 +1,7 @@
 {
-    "DESCRIPTION": "Deletes all sanctions of a member!",
-    "USAGE": "{{prefix}}clear-sanctions [@member]",
+    "DESCRIPTION": "¡Elimina todas las sanciones de un miembro!",
+    "USAGE": "{{prefix}}clear-sanctions [@miembro]",
     "EXAMPLES": "{{prefix}}clear-sanctions @Androz#2091",
-    "MISSING_MEMBER": "Please mention the member from whom you want to remove the sanctions!",
-    "SUCCESS": "All the sanctions of **{{username}}** were deleted!"
+    "MISSING_MEMBER": "¡Mencione al miembro del que desea eliminar las sanciones!",
+    "SUCCESS": "¡Se eliminaron todas las sanciones de **{{username}}**!"
 }
