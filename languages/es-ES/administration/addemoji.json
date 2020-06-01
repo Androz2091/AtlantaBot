@@ -1,6 +1,6 @@
 {
     "DESCRIPTION": "Agrega un emoji al servidor!",
-    "USAGE": "{{prefix}}addemoji [URL Imagen] [nombre]",
+    "USAGE": "{{prefix}}addemoji [URL-Imagen] [nombre]",
     "EXAMPLES": "{{prefix}}addemoji https://via.placeholder.com/150 test-emoji",
     "MISSING_URL": "Por favor proporcione una URL de una imagen!",
     "MISSING_NAME": "Por favor, proporcione el nombre del emoji!",
