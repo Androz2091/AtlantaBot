@@ -1,10 +1,10 @@
 {
-    "DESCRIPTION": "Send an announcement in the current channel!",
-    "USAGE": "{{prefix}}announcement [text]",
-    "EXAMPLES": "{{prefix}}announcement New #spam channel!",
-    "MISSING_TEXT": "You must enter the text of the announcement!",
-    "TOO_LONG": "Please enter a text shorter than 1030 characters!",
-    "MENTION_PROMPT": "Would you like to add a mention to your message? Answer \"yes\" or \"no\"!",
-    "MENTION_TYPE_PROMPT": "Type one of the following answers: `every` (for a mention @ everyone) or `here` (for a mention @ here)!",
-    "TITLE": "📢 Announcement:"
+    "DESCRIPTION": "¡Envía un anuncio en el canal actual!",
+    "USAGE": "{{prefix}}announcement [texto]",
+    "EXAMPLES": "{{prefix}}announcement ¡La nueva web es https://viralizate.tk!",
+    "MISSING_TEXT": "¡Debes ingresar el texto del anuncio!",
+    "TOO_LONG": "¡Ingrese un texto de menos de 1030 caracteres!",
+    "MENTION_PROMPT": "¿Desea agregar una mención a su mensaje? ¡Contesta \"Si\" o \"No\"!",
+    "MENTION_TYPE_PROMPT": "¡Escriba una de las siguientes respuestas: `every` (para mencionar a @everyone) o `here` (para mencionar a @ here)!",
+    "TITLE": "📢 Anuncio:"
 }
