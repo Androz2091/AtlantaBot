@@ -1,5 +1,5 @@
 {
-    "DESCRIPTION": "Fait un pile ou face !",
+    "DESCRIPTION": "Je lance les dés pour vous !",
     "USAGE": "{{prefix}}flip",
     "EXAMPLES": "{{prefix}}flip",
     "HEADS": ":game_die: | Pile !",
