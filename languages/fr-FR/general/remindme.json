@@ -1,7 +1,7 @@
 {
     "DESCRIPTION": "Ajoute un nouveau rappel",
-    "USAGE": "{{prefix}}remindme [reason]",
-    "EXAMPLES": "{{prefix}}remindme 24h Commande de travaille\n{{prefix}}remindme 3m Retire les pâtes du gaz !",
+    "USAGE": "{{prefix}}remindme [message]",
+    "EXAMPLES": "{{prefix}}remindme 24h Commande work\n{{prefix}}remindme 3m Sortir les pâtes de la casserole!",
     "MISSING_MESSAGE": "Vous devez entrer le message que nous vous enverrons à la fin du temps !",
     "SAVED": "Rappel enregistré, vous recevez un message à la fin du temps !"
 }
