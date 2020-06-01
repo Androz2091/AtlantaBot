@@ -1,15 +1,15 @@
 {
-    "ERR_OCCURRED": "Something went wrong... Please wait and retry!",
-    "PLEASE_WAIT": "Please wait a few seconds...",
-    "COMMAND_DISABLED": "This command is currently disabled!",
-    "TIMES_UP": "Time's up! Please send the command again!",
-    "INVALID_YES_NO": "You must send \"yes\" or \"no\"!",
-    "INVALID_CHANNEL": "Please specify a valid channel!",
-    "INVALID_TIME": "You must enter a valid time! Valid units: `s`, `m`, `h` or `d`",
-    "INVALID_NUMBER": "Please specify a valid number!",
-    "INVALID_NUMBER_RANGE": "Please specify a valid number between **{{min}}** and **{{max}}**!",
-    "STATS_FOOTER": "[Dashboard]({{dashboardLink}}) ● [Donate]({{donateLink}}) ● [Invite]({{inviteLink}}) ● [Server]({{supportLink}}) ● [Github]({{githubLink}})",
-    "BOT_USER": "This user is a bot!",
-    "NO_REASON_PROVIDED": "No reason provided",
-    "NO_USER_FOUND_ID": "No user on Discord has the ID `{{id}}`!"
+    "ERR_OCCURRED": "Algo salió mal... ¡Espera y vuelve a intentarlo!",
+    "PLEASE_WAIT": "Por favor espere unos segundos...",
+    "COMMAND_DISABLED": "¡Este comando está actualmente desactivado!",
+    "TIMES_UP": "¡Se acabó el tiempo! Por favor envíe el comando de nuevo!",
+    "INVALID_YES_NO": "¡Debe enviar \"So\" o \"No\"!",
+    "INVALID_CHANNEL": "¡Por favor, especifique un canal válido!",
+    "INVALID_TIME": "¡Debes ingresar una hora válida! Unidades válidas: `s`, `m`, `h` o `d`",
+    "INVALID_NUMBER": "¡Por favor, especifique un número válido!",
+    "INVALID_NUMBER_RANGE": "¡Por favor, especifique un número válido entre**{{min}}** y**{{max}}**!",
+    "STATS_FOOTER": "[Dashboard]({{dashboardLink}}) ● [Donar]({{donateLink}}) ● [Invitar]({{inviteLink}}) ● [Server]({{supportLink}}) ● [Github]({{githubLink}})",
+    "BOT_USER": "¡Este usuario es un bot!",
+    "NO_REASON_PROVIDED": "No se proporcionó ninguna razón",
+    "NO_USER_FOUND_ID": "¡Ningún usuario en Discord tiene la ID `{{id}}`!"
 }
