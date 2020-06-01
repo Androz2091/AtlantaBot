@@ -1,8 +1,8 @@
 {
-    "DESCRIPTION": "Skip the current song",
+    "DESCRIPTION": "Salta la canción actual",
     "USAGE": "{{prefix}}skip",
     "EXAMPLES": "{{prefix}}skip",
-    "NO_NEXT_SONG": "There's no song after this one!",
-    "VOTE_CONTENT": "Next song: {{songName}}\nVote: {{voteCount}}/{{requiredCount}}\nReact with 👍 to play the next song!",
-    "SUCCESS": "Song skipped!"
+    "NO_NEXT_SONG": "¡No hay ninguna canción después de esta!",
+    "VOTE_CONTENT": "Siguiente canción: {{songName}}\nVotación: {{voteCount}} / {{requiredCount}}\n¡Reacciona con 👍 para reproducir la próxima canción!",
+    "SUCCESS": "¡Canción saltada!"
 }
