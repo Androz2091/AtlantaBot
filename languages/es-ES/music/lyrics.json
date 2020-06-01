@@ -1,6 +1,6 @@
 {
     "DESCRIPTION": "Muestra la letra de una canción",
-    "USAGE": "{{prefix}}lyrics [nombre de la canción]",
+    "USAGE": "{{prefix}}lyrics [nombre-de-la-canción]",
     "EXAMPLES": "{{prefix}}lyrics Skyfall",
     "LYRICS_OF": "🎤 Letra de {{songName}}",
     "AND_MORE": "\n**Y más...**",
