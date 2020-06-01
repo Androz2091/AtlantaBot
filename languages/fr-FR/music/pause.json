@@ -2,5 +2,5 @@
     "DESCRIPTION": "Met en pause la musique actuelle !",
     "USAGE": "{{prefix}}pause",
     "EXAMPLES": "{{prefix}}pause",
-    "SUCCESS": "⏸️ Music paused."
+    "SUCCESS": "⏸️ Musique mise en pause."
 }
