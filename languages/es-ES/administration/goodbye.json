@@ -1,5 +1,5 @@
 {
-    "DESCRIPTION": "Enable or disable the goodbye messages!",
+    "DESCRIPTION": "¡Activa o desactiva los mensajes de despedida!",
     "USAGE": "{{prefix}}goodbye",
     "EXAMPLES": "{{prefix}}goodbye",
     "DEFAULT_MESSAGE": "Goodbye {user}! We're now {membercount} without you... :'(",
