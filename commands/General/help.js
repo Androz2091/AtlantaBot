@@ -115,7 +115,7 @@ class Help extends Command {
         });
         if(message.guild){
             if(data.guild.customCommands.length > 0){
-                embed.addField(emojis.categories.custom+" "+message.guild.name+" | "+message.language.get("UTILS").CUSTOM_COMMANDS+" - ("+data.guild.customCommands.length+")", data.guild.customCommands.map((cmd) => "`"+cmd.name+"`").join(", "));
+                embed.addField(emojis.categories.custom+" "+message.guild.name+" | "+message.translate("general/help:CUSTOM_COMMANDS")+" - ("+data.guild.customCommands.length+")", data.guild.customCommands.map((cmd) => "`"+cmd.name+"`").join(", "));
             }
         }
         
