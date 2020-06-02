@@ -23,7 +23,7 @@ class Mute extends Command {
         
         let member = await this.client.resolveMember(args[0], message.guild);
         if(!member){
-            return message.channel.send(message.language.get("ERR_INVALID_MEMBER"));
+            return message.error("moderation/mute:MISSING_MEMBER");
         }
 
         if(member.id === message.author.id){

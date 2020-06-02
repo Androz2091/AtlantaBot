@@ -24,7 +24,7 @@ class Backup extends Command {
 
         let status = args[0];
         if(!status){
-            return message.channel.send(message.language.get("BACKUP_ERR_STATUS"));
+            return message.error("administration/backup:MISSING_STATUS");
         }
 
         if(status === "create"){
