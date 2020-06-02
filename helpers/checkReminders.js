@@ -9,7 +9,6 @@ module.exports = {
      */
     init(client){
         setInterval(async function(){
-            let language = new(require(`../old_languages/${client.config.defaultLanguage}`));
             let users = await client.usersData.find({ reminds: { $gt: [] } }).lean();
             let dateNow = Date.now();
             users.forEach(async (user) => {
@@ -21,9 +20,9 @@ module.exports = {
                         if(mustSent.length > 0){
                             mustSent.forEach((r) => {
                                 let embed = new Discord.MessageEmbed()
-                                    .setAuthor(language.get("REMINDME_TITLE"))
-                                    .addField(language.get("REMINDME_FIELDS")[0], language.convertMs(dateNow - r.createdAt))
-                                    .addField(language.get("REMINDME_FIELDS")[1], r.message)
+                                    .setAuthor(client.translate("general/remindme:TITLE"))
+                                    .addField(client.translate("common:CREATION"), client.convertTime(r.createdAt, "from"))
+                                    .addField(client.translate("common:MESSAGE"), r.message)
                                     .setColor(client.config.embed.color)
                                     .setFooter(client.config.embed.footer);
                                 dUser.send(embed);
