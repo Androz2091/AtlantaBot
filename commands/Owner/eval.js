@@ -6,9 +6,6 @@ class Eval extends Command {
     constructor (client) {
         super(client, {
             name: "eval",
-            description: (language) => language.get("EVAL_DESCRIPTION"),
-            usage: (language) => language.get("EVAL_USAGE"),
-            examples: (language) => language.get("EVAL_EXAMPLES"),
             dirname: __dirname,
             enabled: true,
             guildOnly: false,
