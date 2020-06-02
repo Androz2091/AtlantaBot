@@ -1,0 +1,5 @@
+{
+    "DESCRIPTION": "Shows the list of the servers!",
+    "USAGE": "{{prefix}}servers-list",
+    "EXAMPLES": "{{prefix}}servers-list"
+}

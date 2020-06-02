@@ -6,9 +6,6 @@ class ServersList extends Command {
     constructor (client) {
         super(client, {
             name: "servers-list",
-            description: (language) => language.get("SERVERSLIST_DESCRIPTION"),
-            usage: (language) => language.get("SERVERSLIST_USAGE"),
-            examples: (language) => language.get("SERVERSLIST_EXAMPLES"),
             dirname: __dirname,
             enabled: true,
             guildOnly: false,
@@ -29,12 +26,10 @@ class ServersList extends Command {
         let i1 = 10;
         let page = 1;
 
-        let utils = message.language.get("UTILS");
-
         let description = 
-        `${utils.TOTAL_SERVERS} : ${message.client.guilds.size}\n\n`+
+        `${message.translate("common:SERVERS")}: ${message.client.guilds.size}\n\n`+
         message.client.guilds.sort((a,b) => b.memberCount-a.memberCount).map((r) => r)
-        .map((r, i) => `**${i + 1}** - ${r.name} | ${r.memberCount} ${utils.MEMBERS.toLowerCase()}`)
+        .map((r, i) => `**${i + 1}** - ${r.name} | ${r.memberCount} ${message.translate("common:MEMBERS").toLowerCase()}`)
         .slice(0, 10)
         .join("\n");
 
@@ -42,7 +37,7 @@ class ServersList extends Command {
             .setAuthor(message.author.tag, message.author.displayAvatarURL())
             .setColor(data.config.embed.color)
             .setFooter(message.client.user.username)
-            .setTitle(`${utils.PAGE}: ${page}/${Math.ceil(message.client.guilds.size/10)}`)
+            .setTitle(`${message.translate("common:PAGE")}: ${page}/${Math.ceil(message.client.guilds.size/10)}`)
             .setDescription(description);
 
         let msg = await message.channel.send(embed);
@@ -70,14 +65,14 @@ class ServersList extends Command {
                     return msg.delete();
                 }
                 
-                description = `${utils.TOTAL_SERVERS} : ${message.client.guilds.size}\n\n`+
+                description = `${message.translate("common:SERVERS")}: ${message.client.guilds.size}\n\n`+
                 message.client.guilds.sort((a,b) => b.memberCount-a.memberCount).map((r) => r)
-                .map((r, i) => `**${i + 1}** - ${r.name} | ${r.memberCount} ${utils.MEMBERS.toLowerCase()}`)
+                .map((r, i) => `**${i + 1}** - ${r.name} | ${r.memberCount} ${message.translate("common:MEMBERS")}`)
                 .slice(i0, i1)
                 .join("\n");
 
                 // Update the embed with new informations
-                embed.setTitle(`${utils.PAGE}: ${page}/${Math.round(message.client.guilds.size/10)}`)
+                embed.setTitle(`${message.translate("common:PAGE")}: ${page}/${Math.round(message.client.guilds.size/10)}`)
                 .setDescription(description);
             
                 // Edit the message 
@@ -100,14 +95,14 @@ class ServersList extends Command {
                     return msg.delete();
                 }
 
-                description = `${utils.TOTAL_SERVERS} : ${message.client.guilds.size}\n\n`+
+                description = `${message.translate("common:SERVERS")}: ${message.client.guilds.size}\n\n`+
                 message.client.guilds.sort((a,b) => b.memberCount-a.memberCount).map((r) => r)
-                .map((r, i) => `**${i + 1}** - ${r.name} | ${r.memberCount} ${utils.MEMBERS.toLowerCase()}`)
+                .map((r, i) => `**${i + 1}** - ${r.name} | ${r.memberCount} ${message.translate("common:MEMBERS").toLowerCase()}`)
                 .slice(i0, i1)
                 .join("\n");
 
                 // Update the embed with new informations
-                embed.setTitle(`${utils.PAGE}: ${page}/${Math.round(this.client.guilds.size/10)}`)
+                embed.setTitle(`${message.translate("common:PAGE")}: ${page}/${Math.round(this.client.guilds.size/10)}`)
                 .setDescription(description);
             
                 // Edit the message 
