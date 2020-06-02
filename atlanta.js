@@ -65,6 +65,9 @@ const init = async () => {
 
     const languages = require("./helpers/languages");
     client.translations = await languages();
+    
+    let autoUpdateDocs = require("./helpers/autoUpdateDocs.js");
+    autoUpdateDocs.update(client);
 
 };
 

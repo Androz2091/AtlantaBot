@@ -26,6 +26,12 @@ class Atlanta extends Client {
         this.databaseCache.members = new Collection();
     }
 
+    translate(key, args, locale = "en-US"){
+        const language = this.translations.get(locale);
+        if (!language) throw "Invalid language set in data.";
+        return language(key, args);
+    }
+
     // This function is used to load a command and add it to the collection
     loadCommand (commandPath, commandName) {
         try {
