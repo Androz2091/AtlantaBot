@@ -25,7 +25,9 @@ class Qrcode extends Command {
             return message.error("images/qrcode:MISSING_TEXT");
         }
     
-        let pleaseWait = await message.sendT("misc:PLEASE_WAIT", null, false, false, "loading");
+        let pleaseWait = await message.sendT("misc:PLEASE_WAIT", null, {
+            prefixEmoji: "loading"
+        });
         
         let embed = new Discord.MessageEmbed()
             .setImage(`https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${text.replace(new RegExp(" ", "g"), "%20")}`)

@@ -53,7 +53,9 @@ class Slots extends Command {
             return Math.round(number);
         }
 
-        let tmsg = await message.sendT("misc:loading", null, false, false, "loading");
+        let tmsg = await message.sendT("misc:loading", null, {
+            prefixEmoji: "loading"
+        });
         editMsg();
         let interval = setInterval(editMsg, 1000);
         setTimeout(() => {

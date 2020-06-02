@@ -28,7 +28,9 @@ class Fortniteshop extends Command {
             return message.error("misc:COMMAND_DISABLED");
         }
 
-        let m = await message.sendT("misc:PLEASE_WAIT", null, false, false, "loading");
+        let m = await message.sendT("misc:PLEASE_WAIT", null, {
+            prefixEmoji: "loading"
+        });
 
         const shop = new Canvas.FortniteShop();
         let image = await shop

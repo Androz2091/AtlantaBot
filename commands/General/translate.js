@@ -30,16 +30,22 @@ class Translate extends Command {
             return message.success("general/translate:LIST_SENT");
         }
         
-        let pWait = await message.sendT("misc:PLEASE_WAIT", null, false, false, "loading");
+        let pWait = await message.sendT("misc:PLEASE_WAIT", null, {
+            prefixEmoji: "loading"
+        });
         
         if(!args[0]){
             return pWait.error("general/translate:MISSING_LANGUAGE", {
                 prefix: data.guild.prefix
-            }, true);
+            }, {
+                edit: true
+            });
         }
     
         if(!args[1]){
-            return pWait.error("general/translate:MISSING_CONTENT", null, true);
+            return pWait.error("general/translate:MISSING_CONTENT", null, {
+                edit: true
+            });
         }
         
         // Gets different args
@@ -50,7 +56,9 @@ class Translate extends Command {
             return pWait.error("general/translate:INVALID_LANGUAGE", {
                 prefix: data.guild.prefix,
                 search: language
-            }, true);
+            }, {
+                edit: true
+            });
         }
         
         let translated = await translate(toTranslate, { to: language });

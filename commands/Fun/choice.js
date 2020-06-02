@@ -35,7 +35,9 @@ class Choice extends Command {
         );
 
         setTimeout(() => {
-            m.success("fun/choice:DONE", null, true);
+            m.success("fun/choice:DONE", null, {
+                edit: true
+            });
             const result =
                 answers[parseInt(Math.floor(Math.random() * answers.length))];
             message.channel.send("```" + result + "```");

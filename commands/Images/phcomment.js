@@ -33,7 +33,9 @@ class Phcomment extends Command {
             return message.error("images/phcomment:MISSING_TEXT");
         }
 
-        let m = await message.sendT("misc:PLEASE_WAIT", null, false, false, "loading");
+        let m = await message.sendT("misc:PLEASE_WAIT", null, {
+            prefixEmoji: "loading"
+        });
         try {
             let res = await fetch(encodeURI(`https://nekobot.xyz/api/imagegen?type=phcomment&username=${user.username}&image=${user.displayAvatarURL({ format: "png", size: 512 })}&text=${text}`));
             let json = await res.json();
@@ -42,7 +44,9 @@ class Phcomment extends Command {
             m.delete();
         } catch(e){
             console.log(e);
-            m.error("misc:ERROR_OCCURRED", null, true);
+            m.error("misc:ERROR_OCCURRED", null, {
+                edit: true
+            });
         }
 
     }
