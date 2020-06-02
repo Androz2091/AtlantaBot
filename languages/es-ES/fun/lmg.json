@@ -1,5 +1,5 @@
 {
-    "DESCRIPTION": "Devuelve un enlace a lmgtfy.com (cómo buscar algo en google)",
+    "DESCRIPTION": "Generate a LMGTFY link with your search",
     "USAGE": "{{prefix}}lmg [búsqueda]",
     "EXAMPLES": "{{prefix}}lmg Como crear un bot de Discord",
     "MISSING": "¡Debes especificar una búsqueda!"
