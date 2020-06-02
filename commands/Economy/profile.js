@@ -56,7 +56,9 @@ class Profile extends Command {
         });
 
         let profileEmbed = new Discord.MessageEmbed()
-            .setAuthor(message.language.get("PROFILE_TITLE", member.user.tag), member.user.displayAvatarURL())
+            .setAuthor(message.translate("economy/profile:TITLE", {
+                username: member.user.tag
+            }), member.user.displayAvatarURL())
             .attachFiles([{ attachment: await userData.getAchievements(), name: "achievements.png" }])
             .setImage("attachment://achievements.png")
             .setDescription(userData.bio ? userData.bio : message.translate("economy/profile:NO_BIO"))
