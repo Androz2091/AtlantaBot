@@ -2,7 +2,7 @@
     "DESCRIPTION": "¡Administra tus sorteos fácilmente!",
     "USAGE": "{{prefix}}giveaway [create/reroll/delete/end] (tiempo) (ganadores) (premio)",
     "EXAMPLES": "{{prefix}}giveaway create 10m 2 5$ PayPal !\n{{prefix}}giveaway reroll 597812898022031374",
-    "MISSING_STATUS": "¡Debe especificar `create`, `reroll` o `delete`!",
+    "MISSING_STATUS": "You must specify `create`, `reroll`, `end` or `delete`!",
     "INVALID_CREATE": "Debe ingresar la información en este formato: \n\n`{{prefix}}giveaway create [tiempo] [ganadores] [premio]`",
     "MISSING_ID_REROLL": "¡Debe ingresar la ID del mensaje del sorteo para volver a realizarlo!",
     "MISSING_ID_DELETE": "¡Debe ingresar la ID del mensaje del sorteo para eliminarlo!",
