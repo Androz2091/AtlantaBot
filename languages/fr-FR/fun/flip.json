@@ -2,6 +2,6 @@
     "DESCRIPTION": "Je lance les dés pour vous !",
     "USAGE": "{{prefix}}flip",
     "EXAMPLES": "{{prefix}}flip",
-    "HEADS": ":game_die: | Pile !",
-    "TAILS": ":game_die: | Face !"
+    "HEADS": "🎲 | Heads!",
+    "TAILS": "🎲 | Tails!"
 }
