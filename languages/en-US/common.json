@@ -42,5 +42,7 @@
     "MODERATOR": "Moderator",
     "DURATION": "Duration",
     "EXPIRY": "Expiry",
-    "TITLE": "Title"
+    "TITLE": "Title",
+    "SERVERS": "Servers",
+    "PAGE": "Page"
 }

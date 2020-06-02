@@ -24,7 +24,9 @@ class Tweet extends Command {
         let user = args[0];
         let text = args.slice(1).join(" ");
 
-        let m = await message.sendT("misc:PLEASE_WAIT", null, false, false, "loading");
+        let m = await message.sendT("misc:PLEASE_WAIT", null, {
+            prefixEmoji: "loading"
+        });
 
         if(!user){
             return m.error("images/tweet:MISSING_USERNAME");

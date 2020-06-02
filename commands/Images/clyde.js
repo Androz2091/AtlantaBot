@@ -26,7 +26,9 @@ class Clyde extends Command {
             return message.error("images/clyde:MISSING_TEXT");
         }
 
-        let m = await message.sendT("misc:PLEASE_WAIT", null, false, false, "loading");
+        let m = await message.sendT("misc:PLEASE_WAIT", null, {
+            prefixEmoji: "loading"
+        });
         try {
             let res = await fetch(encodeURI(`https://nekobot.xyz/api/imagegen?type=clyde&text=${text}`));
             let json = await res.json();
@@ -35,7 +37,9 @@ class Clyde extends Command {
             m.delete();
         } catch(e){
             console.log(e);
-            m.error("misc:ERROR_OCCURRED", null, true);
+            m.error("misc:ERROR_OCCURRED", null, {
+                edit: true
+            });
         }
 
     }

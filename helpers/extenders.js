@@ -25,72 +25,28 @@ Message.prototype.translate = function(key, args) {
     return language(key, args);
 };
 
-// Translate and send the message with an error emoji
-Message.prototype.error = function(key, args, edit = false, embed = false) {
-    if (
-        embed &&
-        this.channel.permissionsFor(this.guild.me).has("EMBED_LINKS")
-    ) {
-        const embed = {
-            color: "#FF0000",
-            description: this.translate(key, args)
-        };
-        return edit ? this.edit({ embed }) : this.channel.send({ embed });
-    } else {
-        const updatedContent = `${config.emojis.error} | ${this.translate(
-            key,
-            args
-        )}`;
-        return edit
-            ? this.edit(updatedContent)
-            : this.channel.send(updatedContent);
-    }
+// Wrapper for sendT with error emoji
+Message.prototype.error = function(key, args, options) {
+    options.prefixEmoji = "error";
+    this.sendT(key, args, options);
 };
 
-// Translate and send the message with a success emoji
-Message.prototype.success = function(key, args, edit = false, embed = false) {
-    if (
-        embed &&
-        this.channel.permissionsFor(this.guild.me).has("EMBED_LINKS")
-    ) {
-        const embed = {
-            color: "#32CD32",
-            description: this.translate(key, args)
-        };
-        return edit ? this.edit({ embed }) : this.channel.send({ embed });
-    } else {
-        const updatedContent = `${config.emojis.success} | ${this.translate(
-            key,
-            args
-        )}`;
-        return edit
-            ? this.edit(updatedContent)
-            : this.channel.send(updatedContent);
-    }
+// Wrapper for sendT with success emoji
+Message.prototype.success = function(key, args, options) {
+    options.prefixEmoji = "success";
+    this.sendT(key, args, options);
 };
 
 // Translate and send the message
-Message.prototype.sendT = function(
-    key,
-    args,
-    edit = false,
-    embed = false,
-    emoji = null
-) {
-    const prefix = emoji ? `${config.emojis[emoji]} | ` : "";
-    if (
-        embed &&
-        this.channel.permissionsFor(this.guild.me).has("EMBED_LINKS")
-    ) {
-        const embed = {
-            color: config.color,
-            description: prefix + this.translate(key, args)
-        };
-        return edit ? this.edit({ embed }) : this.channel.send({ embed });
+Message.prototype.sendT = function(key, args, options) {
+    const string = this.translate(key, args);
+    if (options.prefixEmoji) {
+        string = `${this.client.config.emojis[options.prefixEmoji]} | ${string}`;
+    }
+    if (options.edit) {
+        this.edit(string);
     } else {
-        return edit
-            ? this.edit(prefix + this.translate(key, args))
-            : this.channel.send(prefix + this.translate(key, args));
+        this.channel.send(string);
     }
 };
 

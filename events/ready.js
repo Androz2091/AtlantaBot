@@ -31,10 +31,6 @@ module.exports = class {
         let fortniteShop = require("../helpers/fortniteShop.js");
         fortniteShop.init(client);
 
-        /* AUTO UPDATE DOCS */
-        let autoUpdateDocs = require("../helpers/autoUpdateDocs.js");
-        autoUpdateDocs.update(client);
-
         // Start the dashboard
         if(client.config.dashboard.enabled){
             client.dashboard.load(client);

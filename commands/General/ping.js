@@ -24,7 +24,9 @@ class Ping extends Command {
         }).then((m) => {
             m.sendT("general/ping:CONTENT", {
                 ping: m.createdTimestamp - message.createdTimestamp
-            }, true);
+            }, {
+                edit: true
+            });
         });
     }
 
