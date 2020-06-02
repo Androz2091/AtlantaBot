@@ -50,7 +50,7 @@ class Setfortniteshop extends Command {
 
         let attachment = new Discord.MessageAttachment(path, `${fortniteShop.getFileName()}.png`),
         embed = new Discord.MessageEmbed()
-        .setAuthor(message.language.get("FORTNITESHOP_TITLE", message.language.printDate(new Date(Date.now())), this.client.user.displayAvatarURL()))
+        .setAuthor(message.language.get("FORTNITESHOP_TITLE", message.printDate(new Date(Date.now())), this.client.user.displayAvatarURL()))
         .attachFiles(attachment)
         .setImage(`attachment://${fortniteShop.getFileName()}.png`)
         .setColor(this.client.config.embed.color)

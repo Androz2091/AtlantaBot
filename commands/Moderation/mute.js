@@ -98,7 +98,7 @@ class Mute extends Command {
                 .addField(message.translate("common:MODERATOR"), `\`${message.author.tag}\` (${message.author.toString()})`, true)
                 .addField(message.translate("common:REASON"), reason, true)
                 .addField(message.translate("common:DURATION"), time, true)
-                .addField(message.translate("common:EXPIRY"), message.language.printDate(new Date(Date.now()+ms(time))), true)
+                .addField(message.translate("common:EXPIRY"), message.printDate(new Date(Date.now()+ms(time))), true)
                 .setColor("#f44271");
             channel.send(embed);
         }

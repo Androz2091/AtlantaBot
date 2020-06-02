@@ -37,7 +37,7 @@ class Serverinfo extends Command {
             .setAuthor(guild.name, guild.iconURL())
             .setThumbnail(guild.iconURL())
             .addField(this.client.config.emojis.title+message.translate("common:NAME"), guild.name, true)
-            .addField(this.client.config.emojis.calendar+message.translate("common:CREATION"), message.language.printDate(guild.createdAt), true)
+            .addField(this.client.config.emojis.calendar+message.translate("common:CREATION"), message.printDate(guild.createdAt), true)
             .addField(this.client.config.emojis.users+message.translate("common:MEMBERS"), message.translate("general/serverinfo:MEMBERS", {
                 count: guild.members.filter(m => !m.user.bot).size
             })+" | "+message.translate("general/serverinfo:BOTS", {

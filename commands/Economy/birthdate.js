@@ -55,7 +55,7 @@ class Birthdate extends Command {
         data.userData.save();
         
         message.success("economy/birthdate:SUCCESS", {
-            date: message.language.printDate(d)
+            date: message.printDate(d)
         });
 
     }

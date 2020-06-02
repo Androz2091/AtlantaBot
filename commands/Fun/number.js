@@ -59,10 +59,7 @@ class Number extends Command {
             const parsedNumber = parseInt(msg.content, 10);
 
             if (parsedNumber === number) {
-                const time = this.client.helpers.convertTime.execute(
-                    message.guild,
-                    Date.now() - gameCreatedAt
-                );
+                const time = this.client.functions.convertTime(message.guild, Date.now()-gameCreatedAt);
                 message.sendT("fun/number:GAME_STATS", {
                     winner: msg.author.toString(),
                     number,

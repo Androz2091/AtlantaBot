@@ -44,7 +44,7 @@ class Report extends Command {
                 user: member.user.tag
             }), message.author.displayAvatarURL())
             .addField(message.translate("common:AUTHOR"), message.author.tag, true)
-            .addField(message.translate("common:DATE"), message.language.printDate(new Date(Date.now()), true), true)
+            .addField(message.translate("common:DATE"), message.printDate(new Date(Date.now()), true), true)
             .addBlankField()
             .addField(message.translate("common:REASON"), "**"+rep+"**", true)
             .addField(message.translate("common:USER"), `\`${member.user.tag}\` (${member.user.toString()})`, true)
