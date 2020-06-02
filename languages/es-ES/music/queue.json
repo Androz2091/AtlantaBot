@@ -1,5 +1,5 @@
 {
-    "DESCRIPTION": "Shows the server queue",
+    "DESCRIPTION": "Muestra la cola del servidor",
     "USAGE": "{{prefix}}queue",
     "EXAMPLES": "{{prefix}}queue",
     "TITLE": "Server Queue"
