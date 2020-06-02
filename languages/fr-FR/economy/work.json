@@ -3,7 +3,6 @@
     "USAGE": "{{prefix}}work",
     "EXAMPLES": "{{prefix}}work",
     "COOLDOWN": " Vous devez attendre {{time}} avant de pouvoir travailler à nouveau !",
-    "TITLE": "Crédits de {{username}}",
     "AWARD": "Compléter le mot AWARD pour gagner 200 crédits bonus !",
     "SALARY": "Salaire",
     "SALARY_CONTENT": "{{won}} crédits ajoutés à votre compte !",
