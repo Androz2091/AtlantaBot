@@ -2,6 +2,6 @@
     "DESCRIPTION": "¡Lanzo los dados por ti!",
     "USAGE": "{{prefix}}flip",
     "EXAMPLES": "{{prefix}}flip",
-    "HEADS": ":game_die: | ¡Cara!",
-    "TAILS": ":game_die: | ¡Cruz!"
+    "HEADS": "🎲 | Heads!",
+    "TAILS": "🎲 | Tails!"
 }
