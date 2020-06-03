@@ -76,8 +76,8 @@ class Profile extends Command {
             }), true)
             .addField(message.translate("economy/profile:LEVEL"), `**${memberData.level}**`, true)
             .addField(message.translate("economy/profile:EXP"), `**${memberData.exp}** xp`, true)
-            .addField(message.translate("economy/profile:REGISTERED"), message.language.printDate(new Date(memberData.registeredAt)), true)
-            .addField(message.translate("economy/profile:BIRTHDATE"), (!userData.birthdate ? message.translate("economy/profile:NO_BIRTHDATE"): message.language.printDate(new Date(userData.birthdate))), true)
+            .addField(message.translate("economy/profile:REGISTERED"), message.printDate(new Date(memberData.registeredAt)), true)
+            .addField(message.translate("economy/profile:BIRTHDATE"), (!userData.birthdate ? message.translate("economy/profile:NO_BIRTHDATE"): message.printDate(new Date(userData.birthdate))), true)
             .addField(message.translate("economy/profile:LOVER"), (!userData.lover ? message.translate("economy/profile:NO_LOVER") : message.client.users.get(userData.lover).tag), true)
             .addField(message.translate("economy/profile:ACHIEVEMENTS"), message.translate("economy/profile:ACHIEVEMENTS_CONTENT", {
                 prefix: data.guild.prefix

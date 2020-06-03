@@ -137,16 +137,6 @@ module.exports = {
         if (s) absoluteTime.push(s);
 
         return absoluteTime.join(', ');
-    },
-
-    printDate(date, guild){
-        const language = guild.language === "en-US"
-        ? "en" : (guild.language.toLowerCase().split('-')[0] === guild.language.toLowerCase().split('-')[1])
-        ? guild.language.substr(0, 2) : guild.language.toLowerCase();
-
-        return moment(date)
-        .locale(language)
-        .format("LL");
     }
 
 };

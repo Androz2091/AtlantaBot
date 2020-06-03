@@ -55,7 +55,7 @@ class Userinfo extends Command {
             .addField(":man: "+message.translate("common:USERNAME"), user.username, true)
             .addField(this.client.config.emojis.discriminator+" "+message.translate("common:DISCRIMINATOR"), user.discriminator, true)
             .addField(this.client.config.emojis.bot+" "+message.translate("common:ROBOT"), (user.bot ? message.translate("common:YES") : message.translate("common:NO")), true)
-            .addField(this.client.config.emojis.calendar+" "+message.translate("common:CREATION"), message.language.printDate(user.createdAt), true)
+            .addField(this.client.config.emojis.calendar+" "+message.translate("common:CREATION"), message.printDate(user.createdAt), true)
             .addField(this.client.config.emojis.avatar+" "+message.translate("common:AVATAR"), user.displayAvatarURL())
             .setColor(data.config.embed.color)
             .setFooter(data.config.embed.footer);
@@ -67,7 +67,7 @@ class Userinfo extends Command {
             
         if(member){
             embed.addField(this.client.config.emojis.up+" "+message.translate("common:ROLE"), (member.roles.highest ? member.roles.highest : message.translate("general/userinfo:NO_ROLE")), true)
-            .addField(this.client.config.emojis.calendar2+" "+message.translate("common:JOIN"), message.language.printDate(member.joinedAt),true)
+            .addField(this.client.config.emojis.calendar2+" "+message.translate("common:JOIN"), message.printDate(member.joinedAt),true)
             .addField(this.client.config.emojis.color+" "+message.translate("common:COLOR"), member.displayHexColor, true)
             .addField(this.client.config.emojis.pencil+" "+message.translate("common:NICKNAME"), (member.nickname ? member.nickname : message.translate("general/userinfo:NO_NICKNAME")), true)
             .addField(this.client.config.emojis.roles+" "+message.translate("common:ROLES"), (

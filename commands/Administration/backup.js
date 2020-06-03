@@ -83,7 +83,7 @@ class Backup extends Command {
                     // Display the size (in mb) of the backup
                     .addField(message.translate("administration/backup:TITLE_SIZE"), backupInfos.size+" mb", true)
                     // Display when the backup was created
-                    .addField(message.translate("administration/backup:TITLE_CREATED_AT"), this.client.functions.printDate(new Date(backupInfos.data.createdTimestamp), message.guild), true)
+                    .addField(message.translate("administration/backup:TITLE_CREATED_AT"), message.printDate(new Date(backupInfos.data.createdTimestamp)), true)
                     .setColor(data.config.embed.color)
                     .setFooter(data.config.embed.footer);
                 message.channel.send(embed);

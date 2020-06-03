@@ -45,7 +45,7 @@ class Fortniteshop extends Command {
 
         const embed = new Discord.MessageEmbed()
         .setAuthor(message.translate("general/fortniteshop:HEADER", {
-            date: message.language.printDate(new Date(Date.now()))
+            date: message.printDate(new Date(Date.now()))
         }), this.client.user.displayAvatarURL())
         .attachFiles(attachment)
         .setImage(`attachment://shop.png`)

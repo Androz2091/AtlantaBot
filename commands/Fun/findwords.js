@@ -28,7 +28,7 @@ class FindWords extends Command {
         }
 
         // Reads words file
-        const wordList = require("../../assets/json/words/"+message.guild.getLanguage()+".json");
+        const wordList = require("../../assets/json/words/"+message.guild.data.language+".json");
     
         // Init some utils variables
         let participants = [],
