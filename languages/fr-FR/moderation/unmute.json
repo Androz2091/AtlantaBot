@@ -4,5 +4,6 @@
     "EXAMPLES": "{{prefix}unmute @Androz#2091",
     "MISSING_MEMBER": "Please specify the member you want to unmute!",
     "NOT_MUTED": "**{{username}}** is not muted to this server!",
-    "SUCCESS": "**{{username}}** has just been unmuted!"
+    "SUCCESS": "**{{username}}** has just been unmuted!",
+    "SUCCESS_CASE": "{{user}} (`{{usertag}}`) has just been unmuted! (case of mute: #{{count}})"
 }
