@@ -11,5 +11,7 @@
     "STATS_FOOTER": "[Dashboard]({{dashboardLink}}) ● [Donate]({{donateLink}}) ● [Invite]({{inviteLink}}) ● [Server]({{supportLink}}) ● [Github]({{githubLink}})",
     "BOT_USER": "This user is a bot!",
     "NO_REASON_PROVIDED": "No reason provided",
-    "NO_USER_FOUND_ID": "No user on Discord has the ID `{{id}}`!"
+    "NO_USER_FOUND_ID": "No user on Discord has the ID `{{id}}`!",
+    "VOTE_DM": "⬆️ Hello {{user}}, thanks for voting!\nYour reward: 40 credits (on the support server)!",
+    "VOTE_LOGS": "⬆️ **{{usertag}}** (`{{userid}}`) voted for **Atlanta** and won **40** credits, thank you!\n<https://discordbots.org/bot/557445719892688897/vote>"
 }
