@@ -21,7 +21,9 @@ module.exports = {
                             mustSent.forEach((r) => {
                                 let embed = new Discord.MessageEmbed()
                                     .setAuthor(client.translate("general/remindme:TITLE"))
-                                    .addField(client.translate("common:CREATION"), client.convertTime(r.createdAt, "from"))
+                                    .addField(client.translate("common:CREATION"), client.translate("general/remindme:CREATED", {
+                                        time: client.convertTime(r.createdAt, "from")
+                                    }))
                                     .addField(client.translate("common:MESSAGE"), r.message)
                                     .setColor(client.config.embed.color)
                                     .setFooter(client.config.embed.footer);
