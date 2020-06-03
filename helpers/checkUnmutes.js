@@ -24,15 +24,21 @@ module.exports = {
                     memberData.save();
                     client.logger.log("[unmute] "+memberData.id+" cannot be found.");
                 });
-                if(!member) return;
-                let guildData = await client.findOrCreateGuild({ id: guild.id });
-                guild.channels.forEach((channel) => {
-                    let permOverwrites = channel.permissionOverwrites.get(member.id);
-                    if(permOverwrites) permOverwrites.delete();
-                });
-                let language = new(require(`../old_languages/${guildData.language}`));
+                if(member){
+                    let guildData = await client.findOrCreateGuild({ id: guild.id });
+                    guild.data = guildData;
+                    guild.channels.forEach((channel) => {
+                        let permOverwrites = channel.permissionOverwrites.get(member.id);
+                        if(permOverwrites) permOverwrites.delete();
+                    });
+                }
+                const user = member ? member.user : await client.users.fetch(member.id);
                 let embed = new Discord.MessageEmbed()
-                    .setDescription(language.get("UNMUTE_SUCCESS", memberData.id, memberData.mute.case))
+                    .setDescription(guild.translate("moderation/unmute:SUCCESS_CASE", {
+                        user: user.toString(),
+                        usertag: user.tag.
+                        count: memberData.mute.case
+                    }))
                     .setColor("#f44271")
                     .setFooter(guild.client.config.embed.footer);
                 let channel = guild.channels.get(guildData.plugins.modlogs);
