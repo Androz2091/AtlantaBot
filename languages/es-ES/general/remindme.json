@@ -3,5 +3,7 @@
     "USAGE": "{{prefix}}remindme [message]",
     "EXAMPLES": "{{prefix}}remindme 24h Ir a trabajar\n{{prefix}}remindme 3m ¡Atender la freidora!",
     "MISSING_MESSAGE": "¡Debe ingresar un mensaje que se le enviará al final del tiempo!",
-    "SAVED": "Recordatorio guardado, ¡recibirá un mensaje al final del tiempo!"
+    "SAVED": "Recordatorio guardado, ¡recibirá un mensaje al final del tiempo!",
+    "TITLE": "Atlanta Reminder",
+    "CREATED": "Message created {{time}}"
 }
