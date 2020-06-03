@@ -44,5 +44,6 @@
     "EXPIRY": "Expire",
     "TITLE": "Title",
     "SERVERS": "Servers",
-    "PAGE": "Page"
+    "PAGE": "Page",
+    "MESSAGE": "Message"
 }
