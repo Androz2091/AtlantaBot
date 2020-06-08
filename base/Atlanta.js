@@ -20,6 +20,8 @@ class Atlanta extends Client {
         this.logs = require("../base/Log"); // Log mongoose model
         this.dashboard = require("../dashboard/app"); // Dashboard app
         this.queues = new Collection(); // This collection will be used for the music
+        this.states = {}; // Used for the dashboard
+        this.knownGuilds = [];
 
         this.databaseCache = {};
         this.databaseCache.users = new Collection();
