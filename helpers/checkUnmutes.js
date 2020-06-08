@@ -36,7 +36,7 @@ module.exports = {
                 let embed = new Discord.MessageEmbed()
                     .setDescription(guild.translate("moderation/unmute:SUCCESS_CASE", {
                         user: user.toString(),
-                        usertag: user.tag.
+                        usertag: user.tag,
                         count: memberData.mute.case
                     }))
                     .setColor("#f44271")
