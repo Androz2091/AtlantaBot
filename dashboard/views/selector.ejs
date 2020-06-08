@@ -26,6 +26,7 @@
 
 				<section class="content">
 
+					<div class="row">
 					<% if(user.displayedGuilds){ user.displayedGuilds.forEach(function(guild) { %>
 						<!-- Displays 4 servers by line -->
 						<div class="col-md-3">
@@ -42,8 +43,7 @@
 								</div>
 								<!-- /.box-body -->
 								<div class="box-footer">
-									<a href="<%= guild.settingsUrl %>"><button class="btn btn-success"><%= language.get("UTILS").MANAGE %></button></a>
-									<a href="<%= guild.statsUrl %>"><button type="submit" name="welcomeUpdate" class="btn btn-primary"><%= language.get("UTILS").STATS %></button></a>
+									<a href="<%= guild.settingsUrl %>"><button class="btn btn-block btn-success"><%= language.get("UTILS").MANAGE %></button></a>
 								</div>
 								<!-- /.box-footer -->
 							</div>
