@@ -1,6 +1,9 @@
 {
     "SEARCH": "Search servers...",
+    "SERVERS_LIST": "Servers list",
     "SERVERS_MANAGEMENT": "Servers management",
+    "NO_SERVER": "No server found",
+    "NO_SERVER_CONTENT": "No server to display. Make sure you are logged in with the right account and try again.",
     "SELECTOR": "Selector",
-    "SERVERS_LIST": "Servers list"
+    "MANAGE": "Manage"
 }
