@@ -50,12 +50,13 @@
     "SETTINGS": "Settings",
     "CONFIGURATION": "Configuration",
     "PREFIX": "Prefix",
-    "Language": "Language",
+    "LANGUAGE": "Language",
     "CHANNEL": "Channel",
     "UPDATE": "Update",
     "SUGGESTIONS": "Suggestions",
     "MODLOGS": "Moderation logs",
     "FORTNITESHOP": "Fortnite shop",
     "NO_CHANNEL": "No channel",
-    "REPORTS": "Reports"
+    "REPORTS": "Reports",
+    "DISCONNECT": "Disconnect"
 }
