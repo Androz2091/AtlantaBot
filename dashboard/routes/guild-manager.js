@@ -40,7 +40,7 @@ router.post("/:serverID", CheckAuth, async(req, res) => {
         });
     }
     
-    let guildData = await req.client.guildsData.findOne({id:guild.id});
+    let guildData = await req.client.findOrCreateGuild({ id: guild.id });
     let data = req.body;
     
     if(data.language){
