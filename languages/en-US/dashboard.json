@@ -4,6 +4,17 @@
     "SERVERS_MANAGEMENT": "Servers management",
     "NO_SERVER": "No server found",
     "NO_SERVER_CONTENT": "No server to display. Make sure you are logged in with the right account and try again.",
+    "BASIC_CONF": "📝 Basic configuration",
+    "WELCOME_CONF": "👋 Welcome messages",
+    "GOODBYE_CONF": "😢 Goodbye messages",
+    "WELCOME_IMG": "Include a great welcome image",
+    "GOODBYE_IMG": "Include a great goodbye image",
+    "CHANNELS_CONF": "🌀 Special channels",
+    "AUTOROLE_CONF": "🎖️ Autorole",
+    "DISABLE_MESSAGES": "Disable the messages",
+    "ENABLED_MESSAGES": "Enable the messages",
+    "DISABLE_AUTOROLE": "Disable autorole",
+    "ENABLE_AUTOROLE": "Enable autorole",
     "SELECTOR": "Selector",
     "MANAGE": "Manage"
 }
