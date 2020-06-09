@@ -48,7 +48,7 @@ router.post("/:serverID", CheckAuth, async(req, res) => {
         if(language){
             guildData.language = language.name;
         }
-        if(data.prefix.length > 1 && data.prefix.length < 2000){
+        if(data.prefix.length >= 1 && data.prefix.length < 2000){
             guildData.prefix = data.prefix;
         }
         await guildData.save();
