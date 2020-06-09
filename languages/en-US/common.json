@@ -45,5 +45,7 @@
     "TITLE": "Title",
     "SERVERS": "Servers",
     "PAGE": "Page",
-    "MESSAGE": "Message"
+    "MESSAGE": "Message",
+    "PROFILE": "Profile",
+    "SETTINGS": "Settings"
 }
