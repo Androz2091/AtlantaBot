@@ -6,9 +6,6 @@ class Joke extends Command {
     constructor (client) {
         super(client, {
             name: "joke",
-            description: (language) => language.get("JOKE_DESCRIPTION"),
-            usage: (language) => language.get("JOKE_USAGE"),
-            examples: (language) => language.get("JOKE_EXAMPLES"),
             dirname: __dirname,
             enabled: true,
             guildOnly: false,

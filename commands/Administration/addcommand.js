@@ -6,9 +6,6 @@ class Addcommand extends Command {
     constructor (client) {
         super(client, {
             name: "addcommand",
-            description: (language) => language.get("ADDCOMMAND_DESCRIPTION"),
-            usage: (language) => language.get("ADDCOMMAND_USAGE"),
-            examples: (language) => language.get("ADDCOMMAND_EXAMPLES"),
             dirname: __dirname,
             enabled: true,
             guildOnly: true,
