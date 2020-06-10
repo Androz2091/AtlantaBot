@@ -7,13 +7,14 @@ router = express.Router();
 router.get("/", CheckAuth, async function(req, res) {
     res.render("settings", {
         user: req.userInfos,
-        language: req.language,
+        translate: req.translate,
+        printDate: req.printDate,
         currentURL: `${req.client.config.dashboard.baseURL}/${req.originalUrl}`
     });
 });
 
 router.post("/", CheckAuth, async function(req, res){
-    let user = await req.client.usersData.findOne({id:req.user.id});
+    let user = await req.client.findOrCreateUser({ id: req.user.id });
     let data = req.body;
     if(data.bio){
         user.bio = data.bio;
@@ -21,13 +22,7 @@ router.post("/", CheckAuth, async function(req, res){
     if(data.birthdate){
         if(checkDate(data.birthdate)){
             user.birthdate = checkDate(data.birthdate);
-        }
-    }
-    if(data.language){
-        if(data.language === req.language.get("UTILS").FRENCH){
-            req.user.locale = "fr";
-        } else if(data.language === req.language.get("UTILS").ENGLISH){
-            req.user.locale = "en";
+            user.markModified("birthdate");
         }
     }
     await user.save();
