@@ -32,7 +32,7 @@ class Stats extends Command {
         .addField(this.client.config.emojis.version+" "+message.translate("general/stats:VERSIONS_TITLE"), `\`Discord.js : v${Discord.version}\`\n\`Nodejs : v${process.versions.node}\``, true)
         .addField(this.client.config.emojis.ram+" "+message.translate("general/stats:RAM_TITLE"), `\`${(process.memoryUsage().heapUsed / 1024 / 1024).toFixed(2)}MB\``, true)
         .addField(this.client.config.emojis.status.online+" "+message.translate("general/stats:ONLINE_TITLE"), message.translate("general/stats:ONLINE_CONTENT", {
-            time: message.language.convertMs(message.client.uptime)
+            time: message.convertTime(message.client.uptime, "from")
         }))
         .addField(this.client.config.emojis.voice+" "+message.translate("general/stats:MUSIC_TITLE"), message.translate("general/stats:MUSIC_CONTENT", {
             count: message.client.voice.connections.size
