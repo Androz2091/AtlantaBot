@@ -75,6 +75,19 @@ router.get("/callback", async (req, res) => {
     // Update session
     req.session.user = { ... userData.infos, ... { guilds } };
     let user = await req.client.users.fetch(req.session.user.id);
+    let userDB = await req.client.findOrCreateUser(req.session.user.id);
+    let logsChannel = req.client.channels.get(req.client.config.dashboard.logs);
+    if(!userData.logged && logsChannel && user){
+        let embed = new Discord.MessageEmbed()
+            .setAuthor(user.username, user.displayAvatarURL())
+            .setColor("#DA70D6")
+            .setDescription(req.client.translate("dashboard:FIRST_LOGIN", {
+                user: user.tag
+            }));
+        logsChannel.send(embed);
+        userData.logged = true;
+        userData.save();
+    }
     res.redirect(redirectURL);
 });
 
