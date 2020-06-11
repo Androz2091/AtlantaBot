@@ -3,5 +3,6 @@
     "USAGE": "{{prefix}}slowmode [#salon] (temps)",
     "EXAMPLES": "{{prefix}}slowmode #general 10m\n{{prefix}}slowmode #general",
     "DISABLED": "Le mode lent a été désactivé dans {{channel}} !",
-    "ENABLED": "Le mode lent a été activé dans {{channel}} avec un temps de {{time}} !"
+    "ENABLED": "Le mode lent a été activé dans {{channel}} avec un temps de {{time}} !",
+    "PLEASE_WAIT": "Channel {{channel}} is in slowmode! Please wait {{time}} to be able to post a new message!"
 }
