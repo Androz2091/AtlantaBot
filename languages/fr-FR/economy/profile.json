@@ -19,5 +19,7 @@
     "REGISTERED": "📅 Enregistré",
     "NO_LOVER": "Célibataire",
     "ACHIEVEMENTS": "🔥 Succès",
-    "ACHIEVEMENTS_CONTENT": "Obtenez plus d'informations avec `{{prefix}}achievements` !"
+    "ACHIEVEMENTS_CONTENT": "Obtenez plus d'informations avec `{{prefix}}achievements` !",
+    "BIO": "🔖 Biography",
+    "YOUR_PROFILE": "Your profile"
 }
