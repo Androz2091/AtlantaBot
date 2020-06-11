@@ -6,5 +6,5 @@
     "ENABLED": "¡Las invitaciones de Discord se eliminarán automáticamente! ¡Si desea ignorar un canal, simplemente escriba `{{prefix}}automod off #canal`! ¡Esto desactivará la moderación automática en el canal mencionado!",
     "DISABLED_CHANNEL": "¡La automoderación ya no se realizará en el canal {{channel}}!",
     "DISABLED": "¡Todo bien! ¡La moderación automática ya no está activa en este servidor!",
-    "DELETED": "Su mensaje contenía una invitación de Discord, por lo que se ha eliminado. Si no fue intencional, puede editar su mensaje nuevamente, ¡se lo enviamos como un mensaje privado!"
+    "DELETED": "**{{username}}**, your message contained a Discord invite, so it has been deleted. If it was unintentional you can edit your message again, it was sent to you as a private message!"
 }
