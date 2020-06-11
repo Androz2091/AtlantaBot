@@ -99,7 +99,7 @@ class FindWords extends Command {
                             return message.error("fun/findwords:NO_WINNER_ALL");
                         }
                         let winnerID = await getWinner(winners);
-                        let time = message.language.convertMs(Date.now() - createdAt);
+                        let time = message.convertTime(Date.now() - createdAt, "to");
                         let user = await message.client.users.fetch(winnerID);
                         message.sendT("fun/findwords:GAME_STATS", {
                             winner: user.username,

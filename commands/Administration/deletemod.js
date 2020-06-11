@@ -6,9 +6,6 @@ class Deletemod extends Command {
     constructor (client) {
         super(client, {
             name: "deletemod",
-            description: (language) => language.get("DELETEMOD_DESCRIPTION"),
-            usage: (language) => language.get("DELETEMOD_USAGE"),
-            examples: (language) => language.get("DELETEMOD_EXAMPLES"),
             dirname: __dirname,
             enabled: true,
             guildOnly: true,

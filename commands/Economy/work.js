@@ -28,7 +28,7 @@ class Work extends Command {
             is greater than the current date, display an error message */
             if(isInCooldown > Date.now()){
                 return message.sendT("economy/work:COOLDOWN", {
-                    time: message.language.convertMs(isInCooldown - Date.now())
+                    time: message.convertTime(isInCooldown - Date.now(), "to")
                 });
             }
         }

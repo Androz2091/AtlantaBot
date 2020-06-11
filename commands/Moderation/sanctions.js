@@ -38,7 +38,7 @@ class Sanctions extends Command {
             return message.channel.send(embed);
         } else {
             memberData.sanctions.forEach((s) => {
-                embed.addField(s.type+" | #"+s.case, `${message.language.translate("common:MODERATOR")}: <@${s.moderator}>\n${message.language.translate("common:REASON")}: ${s.reason}`, true);
+                embed.addField(s.type+" | #"+s.case, `${message.translate("common:MODERATOR")}: <@${s.moderator}>\n${message.translate("common:REASON")}: ${s.reason}`, true);
             });
         }
 

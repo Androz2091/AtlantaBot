@@ -6,9 +6,6 @@ class Pay extends Command {
     constructor (client) {
         super(client, {
             name: "pay",
-            description: (language) => language.get("PAY_DESCRIPTION"),
-            usage: (language) => language.get("PAY_USAGE"),
-            examples: (language) => language.get("PAY_EXAMPLES"),
             dirname: __dirname,
             enabled: true,
             guildOnly: true,

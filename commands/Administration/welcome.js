@@ -6,9 +6,6 @@ class Welcome extends Command {
     constructor (client) {
         super(client, {
             name: "welcome",
-            description: (language) => language.get("WELCOME_DESCRIPTION"),
-            usage: (language) => language.get("WELCOME_USAGE"),
-            examples: (language) => language.get("WELCOME_EXAMPLES"),
             dirname: __dirname,
             enabled: true,
             guildOnly: true,

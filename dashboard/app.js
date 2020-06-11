@@ -1,8 +1,7 @@
 const config = require("../config"),
 Discord = require("discord.js"),
 utils = require("./utils"),
-CheckAuth = require("./auth/CheckAuth"),
-availableLanguages = require("fs").readdirSync("old_languages/");
+CheckAuth = require("./auth/CheckAuth");
 
 module.exports.load = async(client) => {
 
@@ -14,13 +13,10 @@ module.exports.load = async(client) => {
     path = require("path"),
     app = express();
 
-    const passport = require("passport");
-    const { Strategy } = require("passport-discord");
-
     /* Routers */
     const mainRouter = require("./routes/index"),
     userRouter = require("./routes/user"),
-    loginRouter = require("./routes/login"),
+    discordAPIRouter = require("./routes/discord"),
     logoutRouter = require("./routes/logout"),
     settingsRouter = require("./routes/settings"),
     guildStatsRouter = require("./routes/guild-stats"),
@@ -42,22 +38,19 @@ module.exports.load = async(client) => {
     .set("port", config.dashboard.port)
     // Set the express session password and configuration
     .use(session({ secret: config.dashboard.expressSessionPassword, resave: false, saveUninitialized: false }))
-    // Passport (for discord authentication)
-    .use(passport.initialize())
-    .use(passport.session())
     // Multi languages support
     .use(async function(req, res, next){
+        req.user = req.session.user;
         req.client = client;
-        let userLang = req.user ? req.user.locale : "en";
-        let lang = availableLanguages.find((l) => l.startsWith(userLang)) || "english";
-        let Language = require("../old_languages/"+lang);
-        req.language = new Language();
-        if(req.user && req.url !== "/"){
-            req.userInfos = await utils.fetchUser(req.user, req.client, req.query.q);
+        req.locale = req.user ? (req.user.locale === "fr" ? "fr-FR" : "en-US") : "en-US";
+        if(req.user && req.url !== "/") req.userInfos = await utils.fetchUser(req.user, req.client);
+        if(req.user){
+            req.translate = req.client.translations.get(req.locale);
+            req.printDate = (date) => req.client.printDate(date, null, req.locale);
         }
         next();
     })
-    .use("/login", loginRouter)
+    .use("/api", discordAPIRouter)
     .use("/logout", logoutRouter)
     .use("/manage", guildManagerRouter)
     .use("/stats", guildStatsRouter)
@@ -67,7 +60,7 @@ module.exports.load = async(client) => {
     .use(CheckAuth, function(req, res, next){
         res.status(404).render("404", {
             user: req.userInfos,
-            language: req.language,
+            translate: req.translate,
             currentURL: `${req.protocol}://${req.get("host")}${req.originalUrl}`
         });
     })
@@ -76,7 +69,7 @@ module.exports.load = async(client) => {
         if(!req.user) return res.redirect("/");
         res.status(500).render("500", {
             user: req.userInfos,
-            language: req.language,
+            translate: req.translate,
             currentURL: `${req.protocol}://${req.get("host")}${req.originalUrl}`
         });
     });
@@ -85,26 +78,5 @@ module.exports.load = async(client) => {
     app.listen(app.get("port"), (err) => {
         console.log("Atlanta Dashboard is listening on port "+app.get("port"));
     });
-
-    // Passport is used for discord authentication
-    passport.serializeUser((user, done) => {
-        done(null, user);
-    });
-    passport.deserializeUser((obj, done) => {
-        done(null, obj);
-    });
-
-    let disStrat = new Strategy({
-        clientID:       client.user.id,
-        clientSecret:   config.dashboard.secret,
-        callbackURL:    config.dashboard.baseURL+"/login",
-        scope:          [ "identify", "guilds" ]
-    }, function (accessToken, refreshToken, profile, done){
-        process.nextTick(function(){
-            return done(null, profile);
-        });
-    });
-
-    passport.use(disStrat);
 
 }

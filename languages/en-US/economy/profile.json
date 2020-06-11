@@ -19,5 +19,7 @@
     "REGISTERED": "📅 Registered",
     "NO_LOVER": "Single",
     "ACHIEVEMENTS": "🔥 Réalisations",
-    "ACHIEVEMENTS_CONTENT": "Get more information with `{{prefix}}achievements`!"
+    "ACHIEVEMENTS_CONTENT": "Get more information with `{{prefix}}achievements`!",
+    "BIO": "🔖 Biography",
+    "YOUR_PROFILE": "Your profile"
 }
