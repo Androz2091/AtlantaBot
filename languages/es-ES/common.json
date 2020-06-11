@@ -45,5 +45,18 @@
     "TITLE": "Título",
     "SERVERS": "Servers",
     "PAGE": "Page",
-    "MESSAGE": "Message"
+    "MESSAGE": "Message",
+    "PROFILE": "Profile",
+    "SETTINGS": "Settings",
+    "CONFIGURATION": "Configuration",
+    "PREFIX": "Prefix",
+    "LANGUAGE": "Language",
+    "CHANNEL": "Channel",
+    "UPDATE": "Update",
+    "SUGGESTIONS": "Suggestions",
+    "MODLOGS": "Moderation logs",
+    "FORTNITESHOP": "Fortnite shop",
+    "NO_CHANNEL": "No channel",
+    "REPORTS": "Reports",
+    "DISCONNECT": "Disconnect"
 }
