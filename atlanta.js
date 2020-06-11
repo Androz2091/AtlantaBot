@@ -3,11 +3,14 @@ util = require("util"),
 fs = require("fs"),
 readdir = util.promisify(fs.readdir),
 AmeClient = require("amethyste-api"),
-mongoose = require("mongoose");
+mongoose = require("mongoose"),
+artefact = require('discord-artefact');
 
 // Load Atlanta class
 const Atlanta = require("./base/Atlanta"),
 client = new Atlanta();
+client.i18n = new artefact.StringHandler();
+client.monitors = artefact.Monitors;
 
 const init = async () => {
 
