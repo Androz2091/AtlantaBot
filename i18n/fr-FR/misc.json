@@ -1,4 +1,14 @@
 {
   "MISSING_PERMS": "Votre niveau de permission est trop bas pour exécuter cette commande. La commande nécessite le niveau de permission {{requiredLevel}} (`{{requiredTitle}}`) et vous êtes de niveau {{userLevel}} (`{{userTitle}}`). ",
-  "PREFIX": "le préfixe de ce serveur est {{prefix}}."
+  "MISSING_PERMS_BOT": "J'ai besoin des permissions suivante pour utiliser cette commande : {{permissions}}",
+  "PREFIX": "le préfixe de ce serveur est {{prefix}}.",
+  "CHANNEL_IGNORED": "Commande non autorisé dans {{channel}}.",
+  "EVERYONE_MENTION": "Vous n'êtes pas autorisé a mentions **everyone** avec cette commande.",
+  "STATS_FOOTER": "[Dashboard]({{dashboardLink}}) ● [Donnation]({{donateLink}}) ● [Invite]({{inviteLink}}) ● [Serveur]({{supportLink}}) ● [Github]({{githubLink}})",
+  "COMMAND_DISABLED": "Cette commande est actuellement désactivé !",
+  "INVALID_YES_NO": "Vous devez envoyer \"yes\" ou \"no\"!",
+  "INVALID_CHANNEL": "Veuillez saisir un salon valide !",
+  "TIMEOUT": "Temps écouler ! Veuillez recommencer.",
+  "UNKNOWN_COMMAND": "Commande inconnue `{{command}}`. Ecrivez `{{prefix}}help` pour obtenir la liste des commandes.",
+  "COMMAND_GUILDONLY": "Cette commande doit être exécutée sur un serveur!"
 }
