@@ -35,7 +35,7 @@ class Fortnite extends Command {
         let fortniteClient = new fortnite(data.config.apiKeys.fortniteTRN);
 
         let platform = args[0];
-        if(!platform || (platform !== "pc" && platform !== "xbl" && platform !== "psn")){
+        if(!platform || (platform!== "touch" && platform !== "pc" && platform !== "xbl" && platform !== "psn")){
             return message.channel.send(message.language.get("FORTNITE_ERR_PLATFORM"));
         }
 
@@ -59,8 +59,10 @@ class Fortnite extends Command {
             // This uses the canvas dimensions to stretch the image onto the entire canvas
             ctx.drawImage(background, 0, 0, canvas.width, canvas.height);
             // Draw xbox, pc or psn logo
+            if(platform !== "touch") {
             let iconPlatform = await Canvas.loadImage(`./assets/img/fortnite/stats/${platform}.png`);
             ctx.drawImage(iconPlatform, 62, 43, 60, 60);
+            }
             // Draw crown logo
             let iconCrown = await Canvas.loadImage("./assets/img/fortnite/stats/crown.png");
             ctx.drawImage(iconCrown, canvas.width - 280, 41, 60, 60);
