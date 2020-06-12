@@ -14,6 +14,12 @@ const init = async () => {
     // Search for all commands
     let directories = await readdir("./commands/");
     client.logger.log(`Loading a total of ${directories.length} categories.`, "log");
+    if (process.stdout.moveCursor) {
+        process.stdout.moveCursor(0, -1);
+     }
+     if (process.stdout.clearLine) {
+         process.stdout.clearLine();
+     }
     directories.forEach(async (dir) => {
         let commands = await readdir("./commands/"+dir+"/");
         commands.filter((cmd) => cmd.split(".").pop() === "js").forEach((cmd) => {
@@ -30,6 +36,12 @@ const init = async () => {
     evtFiles.forEach((file) => {
         const eventName = file.split(".")[0];
         client.logger.log(`Loading Event: ${eventName}`);
+        if (process.stdout.moveCursor) {
+            process.stdout.moveCursor(0, -1);
+        }
+        if (process.stdout.clearLine) {
+            process.stdout.clearLine();
+        }
         const event = new (require(`./events/${file}`))(client);
         client.on(eventName, (...args) => event.run(...args));
         delete require.cache[require.resolve(`./events/${file}`)];
