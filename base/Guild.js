@@ -12,7 +12,7 @@ module.exports = mongoose.model("Guild", new Schema({
     members: [{ type: Schema.Types.ObjectId, ref: "Member" }],
 
     /* CONFIGURATION */
-    language: { type: String, default: config.defaultLanguage }, // Language of the guild
+    language: { type: String, default: config.languages.find((l) => l.default).name }, // Language of the guild
     prefix: { type: String, default: config.prefix }, // Default or custom prefix of the guild
     plugins: { type: Object, default: { // Plugins data
         // Welcome messages
