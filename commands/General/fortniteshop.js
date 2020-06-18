@@ -7,9 +7,6 @@ class Fortniteshop extends Command {
     constructor (client) {
         super(client, {
             name: "fortniteshop",
-            description: (language) => language.get("FORTNITESHOP_DESCRIPTION"),
-            usage: (language) => language.get("FORTNITESHOP_USAGE"),
-            examples: (language) => language.get("FORTNITESHOP_EXAMPLES"),
             dirname: __dirname,
             enabled: true,
             guildOnly: false,
