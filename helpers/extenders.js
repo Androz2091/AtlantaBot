@@ -19,13 +19,13 @@ Message.prototype.translate = function(key, args) {
 // Wrapper for sendT with error emoji
 Message.prototype.error = function(key, args, options = {}) {
     options.prefixEmoji = "error";
-    this.sendT(key, args, options);
+    return this.sendT(key, args, options);
 };
 
 // Wrapper for sendT with success emoji
 Message.prototype.success = function(key, args, options = {}) {
     options.prefixEmoji = "success";
-    this.sendT(key, args, options);
+    return this.sendT(key, args, options);
 };
 
 // Translate and send the message
@@ -35,9 +35,9 @@ Message.prototype.sendT = function(key, args, options = {}) {
         string = `${this.client.config.emojis[options.prefixEmoji]} | ${string}`;
     }
     if (options.edit) {
-        this.edit(string);
+        return this.edit(string);
     } else {
-        this.channel.send(string);
+        return this.channel.send(string);
     }
 };
 

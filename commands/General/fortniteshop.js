@@ -29,14 +29,16 @@ class Fortniteshop extends Command {
             prefixEmoji: "loading"
         });
 
+        const momentName = data.config.languages.find((language) => language.name === data.guild.language || language.aliases.includes(data.guild.language)).moment;
         const shop = new Canvas.FortniteShop();
         let image = await shop
         .setToken(data.config.apiKeys.fortniteFNBR)
-        .setText("header", message.translate("general/fortniteshop:HEADER").replace("{{date}}", "{date}"))
+        .setText("header", message.translate("general/fortniteshop:HEADER"))
         .setText("daily", message.translate("general/fortniteshop:DAILY"))
         .setText("featured", message.translate("general/fortniteshop:FEATURED"))
-        .setText("date", message.translate("general/fortniteshop:DATE"))
+        .setText("date", message.translate("general/fortniteshop:DATE").replace("  ", "{date}"))
         .setText("footer", message.translate("general/fortniteshop:FOOTER"))
+        .lang(momentName)
         .toAttachment();
         let attachment = new Discord.MessageAttachment(image, "shop.png");
 
