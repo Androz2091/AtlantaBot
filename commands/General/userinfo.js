@@ -35,7 +35,7 @@ class Userinfo extends Command {
         if(isID && !user){
             user = message.client.users.get(args[0]);
             if(!user){
-                user = await message.client.users.fetch(args[0], true);
+                user = await message.client.users.fetch(args[0], true).catch(() => {});
                 displayPresence = false;
             }
         }
