@@ -152,6 +152,6 @@ Here's the list of Atlanta commands. This one contains more than **100 commands*
 | Name             | Description                    | Usage        | Cooldown  |
 | ---------------- | ------------------------------ | ------------ | --------- |
 | **eval**         | Executes the code              | eval [code]  | 3 seconds |
-| **reload**       | DESCRIPTION                    | USAGE        | 3 seconds |
+| **reload**       | Reload a command!              | reload       | 3 seconds |
 | **servers-list** | Shows the list of the servers! | servers-list | 5 seconds |
 
