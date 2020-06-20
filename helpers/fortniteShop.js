@@ -18,7 +18,9 @@ async function init(client) {
                         .setText("header", client.translate("general/fortniteshop:HEADER").replace("{{date}}", "{date}"), null, guildData.language)
                         .setText("daily", client.translate("general/fortniteshop:DAILY"), null, guildData.language)
                         .setText("featured", client.translate("general/fortniteshop:FEATURED"), null, guildData.language)
-                        .setText("date", client.translate("general/fortniteshop:DATE").replace("  ", "{date}"), null, guildData.language)
+                        .setText("date", client.translate("general/fortniteshop:DATE", {
+                            skipInterpolation: true
+                        }, null, guildData.language).replace('{{date}}', '{date}'))
                         .setText("footer", client.translate("general/fortniteshop:FOOTER"), null, guildData.language)
                         .lang(momentName)
                         .toAttachment();

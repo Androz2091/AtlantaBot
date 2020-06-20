@@ -36,7 +36,9 @@ class Fortniteshop extends Command {
         .setText("header", message.translate("general/fortniteshop:HEADER"))
         .setText("daily", message.translate("general/fortniteshop:DAILY"))
         .setText("featured", message.translate("general/fortniteshop:FEATURED"))
-        .setText("date", message.translate("general/fortniteshop:DATE").replace("  ", "{date}"))
+        .setText("date", message.translate("general/fortniteshop:DATE", {
+            skipInterpolation: true
+        }).replace('{{date}}', '{date}'))
         .setText("footer", message.translate("general/fortniteshop:FOOTER"))
         .lang(momentName)
         .toAttachment();
