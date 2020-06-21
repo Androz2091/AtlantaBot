@@ -42,7 +42,7 @@ class Skip extends Command {
             return message.channel.send(message.language.get("SKIP_ERR_NO_SONG"));
         }
 
-        let members = voice.members.filter((m) => m.id !== message.client.user.id);
+        let members = voice.members.filter((m) => !m.user.bot);
 
         let embed = new Discord.MessageEmbed()
             .setAuthor(message.language.get("SKIP_TITLE"))
