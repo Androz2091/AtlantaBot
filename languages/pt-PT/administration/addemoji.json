@@ -2,8 +2,8 @@
     "DESCRIPTION": "Adicionar um emoji em seu server!",
     "USAGE": "{{prefix}}addemoji [image-url] [nome]",
     "EXAMPLES": "{{prefix}}addemoji https://via.placeholder.com/150test-emoji",
-    "MISSING_URL": "Please provide an image URL!",
-    "MISSING_NAME": "Please provide an emoji name!",
-    "SUCCESS": "Emoji **{{emojiName}}** added! Its string is: `{{emojiString}}`.",
-    "ERROR": "{{emojiName}} couldn't be added. Check if your server still has space for new emojis!"
+    "MISSING_URL": "Por favor forneça o link de uma imagem!",
+    "MISSING_NAME": "Por favor forneça o nome para o emoji!",
+    "SUCCESS": "Emoji **{{emojiName}}** adicinado! A string é: `{{emojiString}}`.",
+    "ERROR": "{{emojiName}} não pode ser adicionado. Verifique se seu servidor ainda tem espaço para novos emojis!"
 }
