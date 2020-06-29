@@ -10,7 +10,7 @@ class Lovecalc extends Command {
             dirname: __dirname,
             enabled: true,
             guildOnly: true,
-            aliases: [],
+            aliases: ["lc"],
             memberPermissions: [],
             botPermissions: [ "SEND_MESSAGES", "EMBED_LINKS" ],
             nsfw: false,
