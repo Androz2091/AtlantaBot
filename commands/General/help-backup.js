@@ -82,10 +82,7 @@ class Help extends Command {
                 embed.addField(emojis.categories.custom+" "+message.guild.name+" | "+message.language.get("UTILS").CUSTOM_COMMANDS+" - ("+data.guild.customCommands.length+")", data.guild.customCommands.map((cmd) => "`"+cmd.name+"`").join(", "));
             }
         }
-        let inviteURL = message.client.config.supportURL || await message.client.functions.supportLink(message.client).catch((err) => {});
-        if(!inviteURL){
-            inviteURL = "https://discord.gg/code";
-        }
+      
         embed.addField("\u200B", message.language.get("STATS_LINKS", inviteURL, message.client.user.id));
         embed.setAuthor(message.language.get("HELP_TITLE"), message.client.user.displayAvatarURL());
         return message.channel.send(embed);
