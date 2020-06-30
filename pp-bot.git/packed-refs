@@ -1,0 +1,17 @@
+# pack-refs with: peeled fully-peeled sorted 
+72a47a1719278cb1e53fe789b106a86da3e6b83c refs/heads/5.0.0-dev
+88724c160f4d2b7303866783fb7621d707394b5c refs/heads/dependabot/npm_and_yarn/discord-giveaways-4.1.8
+6e13a4d2ba21d026a8450bfcdc512bb5302cd808 refs/heads/dependabot/npm_and_yarn/discord.js-tw-12.2.0
+44e26bf34e312e619e18841b7d626f85785996a2 refs/heads/dependabot/npm_and_yarn/markdown-table-2.0.0
+0923c9e5d19863f843ed1c5a4a7c49a450b1a845 refs/heads/dependabot/npm_and_yarn/mathjs-7.0.1
+8e612a4ad041843cf6004339b86ecbb68385486f refs/heads/develop
+472f97b93a9359f263b542fd6c722ea4ee3f7d1e refs/heads/feature/expressAPI
+8fd2f60fda90731ffb17c145073c1fbfd100d184 refs/heads/feature/spanishLanguage
+34add0c25fb975137979b5187b009a10a2b742c0 refs/heads/i18n
+de10fb5b1b041cd43e886a5373d8a7ce656f95b2 refs/heads/l10n_5.0.0-dev
+f94ba332d0f2cf5351972615be2d931a8b2250a1 refs/heads/l10n_develop
+621e3ee6d45e0bf0552cef528d879ca4ca30004c refs/heads/master
+862e530c6baaaddaf1179ab742b8d5c97cdc429e refs/heads/test-perf
+ebd41e8c9b032d33034d704c5122498e792bcf87 refs/tags/3.5.0
+0f542df34d16091b5b4466e521d18703c982cef4 refs/tags/4.0.0
+fb15183572cfb2b896942b3c5110de59c1c179db refs/tags/4.5.0
