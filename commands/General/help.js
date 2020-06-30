@@ -1,9 +1,12 @@
 
-/* somthing is wrong with this scrip iyr is doing file switch check palanning on doing fuc stop check tomarrow */
 const Command = require("../../base/Command.js"),
 Discord = require("discord.js"),
 ms = require("ms");
+/* it looks like in my editor it is expecting syntax here ^ */
+/* again in this case expecting a syntax token it looks like some files that were called here we removed i suspect
+will further  tomarrow */
 
+/* LOGGING FINDS IN GITHUB */
 class Help extends Command {
     constructor (client) {
         super(client, {
