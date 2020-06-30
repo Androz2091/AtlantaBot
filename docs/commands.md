@@ -7,28 +7,6 @@ Here's the list of Atlanta commands. This one contains more than **80 commands**
 **Usage**: The arguments/options that the command takes in parameters  
 **Cooldown**: The time that must elapse between each command so that it can be executed again by the user
 
-### Images (17 commands)
-
-| Name              | Description                                               | Usage                      | Cooldown  |
-| ----------------- | --------------------------------------------------------- | -------------------------- | --------- |
-| **avatar**        | Displays the avatar of the mentionned member              | avatar (@member)           | 5 seconds |
-| **captcha**       | Generates a "triggered" image using the Nekobot API       | captcha (@member)          | 5 seconds |
-| **clyde**         | Generates a "clyde" image using the Nekobot API           | clyde [text]               | 5 seconds |
-| **facepalm**      |                                                           |                            | 5 seconds |
-| **fire**          | Generates a "fire" image using the Améthyste API          | fire (@member)             | 5 seconds |
-| **jail**          | Generates a "jail" image using the Améthyste API          | jail (@member)             | 5 seconds |
-| **love**          | Generates a "love" image using the Nekobot API            | love [@user1] (@user2)     | 5 seconds |
-| **mission**       | Generates a "mission" image using the Améthyste API       | mission (@member)          | 5 seconds |
-| **phcomment**     | Generates a "phcomment" image using the Nekobot API       | phcomment (@member) (text) | 5 seconds |
-| **qrcode**        | Generates a QR Code with your text!                       | qrcode [text]              | 3 seconds |
-| **rip**           | Generates a "rip" image using the Améthyste API           | rip (@member)              | 5 seconds |
-| **scary**         | Generates a "scary" image using the Améthyste API         | scary (@member)            | 5 seconds |
-| **tobecontinued** | Generates a "tobecontinued" image using the Améthyste API | tobecontinued (@member)    | 5 seconds |
-| **triggered**     | Generates a "triggered" image using the Améthyste API     | triggered (@member)        | 5 seconds |
-| **tweet**         | Generate a tweet of a person of your choice on Twitter!   | tweet [@twitter] [text]    | 5 seconds |
-| **wanted**        | Generates a "wanted" image using the Améthyste API        | wanted (@member)           | 5 seconds |
-| **wasted**        | Generates a "wasted" image using the Améthyste API        | wasted (@member)           | 5 seconds |
-
 ### General (17 commands)
 
 | Name            | Description                                                              | Usage                          | Cooldown  |
@@ -51,6 +29,28 @@ Here's the list of Atlanta commands. This one contains more than **80 commands**
 | **translate**   | I'm translating your text!                                               | translate [language] [message] | 8 seconds |
 | **userinfo**    | Displays user information!                                               | userinfo (@user/userID)        | 5 seconds |
 
+### Images (17 commands)
+
+| Name              | Description                                               | Usage                      | Cooldown  |
+| ----------------- | --------------------------------------------------------- | -------------------------- | --------- |
+| **avatar**        | Displays the avatar of the mentionned member              | avatar (@member)           | 5 seconds |
+| **captcha**       | Generates a "triggered" image using the Nekobot API       | captcha (@member)          | 5 seconds |
+| **clyde**         | Generates a "clyde" image using the Nekobot API           | clyde [text]               | 5 seconds |
+| **facepalm**      |                                                           |                            | 5 seconds |
+| **fire**          | Generates a "fire" image using the Améthyste API          | fire (@member)             | 5 seconds |
+| **jail**          | Generates a "jail" image using the Améthyste API          | jail (@member)             | 5 seconds |
+| **love**          | Generates a "love" image using the Nekobot API            | love [@user1] (@user2)     | 5 seconds |
+| **mission**       | Generates a "mission" image using the Améthyste API       | mission (@member)          | 5 seconds |
+| **phcomment**     | Generates a "phcomment" image using the Nekobot API       | phcomment (@member) (text) | 5 seconds |
+| **qrcode**        | Generates a QR Code with your text!                       | qrcode [text]              | 3 seconds |
+| **rip**           | Generates a "rip" image using the Améthyste API           | rip (@member)              | 5 seconds |
+| **scary**         | Generates a "scary" image using the Améthyste API         | scary (@member)            | 5 seconds |
+| **tobecontinued** | Generates a "tobecontinued" image using the Améthyste API | tobecontinued (@member)    | 5 seconds |
+| **triggered**     | Generates a "triggered" image using the Améthyste API     | triggered (@member)        | 5 seconds |
+| **tweet**         | Generate a tweet of a person of your choice on Twitter!   | tweet [@twitter] [text]    | 5 seconds |
+| **wanted**        | Generates a "wanted" image using the Améthyste API        | wanted (@member)           | 5 seconds |
+| **wasted**        | Generates a "wasted" image using the Améthyste API        | wasted (@member)           | 5 seconds |
+
 ### Economy (15 commands)
 
 | Name             | Description                                                               | Usage                            | Cooldown   |
@@ -71,22 +71,6 @@ Here's the list of Atlanta commands. This one contains more than **80 commands**
 | **withdraw**     | Withdraw money!                                                           | withdraw [amount]                | 1 seconds  |
 | **work**         | Work and earn money!                                                      | work                             | 3 seconds  |
 
-### Administration (11 commands)
-
-| Name              | Description                                                   | Usage                      | Cooldown   |
-| ----------------- | ------------------------------------------------------------- | -------------------------- | ---------- |
-| **backup**        | Manage your server backups in an ergonomic and efficient way! | backup [create/load/infos] | 30 seconds |
-| **configuration** | Displays the server configuration                             | configuration              | 3 seconds  |
-| **goodbye**       | Send a goodbye message to a pre-defined channel!              | goodbye                    | 3 seconds  |
-| **ignore**        | Disables or activates commands in the mentioned channel       | ignore [#channel]          | 3 seconds  |
-| **purge**         | Kick out inactive members!                                    | purge [days]               | 5 seconds  |
-| **setmodlogs**    | Define the log channel!                                       | setmodlogs (#channel)      | 3 seconds  |
-| **setprefix**     | Changes the server prefix                                     | setprefix [prefix]         | 3 seconds  |
-| **setreports**    | Define the reports channel!                                   | setreports (#channel)      | 3 seconds  |
-| **setsuggests**   | Define the suggestion channel!                                | setsuggests (#channel)     | 3 seconds  |
-| **slowmode**      | Define a cooldown in a channel                                | slowmode [#channel] (time) | 3 seconds  |
-| **welcome**       | Send a welcome message to a pre-defined channel!              | welcome                    | 3 seconds  |
-
 ### Fun (11 commands)
 
 | Name          | Description                                                                                   | Usage                           | Cooldown  |
@@ -102,6 +86,22 @@ Here's the list of Atlanta commands. This one contains more than **80 commands**
 | **number**    | Find the number I chose!                                                                      | number                          | 5 seconds |
 | **random**    | Randomly pick one of the choices you give me!                                                 | random [choice1/choice2/etc...] | 5 seconds |
 | **tcl**       | Display the last tweet of @thecodinglove !                                                    | tcl                             | 3 seconds |
+
+### Administration (11 commands)
+
+| Name              | Description                                                   | Usage                      | Cooldown   |
+| ----------------- | ------------------------------------------------------------- | -------------------------- | ---------- |
+| **backup**        | Manage your server backups in an ergonomic and efficient way! | backup [create/load/infos] | 30 seconds |
+| **configuration** | Displays the server configuration                             | configuration              | 3 seconds  |
+| **goodbye**       | Send a goodbye message to a pre-defined channel!              | goodbye                    | 3 seconds  |
+| **ignore**        | Disables or activates commands in the mentioned channel       | ignore [#channel]          | 3 seconds  |
+| **purge**         | Kick out inactive members!                                    | purge [days]               | 5 seconds  |
+| **setmodlogs**    | Define the log channel!                                       | setmodlogs (#channel)      | 3 seconds  |
+| **setprefix**     | Changes the server prefix                                     | setprefix [prefix]         | 3 seconds  |
+| **setreports**    | Define the reports channel!                                   | setreports (#channel)      | 3 seconds  |
+| **setsuggests**   | Define the suggestion channel!                                | setsuggests (#channel)     | 3 seconds  |
+| **slowmode**      | Define a cooldown in a channel                                | slowmode [#channel] (time) | 3 seconds  |
+| **welcome**       | Send a welcome message to a pre-defined channel!              | welcome                    | 3 seconds  |
 
 ### Music (8 commands)
 
