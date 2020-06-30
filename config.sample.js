@@ -21,14 +21,14 @@ module.exports = {
 	/* For the embeds (embeded messages) */
 	embed: {
 		color: "#0091fc", // The default color for the embeds
-		footer: "Atlanta | Open Source" // And the default footer for the embeds
+		footer: "Pepe planet bot" // And the default footer for the embeds
 	},
 	defaultLanguage: "english", // The default language for the new servers
-	botname: "Atlanta", // The name of the bot
+	botname: "Pepe Planet Bot", // The name of the bot
 	/* Bot's owner informations */
 	owner: {
-		id: "XXXXXXXXXXX", // The ID of the bot's owner
-		name: "Androz#2091" // And the name of the bot's owner
+		id: "686039988605026304", // The ID of the bot's owner
+		name: "uosɹǝd¿?person ( ꈍᴗꈍ)#4546" // And the name of the bot's owner
 	},
 	/* DBL votes webhook (optional) */
 	votes: {
