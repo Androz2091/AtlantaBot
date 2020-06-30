@@ -175,10 +175,7 @@ module.exports = {
 		}
 	},
 	/* The others utils links */
-	others: {
-		github: "https://github.com/Androz2091", // Founder's github account
-		donate: "https://patreon.com/Androz2091" // Donate link
-	},
+	
 	/* The badges for the badges command */
 	badges: {
 		games: [
