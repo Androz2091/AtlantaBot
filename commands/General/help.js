@@ -1,3 +1,5 @@
+
+/* somthing is wrong with this scrip iyr is doing file switch check palanning on doing fuc stop check tomarrow */
 const Command = require("../../base/Command.js"),
 Discord = require("discord.js"),
 ms = require("ms");
