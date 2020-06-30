@@ -71,22 +71,6 @@ Here's the list of Atlanta commands. This one contains more than **80 commands**
 | **withdraw**     | Withdraw money!                                                           | withdraw [amount]                | 1 seconds  |
 | **work**         | Work and earn money!                                                      | work                             | 3 seconds  |
 
-### Fun (11 commands)
-
-| Name          | Description                                                                                   | Usage                           | Cooldown  |
-| ------------- | --------------------------------------------------------------------------------------------- | ------------------------------- | --------- |
-| **8ball**     | I'm telling you the truth!                                                                    | 8ball [question]                | 3 seconds |
-| **ascii**     | Turn your text into ascii characters!                                                         | ascii [text]                    | 5 seconds |
-| **findwords** | Start a game of findwords, a game where you have to find words!                               | findwords                       | 5 seconds |
-| **flip**      | I roll the dice for you!                                                                      | flip                            | 1 seconds |
-| **fml**       | Displays a random FML                                                                         | fml                             | 3 seconds |
-| **joke**      | Displays a joke in French                                                                     | joke                            | 3 seconds |
-| **lmg**       | Returns a link to lmgtfy.com                                                                  | lmg [question]                  | 1 seconds |
-| **lovecalc**  | How much love is there between two people? *This is a fun command, not to be taken seriously* | lovecalc [@member1] (@member2)  | 1 seconds |
-| **number**    | Find the number I chose!                                                                      | number                          | 5 seconds |
-| **random**    | Randomly pick one of the choices you give me!                                                 | random [choice1/choice2/etc...] | 5 seconds |
-| **tcl**       | Display the last tweet of @thecodinglove !                                                    | tcl                             | 3 seconds |
-
 ### Administration (11 commands)
 
 | Name              | Description                                                   | Usage                      | Cooldown   |
@@ -102,6 +86,22 @@ Here's the list of Atlanta commands. This one contains more than **80 commands**
 | **setsuggests**   | Define the suggestion channel!                                | setsuggests (#channel)     | 3 seconds  |
 | **slowmode**      | Define a cooldown in a channel                                | slowmode [#channel] (time) | 3 seconds  |
 | **welcome**       | Send a welcome message to a pre-defined channel!              | welcome                    | 3 seconds  |
+
+### Fun (11 commands)
+
+| Name          | Description                                                                                   | Usage                           | Cooldown  |
+| ------------- | --------------------------------------------------------------------------------------------- | ------------------------------- | --------- |
+| **8ball**     | I'm telling you the truth!                                                                    | 8ball [question]                | 3 seconds |
+| **ascii**     | Turn your text into ascii characters!                                                         | ascii [text]                    | 5 seconds |
+| **findwords** | Start a game of findwords, a game where you have to find words!                               | findwords                       | 5 seconds |
+| **flip**      | I roll the dice for you!                                                                      | flip                            | 1 seconds |
+| **fml**       | Displays a random FML                                                                         | fml                             | 3 seconds |
+| **joke**      | Displays a joke in French                                                                     | joke                            | 3 seconds |
+| **lmg**       | Returns a link to lmgtfy.com                                                                  | lmg [question]                  | 1 seconds |
+| **lovecalc**  | How much love is there between two people? *This is a fun command, not to be taken seriously* | lovecalc [@member1] (@member2)  | 1 seconds |
+| **number**    | Find the number I chose!                                                                      | number                          | 5 seconds |
+| **random**    | Randomly pick one of the choices you give me!                                                 | random [choice1/choice2/etc...] | 5 seconds |
+| **tcl**       | Display the last tweet of @thecodinglove !                                                    | tcl                             | 3 seconds |
 
 ### Music (8 commands)
 
