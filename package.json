@@ -8,14 +8,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Androz2091/AtlantaBot.git"
+    "url": "git+https://github.com/kk5dire/pp-bot"
   },
   "author": "Androz2091",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/Androz2091/AtlantaBot/issues"
+    "url": "https://github.com/kk5dire/pp-bot/issues"
   },
-  "homepage": "https://github.com/Androz2091/AtlantaBot#readme",
+  "homepage": "https://github.com/kk5dire/pp-bot",
   "dependencies": {
     "@k3rn31p4nic/google-translate-api": "github:k3rn31p4nic/google-translate-api",
     "amethyste-api": "github:Androz2091/amethyste-api",
