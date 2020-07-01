@@ -7,28 +7,6 @@ Here's the list of Atlanta commands. This one contains more than **80 commands**
 **Usage**: The arguments/options that the command takes in parameters  
 **Cooldown**: The time that must elapse between each command so that it can be executed again by the user
 
-### General (17 commands)
-
-| Name            | Description                                                              | Usage                          | Cooldown  |
-| --------------- | ------------------------------------------------------------------------ | ------------------------------ | --------- |
-| **api-token**   | Send your token back to use the Atlanta API!                             | apitoken (regenerate)          | 1 seconds |
-| **calc**        | A calculator capable of solving complex operations and converting units! | calc [calculation]             | 1 seconds |
-| **help**        | Displays the help of commands or the help of a particular command        | help (command)                 | 5 seconds |
-| **permissions** | Displays the member's permissions in the channel                         | permissions (@member)          | 1 seconds |
-| **ping**        | Displays bot latency                                                     | ping                           | 1 seconds |
-| **quote**       | Quote a message in the channel!                                          | quote [messageID] [channel]    | 5 seconds |
-| **remindme**    | Define a reminder!                                                       | remindme [reason]              | 3 seconds |
-| **report**      | Send your report to the channel defined for this!                        | report [@user] [reason]        | 5 seconds |
-| **serverinfo**  | Displays information about the server!                                   | serverinfo [ID/Name]           | 3 seconds |
-| **setafk**      | Become an AFK (members who mention you will receive a message)           | setafk [reason]                | 3 seconds |
-| **shorturl**    | Shorten your link!                                                       | shorturl [url]                 | 5 seconds |
-| **someone**     | Pick a random member on the server!                                      | someone                        | 1 seconds |
-| **staff**       | Displays the list of server staff members!                               | staff                          | 3 seconds |
-| **stats**       | Display the stats of the bot!                                            | stats                          | 3 seconds |
-| **suggest**     | Send your suggestion to the channel defined for this!                    | suggest [message]              | 5 seconds |
-| **translate**   | I'm translating your text!                                               | translate [language] [message] | 8 seconds |
-| **userinfo**    | Displays user information!                                               | userinfo (@user/userID)        | 5 seconds |
-
 ### Images (17 commands)
 
 | Name              | Description                                               | Usage                      | Cooldown  |
@@ -50,6 +28,28 @@ Here's the list of Atlanta commands. This one contains more than **80 commands**
 | **tweet**         | Generate a tweet of a person of your choice on Twitter!   | tweet [@twitter] [text]    | 5 seconds |
 | **wanted**        | Generates a "wanted" image using the Améthyste API        | wanted (@member)           | 5 seconds |
 | **wasted**        | Generates a "wasted" image using the Améthyste API        | wasted (@member)           | 5 seconds |
+
+### General (17 commands)
+
+| Name            | Description                                                              | Usage                          | Cooldown  |
+| --------------- | ------------------------------------------------------------------------ | ------------------------------ | --------- |
+| **api-token**   | Send your token back to use the Atlanta API!                             | apitoken (regenerate)          | 1 seconds |
+| **calc**        | A calculator capable of solving complex operations and converting units! | calc [calculation]             | 1 seconds |
+| **help**        | Displays the help of commands or the help of a particular command        | help (command)                 | 5 seconds |
+| **permissions** | Displays the member's permissions in the channel                         | permissions (@member)          | 1 seconds |
+| **ping**        | Displays bot latency                                                     | ping                           | 1 seconds |
+| **quote**       | Quote a message in the channel!                                          | quote [messageID] [channel]    | 5 seconds |
+| **remindme**    | Define a reminder!                                                       | remindme [reason]              | 3 seconds |
+| **report**      | Send your report to the channel defined for this!                        | report [@user] [reason]        | 5 seconds |
+| **serverinfo**  | Displays information about the server!                                   | serverinfo [ID/Name]           | 3 seconds |
+| **setafk**      | Become an AFK (members who mention you will receive a message)           | setafk [reason]                | 3 seconds |
+| **shorturl**    | Shorten your link!                                                       | shorturl [url]                 | 5 seconds |
+| **someone**     | Pick a random member on the server!                                      | someone                        | 1 seconds |
+| **staff**       | Displays the list of server staff members!                               | staff                          | 3 seconds |
+| **stats**       | Display the stats of the bot!                                            | stats                          | 3 seconds |
+| **suggest**     | Send your suggestion to the channel defined for this!                    | suggest [message]              | 5 seconds |
+| **translate**   | I'm translating your text!                                               | translate [language] [message] | 8 seconds |
+| **userinfo**    | Displays user information!                                               | userinfo (@user/userID)        | 5 seconds |
 
 ### Economy (15 commands)
 
