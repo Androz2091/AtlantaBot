@@ -71,22 +71,6 @@ Here's the list of Atlanta commands. This one contains more than **80 commands**
 | **withdraw**     | Withdraw money!                                                           | withdraw [amount]                | 1 seconds  |
 | **work**         | Work and earn money!                                                      | work                             | 3 seconds  |
 
-### Administration (11 commands)
-
-| Name              | Description                                                   | Usage                      | Cooldown   |
-| ----------------- | ------------------------------------------------------------- | -------------------------- | ---------- |
-| **backup**        | Manage your server backups in an ergonomic and efficient way! | backup [create/load/infos] | 30 seconds |
-| **configuration** | Displays the server configuration                             | configuration              | 3 seconds  |
-| **goodbye**       | Send a goodbye message to a pre-defined channel!              | goodbye                    | 3 seconds  |
-| **ignore**        | Disables or activates commands in the mentioned channel       | ignore [#channel]          | 3 seconds  |
-| **purge**         | Kick out inactive members!                                    | purge [days]               | 5 seconds  |
-| **setmodlogs**    | Define the log channel!                                       | setmodlogs (#channel)      | 3 seconds  |
-| **setprefix**     | Changes the server prefix                                     | setprefix [prefix]         | 3 seconds  |
-| **setreports**    | Define the reports channel!                                   | setreports (#channel)      | 3 seconds  |
-| **setsuggests**   | Define the suggestion channel!                                | setsuggests (#channel)     | 3 seconds  |
-| **slowmode**      | Define a cooldown in a channel                                | slowmode [#channel] (time) | 3 seconds  |
-| **welcome**       | Send a welcome message to a pre-defined channel!              | welcome                    | 3 seconds  |
-
 ### Fun (11 commands)
 
 | Name          | Description                                                                                   | Usage                           | Cooldown  |
@@ -102,6 +86,22 @@ Here's the list of Atlanta commands. This one contains more than **80 commands**
 | **number**    | Find the number I chose!                                                                      | number                          | 5 seconds |
 | **random**    | Randomly pick one of the choices you give me!                                                 | random [choice1/choice2/etc...] | 5 seconds |
 | **tcl**       | Display the last tweet of @thecodinglove !                                                    | tcl                             | 3 seconds |
+
+### Administration (11 commands)
+
+| Name              | Description                                                   | Usage                      | Cooldown   |
+| ----------------- | ------------------------------------------------------------- | -------------------------- | ---------- |
+| **backup**        | Manage your server backups in an ergonomic and efficient way! | backup [create/load/infos] | 30 seconds |
+| **configuration** | Displays the server configuration                             | configuration              | 3 seconds  |
+| **goodbye**       | Send a goodbye message to a pre-defined channel!              | goodbye                    | 3 seconds  |
+| **ignore**        | Disables or activates commands in the mentioned channel       | ignore [#channel]          | 3 seconds  |
+| **purge**         | Kick out inactive members!                                    | purge [days]               | 5 seconds  |
+| **setmodlogs**    | Define the log channel!                                       | setmodlogs (#channel)      | 3 seconds  |
+| **setprefix**     | Changes the server prefix                                     | setprefix [prefix]         | 3 seconds  |
+| **setreports**    | Define the reports channel!                                   | setreports (#channel)      | 3 seconds  |
+| **setsuggests**   | Define the suggestion channel!                                | setsuggests (#channel)     | 3 seconds  |
+| **slowmode**      | Define a cooldown in a channel                                | slowmode [#channel] (time) | 3 seconds  |
+| **welcome**       | Send a welcome message to a pre-defined channel!              | welcome                    | 3 seconds  |
 
 ### Music (8 commands)
 
