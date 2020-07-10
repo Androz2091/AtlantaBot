@@ -35,7 +35,7 @@ class Skip extends Command {
             return message.error("music/skip:NO_NEXT_SONG");
         }
 
-        let members = voice.members.filter((m) => m.id !== message.client.user.id);
+        let members = voice.members.filter((m) => !m.user.bot);
 
         let embed = new Discord.MessageEmbed()
             .setAuthor(message.translate("music/skip:DESCRIPTION"))
