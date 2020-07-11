@@ -74,13 +74,13 @@ class Number extends Command {
             }
             if (parseInt(msg.content) < number) {
                 message.error("fun/number:BIG", {
-                    user: message.author,
+                    user: message.author.toString(),
                     number: parsedNumber
                 });
             }
             if (parseInt(msg.content) > number) {
                 message.error("fun/number:SMALL", {
-                    user: message.author,
+                    user: message.author.toString(),
                     number: parsedNumber
                 });
             }
