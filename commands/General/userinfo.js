@@ -72,8 +72,8 @@ class Userinfo extends Command {
             .addField(this.client.config.emojis.pencil+" "+message.translate("common:NICKNAME"), (member.nickname ? member.nickname : message.translate("general/userinfo:NO_NICKNAME")), true)
             .addField(this.client.config.emojis.roles+" "+message.translate("common:ROLES"), (
                 member.roles.size > 10
-                ? member.roles.map((r) => r).slice(0, 9).join(", ")+" "+message.translate("general/userinfo:MORE_ROLES", { count: member.roles.size - 10 })
-                : (member.roles.size < 1) ? message.translate("general/userinfo:NO_ROLE") : member.roles.map((r) => r).join(", ")
+                ? member.roles.cache.map((r) => r).slice(0, 9).join(", ")+" "+message.translate("general/userinfo:MORE_ROLES", { count: member.roles.cache.size - 10 })
+                : (member.roles.cache.size < 1) ? message.translate("general/userinfo:NO_ROLE") : member.roles.cache.map((r) => r).join(", ")
             ));
         }
 

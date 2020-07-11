@@ -42,7 +42,7 @@ class Mute extends Command {
             reason = message.translate("misc:NO_REASON_PROVIDED");
         }
 
-        message.guild.channels.forEach((channel) => {
+        message.guild.channels.cache.forEach((channel) => {
             channel.updateOverwrite(member.id, {
                 SEND_MESSAGES: false,
                 ADD_REACTIONS: false,

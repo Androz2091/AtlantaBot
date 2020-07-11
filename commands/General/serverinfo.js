@@ -39,9 +39,9 @@ class Serverinfo extends Command {
             .addField(this.client.config.emojis.title+message.translate("common:NAME"), guild.name, true)
             .addField(this.client.config.emojis.calendar+message.translate("common:CREATION"), message.printDate(guild.createdAt), true)
             .addField(this.client.config.emojis.users+message.translate("common:MEMBERS"), message.translate("general/serverinfo:MEMBERS", {
-                count: guild.members.filter(m => !m.user.bot).size
+                count: guild.members.cache.filter(m => !m.user.bot).size
             })+" | "+message.translate("general/serverinfo:BOTS", {
-                count: guild.members.filter(m => m.user.bot).size
+                count: guild.members.cache.filter(m => m.user.bot).size
             }), true)
             .addField(this.client.config.emojis.afk+message.translate("general/serverinfo:AFK_CHANNEL"), guild.afkChannel || message.translate("general/serverinfo:NO_AFK_CHANNEL"), true)
             .addField(this.client.config.emojis.id+message.translate("common:ID"), guild.id, true)

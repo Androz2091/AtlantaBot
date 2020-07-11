@@ -221,7 +221,7 @@ class Atlanta extends Client {
         // Try username search
         if(search.match(/^!?(\w+)#(\d+)$/)){
             guild = await guild.fetch();
-            member = guild.members.find((m) => m.user.tag === search);
+            member = guild.members.cache.find((m) => m.user.tag === search);
             if(member) return member;
         }
         member = await guild.members.fetch(search).catch(() => {});
@@ -234,13 +234,13 @@ class Atlanta extends Client {
         // Try ID search
         if(search.match(/^<@&!?(\d+)>$/)){
             let id = search.match(/^<@&!?(\d+)>$/)[1];
-            role = guild.roles.get(id);
+            role = guild.roles.cache.get(id);
             if(role) return role;
         }
         // Try name search
-        role = guild.roles.find((r) => search === r.name);
+        role = guild.roles.cache.find((r) => search === r.name);
         if(role) return role;
-        role = guild.roles.get(search);
+        role = guild.roles.cache.get(search);
         return role;
     }
 

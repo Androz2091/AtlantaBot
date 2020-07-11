@@ -20,8 +20,8 @@ class Staff extends Command {
 
     async run (message, args, data) {
         let guild = await message.guild.fetch();
-        let administrators = guild.members.filter((m) => m.hasPermission("ADMINISTRATOR") && !m.user.bot);
-        let moderators = guild.members.filter((m) => !administrators.has(m.id) && m.hasPermission("MANAGE_MESSAGES") && !m.user.bot);
+        let administrators = guild.members.cache.filter((m) => m.hasPermission("ADMINISTRATOR") && !m.user.bot);
+        let moderators = guild.members.cache.filter((m) => !administrators.has(m.id) && m.hasPermission("MANAGE_MESSAGES") && !m.user.bot);
         let embed = new Discord.MessageEmbed()
             .setAuthor(message.translate("general/staff:TITLE", {
                 guild: message.guild.name

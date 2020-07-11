@@ -25,7 +25,7 @@ class Ban extends Command {
             return message.error("moderation/ban:MISSING_MEMBER");
         }
         
-        let memberData = message.guild.members.get(user.id) ? await this.client.findOrCreateMember({ id: user.id, guildID: message.guild.id }) : null;
+        let memberData = message.guild.members.cache.get(user.id) ? await this.client.findOrCreateMember({ id: user.id, guildID: message.guild.id }) : null;
 
         if(user.id === message.author.id){
             return message.error("moderation/ban:YOURSELF");

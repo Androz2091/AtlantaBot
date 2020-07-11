@@ -11,7 +11,7 @@ module.exports = {
         if(client.config.apiKeys.dbl && client.config.apiKeys.dbl !== ""){
             let stats = new DBL(client.config.apiKeys.dbl, client);
             setInterval(function(){
-                stats.postStats(client.guilds.size);
+                stats.postStats(client.guilds.cache.size);
             }, 60000*10); // every 10 minutes
             let dbl = new DBL(client.config.apiKeys.dbl, { webhookPort: client.config.votes.port, webhookAuth: client.config.votes.password });
             dbl.webhook.on("vote", async (vote) => {

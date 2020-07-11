@@ -54,7 +54,7 @@ const resolveMember = async ({ message, search, useMessageContent = true }) => {
             member => member.user.tag === search || member.user.username === search
         )
     ) {
-        const memberFound = message.guild.members.find(
+        const memberFound = message.guild.members.cache.find(
             member => member.user.tag === search || member.user.username === search
         );
         if (memberFound)
@@ -69,13 +69,13 @@ const resolveRole = async ({ message, search }) => {
     // Try by parsing the search
     if (contentToCheck.match(/^<@&([0-9]{18})>/)) {
         const [, roleID] = contentToCheck.match(/^<@&([0-9]{18})>/);
-        const roleFound = message.guild.roles.get(roleID);
+        const roleFound = message.guild.roles.cache.get(roleID);
         if (roleFound)
             return roleFound;
     }
     // Try with ID
     if (message.guild.roles.has(search)) {
-        const roleFound = message.guild.roles.get(search);
+        const roleFound = message.guild.roles.cache.get(search);
         if (roleFound)
             return roleFound;
     }
@@ -85,7 +85,7 @@ const resolveRole = async ({ message, search }) => {
             role => `@${role.name}` === search || role.name === search
         )
     ) {
-        const roleFound = message.guild.roles.find(
+        const roleFound = message.guild.roles.cache.find(
             role => `@${role.name}` === search || role.name === search
         );
         if (roleFound)

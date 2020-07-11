@@ -35,7 +35,7 @@ class Skip extends Command {
             return message.error("music/skip:NO_NEXT_SONG");
         }
 
-        let members = voice.members.filter((m) => !m.user.bot);
+        let members = voice.members.cache.filter((m) => !m.user.bot);
 
         let embed = new Discord.MessageEmbed()
             .setAuthor(message.translate("music/skip:DESCRIPTION"))
@@ -59,7 +59,7 @@ class Skip extends Command {
             m.edit(embed);
     
             let filter = (reaction, user) => {
-                let member = message.guild.members.get(user.id);
+                let member = message.guild.members.cache.get(user.id);
                 let voiceChannel = member.voice.channel;
                 if(voiceChannel){
                     return voiceChannel.id === voice.id;

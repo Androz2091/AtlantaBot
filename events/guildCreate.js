@@ -43,7 +43,7 @@ module.exports = class {
 
         guild.owner.send(messageOptions).catch((err) => {});
 
-        let text = "J'ai rejoint **"+guild.name+"**, avec **"+guild.members.filter((m) => !m.user.bot).size+"** membres (et "+guild.members.filter((m) => m.user.bot).size+" bots)";
+        let text = "J'ai rejoint **"+guild.name+"**, avec **"+guild.members.cache.filter((m) => !m.user.bot).size+"** membres (et "+guild.members.cache.filter((m) => m.user.bot).size+" bots)";
 
         // Sends log embed in the logs channel
         let logsEmbed = new Discord.MessageEmbed()

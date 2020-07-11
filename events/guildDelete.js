@@ -8,7 +8,7 @@ module.exports = class {
     
     async run (guild) {
         
-        let text = "Quelqu'un m'a expulsé de **"+guild.name+"** avec **"+guild.members.filter((m) => !m.user.bot).size+"** membres (et "+guild.members.filter((m) => m.user.bot).size+" bots)";
+        let text = "Quelqu'un m'a expulsé de **"+guild.name+"** avec **"+guild.members.cache.filter((m) => !m.user.bot).size+"** membres (et "+guild.members.cache.filter((m) => m.user.bot).size+" bots)";
 
         // Sends log embed in the logs channel
         let embed = new Discord.MessageEmbed()

@@ -13,7 +13,7 @@ module.exports = class {
 
         // Logs some informations using the logger file
         client.logger.log(`Loading a total of ${client.commands.size} command(s).`, "log");
-        client.logger.log(`${client.user.tag}, ready to serve ${client.users.size} users in ${client.guilds.size} servers.`, "ready");
+        client.logger.log(`${client.user.tag}, ready to serve ${client.users.cache.size} users in ${client.guilds.cache.size} servers.`, "ready");
 
         /* DiscordBots.org STATS */
         let discordbotsorg = require("../helpers/discordbots.org.js");
@@ -41,7 +41,7 @@ module.exports = class {
         version = require("../package.json").version;
         let i = 0;
         setInterval(function(){
-            let toDisplay = status[parseInt(i, 10)].name.replace("{serversCount}", client.guilds.size)+" | v"+version;
+            let toDisplay = status[parseInt(i, 10)].name.replace("{serversCount}", client.guilds.cache.size)+" | v"+version;
             client.user.setActivity(toDisplay, {type: status[parseInt(i, 10)].type});
             if(status[parseInt(i+1, 10)]) i++
             else i = 0;

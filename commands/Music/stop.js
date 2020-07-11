@@ -31,7 +31,7 @@ class Stop extends Command {
             return message.error("music/play:NOT_PLAYING")
         }
 
-        let members = voice.members.filter((m) => m.id !== message.client.user.id);
+        let members = voice.members.cache.filter((m) => m.id !== message.client.user.id);
 
         let embed = new Discord.MessageEmbed()
             .setAuthor(message.translate("music/stop:DESCRIPTION"))
@@ -53,7 +53,7 @@ class Stop extends Command {
             m.edit(embed);
     
             let filter = (reaction, user) => {
-                let member = message.guild.members.get(user.id);
+                let member = message.guild.members.cache.get(user.id);
                 let voiceChannel = member.voice.channel;
                 if(voiceChannel){
                     return voiceChannel.id === voice.id;

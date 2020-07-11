@@ -22,7 +22,7 @@ class Checkinvites extends Command {
         
         let members = message.guild.members;
         
-        let withInvite = members.filter((m) => m.user.presence.game && /(discord\.(gg|io|me|li)\/.+|discordapp\.com\/invite\/.+)/i.test(m.user.presence.game.name));
+        let withInvite = members.cache.filter((m) => m.user.presence.game && /(discord\.(gg|io|me|li)\/.+|discordapp\.com\/invite\/.+)/i.test(m.user.presence.game.name));
 
         let text = (withInvite.length > 0 ?
             withInvite.map((m) => "`"+m.id+"` ("+m.displayName+") ["+m.user.presence.game.name+"]").join("\n")

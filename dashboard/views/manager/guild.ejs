@@ -273,7 +273,7 @@
                                             <label><%= translate("common:ROLE") %></label>
                                             <select class="form-control" name="role">
                                                 <% if(guild.plugins.autorole.enabled){ %>
-                                                    <option selected="selected">@<%= guild.roles.get(guild.plugins.autorole.role).name %></option>
+                                                    <option selected="selected">@<%= guild.roles.cache.get(guild.plugins.autorole.role).name %></option>
                                                     <% guild.roles.filter((r) => r.id !== guild.plugins.autorole.role && r.name !== "@everyone").forEach((r) => { %>
                                                         <option>@<%= r.name %></option>
                                                     <% }); } else { %>

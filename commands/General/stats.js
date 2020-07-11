@@ -26,8 +26,8 @@ class Stats extends Command {
         .setAuthor(message.translate("common:STATS"))
         .setDescription(message.translate("general/stats:MADE"))
         .addField(this.client.config.emojis.stats+" "+message.translate("general/stats:COUNTS_TITLE"), message.translate("general/stats:COUNTS_CONTENT", {
-            servers: message.client.guilds.size,
-            users: message.client.users.size
+            servers: message.client.guilds.cache.size,
+            users: message.client.users.cache.size
         }), true)
         .addField(this.client.config.emojis.version+" "+message.translate("general/stats:VERSIONS_TITLE"), `\`Discord.js : v${Discord.version}\`\n\`Nodejs : v${process.versions.node}\``, true)
         .addField(this.client.config.emojis.ram+" "+message.translate("general/stats:RAM_TITLE"), `\`${(process.memoryUsage().heapUsed / 1024 / 1024).toFixed(2)}MB\``, true)
