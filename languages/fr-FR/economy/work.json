@@ -2,7 +2,7 @@
     "DESCRIPTION": "Réclamez votre salaire !",
     "USAGE": "{{prefix}}work",
     "EXAMPLES": "{{prefix}}work",
-    "COOLDOWN": " Vous devez attendre {{time}} avant de pouvoir travailler à nouveau !",
+    "COOLDOWN": "You have to wait {{time}} before you can work again!",
     "AWARD": "Compléter le mot AWARD pour gagner 200 crédits bonus !",
     "SALARY": "Salaire",
     "SALARY_CONTENT": "{{won}} crédits ajoutés à votre compte !",
