@@ -93,10 +93,14 @@ class Configuration extends Command {
         // Auto sanctions
         embed.addField(message.translate("administration/configuration:AUTO_SANCTIONS"),
             ((guildData.plugins.warnsSanctions.kick) ?
-                message.translate("administration/configuration:KICK_CONTENT", guildData.plugins.warnsSanctions.kick)
+                message.translate("administration/configuration:KICK_CONTENT", {
+                    count: guildData.plugins.warnsSanctions.kick
+                })
             :   message.translate("administration/configuration:KICK_NOT_DEFINED")) + "\n" +
             ((guildData.plugins.warnsSanctions.ban) ?
-                message.translate("administration/configuration:BAN_CONTENT", guildData.plugins.warnsSanctions.ban)
+                message.translate("administration/configuration:BAN_CONTENT", {
+                    count: guildData.plugins.warnsSanctions.ban
+                })
                 :   message.translate("administration/configuration:BAN_NOT_DEFINED"))
         );
 
