@@ -24,9 +24,9 @@ module.exports = {
                     memberData.save();
                     client.logger.log("[unmute] "+memberData.id+" cannot be found.");
                 });
+                let guildData = await client.findOrCreateGuild({ id: guild.id });
+                guild.data = guildData;
                 if(member){
-                    let guildData = await client.findOrCreateGuild({ id: guild.id });
-                    guild.data = guildData;
                     guild.channels.cache.forEach((channel) => {
                         let permOverwrites = channel.permissionOverwrites.get(member.id);
                         if(permOverwrites) permOverwrites.delete();
