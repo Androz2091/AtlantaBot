@@ -20,7 +20,7 @@ class Someone extends Command {
 
     async run (message, args, data) {
         
-        let member = message.guild.members.random(1)[0];
+        let member = message.guild.members.cache.random(1)[0];
         
         let embed = new Discord.MessageEmbed()
             .addField(message.translate("common:USERNAME"), member.user.username, true)
