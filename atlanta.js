@@ -4,7 +4,6 @@ const Sentry = require('@sentry/node'),
 util = require("util"),
 fs = require("fs"),
 readdir = util.promisify(fs.readdir),
-AmeClient = require("amethyste-api"),
 mongoose = require("mongoose");
 
 const config = require('./config');
@@ -49,21 +48,6 @@ const init = async () => {
         client.logger.log("Connected to the Mongodb database.", "log");
     }).catch((err) => {
         client.logger.log("Unable to connect to the Mongodb database. Error:"+err, "error");
-    });
-
-    if(client.config.apiKeys.amethyste){
-        client.AmeAPI = new AmeClient(client.config.apiKeys.amethyste);
-    }
-
-    if(client.config.apiKeys.blagueXYZ){
-        client.joker = new Joker(client.config.apiKeys.blagueXYZ, {
-            defaultLanguage: "en"
-        });
-    }
-
-    const { Player } = require("discord-player");
-    client.player = new Player(client, {
-        leaveOnEmpty: false
     });
 
     const languages = require("./helpers/languages");
