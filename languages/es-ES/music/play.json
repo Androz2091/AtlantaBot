@@ -11,5 +11,6 @@
     "CANCELLED": "Selección cancelada",
     "NOT_PLAYING": "Actualmente no se está reproduciendo ninguna canción en este servidor.",
     "QUEUE_ENDED": "La cola ha terminado. No hay más música para reproducir...",
-    "ADDED_QUEUE": "¡{{songName}} ha sido agregado a la cola!"
+    "ADDED_QUEUE": "¡{{songName}} ha sido agregado a la cola!",
+    "ADDED_QUEUE_COUNT": "{{songCount}} songs added to the queue!"
 }
