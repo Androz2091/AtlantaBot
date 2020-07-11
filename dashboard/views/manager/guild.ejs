@@ -177,7 +177,7 @@
                                                         <option>#<%= ch.name %></option>
                                                     <% }); } else { %>
                                                     <option selected="selected">#<%= guild.channels.cache.filter((ch) => ch.type === "text").first().name %></option>
-                                                    <% guild.channels.cache.filter((ch) => ch.id !== guild.channels.first().id && ch.type === "text").forEach((ch) => { %>
+                                                    <% guild.channels.cache.filter((ch) => ch.id !== guild.channels.cache.first().id && ch.type === "text").forEach((ch) => { %>
                                                         <option>#<%= ch.name %></option>
                                                     <% }); %>
                                                 <% } %>
@@ -230,7 +230,7 @@
                                                         <option>#<%= ch.name %></option>
                                                     <% }); } else { %>
                                                     <option selected="selected">#<%= guild.channels.cache.filter((ch) => ch.type === "text").first().name %></option>
-                                                    <% guild.channels.cache.filter((ch) => ch.id !== guild.channels.first().id && ch.type === "text").forEach((ch) => { %>
+                                                    <% guild.channels.cache.filter((ch) => ch.id !== guild.channels.cache.first().id && ch.type === "text").forEach((ch) => { %>
                                                         <option>#<%= ch.name %></option>
                                                     <% }); %>
                                                 <% } %>
