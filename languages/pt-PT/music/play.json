@@ -11,5 +11,6 @@
     "CANCELLED": "Cancelled selection",
     "NOT_PLAYING": "No songs currently playing in this server.",
     "QUEUE_ENDED": "Queue has ended. No more music to play...",
-    "ADDED_QUEUE": "{{songName}} has been added to the queue!"
+    "ADDED_QUEUE": "{{songName}} has been added to the queue!",
+    "ADDED_QUEUE_COUNT": "{{songCount}} songs added to the queue!"
 }
