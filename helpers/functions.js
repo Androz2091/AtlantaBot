@@ -59,7 +59,7 @@ module.exports = {
     // This function return a valid link to the support server
     async supportLink(client){
         return new Promise(async function(resolve, reject) {
-            let guild = client.guilds.get(client.config.support.id);
+            let guild = client.guilds.cache.get(client.config.support.id);
             let member = guild.me;
             let channel = guild.channels.cache.find((ch) => ch.permissionsFor(member.id).has("CREATE_INSTANT_INVITE"));
             if(channel){

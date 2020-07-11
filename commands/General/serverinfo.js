@@ -22,7 +22,7 @@ class Serverinfo extends Command {
         let guild = message.guild;
 
         if(args[0]){
-            let found = message.client.guilds.get(args[0]);
+            let found = message.client.guilds.cache.get(args[0]);
             if(!found){
                 found = message.client.guilds.find((g) => g.name === args.join(" "));
                 if(found){

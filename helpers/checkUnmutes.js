@@ -13,7 +13,7 @@ module.exports = {
             if(client.membersData === undefined) return;
             let muted = await client.membersData.find({ "mute.muted": true, "mute.endDate": { $lte: Date.now() } });
             muted.forEach(async (memberData) => {
-                let guild = client.guilds.get(memberData.guildID);
+                let guild = client.guilds.cache.get(memberData.guildID);
                 if(!guild) return;
                 let member = guild.members.get(memberData.id) || await guild.members.fetch(memberData.id).catch((err) => {
                     memberData.mute = {

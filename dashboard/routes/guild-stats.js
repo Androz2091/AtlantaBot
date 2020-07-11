@@ -6,7 +6,7 @@ const generator = require("colors-generator");
 
 router.get("/:serverID", CheckAuth, async(req, res) => {
     // Check if the user has the permissions to edit this guild
-    let guild = req.client.guilds.get(req.params.serverID);
+    let guild = req.client.guilds.cache.get(req.params.serverID);
     if(!guild || !req.userInfos.displayedGuilds || !req.userInfos.displayedGuilds.find((g) => g.id === req.params.serverID)){
         return res.render("404", {
             user: req.userInfos,
