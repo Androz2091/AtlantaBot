@@ -26,8 +26,12 @@ class Translate extends Command {
         if(args[0] === "langs-list"){
             let index = 0;
             let langsList = "```Css\n"+(langs.map((l, i) => `#${i+1} - ${l}`).join("\n"))+"```";
-            message.author.send(langsList);
-            return message.success("general/translate:LIST_SENT");
+            message.author.send(langsList).then(() => {
+                message.success("general/translate:LIST_SENT");
+            }).catch(() => {
+                message.error("misc:CANNOT_DM");
+            });
+            return;
         }
         
         let pWait = await message.sendT("misc:PLEASE_WAIT", null, {
