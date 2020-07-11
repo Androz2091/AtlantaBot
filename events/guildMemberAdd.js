@@ -43,7 +43,7 @@ module.exports = class {
     
             // Check if welcome message is enabled
             if(guildData.plugins.welcome.enabled){
-                let channel = member.guild.channels.get(guildData.plugins.welcome.channel);
+                let channel = member.guild.channels.cache.get(guildData.plugins.welcome.channel);
                 if(channel){
                     let message = guildData.plugins.welcome.message
                     .replace(/{user}/g, member)
