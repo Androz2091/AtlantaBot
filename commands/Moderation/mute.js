@@ -57,7 +57,7 @@ class Mute extends Command {
             reason
         }));
 
-        message.send("moderation/mute:MUTED", {
+        message.success("moderation/mute:MUTED", {
             server: message.guild.name,
             moderator: message.author.tag,
             time,
