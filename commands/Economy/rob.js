@@ -41,7 +41,9 @@ class Rob extends Command {
 
         let amountToRob = args[1];
         if(!amountToRob || isNaN(amountToRob) || parseInt(amountToRob, 10) <= 0){
-            return message.error("economy/rob:MISSING_AMOUNT");
+            return message.error("economy/rob:MISSING_AMOUNT", {
+                username: member.user.username
+            });
         }
         amountToRob = Math.floor(parseInt(amountToRob, 10));
 
