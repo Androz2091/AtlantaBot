@@ -35,30 +35,47 @@ class Quote extends Command {
         
         let msgID = args[0];
         if(isNaN(msgID)){
-            return message.author.send(message.translate("general/quote:MISSING_ID"));
+            message.author.send(message.translate("general/quote:MISSING_ID")).then(() => {
+                message.delete();
+            }).catch((e) => {
+                message.error("misc:CANNOT_DM");
+            });
+            return;
         }
 
         let channel = message.mentions.channels.first();
         if(args[1] && !channel){
             channel = message.client.channels.cache.get(args[1]);
             if(!channel){
-                message.delete();
-                return message.author.send(message.translate("general/quote:NO_MESSAGE_ID"));
+                message.author.send(message.translate("general/quote:NO_MESSAGE_ID")).then(() => {
+                    message.delete();
+                }).catch(() => {
+                    message.error("misc:CANNOT_DM");
+                });
+                return;
             }
         }
 
         if(!channel){
-            message.channel.messages.fetch(msgID).catch((err) => { 
-                message.delete();
-                return message.author.send((message.translate("general/quote:NO_MESSAGE_ID")));
+            message.channel.messages.fetch(msgID).catch((err) => {
+                message.author.send((message.translate("general/quote:NO_MESSAGE_ID"))).then(() => {
+                    message.delete();
+                }).catch(() => {
+                    message.error("misc:CANNOT_DM");
+                });
+                return;
             }).then((msg) => {
                 message.delete();
                 message.channel.send(embed(msg));
             });
         } else {
             channel.messages.fetch(msgID).catch((err) => {
-                message.delete();
-                return message.author.send(message.translate("general/quote:NO_MESSAGE_ID"));
+                message.author.send(message.translate("general/quote:NO_MESSAGE_ID")).then(() => {
+                    message.delete();
+                }).catch(() => {
+                    message.error("misc:CANNOT_DM");
+                });
+                return;
             }).then((msg) => {
                 message.delete();
                 message.channel.send(embed(msg));
