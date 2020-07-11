@@ -41,7 +41,7 @@ module.exports = {
                     }))
                     .setColor("#f44271")
                     .setFooter(guild.client.config.embed.footer);
-                let channel = guild.channels.get(guildData.plugins.modlogs);
+                let channel = guild.channels.cache.get(guildData.plugins.modlogs);
                 if(channel){
                     channel.send(embed);
                 }

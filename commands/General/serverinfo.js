@@ -48,11 +48,11 @@ class Serverinfo extends Command {
             .addField(this.client.config.emojis.crown+message.translate("common:OWNER"), guild.owner, true)
             .addField(this.client.config.emojis.boost+message.translate("general/serverinfo:BOOSTS"), guild.premiumSubscriptionCount || 0, true)
             .addField(this.client.config.emojis.channels+message.translate("common:CHANNELS"), message.translate("general/serverinfo:TEXT_CHANNELS", {
-                count: guild.channels.filter(c => c.type === "text").size
+                count: guild.channels.cache.filter(c => c.type === "text").size
             })+" | "+message.translate("general/serverinfo:VOICE_CHANNELS", {
-                count: guild.channels.filter(c => c.type === "voice").size
+                count: guild.channels.cache.filter(c => c.type === "voice").size
             })+" | "+message.translate("general/serverinfo:CAT_CHANNELS", {
-                count: guild.channels.filter(c => c.type === "category").size
+                count: guild.channels.cache.filter(c => c.type === "category").size
             }), true)
             .setColor(data.config.embed.color)
             .setFooter(data.config.embed.footer);

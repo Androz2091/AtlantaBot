@@ -27,7 +27,7 @@ module.exports = class {
 
             // Check if goodbye message is enabled
             if(guildData.plugins.goodbye.enabled){
-                let channel = guild.channels.get(guildData.plugins.goodbye.channel);
+                let channel = guild.channels.cache.get(guildData.plugins.goodbye.channel);
                 if(channel){
                     let message = guildData.plugins.goodbye.message
                     .replace(/{user}/g, member.user.tag)

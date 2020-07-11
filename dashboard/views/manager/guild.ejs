@@ -96,15 +96,15 @@
                                         <div class="form-group">
                                             <label><%= translate("common:SUGGESTIONS") %></label>
                                             <select class="form-control" name="suggestions">
-                                                <% if(guild.plugins.suggestions && bot.channels.get(guild.plugins.suggestions)){ %>
-                                                    <option selected="selected">#<%= bot.channels.get(guild.plugins.suggestions).name %></option>
-                                                    <% guild.channels.filter((ch) => ch.type === "text" && ch.id !== guild.plugins.suggestions).forEach((ch) => { %>
+                                                <% if(guild.plugins.suggestions && bot.channels.cache.get(guild.plugins.suggestions)){ %>
+                                                    <option selected="selected">#<%= bot.channels.cache.get(guild.plugins.suggestions).name %></option>
+                                                    <% guild.channels.cache.filter((ch) => ch.type === "text" && ch.id !== guild.plugins.suggestions).forEach((ch) => { %>
                                                         <option>#<%= ch.name %></option>
                                                     <% }); %>
                                                         <option><%= translate("common:NO_CHANNEL") %></option>
                                                 <% } else { %>
                                                     <option selected="selected"><%= translate("common:NO_CHANNEL") %></option>
-                                                    <% guild.channels.filter((ch) => ch.type === "text").forEach((ch) => { %>
+                                                    <% guild.channels.cache.filter((ch) => ch.type === "text").forEach((ch) => { %>
                                                         <option>#<%= ch.name %></option>
                                                     <% }); %>
                                                 <% } %>
@@ -113,15 +113,15 @@
                                         <div class="form-group">
                                             <label><%= translate("common:MODLOGS") %></label>
                                             <select class="form-control" name="modlogs">
-                                                <% if(guild.plugins.modlogs && bot.channels.get(guild.plugins.modlogs)){ %>
-                                                    <option selected="selected">#<%= bot.channels.get(guild.plugins.modlogs).name %></option>
-                                                    <% guild.channels.filter((ch) => ch.type === "text" && ch.id !== guild.plugins.modlogs).forEach((ch) => { %>
+                                                <% if(guild.plugins.modlogs && bot.channels.cache.get(guild.plugins.modlogs)){ %>
+                                                    <option selected="selected">#<%= bot.channels.cache.get(guild.plugins.modlogs).name %></option>
+                                                    <% guild.channels.cache.filter((ch) => ch.type === "text" && ch.id !== guild.plugins.modlogs).forEach((ch) => { %>
                                                         <option>#<%= ch.name %></option>
                                                     <% }); %>
                                                         <option><%= translate("common:NO_CHANNEL") %></option>
                                                 <% } else { %>
                                                     <option selected="selected"><%= translate("common:NO_CHANNEL")%></option>
-                                                    <% guild.channels.filter((ch) => ch.type === "text").forEach((ch) => { %>
+                                                    <% guild.channels.cache.filter((ch) => ch.type === "text").forEach((ch) => { %>
                                                         <option>#<%= ch.name %></option>
                                                     <% }); %>
                                                 <% } %>
@@ -130,15 +130,15 @@
                                         <div class="form-group">
                                             <label><%= translate("common:FORTNITESHOP") %></label>
                                             <select class="form-control" name="fortniteshop">
-                                                <% if(guild.plugins.fortniteshop && bot.channels.get(guild.plugins.fortniteshop)){ %>
-                                                    <option selected="selected">#<%= bot.channels.get(guild.plugins.fortniteshop).name %></option>
-                                                    <% guild.channels.filter((ch) => ch.type === "text" && ch.id !== guild.plugins.fortniteshop).forEach((ch) => { %>
+                                                <% if(guild.plugins.fortniteshop && bot.channels.cache.get(guild.plugins.fortniteshop)){ %>
+                                                    <option selected="selected">#<%= bot.channels.cache.get(guild.plugins.fortniteshop).name %></option>
+                                                    <% guild.channels.cache.filter((ch) => ch.type === "text" && ch.id !== guild.plugins.fortniteshop).forEach((ch) => { %>
                                                         <option>#<%= ch.name %></option>
                                                     <% }); %>
                                                         <option><%= translate("common:NO_CHANNEL") %></option>
                                                 <% } else { %>
                                                     <option selected="selected"><%= translate("common:NO_CHANNEL")%></option>
-                                                    <% guild.channels.filter((ch) => ch.type === "text").forEach((ch) => { %>
+                                                    <% guild.channels.cache.filter((ch) => ch.type === "text").forEach((ch) => { %>
                                                         <option>#<%= ch.name %></option>
                                                     <% }); %>
                                                 <% } %>
@@ -172,12 +172,12 @@
                                             <label><%= translate("common:CHANNEL") %></label>
                                             <select class="form-control" name="channel">
                                                 <% if(guild.plugins.welcome.enabled){ %>
-                                                    <option selected="selected">#<%= bot.channels.get(guild.plugins.welcome.channel).name %></option>
-                                                    <% guild.channels.filter((ch) => ch.id !== guild.plugins.welcome.channel && ch.type === "text").forEach((ch) => { %>
+                                                    <option selected="selected">#<%= bot.channels.cache.get(guild.plugins.welcome.channel).name %></option>
+                                                    <% guild.channels.cache.filter((ch) => ch.id !== guild.plugins.welcome.channel && ch.type === "text").forEach((ch) => { %>
                                                         <option>#<%= ch.name %></option>
                                                     <% }); } else { %>
-                                                    <option selected="selected">#<%= guild.channels.filter((ch) => ch.type === "text").first().name %></option>
-                                                    <% guild.channels.filter((ch) => ch.id !== guild.channels.first().id && ch.type === "text").forEach((ch) => { %>
+                                                    <option selected="selected">#<%= guild.channels.cache.filter((ch) => ch.type === "text").first().name %></option>
+                                                    <% guild.channels.cache.filter((ch) => ch.id !== guild.channels.first().id && ch.type === "text").forEach((ch) => { %>
                                                         <option>#<%= ch.name %></option>
                                                     <% }); %>
                                                 <% } %>
@@ -225,12 +225,12 @@
                                             <label><%= translate("common:CHANNEL") %></label>
                                             <select class="form-control" name="channel">
                                                 <% if(guild.plugins.goodbye.enabled){ %>
-                                                    <option selected="selected">#<%= bot.channels.get(guild.plugins.goodbye.channel).name %></option>
-                                                    <% guild.channels.filter((ch) => ch.id !== guild.plugins.goodbye.channel && ch.type === "text").forEach((ch) => { %>
+                                                    <option selected="selected">#<%= bot.channels.cache.get(guild.plugins.goodbye.channel).name %></option>
+                                                    <% guild.channels.cache.filter((ch) => ch.id !== guild.plugins.goodbye.channel && ch.type === "text").forEach((ch) => { %>
                                                         <option>#<%= ch.name %></option>
                                                     <% }); } else { %>
-                                                    <option selected="selected">#<%= guild.channels.filter((ch) => ch.type === "text").first().name %></option>
-                                                    <% guild.channels.filter((ch) => ch.id !== guild.channels.first().id && ch.type === "text").forEach((ch) => { %>
+                                                    <option selected="selected">#<%= guild.channels.cache.filter((ch) => ch.type === "text").first().name %></option>
+                                                    <% guild.channels.cache.filter((ch) => ch.id !== guild.channels.first().id && ch.type === "text").forEach((ch) => { %>
                                                         <option>#<%= ch.name %></option>
                                                     <% }); %>
                                                 <% } %>
@@ -274,11 +274,11 @@
                                             <select class="form-control" name="role">
                                                 <% if(guild.plugins.autorole.enabled){ %>
                                                     <option selected="selected">@<%= guild.roles.cache.get(guild.plugins.autorole.role).name %></option>
-                                                    <% guild.roles.filter((r) => r.id !== guild.plugins.autorole.role && r.name !== "@everyone").forEach((r) => { %>
+                                                    <% guild.roles.cache.filter((r) => r.id !== guild.plugins.autorole.role && r.name !== "@everyone").forEach((r) => { %>
                                                         <option>@<%= r.name %></option>
                                                     <% }); } else { %>
-                                                    <option selected="selected">@<%= guild.roles.filter((r) => r.name !== "@everyone").first().name %></option>
-                                                    <% guild.roles.filter((r) => r.id !== guild.roles.filter((r) => r.name !== "@everyone").first().id && r.name !== "@everyone").forEach((r) => { %>
+                                                    <option selected="selected">@<%= guild.roles.cache.filter((r) => r.name !== "@everyone").first().name %></option>
+                                                    <% guild.roles.cache.filter((r) => r.id !== guild.roles.cache.filter((r) => r.name !== "@everyone").first().id && r.name !== "@everyone").forEach((r) => { %>
                                                         <option>@<%= r.name %></option>
                                                     <% }); %>
                                                 <% } %>
