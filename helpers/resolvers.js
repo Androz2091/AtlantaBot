@@ -9,7 +9,7 @@ const resolveChannel = async ({ message, search, channelType }) => {
             return channelFound;
     }
     // Try with ID
-    if (message.guild.channels.has(search)) {
+    if (message.guild.channels.cache.has(search)) {
         const channelFound = message.guild.channels.cache.get(search);
         if (channelFound && channelType && channelFound.type === channelType)
             return channelFound;
