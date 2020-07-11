@@ -9,8 +9,8 @@
     "NO_RESULT": "Aucun résultat sur Youtube !",
     "NOW_PLAYING": "Joue maintenant {{songName}}",
     "CANCELLED": "Annule la sélection",
-    "NOT_PLAYING": "Aucune musique n'est joué actuellement sur le serveur.",
-    "QUEUE_ENDED": "La file d'attente est finit. Plus de musique à jouer...",
-    "ADDED_QUEUE": "{{songName}} a été ajouté à la file d'attente !",
-    "ADDED_QUEUE_COUNT": "{{songCount}} songs added to the queue!"
+    "NOT_PLAYING": "Aucune musique n'est jouée actuellement sur le serveur.",
+    "QUEUE_ENDED": "La file d'attente est finie. Plus de musique à jouer...",
+    "ADDED_QUEUE": "{{songName}} a été ajoutée à la file d'attente !",
+    "ADDED_QUEUE_COUNT": "{{songCount}} chanons ajoutées à la queue !"
 }
