@@ -17,6 +17,7 @@ giveaways.json
 
 # PM2
 report*.json
+!languages/**/general/report.json
 
 # IDE
 .vscode
