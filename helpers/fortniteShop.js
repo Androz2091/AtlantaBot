@@ -10,7 +10,7 @@ async function init(client) {
         client.guilds.forEach(async (guild) => {
             let guildData = await client.findOrCreateGuild({ id: guild.id });
             if(guildData.plugins.fortniteshop) {
-                let fnChannel = client.channels.get(guildData.plugins.fortniteshop);
+                let fnChannel = client.channels.cache.get(guildData.plugins.fortniteshop);
                 if(fnChannel) {
                     const momentName = client.config.languages.find((language) => language.name === guildData.language || language.aliases.includes(guildData.language)).moment;
                     const image = await new Canvas.FortniteShop()

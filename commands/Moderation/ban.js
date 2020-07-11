@@ -93,7 +93,7 @@ class Ban extends Command {
             data.guild.save();
 
             if(data.guild.plugins.modlogs){
-                let channel = message.guild.channels.get(data.guild.plugins.modlogs);
+                let channel = message.guild.channels.cache.get(data.guild.plugins.modlogs);
                 if(!channel) return;
                 let embed = new Discord.MessageEmbed()
                     .setAuthor(message.translate("moderation/ban:CASE", {

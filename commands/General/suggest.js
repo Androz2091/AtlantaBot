@@ -20,7 +20,7 @@ class Suggest extends Command {
 
     async run (message, args, data) {
 
-        let suggChannel = message.guild.channels.get(data.guild.plugins.suggestions);
+        let suggChannel = message.guild.channels.cache.get(data.guild.plugins.suggestions);
         if(!suggChannel){
             return message.error("general/suggest:MISSING_CHANNEL");
         }

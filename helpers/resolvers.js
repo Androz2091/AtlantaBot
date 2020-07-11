@@ -4,13 +4,13 @@ const resolveChannel = async ({ message, search, channelType }) => {
     // Try by parsing the search
     if (contentToCheck.match(/^<#([0-9]{18})>/)) {
         const [, channelID] = contentToCheck.match(/^<#([0-9]{18})>/);
-        const channelFound = message.guild.channels.get(channelID);
+        const channelFound = message.guild.channels.cache.get(channelID);
         if (channelFound && channelType && channelFound.type === channelType)
             return channelFound;
     }
     // Try with ID
     if (message.guild.channels.has(search)) {
-        const channelFound = message.guild.channels.get(search);
+        const channelFound = message.guild.channels.cache.get(search);
         if (channelFound && channelType && channelFound.type === channelType)
             return channelFound;
     }
@@ -20,7 +20,7 @@ const resolveChannel = async ({ message, search, channelType }) => {
             channel => `#${channel.name}` === search || channel.name === search
         )
     ) {
-        const channelFound = message.guild.channels.find(
+        const channelFound = message.guild.channels.cache.find(
             channel => `#${channel.name}` === search || channel.name === search
         );
         if (channelFound && channelType && channelFound.type === channelType)

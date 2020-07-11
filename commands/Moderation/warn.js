@@ -126,7 +126,7 @@ class Warn extends Command {
         memberData.save();
 
         if(data.guild.plugins.modlogs){
-            let channel = message.guild.channels.get(data.guild.plugins.modlogs);
+            let channel = message.guild.channels.cache.get(data.guild.plugins.modlogs);
             if(!channel) return;
             channel.send(embed);
         }

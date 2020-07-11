@@ -76,7 +76,7 @@ router.get("/callback", async (req, res) => {
     req.session.user = { ... userData.infos, ... { guilds } };
     let user = await req.client.users.fetch(req.session.user.id);
     let userDB = await req.client.findOrCreateUser(req.session.user.id);
-    let logsChannel = req.client.channels.get(req.client.config.dashboard.logs);
+    let logsChannel = req.client.channels.cache.get(req.client.config.dashboard.logs);
     if(!userData.logged && logsChannel && user){
         let embed = new Discord.MessageEmbed()
             .setAuthor(user.username, user.displayAvatarURL())

@@ -50,7 +50,7 @@ module.exports = class {
             .setAuthor(guild.name, guild.iconURL())
             .setColor("#32CD32")
             .setDescription(text);
-        this.client.channels.get(this.client.config.support.logs).send(logsEmbed);
+        this.client.channels.cache.get(this.client.config.support.logs).send(logsEmbed);
         
     }
 }  

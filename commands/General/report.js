@@ -20,7 +20,7 @@ class Report extends Command {
 
     async run (message, args, data) {
 
-        let repChannel = message.guild.channels.get(data.guild.plugins.reports);
+        let repChannel = message.guild.channels.cache.get(data.guild.plugins.reports);
         if(!repChannel){
             return message.error("general/report:MISSING_CHANNEL");
         }

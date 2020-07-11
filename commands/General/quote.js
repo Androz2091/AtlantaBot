@@ -40,7 +40,7 @@ class Quote extends Command {
 
         let channel = message.mentions.channels.first();
         if(args[1] && !channel){
-            channel = message.client.channels.get(args[1]);
+            channel = message.client.channels.cache.get(args[1]);
             if(!channel){
                 message.delete();
                 return message.author.send(message.translate("general/quote:NO_MESSAGE_ID"));

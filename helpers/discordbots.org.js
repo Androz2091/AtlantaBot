@@ -22,7 +22,7 @@ module.exports = {
                 dUser.send(client.translate("misc:VOTE_DM", {
                     user: dUser.tag
                 })).catch((err) => {});
-                let logsChannel = client.channels.get(client.config.votes.channel);
+                let logsChannel = client.channels.cache.get(client.config.votes.channel);
                 if(logsChannel){
                     logsChannel.send(client.translate("misc:VOTE_LOGS", {
                         userid: dUser.id,
