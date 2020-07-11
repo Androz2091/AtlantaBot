@@ -264,7 +264,7 @@ bluebird@^3.5.0:
   resolved "https://registry.yarnpkg.com/bluebird/-/bluebird-3.7.2.tgz#9f229c15be272454ffa973ace0dbee79a1b0c36f"
   integrity sha512-XpNj6GDQzdfW+r2Wnn7xiSAd7TM3jzkxGXBGTtWKuSXv1xUV+azxAm8jdWZN06QTQk+2N2XB9jRDkvbmQmcRtg==
 
-body-parser@1.19.0, body-parser@^1.19.0:
+body-parser@1.19.0:
   version "1.19.0"
   resolved "https://registry.yarnpkg.com/body-parser/-/body-parser-1.19.0.tgz#96b2709e57c9c4e09a6fd66a8fd979844f69f08a"
   integrity sha512-dhEPs72UPbDnAQJ9ZKMNTP6ptJaionhP5cBb541nXPlW60Jepo9RV/a4fX4XWW9CuFNK22krhrj1+rgzifNCsw==
@@ -615,10 +615,10 @@ detect-libc@^1.0.2, detect-libc@^1.0.3:
   resolved "https://registry.yarnpkg.com/detect-libc/-/detect-libc-1.0.3.tgz#fa137c4bd698edf55cd5cd02ac559f91a4c4ba9b"
   integrity sha1-+hN8S9aY7fVc1c0CrFWfkaTEups=
 
-discord-backup@^2.0.3:
-  version "2.1.15"
-  resolved "https://registry.yarnpkg.com/discord-backup/-/discord-backup-2.1.15.tgz#cf9c04b0f33c536df01aff6f7def68b9ed5d6d3d"
-  integrity sha512-jJAUPcwusSC3A9HYiXlLzL+A4PXVu/dE3rVlRsDxk2KcxlIiUpJsEkx5NMfUT7Tdzup5bpWPg1LRP6RLrAGmew==
+discord-backup@^2.1.17:
+  version "2.1.17"
+  resolved "https://registry.yarnpkg.com/discord-backup/-/discord-backup-2.1.17.tgz#701d69ba2fc418c1e9f77cb1e6e854c56fa0e34c"
+  integrity sha512-oVg3BoCr0/RcFbHhbvLVqgmfVftwF+A/fVt7UmgwW4HY8LleG8U7a0F1oEPp0xKinVgk99YlpTim47X2Ng1qog==
   dependencies:
     axios "^0.19.0"
     discord.js "^12.0.1"
