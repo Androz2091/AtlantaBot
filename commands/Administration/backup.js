@@ -28,10 +28,14 @@ class Backup extends Command {
         }
 
         if(status === "create"){
-            backup.create(message.guild).then((backupID) => {
+            const m = await message.sendT("misc:PLEASE_WAIT", null, {
+                prefixEmoji: "loading"
+            });
+            backup.create(message.guild).then((backup) => {
+                m.delete();
                 message.success("administration/backup:SUCCESS_PUBLIC");
-                message.author.send(message.translate("administration/backup:SUCCESS_PRVATE", {
-                    backupID
+                message.author.send(message.translate("administration/backup:SUCCESS_PRIVATE", {
+                    backupID: backup.id
                 }));
             }).catch((err) => {
                 return message.error("misc:ERR_OCCURRED");

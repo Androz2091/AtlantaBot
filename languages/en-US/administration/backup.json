@@ -7,7 +7,7 @@
     "NO_BACKUP_FOUND": "No backup found for `{{backupID}}`",
     "TIMES_UP": "Time's up! Cancelled backup loading!",
     "SUCCESS_PUBLIC": "Successfully created backup! The backup ID has been sent to you in private messages!",
-    "SUCCESS_PRIVATE": "Here is the ID of your backup: ```{{backupID}}```",
+    "SUCCESS_PRIVATE": "Here is the ID of your backup: `{{backupID}}`, use it to load your backup on another server!",
     "CONFIRMATION": ":warning: | When the backup is loaded, all the channels, roles, etc. will be replaced! Type `-confirm` to confirm!",
     "START_LOADING": "Start loading the backup!",
     "LOAD_SUCCESS": "Backup successfully loaded!",
