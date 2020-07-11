@@ -47,7 +47,9 @@ module.exports = {
 		// DBL: https://discordbots.org/api/docs#mybots
 		dbl: "XXXXXXXXXXX",
 		// AMETHYSTE: https://api.amethyste.moe
-		amethyste: "XXXXXXXXXXX"
+		amethyste: "XXXXXXXXXXX",
+		// SENTRY: https://sentry.io (this is not required and not recommended)
+		sentryDSN: "XXXXXXXXXXX"
 	},
 	/* The emojis that are required for certain commands */
 	emojis: {

@@ -1,11 +1,16 @@
 require("./helpers/extenders");
 
-const { Client: Joker } = require("blague.xyz"),
+const Sentry = require('@sentry/node'),
 util = require("util"),
 fs = require("fs"),
 readdir = util.promisify(fs.readdir),
 AmeClient = require("amethyste-api"),
 mongoose = require("mongoose");
+
+const config = require('./config');
+if(config.apiKeys.sentryDSN){
+    Sentry.init({ dsn: config.apiKeys.sentryDSN });
+}
 
 // Load Atlanta class
 const Atlanta = require("./base/Atlanta"),
