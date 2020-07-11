@@ -35,7 +35,7 @@ class Suggest extends Command {
                 user: message.author.username
             }), message.author.displayAvatarURL())
             .addField(message.translate("common:AUTHOR"), `\`${message.author.username}#${message.author.discriminator}\``, true)
-            .addField(message.translate("common:DATE"), message.printDate(new Date(Date.now()), true), true)
+            .addField(message.translate("common:DATE"), message.printDate(new Date(Date.now())), true)
             .addField(message.translate("common:CONTENT"), "**"+sugg+"**")
             .setColor(data.config.embed.color)
             .setFooter(data.config.embed.footer);
