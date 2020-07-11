@@ -16,7 +16,7 @@ const resolveChannel = async ({ message, search, channelType }) => {
     }
     // Try with name with #
     if (
-        message.guild.channels.some(
+        message.guild.channels.cache.some(
             channel => `#${channel.name}` === search || channel.name === search
         )
     ) {
@@ -50,7 +50,7 @@ const resolveMember = async ({ message, search, useMessageContent = true }) => {
         query: search
     });
     if (
-        message.guild.members.some(
+        message.guild.members.cache.some(
             member => member.user.tag === search || member.user.username === search
         )
     ) {
@@ -81,7 +81,7 @@ const resolveRole = async ({ message, search }) => {
     }
     // Try with name with @
     if (
-        message.guild.roles.some(
+        message.guild.roles.cache.some(
             role => `@${role.name}` === search || role.name === search
         )
     ) {
