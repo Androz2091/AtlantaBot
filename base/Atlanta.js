@@ -1,5 +1,6 @@
 const { Client, Collection } = require("discord.js"),
 util = require("util"),
+const { GiveawaysManager } = require("discord-giveaways");
 path = require("path"),
 moment = require("moment");
 
@@ -27,6 +28,16 @@ class Atlanta extends Client {
         this.databaseCache.users = new Collection();
         this.databaseCache.guilds = new Collection();
         this.databaseCache.members = new Collection();
+        this.giveawaysManager = new GiveawaysManager(this, {
+            storage: "../giveaways.json",
+            updateCountdownEvery: 10000,
+            default: {
+                botsCanWin: false,
+                exemptPermissions: [ "MANAGE_MESSAGES", "ADMINISTRATOR" ],
+                embedColor: "#FF0000",
+                reaction: "🎉"
+            }
+        });
     }
 
     get defaultLanguage(){

@@ -36,10 +36,6 @@ module.exports = class {
             client.dashboard.load(client);
         }
 
-        // Start update of giveaways
-        let giveawaysOptions = { updateCountdownEvery: 15000, ignoreIfHasPermission: [ "ADMINISTRATOR" ], storage: require("path").resolve()+"/giveaways.json" };
-        giveaways.launch(client, giveawaysOptions);
-
         // Update the game every 20s
         const status = require("../config.js").status,
         version = require("../package.json").version;

@@ -28,7 +28,7 @@ class Giveaway extends Command {
         }
 
         if(status === "create"){
-            let currentGiveaways = giveaways.fetch().filter((g) => g.guildID === message.guild.id && !g.ended).length;
+            let currentGiveaways = this.client.giveawaysManager.giveaways.filter((g) => g.guildID === message.guild.id && !g.ended).length;
             if(currentGiveaways > 3){
                 return message.error("moderation/giveaway:MAX_COUNT");
             }
@@ -62,10 +62,10 @@ class Giveaway extends Command {
                     prefix: data.guild.prefix
                 });
             }
-            giveaways.start(message.channel, {
+            this.client.giveawaysManager.start(message.channel, {
                 time: ms(time),
                 prize: prize,
-                winnersCount: parseInt(winnersCount, 10),
+                winnerCount: parseInt(winnersCount, 10),
                 messages: {
                     giveaway: message.translate("moderation/giveaway:TITLE"),
                     giveawayEnded: message.translate("moderation/giveaway:ENDED"),
@@ -91,7 +91,7 @@ class Giveaway extends Command {
             if(!messageID){
                 return message.error("moderation/giveaway:MISSING_ID_REROLL");
             }
-            giveaways.reroll(messageID, {
+            this.client.giveawaysManager.reroll(messageID, {
                 congrat: message.translate("moderation/giveaway:REROLL_CONGRAT"),
                 error: message.translate("moderation/giveaway:REROLL_ERROR")
             }).then(() => {
@@ -106,7 +106,7 @@ class Giveaway extends Command {
             if(!messageID){
                 return message.error("moderation/giveaway:MISSING_ID_DELETE");
             }
-            giveaways.delete(messageID).then(() => {
+            this.client.giveawaysManager.delete(messageID).then(() => {
                 return message.success("moderation/giveaway:GIVEAWAY_DELETED");
             }).catch((err) => {
                 return message.error("moderation/giveaway:NOT_FOUND", {
@@ -119,7 +119,7 @@ class Giveaway extends Command {
                 return message.error("moderation/giveaway:MISSING_ID_END");
             }
             try {
-                giveaways.edit(messageID, {
+                this.client.giveawaysManager.edit(messageID, {
                     setEndTimestamp: Date.now()
                 });
                 return message.success("moderation/giveaway:GIVEAWAY_ENDED");
