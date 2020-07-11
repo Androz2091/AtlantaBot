@@ -1,8 +1,8 @@
 {
-    "DESCRIPTION": "Shows the information from the Atlanta's Github repository!",
+    "DESCRIPTION": "Affiche les informations du Github d'Atlanta !",
     "USAGE": "{{prefix}}github",
     "EXAMPLES": "{{prefix}}github",
-    "CLICK_HERE": "Click here to access the github of Atlanta",
-    "LANGUAGE": "Programming language",
-    "OWNER": "Atlanta's repository owner"
+    "CLICK_HERE": "Cliquez ici pour accéder au GitHub d'Atlanta",
+    "LANGUAGE": "Langue de programmation",
+    "OWNER": "Propriétaire du GitHub d'Atlanta"
 }

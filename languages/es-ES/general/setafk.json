@@ -1,9 +1,9 @@
 {
-    "DESCRIPTION": "Become AFK (members who mention you will receive a message)",
-    "USAGE": "{{prefix}}setafk [reason]",
-    "EXAMPLES": "{{prefix}}setafk I'm eating =)",
-    "MISSING_REASON": "Please specify the reason for your AFK status!",
-    "SUCCESS": "You're now AFK (reason: {{reason}})",
-    "DELETED": "Your AFK has just been deleted!",
-    "IS_AFK": "**{{user}}** is currently AFK, reason:\n```{{reason}}```"
+    "DESCRIPTION": "Conviértase en AFK (los miembros que lo mencionen recibirán un mensaje)",
+    "USAGE": "{{prefix}}setafk [razón]",
+    "EXAMPLES": "{{prefix}}setafk Estoy en clase",
+    "MISSING_REASON": "¡Especifique el motivo de su estado de AFK!",
+    "SUCCESS": "Estás AFK (razón: {{reason}})",
+    "DELETED": "**{{username}}**, your AFK has just been deleted!",
+    "IS_AFK": "**{{user}}** está AFK, razón:\n```{{reason}}```"
 }

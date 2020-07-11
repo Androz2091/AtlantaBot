@@ -1,0 +1,13 @@
+{
+    "DESCRIPTION": "Start a game of findwords, a game you have to find words!",
+    "USAGE": "{{prefix}}findwords",
+    "EXAMPLES": "{{prefix}}findwords",
+    "INVALID_WORD": "{{member}} | Your word is not valid!",
+    "GAME_STARTING": ":timer: | The game starts in 10 seconds!",
+    "FIND_WORD": "20 seconds to find a word containing \"**{{word}}**\"!",
+    "WORD_FOUND": "Well done {{winner}}! Your word is valid and you were the fastest!",
+    "GAME_STATS": "🎉 | {{winner}} won the game!\n\n**Stats of the game: **\n__**Duration**__: {{duration}}\n__**Number of participants**__ : {{participantCount}}\n__**Participants**__ : \n{{participantList}}",
+    "CREDITS": "{{winner}} wins 15 credits! 🎉",
+    "NO_WINNER_ALL": "I can't define any winners because no words have been found!",
+    "NO_WINNER": "No one was able to find a word!"
+}

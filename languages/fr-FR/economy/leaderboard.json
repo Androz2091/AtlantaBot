@@ -1,0 +1,7 @@
+{
+    "DESCRIPTION": "Affiche les utilisateur qui ont le plus de crédits, niveaux ou points de réputations !",
+    "USAGE": "{{prefix}}leaderboard [rep/levels/credits]",
+    "EXAMPLES": "{{prefix}}leaderboard credits\n{{prefix}}leaderboard levels",
+    "MISSING_TYPE": "Veuillez entrer un type de classement ! (`credits`, `level` ou `rep`)",
+    "MOBILE": ":confused: Nous avons détecte que vous utilisez un téléphone... Le classement peut mal s'afficher sur les petits écrans. Essayer de passer en mode paysage (ou aller sur la dashboard) !"
+}

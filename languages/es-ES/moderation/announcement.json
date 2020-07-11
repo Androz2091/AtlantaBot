@@ -1,0 +1,10 @@
+{
+    "DESCRIPTION": "¡Envía un anuncio en el canal actual!",
+    "USAGE": "{{prefix}}announcement [texto]",
+    "EXAMPLES": "{{prefix}}announcement ¡La nueva web es https://viralizate.tk!",
+    "MISSING_TEXT": "¡Debes ingresar el texto del anuncio!",
+    "TOO_LONG": "¡Ingrese un texto de menos de 1030 caracteres!",
+    "MENTION_PROMPT": "¿Desea agregar una mención a su mensaje? ¡Contesta \"Si\" o \"No\"!",
+    "MENTION_TYPE_PROMPT": "¡Escriba una de las siguientes respuestas: `every` (para mencionar a @everyone) o `here` (para mencionar a @ here)!",
+    "TITLE": "📢 Anuncio:"
+}

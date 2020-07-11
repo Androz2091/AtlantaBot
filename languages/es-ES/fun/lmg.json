@@ -1,6 +1,6 @@
 {
-    "DESCRIPTION": "I roll the dice for you!",
-    "USAGE": "{{prefix}}lmg [search]",
-    "EXAMPLES": "{{prefix}}lmg How to create a Discord bot?",
-    "MISSING": "You must specify a search!"
+    "DESCRIPTION": "Generate a LMGTFY link with your search",
+    "USAGE": "{{prefix}}lmg [búsqueda]",
+    "EXAMPLES": "{{prefix}}lmg Como crear un bot de Discord",
+    "MISSING": "¡Debes especificar una búsqueda!"
 }

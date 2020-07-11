@@ -1,7 +1,7 @@
 {
-    "DESCRIPTION": "Set the suggestions channel!",
-    "USAGE": "{{prefix}}setsuggests (#channel)",
-    "EXAMPLES": "{{prefix}}setsuggests #suggestions\n{{prefix}}setsuggests",
-    "SUCCESS_ENABLED": "Suggestions will be sent in **{{channel}}**!",
-    "SUCCESS_DISABLED": "Suggestions channel deleted!"
+    "DESCRIPTION": "¡Establece el canal de sugerencias!",
+    "USAGE": "{{prefix}}setsuggests (#canal)",
+    "EXAMPLES": "{{prefix}}setsuggests #sugerencias\n{{prefix}}setsuggests",
+    "SUCCESS_ENABLED": "¡Las sugerencias se enviarán en **{{channel}}**!",
+    "SUCCESS_DISABLED": "¡Canal de sugerencias eliminado!"
 }

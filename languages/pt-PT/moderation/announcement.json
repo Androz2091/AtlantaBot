@@ -1,0 +1,10 @@
+{
+    "DESCRIPTION": "Send an announcement in the current channel!",
+    "USAGE": "{{prefix}}announcement [text]",
+    "EXAMPLES": "{{prefix}}announcement New #spam channel!",
+    "MISSING_TEXT": "You must enter the text of the announcement!",
+    "TOO_LONG": "Please enter a text shorter than 1030 characters!",
+    "MENTION_PROMPT": "Would you like to add a mention to your message? Answer \"yes\" or \"no\"!",
+    "MENTION_TYPE_PROMPT": "Type one of the following answers: `every` (for a mention @ everyone) or `here` (for a mention @ here)!",
+    "TITLE": "📢 Announcement:"
+}

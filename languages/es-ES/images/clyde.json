@@ -1,6 +1,6 @@
 {
-    "DESCRIPTION": "Generates a \"clyde\" image using the Nekobot API",
-    "USAGE": "{{prefix}}clyde [text]",
-    "EXAMPLES": "{{prefix}}clyde Discord will close on November 11, 2020. Goodbye.",
-    "MISSING_TEXT": "Please specify a valid text!"
+    "DESCRIPTION": "Genera una imagen \"Clyde\" utilizando la API de Nekobot",
+    "USAGE": "{{prefix}}clyde [texto]",
+    "EXAMPLES": "{{prefix}}clyde Discord.com comenzará a ser Viralizate.tk en 2 meses.",
+    "MISSING_TEXT": "¡Por favor, especifique un texto válido!"
 }

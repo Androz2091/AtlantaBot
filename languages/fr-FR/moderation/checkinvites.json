@@ -1,0 +1,6 @@
+{
+    "DESCRIPTION": "Vérifie si les membres n'ont pas une publicité pour leur serveur Discord dans leur status !",
+    "USAGE": "{{prefix}}checkinvites",
+    "EXAMPLES": "{{prefix}}checkinvites",
+    "NOBODY": "Aucun membre ne fait de la publicité dans son status !"
+}
