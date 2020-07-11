@@ -36,7 +36,10 @@ class Backup extends Command {
                 message.success("administration/backup:SUCCESS_PUBLIC");
                 message.author.send(message.translate("administration/backup:SUCCESS_PRIVATE", {
                     backupID: backup.id
-                }));
+                })).catch(() => {
+                    backup.remove(backup.id);
+                    message.error("misc:CANNOT_DM");
+                });
             }).catch((err) => {
                 return message.error("misc:ERR_OCCURRED");
             });
