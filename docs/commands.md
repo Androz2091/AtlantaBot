@@ -12,7 +12,7 @@ Here's the list of Atlanta commands. This one contains more than **100 commands*
 | Name             | Description                                                       | Usage                          | Cooldown  |
 | ---------------- | ----------------------------------------------------------------- | ------------------------------ | --------- |
 | **calc**         | Calculator able to solve complex operations and to convert units! | calc [calculation]             | 1 seconds |
-| **fortnite**     | DESCRIPTION                                                       | USAGE                          | 1 seconds |
+| **fortnite**     | Shows a player's Fortnite stats!                                  | fortnite [psn/xbl/pc] [pseudo] | 1 seconds |
 | **fortniteshop** | Shows the daily fortnite items shop!                              | fortniteshop                   | 1 seconds |
 | **github**       | Shows the information from the Atlanta's Github repository!       | github                         | 5 seconds |
 | **hastebin**     | Upload your text on hastebin!                                     | hastebin [text]                | 5 seconds |
