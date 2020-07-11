@@ -43,7 +43,7 @@ class Profile extends Command {
         let userData = (member.id === message.author.id ? data.userData : await client.findOrCreateUser({ id: member.id }));
 
         // Check if the lover is cached 
-        if(userData.lover && !message.client.users.get(userData.lover)){
+        if(userData.lover && !message.client.users.cache.get(userData.lover)){
             await message.client.users.fetch(userData.lover, true);
         }
 
@@ -78,7 +78,7 @@ class Profile extends Command {
             .addField(message.translate("economy/profile:EXP"), `**${memberData.exp}** xp`, true)
             .addField(message.translate("economy/profile:REGISTERED"), message.printDate(new Date(memberData.registeredAt)), true)
             .addField(message.translate("economy/profile:BIRTHDATE"), (!userData.birthdate ? message.translate("economy/profile:NO_BIRTHDATE"): message.printDate(new Date(userData.birthdate))), true)
-            .addField(message.translate("economy/profile:LOVER"), (!userData.lover ? message.translate("economy/profile:NO_LOVER") : message.client.users.get(userData.lover).tag), true)
+            .addField(message.translate("economy/profile:LOVER"), (!userData.lover ? message.translate("economy/profile:NO_LOVER") : message.client.users.cache.get(userData.lover).tag), true)
             .addField(message.translate("economy/profile:ACHIEVEMENTS"), message.translate("economy/profile:ACHIEVEMENTS_CONTENT", {
                 prefix: data.guild.prefix
             }))

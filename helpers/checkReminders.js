@@ -12,7 +12,7 @@ module.exports = {
             let users = await client.usersData.find({ reminds: { $gt: [] } }).lean();
             let dateNow = Date.now();
             users.forEach(async (user) => {
-                let dUser = client.users.get(user.id);
+                let dUser = client.users.cache.get(user.id);
                 if(dUser){
                     let reminds = user.reminds || [];
                     if(reminds.length > 0){

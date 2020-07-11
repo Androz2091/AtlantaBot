@@ -27,7 +27,7 @@ class Divorce extends Command {
 
         // Updates db
         
-        let user = message.client.users.get(data.userData.lover) || await message.client.users.fetch(data.userData.lover);
+        let user = message.client.users.cache.get(data.userData.lover) || await message.client.users.fetch(data.userData.lover);
         
         data.userData.lover = null;
         data.userData.save();
