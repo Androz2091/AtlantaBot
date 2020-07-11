@@ -6,9 +6,6 @@ class Birthdate extends Command {
     constructor (client) {
         super(client, {
             name: "birthdate",
-            description: (language) => language.get("BIRTHDATE_DESCRIPTION"),
-            usage: (language) => language.get("BIRTHDATE_USAGE"),
-            examples: (language) => language.get("BIRTHDATE_EXAMPLES"),
             dirname: __dirname,
             enabled: true,
             guildOnly: false,
@@ -25,19 +22,19 @@ class Birthdate extends Command {
         
         let date = args[0];
         if(!date){
-            return message.channel.send(message.language.get("BIRTHDATE_ERR_DATE"));
+            return message.error("economy/birthdate:MISSING_DATE");
         }
 
         let tArgs = date.split("/");
         let [day, month, year] = tArgs;
         if(!day || !month || !year){
-            return message.channel.send(message.language.get("BIRTHDATE_ERR_DATE_FORMAT"));
+            return message.error("economy/birthdate:INVALID_DATE");
         }
         
         // Gets the string of the date
         let match = date.match(/\d+/g);
         if (!match){
-            return message.channel.send(message.language.get("BIRTHDATE_ERR_INVALID_DATE_FORMAT"));
+            return message.error("economy/birthdate:INVALID_DATE_FORMAT");
         }
         let tday = +match[0], tmonth = +match[1] - 1, tyear = +match[2];
         if (tyear < 100){
@@ -45,19 +42,21 @@ class Birthdate extends Command {
         }
         let d = new Date(tyear, tmonth, tday);
         if(!(tday == d.getDate() && tmonth == d.getMonth() && tyear == d.getFullYear())){
-            return message.channel.send(message.language.get("BIRTHDATE_ERR_INVALID_DATE_FORMAT"));
+            return message.error("economy/birthdate:INVALID_DATE_FORMAT");
         }
         if(d.getTime() > Date.now()){
-            return message.channel.send(message.language.get("BIRTHDATE_ERR_TOO_HIGH"));
+            return message.error("economy/birthdate:DATE_TOO_HIGH");
         }
         if(d.getTime() < (Date.now()-2.523e+12)){
-            return message.channel.send(message.language.get("BIRTHDATE_ERR_TOO_LOW"));
+            return message.error("economy/birthdate:DATE_TOO_LOW");
         }
 
         data.userData.birthdate = d;
         data.userData.save();
         
-        message.channel.send(message.language.get("BIRTHDATE_SUCCESS", message.language.printDate(d)));
+        message.success("economy/birthdate:SUCCESS", {
+            date: message.printDate(d)
+        });
 
     }
 

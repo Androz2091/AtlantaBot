@@ -6,9 +6,6 @@ class Setprefix extends Command {
     constructor (client) {
         super(client, {
             name: "setprefix",
-            description: (language) => language.get("SETPREFIX_DESCRIPTION"),
-            usage: (language) => language.get("SETPREFIX_USAGE"),
-            examples: (language) => language.get("SETPREFIX_EXAMPLES"),
             dirname: __dirname,
             enabled: true,
             guildOnly: true,
@@ -25,17 +22,19 @@ class Setprefix extends Command {
 
         let prefix = args[0];
         if(!prefix){
-            return message.channel.send(message.language.get("SETPREFIX_ERR_PREFIX"));
+            return message.error("administration/setprefix:MISSING_PREFIX");
         }
         if(prefix.length > 5){
-            return message.channel.send(message.language.get("SETPREFIX_ERR_CARACT"));
+            return message.error("administration/setprefix:TOO_LONG");
         }
         
         data.guild.prefix = prefix;
         data.guild.save();
 
         // Sucess
-        return message.channel.send(message.language.get("SETPREFIX_SUCCESS", prefix));
+        return message.success("administration/setprefix:SUCCESS", {
+            prefix
+        });
         
     }
 

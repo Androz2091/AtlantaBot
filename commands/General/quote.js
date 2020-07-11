@@ -6,9 +6,6 @@ class Quote extends Command {
     constructor (client) {
         super(client, {
             name: "quote",
-            description: (language) => language.get("QUOTE_DESCRIPTION"),
-            usage: (language) => language.get("QUOTE_USAGE"),
-            examples: (language) => language.get("QUOTE_EXAMPLES"),
             dirname: __dirname,
             enabled: true,
             guildOnly: true,
@@ -38,21 +35,22 @@ class Quote extends Command {
         
         let msgID = args[0];
         if(isNaN(msgID)){
-            return message.channel.send(message.language.get("ERR_INVALID_ID"));
+            return message.author.send(message.translate("general/quote:MISSING_ID"));
         }
 
         let channel = message.mentions.channels.first();
         if(args[1] && !channel){
             channel = message.client.channels.get(args[1]);
             if(!channel){
-                return message.language.get("QUOTE_ERR_NOT_FOUND_CHANNEL", args[1]);
+                message.delete();
+                return message.author.send(message.translate("general/quote:NO_MESSAGE_ID"));
             }
         }
 
         if(!channel){
             message.channel.messages.fetch(msgID).catch((err) => { 
                 message.delete();
-                return message.author.send(message.language.get("QUOTE_ERR_NOT_FOUND"));
+                return message.author.send((message.translate("general/quote:NO_MESSAGE_ID")));
             }).then((msg) => {
                 message.delete();
                 message.channel.send(embed(msg));
@@ -60,7 +58,7 @@ class Quote extends Command {
         } else {
             channel.messages.fetch(msgID).catch((err) => {
                 message.delete();
-                return message.author.send(message.language.get("QUOTE_ERR_NOT_FOUND"));
+                return message.author.send(message.translate("general/quote:NO_MESSAGE_ID"));
             }).then((msg) => {
                 message.delete();
                 message.channel.send(embed(msg));

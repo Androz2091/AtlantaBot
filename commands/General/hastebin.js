@@ -7,9 +7,6 @@ class Hastebin extends Command {
     constructor (client) {
         super(client, {
             name: "hastebin",
-            description: (language) => language.get("HASTEBIN_DESCRIPTION"),
-            usage: (language) => language.get("HASTEBIN_USAGE"),
-            examples: (language) => language.get("HASTEBIN_EXAMPLES"),
             dirname: __dirname,
             enabled: true,
             guildOnly: false,
@@ -26,7 +23,7 @@ class Hastebin extends Command {
 
         let content = args.join(" ");
         if(!content){
-            return message.channel.send(message.language.get("HASTEBIN_ERR_TEXT"));
+            return message.error("general/hastebin:MISSING_TEXT");
         }
 
         try {
@@ -38,17 +35,17 @@ class Hastebin extends Command {
             
             let json = await res.json();
             if(!json.key){
-                return message.channel.send(message.language.get("ERR_OCCURENCED"));
+                return message.error("misc:ERR_OCCURRED");
             }
             let url = "https://hasteb.in/"+json.key+".js";
 
             let embed = new Discord.MessageEmbed()
-                .setAuthor(message.language.get("HASTEBIN_TITLE"))
+                .setAuthor(message.translate("general/hastebin:SUCCESS"))
                 .setDescription(url)
                 .setColor(data.config.embed.color);
             message.channel.send(embed);
         } catch(e){
-            message.channel.send(message.language.get("ERR_OCCURENCED"));
+            message.error("misc:ERR_OCCURRED");
         }
         
     }

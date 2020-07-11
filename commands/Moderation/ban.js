@@ -6,9 +6,6 @@ class Ban extends Command {
     constructor (client) {
         super(client, {
             name: "ban",
-            description: (language) => language.get("BAN_DESCRIPTION"),
-            usage: (language) => language.get("BAN_USAGE"),
-            examples: (language) => language.get("BAN_EXAMPLES"),
             dirname: __dirname,
             enabled: true,
             guildOnly: true,
@@ -25,39 +22,58 @@ class Ban extends Command {
         
         let user = await this.client.resolveUser(args[0]);
         if(!user){
-            return message.channel.send(message.language.get("ERR_INVALID_MEMBER"));
+            return message.error("moderation/ban:MISSING_MEMBER");
         }
         
         let memberData = message.guild.members.get(user.id) ? await this.client.findOrCreateMember({ id: user.id, guildID: message.guild.id }) : null;
 
         if(user.id === message.author.id){
-            return message.channel.send(message.language.get("ERR_SANCTION_YOURSELF"));
+            return message.error("moderation/ban:YOURSELF");
         }
 
         // If the user is already banned
         let banned = await message.guild.fetchBans();
         if(banned.some((m) => m.user.id === user.id)){
-            return message.channel.send(message.language.get("BAN_ERR_BANNED", user));
+            return message.error("moderation/ban:ALREADY_BANNED", {
+                username: user.tag
+            });
         }
         
         // Gets the ban reason
         let reason = args.slice(1).join(" ");
         if(!reason){
-            reason = message.language.get("UTILS").NO_REASON_PROVIDED;
+            reason = message.translate("misc:NO_REASON_PROVIDED");
         }
 
         let member = await message.guild.members.fetch(user.id).catch(() => {});
-        if(member && !member.bannable){
-            return message.channel.send(message.language.get("BAN_ERR_PERMISSIONS"));
+        if(member){
+            const memberPosition = member.roles.highest.position;
+            const moderationPosition = message.member.roles.highest.position;
+            if(!(moderationPosition > memberPosition)){
+                return message.error("moderation/ban:SUPERIOR");
+            }
+            if(!member.bannable) {
+                return message.error("moderation/ban:MISSING_PERM");
+            }
         }
         
-        await user.send(message.language.get("BAN_SUCCESS_DM", user, message, reason)).catch((err) => {});
+        await user.send(message.translate("moderation/ban:BANNED_DM", {
+            username: user.tag,
+            server: message.guild.name,
+            moderation: message.author.tag,
+            reason
+        })).catch((err) => {});
 
         // Ban the user
         message.guild.members.ban(user, { reason } ).then(() => {
 
             // Send a success message in the current channel
-            message.channel.send(message.language.get("BAN_SUCCESS_CHANNEL", user, message, reason));
+            message.sendT("moderation/ban:BANNED", {
+                username: user.tag,
+                server: message.guild.name,
+                moderator: message.author.tag,
+                reason
+            });
 
             let caseInfo = {
                 channel: message.channel.id,
@@ -79,19 +95,20 @@ class Ban extends Command {
             if(data.guild.plugins.modlogs){
                 let channel = message.guild.channels.get(data.guild.plugins.modlogs);
                 if(!channel) return;
-                let headings = message.language.get("MODLOGS_HEADINGS");
                 let embed = new Discord.MessageEmbed()
-                    .setAuthor(message.language.get("BAN_TITLE_LOGS", data.guild.casesCount))
-                    .addField(headings.USER, `\`${user.tag}\` (${user.toString()})`, true)
-                    .addField(headings.MODERATOR, `\`${message.author.tag}\` (${message.author.toString()})`, true)
-                    .addField(headings.REASON, reason, true)
+                    .setAuthor(message.translate("moderation/ban:CASE", {
+                        count: data.guild.casesCount
+                    }))
+                    .addField(message.translate("common:USER"), `\`${user.tag}\` (${user.toString()})`, true)
+                    .addField(message.translate("common:MODERATOR"), `\`${message.author.tag}\` (${message.author.toString()})`, true)
+                    .addField(message.translate("common:REASON"), reason, true)
                     .setColor("#e02316");
                 channel.send(embed);
             }
 
         }).catch((err) => {
             console.log(err)
-            return message.channel.send(message.language.get("BAN_ERR_PERMISSIONS"));
+            return message.error("moderation/ban:MISSING_PERM");
         });
 
     }

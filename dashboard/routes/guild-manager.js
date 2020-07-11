@@ -10,7 +10,7 @@ router.get("/:serverID", CheckAuth, async(req, res) => {
     if(!guild || !req.userInfos.displayedGuilds || !req.userInfos.displayedGuilds.find((g) => g.id === req.params.serverID)){
         return res.render("404", {
             user: req.userInfos,
-            language: req.language,
+            translate: req.translate,
             currentURL: `${req.client.config.dashboard.baseURL}/${req.originalUrl}`
         });
     }
@@ -21,7 +21,7 @@ router.get("/:serverID", CheckAuth, async(req, res) => {
     res.render("manager/guild", {
         guild: guildInfos,
         user: req.userInfos,
-        language: req.language,
+        translate: req.translate,
         bot: req.client,
         currentURL: `${req.client.config.dashboard.baseURL}/${req.originalUrl}`
     });
@@ -35,22 +35,20 @@ router.post("/:serverID", CheckAuth, async(req, res) => {
     if(!guild || !req.userInfos.displayedGuilds || !req.userInfos.displayedGuilds.find((g) => g.id === req.params.serverID)){
         return res.render("404", {
             user: req.userInfos,
-            language: req.language,
+            translate: req.translate,
             currentURL: `${req.client.config.dashboard.baseURL}/${req.originalUrl}`
         });
     }
     
-    let guildData = await req.client.guildsData.findOne({id:guild.id});
+    let guildData = await req.client.findOrCreateGuild({ id: guild.id });
     let data = req.body;
     
     if(data.language){
-        let english = req.language.get("UTILS").ENGLISH;
-        if(data.language === english){
-            guildData.language = "english";
-        } else {
-            guildData.language = "french";
+        const language = req.client.config.languages.find((language) => language.aliases[0].toLowerCase() === data.language.toLowerCase());
+        if(language){
+            guildData.language = language.name;
         }
-        if(data.prefix.length > 1 && data.prefix.length < 2000){
+        if(data.prefix.length >= 1 && data.prefix.length < 2000){
             guildData.prefix = data.prefix;
         }
         await guildData.save();
@@ -125,17 +123,17 @@ router.post("/:serverID", CheckAuth, async(req, res) => {
     }
 
     if(data.hasOwnProperty("suggestions")){
-        if(data.suggestions === req.language.get("UTILS").NO_CHANNEL){
+        if(data.suggestions === req.translate("common:NO_CHANNEL")){
             guildData.plugins.suggestions = false;
         } else {
             guildData.plugins.suggestions = guild.channels.find((ch) => "#"+ch.name === data.suggestions).id;
         }
-        if(data.modlogs === req.language.get("UTILS").NO_CHANNEL){
+        if(data.modlogs === req.translate("common:NO_CHANNEL")){
             guildData.plugins.modlogs = false;
         } else {
             guildData.plugins.modlogs = guild.channels.find((ch) => "#"+ch.name === data.modlogs).id;
         }
-        if(data.fortniteshop === req.language.get("UTILS").NO_CHANNEL){
+        if(data.fortniteshop === req.translate("common:NO_CHANNEL")){
             guildData.plugins.fortniteshop = false;
         } else {
             guildData.plugins.fortniteshop = guild.channels.find((ch) => "#"+ch.name === data.fortniteshop).id;

@@ -7,9 +7,6 @@ class Remindme extends Command {
     constructor (client) {
         super(client, {
             name: "remindme",
-            description: (language) => language.get("REMINDME_DESCRIPTION"),
-            usage: (language) => language.get("REMINDME_USAGE"),
-            examples: (language) => language.get("REMINDME_EXAMPLES"),
             dirname: __dirname,
             enabled: true,
             guildOnly: false,
@@ -25,12 +22,12 @@ class Remindme extends Command {
 
         let time = args[0];
         if(!time || isNaN(ms(time))){
-            return message.channel.send(message.language.get("ERR_INVALID_TIME"));
+            return message.error("misc:INVALID_TIME");
         }
 
         let msg = args.slice(1).join(" ");
         if(!msg){
-            return message.channel.send(message.language.get("REMINDME_ERR_MESSAGE"));
+            return message.error("general/remindme:MISSING_MESSAGE");
         }
         
         let rData = {
@@ -48,7 +45,7 @@ class Remindme extends Command {
         data.userData.save();
 
         // Send success message
-        message.channel.send(message.language.get("REMINDME_SAVED"));
+        message.success("general/remindme:SAVED");
     }
 
 }

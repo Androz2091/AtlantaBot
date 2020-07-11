@@ -9,9 +9,6 @@ class Translate extends Command {
     constructor (client) {
         super(client, {
             name: "translate",
-            description: (language) => language.get("TRANSLATE_DESCRIPTION"),
-            usage: (language) => language.get("TRANSLATE_USAGE"),
-            examples: (language) => language.get("TRANSLATE_EXAMPLES"),
             dirname: __dirname,
             enabled: true,
             guildOnly: false,
@@ -30,17 +27,25 @@ class Translate extends Command {
             let index = 0;
             let langsList = "```Css\n"+(langs.map((l, i) => `#${i+1} - ${l}`).join("\n"))+"```";
             message.author.send(langsList);
-            return message.channel.send(message.language.get("TRANSLATE_LANGS"));
+            return message.success("general/translate:LIST_SENT");
         }
         
-        let pWait = await message.channel.send(message.language.get("UTILS").PLEASE_WAIT);
+        let pWait = await message.sendT("misc:PLEASE_WAIT", null, {
+            prefixEmoji: "loading"
+        });
         
         if(!args[0]){
-            return pWait.edit(message.language.get("TRANSLATE_ERR_LANG", data.guild.prefix));
+            return pWait.error("general/translate:MISSING_LANGUAGE", {
+                prefix: data.guild.prefix
+            }, {
+                edit: true
+            });
         }
     
         if(!args[1]){
-            return pWait.edit(message.language.get("TRANSLATE_ERR_MSG"));
+            return pWait.error("general/translate:MISSING_CONTENT", null, {
+                edit: true
+            });
         }
         
         // Gets different args
@@ -48,7 +53,12 @@ class Translate extends Command {
         let toTranslate = args.slice(1).join(" ");
         
         if(!langs.includes(language)){
-            return pWait.edit(message.language.get("TRANSLATE_ERR_NOT_FOUND", data.guild.prefix, language));
+            return pWait.error("general/translate:INVALID_LANGUAGE", {
+                prefix: data.guild.prefix,
+                search: language
+            }, {
+                edit: true
+            });
         }
         
         let translated = await translate(toTranslate, { to: language });

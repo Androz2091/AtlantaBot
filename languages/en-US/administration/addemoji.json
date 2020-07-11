@@ -1,0 +1,9 @@
+{
+    "DESCRIPTION": "Add an emoji to the server!",
+    "USAGE": "{{prefix}}addemoji [image-url] [name]",
+    "EXAMPLES": "{{prefix}}addemoji https://via.placeholder.com/150 test-emoji",
+    "MISSING_URL": "Please provide an image URL!",
+    "MISSING_NAME": "Please provide an emoji name!",
+    "SUCCESS": "Emoji **{{emojiName}}** added! Its string is: `{{emojiString}}`.",
+    "ERROR": "{{emojiName}} couldn't be added. Check if your server still has space for new emojis!"
+}

@@ -1,14 +1,12 @@
 const Command = require("../../base/Command.js"),
-Discord = require("discord.js");
+Discord = require("discord.js"),
+Resolvers = require("../../helpers/resolvers");
 
 class Autorole extends Command {
 
     constructor (client) {
         super(client, {
             name: "autorole",
-            description: (language) => language.get("AUTOROLE_DESCRIPTION"),
-            usage: (language) => language.get("AUTOROLE_USAGE"),
-            examples: (language) => language.get("AUTOROLE_EXAMPLES"),
             dirname: __dirname,
             enabled: true,
             guildOnly: true,
@@ -23,22 +21,19 @@ class Autorole extends Command {
 
     async run (message, args, data) {
 
-        let status = args[0];
+        const status = args[0];
         if(status !== "on" && status !== "off"){
-            return message.channel.send(message.language.get("AUTOROLE_ERR_STATUS"));
+            return message.error("administration/autorole:MISSING_STATUS");
         }
         
         if(status === "on"){
 
-            if(!args[1]){
-                return message.channel.send(message.language.get("AUTOROLE_ERR_STATUS"));
-            }
-            let role = message.mentions.roles.first();
+            const role = await Resolvers.resolveRole({
+                message,
+                search: args.slice(1).join(" ")
+            });
             if(!role){
-                role = message.guild.roles.find((r) => r.name === args.slice(1).join("  "));
-                if(!role){
-                    return message.channel.send(message.language.get("ERR_ROLE_NOT_FOUND", args.slice(1).join(" ")));
-                }
+                return message.error("administration/autorole:MISSING_ROLE");
             }
 
             data.guild.plugins.autorole = {
@@ -46,9 +41,11 @@ class Autorole extends Command {
                 role: role.id
             };
             data.guild.markModified("plugins.autorole");
-            data.guild.save();
+            await data.guild.save();
 
-            message.channel.send(message.language.get("AUTOROLE_ENABLED", data.guild.prefix));
+            message.success("administration/autorole:SUCCESS_ENABLED", {
+                roleName: role.name
+            });
         }
 
         if(status === "off"){
@@ -58,9 +55,11 @@ class Autorole extends Command {
                 role: null
             };
             data.guild.markModified("plugins.autorole");
-            data.guild.save();
+            await data.guild.save();
             
-            message.channel.send(message.language.get("AUTOROLE_DISABLED", data.guild.prefix));
+            message.success("administration/autorole:SUCCESS_DISABLED", {
+                prefix: data.guild.prefix
+            });
 
         }
         

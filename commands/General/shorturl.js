@@ -7,9 +7,6 @@ class ShortURL extends Command {
     constructor (client) {
         super(client, {
             name: "shorturl",
-            description: (language) => language.get("SHORTURL_DESCRIPTION"),
-            usage: (language) => language.get("SHORTURL_USAGE"),
-            examples: (language) => language.get("SHORTURL_EXAMPLES"),
             dirname: __dirname,
             enabled: true,
             guildOnly: false,
@@ -26,14 +23,14 @@ class ShortURL extends Command {
     
         let url = args[0];
         if(!url){
-            return message.channel.send(message.language.get("SHORTURL_ERR_INVALID_URL"));
+            return message.error("general/shorturl:MISSING_URL");
         }
 
         let res = await fetch(`https://is.gd/create.php?format=simple&url=${encodeURI(url)}`);
         let body = await res.text();
 
         if(body === "Error: Please enter a valid URL to shorten"){
-            return message.channel.send(message.language.get("SHORTURL_ERR_INVALID_URL"));
+            return message.error("general/shorturl:MISSING_URL");
         }
 
         let embed = new Discord.MessageEmbed()

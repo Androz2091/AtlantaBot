@@ -6,9 +6,6 @@ class Work extends Command {
     constructor (client) {
         super(client, {
             name: "work",
-            description: (language) => language.get("WORK_DESCRIPTION"),
-            usage: (language) => language.get("WORK_USAGE"),
-            examples: (language) => language.get("WORK_EXAMPLES"),
             dirname: __dirname,
             enabled: true,
             guildOnly: true,
@@ -30,7 +27,9 @@ class Work extends Command {
             when the member will be able to execute the order again 
             is greater than the current date, display an error message */
             if(isInCooldown > Date.now()){
-                return message.channel.send(message.language.get("WORK_ERR_COOLDOWN", message.language.convertMs(isInCooldown - Date.now())));
+                return message.sendT("economy/work:COOLDOWN", {
+                    time: message.convertTime(isInCooldown - Date.now(), "to")
+                });
             }
         }
 
@@ -47,7 +46,7 @@ class Work extends Command {
         await data.memberData.save();
 
         let embed = new Discord.MessageEmbed()
-            .setFooter(message.language.get("WORK_FOOTER"), message.author.displayAvatarURL())
+            .setFooter(message.translate("economy/work:AWARD"), message.author.displayAvatarURL())
             .setColor(data.config.embed.color);
         
         let award = [
@@ -59,20 +58,24 @@ class Work extends Command {
         ];
         let won = 200;
 
-        if((data.memberData.workStreak || 0) >= 5){
-            won+=200;
-            embed.addField(message.language.get("WORK_CLAIMED_HEADINGS")[0], message.language.get("WORK_CLAIMED_SALARY", won))
-            .addField(message.language.get("WORK_CLAIMED_HEADINGS")[1], message.language.get("WORK_AWARD"));
-            data.memberData.workStreak = 0;
+        if(memberData.workStreak >= 5){
+            won += 200;
+            embed.addField(message.translate("economy/work:SALARY"), message.translate("economy/work:SALARY_CONTENT", {
+                won
+            }))
+            .addField(message.translate("economy/work:STREAK"), message.translate("economy/work:STREAK_CONTENT"));
+            memberData.setWorkStreak(0);
         } else {
             for(let i = 0; i < award.length; i++){
-                if(data.memberData.workStreak > i){
-                    let letter = Discord.Util.parseEmoji(award[i]).name.split("_")[1];
-                    award[i] = ":regional_indicator_"+letter+":";
+                if(memberData.workStreak > i){
+                    const letter = Discord.Util.parseEmoji(award[i]).name.split("_")[1];
+                    award[i] = `:regional_indicator_${letter}:`;
                 }
             }
-            embed.addField(message.language.get("WORK_CLAIMED_HEADINGS")[0], message.language.get("WORK_CLAIMED_SALARY", won))
-            .addField(message.language.get("WORK_CLAIMED_HEADINGS")[1], award.join(""));
+            embed.addField(message.translate("economy/work:SALARY"), message.translate("economy/work:SALARY_CONTENT", {
+                won
+            }))
+            .addField(message.translate("economy/work:STREAK"), award.join(""));
         }
 
         data.memberData.money = data.memberData.money + won;

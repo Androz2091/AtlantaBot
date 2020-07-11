@@ -1,0 +1,6 @@
+{
+    "DESCRIPTION": "Check if members have an ad for their Discord server in their status!",
+    "USAGE": "{{prefix}}checkinvites",
+    "EXAMPLES": "{{prefix}}checkinvites",
+    "NOBODY": "No member advertises in his game!"
+}

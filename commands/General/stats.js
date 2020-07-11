@@ -6,9 +6,6 @@ class Stats extends Command {
     constructor (client) {
         super(client, {
             name: "stats",
-            description: (language) => language.get("STATS_DESCRIPTION"),
-            usage: (language) => language.get("STATS_USAGE"),
-            examples: (language) => language.get("STATS_EXAMPLES"),
             dirname: __dirname,
             enabled: true,
             guildOnly: false,
@@ -23,24 +20,34 @@ class Stats extends Command {
 
     async run (message, args, data) {
 
-        let statsHeadings = message.language.get("STATS_HEADINGS", message.client);
-
         let statsEmbed = new Discord.MessageEmbed()
-            .setColor(data.config.embed.color)
-            .setFooter(data.config.embed.footer)
-            .setAuthor(message.language.get("STATS_HEADINGS")[0])
-            .setDescription(message.language.get("STATS_DESC"))
-            .addField(statsHeadings[1], message.language.get("STATS", message.client.guilds.size, message.client.users.size), true)
-            .addField(statsHeadings[2], `\`Discord.js : v${Discord.version}\`\n\`Nodejs : v${process.versions.node}\``, true)
-            .addField(statsHeadings[3], `\`${(process.memoryUsage().heapUsed / 1024 / 1024).toFixed(2)}MB\``, true)
-            .addField(statsHeadings[4], message.language.get("STATS_ONLINE", message.language.convertMs(message.client.uptime)))
-            .addField(statsHeadings[5], message.language.get("STATS_VC", message.client.voice.connections.size))
-            .addField(statsHeadings[6], message.language.get("STATS_CREDITS"))
+        .setColor(data.config.embed.color)
+        .setFooter(data.config.embed.footer)
+        .setAuthor(message.translate("common:STATS"))
+        .setDescription(message.translate("general/stats:MADE"))
+        .addField(this.client.config.emojis.stats+" "+message.translate("general/stats:COUNTS_TITLE"), message.translate("general/stats:COUNTS_CONTENT", {
+            servers: message.client.guilds.size,
+            users: message.client.users.size
+        }), true)
+        .addField(this.client.config.emojis.version+" "+message.translate("general/stats:VERSIONS_TITLE"), `\`Discord.js : v${Discord.version}\`\n\`Nodejs : v${process.versions.node}\``, true)
+        .addField(this.client.config.emojis.ram+" "+message.translate("general/stats:RAM_TITLE"), `\`${(process.memoryUsage().heapUsed / 1024 / 1024).toFixed(2)}MB\``, true)
+        .addField(this.client.config.emojis.status.online+" "+message.translate("general/stats:ONLINE_TITLE"), message.translate("general/stats:ONLINE_CONTENT", {
+            time: message.convertTime(message.client.uptime, "from")
+        }))
+        .addField(this.client.config.emojis.voice+" "+message.translate("general/stats:MUSIC_TITLE"), message.translate("general/stats:MUSIC_CONTENT", {
+            count: message.client.voice.connections.size
+        }))
+        .addField(message.translate("general/stats:CREDITS_TITLE"), message.translate("general/stats:CREDITS_CONTENT"));
 
-        message.client.functions.supportLink(message.client).then((url) => {
-            statsEmbed.addField(statsHeadings[7], message.language.get("STATS_LINKS", url, message.client.user.id));
-            message.channel.send(statsEmbed);
-        });
+        statsEmbed.addField(this.client.config.emojis.link+" "+message.translate("general/stats:LINKS_TITLE"), message.translate("misc:STATS_FOOTER", {
+                donateLink: "https://patreon.com/Androz2091",
+                dashboardLink: "https://dashboard.atlanta-bot.fr",
+                inviteLink: await message.client.generateInvite("ADMINISTRATOR"),
+                githubLink: "https://github.com/Androz2091",
+                supportLink: "https://discord.atlanta-bot.fr"
+            })
+        );
+        message.channel.send(statsEmbed);
 
     }
 

@@ -6,9 +6,6 @@ class Serverinfo extends Command {
     constructor (client) {
         super(client, {
             name: "serverinfo",
-            description: (language) => language.get("SERVERINFO_DESCRIPTION"),
-            usage: (language) => language.get("SERVERINFO_USAGE"),
-            examples: (language) => language.get("SERVERINFO_EXAMPLES"),
             dirname: __dirname,
             enabled: true,
             guildOnly: true,
@@ -39,14 +36,24 @@ class Serverinfo extends Command {
         let embed = new Discord.MessageEmbed()
             .setAuthor(guild.name, guild.iconURL())
             .setThumbnail(guild.iconURL())
-            .addField(message.language.get("SERVERINFO_HEADINGS")[0], guild.name, true)
-            .addField(message.language.get("SERVERINFO_HEADINGS")[1], message.language.printDate(guild.createdAt), true)
-            .addField(message.language.get("SERVERINFO_HEADINGS")[2], message.language.get("SERVERINFO_MEMBERCOUNT", guild.members), true)
-            .addField(message.language.get("SERVERINFO_HEADINGS")[4], guild.afkChannel || message.language.get("SERVERINFO_NO_AFK"), true)
-            .addField(message.language.get("SERVERINFO_HEADINGS")[5], guild.id, true)
-            .addField(message.language.get("SERVERINFO_HEADINGS")[6], guild.owner, true)
-            .addField(message.language.get("SERVERINFO_HEADINGS")[7], guild.premiumSubscriptionCount || 0, true)
-            .addField(message.language.get("SERVERINFO_HEADINGS")[3], message.language.get("SERVERINFO_CHANNELS", guild.channels), true)
+            .addField(this.client.config.emojis.title+message.translate("common:NAME"), guild.name, true)
+            .addField(this.client.config.emojis.calendar+message.translate("common:CREATION"), message.printDate(guild.createdAt), true)
+            .addField(this.client.config.emojis.users+message.translate("common:MEMBERS"), message.translate("general/serverinfo:MEMBERS", {
+                count: guild.members.filter(m => !m.user.bot).size
+            })+" | "+message.translate("general/serverinfo:BOTS", {
+                count: guild.members.filter(m => m.user.bot).size
+            }), true)
+            .addField(this.client.config.emojis.afk+message.translate("general/serverinfo:AFK_CHANNEL"), guild.afkChannel || message.translate("general/serverinfo:NO_AFK_CHANNEL"), true)
+            .addField(this.client.config.emojis.id+message.translate("common:ID"), guild.id, true)
+            .addField(this.client.config.emojis.crown+message.translate("common:OWNER"), guild.owner, true)
+            .addField(this.client.config.emojis.boost+message.translate("general/serverinfo:BOOSTS"), guild.premiumSubscriptionCount || 0, true)
+            .addField(this.client.config.emojis.channels+message.translate("common:CHANNELS"), message.translate("general/serverinfo:TEXT_CHANNELS", {
+                count: guild.channels.filter(c => c.type === "text").size
+            })+" | "+message.translate("general/serverinfo:VOICE_CHANNELS", {
+                count: guild.channels.filter(c => c.type === "voice").size
+            })+" | "+message.translate("general/serverinfo:CAT_CHANNELS", {
+                count: guild.channels.filter(c => c.type === "category").size
+            }), true)
             .setColor(data.config.embed.color)
             .setFooter(data.config.embed.footer);
 

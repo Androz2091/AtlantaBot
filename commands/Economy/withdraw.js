@@ -6,9 +6,6 @@ class Withdraw extends Command {
     constructor (client) {
         super(client, {
             name: "withdraw",
-            description: (language) => language.get("WITHDRAW_DESCRIPTION"),
-            usage: (language) => language.get("WITHDRAW_USAGE"),
-            examples: (language) => language.get("WITHDRAW_EXAMPLES"),
             dirname: __dirname,
             enabled: true,
             guildOnly: true,
@@ -26,27 +23,31 @@ class Withdraw extends Command {
         let amount = args[0];
 
         if(!(parseInt(data.memberData.bankSold, 10) > 0)) {
-            return message.channel.send(message.language.get("WITHDRAW_ERR_NO_MONEY"));
+            return message.error("economy/withdraw:NO_CREDIT");
         }
 
         if(args[0] === "all"){
             amount = parseInt(data.memberData.bankSold, 10);
         } else {
             if(isNaN(amount) || parseInt(amount, 10) < 1){
-                return message.channel.send(message.language.get("WITHDRAW_ERR_AMOUNT"));
+                return message.error("economy/withdraw:MISSING_AMOUNT");
             }
             amount = parseInt(amount, 10);
         }
         
         if(data.memberData.bankSold < amount){
-            return message.channel.send(message.language.get("WITHDRAW_ERR_AMOUNT_TOO_HIGH", amount));
+            return message.error("economy/withdraw:NOT_ENOUGH", {
+                money: amount
+            });
         }
 
         data.memberData.money = data.memberData.money + amount;
         data.memberData.bankSold = data.memberData.bankSold - amount;
         data.memberData.save();
 
-        message.channel.send(message.language.get("WITHDRAW_SUCCESS", amount));
+        message.success("economy/withdraw:SUCCESS", {
+            money: amount
+        });
     }
 
 }

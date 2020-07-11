@@ -19,11 +19,15 @@ module.exports = {
                 let member = await client.findOrCreateMember({ id: vote.user, guildID: client.config.support.id });
                 member.money = member.money + 40;
                 member.save();
-                let language = new(require(`../languages/${client.config.defaultLanguage}`));
-                dUser.send(language.get("VOTE_THANKS", dUser)).catch((err) => {});
+                dUser.send(client.translate("misc:VOTE_DM", {
+                    user: dUser.tag
+                })).catch((err) => {});
                 let logsChannel = client.channels.get(client.config.votes.channel);
                 if(logsChannel){
-                    logsChannel.send(language.get("VOTE_LOGS", dUser));
+                    logsChannel.send(client.translate("misc:VOTE_LOGS", {
+                        userid: dUser.id,
+                        usertag: dUser.tag
+                    }));
                 }
             });
         }

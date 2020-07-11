@@ -6,9 +6,6 @@ class Flip extends Command {
     constructor (client) {
         super(client, {
             name: "flip",
-            description: (language) => language.get("FLIP_DESCRIPTION"),
-            usage: (language) => language.get("FLIP_USAGE"),
-            examples: (language) => language.get("FLIP_EXAMPLES"),
             dirname: __dirname,
             enabled: true,
             guildOnly: false,
@@ -22,14 +19,10 @@ class Flip extends Command {
     }
 
     async run (message, args, data) {
-
-        let isFace = message.client.functions.randomNum(0, 2) === 1;
-        if(isFace){
-            return message.channel.send(message.language.get("FLIP_FACE"))
-        } else {
-            return message.channel.send(message.language.get("FLIP_PILE"));
-        }
-
+        const isHeads = Math.random() > 0.5;
+        isHeads
+            ? message.sendT("fun/flip:HEADS")
+            : message.sendT("fun/flip:TAILS");
     }
 
 }

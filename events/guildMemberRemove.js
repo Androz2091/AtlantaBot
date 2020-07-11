@@ -36,7 +36,7 @@ module.exports = class {
                     if(guildData.plugins.goodbye.withImage){
                         let canvas = Canvas.createCanvas(1024, 450),
                         ctx = canvas.getContext("2d"),
-                        lang = new(require(`../languages/${guildData.language}.js`)),
+                        lang = new(require(`../old_languages/${guildData.language}.js`)),
                         text = lang.get("GOODBYE_IMG_MSG", guild.name),
                         number = lang.get("GOODBYE_IMG_NUMBER", guild.memberCount),
                         title = lang.get("GOODBYE_IMG_TITLE");

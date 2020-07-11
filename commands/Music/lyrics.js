@@ -8,9 +8,6 @@ class Lyrics extends Command {
     constructor (client) {
         super(client, {
             name: "lyrics",
-            description: (language) => language.get("LYRICS_DESCRIPTION"),
-            usage: (language) => language.get("LYRICS_USAGE"),
-            examples: (language) => language.get("LYRICS_EXAMPLES"),
             dirname: __dirname,
             enabled: true,
             guildOnly: false,
@@ -27,11 +24,13 @@ class Lyrics extends Command {
         
         let songName = args.join(" ");
         if(!songName){
-            return message.channel.send(message.language.get("LYRICS_ERR_SONG_NAME"));
+            return message.error("music/lyrics:MISSING_SONG_NAME");
         }
         
         let embed = new Discord.MessageEmbed()
-            .setAuthor(message.language.get("LYRICS_TITLE", songName))
+            .setAuthor(message.translate("music/lyrics:LYRICS_OF", {
+                songName
+            }))
             .setColor(data.config.embed.color)
             .setFooter(data.config.embed.footer);
 
@@ -54,16 +53,20 @@ class Lyrics extends Command {
             let lyrics = await $("p[class=\"mxm-lyrics__content \"]").text();
 
             if(lyrics.length > 2048) {
-                lyrics = lyrics.substr(0, 2031) + message.language.get("LYRICS_NEXT", `https://www.musixmatch.com/search/${songName}`);
+                lyrics = lyrics.substr(0, 2031) + message.translate("music/lyrics:AND_MORE") + " ["+message.translate("music/lyrics:CLICK_HERE")+"]"+`https://www.musixmatch.com/search/${songName}`;
             } else if(!lyrics.length) {
-                return message.channel.send(message.language.get("LYRICS_ERR_NO_LYRICS", songName))
+                return message.error("music/lyrics:NO_LYRICS_FOUND", {
+                    songName
+                });
             }
 
             embed.setDescription(lyrics);
             message.channel.send(embed);
 
         } catch(e){
-            message.channel.send(message.language.get("LYRICS_ERR_NO_LYRICS", songName));
+            message.error("music/lyrics:NO_LYRICS_FOUND", {
+                songName
+            });
         }
 
     }

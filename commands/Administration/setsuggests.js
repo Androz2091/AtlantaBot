@@ -6,9 +6,6 @@ class Setsuggests extends Command {
     constructor (client) {
         super(client, {
             name: "setsuggests",
-            description: (language) => language.get("SETSUGGESTS_DESCRIPTION"),
-            usage: (language) => language.get("SETSUGGESTS_USAGE"),
-            examples: (language) => language.get("SETSUGGESTS_EXAMPLES"),
             dirname: __dirname,
             enabled: true,
             guildOnly: true,
@@ -23,12 +20,32 @@ class Setsuggests extends Command {
 
     async run (message, args, data) {
         
-        let channel = message.mentions.channels.filter((ch) => ch.type === "text" && ch.guild.id === message.guild.id).first() || message.channel;
-        data.guild.plugins.suggestions = channel.id;
-        data.guild.markModified("plugins.suggestions");
-        data.guild.save();
+        const areSuggestsEnabled = Boolean(data.guild.plugins.suggestions);
+        const sentChannel = await Resolvers.resolveChannel({
+            message,
+            search: args.join(" "),
+            channelType: "text"
+        });
 
-        message.channel.send(message.language.get("SETSUGGESTS_SUCCESS", channel));
+        if (!sentChannel && areSuggestsEnabled) {
+            data.guild.plugins.suggestions = null;
+            data.guild.markModified("plugins.suggestions");
+            await data.guild.save();
+            return message.success(
+                "administration/setsuggests:SUCCESS_DISABLED"
+            );
+        } else {
+            const channel = sentChannel || message.channel;
+            data.guild.plugins.suggestions = channel.id;
+            data.guild.markModified("plugins.suggestions");
+            await data.guild.save();
+            return message.success(
+                "administration/setsuggestss:SUCCESS_ENABLED",
+                {
+                    channel: channel.toString()
+                }
+            );
+        }
         
     }
 

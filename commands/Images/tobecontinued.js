@@ -5,9 +5,6 @@ class Tobecontinued extends Command {
     constructor (client) {
         super(client, {
             name: "tobecontinued",
-            description: (language) => language.get("TOBECONTINUED_DESCRIPTION"),
-            usage: (language) => language.get("TOBECONTINUED_USAGE"),
-            examples: (language) => language.get("TOBECONTINUED_EXAMPLES"),
             dirname: __dirname,
             enabled: true,
             guildOnly: false,
@@ -23,7 +20,9 @@ class Tobecontinued extends Command {
     async run (message, args, data) {
 
         let user = await this.client.resolveUser(args[0]) || message.author;
-        let m = await message.channel.send(message.language.get("UTILS").PLEASE_WAIT);
+        let m = await message.sendT("misc:PLEASE_WAIT", null, {
+            prefixEmoji: "loading"
+        });
         let buffer = await this.client.AmeAPI.generate("tobecontinued", { url: user.displayAvatarURL({ format: "png", size: 512 }) });
         let attachment = new Discord.MessageAttachment(buffer, "tobecontinued.png");
         m.delete();

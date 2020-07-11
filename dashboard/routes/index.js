@@ -9,7 +9,7 @@ router.get("/", CheckAuth, async (req, res) => {
 router.get("/selector", CheckAuth, async(req, res) => {
     res.render("selector", {
         user: req.userInfos,
-        language: req.language,
+        translate: req.translate,
         currentURL: `${req.client.config.dashboard.baseURL}/${req.originalUrl}`
     });
 });
