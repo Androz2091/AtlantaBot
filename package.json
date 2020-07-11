@@ -24,7 +24,7 @@
     "blague.xyz": "^2.0.4",
     "btoa": "^1.2.1",
     "canvas": "^2.6.1",
-    "chalk": "^4.0.0",
+    "chalk": "^4.1.0",
     "colors-generator": "^0.3.4",
     "cron": "^1.7.2",
     "dblapi.js": "^2.3.0",
