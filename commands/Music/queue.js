@@ -20,10 +20,6 @@ class Queue extends Command {
 
     async run (message, args, data) {
 
-        if(!data.config.apiKeys.simpleYoutube || data.config.apiKeys.simpleYoutube.length === "") {
-            return message.error("misc:COMMAND_DISABLED");
-        }
-
         let voice = message.member.voice.channel;
         if (!voice){
             return message.error("music/play:NO_VOICE_CHANNEL");
@@ -35,13 +31,15 @@ class Queue extends Command {
             return message.error("music:play:NOT_PLAYING");
         }
 
-        let sQueue = queue.songs.map((song) => {
-            return `**${message.translate("common:TITLE")}**: ${song.name}\n**${message.translate("common:AUTHOR")}**: ${song.author}`;
+        const tracks = [ ...[ queue.playing ], ...queue.tracks ];
+        if(tracks.length > 20) tracks.splice(20);
+        let sQueue = tracks.map((track, i) => {
+            return `${i === 0 ? '\nCurrently playing...\n' : ''} **${message.translate("common:TITLE")}**: ${track.name}\n**${message.translate("common:AUTHOR")}**: ${track.author}`;
         });
 
         // Generate discord embed to display the songs list
         let embed = new Discord.MessageEmbed()
-            .addField(this.client.config.emojis.playlist+message.translate("music/queue:TITLE"), sQueue.join("\n-------\n"))
+            .addField(this.client.config.emojis.playlist+" "+message.translate("music/queue:TITLE"), sQueue.join("\n-------\n"))
             .setColor(data.config.embed.color)
             .setFooter(data.config.embed.footer)
             .setTimestamp();

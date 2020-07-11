@@ -32,18 +32,19 @@ class Np extends Command {
         }
 
         // Gets the current song
-        let song = await this.client.player.nowPlaying(message.guild.id)
+        let track = await this.client.player.nowPlaying(message.guild.id)
 
         // Generate discord embed to display song informations
         const embed = new Discord.MessageEmbed()
             .setAuthor(message.translate("music/np:CURRENTLY_PLAYING"))
-            .setThumbnail(song.thumbnail)
-            .addField(message.translate("music/np:T_TITLE"), song.name, true)
-            .addField(message.translate("music/np:T_CHANNEL"), song.author, true)
-            .addField(message.translate("music/np:T_DURATION"), this.client.functions.convertTime(message.guild, song.duration), true)
+            .setThumbnail(track.thumbnail)
+            .addField(message.translate("music/np:T_TITLE"), track.name, true)
+            .addField(message.translate("music/np:T_CHANNEL"), track.author, true)
+            .addField(message.translate("music/np:T_DURATION"), this.client.functions.convertTime(message.guild, track.durationMS), true)
             .addField(message.translate("music/np:T_DESCRIPTION"),
-                song.raw.snippet.description ?
-                (song.raw.snippet.description.substring(0, 150)+"\n"+(message.translate("common:AND_MORE").toLowerCase())) : message.translate("music/np:NO_DESCRIPTION"), true)
+                track.description ?
+                (track.description.substring(0, 150)+"\n"+(message.translate("common:AND_MORE").toLowerCase())) : message.translate("music/np:NO_DESCRIPTION"), true)
+            .addField('\u200B', this.client.player.createProgressBar(message.guild.id))
             .setTimestamp()
             .setColor(data.config.embed.color)
             .setFooter(data.config.embed.footer);

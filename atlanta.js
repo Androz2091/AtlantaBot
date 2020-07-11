@@ -56,12 +56,10 @@ const init = async () => {
         });
     }
 
-    if(client.config.apiKeys.simpleYoutube){
-        const { Player } = require("discord-player");
-        client.player = new Player(client, client.config.apiKeys.simpleYoutube, {
-            leaveOnEmpty: false
-        });
-    }
+    const { Player } = require("discord-player");
+    client.player = new Player(client, {
+        leaveOnEmpty: false
+    });
 
     const languages = require("./helpers/languages");
     client.translations = await languages();

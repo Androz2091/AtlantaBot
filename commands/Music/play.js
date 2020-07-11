@@ -20,10 +20,6 @@ class Play extends Command {
 
     async run (message, args, data) {
 
-        if(!data.config.apiKeys.simpleYoutube || data.config.apiKeys.simpleYoutube.length == ""){
-            return message.error("misc:COMMAND_DISABLED");
-        }
-
         let isPlaying = this.client.player.isPlaying(message.guild.id);
 
         let name = args.join(" ");
@@ -35,8 +31,11 @@ class Play extends Command {
 
         let voice = message.member.voice.channel;
         if(!voice){
-            return message.error("music/play:NO_VOICE_CHANNEL")
+            return message.error("music/play:NO_VOICE_CHANNEL");
         }
+
+        let trackToPlay;
+        let isPlaylist;
 
         // Check my permissions
         let perms = voice.permissionsFor(message.client.user);
@@ -44,23 +43,26 @@ class Play extends Command {
             return message.error("music/play:VOICE_CHANNEL_CONNECT");
         }
 
-        let youtube = this.client.player.SYA;
-        let video = null;
-
-        video = await youtube.getVideo(url).catch((err) => {});
-
-        if(!video){
+        const tracks = await this.client.player.searchTracks(args[0], true).catch(() => {});
+        if(!tracks || !tracks[0]){
+            return message.error("music/play:NO_RESULT");
+        } else if(tracks[0].fromPlaylist){
+            trackToPlay = args[0];
+            isPlaylist = true;
+        } else if(tracks.length === 1){
+            trackToPlay = tracks[0];
+        } else {
             try {
-                let videos = await youtube.searchVideos(name, 7);
+                if(tracks.length > 10) tracks.splice(10);
                 let i = 0;
                 let embed = new Discord.MessageEmbed()
-                    .setDescription(videos.map((v) => `**${++i} -** ${v.title}`).join("\n"))
+                    .setDescription(tracks.map((t) => `**${++i} -** ${t.name}`).join("\n"))
                     .setFooter(message.translate("music/play:RESULTS_FOOTER"))
                     .setColor(data.config.embed.color);
                 message.channel.send(embed);
                 await message.channel.awaitMessages((m) => m.content > 0 && m.content < 8, { max: 1, time: 20000, errors: ["time"] }).then(async (answers) => {
                     let index = parseInt(answers.first().content, 10);
-                    video = videos[index-1];
+                    trackToPlay = tracks[index-1];
                 }).catch((e) => {
                     console.log(e);
                     return message.error("music/play:TIMES_UP");
@@ -71,28 +73,39 @@ class Play extends Command {
             }
         }
 
-        if(video){
+        if(trackToPlay){
             if(isPlaying){
-                let song = await this.client.player.addToQueue(message.guild.id, video.url);
-                message.success("music/play:ADDED_QUEUE", {
-                    songName: song.name
-                });
+                let result = await this.client.player.addToQueue(message.guild.id, trackToPlay, message.author);
+                if(isPlaylist){
+                    message.success("music/play:ADDED_QUEUE_COUNT", {
+                        songCount: result.tracks.length
+                    });
+                } else {
+                    message.success("music/play:ADDED_QUEUE", {
+                        songName: trackToPlay.name
+                    });
+                }
             } else {
-                let song = await this.client.player.play(voice, video.url);
-                song.queue.on("end", () => {
+                let result = await this.client.player.play(voice, trackToPlay, message.author);
+                if(isPlaylist){
+                    message.success("music/play:ADDED_QUEUE_COUNT", {
+                        songCount: result.tracks.length
+                    });
+                }
+                const queue = this.client.player.getQueue(message.guild.id);
+                queue.on("end", () => {
                     message.sendT("music/play:QUEUE_ENDED");
                 })
-                .on("songChanged", (oldSong, newSong) => {
+                .on("songChanged", (oldTrack, newTrack) => {
                     message.success("music/play:NOW_PLAYING", {
-                        songName: newSong.name
+                        songName: newTrack.name
                     });
                 });
                 message.success("music/play:NOW_PLAYING", {
-                    songName: song.name
+                    songName: queue.playing.name
                 });
             }
         } else {
-            return message.error("music/play:NO_RESULT");
         }
     }
 

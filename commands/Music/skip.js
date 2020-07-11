@@ -31,7 +31,7 @@ class Skip extends Command {
             return message.error("music/play:NOT_PLAYING");
         }
 
-        if(!queue.songs[1]){
+        if(!queue.songs[0]){
             return message.error("music/skip:NO_NEXT_SONG");
         }
 
@@ -39,7 +39,7 @@ class Skip extends Command {
 
         let embed = new Discord.MessageEmbed()
             .setAuthor(message.translate("music/skip:DESCRIPTION"))
-            .setThumbnail(queue.songs[1].thumbnail)
+            .setThumbnail(queue.tracks[0].thumbnail)
             .setFooter(data.config.embed.footer)
             .setColor(data.config.embed.color);
 
@@ -79,7 +79,7 @@ class Skip extends Command {
                     collector.stop(true);
                 } else {
                     embed.setDescription(message.translate("music/skip:VOTE_CONTENT", {
-                        songName: queue.songs[1].title,
+                        songName: queue.songs[0].title,
                         voteCount: haveVoted,
                         requiredCount: mustVote
                     }));

@@ -46,8 +46,6 @@ module.exports = {
 		fortniteFNBR: "XXXXXXXXXXX",
 		// DBL: https://discordbots.org/api/docs#mybots
 		dbl: "XXXXXXXXXXX",
-		// SIMPLE YOUTUBE API: https://console.developers.google.com/
-		simpleYoutube: "XXXXXXXXXXX",
 		// AMETHYSTE: https://api.amethyste.moe
 		amethyste: "XXXXXXXXXXX"
 	},
