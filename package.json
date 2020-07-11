@@ -40,7 +40,7 @@
     "figlet": "^1.2.4",
     "fortnite": "^4.3.2",
     "fortnite-9812": "^1.0.4",
-    "gamedig": "^2.0.14",
+    "gamedig": "^2.0.21",
     "i18next": "^19.6.0",
     "i18next-node-fs-backend": "^2.1.3",
     "latest-tweets": "github:noffle/latest-tweets",
