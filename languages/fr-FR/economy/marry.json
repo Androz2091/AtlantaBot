@@ -1,0 +1,17 @@
+{
+    "DESCRIPTION": "Marriez vous avec la personne que vous aimez !",
+    "USAGE": "{{prefix}}marry [@membre]",
+    "EXAMPLES": "{{prefix}}marry @Androz#2091",
+    "INVALID_MEMBER": "Vous devez mentionner un membre avec qui vous souhaitez vous marier !",
+    "ALREADY_MARRIED": "Vous êtes déjà marié ! Tapez d'abord `{{prefix}}divorce` pour divorcer.",
+    "ALREADY_MARRIED_USER": "La place est déjà prise camarade ! **{{username}}** est déjà marié !",
+    "YOURSELF": "Vous ne pouvez pas vous mariez avec vous même !",
+    "REQUEST_AUTHOR_TO_AMEMBER": "Vous avez déjà une demande en attente auprès de **{{username}}** !",
+    "REQUEST_AMEMBER_TO_AUTHOR": "**{{username}}** vous a déjà envoyé une demande ! Veuillez d'abord refuser ou accepter la demande (ou attendez quelque minutes que la demande expire).",
+    "REQUEST_AMEMBER_TO_MEMBER": "**{{secondUsername}}** has already sent a request to **{{firstUsername}}**!",
+    "REQUEST_MEMBER_TO_AMEMBER": "**{{firstUsername}} has already sent a request to **{{secondUsername}}**! Wait until **{{secondUsername}}** accepts or refuses the request from **{{firstUsername}}** or until it expires and try again!",
+    "TIMEOUT": "{{username}} n'a pas répondu.... Attendez qu'il/elle soit connecté et réessayez après !",
+    "SUCCESS": "🎉 Félicitations ! **{{creator}}** et **{{partner}}** vous êtes maintenant mariés !",
+    "DENIED": "{{creator}}, j'ai de mauvaises nouvelles... {{partner}} a refusé votre demande.",
+    "REQUEST": "{{to}}, voulez-vous épouser {{from}} ? Répondez par \"oui\" ou \"non\" !"
+}

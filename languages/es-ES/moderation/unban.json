@@ -1,0 +1,8 @@
+{
+    "DESCRIPTION": "¡Desbanea al usuario del servidor!",
+    "USAGE": "{{prefix}}unban [IDusuario/usuario#0000]",
+    "EXAMPLES": "{{prefix}unban 422820341791064085\n{{prefix}}unban Androz#2091",
+    "MISSING_ID": "¡Por favor, especifique el ID del miembro que desea desbanear!",
+    "NOT_BANNED": "¡**{{username}}** no está baneado!",
+    "UNBANNED": "¡**{{username}}** acaba de ser desbaneado de **{{server}}**!"
+}

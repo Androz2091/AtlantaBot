@@ -1,15 +1,15 @@
 {
-    "DESCRIPTION": "Plays music for you!",
+    "DESCRIPTION": "Joue de la musique !",
     "USAGE": "{{prefix}}play [song]",
     "EXAMPLES": "{{prefix}}play Despacito",
-    "NO_VOICE_CHANNEL": "You must be connected in a voice channel!",
-    "VOICE_CHANNEL_CONNECT": " I can't connect into your voice channel!",
-    "MISSING_SONG_NAME": "Please enter a song name to search for (or a link)!",
-    "RESULTS_FOOTER": "Please enter a value to select one of the search results from 1 to 10.",
-    "NO_RESULT": "No result on Youtube!",
-    "NOW_PLAYING": "Now playing {{songName}}",
-    "CANCELLED": "Cancelled selection",
-    "NOT_PLAYING": "No songs currently playing in this server.",
-    "QUEUE_ENDED": "Queue has ended. No more music to play...",
-    "ADDED_QUEUE": "{{songName}} has been added to the queue!"
+    "NO_VOICE_CHANNEL": "Vous devez être connecté dans un salon vocal !",
+    "VOICE_CHANNEL_CONNECT": " Je ne peux pas me connecter dans le salon vocal !",
+    "MISSING_SONG_NAME": "Veuillez entrer un nom de vidéo à chercher (ou un lien) !",
+    "RESULTS_FOOTER": "Veuillez indiquer une valeur pour sélectionner l'un des résultats de recherche compris entre 1 et 10.",
+    "NO_RESULT": "Aucun résultat sur Youtube !",
+    "NOW_PLAYING": "Joue maintenant {{songName}}",
+    "CANCELLED": "Annule la sélection",
+    "NOT_PLAYING": "Aucune musique n'est joué actuellement sur le serveur.",
+    "QUEUE_ENDED": "La file d'attente est finit. Plus de musique à jouer...",
+    "ADDED_QUEUE": "{{songName}} a été ajouté à la file d'attente !"
 }

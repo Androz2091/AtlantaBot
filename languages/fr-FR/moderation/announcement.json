@@ -1,0 +1,10 @@
+{
+    "DESCRIPTION": "Envoie une annonce dans le salon actuel !",
+    "USAGE": "{{prefix}}announcement [text]",
+    "EXAMPLES": "{{prefix}}announcement Nouveau salon #spam !",
+    "MISSING_TEXT": "Vous devez entrer le texte de l'annonce !",
+    "TOO_LONG": "Veuillez entrer un texte inférieur à 1030 caractères !",
+    "MENTION_PROMPT": "Souhaitez-vous ajouter une mention à votre annonce ? Répondez par \"oui ou \"non\" !",
+    "MENTION_TYPE_PROMPT": "Tapez une des réponses suivantes : `every` (pour une mention @ everyone) ou `here` (pour une mention @ here) !",
+    "TITLE": "📢 Annonce:"
+}

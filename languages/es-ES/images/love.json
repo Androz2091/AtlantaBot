@@ -1,5 +1,5 @@
 {
-    "DESCRIPTION": "Generates a \"love\" image using the Nekobot API",
-    "USAGE": "{{prefix}}love [@member1] (@member2)",
+    "DESCRIPTION": "Genera una imagen de \"Amor\" usando la API de Nekobot",
+    "USAGE": "{{prefix}}love [@miembro1] (@miembro2)",
     "EXAMPLES": "{{prefix}}love @Androz#2091\n{{prefix}}love @Androz#2091 @Marty#0303"
 }

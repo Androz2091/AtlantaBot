@@ -1,5 +1,5 @@
 {
-    "DESCRIPTION": "Generates a \"fire\" image using Amethyste API",
-    "USAGE": "{{prefix}}fire (@member)",
+    "DESCRIPTION": "Génère une image \"fire\" en utilisant l'API Amethyste",
+    "USAGE": "{{prefix}}fire (@membre)",
     "EXAMPLES": "{{prefix}}fire\n{{prefix}}fire @Androz#2091"
 }

@@ -1,12 +1,12 @@
 {
-    "DESCRIPTION": "Find the number I chose!",
+    "DESCRIPTION": "Trouvez le nombre que j'ai choisi !",
     "USAGE": "{{prefix}}number",
     "EXAMPLES": "{{prefix}}number",
-    "GAME_START": "Number chosen, you can start!",
-    "BIG": "{{user}} | The number is **bigger** than `{{number}}`!",
-    "SMALL": "{{user}} | The number is **smaller** than `{{number}}`!",
-    "WON": "{{winner}} has won 10 credits!",
-    "DEFEAT": "No one could find the number! It was **{{number}}** !",
-    "GAME_STATS": ":tada: | {{winner}} found the number! It was __**{{number}}**__ !\n\n**States of the game: **\n__**Time**__: {{time}}\n__**Number of participants**__ : {{participantCount}}\n__**Participants**__ : \n{{participants}}",
-    "GAME_RUNNING": "A game is already running on this server!"
+    "GAME_START": "J'ai choisi le nombre, on peut commencer !",
+    "BIG": "{{user}} | Le nombre est plus **grand** que `{{number}}` !",
+    "SMALL": "{{user}} | Le nombre est plus **petit** que `{{number}}` !",
+    "WON": "{{winner}} a gagné 10 crédits !",
+    "DEFEAT": "Personne n'a trouvé le nombre ! C'était **{{number}}** !",
+    "GAME_STATS": "🎉 | {{winner}} found the number! It was __**{{number}}**__ !\n\n**States of the game: **\n__**Time**__: {{time}}\n__**Number of participants**__ : {{participantCount}}\n__**Participants**__ : \n{{participants}}",
+    "GAME_RUNNING": "Une partie est déjà en cours sur ce serveur !"
 }

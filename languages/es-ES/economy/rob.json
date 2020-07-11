@@ -1,0 +1,14 @@
+{
+    "DESCRIPTION": "¡Intenta robar a un miembro!",
+    "USAGE": "{{prefix}}rob [@miembro] [cantidad]",
+    "EXAMPLES": "{{prefix}rob @Androz#2091 100",
+    "YOURSELF": "¡No puedes robarte a ti mismo!",
+    "MISSING_AMOUNT": "¡Ingrese una cantidad válida para ser robada a **{{username}}**!",
+    "NOT_ENOUGH_AUTHOR": "¡Debe tener más de **{{moneyMin}}** créditos para intentar este robo (en realidad tiene **{{moneyCurrent}}** créditos)!",
+    "NOT_ENOUGH_MEMBER": "¡No puede intentar robar **{{money}}** créditos a **{{username}}** porque no tiene tantos créditos en efectivo!",
+    "COOLDOWN": "🕵️ **{{username}}** está en guardia... ¡Espera un momento e inténtalo de nuevo!",
+    "ROB_WON_1": "🎉 | ¡Felicidades! ¡La policía no fue lo suficientemente rápida como para evitar que robes **{{money}}** créditos a ** {{username}}**!",
+    "ROB_WON_2": "😕 | ¿**{{username}}**? Malas noticias. ¡Te acaban de robar **{{money}}** créditos!",
+    "ROB_LOSE_1": "🚔 | La policía lo atrapó en el acto, imposible de negar, su multa es de **{{fine}}** créditos. **{{offset}}** los créditos de compensación se pagarán a **{{username}}**.",
+    "ROB_LOSE_2": "🚓 | Malas noticias... **{{username}}** llamó a la policía a tiempo. Su multa es de **{{fine}}** créditos y **{{offset}}** los créditos de compensación se pagarán a **{{username}}**."
+}

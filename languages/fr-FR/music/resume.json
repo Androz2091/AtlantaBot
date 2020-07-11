@@ -1,6 +1,6 @@
 {
-    "DESCRIPTION": "Resume the current song!",
+    "DESCRIPTION": "Reprend la musique actuelle !",
     "USAGE": "{{prefix}}resume",
     "EXAMPLES": "{{prefix}}resume",
-    "SUCCESS": "▶️ Music resumed!"
+    "SUCCESS": "▶️ Musique de nouveau en cours de lecture !"
 }

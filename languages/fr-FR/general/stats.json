@@ -6,7 +6,7 @@
     "COUNTS_CONTENT": "`Servers: {{servers}}`\n`Users: {{users}}`",
     "VERSIONS_TITLE": "• __Versions__",
     "RAM_TITLE": "• __RAM__",
-    "ONLINE_TITLE": "• __Online__",
+    "ONLINE_TITLE": "• __En ligne__",
     "ONLINE_CONTENT": "Online for {{time}}",
     "MUSIC_TITLE": "• __Music__",
     "MUSIC_CONTENT": "Playing music on `{{count}}` servers",

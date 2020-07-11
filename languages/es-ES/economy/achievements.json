@@ -1,0 +1,14 @@
+{
+    "DESCRIPTION": "¡Muestra la lista de todos los logros!",
+    "USAGE": "{{prefix}}achievements",
+    "EXAMPLES": "{{prefix}}achievements",
+    "SEND_CMD": "¡Envía tu primer comando!",
+    "CLAIM_SALARY": "¡Reclama 10 veces tu salario!",
+    "MARRY": "¡Encuentra tu media naranja y cásate!",
+    "SLOTS": "¡Gana 3 veces seguidas en los slots!",
+    "TIP": "¡Mantenga viva a Atlanta dando propinas!",
+    "REP": "¡Alcanza 20 puntos de reputación!",
+    "INVITE": "¡Invita Atlanta a tu servidor!",
+    "TITLE": "🔥 Logros",
+    "PROGRESS": "Progreso: {{now}}/{{total}} ({{percent}}%)"
+}

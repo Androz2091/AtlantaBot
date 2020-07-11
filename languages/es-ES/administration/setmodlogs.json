@@ -1,7 +1,7 @@
 {
-    "DESCRIPTION": "Set the moderation logs channel!",
-    "USAGE": "{{prefix}}setmodlogs (#channel)",
+    "DESCRIPTION": "¡Establecer el canal de logs de moderación!",
+    "USAGE": "{{prefix}}setmodlogs (#canal)",
     "EXAMPLES": "{{prefix}}setmodlogs #modlogs\n{{prefix}}setmodlogs",
-    "SUCCESS_ENABLED": "Moderation logs will be sent in **{{channel}}**!",
-    "SUCCESS_DISABLED": "Moderation logs channel deleted!"
+    "SUCCESS_ENABLED": "¡Los logs de moderación se enviarán en **{{channel}}**!",
+    "SUCCESS_DISABLED": "¡El canal de logs de moderación ha sido eliminado!"
 }

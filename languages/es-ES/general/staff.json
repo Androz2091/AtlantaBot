@@ -1,10 +1,10 @@
 {
-    "DESCRIPTION": "Shows the list of server staff members!",
+    "DESCRIPTION": "¡Muestra la lista de miembros del personal del servidor!",
     "USAGE": "{{prefix}}staff",
     "EXAMPLES": "{{prefix}}staff",
-    "TITLE": "Staff of {{guild}}",
-    "ADMINS": "Administrators",
-    "NO_ADMINS": "No administrators",
-    "MODS": "Moderators",
-    "NO_MODS": "No moderators"
+    "TITLE": "Staff de {{guild}}",
+    "ADMINS": "Administradores",
+    "NO_ADMINS": "No hay administradores",
+    "MODS": "Moderadores",
+    "NO_MODS": "No hay moderadores"
 }

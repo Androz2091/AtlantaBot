@@ -1,13 +1,13 @@
 {
-    "DESCRIPTION": "Enable/Disable welcome messages in the server!",
+    "DESCRIPTION": "¡Activa/Desactiva los mensajes de bienvenida en el servidor!",
     "USAGE": "{{prefix}}welcome",
     "EXAMPLES": "{{prefix}}welcome",
-    "MISSING_STATUS": "You must specify a valid status! (`edit` or `off`)",
-    "DEFAULT_MESSAGE": "Welcome {user} in {server}! We're now {membercount}. Your account was created {createdat}.",
-    "TEST_SUCCESS": "Test executed!",
-    "FORM_1": "Hello {{author}}! In which channel will the welcome messages be sent? (mention a channel)",
-    "FORM_2": "All right! The messages will therefore be sent in {{channel}}. Enter the welcome message below: \n\n:information_source: __**Informations:**__\nMention: {user}\nMembers: {membercount}\nServer: {server}\n\n__For example:__\n\n\"Welcome {user} to {server}, we are {membercount}!\"\n:arrow_down:\n\"Welcome {{author}} to {{guildName}}, we are {{memberCount}}!\".",
-    "FORM_3": "It works! Do you want a great welcome image to be sent too? Answer with \"yes\" or \"no\"!",
-    "FORM_SUCCESS": "Welcome messages enabled in {{channel}} ! Type `{{prefix}}welcome test` to test the welcome message!",
-    "DISABLED": "Goodbye messages have just been disabled! Type `{{prefix}}configuration` to see the new configuration!"
+    "MISSING_STATUS": "Por favor, especifique un estado válido! (`edit` o `off`)",
+    "DEFAULT_MESSAGE": "¡Bienvenido {user} a {server}! Ahora somos {membercount}. Su cuenta fue creada en {createdat}.",
+    "TEST_SUCCESS": "¡Test realizado!",
+    "FORM_1": "¡Hola {{author}}! ¿En qué canal se enviarán los mensajes de bienvenida? (mencionar un canal)",
+    "FORM_2": "¡Todo bien! Por lo tanto, los mensajes se enviarán en {{channel}}. Ingrese el mensaje de bienvenida a continuación: \n:information_source:__**Información:**__\nMención: {user}\nMiembros: {membercount}\nServidor: {server}\n\n__Por ejemplo:__\n\n\"¡Bienvenido {user} a {server}, ahora somos {membercount}!\"\n:arrow_down:\n\"¡Bienvenido {{author}}a {{guildName}}, ahora somos {{memberCount}}!\".",
+    "FORM_3": "¡Funciona! ¿Desea que se envíe una imagen de bienvenida al mismo tiempo? Responda con \"Si\" o \"No\"!",
+    "FORM_SUCCESS": "¡Mensajes de bienvenida activados en {{channel}}! ¡Escriba `{{prefix}}welcome test` para hacer un test del mensaje de bienvenida!",
+    "DISABLED": "¡Los mensajes de bienvenida acaban de desactivarse! ¡Escriba `{{prefix}}configuration para ver la configuración!"
 }

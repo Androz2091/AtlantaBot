@@ -1,7 +1,7 @@
 {
-    "DESCRIPTION": "Set the reports channel!",
-    "USAGE": "{{prefix}}setreports (#channel)",
-    "EXAMPLES": "{{prefix}}setreports #reports\n{{prefix}}setreports",
-    "SUCCESS_ENABLED": "Reports will be sent in **{{channel}}**!",
-    "SUCCESS_DISABLED": "Reports channel deleted!"
+    "DESCRIPTION": "¡Establecer el canal de reportes!",
+    "USAGE": "{{prefix}}setreports (#canal)",
+    "EXAMPLES": "{{prefix}}setreports #reportes\n{{prefix}}setreports",
+    "SUCCESS_ENABLED": "¡Los reportes se enviarán en **{{channel}}**!",
+    "SUCCESS_DISABLED": "¡Canal de reportes eliminado!"
 }
