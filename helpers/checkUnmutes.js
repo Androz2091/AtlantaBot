@@ -15,7 +15,7 @@ module.exports = {
             muted.forEach(async (memberData) => {
                 let guild = client.guilds.cache.get(memberData.guildID);
                 if(!guild) return;
-                let member = guild.members.get(memberData.id) || await guild.members.fetch(memberData.id).catch((err) => {
+                let member = guild.members.cache.get(memberData.id) || await guild.members.fetch(memberData.id).catch((err) => {
                     memberData.mute = {
                         muted: false,
                         endDate: null,
