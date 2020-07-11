@@ -27,7 +27,7 @@ module.exports = class {
 
             let memberData = await this.client.findOrCreateMember({ id: member.id, guildID: guild.id });
             if(memberData.mute.muted && memberData.mute.endDate > Date.now()){
-                guild.channels.forEach((channel) => {
+                guild.channels.cache.forEachorEach((channel) => {
                     channel.updateOverwrite(member.id, {
                         SEND_MESSAGES: false,
                         ADD_REACTIONS: false,

@@ -27,7 +27,7 @@ module.exports = {
                 if(member){
                     let guildData = await client.findOrCreateGuild({ id: guild.id });
                     guild.data = guildData;
-                    guild.channels.forEach((channel) => {
+                    guild.channels.cache.forEach((channel) => {
                         let permOverwrites = channel.permissionOverwrites.get(member.id);
                         if(permOverwrites) permOverwrites.delete();
                     });
