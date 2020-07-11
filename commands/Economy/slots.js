@@ -37,7 +37,7 @@ class Slots extends Command {
             amount = 1;
         }
         if(amount > data.memberData.money){
-            return message.error("economy/rob:NOT_ENOUGH", {
+            return message.error("economy/slots:NOT_ENOUGH", {
                 money: amount
             });
         }
