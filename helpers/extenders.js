@@ -47,8 +47,8 @@ Message.prototype.printDate = function(date, format) {
 };
 
 // Convert time
-Message.prototype.convertTime = function(time, noPrefix) {
-    return this.client.convertTime(time, noPrefix, this.guild?.data?.language);
+Message.prototype.convertTime = function(time, type, noPrefix) {
+    return this.client.convertTime(time, type, noPrefix, this.guild?.data?.language);
 };
 
 MessageEmbed.prototype.errorColor = function() {

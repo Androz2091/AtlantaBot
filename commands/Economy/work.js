@@ -27,8 +27,8 @@ class Work extends Command {
             when the member will be able to execute the order again 
             is greater than the current date, display an error message */
             if(isInCooldown > Date.now()){
-                return message.sendT("economy/work:COOLDOWN", {
-                    time: message.convertTime(isInCooldown - Date.now(), "to")
+                return message.error("economy/work:COOLDOWN", {
+                    time: message.convertTime(isInCooldown, "to", true)
                 });
             }
         }
@@ -58,16 +58,16 @@ class Work extends Command {
         ];
         let won = 200;
 
-        if(memberData.workStreak >= 5){
+        if(data.memberData.workStreak >= 5){
             won += 200;
             embed.addField(message.translate("economy/work:SALARY"), message.translate("economy/work:SALARY_CONTENT", {
                 won
             }))
             .addField(message.translate("economy/work:STREAK"), message.translate("economy/work:STREAK_CONTENT"));
-            memberData.setWorkStreak(0);
+            data.memberData.workStreak = 0;
         } else {
             for(let i = 0; i < award.length; i++){
-                if(memberData.workStreak > i){
+                if(data.memberData.workStreak > i){
                     const letter = Discord.Util.parseEmoji(award[i]).name.split("_")[1];
                     award[i] = `:regional_indicator_${letter}:`;
                 }

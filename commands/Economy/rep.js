@@ -28,7 +28,7 @@ class Rep extends Command {
             is greater than the current date, display an error message */
             if(isInCooldown > Date.now()){
                 return message.error("economy/rep:COOLDOWN", {
-                    time: message.convertTime(isInCooldown - Date.now(), "to")
+                    time: message.convertTime(isInCooldown, "to", true)
                 });
             }
         }
