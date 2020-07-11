@@ -8,8 +8,8 @@ module.exports = class {
   
     async run (oldMember, newMember) {
         if(oldMember.guild.id !== this.client.config.support.id) return;
-        if(oldMember.roles.some((r) => r.name === "【💳】Donators")) return;
-        if(newMember.roles.some((r) => r.name === "【💳】Donators")){
+        if(oldMember.roles.cache.some((r) => r.name === "【💳】Donators")) return;
+        if(newMember.roles.cache.some((r) => r.name === "【💳】Donators")){
             let userData = await this.client.findOrCreateUser({ id: newMember.id });
             userData.achievements.tip.progress.now = 1;
             userData.achievements.tip.achieved = true;
