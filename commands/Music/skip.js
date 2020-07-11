@@ -6,9 +6,6 @@ class Skip extends Command {
     constructor (client) {
         super(client, {
             name: "skip",
-            description: (language) => language.get("SKIP_DESCRIPTION"),
-            usage: (language) => language.get("SKIP_USAGE"),
-            examples: (language) => language.get("SKIP_EXAMPLES"),
             dirname: __dirname,
             enabled: true,
             guildOnly: true,
@@ -22,30 +19,26 @@ class Skip extends Command {
     }
 
     async run (message, args, data) {
-
-        if(!data.config.apiKeys.simpleYoutube || data.config.apiKeys.simpleYoutube.length === "") {
-            return message.channel.send(message.language.get("ERR_COMMAND_DISABLED"));
-        }
         
         let queue = this.client.player.getQueue(message.guild.id);
 
-        if(!queue){
-            return message.channel.send(message.language.get("PLAY_ERR_NOT_PLAYING"));
-        }
-
         let voice = message.member.voice.channel;
         if (!voice){
-            return message.channel.send(message.language.get("PLAY_ERR_VOICE_CHANNEL"));
+            return message.error("music/play:NO_VOICE_CHANNEL");
+        }
+
+        if(!queue){
+            return message.error("music/play:NOT_PLAYING");
         }
 
         if(!queue.songs[1]){
-            return message.channel.send(message.language.get("SKIP_ERR_NO_SONG"));
+            return message.error("music/skip:NO_NEXT_SONG");
         }
 
-        let members = voice.members.filter((m) => m.id !== message.client.user.id);
+        let members = voice.members.filter((m) => !m.user.bot);
 
         let embed = new Discord.MessageEmbed()
-            .setAuthor(message.language.get("SKIP_TITLE"))
+            .setAuthor(message.translate("music/skip:DESCRIPTION"))
             .setThumbnail(queue.songs[1].thumbnail)
             .setFooter(data.config.embed.footer)
             .setColor(data.config.embed.color);
@@ -58,18 +51,18 @@ class Skip extends Command {
 
             let mustVote = Math.floor(members.size/2+1);
 
-            embed.setDescription(message.language.get("SKIP_CONTENT", queue.songs[1].title, 0, mustVote));
+            embed.setDescription(message.translate("music/skip:VOTE_CONTENT", {
+                songName: queue.songs[1].name,
+                voteCount: 0,
+                requiredCount: mustVote
+            }));
             m.edit(embed);
     
             let filter = (reaction, user) => {
                 let member = message.guild.members.get(user.id);
                 let voiceChannel = member.voice.channel;
                 if(voiceChannel){
-                    if(voiceChannel.id === voice.id){
-                        return true;
-                    } else {
-                        return false;
-                    }
+                    return voiceChannel.id === voice.id;
                 }
             };
 
@@ -81,24 +74,28 @@ class Skip extends Command {
                 let haveVoted = reaction.count-1;
                 if(haveVoted >= mustVote){
                     this.client.player.skip(message.guild.id);
-                    embed.setDescription(message.language.get("SKIP_CONTENT_COMPLETE", queue.songs[1].title));
+                    embed.setDescription(message.translate("music/skip:SUCCESS"));
                     m.edit(embed);
                     collector.stop(true);
                 } else {
-                    embed.setDescription(message.language.get("SKIP_CONTENT", queue.songs[1].title, haveVoted, mustVote));
+                    embed.setDescription(message.translate("music/skip:VOTE_CONTENT", {
+                        songName: queue.songs[1].title,
+                        voteCount: haveVoted,
+                        requiredCount: mustVote
+                    }));
                     m.edit(embed);
                 }
             });
 
             collector.on("end", (collected, isDone) => {
                 if(!isDone){
-                    return message.channel.send(message.language.get("PLAY_ERR_TIMEOUT"));
+                    return message.error("misc:TIMES_UP");
                 }
             });
 
         } else {
             this.client.player.skip(message.guild.id);
-            embed.setDescription(message.language.get("SKIP_CONTENT_COMPLETE", queue.songs[1].title));
+            embed.setDescription(message.translate("music/skip:SUCCESS"));
             m.edit(embed);
         }
         

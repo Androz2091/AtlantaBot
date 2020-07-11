@@ -1,0 +1,9 @@
+{
+    "DESCRIPTION": "Active/Désactive l'autorôle sur le serveur !",
+    "USAGE": "{{prefix}}autorole [on/off] (rôle)",
+    "EXAMPLES": "{{prefix}}autorole on @Membres\n{{prefix}}autorole off",
+    "MISSING_STATUS": "Merci de spécifier un status valide ! (`on` ou `off`)",
+    "MISSING_ROLE": "Merci de spécifier un rôle valide à ajouter aux nouveaux membres !",
+    "SUCCESS_ENABLED": "L'autorôle est activé ! Les nouveaux membres recevront le rôle **{{roleName}}**.",
+    "SUCCESS_DISABLED": "L'autorôle est désactivé ! Tapez `{{prefix}} configuration` pour voir votre nouvelle configuration !"
+}

@@ -1,3 +1,5 @@
+require("./helpers/extenders");
+
 const { Client: Joker } = require("blague.xyz"),
 util = require("util"),
 fs = require("fs"),
@@ -60,6 +62,12 @@ const init = async () => {
             leaveOnEmpty: false
         });
     }
+
+    const languages = require("./helpers/languages");
+    client.translations = await languages();
+    
+    let autoUpdateDocs = require("./helpers/autoUpdateDocs.js");
+    autoUpdateDocs.update(client);
 
 };
 

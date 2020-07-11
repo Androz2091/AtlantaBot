@@ -6,9 +6,6 @@ class Setmodlogs extends Command {
     constructor (client) {
         super(client, {
             name: "setmodlogs",
-            description: (language) => language.get("SETMODLOGS_DESCRIPTION"),
-            usage: (language) => language.get("SETMODLOGS_USAGE"),
-            examples: (language) => language.get("SETMODLOGS_EXAMPLES"),
             dirname: __dirname,
             enabled: true,
             guildOnly: true,
@@ -23,13 +20,32 @@ class Setmodlogs extends Command {
 
     async run (message, args, data) {
         
-        let channel = message.mentions.channels.filter((ch) => ch.type === "text" && ch.guild.id === message.guild.id).first() || message.channel;
-        data.guild.plugins.modlogs = channel.id;
-        data.guild.markModified("plugins.modlogs");
-        data.guild.save();
+        const areModLogsEnabled = Boolean(data.guild.plugins.modlogs);
+        const sentChannel = await Resolvers.resolveChannel({
+            message,
+            search: args.join(" "),
+            channelType: "text"
+        });
 
-        // Send success message
-        message.channel.send(message.language.get("SETMODLOGS_SUCCESS", channel.id));
+        if (!sentChannel && areModLogsEnabled) {
+            data.guild.plugins.modlogs = null;
+            data.guild.markModified("plugins.modlogs");
+            await data.guild.save();
+            return message.success(
+                "administration/setmodlogs:SUCCESS_DISABLED"
+            );
+        } else {
+            const channel = sentChannel || message.channel;
+            data.guild.plugins.modlogs = channel.id;
+            data.guild.markModified("plugins.modlogs");
+            await data.guild.save();
+            return message.success(
+                "administration/setmodlogs:SUCCESS_ENABLED",
+                {
+                    channel: channel.toString()
+                }
+            );
+        }
     }
 
 }

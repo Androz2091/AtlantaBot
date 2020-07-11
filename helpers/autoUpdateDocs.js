@@ -8,7 +8,6 @@ module.exports = {
      */
     update(client){
         let table = require("markdown-table");
-        let language = new(require("../languages/"+client.config.defaultLanguage+".js"));
         let commands = client.commands;
         let categories = [];
         commands.forEach((cmd) => {
@@ -41,8 +40,8 @@ module.exports = {
             }).forEach((cmd) => {
                 arrCat.push([
                     `**${cmd.help.name}**`,
-                    cmd.help.description(language),
-                    cmd.help.usage(language),
+                    client.translate(`${cmd.help.category.toLowerCase()}/${cmd.help.name}:DESCRIPTION`),
+                    client.translate(`${cmd.help.category.toLowerCase()}/${cmd.help.name}:USAGE`),
                     Math.ceil(cmd.conf.cooldown/1000)+" seconds"
                 ]);
             });

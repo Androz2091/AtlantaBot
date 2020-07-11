@@ -10,9 +10,6 @@ class Ascii extends Command {
     constructor (client) {
         super(client, {
             name: "ascii",
-            description: (language) => language.get("ASCII_DESCRIPTION"),
-            usage: (language) => language.get("ASCII_USAGE"),
-            examples: (language) => language.get("ASCII_EXAMPLES"),
             dirname: __dirname,
             enabled: true,
             guildOnly: false,
@@ -26,14 +23,13 @@ class Ascii extends Command {
     }
 
     async run (message, args, data) {
-
-        let text = args.join(" ");
-        if(!text || text.length > 20){
-            return message.channel.send(message.language.get("ASCII_ERR_TEXT"));
+        const text = args.join(" ");
+        if (!text || text.length > 20) {
+            return message.error("fun/ascii:TEXT_MISSING");
         }
-    
-        let rendered = await figletAsync(text);
-        message.channel.send("```"+rendered+"```");
+
+        const rendered = await figletAsync(text);
+        message.channel.send("```" + rendered + "```");
 
     }
 

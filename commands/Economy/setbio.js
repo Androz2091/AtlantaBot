@@ -6,9 +6,6 @@ class Setbio extends Command {
     constructor (client) {
         super(client, {
             name: "setbio",
-            description: (language) => language.get("BIOGRAPHY_DESCRIPTION"),
-            usage: (language) => language.get("BIOGRAPHY_USAGE"),
-            examples: (language) => language.get("BIOGRAPHY_EXAMPLES"),
             dirname: __dirname,
             enabled: true,
             guildOnly: false,
@@ -22,16 +19,16 @@ class Setbio extends Command {
     }
 
     async run (message, args, data) {
-        let bio = args.join(" ");
-        if(!bio){
-            return message.channel.send(message.language.get("SETBIO_ERR_NO_BIO"));
+        const newBio = args.join(" ");
+        if(!newBio){
+            return message.error("economy/setbio:MISSING");
         }
-        if(bio.length > 100){
-            return message.channel.send(message.language.get("SETBIO_ERR_CARACT"));
+        if(newBio.length > 100){
+            return message.error("economy/setbio:MAX_CHARACT");
         }
         data.userData.bio = bio;
-        data.userData.save();
-        message.channel.send(message.language.get("SETBIO_SUCCESS"));
+        message.success("economy/setbio:SUCCESS");
+        await data.userData.save();
     }
 
 }

@@ -1,6 +1,7 @@
 const { Client, Collection } = require("discord.js"),
 util = require("util"),
-path = require("path");
+path = require("path"),
+moment = require("moment");
 
 // Creates Atlanta class
 class Atlanta extends Client {
@@ -19,11 +20,42 @@ class Atlanta extends Client {
         this.logs = require("../base/Log"); // Log mongoose model
         this.dashboard = require("../dashboard/app"); // Dashboard app
         this.queues = new Collection(); // This collection will be used for the music
+        this.states = {}; // Used for the dashboard
+        this.knownGuilds = [];
 
         this.databaseCache = {};
         this.databaseCache.users = new Collection();
         this.databaseCache.guilds = new Collection();
         this.databaseCache.members = new Collection();
+    }
+
+    get defaultLanguage(){
+        return this.config.languages.find((language) => language.default).name;
+    }
+
+    translate(key, args, locale){
+        if(!locale) locale = this.defaultLanguage;
+        const language = this.translations.get(locale);
+        if (!language) throw "Invalid language set in data.";
+        return language(key, args);
+    }
+
+    printDate(date, format, locale){
+        if(!locale) locale = this.defaultLanguage;
+        const languageData = this.config.languages.find((language) => language.name === locale || language.aliases.includes(locale));
+        if(!format) format = languageData.defaultMomentFormat;
+        return moment(new Date(date))
+        .locale(languageData.moment)
+        .format(format);
+    }
+
+    convertTime(time, type, noPrefix, locale){
+        if(!type) time = "to";
+        if(!locale) locale = this.defaultLanguage;
+        const languageData = this.config.languages.find((language) => language.name === locale || language.aliases.includes(locale));
+        const m = moment(time)
+        .locale(languageData.moment);
+        return (type === "to" ? m.toNow(noPrefix) : m.fromNow(noPrefix));
     }
 
     // This function is used to load a command and add it to the collection

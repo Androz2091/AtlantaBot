@@ -6,9 +6,6 @@ class Someone extends Command {
     constructor (client) {
         super(client, {
             name: "someone",
-            description: (language) => language.get("SOMEONE_DESCRIPTION"),
-            usage: (language) => language.get("SOMEONE_USAGE"),
-            examples: (language) => language.get("SOMEONE_EXAMPLES"),
             dirname: __dirname,
             enabled: true,
             guildOnly: true,
@@ -26,9 +23,9 @@ class Someone extends Command {
         let member = message.guild.members.random(1)[0];
         
         let embed = new Discord.MessageEmbed()
-            .addField(message.language.get("SOMEONE_HEADINGS")[0], member.user.username, true)
-            .addField(message.language.get("SOMEONE_HEADINGS")[1], member.user.discriminator, true)
-            .addField(message.language.get("SOMEONE_HEADINGS")[2], member.user.id, true)
+            .addField(message.translate("common:USERNAME"), member.user.username, true)
+            .addField(message.translate("common:DISCRIMINATOR"), member.user.discriminator, true)
+            .addField(message.translate("common:ID"), member.user.id, true)
             .setThumbnail(member.user.displayAvatarURL())
             .setColor(data.config.embed.color);
         message.channel.send(embed);

@@ -1,0 +1,8 @@
+{
+    "DESCRIPTION": "Generates a \"triggered\" image using Nekobot API",
+    "USAGE": "{{prefix}}triggered (@member)",
+    "EXAMPLES": "{{prefix}}triggered\n{{prefix}}triggered @Androz#2091",
+    "MISSING_USERNAME": "You have to enter someone's twitter nickname!",
+    "MISSING_TEXT": "You have to specify a tweet's content!",
+    "SUCCESS": "New tweet by {{user}}:"
+}

@@ -7,9 +7,6 @@ class Mute extends Command {
     constructor (client) {
         super(client, {
             name: "mute",
-            description: (language) => language.get("MUTE_DESCRIPTION"),
-            usage: (language) => language.get("MUTE_USAGE"),
-            examples: (language) => language.get("MUTE_EXAMPLES"),
             dirname: __dirname,
             enabled: true,
             guildOnly: true,
@@ -26,23 +23,23 @@ class Mute extends Command {
         
         let member = await this.client.resolveMember(args[0], message.guild);
         if(!member){
-            return message.channel.send(message.language.get("ERR_INVALID_MEMBER"));
+            return message.error("moderation/mute:MISSING_MEMBER");
         }
 
         if(member.id === message.author.id){
-            return message.channel.send(message.language.get("ERR_SANCTION_YOURSELF"));
+            return message.error("moderation/ban:YOURSELF");
         }
 
         let memberData = await this.client.findOrCreateMember({ id: member.id, guildID: message.guild.id });
 
         let time = args[1];
         if(!time || isNaN(ms(time))){
-            return message.channel.send(message.language.get("ERR_INVALID_TIME"));
+            return message.error("misc:INVALID_TIME");
         }
 
         let reason = args.slice(2).join(" ");
         if(!reason){
-            reason = message.language.get("UTILS").NO_REASON_PROVIDED;
+            reason = message.translate("misc:NO_REASON_PROVIDED");
         }
 
         message.guild.channels.forEach((channel) => {
@@ -53,9 +50,19 @@ class Mute extends Command {
             }).catch((err) => {});
         });
 
-        message.channel.send(message.language.get("MUTE_SUCCESS", member, time, reason));
+        member.send(message.translate("moderation/mute:MUTED_DM", {
+            server: message.guild.name,
+            moderator: message.author.tag,
+            time,
+            reason
+        }));
 
-        member.send(message.language.get("MUTE_SUCCESS_DM", message, time, reason));
+        message.send("moderation/mute:MUTED", {
+            server: message.guild.name,
+            moderator: message.author.tag,
+            time,
+            reason
+        });
 
         data.guild.casesCount++;
 
@@ -83,14 +90,15 @@ class Mute extends Command {
         if(data.guild.plugins.modlogs){
             let channel = message.guild.channels.get(data.guild.plugins.modlogs);
             if(!channel) return;
-            let headings = message.language.get("MODLOGS_HEADINGS");
             let embed = new Discord.MessageEmbed()
-                .setAuthor(message.language.get("MUTE_TITLE_LOGS", data.guild.casesCount))
-                .addField(headings.USER, `\`${member.user.tag}\` (${member.user.toString()})`, true)
-                .addField(headings.MODERATOR, `\`${message.author.tag}\` (${message.author.toString()})`, true)
-                .addField(headings.REASON, reason, true)
-                .addField(headings.TIME, time, true)
-                .addField(headings.EXPIRATION, message.language.printDate(new Date(Date.now()+ms(time))), true)
+                .setAuthor(message.translate("moderation/mute:CASE", {
+                    count: data.guild.casesCount
+                }))
+                .addField(message.translate("common:USER"), `\`${member.user.tag}\` (${member.user.toString()})`, true)
+                .addField(message.translate("common:MODERATOR"), `\`${message.author.tag}\` (${message.author.toString()})`, true)
+                .addField(message.translate("common:REASON"), reason, true)
+                .addField(message.translate("common:DURATION"), time, true)
+                .addField(message.translate("common:EXPIRY"), message.printDate(new Date(Date.now()+ms(time))), true)
                 .setColor("#f44271");
             channel.send(embed);
         }

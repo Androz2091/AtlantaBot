@@ -5,9 +5,6 @@ class Fire extends Command {
     constructor (client) {
         super(client, {
             name: "fire",
-            description: (language) => language.get("FIRE_DESCRIPTION"),
-            usage: (language) => language.get("FIRE_USAGE"),
-            examples: (language) => language.get("FIRE_EXAMPLES"),
             dirname: __dirname,
             enabled: true,
             guildOnly: false,
@@ -23,7 +20,9 @@ class Fire extends Command {
     async run (message, args, data) {
 
         let user = await this.client.resolveUser(args[0]) || message.author;
-        let m = await message.channel.send(message.language.get("UTILS").PLEASE_WAIT);
+        let m = await message.sendT("misc:PLEASE_WAIT", null, {
+            prefixEmoji: "loading"
+        });
         let buffer = await this.client.AmeAPI.generate("fire", { url: user.displayAvatarURL({ format: "png", size: 512 }) });
         let attachment = new Discord.MessageAttachment(buffer, "fire.png");
         m.delete();

@@ -6,9 +6,6 @@ class Np extends Command {
     constructor (client) {
         super(client, {
             name: "np",
-            description: (language) => language.get("NP_DESCRIPTION"),
-            usage: (language) => language.get("NP_USAGE"),
-            examples: (language) => language.get("NP_EXAMPLES"),
             dirname: __dirname,
             enabled: true,
             guildOnly: true,
@@ -27,11 +24,11 @@ class Np extends Command {
 
         let voice = message.member.voice.channel;
         if (!voice){
-            return message.channel.send(message.language.get("PLAY_ERR_VOICE_CHANNEL"));
+            return message.error("music/play:NO_VOICE_CHANNEL");
         }
 
         if(!queue){
-            return message.channel.send(message.language.get("PLAY_ERR_NOT_PLAYING"));
+            return message.error("music/play:NOT_PLAYING");
         }
 
         // Gets the current song
@@ -39,12 +36,14 @@ class Np extends Command {
 
         // Generate discord embed to display song informations
         const embed = new Discord.MessageEmbed()
-            .setAuthor(message.language.get("PLAY_PLAYING_TITLE"))
+            .setAuthor(message.translate("music/np:CURRENTLY_PLAYING"))
             .setThumbnail(song.thumbnail)
-            .addField(message.language.get("PLAY_HEADINGS")[0], song.name, true)
-            .addField(message.language.get("PLAY_HEADINGS")[1], song.author, true)
-            .addField(message.language.get("PLAY_HEADINGS")[6], message.language.convertMs(song.duration), true)
-            .addField(message.language.get("PLAY_HEADINGS")[5], song.raw.snippet.description ? (song.raw.snippet.description.substring(0, 150)+"\n"+message.language.get("UTILS").ANDMORE) : message.language.get("NP_ERR_NO_DESC"), true)
+            .addField(message.translate("music/np:T_TITLE"), song.name, true)
+            .addField(message.translate("music/np:T_CHANNEL"), song.author, true)
+            .addField(message.translate("music/np:T_DURATION"), this.client.functions.convertTime(message.guild, song.duration), true)
+            .addField(message.translate("music/np:T_DESCRIPTION"),
+                song.raw.snippet.description ?
+                (song.raw.snippet.description.substring(0, 150)+"\n"+(message.translate("common:AND_MORE").toLowerCase())) : message.translate("music/np:NO_DESCRIPTION"), true)
             .setTimestamp()
             .setColor(data.config.embed.color)
             .setFooter(data.config.embed.footer);

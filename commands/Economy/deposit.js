@@ -6,9 +6,6 @@ class Deposit extends Command {
     constructor (client) {
         super(client, {
             name: "deposit",
-            description: (language) => language.get("DEPOSIT_DESCRIPTION"),
-            usage: (language) => language.get("DEPOSIT_USAGE"),
-            examples: (language) => language.get("DEPOSIT_EXAMPLES"),
             dirname: __dirname,
             enabled: true,
             guildOnly: true,
@@ -26,27 +23,31 @@ class Deposit extends Command {
         let amount = args[0];
 
         if(!(parseInt(data.memberData.money, 10) > 0)) {
-            return message.channel.send(message.language.get("DEPOSIT_ERR_NO_MONEY"));
+            return message.error("economy/deposit:NO_CREDIT");
         }
 
         if(args[0] === "all"){
             amount = parseInt(data.memberData.money, 10);
         } else {
             if(isNaN(amount) || parseInt(amount, 10) < 1){
-                return message.channel.send(message.language.get("DEPOSIT_ERR_AMOUNT"));
+                return message.error("economy/deposit:MISSING_AMOUNT");
             }
             amount = parseInt(amount, 10);
         }
         
         if(data.memberData.money < amount){
-            return message.channel.send(message.language.get("DEPOSIT_ERR_AMOUNT_TOO_HIGH", amount));
+            return message.error("economy/deposit:NOT_ENOUGH_CREDIT", {
+                money: amount
+            });
         }
 
         data.memberData.money = data.memberData.money - amount;
         data.memberData.bankSold = data.memberData.bankSold + amount;
         data.memberData.save();
 
-        message.channel.send(message.language.get("DEPOSIT_SUCCESS", amount));
+        message.success("economy/deposit:SUCCESS", {
+            money: amount
+        });
     }
 
 }

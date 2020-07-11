@@ -18,14 +18,15 @@
 
 				<!-- Content Header (Page header) -->
 				<section class="content-header">
-					<h1> <%= language.get("SELECTOR") %> <small> Version 1.0.0-beta </small> </h1>
+					<h1> <%= translate("dashboard:SELECTOR") %> <small> Version 1.0.0-beta </small> </h1>
 					<ol class="breadcrumb">
-						<li class="active"><a href="/"><i class="fa fa-home"></i> <%= language.get("SELECTOR") %></a></li>
+						<li class="active"><a href="/"><i class="fa fa-home"></i> <%= translate("dashboard:SELECTOR") %></a></li>
 					</ol>
 				</section>
 
 				<section class="content">
 
+					<div class="row">
 					<% if(user.displayedGuilds){ user.displayedGuilds.forEach(function(guild) { %>
 						<!-- Displays 4 servers by line -->
 						<div class="col-md-3">
@@ -42,8 +43,7 @@
 								</div>
 								<!-- /.box-body -->
 								<div class="box-footer">
-									<a href="<%= guild.settingsUrl %>"><button class="btn btn-success"><%= language.get("UTILS").MANAGE %></button></a>
-									<a href="<%= guild.statsUrl %>"><button type="submit" name="welcomeUpdate" class="btn btn-primary"><%= language.get("UTILS").STATS %></button></a>
+									<a href="<%= guild.settingsUrl %>"><button class="btn btn-block btn-success"><%= translate("dashboard:MANAGE") %></button></a>
 								</div>
 								<!-- /.box-footer -->
 							</div>
@@ -54,7 +54,7 @@
 						<div class="col-md-12">
 							<div class="box box-warning">
 								<div class="box-header with-border">
-									<h3 class="box-title"><%= language.get("ERR_NO_SERVER_FOUND") %></h3>
+									<h3 class="box-title"><%= translate("dashboard:NO_SERVER") %></h3>
 									<div class="box-tools pull-right">
 									<button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
 									</button>
@@ -63,7 +63,7 @@
 								</div>
 								<!-- /.box-header -->
 								<div class="box-body">
-									<%= language.get("ERR_NO_SERVER_FOUND_CONTENT") %>
+									<%= translate("dashboard:NO_SERVER_CONTENT") %>
 								</div>
 								<!-- /.box-body -->
 							</div>

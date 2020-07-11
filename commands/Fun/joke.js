@@ -6,9 +6,6 @@ class Joke extends Command {
     constructor (client) {
         super(client, {
             name: "joke",
-            description: (language) => language.get("JOKE_DESCRIPTION"),
-            usage: (language) => language.get("JOKE_USAGE"),
-            examples: (language) => language.get("JOKE_EXAMPLES"),
             dirname: __dirname,
             enabled: true,
             guildOnly: false,
@@ -23,16 +20,17 @@ class Joke extends Command {
 
     async run (message, args, data) {
 
-        if(!data.config.apiKeys.blagueXYZ || data.config.apiKeys.blagueXYZ.length === "") {
-            return message.channel.send(message.language.get("ERR_COMMAND_DISABLED"));
-        }
+        if (!this.client.config.apiKeys.blagueXYZ)
+            return message.error("misc:COMMAND_DISABLED");
 
-        let joke = await this.client.joker.randomJoke(message.language.getLang().substr(0, 2));
+        const joke = await this.client.joker.randomJoke(
+            data.guild.language.substr(0, 2)
+        );
 
-        let embed = new Discord.MessageEmbed()
-            .setDescription(`${joke.toDiscordSpoils()}`)
-            .setFooter(message.language.get("JOKE_FOOTER"))
-            .setColor(data.config.embed.color)
+        const embed = new Discord.MessageEmbed()
+            .setDescription(joke.toDiscordSpoils())
+            .setFooter(message.translate("fun/joke:FOOTER"))
+            .setColor(this.client.config.embed.color);
 
         message.channel.send(embed);
 

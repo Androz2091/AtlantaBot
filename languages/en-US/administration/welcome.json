@@ -1,0 +1,13 @@
+{
+    "DESCRIPTION": "Enable/Disable welcome messages in the server!",
+    "USAGE": "{{prefix}}welcome",
+    "EXAMPLES": "{{prefix}}welcome",
+    "MISSING_STATUS": "You must specify a valid status! (`edit` or `off`)",
+    "DEFAULT_MESSAGE": "Welcome {user} in {server}! We're now {membercount}. Your account was created {createdat}.",
+    "TEST_SUCCESS": "Test executed!",
+    "FORM_1": "Hello {{author}}! In which channel will the welcome messages be sent? (mention a channel)",
+    "FORM_2": "All right! The messages will therefore be sent in {{channel}}. Enter the welcome message below: \n\n:information_source: __**Informations:**__\nMention: {user}\nMembers: {membercount}\nServer: {server}\n\n__For example:__\n\n\"Welcome {user} to {server}, we are {membercount}!\"\n:arrow_down:\n\"Welcome {{author}} to {{guildName}}, we are {{memberCount}}!\".",
+    "FORM_3": "It works! Do you want a great welcome image to be sent too? Answer with \"yes\" or \"no\"!",
+    "FORM_SUCCESS": "Welcome messages enabled in {{channel}} ! Type `{{prefix}}welcome test` to test the welcome message!",
+    "DISABLED": "Goodbye messages have just been disabled! Type `{{prefix}}configuration` to see the new configuration!"
+}

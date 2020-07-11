@@ -6,9 +6,6 @@ class Calc extends Command {
     constructor (client) {
         super(client, {
             name: "calc",
-            description: (language) => language.get("CALC_DESCRIPTION"),
-            usage: (language) => language.get("CALC_USAGE"),
-            examples: (language) => language.get("CALC_EXAMPLES"),
             dirname: __dirname,
             enabled: true,
             guildOnly: false,
@@ -23,20 +20,22 @@ class Calc extends Command {
  
     async run (message, args, data) {
 
-        if(!args[0]) return message.channel.send(message.language.get("CALC_EMPTY"));
+        if(!args[0]) {
+            return message.error("general/calc:MISSING_CALC");
+        }
 
         let result;
         try {
             result = math.evaluate(args.join(" ").replace(/[x]/gi, "*").replace(/[,]/g, ".").replace(/[÷]/gi, "/"));
         } catch (e) {
-            return message.channel.send(message.language.get("CALC_ERROR"));
+            return message.error("general/calc:INVALID_CALC");
         }
 
         let embed = new Discord.MessageEmbed()
             .setColor(data.config.embed.color)
-            .setAuthor(message.language.get("CALC_TITLE"), this.client.user.displayAvatarURL())
-            .addField(message.language.get("CALC_OPERATION"), `\`\`\`Js\n${args.join("").replace(/[x]/gi, "*").replace(/[,]/g, ".").replace(/[÷]/gi, "/")}\`\`\``)
-            .addField(message.language.get("CALC_RESULT"), `\`\`\`Js\n${result}\`\`\``)
+            .setAuthor(message.translate("general/calc:TITLE"), this.client.user.displayAvatarURL())
+            .addField(message.translate("general/calc:CALCULATION"), `\`\`\`js\n${args.join("").replace(/[x]/gi, "*").replace(/[,]/g, ".").replace(/[÷]/gi, "/")}\`\`\``)
+            .addField(message.translate("general/calc:RESULT"), `\`\`\`js\n${result}\`\`\``)
             .setFooter(data.config.embed.footer);
         message.channel.send(embed);
 

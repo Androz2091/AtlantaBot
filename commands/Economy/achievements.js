@@ -6,9 +6,6 @@ class Achievements extends Command {
     constructor (client) {
         super(client, {
             name: "achievements",
-            description: (language) => language.get("ACHIEVEMENTS_DESCRIPTION"),
-            usage: (language) => language.get("ACHIEVEMENTS_USAGE"),
-            examples: (language) => language.get("ACHIEVEMENTS_EXAMPLES"),
             dirname: __dirname,
             enabled: true,
             guildOnly: false,
@@ -23,17 +20,45 @@ class Achievements extends Command {
 
     async run (message, args, data) {
         let embed = new Discord.MessageEmbed()
-        .setAuthor(message.language.get("ACHIEVEMENTS_TITLE"))
+        .setAuthor(message.translate("economy/achievements:TITLE"))
         .setColor(data.config.embed.color)
         .setFooter(data.config.embed.footer);
         
-        embed.addField(message.language.get("ACHIEVEMENTS_DESC")[0], message.language.get("ACHIEVEMENTS_PROGRESS", data.userData.achievements.firstCommand.progress));
-        embed.addField(message.language.get("ACHIEVEMENTS_DESC")[1], message.language.get("ACHIEVEMENTS_PROGRESS", data.userData.achievements.work.progress));
-        embed.addField(message.language.get("ACHIEVEMENTS_DESC")[2], message.language.get("ACHIEVEMENTS_PROGRESS", data.userData.achievements.married.progress));
-        embed.addField(message.language.get("ACHIEVEMENTS_DESC")[3], message.language.get("ACHIEVEMENTS_PROGRESS", data.userData.achievements.slots.progress));
-        embed.addField(message.language.get("ACHIEVEMENTS_DESC")[4], message.language.get("ACHIEVEMENTS_PROGRESS", data.userData.achievements.tip.progress));
-        embed.addField(message.language.get("ACHIEVEMENTS_DESC")[5], message.language.get("ACHIEVEMENTS_PROGRESS", data.userData.achievements.rep.progress));
-        embed.addField(message.language.get("ACHIEVEMENTS_DESC")[6], message.language.get("ACHIEVEMENTS_PROGRESS", data.userData.achievements.invite.progress));
+        embed.addField(message.translate("economy/achievements:SEND_CMD"), message.translate("economy/achievements:PROGRESS", {
+            now: data.userData.achievements.firstCommand.progress.now,
+            total: data.userData.achievements.firstCommand.progress.total,
+            percent: Math.round(100 * (data.userData.achievements.firstCommand.progress.now/data.userData.achievements.firstCommand.progress.total))
+        }));
+        embed.addField(message.translate("economy/achievements:CLAIM_SALARY"), message.translate("economy/achievements:PROGRESS", {
+            now: data.userData.achievements.work.progress.now,
+            total: data.userData.achievements.work.progress.total,
+            percent: Math.round(100 * (data.userData.achievements.work.progress.now/data.userData.achievements.work.progress.total))
+        }));
+        embed.addField(message.translate("economy/achievements:MARRY"), message.translate("economy/achievements:PROGRESS", {
+            now: data.userData.achievements.married.progress.now,
+            total: data.userData.achievements.married.progress.total,
+            percent: Math.round(100 * (data.userData.achievements.married.progress.now/data.userData.achievements.married.progress.total))
+        }));
+        embed.addField(message.translate("economy/achievements:SLOTS"), message.translate("economy/achievements:PROGRESS", {
+            now: data.userData.achievements.slots.progress.now,
+            total: data.userData.achievements.slots.progress.total,
+            percent: Math.round(100 * (data.userData.achievements.slots.progress.now/data.userData.achievements.slots.progress.total))
+        }));
+        embed.addField(message.translate("economy/achievements:TIP"), message.translate("economy/achievements:PROGRESS", {
+            now: data.userData.achievements.tip.progress.now,
+            total: data.userData.achievements.tip.progress.total,
+            percent: Math.round(100 * (data.userData.achievements.tip.progress.now/data.userData.achievements.tip.progress.total))
+        }));
+        embed.addField(message.translate("economy/achievements:REP"), message.translate("economy/achievements:PROGRESS", {
+            now: data.userData.achievements.rep.progress.now,
+            total: data.userData.achievements.rep.progress.total,
+            percent: Math.round(100 * (data.userData.achievements.rep.progress.now/data.userData.achievements.rep.progress.total))
+        }));
+        embed.addField(message.translate("economy/achievements:INVITE"), message.translate("economy/achievements:PROGRESS", {
+            now: data.userData.achievements.invite.progress.now,
+            total: data.userData.achievements.invite.progress.total,
+            percent: Math.round(100 * (data.userData.achievements.rep.progress.now/data.userData.achievements.invite.progress.total))
+        }));
 
         message.channel.send(embed);
 

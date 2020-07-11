@@ -1,0 +1,17 @@
+files:
+  - source: /languages/en-US/administration/*.json
+    translation: /languages/%locale%/administration/%original_file_name%
+  - source: /languages/en-US/music/*.json
+    translation: /languages/%locale%/music/%original_file_name%
+  - source: /languages/en-US/general/*.json
+    translation: /languages/%locale%/general/%original_file_name%
+  - source: /languages/en-US/fun/*.json
+    translation: /languages/%locale%/fun/%original_file_name%
+  - source: /languages/en-US/images/*.json
+    translation: /languages/%locale%/images/%original_file_name%
+  - source: /languages/en-US/*.json
+    translation: /languages/%locale%/%original_file_name%
+  - source: /languages/en-US/economy/*.json
+    translation: /languages/%locale%/economy/%original_file_name%
+  - source: /languages/en-US/moderation/*.json
+    translation: /languages/%locale%/moderation/%original_file_name%

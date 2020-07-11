@@ -6,9 +6,6 @@ class Announcement extends Command {
     constructor (client) {
         super(client, {
             name: "announcement",
-            description: (language) => language.get("ANNOUNCEMENT_DESCRIPTION"),
-            usage: (language) => language.get("ANNOUNCEMENT_USAGE"),
-            examples: (language) => language.get("ANNOUNCEMENT_EXAMPLES"),
             dirname: __dirname,
             enabled: true,
             guildOnly: true,
@@ -25,32 +22,32 @@ class Announcement extends Command {
         
         let text = args.join(" ");
         if(!text){
-            return message.channel.send(message.language.get("ANNOUNCEMENT_ERR_TEXT"));
+            return message.error("moderation/announcement:MISSING_TEXT");
         }
         if(text.length > 1030){
-            return message.channel.send(message.language.get("ANNOUNCEMENT_ERR_TEXT_LENGTH"));
+            return message.error("moderation/announcement:TOO_LONG");
         }
 
         message.delete().catch((err) => {});
 
         let mention = "";
             
-        let msg = await message.channel.send(message.language.get("ANNOUNCEMENT_FORM_MENTION"));
+        let msg = await message.sendT("moderation/announcement:MENTION_PROMPT");
 
         const collector = new Discord.MessageCollector(message.channel, (m) => m.author.id === message.author.id, { time: 240000 });
             
         collector.on("collect", async (tmsg) => {
     
-            if(tmsg.content.toLowerCase() === message.language.get("UTILS").NO.toLowerCase()){
+            if(tmsg.content.toLowerCase() === message.translate("common:NO").toLowerCase()){
                 tmsg.delete();
                 msg.delete();
                 collector.stop(true);
             }
             
-            if(tmsg.content.toLowerCase() === message.language.get("UTILS").YES.toLowerCase()){
+            if(tmsg.content.toLowerCase() === message.translate("common:YES").toLowerCase()){
                 tmsg.delete();
                 msg.delete();
-                let tmsg1 = await message.channel.send(message.language.get("ANNOUNCEMENT_FORM_MENTION_HE"));
+                let tmsg1 = await message.sendT("moderation/announcement:MENTION_TYPE_PROMPT");
                 let c = new Discord.MessageCollector(message.channel, (m) => m.author.id === message.author.id, { time: 60000 });
                 c.on("collect", (m) => {
                     if(m.content.toLowerCase() === "here"){
@@ -69,7 +66,7 @@ class Announcement extends Command {
                 });
                 c.on("end", (collected, reason) => {
                     if(reason === "time"){
-                        return message.channel.send(message.language.get("ANNOUNCEMENT_ERR_TIMEOUT"));
+                        return message.error("misc:TIMES_UP");
                     }
                 });
             }
@@ -78,11 +75,11 @@ class Announcement extends Command {
         collector.on("end", (collected, reason) => {
     
             if(reason === "time"){
-                return message.channel.send(message.language.get("ANNOUNCEMENT_ERR_TIMEOUT"));
+                return message.error("misc:TIMES_UP");
             }
 
             let embed = new Discord.MessageEmbed()
-                .setAuthor(message.language.get("ANNOUNCEMENT_HEADING"))
+                .setAuthor(message.translate("moderation/announcement:TITLE"))
                 .setColor(data.config.embed.color)
                 .setFooter(message.author.tag)
                 .setTimestamp()

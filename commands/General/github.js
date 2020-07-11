@@ -7,9 +7,6 @@ class Github extends Command {
     constructor (client) {
         super(client, {
             name: "github",
-            description: (language) => language.get("GITHUB_DESCRIPTION"),
-            usage: (language) => language.get("GITHUB_USAGE"),
-            examples: (language) => language.get("GTIHUB_EXAMPLES"),
             dirname: __dirname,
             enabled: true,
             guildOnly: false,
@@ -29,11 +26,11 @@ class Github extends Command {
 
         let embed = new Discord.MessageEmbed()
             .setAuthor(message.client.user.tag, message.client.user.displayAvatarURL())
-            .setDescription(message.language.get("GITHUB_DESC"))
-            .addField(message.language.get("GITHUB_HEADERS")[0], json.stargazers_count, true)
-            .addField(message.language.get("GITHUB_HEADERS")[1], json.forks_count, true)
-            .addField(message.language.get("GITHUB_HEADERS")[2], json.language, true)
-            .addField(message.language.get("GITHUB_HEADERS")[3], "["+json.owner.login+"]("+json.owner.html_url+")")
+            .setDescription("["+message.translate("general/github:CLICK_HERE")+"](https://github.com/Androz2091/AtlantaBot)")
+            .addField("Stars", json.stargazers_count, true)
+            .addField("Forks", json.forks_count, true)
+            .addField(message.translate("general/github:LANGUAGE"), json.language, true)
+            .addField(message.translate("general/github:OWNER"), "["+json.owner.login+"]("+json.owner.html_url+")")
             .setImage(json.owner.avatar_url)
             .setColor(data.config.embed.color)
             .setFooter(data.config.embed.footer);

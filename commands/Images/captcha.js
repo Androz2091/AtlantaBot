@@ -6,9 +6,6 @@ class Captcha extends Command {
     constructor (client) {
         super(client, {
             name: "captcha",
-            description: (language) => language.get("CAPTCHA_DESCRIPTION"),
-            usage: (language) => language.get("CAPTCHA_USAGE"),
-            examples: (language) => language.get("CAPTCHA_EXAMPLES"),
             dirname: __dirname,
             enabled: true,
             guildOnly: false,
@@ -24,7 +21,9 @@ class Captcha extends Command {
     async run (message, args, data) {
         
         let user = await this.client.resolveUser(args[0]) || message.author;
-        let m = await message.channel.send(message.language.get("UTILS").PLEASE_WAIT);
+        let m = await message.sendT("misc:PLEASE_WAIT", null, {
+            prefixEmoji: "loading"
+        });
         try {
             let res = await fetch(encodeURI(`https://nekobot.xyz/api/imagegen?type=captcha&username=${user.username}&url=${user.displayAvatarURL({ format: "png", size: 512 })}`));
             let json = await res.json();
@@ -33,7 +32,9 @@ class Captcha extends Command {
             m.delete();
         } catch(e){
             console.log(e);
-            m.edit(message.language.get("ERR_OCCURENCED"));
+            m.error("misc:ERR_OCCURRED", null, {
+                edit: true
+            });
         }
 
     }
