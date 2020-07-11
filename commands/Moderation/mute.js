@@ -51,6 +51,7 @@ class Mute extends Command {
         });
 
         member.send(message.translate("moderation/mute:MUTED_DM", {
+            username: member.user.username,
             server: message.guild.name,
             moderator: message.author.tag,
             time,
@@ -58,6 +59,7 @@ class Mute extends Command {
         }));
 
         message.success("moderation/mute:MUTED", {
+            username: member.user.tag,
             server: message.guild.name,
             moderator: message.author.tag,
             time,
