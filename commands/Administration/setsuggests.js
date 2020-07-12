@@ -40,7 +40,7 @@ class Setsuggests extends Command {
 			data.guild.markModified("plugins.suggestions");
 			await data.guild.save();
 			return message.success(
-				"administration/setsuggestss:SUCCESS_ENABLED",
+				"administration/setsuggests:SUCCESS_ENABLED",
 				{
 					channel: channel.toString()
 				}
