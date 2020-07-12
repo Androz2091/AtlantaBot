@@ -69,7 +69,7 @@ class Rob extends Command {
             memberData.cooldowns.rob = toWait;
             memberData.markModified("cooldowns");
             await memberData.save();
-            const randomNum = Math.floor(this.client.functions.randomNum(0, 2));
+            const randomNum = Math.floor(this.client.functions.randomNum(1, 3));
             message.sendT("economy/rob:ROB_WON_"+randomNum, {
                 money: amountToRob,
                 username: member.user.username
@@ -80,7 +80,7 @@ class Rob extends Command {
             data.memberData.save();
         } else {
             let won = Math.floor(0.9*amountToRob);
-            const randomNum = Math.floor(this.client.functions.randomNum(0, 2));
+            const randomNum = Math.floor(this.client.functions.randomNum(1, 3));
             message.sendT("economy/rob:ROB_LOSE_"+randomNum, {
                 fine: potentiallyLose,
                 offset: won,
