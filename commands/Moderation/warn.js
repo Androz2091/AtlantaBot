@@ -79,7 +79,7 @@ class Warn extends Command {
 					count: data.guild.casesCount
 				}))
 					.setColor("#e02316");
-				message.guild.members.ban(member).catch((err) => {});
+				message.guild.members.ban(member).catch(() => {});
 				message.success("moderation/setwarns:AUTO_BAN", {
 					username: member.tag,
 					count: banCount
@@ -98,7 +98,7 @@ class Warn extends Command {
 					count: data.guild.casesCount
 				}))
 					.setColor("#e88709");
-				message.guild.members.kick(member).catch((err) => {});
+				message.guild.members.kick(member).catch(() => {});
 				message.success("moderation/setwarns:AUTO_KICK", {
 					username: member.tag,
 					count: banCount
