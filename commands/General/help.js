@@ -1,6 +1,5 @@
 const Command = require("../../base/Command.js"),
-	Discord = require("discord.js"),
-	ms = require("ms");
+	Discord = require("discord.js");
 
 class Help extends Command {
 	constructor (client) {
@@ -78,7 +77,9 @@ class Help extends Command {
 				)
 				.addField(
 					message.translate("general/help:FIELD_PERMISSIONS"),
-					cmd.conf.memberPermissions.map((p) => "`"+p+"`")
+					cmd.conf.memberPermissions.length > 0
+						? cmd.conf.memberPermissions.map((p) => "`"+p+"`").join("\n")
+						: message.translate("general/help:NO_REQUIRED_PERMISSION")
 				)
 				.setColor(this.client.config.embed.color)
 				.setFooter(this.client.config.embed.footer);
