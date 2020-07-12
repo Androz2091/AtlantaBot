@@ -9,5 +9,8 @@
     "FORM_2": "¡Todo bien! Por lo tanto, los mensajes se enviarán en {{channel}}. Ingrese el mensaje de bienvenida a continuación: \n:information_source:__**Información:**__\nMención: {user}\nMiembros: {membercount}\nServidor: {server}\n\n__Por ejemplo:__\n\n\"¡Bienvenido {user} a {server}, ahora somos {membercount}!\"\n:arrow_down:\n\"¡Bienvenido {{author}}a {{guildName}}, ahora somos {{memberCount}}!\".",
     "FORM_3": "¡Funciona! ¿Desea que se envíe una imagen de bienvenida al mismo tiempo? Responda con \"Si\" o \"No\"!",
     "FORM_SUCCESS": "¡Mensajes de bienvenida activados en {{channel}}! ¡Escriba `{{prefix}}welcome test` para hacer un test del mensaje de bienvenida!",
-    "DISABLED": "¡Los mensajes de bienvenida acaban de desactivarse! ¡Escriba `{{prefix}}configuration para ver la configuración!"
+    "DISABLED": "¡Los mensajes de bienvenida acaban de desactivarse! ¡Escriba `{{prefix}}configuration para ver la configuración!",
+    "IMG_WELCOME": "Welcome in {{server}}!",
+    "IMG_NB": "- {{memberCount}}th member!",
+    "TITLE": "WELCOME"
 }
