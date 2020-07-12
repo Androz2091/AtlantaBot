@@ -52,7 +52,7 @@ class Kick extends Command {
 			server: message.guild.name,
 			moderator: message.author.tag,
 			reason
-		})).catch((err) => {});
+		})).catch(() => {});
 
 		// Kick the user
 		member.kick(reason).then(() => {
@@ -94,7 +94,7 @@ class Kick extends Command {
 				channel.send(embed);
 			}
 
-		}).catch((err) => {
+		}).catch(() => {
 			return message.error("moderation/kick:MISSING_PERM");
 		});
 
