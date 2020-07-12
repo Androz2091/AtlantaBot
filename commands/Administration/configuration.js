@@ -73,21 +73,21 @@ class Configuration extends Command {
 					? `<#${guildData.plugins.modlogs}>`
 					: message.translate("common:NOT_DEFINED")
 			}) + "\n" +
-            message.translate("administration/configuration:FORTNITESHOP", {
-            	channel:    guildData.plugins.fortniteshop
-            		? `<#${guildData.plugins.fortniteshop}>`
-            		: message.translate("common:NOT_DEFINED")
-            }) + "\n" +
-            message.translate("administration/configuration:SUGGESTIONS", {
-            	channel:    guildData.plugins.suggestions
-            		? `<#${guildData.plugins.suggestions}>`
-            		: message.translate("common:NOT_DEFINED")
-            }) + "\n" +
-            message.translate("administration/configuration:REPORTS", {
-            	channel:    guildData.plugins.reports
-            		? `<#${guildData.plugins.reports}>`
-            		: message.translate("common:NOT_DEFINED")
-            })
+			message.translate("administration/configuration:FORTNITESHOP", {
+				channel:    guildData.plugins.fortniteshop
+					? `<#${guildData.plugins.fortniteshop}>`
+					: message.translate("common:NOT_DEFINED")
+			}) + "\n" +
+			message.translate("administration/configuration:SUGGESTIONS", {
+				channel:    guildData.plugins.suggestions
+					? `<#${guildData.plugins.suggestions}>`
+					: message.translate("common:NOT_DEFINED")
+			}) + "\n" +
+			message.translate("administration/configuration:REPORTS", {
+				channel:    guildData.plugins.reports
+					? `<#${guildData.plugins.reports}>`
+					: message.translate("common:NOT_DEFINED")
+			})
 		);
         
 		// Auto sanctions
@@ -97,11 +97,11 @@ class Configuration extends Command {
 					count: guildData.plugins.warnsSanctions.kick
 				})
 				:   message.translate("administration/configuration:KICK_NOT_DEFINED")) + "\n" +
-            ((guildData.plugins.warnsSanctions.ban) ?
-            	message.translate("administration/configuration:BAN_CONTENT", {
-            		count: guildData.plugins.warnsSanctions.ban
-            	})
-            	:   message.translate("administration/configuration:BAN_NOT_DEFINED"))
+			((guildData.plugins.warnsSanctions.ban) ?
+				message.translate("administration/configuration:BAN_CONTENT", {
+					count: guildData.plugins.warnsSanctions.ban
+				})
+				:   message.translate("administration/configuration:BAN_NOT_DEFINED"))
 		);
 
 		// Automod plugin

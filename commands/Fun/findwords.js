@@ -1,6 +1,5 @@
 const Command = require("../../base/Command.js"),
-	Discord = require("discord.js"),
-	fs = require("fs");
+	Discord = require("discord.js");
 
 const currentGames = {};
 
@@ -121,7 +120,7 @@ class FindWords extends Command {
 		}
 
 		async function getWinner(array){
-			return new Promise(function (resolve, reject){
+			return new Promise(function (resolve){
 				const counts = {};
 				let compare = 0;
 				let mostFrequent;

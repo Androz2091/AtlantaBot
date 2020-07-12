@@ -28,10 +28,10 @@ class ServersList extends Command {
 
 		let description = 
         `${message.translate("common:SERVERS")}: ${message.client.guilds.cache.size}\n\n`+
-        message.client.guilds.sort((a,b) => b.memberCount-a.memberCount).map((r) => r)
-        	.map((r, i) => `**${i + 1}** - ${r.name} | ${r.memberCount} ${message.translate("common:MEMBERS").toLowerCase()}`)
-        	.slice(0, 10)
-        	.join("\n");
+		message.client.guilds.sort((a,b) => b.memberCount-a.memberCount).map((r) => r)
+			.map((r, i) => `**${i + 1}** - ${r.name} | ${r.memberCount} ${message.translate("common:MEMBERS").toLowerCase()}`)
+			.slice(0, 10)
+			.join("\n");
 
 		const embed = new Discord.MessageEmbed()
 			.setAuthor(message.author.tag, message.author.displayAvatarURL())
@@ -66,10 +66,10 @@ class ServersList extends Command {
 				}
                 
 				description = `${message.translate("common:SERVERS")}: ${message.client.guilds.cache.size}\n\n`+
-                message.client.guilds.sort((a,b) => b.memberCount-a.memberCount).map((r) => r)
-                	.map((r, i) => `**${i + 1}** - ${r.name} | ${r.memberCount} ${message.translate("common:MEMBERS")}`)
-                	.slice(i0, i1)
-                	.join("\n");
+				message.client.guilds.sort((a,b) => b.memberCount-a.memberCount).map((r) => r)
+					.map((r, i) => `**${i + 1}** - ${r.name} | ${r.memberCount} ${message.translate("common:MEMBERS")}`)
+					.slice(i0, i1)
+					.join("\n");
 
 				// Update the embed with new informations
 				embed.setTitle(`${message.translate("common:PAGE")}: ${page}/${Math.round(message.client.guilds.cache.size/10)}`)
@@ -96,10 +96,10 @@ class ServersList extends Command {
 				}
 
 				description = `${message.translate("common:SERVERS")}: ${message.client.guilds.cache.size}\n\n`+
-                message.client.guilds.sort((a,b) => b.memberCount-a.memberCount).map((r) => r)
-                	.map((r, i) => `**${i + 1}** - ${r.name} | ${r.memberCount} ${message.translate("common:MEMBERS").toLowerCase()}`)
-                	.slice(i0, i1)
-                	.join("\n");
+				message.client.guilds.sort((a,b) => b.memberCount-a.memberCount).map((r) => r)
+					.map((r, i) => `**${i + 1}** - ${r.name} | ${r.memberCount} ${message.translate("common:MEMBERS").toLowerCase()}`)
+					.slice(i0, i1)
+					.join("\n");
 
 				// Update the embed with new informations
 				embed.setTitle(`${message.translate("common:PAGE")}: ${page}/${Math.round(this.client.guilds.cache.size/10)}`)

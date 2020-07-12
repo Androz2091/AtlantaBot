@@ -24,7 +24,7 @@ class Invitations extends Command {
 		if (!member) member = message.member;
 
 		// Gets the invites
-		const invites = await message.guild.fetchInvites().catch((err) => {});
+		const invites = await message.guild.fetchInvites().catch(() => {});
         
 		const memberInvites = invites.filter((i) => i.inviter && i.inviter.id === member.user.id);
 

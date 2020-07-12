@@ -1,5 +1,4 @@
-const Command = require("../../base/Command.js"),
-	Discord = require("discord.js");
+const Command = require("../../base/Command.js");
 
 class Clearsanctions extends Command {
 
@@ -18,7 +17,7 @@ class Clearsanctions extends Command {
 		});
 	}
 
-	async run (message, args, data) {
+	async run (message, args) {
         
 		const member = await this.client.resolveMember(args[0], message.guild);
 		if(!member){

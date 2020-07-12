@@ -28,7 +28,7 @@ class Announcement extends Command {
 			return message.error("moderation/announcement:TOO_LONG");
 		}
 
-		message.delete().catch((err) => {});
+		message.delete().catch(() => {});
 
 		let mention = "";
             

@@ -1,5 +1,4 @@
-const Command = require("../../base/Command.js"),
-	Discord = require("discord.js");
+const Command = require("../../base/Command.js");
 
 class Flip extends Command {
 
@@ -18,7 +17,7 @@ class Flip extends Command {
 		});
 	}
 
-	async run (message, args, data) {
+	async run (message) {
 		const isHeads = Math.random() > 0.5;
 		isHeads
 			? message.sendT("fun/flip:HEADS")

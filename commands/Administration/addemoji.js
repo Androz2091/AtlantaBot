@@ -1,5 +1,4 @@
-const Command = require("../../base/Command.js"),
-	Discord = require("discord.js");
+const Command = require("../../base/Command.js");
 
 class Addemoji extends Command {
 
@@ -18,7 +17,7 @@ class Addemoji extends Command {
 		});
 	}
 
-	async run (message, args, data) {
+	async run (message, args) {
 
 		const URL = args[0];
 		if (!URL) {

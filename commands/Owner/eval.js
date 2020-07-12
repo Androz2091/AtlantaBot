@@ -1,5 +1,4 @@
-const Command = require("../../base/Command.js"),
-	Discord = require("discord.js");
+const Command = require("../../base/Command.js");
 
 class Eval extends Command {
 
@@ -18,13 +17,16 @@ class Eval extends Command {
 		});
 	}
 
+	// eslint-disable-next-line no-unused-vars
 	async run (message, args, data) {
 
+		// eslint-disable-next-line no-unused-vars
 		const usersData = message.client.usersData;
+		// eslint-disable-next-line no-unused-vars
 		const guildsData = message.client.guildsData;
         
 		const content = message.content.split(" ").slice(1).join(" ");
-		const result = new Promise((resolve, reject) => resolve(eval(content)));
+		const result = new Promise((resolve) => resolve(eval(content)));
         
 		return result.then((output) => {
 			if(typeof output !== "string"){

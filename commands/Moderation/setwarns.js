@@ -1,5 +1,4 @@
-const Command = require("../../base/Command.js"),
-	Discord = require("discord.js");
+const Command = require("../../base/Command.js");
 
 class Setwarns extends Command {
 
@@ -21,7 +20,7 @@ class Setwarns extends Command {
 	async run (message, args, data) {
         
 		const sanction = args[0];
-		if(!sanction || (sanction !== "kick" && sanction !== "ban")){
+		if(!sanction || (sanction !== "kick" && sanction !== "ban")){
 			return message.error("moderation/setwarns:MISSING_TYPE");
 		}
 
@@ -48,7 +47,7 @@ class Setwarns extends Command {
 			}
 		}
 
-		if(!number || isNaN(number)){
+		if(!number || isNaN(number)){
 			return message.error("misc:INVALID_NUMBER");
 		}
 		if(number < 1 || number > 10){

@@ -1,5 +1,4 @@
-const Command = require("../../base/Command.js"),
-	Discord = require("discord.js");
+const Command = require("../../base/Command.js");
 
 class Setbio extends Command {
 
@@ -26,7 +25,7 @@ class Setbio extends Command {
 		if(newBio.length > 100){
 			return message.error("economy/setbio:MAX_CHARACT");
 		}
-		data.userData.bio = bio;
+		data.userData.bio = newBio;
 		message.success("economy/setbio:SUCCESS");
 		await data.userData.save();
 	}

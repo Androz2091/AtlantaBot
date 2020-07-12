@@ -1,5 +1,4 @@
-const Command = require("../../base/Command.js"),
-	Discord = require("discord.js");
+const Command = require("../../base/Command.js");
 
 class Pause extends Command {
 
@@ -18,7 +17,7 @@ class Pause extends Command {
 		});
 	}
 
-	async run (message, args, data) {
+	async run (message) {
 
 		const queue = this.client.player.getQueue(message.guild.id);
 
@@ -32,7 +31,7 @@ class Pause extends Command {
 		}
 
 		// Gets the current song
-		const song = await this.client.player.pause(message.guild.id);
+		await this.client.player.pause(message.guild.id);
         
 		// Send the embed in the current channel
 		message.sendT("music/pause:SUCCESS");

@@ -1,5 +1,4 @@
-const Command = require("../../base/Command.js"),
-	Discord = require("discord.js");
+const Command = require("../../base/Command.js");
 
 class Automod extends Command {
 
@@ -21,7 +20,7 @@ class Automod extends Command {
 	async run (message, args,data) {
 
 		const status = args[0];
-		if(!status || (status !== "on" && status !== "off")){
+		if(!status || (status !== "on" && status !== "off")){
 			return message.error("administration/automod:MISSING_STATUS");
 		}
 

@@ -1,5 +1,4 @@
 const Command = require("../../base/Command.js"),
-	Discord = require("discord.js"),
 	ms = require("ms");
 
 class Remindme extends Command {

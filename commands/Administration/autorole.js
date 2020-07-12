@@ -1,5 +1,4 @@
 const Command = require("../../base/Command.js"),
-	Discord = require("discord.js"),
 	Resolvers = require("../../helpers/resolvers");
 
 class Autorole extends Command {

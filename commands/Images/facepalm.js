@@ -18,14 +18,15 @@ class Facepalm extends Command {
 		});
 	}
 
-	async run (message, args, data) {
+	async run (message, args) {
 
 		const user = await this.client.resolveUser(args[0]) || message.author,
 			m = await message.sendT("misc:PLEASE_WAIT", null, {
 				prefixEmoji: "loading"
 			});
-		canvas = Canvas.createCanvas(632, 357),
-		ctx = canvas.getContext("2d");
+
+		const canvas = Canvas.createCanvas(632, 357),
+			ctx = canvas.getContext("2d");
         
 		// Draw background for transparent avatar
 		ctx.fillStyle = "black";

@@ -7,7 +7,7 @@ const express = require("express"),
 router.get("/:userID", CheckAuth, async function(req, res) {
 	const userInfos = await utils.fetchUser({
 		id: req.params.userID
-	}, req.client).catch((err) => {
+	}, req.client).catch(() => {
 		res.render("404", {
 			user: req.userInfos,
 			language: req.language,

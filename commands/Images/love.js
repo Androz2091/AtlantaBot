@@ -18,7 +18,7 @@ class Love extends Command {
 		});
 	}
 
-	async run (message, args, data) {
+	async run (message, args) {
         
 		const users = [
 			await this.client.resolveUser(args[0]) || message.author,

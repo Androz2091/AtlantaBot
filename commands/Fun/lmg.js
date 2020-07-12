@@ -1,5 +1,4 @@
-const Command = require("../../base/Command.js"),
-	Discord = require("discord.js");
+const Command = require("../../base/Command.js");
 
 class Lmg extends Command {
 
@@ -18,7 +17,7 @@ class Lmg extends Command {
 		});
 	}
 
-	async run (message, args, data) {
+	async run (message, args) {
 		const question = args.join(" ");
 		if (!question) return message.error("fun/lmg:MISSING");
 		const encodedQuestion = question.replace(/[' '_]/g, "+");

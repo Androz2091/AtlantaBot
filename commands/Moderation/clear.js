@@ -1,5 +1,4 @@
-const Command = require("../../base/Command.js"),
-	Discord = require("discord.js");
+const Command = require("../../base/Command.js");
 
 class Clear extends Command {
 
@@ -18,7 +17,7 @@ class Clear extends Command {
 		});
 	}
 
-	async run (message, args, data) {
+	async run (message, args) {
 
 		if(args[0] === "all"){
 			message.sendT("moderation/clear:ALL_CONFIRM");
@@ -26,7 +25,7 @@ class Clear extends Command {
 				max: 1,
 				time: 20000,
 				errors: ["time"]
-			}).catch((err) => {
+			}).catch(() => {
 				return message.error("misc:TIMES_UP");
 			});
 			const position = message.channel.position;

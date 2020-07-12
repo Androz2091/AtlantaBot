@@ -18,7 +18,7 @@ class Phcomment extends Command {
 		});
 	}
 
-	async run (message, args, data) {
+	async run (message, args) {
 
 		let user = await this.client.resolveUser(args[0]);
 		let text = args.join(" ");

@@ -1,5 +1,4 @@
-const Command = require("../../base/Command.js"),
-	Discord = require("discord.js");
+const Command = require("../../base/Command.js");
 
 class Unban extends Command {
 
@@ -18,7 +17,7 @@ class Unban extends Command {
 		});
 	}
 
-	async run (message, args, data) {
+	async run (message, args) {
 
 		let user = null;
 
@@ -60,7 +59,7 @@ class Unban extends Command {
 		}
 
 		// Unban user
-		message.guild.members.unban(user).catch((err) => {});
+		message.guild.members.unban(user).catch(() => {});
 
 		// Send a success message in the current channel
 		message.success("moderation/unban:UNBANNED", {

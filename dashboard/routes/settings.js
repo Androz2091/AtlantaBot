@@ -1,5 +1,4 @@
 const express = require("express"),
-	utils = require("../utils"),
 	CheckAuth = require("../auth/CheckAuth"),
 	router = express.Router();
 
@@ -39,7 +38,8 @@ function checkDate(birthdate){
 	if(!day || !month || !year) return false;
 	const match = birthdate.match(/\d+/g);
 	if (!match) return false;
-	let tday = +match[0], tmonth = +match[1] - 1, tyear = +match[2];
+	const tday = +match[0], tmonth = +match[1] - 1;
+	let tyear = +match[2];
 	if (tyear < 100){
 		tyear += tyear < 50 ? 2000 : 1900;
 	}

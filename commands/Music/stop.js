@@ -64,7 +64,7 @@ class Stop extends Command {
 				time: 25000
 			});
 
-			collector.on("collect", (reaction, user) => {
+			collector.on("collect", (reaction) => {
 				const haveVoted = reaction.count-1;
 				if(haveVoted >= mustVote){
 					this.client.player.stop(message.guild.id);

@@ -1,9 +1,7 @@
 const Command = require("../../base/Command.js"),
-	Discord = require("discord.js");
-
-const figlet = require("figlet");
-const { promisify } = require("util");
-const figletAsync = promisify(figlet);
+	figlet = require("figlet"),
+	util = require("util"),
+	figletAsync = util.promisify(figlet);
 
 class Ascii extends Command {
 
@@ -22,7 +20,7 @@ class Ascii extends Command {
 		});
 	}
 
-	async run (message, args, data) {
+	async run (message, args) {
 		const text = args.join(" ");
 		if (!text || text.length > 20) {
 			return message.error("fun/ascii:TEXT_MISSING");

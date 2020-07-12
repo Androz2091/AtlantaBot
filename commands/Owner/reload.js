@@ -1,5 +1,4 @@
-const Command = require("../../base/Command.js"),
-	Discord = require("discord.js");
+const Command = require("../../base/Command.js");
 
 class Reload extends Command {
 
@@ -18,7 +17,7 @@ class Reload extends Command {
 		});
 	}
 
-	async run (message, args, data) {
+	async run (message, args) {
 		const command = args[0];
 		const cmd = this.client.commands.get(command) || this.client.commands.get(this.client.aliases.get(command));
 		if(!cmd){

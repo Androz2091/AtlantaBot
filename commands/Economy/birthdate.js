@@ -1,5 +1,4 @@
-const Command = require("../../base/Command.js"),
-	Discord = require("discord.js");
+const Command = require("../../base/Command.js");
 
 class Birthdate extends Command {
 
@@ -36,7 +35,8 @@ class Birthdate extends Command {
 		if (!match){
 			return message.error("economy/birthdate:INVALID_DATE_FORMAT");
 		}
-		let tday = +match[0], tmonth = +match[1] - 1, tyear = +match[2];
+		const tday = +match[0], tmonth = +match[1] - 1;
+		let tyear = +match[2];
 		if (tyear < 100){
 			tyear += tyear < 50 ? 2000 : 1900;
 		}

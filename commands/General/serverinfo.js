@@ -43,7 +43,7 @@ class Serverinfo extends Command {
 			})+" | "+message.translate("general/serverinfo:BOTS", {
 				count: guild.members.cache.filter(m => m.user.bot).size
 			}), true)
-			.addField(this.client.config.emojis.afk+message.translate("general/serverinfo:AFK_CHANNEL"), guild.afkChannel || message.translate("general/serverinfo:NO_AFK_CHANNEL"), true)
+			.addField(this.client.config.emojis.afk+message.translate("general/serverinfo:AFK_CHANNEL"), guild.afkChannel || message.translate("general/serverinfo:NO_AFK_CHANNEL"), true)
 			.addField(this.client.config.emojis.id+message.translate("common:ID"), guild.id, true)
 			.addField(this.client.config.emojis.crown+message.translate("common:OWNER"), guild.owner, true)
 			.addField(this.client.config.emojis.boost+message.translate("general/serverinfo:BOOSTS"), guild.premiumSubscriptionCount || 0, true)

@@ -45,7 +45,7 @@ module.exports = router;
 function getCommands(commands){
 	const aDateCommand = {};
 	commands.forEach((cmd) => {
-		tDate = formatDate(new Date(cmd.date));
+		const tDate = formatDate(new Date(cmd.date));
 		if(aDateCommand[tDate]){
 			aDateCommand[tDate]++;
 		} else {
@@ -77,9 +77,9 @@ function getCommandsUsage(commands){
 function getPercentagePerKey(myArray) {
 	const sum = getSum(myArray);
 	const arrayWithPercentages = [];
-	for (key in myArray) {
-		val = myArray[key];
-		percentage = Math.round((val / sum) * 100);
+	for (const key in myArray) {
+		const val = myArray[key];
+		const percentage = Math.round((val / sum) * 100);
 		arrayWithPercentages.push({key, percentage});
 	}
 	return arrayWithPercentages;
@@ -87,7 +87,7 @@ function getPercentagePerKey(myArray) {
   
 function getSum(myArray) {
 	let sum = 0;
-	for (key in myArray) {
+	for (const key in myArray) {
 		sum += myArray[key];
 	}
 	return sum;

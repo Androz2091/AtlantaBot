@@ -41,7 +41,7 @@ class Lyrics extends Command {
 				.replace(/\(lyrics|lyric|official music video|audio|official|official video|official video hd|clip officiel|clip|extended|hq\)/g, "")
 				.split(" ").join("%20");
 
-			let res = await fetch(`https://www.musixmatch.com/search/${songName}`);
+			let res = await fetch(`https://www.musixmatch.com/search/${songNameFormated}`);
 			res = await res.text();
 			let $ = await cheerio.load(res);
 			const songLink = `https://musixmatch.com${$("h2[class=\"media-card-title\"]").find("a").attr("href")}`;

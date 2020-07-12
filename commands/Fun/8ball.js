@@ -1,5 +1,4 @@
-const Command = require("../../base/Command.js"),
-	Discord = require("discord.js");
+const Command = require("../../base/Command.js");
 
 class Eightball extends Command {
 
@@ -18,7 +17,7 @@ class Eightball extends Command {
 		});
 	}
 
-	async run (message, args, data) {
+	async run (message, args) {
         
 		if (!args[0] || !message.content.endsWith("?")) {
 			return message.error("fun/8ball:ERR_QUESTION");

@@ -17,7 +17,7 @@ class Tobecontinued extends Command {
 		});
 	}
 
-	async run (message, args, data) {
+	async run (message, args) {
 
 		const user = await this.client.resolveUser(args[0]) || message.author;
 		const m = await message.sendT("misc:PLEASE_WAIT", null, {

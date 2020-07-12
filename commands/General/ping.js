@@ -1,5 +1,4 @@
-const Command = require("../../base/Command.js"),
-	Discord = require("discord.js");
+const Command = require("../../base/Command.js");
 
 class Ping extends Command {
 
@@ -18,7 +17,7 @@ class Ping extends Command {
 		});
 	}
 
-	async run (message, args, data) {
+	async run (message) {
 		message.sendT("general/ping:CONTENT", {
 			ping: "..."
 		}).then((m) => {
