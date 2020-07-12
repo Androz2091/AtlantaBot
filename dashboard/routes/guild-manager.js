@@ -54,7 +54,7 @@ router.post("/:serverID", CheckAuth, async(req, res) => {
 		await guildData.save();
 	}
 
-	if(data.hasOwnProperty("welcomeEnable") || data.hasOwnProperty("welcomeUpdate")){
+	if(Object.prototype.hasOwnProperty.call(data, "welcomeEnable") || Object.prototype.hasOwnProperty.call(data, "welcomeUpdate")){
 		const welcome = {
 			enabled: true,
 			message: data.message,
@@ -66,7 +66,7 @@ router.post("/:serverID", CheckAuth, async(req, res) => {
 		await guildData.save();
 	}
 
-	if(data.hasOwnProperty("welcomeDisable")){
+	if(Object.prototype.hasOwnProperty.call(data, "welcomeDisable")){
 		const welcome = {
 			enabled: false,
 			message: null,
@@ -78,7 +78,7 @@ router.post("/:serverID", CheckAuth, async(req, res) => {
 		await guildData.save();
 	}
 
-	if(data.hasOwnProperty("goodbyeEnable") || data.hasOwnProperty("goodbyeUpdate")){
+	if(Object.prototype.hasOwnProperty.call(data, "goodbyeEnable") || Object.prototype.hasOwnProperty.call(data, "goodbyeUpdate")){
 		const goodbye = {
 			enabled: true,
 			message: data.message,
@@ -90,7 +90,7 @@ router.post("/:serverID", CheckAuth, async(req, res) => {
 		await guildData.save();
 	}
 
-	if(data.hasOwnProperty("goodbyeDisable")){
+	if(Object.prototype.hasOwnProperty.call(data, "goodbyeDisable")){
 		const goodbye = {
 			enabled: false,
 			message: null,
@@ -102,7 +102,7 @@ router.post("/:serverID", CheckAuth, async(req, res) => {
 		await guildData.save();
 	}
 
-	if(data.hasOwnProperty("autoroleEnable") || data.hasOwnProperty("autoroleUpdate")){
+	if(Object.prototype.hasOwnProperty.call(data, "autoroleEnable") || Object.prototype.hasOwnProperty.call(data, "autoroleUpdate")){
 		const autorole = {
 			enabled: true,
 			role: guild.roles.cache.find((r) => "@"+r.name === data.role).id
@@ -112,7 +112,7 @@ router.post("/:serverID", CheckAuth, async(req, res) => {
 		await guildData.save();
 	}
 
-	if(data.hasOwnProperty("autoroleDisable")){
+	if(Object.prototype.hasOwnProperty.call(data, "autoroleDisable")){
 		const autorole = {
 			enabled: false,
 			role: null
@@ -122,7 +122,7 @@ router.post("/:serverID", CheckAuth, async(req, res) => {
 		await guildData.save();
 	}
 
-	if(data.hasOwnProperty("suggestions")){
+	if(Object.prototype.hasOwnProperty.call(data, "suggestions")){
 		if(data.suggestions === req.translate("common:NO_CHANNEL")){
 			guildData.plugins.suggestions = false;
 		} else {
