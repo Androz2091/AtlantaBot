@@ -127,64 +127,61 @@ class Atlanta extends Client {
 
 	// This function is used to find a user data or create it
 	async findOrCreateUser({ id: userID }, isLean){
-		return new Promise(async (resolve) => {
-			if(this.databaseCache.users.get(userID)){
-				resolve(isLean ? this.databaseCache.users.get(userID).toJSON() : this.databaseCache.users.get(userID));
-			} else {
-				let userData = (isLean ? await this.usersData.findOne({ id: userID }).lean() : await this.usersData.findOne({ id: userID }));
-				if(userData){
-					resolve(userData);
-				} else {
-					userData = new this.usersData({ id: userID });
-					await userData.save();
-					resolve((isLean ? userData.toJSON() : userData));
-				}
+		if(this.databaseCache.users.get(userID)){
+			return isLean ? this.databaseCache.users.get(userID).toJSON() : this.databaseCache.users.get(userID);
+		} else {
+			let userData = (isLean ? await this.usersData.findOne({ id: userID }).lean() : await this.usersData.findOne({ id: userID }));
+			if(userData){
 				this.databaseCache.users.set(userID, userData);
+				return userData;
+			} else {
+				userData = new this.usersData({ id: userID });
+				await userData.save();
+				this.databaseCache.users.set(userID, userData);
+				return isLean ? userData.toJSON() : userData;
 			}
-		});
+		}
 	}
 
 	// This function is used to find a member data or create it
 	async findOrCreateMember({ id: memberID, guildID }, isLean){
-		return new Promise(async (resolve) => {
-			if(this.databaseCache.members.get()){
-				resolve(isLean ? this.databaseCache.members.get(`${memberID}${guildID}`).toJSON() : this.databaseCache.members.get(`${memberID}${guildID}`));
+		if(this.databaseCache.members.get(`${memberID}${guildID}`)){
+			return isLean ? this.databaseCache.members.get(`${memberID}${guildID}`).toJSON() : this.databaseCache.members.get(`${memberID}${guildID}`);
+		} else {
+			let memberData = (isLean ? await this.membersData.findOne({ id: memberID, guildID }).lean() : await this.membersData.findOne({ id: memberID, guildID }));
+			if(memberData){
+				this.databaseCache.members.set(`${memberID}${guildID}`, memberData);
+				return memberData;
 			} else {
-				let memberData = (isLean ? await this.membersData.findOne({ id: memberID, guildID }).lean() : await this.membersData.findOne({ id: memberID, guildID }));
-				if(memberData){
-					resolve(memberData);
-				} else {
-					memberData = new this.membersData({ id: memberID, guildID: guildID });
-					await memberData.save();
-					const guild = await this.findOrCreateGuild({ id: guildID });
-					if(guild){
-						guild.members.push(memberData._id);
-						await guild.save();
-					}
-					resolve((isLean ? memberData.toJSON() : memberData));
+				memberData = new this.membersData({ id: memberID, guildID: guildID });
+				await memberData.save();
+				const guild = await this.findOrCreateGuild({ id: guildID });
+				if(guild){
+					guild.members.push(memberData._id);
+					await guild.save();
 				}
 				this.databaseCache.members.set(`${memberID}${guildID}`, memberData);
+				return isLean ? memberData.toJSON() : memberData;
 			}
-		});
+		}
 	}
 
 	// This function is used to find a guild data or create it
 	async findOrCreateGuild({ id: guildID }, isLean){
-		return new Promise(async (resolve) => {
-			if(this.databaseCache.guilds.get(guildID)){
-				resolve(isLean ? this.databaseCache.guilds.get(guildID).toJSON() : this.databaseCache.guilds.get(guildID));
-			} else {
-				let guildData = (isLean ? await this.guildsData.findOne({ id: guildID }).populate("members").lean() : await this.guildsData.findOne({ id: guildID }).populate("members"));
-				if(guildData){
-					resolve(guildData);
-				} else {
-					guildData = new this.guildsData({ id: guildID });
-					await guildData.save();
-					resolve(isLean ? guildData.toJSON() : guildData);
-				}
+		if(this.databaseCache.guilds.get(guildID)){
+			return isLean ? this.databaseCache.guilds.get(guildID).toJSON() : this.databaseCache.guilds.get(guildID);
+		} else {
+			let guildData = (isLean ? await this.guildsData.findOne({ id: guildID }).populate("members").lean() : await this.guildsData.findOne({ id: guildID }).populate("members"));
+			if(guildData){
 				this.databaseCache.guilds.set(guildID, guildData);
+				return guildData;
+			} else {
+				guildData = new this.guildsData({ id: guildID });
+				await guildData.save();
+				this.databaseCache.guilds.set(guildID, guildData);
+				return isLean ? guildData.toJSON() : guildData;
 			}
-		});
+		}
 	}
 
     
