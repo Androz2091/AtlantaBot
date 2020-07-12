@@ -59,6 +59,7 @@ class Fortnite extends Command {
 			.toAttachment();
         
 		if(!statsImage){
+			m.delete();
 			return message.error("general/fortnite:NOT_FOUND", {
 				platform,
 				search: user
