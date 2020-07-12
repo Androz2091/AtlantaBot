@@ -31,7 +31,7 @@ class Suggest extends Command {
 		}
 
 		const embed = new Discord.MessageEmbed()
-			.setAuthor(message.translate("general/suggests:TITLE", {
+			.setAuthor(message.translate("general/suggest:TITLE", {
 				user: message.author.username
 			}), message.author.displayAvatarURL())
 			.addField(message.translate("common:AUTHOR"), `\`${message.author.username}#${message.author.discriminator}\``, true)
