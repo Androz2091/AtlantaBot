@@ -23,9 +23,7 @@ class Fml extends Command {
 		if (!this.client.config.apiKeys.blagueXYZ)
 			return message.error("misc:COMMAND_DISABLED");
 
-		const fml = await this.client.joker.randomVDM(
-			data.guild.language.substr(0, 2)
-		);
+		const fml = await this.client.joker.randomVDM(null, data.guild.language.substr(0, 2));
 
 		const embed = new Discord.MessageEmbed()
 			.setDescription(fml.content)
