@@ -27,8 +27,6 @@ class Play extends Command {
 			return message.error("music/play:MISSING_SONG_NAME");
 		} 
 
-		const url = args[0].replace(/<(.+)>/g, "$1");
-
 		const voice = message.member.voice.channel;
 		if(!voice){
 			return message.error("music/play:NO_VOICE_CHANNEL");
@@ -106,6 +104,7 @@ class Play extends Command {
 				});
 			}
 		} else {
+			return message.error("music/play:NO_RESULT");
 		}
 	}
 
