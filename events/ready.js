@@ -1,6 +1,3 @@
-const Discord = require("discord.js"),
-	giveaways = require("discord-giveaways");
-
 module.exports = class {
 
 	constructor (client) {

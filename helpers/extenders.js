@@ -1,6 +1,5 @@
 const { Guild, Message, MessageEmbed } = require("discord.js");
 const config = require("../config");
-const moment = require("moment");
 
 Guild.prototype.translate = function(key, args) {
 	const language = this.client.translations.get(this.data.language);

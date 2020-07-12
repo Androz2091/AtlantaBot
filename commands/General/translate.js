@@ -24,7 +24,6 @@ class Translate extends Command {
 	async run (message, args, data) {
         
 		if(args[0] === "langs-list"){
-			const index = 0;
 			const langsList = "```Css\n"+(langs.map((l, i) => `#${i+1} - ${l}`).join("\n"))+"```";
 			message.author.send(langsList).then(() => {
 				message.success("general/translate:LIST_SENT");

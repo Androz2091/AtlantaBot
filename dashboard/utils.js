@@ -72,7 +72,7 @@ async function getLeaderboard(client, amount, leaderboard){
 }
 
 async function fetchUsers(array, client) {
-	return new Promise((resolve, reject) => {
+	return new Promise((resolve) => {
 		const users = [];
 		array.filter((e) => e.id).forEach((element) => {
 			client.users.fetch(element.id).then((user) => {

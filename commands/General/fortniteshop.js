@@ -1,5 +1,4 @@
 const Command = require("../../base/Command.js"),
-	fs = require("fs"),
 	Discord = require("discord.js"),
 	Canvas = require("discord-canvas");
 

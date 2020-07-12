@@ -1,6 +1,4 @@
-const Discord = require("discord.js");
-const moment = require("moment");
-const languages = [ "fr" ];
+const languages = require("../config").languages.map((l) => l.moment).filter((l) => l !== "en");
 languages.forEach((l) => {
 	require(`moment/locale/${l}.js`);
 });
@@ -37,7 +35,7 @@ module.exports = {
 		const member = guild.me;
 		const channel = guild.channels.cache.find((ch) => ch.permissionsFor(member.id).has("CREATE_INSTANT_INVITE"));
 		if(channel){
-			const invite = await channel.createInvite({maxAge :0}).catch((err) => {});
+			const invite = await channel.createInvite({ maxAge: 0 }).catch(() => {});
 			return invite ? invite.url : null;
 		} else {
 			return "https://atlanta-bot.fr";

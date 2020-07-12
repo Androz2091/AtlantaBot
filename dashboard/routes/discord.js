@@ -1,7 +1,5 @@
 const express = require("express"),
-	config = require("../../config"),
 	router = express.Router(),
-	CheckAuth = require("../auth/CheckAuth"),
 	Discord = require("discord.js");
 
 const fetch = require("node-fetch"),

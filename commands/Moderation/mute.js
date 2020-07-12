@@ -47,7 +47,7 @@ class Mute extends Command {
 				SEND_MESSAGES: false,
 				ADD_REACTIONS: false,
 				CONNECT: false
-			}).catch((err) => {});
+			}).catch(() => {});
 		});
 
 		member.send(message.translate("moderation/mute:MUTED_DM", {

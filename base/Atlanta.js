@@ -192,7 +192,7 @@ class Atlanta extends Client {
 		// Try ID search
 		if(search.match(/^<@!?(\d+)>$/)){
 			const id = search.match(/^<@!?(\d+)>$/)[1];
-			user = this.users.fetch(id).catch((err) => {});
+			user = this.users.fetch(id).catch(() => {});
 			if(user) return user;
 		}
 		// Try username search

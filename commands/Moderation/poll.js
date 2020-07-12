@@ -25,7 +25,7 @@ class Poll extends Command {
 			return message.error("moderation/poll:MISSING_QUESTION");
 		}
 
-		message.delete().catch((err) => {});
+		message.delete().catch(() => {});
 
 		let mention = "";
             

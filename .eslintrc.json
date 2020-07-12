@@ -34,9 +34,6 @@
         ],
         "no-mixed-spaces-and-tabs": [
             "warn"
-        ],
-        "no-unused-vars": [
-            "warn"
         ]
     }
 }

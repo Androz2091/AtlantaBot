@@ -37,7 +37,7 @@ class Quote extends Command {
 		if(isNaN(msgID)){
 			message.author.send(message.translate("general/quote:MISSING_ID")).then(() => {
 				message.delete();
-			}).catch((e) => {
+			}).catch(() => {
 				message.error("misc:CANNOT_DM");
 			});
 			return;
@@ -57,7 +57,7 @@ class Quote extends Command {
 		}
 
 		if(!channel){
-			message.channel.messages.fetch(msgID).catch((err) => {
+			message.channel.messages.fetch(msgID).catch(() => {
 				message.author.send((message.translate("general/quote:NO_MESSAGE_ID"))).then(() => {
 					message.delete();
 				}).catch(() => {
@@ -69,7 +69,7 @@ class Quote extends Command {
 				message.channel.send(embed(msg));
 			});
 		} else {
-			channel.messages.fetch(msgID).catch((err) => {
+			channel.messages.fetch(msgID).catch(() => {
 				message.author.send(message.translate("general/quote:NO_MESSAGE_ID")).then(() => {
 					message.delete();
 				}).catch(() => {

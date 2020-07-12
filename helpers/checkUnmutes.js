@@ -15,7 +15,7 @@ module.exports = {
 			muted.forEach(async (memberData) => {
 				const guild = client.guilds.cache.get(memberData.guildID);
 				if(!guild) return;
-				const member = guild.members.cache.get(memberData.id) || await guild.members.fetch(memberData.id).catch((err) => {
+				const member = guild.members.cache.get(memberData.id) || await guild.members.fetch(memberData.id).catch(() => {
 					memberData.mute = {
 						muted: false,
 						endDate: null,
@@ -23,6 +23,7 @@ module.exports = {
 					};
 					memberData.save();
 					client.logger.log("[unmute] "+memberData.id+" cannot be found.");
+					return null;
 				});
 				const guildData = await client.findOrCreateGuild({ id: guild.id });
 				guild.data = guildData;

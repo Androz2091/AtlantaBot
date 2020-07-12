@@ -1,7 +1,6 @@
 const Canvas = require("discord-canvas"),
 	CronJob = require("cron").CronJob,
 	Discord = require("discord.js");
-const { resolve } = require("path");
 
 async function init(client) {
     

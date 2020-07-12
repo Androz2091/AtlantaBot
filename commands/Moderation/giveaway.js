@@ -69,7 +69,7 @@ class Giveaway extends Command {
 					giveawayEnded: message.translate("moderation/giveaway:ENDED"),
 					timeRemaining: message.translate("moderation/giveaway:TIME_REMAINING"),
 					inviteToParticipate: message.translate("moderation/giveaway:INVITE_PARTICIPATE"),
-				    winMessage: message.translate("moderation/giveaway:WIN_MESSAGE"),
+					winMessage: message.translate("moderation/giveaway:WIN_MESSAGE"),
 					embedFooter: message.translate("moderation/giveaway:FOOTER"),
 					noWinner: message.translate("moderation/giveaway:NO_WINNER"),
 					winners: message.translate("moderation/giveaway:WINNERS"),
@@ -94,7 +94,7 @@ class Giveaway extends Command {
 				error: message.translate("moderation/giveaway:REROLL_ERROR")
 			}).then(() => {
 				return message.success("moderation/giveaway:GIVEAWAY_REROLLED");
-			}).catch((err) => {
+			}).catch(() => {
 				return message.error("moderation/giveaway:NOT_FOUND_ENDED", {
 					messageID
 				});
@@ -106,7 +106,7 @@ class Giveaway extends Command {
 			}
 			this.client.giveawaysManager.delete(messageID).then(() => {
 				return message.success("moderation/giveaway:GIVEAWAY_DELETED");
-			}).catch((err) => {
+			}).catch(() => {
 				return message.error("moderation/giveaway:NOT_FOUND", {
 					messageID
 				});

@@ -46,7 +46,7 @@ class Userinfo extends Command {
 
 		let member = null;
 		if(message.guild){
-			member = await message.guild.members.fetch(user).catch((err) => {});
+			member = await message.guild.members.fetch(user).catch(() => {});
 		}
 
 		const embed = new Discord.MessageEmbed()
