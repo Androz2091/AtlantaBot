@@ -9,5 +9,8 @@
     "FORM_3": "¡Funciona! ¿Desea que se envíe una imagen de despedida al mismo tiempo? Responda con \"Si\" o \"No\"!",
     "FORM_SUCCESS": "¡Mensajes de despedida activados en {{channel}}! ¡Escriba `{{prefix}}goodbye test` para hacer un test del mensaje de despedida!",
     "MAX_CHARACT": "¡Su mensaje no debe superar los 1800 caracteres!",
-    "DISABLED": "¡Los mensajes de despedida acaban de desactivarse! ¡Escriba `{{prefix}}configuration para ver la configuración!"
+    "DISABLED": "¡Los mensajes de despedida acaban de desactivarse! ¡Escriba `{{prefix}}configuration para ver la configuración!",
+    "IMG_GOODBYE": "Leaving from {{server}}!",
+    "IMG_NB": "- {{memberCount}}th member!",
+    "TITLE": "GOODBYE"
 }
