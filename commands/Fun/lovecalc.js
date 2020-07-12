@@ -20,10 +20,11 @@ class Lovecalc extends Command {
 	}
 
 	async run (message, args, data) {
-		const firstMember = message.mentions.members.first();
+		const firstMember = message.mentions.members.filter(m => m.id !== message.author.id).first();
 		const secondMember =
             message.mentions.members
             	.filter(m => m.id !== firstMember.id)
+            	.filter(m => m.id !== message.author.id)
             	.first() || message.member;
 		if (!firstMember || !secondMember)
 			return message.error("fun/lovecalc:MISSING");
