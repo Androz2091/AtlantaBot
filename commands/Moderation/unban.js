@@ -34,12 +34,7 @@ class Unban extends Command {
 			await message.client.users.fetch(args[0]).then((u) => {
 				// if a user was found
 				user = u;
-			}).catch((err) => {
-				// if no user found, send an error message
-				return message.error("misc:NO_USER_FOUND_ID", {
-					id: args[0]
-				});
-			});
+			}).catch(() => {});
 		} else if(!isId) {
 			const arr = args[0].split("#");
 			if(arr.length < 2){
