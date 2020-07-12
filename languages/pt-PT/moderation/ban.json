@@ -4,7 +4,7 @@
     "EXAMPLES": "{{prefix}ban @Androz#2091 Spam",
     "MISSING_MEMBER": "Please specify a valid member to ban!",
     "YOURSELF": "You can't sanction yourself!",
-    "SUPERIOR": "You cannot sanction a member with a role superior (or equal) to yours!",
+    "SUPERIOR": "You cannot sanction or update a sanction for a member with a role superior (or equal) to yours!",
     "ALREADY_BANNED": "**{{username}}** is already banned!",
     "MISSING_PERM": "An error has occurred... check that I have the permissions to ban this member and try again!",
     "BANNED_DM": "Hello {{username}},\nYou have just been banned from **{{server}}** by **{{moderator}}** for **{{reason}}**!",
