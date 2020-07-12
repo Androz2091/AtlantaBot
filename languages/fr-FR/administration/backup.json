@@ -7,7 +7,7 @@
     "NO_BACKUP_FOUND": "Aucune sauvegarde trouvée pour : `{{backupID}}`",
     "TIMES_UP": "Temps écoulé ! Le chargement de la sauvegarde a été annulé !",
     "SUCCESS_PUBLIC": "J'ai bien créé la sauvegarde ! L'ID de la sauvegarde vous a été envoyée en messages privés !",
-    "SUCCESS_PRIVATE": "Here is the ID of your backup: `{{backupID}}`, use it to load your backup on another server!",
+    "SUCCESS_PRIVATE": "Voilà l'ID de votre sauvegarde : `{{backupID}}`, utilisez le pour charger votre sauvegarde sur un autre serveur !",
     "CONFIRMATION": ":warning: | Quand la sauvegarde sera chargée, tous les channels, rôles, etc... vont être remplacés ! Envoyez `-confirm` pour confirmer !",
     "START_LOADING": "Début du chargement de la sauvegarde !",
     "LOAD_SUCCESS": "Sauvegarde chargée correctement !",
