@@ -41,6 +41,10 @@ class Minecraft extends Command {
             };
         }
 
+        let m = await message.sendT("misc:PLEASE_WAIT", null, {
+            prefixEmoji: "loading"
+        });
+
         let json = null;
         
         await gamedig.query(options).then((res) => {
@@ -55,7 +59,9 @@ class Minecraft extends Command {
         }
 
         if(!json){
-            return message.error("general/minecraft:FAILED");
+            return m.error("general/minecraft:FAILED", null, {
+                edit: true
+            });
         }
 
         let imgRes = await fetch("https://www.minecraftskinstealer.com/achievement/a.php?i=2&h=Success&t="+ip);
@@ -84,7 +90,7 @@ class Minecraft extends Command {
             .setThumbnail(favicon)
             .setFooter(data.config.embed.footer);
 
-        message.channel.send([ mcEmbed, imgAttachment ]);
+        m.edit(null, [ mcEmbed, imgAttachment ]);
 
     }
 
