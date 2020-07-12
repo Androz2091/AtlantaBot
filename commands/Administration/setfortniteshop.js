@@ -1,6 +1,7 @@
 ﻿const Command = require("../../base/Command.js"),
 fs = require("fs"),
-Discord = require("discord.js");
+Discord = require("discord.js"),
+Canvas = require('discord-canvas');
 
 class Setfortniteshop extends Command {
 
@@ -25,9 +26,6 @@ class Setfortniteshop extends Command {
             return message.error("misc:COMMAND_DISABLED");
         }
 
-        let fortniteShop = require("../../helpers/fortniteShop.js"),
-        path = `./assets/img/fortnite/shop/${data.guild.language}/${fortniteShop.getFileName()}.png`;
-
         if (data.guild.plugins.fortniteshop && !message.mentions.channels.first() || message.mentions.channels.first() && data.guild.plugins.fortniteshop === message.mentions.channels.first().id) {
             data.guild.plugins.fortniteshop = false;
             data.guild.markModified("plugins.fortniteshop");
@@ -44,22 +42,33 @@ class Setfortniteshop extends Command {
             channel: channel.toString()
         });
 
-        if(!fs.existsSync(path)) {
-            await fortniteShop.writeImage(this.client);
-        }
+        const momentName = data.config.languages.find((language) => language.name === data.guild.language || language.aliases.includes(data.guild.language)).moment;
+        const shop = new Canvas.FortniteShop();
+        let image = await shop
+        .setToken(data.config.apiKeys.fortniteFNBR)
+        .setText("header", message.translate("general/fortniteshop:HEADER"))
+        .setText("daily", message.translate("general/fortniteshop:DAILY"))
+        .setText("featured", message.translate("general/fortniteshop:FEATURED"))
+        .setText("date", message.translate("general/fortniteshop:DATE", {
+            skipInterpolation: true
+        }).replace('{{date}}', '{date}'))
+        .setText("footer", message.translate("general/fortniteshop:FOOTER"))
+        .lang(momentName)
+        .toAttachment();
+        let attachment = new Discord.MessageAttachment(image, "shop.png");
 
-        let attachment = new Discord.MessageAttachment(path, `${fortniteShop.getFileName()}.png`),
-        embed = new Discord.MessageEmbed()
-        .setAuthor(message.language.get("FORTNITESHOP_TITLE", message.printDate(new Date(Date.now())), this.client.user.displayAvatarURL()))
-        .attachFiles(attachment)
-        .setImage(`attachment://${fortniteShop.getFileName()}.png`)
-        .setColor(this.client.config.embed.color)
-        .setFooter(this.client.config.embed.footer);
+        const embed = new Discord.MessageEmbed()
+            .setAuthor(this.client.translate("general/fortniteshop:DATE", {
+                date: this.client.printDate(new Date(Date.now()), null, message.guild.data.language)
+            }, message.guild.data.language), this.client.user.displayAvatarURL())
+            .attachFiles(attachment)
+            .setImage(`attachment://shop.png`)
+            .setColor(this.client.config.embed.color)
+            .setFooter(this.client.config.embed.footer);
         let msg = await channel.send(embed);
         await msg.react("😍");
         await msg.react("😐");
         await msg.react("😭");
-        return;
 
     }
 
