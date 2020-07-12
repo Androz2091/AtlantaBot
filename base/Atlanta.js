@@ -132,7 +132,7 @@ class Atlanta extends Client {
 		} else {
 			let userData = (isLean ? await this.usersData.findOne({ id: userID }).lean() : await this.usersData.findOne({ id: userID }));
 			if(userData){
-				this.databaseCache.users.set(userID, userData);
+				if(!isLean) this.databaseCache.users.set(userID, userData);
 				return userData;
 			} else {
 				userData = new this.usersData({ id: userID });
@@ -150,7 +150,7 @@ class Atlanta extends Client {
 		} else {
 			let memberData = (isLean ? await this.membersData.findOne({ id: memberID, guildID }).lean() : await this.membersData.findOne({ id: memberID, guildID }));
 			if(memberData){
-				this.databaseCache.members.set(`${memberID}${guildID}`, memberData);
+				if(!isLean) this.databaseCache.members.set(`${memberID}${guildID}`, memberData);
 				return memberData;
 			} else {
 				memberData = new this.membersData({ id: memberID, guildID: guildID });
@@ -173,7 +173,7 @@ class Atlanta extends Client {
 		} else {
 			let guildData = (isLean ? await this.guildsData.findOne({ id: guildID }).populate("members").lean() : await this.guildsData.findOne({ id: guildID }).populate("members"));
 			if(guildData){
-				this.databaseCache.guilds.set(guildID, guildData);
+				if(!isLean) this.databaseCache.guilds.set(guildID, guildData);
 				return guildData;
 			} else {
 				guildData = new this.guildsData({ id: guildID });
