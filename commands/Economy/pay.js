@@ -39,7 +39,7 @@ class Pay extends Command {
 
         const amount = Math.ceil(parseInt(sentAmount, 10));
 
-        if(amount > memberData.money){
+        if(amount > data.memberData.money){
             return message.error("economy/pay:ENOUGH_MONEY", {
                 amount,
                 username: member.user.tag
@@ -48,10 +48,10 @@ class Pay extends Command {
 
         let memberData = await this.client.findOrCreateMember({ id: member.id, guildID: message.guild.id });
 
-        data.memberData.money = data.memberData.money - parseInt(toPay, 10);
+        data.memberData.money = data.memberData.money - parseInt(amount, 10);
         data.memberData.save();
 
-        memberData.money = memberData.money + parseInt(toPay, 10);
+        memberData.money = memberData.money + parseInt(amount, 10);
         memberData.save();
 
         // Send a success message
