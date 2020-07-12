@@ -37,13 +37,13 @@ class Help extends Command {
 			}
 
 			const description = message.translate(`${cmd.help.category.toLowerCase()}/${cmd.help.name}:DESCRIPTION`);
-			const usage = message.translate(`${cmd.help.category.toLowerCase()}/${cmd.name}:USAGE`, {
+			const usage = message.translate(`${cmd.help.category.toLowerCase()}/${cmd.help.name}:USAGE`, {
 				prefix: message.guild
 					? data.guild.prefix
 					: ""
 			}
 			);
-			const examples = message.translate(`${cmd.help.category.toLowerCase()}/${cmd.name}:EXAMPLES`, {
+			const examples = message.translate(`${cmd.help.category.toLowerCase()}/${cmd.help.name}:EXAMPLES`, {
 				prefix: message.guild
 					? data.guild.prefix
 					: ""
