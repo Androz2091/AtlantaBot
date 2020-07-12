@@ -50,6 +50,12 @@ class Autorole extends Command {
 
 		if(status === "off"){
 
+			if(!data.plugins.autorole.enabled){
+				return message.success("administration/autorole:ALREADY_DISABLED", {
+					prefix: data.guild.prefix
+				});
+			}
+
 			data.guild.plugins.autorole = {
 				enabled: false,
 				role: null
