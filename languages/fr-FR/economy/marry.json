@@ -13,5 +13,6 @@
     "TIMEOUT": "{{username}} n'a pas répondu.... Attendez qu'il/elle soit connecté et réessayez après !",
     "SUCCESS": "🎉 Félicitations ! **{{creator}}** et **{{partner}}** vous êtes maintenant mariés !",
     "DENIED": "{{creator}}, j'ai de mauvaises nouvelles... {{partner}} a refusé votre demande.",
-    "REQUEST": "{{to}}, voulez-vous épouser {{from}} ? Répondez par \"oui\" ou \"non\" !"
+    "REQUEST": "{{to}}, voulez-vous épouser {{from}} ? Répondez par \"oui\" ou \"non\" !",
+    "BOT_USER": "You can't marry a bot!"
 }
