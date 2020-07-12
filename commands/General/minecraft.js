@@ -63,10 +63,10 @@ class Minecraft extends Command {
 
         let mcEmbed = new Discord.MessageEmbed()
             .setAuthor(message.translate("general/minecraft:FIELD_NAME", {
-                ip
+                ip: json.name
             }))
             .addField(message.translate("general/minecraft:FIELD_VERSION"),
-                json.raw.version.name || json.raw.server_engine
+                json.raw.vanilla.raw.version.name
             )
             .addField(message.translate("general/minecraft:FIELD_CONNECTED"),
                 message.translate("general/minecraft:PLAYERS", {
