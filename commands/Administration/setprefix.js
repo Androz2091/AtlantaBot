@@ -1,42 +1,42 @@
 const Command = require("../../base/Command.js"),
-Discord = require("discord.js");
+	Discord = require("discord.js");
 
 class Setprefix extends Command {
 
-    constructor (client) {
-        super(client, {
-            name: "setprefix",
-            dirname: __dirname,
-            enabled: true,
-            guildOnly: true,
-            aliases: [],
-            memberPermissions: [ "MANAGE_GUILD" ],
-            botPermissions: [ "SEND_MESSAGES", "EMBED_LINKS" ],
-            nsfw: false,
-            ownerOnly: false,
-            cooldown: 3000
-        });
-    }
+	constructor (client) {
+		super(client, {
+			name: "setprefix",
+			dirname: __dirname,
+			enabled: true,
+			guildOnly: true,
+			aliases: [],
+			memberPermissions: [ "MANAGE_GUILD" ],
+			botPermissions: [ "SEND_MESSAGES", "EMBED_LINKS" ],
+			nsfw: false,
+			ownerOnly: false,
+			cooldown: 3000
+		});
+	}
 
-    async run (message, args, data) {
+	async run (message, args, data) {
 
-        let prefix = args[0];
-        if(!prefix){
-            return message.error("administration/setprefix:MISSING_PREFIX");
-        }
-        if(prefix.length > 5){
-            return message.error("administration/setprefix:TOO_LONG");
-        }
+		const prefix = args[0];
+		if(!prefix){
+			return message.error("administration/setprefix:MISSING_PREFIX");
+		}
+		if(prefix.length > 5){
+			return message.error("administration/setprefix:TOO_LONG");
+		}
         
-        data.guild.prefix = prefix;
-        data.guild.save();
+		data.guild.prefix = prefix;
+		data.guild.save();
 
-        // Sucess
-        return message.success("administration/setprefix:SUCCESS", {
-            prefix
-        });
+		// Sucess
+		return message.success("administration/setprefix:SUCCESS", {
+			prefix
+		});
         
-    }
+	}
 
 }
 

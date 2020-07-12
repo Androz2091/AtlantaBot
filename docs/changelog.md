@@ -2,6 +2,40 @@
 
 All notable changes to this project will be documented in this file.
 
+## [4.7.0]
+
+### Added
+
+* Atlanta now uses i18next and can be translated on the [Crowdin project page](https://crowdin.com/project/atlantabot).
+* Simple cache system was added, to reduce latency. (c73d1d6b)
+
+### Fixed
+
+* The play command is now playing the right song instead of a random one. (be4f497c)
+* Dashboard authentication has been fixed. (ad3d84a6)
+* Birthdate input on the dashboard has been fixed and is now saving the right date. (b885ccc7)
+* `addemote` command has been renamed to `addemoji`. (e8b3b969)
+* `tcl` command has been removed, as it was not used. (c3309663)
+* `purge` command was removed, as it was not used. (07e0d55d)
+* `api-token` command has been removed, as it was useless. (5857aab1)
+* `partners` command has been removed, as it was not used. (dec093fa)
+* `mention-role` command was removed, as Discord now has a mention permissions. (3fb32d7d)
+* `getconf` and `getinvite` commands were temporarily removed. (aa998c58)
+* `help` command now generate an invite link with administrator permissions. (b64114a6)
+* `weeding` command has been renamed to `marry`. (dd89ab8b)
+* Dashboard selector (the grid with servers) is now working for accounts with +30 servers. (2149b903)
+* Dashboard now accepts prefixes of one character. (2fac3b82)
+* New `h` and `commands` aliases to `help` command. (081d0ead)
+* New `lc` alias to `lovecalc` command. (8e612a4a)
+* `userinfo` command now sends an error message if the provided ID is not valid. (9ebfd866)
+* `skip` command is now working when the voice channel includes bots that can't vote. (095dac3d)
+* Atlanta now uses the `discord-canvas` library for fortnite related commands and greeting images. (aaf785b5)
+* Atlanta now uses the `moment` library to show dates and times. (f46edf00)
+* Atlanta now uses the last version of the `discord.js` library. (b33f4e20)
+* Atlanta now uses the last version of the `discord-giveaways` library. (1a57cebb)
+* Atlanta now uses the last version of the `discord-player` library (YouTube API key is no longer required). (80335aa8)
+* Sentry.io has been setup, and errors are now saved and reported. (8bfbb03a)
+
 ## [4.6.0]
 
 ### Added

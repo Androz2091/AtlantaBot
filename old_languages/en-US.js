@@ -1,12 +1,12 @@
-let lang = "english";
+const lang = "english";
 
-let c = require("../config.js");
-let e = c.emojis;
+const c = require("../config.js");
+const e = c.emojis;
 
 // This class is used to store languages strings
 
 module.exports = class {
-    constructor() {
+	constructor() {
 		this.language = {
 
 			// Utils
@@ -160,7 +160,7 @@ module.exports = class {
 			// Errors
 			HASTEBIN_ERR_TEXT: `${e.error} | You must enter a text!`,
 			// Content
-			HASTEBIN_TITLE: `Upload complete!`,
+			HASTEBIN_TITLE: "Upload complete!",
 
 			/* ASCII COMMAND */
 
@@ -185,7 +185,7 @@ module.exports = class {
 			FINDWORDS_TIMER: `${e.warn} | The game starts in 10 seconds!`,
 			FINDWORDS_QUESTION: (word) => `${e.warn} | 20 seconds to find a word containing "**${word}**" !`,
 			FINDWORDS_CONGRATS: (winner) => `${e.success} | Well done <@${winner}> ! Your word is valid and you were the fastest!`,
-			FINDWORDS_STATS: (username, games, time, number, members) => ``,
+			FINDWORDS_STATS: (username, games, time, number, members) => "",
 			FINDWORDS_MONEY: (member) => `${member} wins 15 credits! :tada:`,
 
 			/* NUMBER COMMAND */
@@ -579,8 +579,8 @@ module.exports = class {
 			APITOKEN_USAGE: "apitoken (regenerate)",
 			APITOKEN_EXAMPLES: "$apitoken\n$apitoken regenerate",
 			// Content
-			APITOKEN_DM_SUCCESS: `:incoming_envelope:: | API key sent by private messages!`,
-			APITOKEN_DM_SUCCESS_REGENERATE: `:incoming_envelope: | New API key sent by private messages!`,
+			APITOKEN_DM_SUCCESS: ":incoming_envelope:: | API key sent by private messages!",
+			APITOKEN_DM_SUCCESS_REGENERATE: ":incoming_envelope: | New API key sent by private messages!",
 			APITOKEN_SUCCESS: (token) => `:key: | Your API key is \`${token}\` !`,
 			APITOKEN_SUCCESS_REGENERATE: (token) => `:key: | Regenerated API key! Your API key is now \`${token}\`.`,
 
@@ -706,7 +706,7 @@ module.exports = class {
 			STOP_USAGE: "stop",
 			STOP_EXAMPLES: "$stop",
 			// Content
-			STOP_TITLE: `Stop the music`,
+			STOP_TITLE: "Stop the music",
 			STOP_CONTENT: (voteCount, requiredCount) => `Stop the music\nVote: ${voteCount}/${requiredCount}\nReact with 👍 to stop the music!`,
 			STOP_CONTENT_COMPLETE: "Music correctly stopped!",
 
@@ -840,7 +840,7 @@ module.exports = class {
 			/* WELCOME COMMAND */
 
 			// Utils
-			WELCOME_DESCRIPTION: `Send a welcome message to a pre-defined channel!`,
+			WELCOME_DESCRIPTION: "Send a welcome message to a pre-defined channel!",
 			WELCOME_USAGE: "welcome",
 			WELCOME_EXAMPLES: "$welcome",
 			// Content
@@ -848,7 +848,7 @@ module.exports = class {
 			WELCOME_DISABLED: (prefix) => `${e.success} | Welcome messages have just been disabled! Type \`${prefix}configuration\` to see the current configuration!`,
 			WELCOME_FORM_CHANNEL: (author) => `Hello ${author} ! In which channel will the welcome messages be sent? (mention a channel)`,
 			WELCOME_FORM_MESSAGE: (channel, msg) => `All right! The messages will therefore be sent in ${channel}. Enter the welcome message below: \n\n\nInfos:\n\n\nMention: {user}\nMembers: {membercount}\nServer: {server}\nFor example, "Welcome {user} to {server} ! Thanks to you, we are {membercount} ! will give "Welcome ${msg.author} to ${msg.guild.name} ! Thanks to you, we are ${msg.guild.memberCount} !".`,
-			WELCOME_FORM_IMAGE: `It works! Do you want a great welcome image to be sent at the same time? Answer with "yes" or "no"!`,
+			WELCOME_FORM_IMAGE: "It works! Do you want a great welcome image to be sent at the same time? Answer with \"yes\" or \"no\"!",
 			WELCOME_FORM_SUCCESS: (channel, prefix) => `${e.success} | Welcome messages enabled in <#${channel}> ! Type \`${prefix}welcome test\` to test the welcome message!`,
 			WELCOME_IMG_MSG: (name) => `Welcome in ${name} !`,
 			WELCOME_IMG_NUMBER: (memberCount) => `- ${memberCount}th member !`,
@@ -908,7 +908,7 @@ module.exports = class {
 			GOODBYE_TEST_SUCCESS: `${e.success} | Test performed!`,
 			GOODBYE_FORM_CHANNEL: (author) => `Hello ${author} ! In which channel will the goodbye messages be sent? (mention a channel)`,
 			GOODBYE_FORM_MESSAGE: (channel, msg) => `All right! The messages will therefore be sent in ${channel}. Enter the goodbye message below: \n\n\nInfos:\\n\n\nMention: {user}\nMembers: {membercount}\nServer: {server}\nFor example, "Goodbye {user} ! It's sad, without you we're only {membercount} on {server} !" will give "Goodbye ${msg.author.username}#${msg.author.discriminator} ! It's sad, without you we're only ${msg.guild.memberCount} on ${msg.guild.name} !".`,
-			GOODBYE_FORM_IMAGE: `It works! Do you want a great welcome image to be sent at the same time? Answer with "yes" or "no"!`,
+			GOODBYE_FORM_IMAGE: "It works! Do you want a great welcome image to be sent at the same time? Answer with \"yes\" or \"no\"!",
 			GOODBYE_FORM_SUCCESS: (channel, prefix) => `${e.success} | Goodbye messages enabled in <#${channel}> ! Type \`${prefix}goodbye test\` to test the goodbye message!`,
 			GOODBYE_IMG_MSG: (name) => `Leaving from ${name}`,
 			GOODBYE_IMG_NUMBER: (memberCount) => `- ${memberCount}th member !`,
@@ -1056,7 +1056,7 @@ module.exports = class {
 			LEADERBOARD_EXAMPLES: "$leaderboard credits\n$leaderboard levels",
 			// Errors
 			LEADERBOARD_ERR_TYPE: `${e.error} | Please enter a type of leaderboard! (\`credits\`, \`level\` ou \`rep\`)`,
-			LEADERBOARD_WARN_PHONE: `:confused: We have detected that you are using a phone.... The leaderboard may not display well on small screens. Try to switch to landscape (or go on the dashboard)!`,
+			LEADERBOARD_WARN_PHONE: ":confused: We have detected that you are using a phone.... The leaderboard may not display well on small screens. Try to switch to landscape (or go on the dashboard)!",
 
 			/* ROB COMMAND */
 
@@ -1193,7 +1193,7 @@ module.exports = class {
 			STATS_LINKS: (url, id) => `[Donate](${c.others.donate}) ● [Invite](https://discordapp.com/oauth2/authorize?client_id=${id}&scope=bot&permissions=2146958847) ● [Server](${url}) ● [Github](${c.others.github})`,
 			// Headings
 			STATS_HEADINGS:[
-				`Stats`,
+				"Stats",
 				`${e.stats} • __Statistics__`,
 				`${e.version} • __Version__`,
 				`${e.ram} • __RAM__`,
@@ -1693,10 +1693,10 @@ module.exports = class {
 				"Logout"
 			]
 
-        }
-    }
+		};
+	}
 
-    /**
+	/**
 	 * The method to get language strings
 	 * @param {string} term The string or function to look up
 	 * @param {...*} args Any arguments to pass to the lookup
@@ -1707,8 +1707,8 @@ module.exports = class {
 		const value = this.language[term];
 		/* eslint-disable new-cap */
 		switch (typeof value) {
-			case 'function': return value(...args);
-			default: return value;
+		case "function": return value(...args);
+		default: return value;
 		}
 	}
 
@@ -1717,22 +1717,22 @@ module.exports = class {
 	}
 
 	printDate(pdate, isLongDate){
-        let monthNames = [
-            "January", "February", "March",
-            "April", "May", "June", "July",
-            "August", "September", "October",
-            "November", "December"
-          ];
+		const monthNames = [
+			"January", "February", "March",
+			"April", "May", "June", "July",
+			"August", "September", "October",
+			"November", "December"
+		];
         
-        let day = pdate.getDate();
-        let monthIndex = pdate.getMonth();
-        let year = pdate.getFullYear();
-        let hour = pdate.getHours() < 10 ? "0" + pdate.getHours() : pdate.getHours();
-        let minute = pdate.getMinutes() < 10 ? "0" + pdate.getMinutes() : pdate.getMinutes();
+		const day = pdate.getDate();
+		const monthIndex = pdate.getMonth();
+		const year = pdate.getFullYear();
+		const hour = pdate.getHours() < 10 ? "0" + pdate.getHours() : pdate.getHours();
+		const minute = pdate.getMinutes() < 10 ? "0" + pdate.getMinutes() : pdate.getMinutes();
 
-        let thedate = (isLongDate) ? day + " " + monthNames[monthIndex] + " " + year + " at " + hour + "h" + minute 
-        : day + " " + monthNames[monthIndex] + " " + year
-        return thedate;
+		const thedate = (isLongDate) ? day + " " + monthNames[monthIndex] + " " + year + " at " + hour + "h" + minute 
+			: day + " " + monthNames[monthIndex] + " " + year;
+		return thedate;
 	}
 	
 	/**
@@ -1741,23 +1741,23 @@ module.exports = class {
 	 * @returns The parsed milliseconds
 	 */
 	convertMs(milliseconds){
-		let roundTowardsZero = milliseconds > 0 ? Math.floor : Math.ceil;
+		const roundTowardsZero = milliseconds > 0 ? Math.floor : Math.ceil;
 		let days = roundTowardsZero(milliseconds / 86400000),
-		hours = roundTowardsZero(milliseconds / 3600000) % 24,
-		minutes = roundTowardsZero(milliseconds / 60000) % 60,
-		seconds = roundTowardsZero(milliseconds / 1000) % 60;
+			hours = roundTowardsZero(milliseconds / 3600000) % 24,
+			minutes = roundTowardsZero(milliseconds / 60000) % 60,
+			seconds = roundTowardsZero(milliseconds / 1000) % 60;
 		if(seconds === 0){
 			seconds++;
 		}
-		let isDays = days > 0,
-		isHours = hours > 0,
-		isMinutes = minutes > 0;
-		let pattern = 
+		const isDays = days > 0,
+			isHours = hours > 0,
+			isMinutes = minutes > 0;
+		const pattern = 
 		(!isDays ? "" : (isMinutes || isHours) ? "{days} days, " : "{days} days and ")+
 		(!isHours ? "" : (isMinutes) ? "{hours} hours, " : "{hours} hours and ")+
 		(!isMinutes ? "" : "{minutes} minutes and ")+
 		("{seconds} seconds");
-		let sentence = pattern
+		const sentence = pattern
 			.replace("{duration}", pattern)
 			.replace("{days}", days)
 			.replace("{hours}", hours)
@@ -1766,4 +1766,4 @@ module.exports = class {
 		return sentence;
 	}
 
-}
+};

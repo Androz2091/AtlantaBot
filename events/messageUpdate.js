@@ -3,11 +3,11 @@
 // goes `client, other, args` when this function is run.
 
 module.exports = class {
-    constructor (client) {
-        this.client = client;
-    }
+	constructor (client) {
+		this.client = client;
+	}
 
-    async run (oldMessage, newMessage) {
-        this.client.emit('message', newMessage);
-    }
+	async run (oldMessage, newMessage) {
+		this.client.emit("message", newMessage);
+	}
 };

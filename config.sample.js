@@ -220,35 +220,35 @@ module.exports = {
 		"DiscordUser ID",
 		"Another DiscordUser ID"
 	],
-    /* Language configuration */
-    languages: [
-        {
-            name: "en-US",
+	/* Language configuration */
+	languages: [
+		{
+			name: "en-US",
 			nativeName: "English",
 			moment: "en",
 			defaultMomentFormat: "MMMM Do YYYY",
-            default: true,
-            aliases: [
-                "English",
-                "en",
-                "en-us",
-                "en_us",
-                "en_US"
-            ]
-        },
-        {
-            name: "fr-FR",
+			default: true,
+			aliases: [
+				"English",
+				"en",
+				"en-us",
+				"en_us",
+				"en_US"
+			]
+		},
+		{
+			name: "fr-FR",
 			nativeName: "Français",
 			defaultMomentFormat: "Do MMMM YYYY",
 			moment: "fr",
-            default: false,
-            aliases: [
-                "French",
-                "français",
-                "francais",
-                "fr",
-                "fr_fr"
-            ]
-        }
-    ]
-}
+			default: false,
+			aliases: [
+				"French",
+				"français",
+				"francais",
+				"fr",
+				"fr_fr"
+			]
+		}
+	]
+};

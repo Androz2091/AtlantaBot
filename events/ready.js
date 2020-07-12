@@ -1,51 +1,51 @@
 const Discord = require("discord.js"),
-giveaways = require("discord-giveaways");
+	giveaways = require("discord-giveaways");
 
 module.exports = class {
 
-    constructor (client) {
-        this.client = client;
-    }
+	constructor (client) {
+		this.client = client;
+	}
 
-    async run () {
+	async run () {
 
-        let client = this.client;
+		const client = this.client;
 
-        // Logs some informations using the logger file
-        client.logger.log(`Loading a total of ${client.commands.size} command(s).`, "log");
-        client.logger.log(`${client.user.tag}, ready to serve ${client.users.cache.size} users in ${client.guilds.cache.size} servers.`, "ready");
+		// Logs some informations using the logger file
+		client.logger.log(`Loading a total of ${client.commands.size} command(s).`, "log");
+		client.logger.log(`${client.user.tag}, ready to serve ${client.users.cache.size} users in ${client.guilds.cache.size} servers.`, "ready");
 
-        /* DiscordBots.org STATS */
-        let discordbotsorg = require("../helpers/discordbots.org.js");
-        discordbotsorg.init(client);
+		/* DiscordBots.org STATS */
+		const discordbotsorg = require("../helpers/discordbots.org.js");
+		discordbotsorg.init(client);
 
-        /* UNMUTE USERS */
-        let checkUnmutes = require("../helpers/checkUnmutes.js");
-        checkUnmutes.init(client);
+		/* UNMUTE USERS */
+		const checkUnmutes = require("../helpers/checkUnmutes.js");
+		checkUnmutes.init(client);
 
-        /* SEND REMIND */
-        let checkReminders = require("../helpers/checkReminders.js");
-        checkReminders.init(client);
+		/* SEND REMIND */
+		const checkReminders = require("../helpers/checkReminders.js");
+		checkReminders.init(client);
 
-        /* DAILY SHOP FORTNITE */
-        let fortniteShop = require("../helpers/fortniteShop.js");
-        fortniteShop.init(client);
+		/* DAILY SHOP FORTNITE */
+		const fortniteShop = require("../helpers/fortniteShop.js");
+		fortniteShop.init(client);
 
-        // Start the dashboard
-        if(client.config.dashboard.enabled){
-            client.dashboard.load(client);
-        }
+		// Start the dashboard
+		if(client.config.dashboard.enabled){
+			client.dashboard.load(client);
+		}
 
-        // Update the game every 20s
-        const status = require("../config.js").status,
-        version = require("../package.json").version;
-        let i = 0;
-        setInterval(function(){
-            let toDisplay = status[parseInt(i, 10)].name.replace("{serversCount}", client.guilds.cache.size)+" | v"+version;
-            client.user.setActivity(toDisplay, {type: status[parseInt(i, 10)].type});
-            if(status[parseInt(i+1, 10)]) i++
-            else i = 0;
-        }, 20000); // Every 20 seconds
+		// Update the game every 20s
+		const status = require("../config.js").status,
+			version = require("../package.json").version;
+		let i = 0;
+		setInterval(function(){
+			const toDisplay = status[parseInt(i, 10)].name.replace("{serversCount}", client.guilds.cache.size)+" | v"+version;
+			client.user.setActivity(toDisplay, {type: status[parseInt(i, 10)].type});
+			if(status[parseInt(i+1, 10)]) i++;
+			else i = 0;
+		}, 20000); // Every 20 seconds
 
-    }
-}  
+	}
+};  
