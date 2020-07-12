@@ -58,7 +58,7 @@ router.post("/:serverID", CheckAuth, async(req, res) => {
 		const welcome = {
 			enabled: true,
 			message: data.message,
-			channel: guild.channels.find((ch) => "#"+ch.name === data.channel).id,
+			channel: guild.channels.cache.find((ch) => "#"+ch.name === data.channel).id,
 			withImage: data.withImage === "on"
 		};
 		guildData.plugins.welcome = welcome;
@@ -82,7 +82,7 @@ router.post("/:serverID", CheckAuth, async(req, res) => {
 		const goodbye = {
 			enabled: true,
 			message: data.message,
-			channel: guild.channels.find((ch) => "#"+ch.name === data.channel).id,
+			channel: guild.channels.cache.find((ch) => "#"+ch.name === data.channel).id,
 			withImage: data.withImage === "on"
 		};
 		guildData.plugins.goodbye = goodbye;
@@ -126,17 +126,17 @@ router.post("/:serverID", CheckAuth, async(req, res) => {
 		if(data.suggestions === req.translate("common:NO_CHANNEL")){
 			guildData.plugins.suggestions = false;
 		} else {
-			guildData.plugins.suggestions = guild.channels.find((ch) => "#"+ch.name === data.suggestions).id;
+			guildData.plugins.suggestions = guild.channels.cache.find((ch) => "#"+ch.name === data.suggestions).id;
 		}
 		if(data.modlogs === req.translate("common:NO_CHANNEL")){
 			guildData.plugins.modlogs = false;
 		} else {
-			guildData.plugins.modlogs = guild.channels.find((ch) => "#"+ch.name === data.modlogs).id;
+			guildData.plugins.modlogs = guild.channels.cache.find((ch) => "#"+ch.name === data.modlogs).id;
 		}
 		if(data.fortniteshop === req.translate("common:NO_CHANNEL")){
 			guildData.plugins.fortniteshop = false;
 		} else {
-			guildData.plugins.fortniteshop = guild.channels.find((ch) => "#"+ch.name === data.fortniteshop).id;
+			guildData.plugins.fortniteshop = guild.channels.cache.find((ch) => "#"+ch.name === data.fortniteshop).id;
 		}
 		guildData.markModified("plugins");
 	}
