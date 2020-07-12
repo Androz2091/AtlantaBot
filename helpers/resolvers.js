@@ -74,7 +74,7 @@ const resolveRole = async ({ message, search }) => {
 			return roleFound;
 	}
 	// Try with ID
-	if (message.guild.roles.has(search)) {
+	if (message.guild.roles.cache.has(search)) {
 		const roleFound = message.guild.roles.cache.get(search);
 		if (roleFound)
 			return roleFound;
