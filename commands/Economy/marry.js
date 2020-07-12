@@ -22,12 +22,6 @@ class Marry extends Command {
     }
 
     async run (message, args, data) {
-
-        // Gets the first mentionned member
-        let member = await this.client.resolveMember(args[0], message.guild);
-        if(!member){
-            return message.error("economy/marry:INVALID_MEMBER");
-        }
         
         // if the message author is already wedded
         if(data.userData.lover){
@@ -35,6 +29,13 @@ class Marry extends Command {
                 prefix: data.guild.prefix
             });
         }
+
+        // Gets the first mentionned member
+        let member = await this.client.resolveMember(args[0], message.guild);
+        if(!member){
+            return message.error("economy/marry:INVALID_MEMBER");
+        }
+
         let userData = await this.client.findOrCreateUser({ id: member.id });
         // if the member is already wedded
         if(userData.lover){
