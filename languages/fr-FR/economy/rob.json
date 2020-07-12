@@ -3,7 +3,7 @@
     "USAGE": "{{prefix}}rob [@membre] [montant]",
     "EXAMPLES": "{{prefix}rob @Androz#2091 100",
     "YOURSELF": "Vous ne pouvez pas vous voler vous-même !",
-    "MISSING_MEMBER": "You must specify a valid member to rob!",
+    "MISSING_MEMBER": "Vous devez spécifier un membre valide à qui voler !",
     "MISSING_AMOUNT": "Veuillez indiquer un montant valide à voler à **{{username}}** !",
     "NOT_ENOUGH_AUTHOR": "Vous devez avoir plus de **{{moneyMin}}** crédits pour tenter ce vol (vous avez actuellement **{{moneyCurrent}}** crédits) !",
     "NOT_ENOUGH_MEMBER": "Vous ne pouvez pas essayer de voler **{{money}}** crédits à **{{username}}** car il n'a pas autant de crédits en cash !",
