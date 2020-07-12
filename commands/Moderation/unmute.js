@@ -25,6 +25,12 @@ class Unmute extends Command {
 			return message.success("moderation/unmute:MISSING_MEMBER");
 		}
 
+		const memberPosition = member.roles.highest.position;
+		const moderationPosition = message.member.roles.highest.position;
+		if(message.member.ownerID !== message.author.id && !(moderationPosition > memberPosition)){
+			return message.error("moderation/ban:SUPERIOR");
+		}
+
 		const memberData = await this.client.findOrCreateMember({ id: member.id, guildID: message.guild.id });
 
 		if(memberData.mute.muted){

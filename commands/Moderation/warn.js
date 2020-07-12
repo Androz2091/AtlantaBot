@@ -35,7 +35,7 @@ class Warn extends Command {
 
 		const memberPosition = member.roles.highest.position;
 		const moderationPosition = message.member.roles.highest.position;
-		if(!(moderationPosition > memberPosition)){
+		if(message.member.ownerID !== message.author.id && !(moderationPosition > memberPosition)){
 			return message.error("moderation/ban:SUPERIOR");
 		}
 
