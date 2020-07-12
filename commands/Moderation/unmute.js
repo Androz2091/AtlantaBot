@@ -37,7 +37,7 @@ class Unmute extends Command {
 			memberData.markModified("mute");
 			memberData.save();
 			message.success("moderation/unmute:SUCCESS", {
-				username: member.user
+				username: member.user.tag
 			});
 		} else {
 			message.error("moderation/unmute:NOT_MUTED", {
