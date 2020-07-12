@@ -7,8 +7,6 @@ const asyncForEach = async (array, callback) => {
 	}
 };
 
-const Canvas = require("canvas");
-
 class Profile extends Command {
 
 	constructor (client) {

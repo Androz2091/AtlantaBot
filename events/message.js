@@ -2,8 +2,7 @@
 // Note that due to the binding of client to every event, every event
 // goes `client, other, args` when this function is run.
 
-const Discord = require("discord.js"),
-	xpCooldown = {},
+const xpCooldown = {},
 	cmdCooldown = {};
 
 module.exports = class {

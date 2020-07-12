@@ -1,7 +1,6 @@
 const Command = require("../../base/Command.js"),
 	Discord = require("discord.js"),
-	backup = require("discord-backup"),
-	moment = require("moment");
+	backup = require("discord-backup");
 
 class Backup extends Command {
 

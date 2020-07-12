@@ -18,7 +18,7 @@ class Clyde extends Command {
 		});
 	}
 
-	async run (message, args, data) {
+	async run (message, args) {
 
 		const text = args.join(" ");
 

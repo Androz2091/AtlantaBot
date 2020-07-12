@@ -37,9 +37,8 @@ async function fetchUser(userData, client, query){
 		}
 	}
 	const user = await client.users.fetch(userData.id);
-	const usersDb = await client.functions.getUsersData(client, [ user ]);
-	const userDb = usersDb[0];
-	const userInfos = { ...user.toJSON(), ...userDb.toJSON(), ...userData, ...user.presence };
+	const userDb = await client.findOrCreateUser({ id: user.id }, true);
+	const userInfos = { ...user.toJSON(), ...userDb, ...userData, ...user.presence };
 	return userInfos;
 }
 

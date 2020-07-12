@@ -48,7 +48,7 @@ class ServersList extends Command {
 
 		const collector = msg.createReactionCollector((reaction, user) => user.id === message.author.id);
 
-		collector.on("collect", async(reaction, user) => {
+		collector.on("collect", async(reaction) => {
 
 			if(reaction._emoji.name === "⬅") {
 

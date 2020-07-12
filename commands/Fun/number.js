@@ -20,7 +20,7 @@ class Number extends Command {
 		});
 	}
 
-	async run (message, args, data) {
+	async run (message) {
 
 		if (currentGames[message.guild.id]) {
 			return message.error("fun/number:GAME_RUNNING");

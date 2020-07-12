@@ -103,7 +103,7 @@ class Marry extends Command {
 			}
 		});
 
-		collector.on("end", async (_collected, reason) => {
+		collector.on("end", async (_collected, reason) => {
 			// Delete pending request 
 			delete pendings[message.author.id];
 			if(reason === "time"){
@@ -111,7 +111,7 @@ class Marry extends Command {
 					username: member.user.toString()
 				});
 			}
-			if(accepted){
+			if(reason){
 				data.userData.lover = member.id;
 				await data.userData.save();
 				userData.lover = message.author.id;

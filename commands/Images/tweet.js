@@ -19,7 +19,7 @@ class Tweet extends Command {
 		});
 	}
 
-	async run (message, args, data) {
+	async run (message, args) {
 
 		const user = args[0];
 		const text = args.slice(1).join(" ");

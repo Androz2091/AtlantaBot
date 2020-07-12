@@ -1,6 +1,4 @@
 const Command = require("../../base/Command.js"),
-	Discord = require("discord.js"),
-	giveaways = require("discord-giveaways"),
 	ms = require("ms");
 
 class Giveaway extends Command {

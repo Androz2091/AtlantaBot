@@ -1,5 +1,4 @@
-const Command = require("../../base/Command.js"),
-	Discord = require("discord.js");
+const Command = require("../../base/Command.js");
 
 class Slots extends Command {
 
@@ -33,7 +32,7 @@ class Slots extends Command {
 
 		// Gets the amount provided
 		let amount = args[0];
-		if(!amount || isNaN(amount) || amount < 1){
+		if(!amount || isNaN(amount) || amount < 1){
 			amount = 1;
 		}
 		if(amount > data.memberData.money){

@@ -1,6 +1,5 @@
 const Command = require("../../base/Command.js"),
-	Discord = require("discord.js");
-const Resolvers = require("../../helpers/resolvers");
+	Resolvers = require("../../helpers/resolvers");
 
 class Setsuggests extends Command {
 

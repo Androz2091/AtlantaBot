@@ -8,31 +8,6 @@ languages.forEach((l) => {
 module.exports = {
 
 	/**
-     * Gets the users data
-     * @param {object} client The discord client
-     * @param {array} users The users to gets data
-     * @returns The users data
-     */
-	async getUsersData(client, users){
-		return new Promise(async function(resolve, reject){
-			const usersData = [];
-			for(const u of users){
-				const result = await client.usersData.find({id: u.id});
-				if(result[0]){
-					usersData.push(result[0]);
-				} else {
-					const user = new client.usersData({
-						id: u.id
-					});
-					await user.save();
-					usersData.push(user);
-				}
-			}
-			resolve(usersData);
-		});
-	},
-
-	/**
      * Gets message prefix
      * @param {object} message The Discord message
      * @returns The prefix
@@ -58,17 +33,15 @@ module.exports = {
 
 	// This function return a valid link to the support server
 	async supportLink(client){
-		return new Promise(async function(resolve, reject) {
-			const guild = client.guilds.cache.get(client.config.support.id);
-			const member = guild.me;
-			const channel = guild.channels.cache.find((ch) => ch.permissionsFor(member.id).has("CREATE_INSTANT_INVITE"));
-			if(channel){
-				const invite = await channel.createInvite({maxAge :0}).catch((err) => {});
-				resolve(invite ? invite.url : null);
-			} else {
-				resolve("https://atlanta-bot.fr");
-			}
-		});
+		const guild = client.guilds.cache.get(client.config.support.id);
+		const member = guild.me;
+		const channel = guild.channels.cache.find((ch) => ch.permissionsFor(member.id).has("CREATE_INSTANT_INVITE"));
+		if(channel){
+			const invite = await channel.createInvite({maxAge :0}).catch((err) => {});
+			return invite ? invite.url : null;
+		} else {
+			return "https://atlanta-bot.fr";
+		}
 	},
 
 	// This function sort an array 

@@ -10,7 +10,7 @@
         "SharedArrayBuffer": "readonly"
     },
     "parserOptions": {
-        "ecmaVersion": 2018
+        "ecmaVersion": 2020
     },
     "rules": {
         "prefer-const": [
@@ -31,6 +31,12 @@
         "semi": [
             "error",
             "always"
+        ],
+        "no-mixed-spaces-and-tabs": [
+            "warn"
+        ],
+        "no-unused-vars": [
+            "warn"
         ]
     }
 }
