@@ -22,14 +22,14 @@ class Automod extends Command {
 
 		const status = args[0];
 		if(!status || (status !== "on" && status !== "off")){
-			return message.error("moderation/automod:MISSING_STATUS");
+			return message.error("administration/automod:MISSING_STATUS");
 		}
 
 		if(status === "on"){
 			data.guild.plugins.automod = { enabled: true, ignored: [] };
 			data.guild.markModified("plugins.automod");
 			data.guild.save();
-			message.success("moderation/automod:ENABLED", {
+			message.success("administration/automod:ENABLED", {
 				prefix: data.guild.prefix
 			});
 		} else if (status === "off"){
@@ -38,14 +38,14 @@ class Automod extends Command {
 				data.guild.plugins.automod.ignored.push(channel);
 				data.guild.markModified("plugins.automod");
 				data.guild.save();
-				message.success("moderation/automod:DISABLED_CHANNEL", {
+				message.success("administration/automod:DISABLED_CHANNEL", {
 					channel: channel.toString()
 				});
 			} else {
 				data.guild.plugins.automod = { enabled: false, ignored: [] };
 				data.guild.markModified("plugins.automod");
 				data.guild.save();
-				message.success("moderation/automod:DISABLED");
+				message.success("administration/automod:DISABLED");
 			}
 		}
 	}
