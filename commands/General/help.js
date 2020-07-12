@@ -73,7 +73,7 @@ class Help extends Command {
 				.addField(
 					message.translate("general/help:FIELD_ALIASES"),
 					cmd.help.aliases.length > 0
-						? cmd.help.map(a => "`" + a + "`").join("\n")
+						? cmd.help.aliases.map(a => "`" + a + "`").join("\n")
 						: message.translate("general/help:NO_ALIAS")
 				)
 				.addField(

@@ -98,7 +98,7 @@ class Atlanta extends Client {
 				props.init(this);
 			}
 			this.commands.set(props.help.name, props);
-			props.conf.aliases.forEach((alias) => {
+			props.help.aliases.forEach((alias) => {
 				this.aliases.set(alias, props.help.name);
 			});
 			return false;
