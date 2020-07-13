@@ -8,7 +8,7 @@
     "YOURSELF": "Vous ne pouvez pas vous mariez avec vous même !",
     "REQUEST_AUTHOR_TO_AMEMBER": "Vous avez déjà une demande en attente auprès de **{{username}}** !",
     "REQUEST_AMEMBER_TO_AUTHOR": "**{{username}}** vous a déjà envoyé une demande ! Veuillez d'abord refuser ou accepter la demande (ou attendez quelque minutes que la demande expire).",
-    "REQUEST_AMEMBER_TO_MEMBER": "**{{secondUsername}}** a déjà envoyé une requête à **{{firstUsername}}**!",
+    "REQUEST_AMEMBER_TO_MEMBER": "**{{secondUsername}}** a déjà envoyé une demande à **{{firstUsername}}** !",
     "REQUEST_MEMBER_TO_AMEMBER": "**{{firstUsername}} a déjà envoyé une requête à **{{secondUsername}}** ! Attendez que **{{secondUsername}}** accepte ou refuse la requête de **{{firstUsername}}** ou jusqu'à ce qu'elle expire, et réessayez !",
     "TIMEOUT": "{{username}} n'a pas répondu.... Attendez qu'il/elle soit connecté et réessayez après !",
     "SUCCESS": "🎉 Félicitations ! **{{creator}}** et **{{partner}}** vous êtes maintenant mariés !",
