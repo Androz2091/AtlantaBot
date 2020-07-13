@@ -1,5 +1,5 @@
 {
-    "DESCRIPTION": "Reprend la musique actuelle !",
+    "DESCRIPTION": "Reprend la musique en cours !",
     "USAGE": "{{prefix}}resume",
     "EXAMPLES": "{{prefix}}resume",
     "SUCCESS": "▶️ Musique de nouveau en cours de lecture !"
