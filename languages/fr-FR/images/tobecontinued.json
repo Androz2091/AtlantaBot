@@ -1,5 +1,5 @@
 {
     "DESCRIPTION": "Génère une image \"tobecontinued\" en utilisant l'API Nekobot",
-    "USAGE": "{{prefix}}tobecontinued (@member)",
+    "USAGE": "{{prefix}}tobecontinued (@membre)",
     "EXAMPLES": "{{prefix}}tobecontinued\n{{prefix}}tobecontinued @Androz#2091"
 }
