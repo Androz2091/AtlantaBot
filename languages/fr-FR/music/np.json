@@ -1,8 +1,8 @@
 {
-    "DESCRIPTION": "Affiche des informations sur la chanson actuelle !",
+    "DESCRIPTION": "Affiche des informations sur la chanson en cours de lecture !",
     "USAGE": "{{prefix}}np",
     "EXAMPLES": "{{prefix}}np",
-    "CURRENTLY_PLAYING": "Joue actuellement",
+    "CURRENTLY_PLAYING": "En cours de lecture",
     "T_TITLE": "Titre",
     "T_CHANNEL": "Salon",
     "T_DURATION": "Durée",
