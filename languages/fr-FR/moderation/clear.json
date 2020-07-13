@@ -1,10 +1,10 @@
 {
     "DESCRIPTION": "Supprime des messages très rapidement !",
-    "USAGE": "{{prefix}}clear[number-of-messages] (@membre)",
+    "USAGE": "{{prefix}}clear [number-of-messages] (@member)",
     "EXAMPLES": "{{prefix}clear 10\n{{prefix}clear 10 @Androz#2091",
     "MISSING_AMOUNT": "Vous devez préciser un nombre de messages à supprimer !",
     "ALL_CONFIRM": "Tous les messages du salons seront supprimés ! Pour confirmer tapez `-confirm`",
-    "CHANNEL_CLEARED": "Salon réinitialisé !",
+    "CHANNEL_CLEARED": "Salon nettoyé !",
     "CLEARED": "**{{amount}}** messages supprimés !",
     "CLEARED_MEMBER": "**{{amount}}** messages de **{{username}}** ont été supprimés !"
 }
