@@ -43,7 +43,7 @@ class Leaderboard extends Command {
             table.setHeading("#", message.language.get("UTILS").USER, message.language.get("UTILS").CREDITS);
             if(membersLeaderboard.length > 20) membersLeaderboard.length = 20;
             let newTable = await fetchUsers(membersLeaderboard, table, message.client);
-            message.channel.send("```"+newTable.toString()+"```");
+            message.channel.send("```\n"+newTable.toString()+"```");
         } else if(type === "level"){
             let members = await this.client.membersData.find({ guildID: message.guild.id }).lean(),
             membersLeaderboard = members.map((m) => {
@@ -56,7 +56,7 @@ class Leaderboard extends Command {
             table.setHeading("#", message.language.get("UTILS").USER, message.language.get("UTILS").LEVEL);
             if(membersLeaderboard.length > 20) membersLeaderboard.length = 20;
             let newTable = await fetchUsers(membersLeaderboard, table, message.client);
-            message.channel.send("```"+newTable.toString()+"```");
+            message.channel.send("```\n"+newTable.toString()+"```");
         } else if(type === "rep"){
             let users = await this.client.usersData.find().lean(),
             usersLeaderboard = users.map((u) => {
@@ -69,7 +69,7 @@ class Leaderboard extends Command {
             table.setHeading("#", message.language.get("UTILS").USER, message.language.get("UTILS").LEVEL);
             if(usersLeaderboard.length > 20) usersLeaderboard.length = 20;
             let newTable = await fetchUsers(usersLeaderboard, table, message.client);
-            message.channel.send("```"+newTable.toString()+"```");
+            message.channel.send("```\n"+newTable.toString()+"```");
         }
 
         if(isOnlyOnMobile){
