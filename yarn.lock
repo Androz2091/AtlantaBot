@@ -1623,10 +1623,10 @@ markdown-table@^1.1.3:
   resolved "https://registry.yarnpkg.com/markdown-table/-/markdown-table-1.1.3.tgz#9fcb69bcfdb8717bfd0398c6ec2d93036ef8de60"
   integrity sha512-1RUZVgQlpJSPWYbFSpmudq5nHY1doEIv89gBtF0s4gW1GF2XorxcA/70M5vq7rLv0a6mhOUccRsqkwhwLCIQ2Q==
 
-mathjs@^6.5.0:
-  version "6.6.5"
-  resolved "https://registry.yarnpkg.com/mathjs/-/mathjs-6.6.5.tgz#6bbad1fa3ac09e8f7106ef64af8d3908f877b8e8"
-  integrity sha512-jvRqk7eoEHBcx/lskmy05m+8M7xDHAJcJzRJoqIsqExtlTHPDQO0Zv85g5F0rasDAXF+DLog/70hcqCJijSzPQ==
+mathjs@^7.0.2:
+  version "7.0.2"
+  resolved "https://registry.yarnpkg.com/mathjs/-/mathjs-7.0.2.tgz#f17eae289aa3a5de543c22c05ce3271560454480"
+  integrity sha512-+/HTkdie4Sek66mjcclk2cgTyVgFfykutk5PGspbtZHUBbS3lOeiM8/Ax7P6nQlz1KoellFAU/kGO4q7Yv1sZA==
   dependencies:
     complex.js "^2.0.11"
     decimal.js "^10.2.0"
