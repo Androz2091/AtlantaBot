@@ -1,5 +1,5 @@
 {
-    "DESCRIPTION": "Ban le membre mentionné !",
+    "DESCRIPTION": "Banni le membre mentionné !",
     "USAGE": "{{prefix}}ban [@user] (raison)",
     "EXAMPLES": "{{prefix}ban @Androz#2091 Spam",
     "MISSING_MEMBER": "Veuillez préciser un utilisateur valide à ban !",
