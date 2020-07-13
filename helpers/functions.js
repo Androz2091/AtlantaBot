@@ -13,7 +13,7 @@ module.exports = {
 	getPrefix(message, data){
 		if(message.channel.type !== "dm"){
 			const prefixes = [
-				`<@${message.client.user.id}>`,
+				`<@${this.client.user.id}>`,
 				data.config.botname,
 				data.guild.prefix
 			];

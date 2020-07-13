@@ -31,11 +31,11 @@ class Skip extends Command {
 			return message.error("music/play:NOT_PLAYING");
 		}
 
-		if(!queue.songs[0]){
+		if(!queue.tracks[0]){
 			return message.error("music/skip:NO_NEXT_SONG");
 		}
 
-		const members = voice.members.cache.filter((m) => !m.user.bot);
+		const members = voice.members.filter((m) => !m.user.bot);
 
 		const embed = new Discord.MessageEmbed()
 			.setAuthor(message.translate("music/skip:DESCRIPTION"))

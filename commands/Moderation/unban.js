@@ -30,7 +30,7 @@ class Unban extends Command {
 
 		if(isId){
 			// Try to find a user with that ID
-			await message.client.users.fetch(args[0]).then((u) => {
+			await this.client.users.fetch(args[0]).then((u) => {
 				// if a user was found
 				user = u;
 			}).catch(() => {});
@@ -41,7 +41,7 @@ class Unban extends Command {
 					id: args[0]
 				});
 			}
-			user = message.client.users.filter((u) => u.username === arr[0]).find((u) => u.discriminator === arr[1]);
+			user = this.client.users.filter((u) => u.username === arr[0]).find((u) => u.discriminator === arr[1]);
 		}
 
 		if(!user){

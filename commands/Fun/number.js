@@ -67,7 +67,7 @@ class Number extends Command {
 				message.sendT("fun/number:WON", {
 					winner: msg.author.toString()
 				});
-				const userdata = await message.client.findOrCreateMember({ id: msg.author.id, guildID: message.guild.id });
+				const userdata = await this.client.findOrCreateMember({ id: msg.author.id, guildID: message.guild.id });
 				userdata.money = userdata.money + 10;
 				userdata.save();
 				collector.stop(msg.author.username);

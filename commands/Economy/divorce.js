@@ -26,12 +26,12 @@ class Divorce extends Command {
 
 		// Updates db
         
-		const user = message.client.users.cache.get(data.userData.lover) || await message.client.users.fetch(data.userData.lover);
+		const user = this.client.users.cache.get(data.userData.lover) || await this.client.users.fetch(data.userData.lover);
         
 		data.userData.lover = null;
 		data.userData.save();
 
-		const oldLover = await message.client.findOrCreateUser({ id:user.id });
+		const oldLover = await this.client.findOrCreateUser({ id:user.id });
 		oldLover.lover = null;
 		oldLover.save();
 

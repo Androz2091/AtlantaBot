@@ -31,7 +31,7 @@ class Stop extends Command {
 			return message.error("music/play:NOT_PLAYING");
 		}
 
-		const members = voice.members.cache.filter((m) => m.id !== message.client.user.id);
+		const members = voice.members.filter((m) => m.id !== this.client.user.id);
 
 		const embed = new Discord.MessageEmbed()
 			.setAuthor(message.translate("music/stop:DESCRIPTION"))

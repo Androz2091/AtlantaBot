@@ -38,7 +38,7 @@ class Leaderboard extends Command {
 			const table = new AsciiTable("LEADERBOARD");
 			table.setHeading("#", message.translate("common:USER"), message.translate("common:CREDITS"));
 			if(membersLeaderboard.length > 20) membersLeaderboard.length = 20;
-			const newTable = await fetchUsers(membersLeaderboard, table, message.client);
+			const newTable = await fetchUsers(membersLeaderboard, table, this.client);
 			message.channel.send("```"+newTable.toString()+"```");
 		} else if(type === "level"){
 			const members = await this.client.membersData.find({ guildID: message.guild.id }).lean(),
@@ -51,7 +51,7 @@ class Leaderboard extends Command {
 			const table = new AsciiTable("LEADERBOARD");
 			table.setHeading("#", message.translate("common:USER"), message.translate("common:LEVEL"));
 			if(membersLeaderboard.length > 20) membersLeaderboard.length = 20;
-			const newTable = await fetchUsers(membersLeaderboard, table, message.client);
+			const newTable = await fetchUsers(membersLeaderboard, table, this.client);
 			message.channel.send("```"+newTable.toString()+"```");
 		} else if(type === "rep"){
 			const users = await this.client.usersData.find().lean(),
@@ -64,7 +64,7 @@ class Leaderboard extends Command {
 			const table = new AsciiTable("LEADERBOARD");
 			table.setHeading("#", message.translate("common:USER"), message.translate("common:POINTS"));
 			if(usersLeaderboard.length > 20) usersLeaderboard.length = 20;
-			const newTable = await fetchUsers(usersLeaderboard, table, message.client);
+			const newTable = await fetchUsers(usersLeaderboard, table, this.client);
 			message.channel.send("```"+newTable.toString()+"```");
 		}
 

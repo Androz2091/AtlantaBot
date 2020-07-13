@@ -36,7 +36,7 @@ class Play extends Command {
 		let isPlaylist;
 
 		// Check my permissions
-		const perms = voice.permissionsFor(message.client.user);
+		const perms = voice.permissionsFor(this.client.user);
 		if(!perms.has("CONNECT") || !perms.has("SPEAK")){
 			return message.error("music/play:VOICE_CHANNEL_CONNECT");
 		}

@@ -99,7 +99,7 @@ class FindWords extends Command {
 						}
 						const winnerID = await getWinner(winners);
 						const time = message.convertTime(Date.now() - createdAt, "to");
-						const user = await message.client.users.fetch(winnerID);
+						const user = await this.client.users.fetch(winnerID);
 						message.sendT("fun/findwords:GAME_STATS", {
 							winner: user.username,
 							duration: time,
@@ -110,7 +110,7 @@ class FindWords extends Command {
 							message.sendT("fun/findwords:CREDITS", {
 								winner: user.username
 							});
-							const userdata = await message.client.findOrCreateMember({ id: user.id, guildID: message.guild.id });
+							const userdata = await this.client.findOrCreateMember({ id: user.id, guildID: message.guild.id });
 							userdata.money = userdata.money + 15;
 							userdata.save();
 						}

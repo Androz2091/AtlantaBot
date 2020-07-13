@@ -25,9 +25,9 @@ class Slots extends Command {
 
 		// Gets three random fruits array
 		const colonnes = [
-			message.client.functions.shuffle(fruits),
-			message.client.functions.shuffle(fruits),
-			message.client.functions.shuffle(fruits)
+			this.client.functions.shuffle(fruits),
+			this.client.functions.shuffle(fruits),
+			this.client.functions.shuffle(fruits)
 		];
 
 		// Gets the amount provided

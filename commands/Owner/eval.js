@@ -21,9 +21,9 @@ class Eval extends Command {
 	async run (message, args, data) {
 
 		// eslint-disable-next-line no-unused-vars
-		const usersData = message.client.usersData;
+		const usersData = this.client.usersData;
 		// eslint-disable-next-line no-unused-vars
-		const guildsData = message.client.guildsData;
+		const guildsData = this.client.guildsData;
         
 		const content = message.content.split(" ").slice(1).join(" ");
 		const result = new Promise((resolve) => resolve(eval(content)));
@@ -32,16 +32,16 @@ class Eval extends Command {
 			if(typeof output !== "string"){
 				output = require("util").inspect(output, { depth: 0 });
 			}
-			if(output.includes(message.client.token)){
-				output = output.replace(message.client.token, "T0K3N");
+			if(output.includes(this.client.token)){
+				output = output.replace(this.client.token, "T0K3N");
 			}
 			message.channel.send(output, {
 				code: "js"
 			});
 		}).catch((err) => {
 			err = err.toString();
-			if(err.includes(message.client.token)){
-				err = err.replace(message.client.token, "T0K3N");
+			if(err.includes(this.client.token)){
+				err = err.replace(this.client.token, "T0K3N");
 			}
 			message.channel.send(err, {
 				code: "js"

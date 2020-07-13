@@ -75,12 +75,12 @@ class Poll extends Command {
 				return message.error("misc:TIMES_UP");
 			}
     
-			const success = message.client.config.emojis.success.split(":")[1];
-			const error = message.client.config.emojis.error.split(":")[1];
+			const success = this.client.config.emojis.success.split(":")[1];
+			const error = this.client.config.emojis.error.split(":")[1];
 
 			const emotes = [
-				message.client.emojis.find((e) => e.name === success),
-				message.client.emojis.find((e) => e.name === error)
+				this.client.emojis.find((e) => e.name === success),
+				this.client.emojis.find((e) => e.name === error)
 			];
 
 			const embed = new Discord.MessageEmbed()

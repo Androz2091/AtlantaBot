@@ -27,8 +27,8 @@ class ServersList extends Command {
 		let page = 1;
 
 		let description = 
-        `${message.translate("common:SERVERS")}: ${message.client.guilds.cache.size}\n\n`+
-		message.client.guilds.sort((a,b) => b.memberCount-a.memberCount).map((r) => r)
+        `${message.translate("common:SERVERS")}: ${this.client.guilds.cache.size}\n\n`+
+		this.client.guilds.sort((a,b) => b.memberCount-a.memberCount).map((r) => r)
 			.map((r, i) => `**${i + 1}** - ${r.name} | ${r.memberCount} ${message.translate("common:MEMBERS").toLowerCase()}`)
 			.slice(0, 10)
 			.join("\n");
@@ -36,8 +36,8 @@ class ServersList extends Command {
 		const embed = new Discord.MessageEmbed()
 			.setAuthor(message.author.tag, message.author.displayAvatarURL())
 			.setColor(data.config.embed.color)
-			.setFooter(message.client.user.username)
-			.setTitle(`${message.translate("common:PAGE")}: ${page}/${Math.ceil(message.client.guilds.cache.size/10)}`)
+			.setFooter(this.client.user.username)
+			.setTitle(`${message.translate("common:PAGE")}: ${page}/${Math.ceil(this.client.guilds.cache.size/10)}`)
 			.setDescription(description);
 
 		const msg = await message.channel.send(embed);
@@ -65,14 +65,14 @@ class ServersList extends Command {
 					return msg.delete();
 				}
                 
-				description = `${message.translate("common:SERVERS")}: ${message.client.guilds.cache.size}\n\n`+
-				message.client.guilds.sort((a,b) => b.memberCount-a.memberCount).map((r) => r)
+				description = `${message.translate("common:SERVERS")}: ${this.client.guilds.cache.size}\n\n`+
+				this.client.guilds.cache.sort((a,b) => b.memberCount-a.memberCount).map((r) => r)
 					.map((r, i) => `**${i + 1}** - ${r.name} | ${r.memberCount} ${message.translate("common:MEMBERS")}`)
 					.slice(i0, i1)
 					.join("\n");
 
 				// Update the embed with new informations
-				embed.setTitle(`${message.translate("common:PAGE")}: ${page}/${Math.round(message.client.guilds.cache.size/10)}`)
+				embed.setTitle(`${message.translate("common:PAGE")}: ${page}/${Math.round(this.client.guilds.cache.size/10)}`)
 					.setDescription(description);
             
 				// Edit the message 
@@ -88,15 +88,15 @@ class ServersList extends Command {
 				page = page+1;
 
 				// if there is no guild to display, delete the message
-				if(i1 > message.client.guilds.cache.size + 10){
+				if(i1 > this.client.guilds.cache.size + 10){
 					return msg.delete();
 				}
 				if(!i0 || !i1){
 					return msg.delete();
 				}
 
-				description = `${message.translate("common:SERVERS")}: ${message.client.guilds.cache.size}\n\n`+
-				message.client.guilds.sort((a,b) => b.memberCount-a.memberCount).map((r) => r)
+				description = `${message.translate("common:SERVERS")}: ${this.client.guilds.cache.size}\n\n`+
+				this.client.guilds.cache.sort((a,b) => b.memberCount-a.memberCount).map((r) => r)
 					.map((r, i) => `**${i + 1}** - ${r.name} | ${r.memberCount} ${message.translate("common:MEMBERS").toLowerCase()}`)
 					.slice(i0, i1)
 					.join("\n");

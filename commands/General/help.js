@@ -25,7 +25,7 @@ class Help extends Command {
 			const isCustom = (data.guild.customCommands ? data.guild.customCommands.find((c) => c.name === args[0]) : false);
             
 			// if the command doesn't exist, error message
-			const cmd = message.client.commands.get(args[0]) || message.client.commands.get(message.client.aliases.get(args[0]));
+			const cmd = this.client.commands.get(args[0]) || this.client.commands.get(this.client.aliases.get(args[0]));
 			if(!cmd && isCustom){
 				return message.error("general/help:CUSTOM", {
 					cmd: args[0]
@@ -89,11 +89,11 @@ class Help extends Command {
 		}
 
 		const categories = [];
-		const commands = message.client.commands;
+		const commands = this.client.commands;
 
 		commands.forEach((command) => {
 			if(!categories.includes(command.help.category)){
-				if(command.help.category === "Owner" && message.author.id !== message.client.config.owner.id){
+				if(command.help.category === "Owner" && message.author.id !== this.client.config.owner.id){
 					return;
 				}
 				categories.push(command.help.category);
@@ -123,13 +123,13 @@ class Help extends Command {
 		embed.addField("\u200B", message.translate("misc:STATS_FOOTER", {
 			donateLink: "https://patreon.com/Androz2091",
 			dashboardLink: "https://dashboard.atlanta-bot.fr",
-			inviteLink: await message.client.generateInvite("ADMINISTRATOR"),
+			inviteLink: await this.client.generateInvite("ADMINISTRATOR"),
 			githubLink: "https://github.com/Androz2091",
 			supportLink: "https://discord.atlanta-bot.fr"
 		}));
 		embed.setAuthor(message.translate("general/help:TITLE", {
 			name: this.client.user.username
-		}), message.client.user.displayAvatarURL());
+		}), this.client.user.displayAvatarURL());
 		return message.channel.send(embed);
 	}
 

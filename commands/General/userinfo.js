@@ -33,9 +33,9 @@ class Userinfo extends Command {
 			user = message.mentions.users.first();
 		}
 		if(isID && !user){
-			user = message.client.users.cache.get(args[0]);
+			user = this.client.users.cache.get(args[0]);
 			if(!user){
-				user = await message.client.users.fetch(args[0], true).catch(() => {});
+				user = await this.client.users.fetch(args[0], true).catch(() => {});
 				displayPresence = false;
 			}
 		}
@@ -77,9 +77,9 @@ class Userinfo extends Command {
 				));
 		}
 
-		if(user.bot && message.client.config.apiKeys.dbl && (message.client.config.apiKeys.dbl !== "")){
+		if(user.bot && this.client.config.apiKeys.dbl && (this.client.config.apiKeys.dbl !== "")){
 			const res = await fetch("https://discordbots.org/api/bots/"+user.id, {
-				headers: { "Authorization": message.client.config.apiKeys.dbl }
+				headers: { "Authorization": this.client.config.apiKeys.dbl }
 			});
 			const data = await res.json();
 			if(!data.error){

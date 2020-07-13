@@ -25,7 +25,7 @@ class Github extends Command {
 		const json = await res.json();
 
 		const embed = new Discord.MessageEmbed()
-			.setAuthor(message.client.user.tag, message.client.user.displayAvatarURL())
+			.setAuthor(this.client.user.tag, this.client.user.displayAvatarURL())
 			.setDescription("["+message.translate("general/github:CLICK_HERE")+"](https://github.com/Androz2091/AtlantaBot)")
 			.addField("Stars", json.stargazers_count, true)
 			.addField("Forks", json.forks_count, true)

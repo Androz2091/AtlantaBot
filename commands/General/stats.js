@@ -26,23 +26,23 @@ class Stats extends Command {
 			.setAuthor(message.translate("common:STATS"))
 			.setDescription(message.translate("general/stats:MADE"))
 			.addField(this.client.config.emojis.stats+" "+message.translate("general/stats:COUNTS_TITLE"), message.translate("general/stats:COUNTS_CONTENT", {
-				servers: message.client.guilds.cache.size,
-				users: message.client.users.cache.size
+				servers: this.client.guilds.cache.size,
+				users: this.client.users.cache.size
 			}), true)
 			.addField(this.client.config.emojis.version+" "+message.translate("general/stats:VERSIONS_TITLE"), `\`Discord.js : v${Discord.version}\`\n\`Nodejs : v${process.versions.node}\``, true)
 			.addField(this.client.config.emojis.ram+" "+message.translate("general/stats:RAM_TITLE"), `\`${(process.memoryUsage().heapUsed / 1024 / 1024).toFixed(2)}MB\``, true)
 			.addField(this.client.config.emojis.status.online+" "+message.translate("general/stats:ONLINE_TITLE"), message.translate("general/stats:ONLINE_CONTENT", {
-				time: message.convertTime(Date.now()+message.client.uptime, "from", true)
+				time: message.convertTime(Date.now()+this.client.uptime, "from", true)
 			}))
 			.addField(this.client.config.emojis.voice+" "+message.translate("general/stats:MUSIC_TITLE"), message.translate("general/stats:MUSIC_CONTENT", {
-				count: message.client.voice.connections.size
+				count: this.client.voice.connections.size
 			}))
 			.addField(message.translate("general/stats:CREDITS_TITLE"), message.translate("general/stats:CREDITS_CONTENT"));
 
 		statsEmbed.addField(this.client.config.emojis.link+" "+message.translate("general/stats:LINKS_TITLE"), message.translate("misc:STATS_FOOTER", {
 			donateLink: "https://patreon.com/Androz2091",
 			dashboardLink: "https://dashboard.atlanta-bot.fr",
-			inviteLink: await message.client.generateInvite("ADMINISTRATOR"),
+			inviteLink: await this.client.generateInvite("ADMINISTRATOR"),
 			githubLink: "https://github.com/Androz2091",
 			supportLink: "https://discord.atlanta-bot.fr"
 		})

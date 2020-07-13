@@ -20,9 +20,9 @@ class Invite extends Command {
 
 	async run (message, args, data) {
 
-		const inviteLink = message.client.config.inviteURL || `https://discordapp.com/oauth2/authorize?client_id=${this.client.user.id}&scope=bot&permissions=2146958847`;
-		const voteURL = message.client.config.voteURL || `https://discordbots.org/bot/${this.client.user.id}/vote`;
-		const supportURL = message.client.config.supportURL || await message.client.functions.supportLink(message.client);
+		const inviteLink = this.client.config.inviteURL || `https://discordapp.com/oauth2/authorize?client_id=${this.client.user.id}&scope=bot&permissions=2146958847`;
+		const voteURL = this.client.config.voteURL || `https://discordbots.org/bot/${this.client.user.id}/vote`;
+		const supportURL = this.client.config.supportURL || await this.client.functions.supportLink(this.client);
 
 		if(args[0] && args[0] === "copy"){
 			return message.channel.send(inviteLink);

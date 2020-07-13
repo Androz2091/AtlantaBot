@@ -61,7 +61,7 @@ class Marry extends Command {
 					username: user.tag
 				});
 			} else if (receiver === message.author.id){ // If there is a pending request for this member
-				const user =  message.client.users.cache.get(requester) || await message.client.users.fetch(requester);
+				const user =  this.client.users.cache.get(requester) || await this.client.users.fetch(requester);
 				return message.error("economy/marry:REQUEST_AMEMBER_TO_AUTHOR", {
 					username: user.tag
 				});

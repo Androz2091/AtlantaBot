@@ -67,7 +67,7 @@ class Translate extends Command {
 		const translated = await translate(toTranslate, { to: language });
 
 		const resEmbed = new Discord.MessageEmbed()
-			.setAuthor("Translator", message.client.user.displayAvatarURL)
+			.setAuthor("Translator", this.client.user.displayAvatarURL)
 			.addField(translated.from.language.iso, "```"+toTranslate+"```")
 			.addField(language, "```"+translated.text+"```")
 			.setColor(data.config.embed.color)
