@@ -1,9 +1,9 @@
 {
-    "DESCRIPTION": "Affiche les paroles d'un musique",
-    "USAGE": "{{prefix}}lyrics [nom de la musique]",
+    "DESCRIPTION": "Affiche les paroles d'une chanson",
+    "USAGE": "{{prefix}}lyrics [nom de la chanson]",
     "EXAMPLES": "{{prefix}}lyrics Skyfall",
     "LYRICS_OF": "🎤 Paroles de {{songName}}",
-    "AND_MORE": "\n**Et encore plus...**",
+    "AND_MORE": "\n**Et plus...**",
     "REST": "Cliquez ici pour lire la suite des paroles",
     "MISSING_SONG_NAME": "Merci de spécifier un nom de chanson à rechercher !",
     "NO_LYRICS_FOUND": "Pas de paroles trouvées pour `{{songName}}` !"
