@@ -1,6 +1,6 @@
 {
     "DESCRIPTION": "Deletes messages very quickly!",
-    "USAGE": "{{prefix}}clear[number-of-messages] (@member)",
+    "USAGE": "{{prefix}}clear [number-of-messages] (@member)",
     "EXAMPLES": "{{prefix}clear 10\n{{prefix}clear 10 @Androz#2091",
     "MISSING_AMOUNT": "You must specify a number of messages to delete!",
     "ALL_CONFIRM": "All messages of the channel will be deleted! To confirm type `-confirm`",
