@@ -8,11 +8,14 @@ module.exports = {
      * Starts checking...
      * @param {object} client The Discord Client instance
      */
-	init(client){
+	async init(client){
+		client.membersData.find({ "mute.muted": true }).then((members) => {
+			members.forEach((member) => {
+				client.databaseCache.mutedUsers.set(`${member.id}${member.guildID}`, member);
+			});
+		});
 		setInterval(async () => {
-			if(client.membersData === undefined) return;
-			const muted = await client.membersData.find({ "mute.muted": true, "mute.endDate": { $lte: Date.now() } });
-			muted.forEach(async (memberData) => {
+			client.databaseCache.mutedUsers.array().filter((m) => m.mute.endDate <= Date.now()).forEach(async (memberData) => {
 				const guild = client.guilds.cache.get(memberData.guildID);
 				if(!guild) return;
 				const member = guild.members.cache.get(memberData.id) || await guild.members.fetch(memberData.id).catch(() => {
@@ -51,9 +54,10 @@ module.exports = {
 					endDate: null,
 					case: null
 				};
-				memberData.save();
+				client.databaseCache.mutedUsers.delete(`${memberData.id}${memberData.guildID}`);
+				await memberData.save();
 			});
-		}, 5000);
+		}, 1000);
 	}
 
 };

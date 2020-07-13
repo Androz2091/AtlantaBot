@@ -95,6 +95,8 @@ class Mute extends Command {
 
 		await data.guild.save();
 
+		this.client.databaseCache.mutedUsers.set(`${member.id}${message.guild.id}`, memberData);
+
 		if(data.guild.plugins.modlogs){
 			const channel = message.guild.channels.cache.get(data.guild.plugins.modlogs);
 			if(!channel) return;

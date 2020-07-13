@@ -33,6 +33,9 @@ class Atlanta extends Client {
 		this.databaseCache.guilds = new Collection();
 		this.databaseCache.members = new Collection();
 
+		this.databaseCache.reminders = new Collection();
+		this.databaseCache.mutedUsers = new Collection();
+
 		if(this.config.apiKeys.amethyste){
 			this.AmeAPI = new AmeClient(this.config.apiKeys.amethyste);
 		}
