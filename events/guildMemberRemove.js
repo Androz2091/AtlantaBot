@@ -24,6 +24,7 @@ module.exports = class {
 		member.guild.fetch().then(async (guild) => {
 
 			const guildData = await this.client.findOrCreateGuild({ id: guild.id });
+			member.guild.data = guildData;
 
 			// Check if goodbye message is enabled
 			if(guildData.plugins.goodbye.enabled){

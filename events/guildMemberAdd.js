@@ -24,6 +24,7 @@ module.exports = class {
 		member.guild.fetch().then(async (guild) => {
 
 			const guildData = await this.client.findOrCreateGuild({ id: guild.id });
+			member.guild.data = guildData;
 
 			const memberData = await this.client.findOrCreateMember({ id: member.id, guildID: guild.id });
 			if(memberData.mute.muted && memberData.mute.endDate > Date.now()){
