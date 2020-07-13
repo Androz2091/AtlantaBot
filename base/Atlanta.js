@@ -8,6 +8,13 @@ const util = require("util"),
 	path = require("path"),
 	moment = require("moment");
 
+moment.relativeTimeThreshold("s", 60);
+moment.relativeTimeThreshold("ss", 5);
+moment.relativeTimeThreshold("m", 60);
+moment.relativeTimeThreshold("h", 60);
+moment.relativeTimeThreshold("d", 24);
+moment.relativeTimeThreshold("M", 12);
+
 // Creates Atlanta class
 class Atlanta extends Client {
 
