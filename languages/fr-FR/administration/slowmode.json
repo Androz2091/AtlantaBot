@@ -4,5 +4,5 @@
     "EXAMPLES": "{{prefix}}slowmode #general 10m\n{{prefix}}slowmode #general",
     "DISABLED": "Le mode lent a été désactivé dans {{channel}} !",
     "ENABLED": "Le mode lent a été activé dans {{channel}} avec un temps de {{time}} !",
-    "PLEASE_WAIT": "Le salon {{channel}} est en mode lent ! Veuillez attendre {{time}} pour envoyer un nouveau message !"
+    "PLEASE_WAIT": "Le salon {{channel}} est en mode lent ! Veuillez attendre {{time}} pour pouvoir envoyer un nouveau message !"
 }
