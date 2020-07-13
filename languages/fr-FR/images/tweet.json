@@ -1,7 +1,7 @@
 {
-    "DESCRIPTION": "Génère un tweet d'une personne de votre choix sur Twitter !",
-    "USAGE": "{{prefix}}tweet [pseudo] [texte]",
-    "EXAMPLES": "{{prefix}}tweet\n{{prefix}}tweet Androz J'ai mal fais le texte de mon tweet.json à traduire ! Heureusement que Ethan était la !",
+    "DESCRIPTION": "Generates a \"tweet\" image using Nekobot API",
+    "USAGE": "{{prefix}}tweet [@twitter_username] [content]",
+    "EXAMPLES": "{{prefix}}tweet @ElonMusk Hello",
     "MISSING_USERNAME": "Vous devez entrer un pseudo Twitter !",
     "MISSING_TEXT": "Vous n'avez pas spécifié le contenu du tweet !",
     "SUCCESS": "Nouveau tweet par {{user}}:"
