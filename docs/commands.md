@@ -60,25 +60,25 @@ Here's the list of Atlanta commands. This one contains more than **100 commands*
 
 ### Images (17 commands)
 
-| Name              | Description                                         | Usage                      | Cooldown  |
-| ----------------- | --------------------------------------------------- | -------------------------- | --------- |
-| **avatar**        | Shows the avatar of the mentionned member           | avatar (@member)           | 5 seconds |
-| **captcha**       | Generates a "captcha" image using the Nekobot API   | captcha (@member)          | 5 seconds |
-| **clyde**         | Generates a "clyde" image using the Nekobot API     | clyde [text]               | 5 seconds |
-| **facepalm**      | Generates a "facepalm" image using canvas           | facepalm (@member)         | 5 seconds |
-| **fire**          | Generates a "fire" image using Amethyste API        | fire (@member)             | 5 seconds |
-| **jail**          | Generates a "jail" image using Amethyste API        | jail (@member)             | 5 seconds |
-| **love**          | Generates a "love" image using the Nekobot API      | love [@member1] (@member2) | 5 seconds |
-| **mission**       | Generates a "mission" image using Amethyste API     | mission (@member)          | 5 seconds |
-| **phcomment**     | Generates a "phcomment" image using Nekobot API     | phcomment (@member) [text] | 5 seconds |
-| **qrcode**        | Generates a QR code image from your word            | qrcode [text]              | 3 seconds |
-| **rip**           | Generates a "rip" image using Nekobot API           | rip (@member)              | 5 seconds |
-| **scary**         | Generates a "scary" image using Nekobot API         | scary (@member)            | 5 seconds |
-| **tobecontinued** | Generates a "tobecontinued" image using Nekobot API | tobecontinued (@member)    | 5 seconds |
-| **triggered**     | Generates a "triggered" image using Nekobot API     | triggered (@member)        | 5 seconds |
-| **tweet**         | Generates a "triggered" image using Nekobot API     | triggered (@member)        | 5 seconds |
-| **wanted**        | Generates a "wanted" image using Nekobot API        | wanted (@member)           | 5 seconds |
-| **wasted**        | Generates a "wasted" image using Nekobot API        | wasted (@member)           | 5 seconds |
+| Name              | Description                                         | Usage                               | Cooldown  |
+| ----------------- | --------------------------------------------------- | ----------------------------------- | --------- |
+| **avatar**        | Shows the avatar of the mentionned member           | avatar (@member)                    | 5 seconds |
+| **captcha**       | Generates a "captcha" image using the Nekobot API   | captcha (@member)                   | 5 seconds |
+| **clyde**         | Generates a "clyde" image using the Nekobot API     | clyde [text]                        | 5 seconds |
+| **facepalm**      | Generates a "facepalm" image using canvas           | facepalm (@member)                  | 5 seconds |
+| **fire**          | Generates a "fire" image using Amethyste API        | fire (@member)                      | 5 seconds |
+| **jail**          | Generates a "jail" image using Amethyste API        | jail (@member)                      | 5 seconds |
+| **love**          | Generates a "love" image using the Nekobot API      | love [@member1] (@member2)          | 5 seconds |
+| **mission**       | Generates a "mission" image using Amethyste API     | mission (@member)                   | 5 seconds |
+| **phcomment**     | Generates a "phcomment" image using Nekobot API     | phcomment (@member) [text]          | 5 seconds |
+| **qrcode**        | Generates a QR code image from your word            | qrcode [text]                       | 3 seconds |
+| **rip**           | Generates a "rip" image using Nekobot API           | rip (@member)                       | 5 seconds |
+| **scary**         | Generates a "scary" image using Nekobot API         | scary (@member)                     | 5 seconds |
+| **tobecontinued** | Generates a "tobecontinued" image using Nekobot API | tobecontinued (@member)             | 5 seconds |
+| **triggered**     | Generates a "triggered" image using Nekobot API     | triggered (@member)                 | 5 seconds |
+| **tweet**         | Generates a "tweet" image using Nekobot API         | tweet [@twitter_username] [content] | 5 seconds |
+| **wanted**        | Generates a "wanted" image using Nekobot API        | wanted (@member)                    | 5 seconds |
+| **wasted**        | Generates a "wasted" image using Nekobot API        | wasted (@member)                    | 5 seconds |
 
 ### Economy (15 commands)
 
