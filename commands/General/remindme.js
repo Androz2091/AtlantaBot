@@ -42,6 +42,7 @@ class Remindme extends Command {
 		data.userData.reminds.push(rData);
 		data.userData.markModified("reminds");
 		data.userData.save();
+		this.client.databaseCache.usersReminds.set(message.author.id, data.userData);
 
 		// Send success message
 		message.success("general/remindme:SAVED");

@@ -20,9 +20,9 @@ module.exports = class {
 		const checkUnmutes = require("../helpers/checkUnmutes.js");
 		checkUnmutes.init(client);
 
-		/* SEND REMIND */
-		const checkReminders = require("../helpers/checkReminders.js");
-		checkReminders.init(client);
+		/* SEND REMINDS */
+		const checkReminds = require("../helpers/checkReminds.js");
+		checkReminds.init(client);
 
 		/* DAILY SHOP FORTNITE */
 		const fortniteShop = require("../helpers/fortniteShop.js");
