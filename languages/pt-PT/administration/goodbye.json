@@ -5,12 +5,12 @@
     "DEFAULT_MESSAGE": "Adeus {user}! temos agora {membercount} sem você... :'(",
     "TEST_SUCCESS": "Teste executado!",
     "FORM_1": "Olá {{author}}! Em qual canal as mensagens de despedida serão enviadas? (mencione um canal)",
-    "FORM_2": "All right! The messages will therefore be sent in {{channel}}. Enter the goodbye message below: \n\n:information_source: __**Informations:**__\nMention: {user}\nMembers: {membercount}\nServer: {server}\n\n__For example:__\n\n\"Goodbye {user}... We are {membercount}!\"\n:arrow_down:\n\"Goodbye {{author}}... We are {{memberCount}}!\".",
-    "FORM_3": "It works! Do you want a great goodbye image to be sent too? Answer with \"yes\" or \"no\"!",
-    "FORM_SUCCESS": "Goodbye messages enabled in {{channel}} ! Type `{{prefix}}goodbye test` to test the goodbye message!",
-    "MAX_CHARACT": "Your message must not exceed 1800 characters!",
-    "DISABLED": "Goodbye messages have just been disabled! Type `{{prefix}}configuration` to see the new configuration!",
-    "IMG_GOODBYE": "Leaving from {{server}}!",
-    "IMG_NB": "- {{memberCount}}th member!",
-    "TITLE": "GOODBYE"
+    "FORM_2": "Tudo certo! As mensagens serão, enviadas em {{channel}}. Digite a mensagem de adeus abaixo:\n\n:information_source: __**Informações:**__\nMenção: {user}\nMembros: {membercount}\nServidor: {server}\n\n__Por exemplo:__\n\n\"Adeus {user}... Temos {membercount}!\"\n:arrow_down:\n\"Adeus {{author}}... Temos {{memberCount}}!\".",
+    "FORM_3": "Deseja que também seja enviada uma imagem de despedida? Responda com \"yes\" ou \"no\"!",
+    "FORM_SUCCESS": "Mensagem de despedida ativadas em {{channel}} ! use `{{prefix}}goodbye test` para testar a mensagem de despedida!",
+    "MAX_CHARACT": "Sua mensagem não deve exceder 1800 caracteres!",
+    "DISABLED": "As mensagens de despedida acabaram de ser desativadas! use `{{prefix}}configuration` para ver a nova configuração!",
+    "IMG_GOODBYE": "Saiu do {{server}}!",
+    "IMG_NB": "- {{memberCount}}th membro!",
+    "TITLE": "TCHAU"
 }
