@@ -1,5 +1,5 @@
 {
-    "DESCRIPTION": "Send your report to the channel defined for them!",
+    "DESCRIPTION": "Envie seu report para o canal definido para eles!",
     "USAGE": "{{prefix}}report [@user] [reason]",
     "EXAMPLES": "{{prefix}}report @Androz#2091 Breaking the rules",
     "MISSING_CHANNEL": "No report channel defined!",
