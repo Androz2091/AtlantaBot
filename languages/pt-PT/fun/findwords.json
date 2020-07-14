@@ -1,13 +1,13 @@
 {
-    "DESCRIPTION": "Start a game of findwords, a game you have to find words!",
+    "DESCRIPTION": "Comece um jogo de findwords, um jogo que você tem que encontrar palavras!",
     "USAGE": "{{prefix}}findwords",
     "EXAMPLES": "{{prefix}}findwords",
-    "INVALID_WORD": "{{member}} | Your word is not valid!",
-    "GAME_STARTING": ":timer: | The game starts in 10 seconds!",
-    "FIND_WORD": "20 seconds to find a word containing \"**{{word}}**\"!",
-    "WORD_FOUND": "Well done {{winner}}! Your word is valid and you were the fastest!",
-    "GAME_STATS": "🎉 | {{winner}} won the game!\n\n**Stats of the game: **\n__**Duration**__: {{duration}}\n__**Number of participants**__ : {{participantCount}}\n__**Participants**__ : \n{{participantList}}",
-    "CREDITS": "{{winner}} wins 15 credits! 🎉",
-    "NO_WINNER_ALL": "I can't define any winners because no words have been found!",
-    "NO_WINNER": "No one was able to find a word!"
+    "INVALID_WORD": "{{member}} | Sua palavra não é válida!",
+    "GAME_STARTING": ":timer: | O jogo começa em 10 segundos!",
+    "FIND_WORD": "20 segundos para encontrar uma palavra que contenha \"**{{word}}**\"!",
+    "WORD_FOUND": "Bom trabalho! {{winner}}! Sua palavra é válida e você foi o mais rápido!",
+    "GAME_STATS": "🎉 | {{winner}} ganhou o jogo!\n\n**Estatísticas do jogo: **\n__**Duraçãi**__: {{duration}}\n__**Numero de Participantes**__ : {{participantCount}}\n__**Participantes**__ : \n{{participantList}}",
+    "CREDITS": "{{winner}} ganha 15 créditos! 🎉",
+    "NO_WINNER_ALL": "Não consigo definir vencedores porque nenhuma palavra foi encontrada!",
+    "NO_WINNER": "Ninguém foi capaz de encontrar uma palavra!"
 }
