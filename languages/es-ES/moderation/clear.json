@@ -1,6 +1,6 @@
 {
     "DESCRIPTION": "¡Borra mensajes rápidamente!",
-    "USAGE": "{{prefix}}clear [number-of-messages] (@member)",
+    "USAGE": "{{prefix}}clear [numero-de-mensajes] (@miembro)",
     "EXAMPLES": "{{prefix}clear 10\n{{prefix}clear 10 @Androz#2091",
     "MISSING_AMOUNT": "¡Debe especificar una cantidad de mensajes a eliminar!",
     "ALL_CONFIRM": "¡Todos los mensajes del canal serán eliminados! Para confirmar, escriba `-confirm`",

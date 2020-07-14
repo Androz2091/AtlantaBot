@@ -5,5 +5,5 @@
     "MISSING_MEMBER": "¡Por favor especifique el miembro que desea desmutear!",
     "NOT_MUTED": "¡**{{username}}** no está muteado en el servidor!",
     "SUCCESS": "¡**{{username}}** acaba de ser desmuteado!",
-    "SUCCESS_CASE": "{{user}} (`{{usertag}}`) has just been unmuted! (case of mute: #{{count}})"
+    "SUCCESS_CASE": "¡{{user}} (`{{usertag}}`) acaba de ser desmuteado! (caso del muteo: #{{count}})"
 }
