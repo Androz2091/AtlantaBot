@@ -9,6 +9,6 @@
     "TIP": "Mantenha Atlanta viva dando gorjeta!",
     "REP": "Alcance 20 pontos de reputação!",
     "INVITE": "Convide Atlanta no seu servidor!",
-    "TITLE": "🔥 Achievements",
-    "PROGRESS": "Progress: {{now}}/{{total}} ({{percent}}%)"
+    "TITLE": "🔥 Conquistas",
+    "PROGRESS": "Progresso: {{now}}/{{total}} ({{percent}}%)"
 }
