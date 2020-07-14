@@ -41,13 +41,13 @@ class Play extends Command {
 			return message.error("music/play:VOICE_CHANNEL_CONNECT");
 		}
 
-		const tracks = await this.client.player.searchTracks(args[0], true).catch(() => {});
+		const tracks = await this.client.player.searchTracks(args.join(" "), true).catch(() => {});
 		if(!tracks || !tracks[0]){
 			return message.error("music/play:NO_RESULT");
 		} else if(tracks[0].fromPlaylist){
-			trackToPlay = args[0];
+			trackToPlay = args.join(" ");
 			isPlaylist = true;
-		} else if(tracks.length === 1){
+		} else if(args.join(" ").match(/(?:youtube\.com\/(?:[^\/]+\/.+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/)([^"&?\/\s]{11})/)){
 			trackToPlay = tracks[0];
 		} else {
 			try {
