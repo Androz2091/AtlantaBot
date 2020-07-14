@@ -107,7 +107,7 @@ Here's the list of Atlanta commands. This one contains more than **100 commands*
 | **announcement**    | Send an announcement in the current channel!                                            | announcement [text]                                                | 3 seconds |
 | **ban**             | Ban the mentioned member!                                                               | ban [@user] (reason)                                               | 3 seconds |
 | **checkinvites**    | Check if members have an ad for their Discord server in their status!                   | checkinvites                                                       | 3 seconds |
-| **clear**           | Deletes messages very quickly!                                                          | clear[number-of-messages] (@member)                                | 3 seconds |
+| **clear**           | Deletes messages very quickly!                                                          | clear [number-of-messages] (@member)                               | 3 seconds |
 | **clear-sanctions** | Deletes all sanctions of a member!                                                      | clear-sanctions [@member]                                          | 3 seconds |
 | **giveaway**        | Manage your giveaways easily!                                                           | giveaway [create/reroll/delete/end] (time) (winners count) (prize) | 5 seconds |
 | **kick**            | Kick the mentioned member!                                                              | kick [@user] (reason)                                              | 3 seconds |

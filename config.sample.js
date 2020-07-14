@@ -249,6 +249,18 @@ module.exports = {
 				"fr",
 				"fr_fr"
 			]
+		},
+		{
+			name: "es-ES",
+			nativeName: "Español",
+			defaultMomentFormat: "MMM Do, YYYY",
+			moment: "es",
+			default: false,
+			aliases: [
+				"Spanish",
+				"es",
+				"es_es"
+			]
 		}
 	]
 };
