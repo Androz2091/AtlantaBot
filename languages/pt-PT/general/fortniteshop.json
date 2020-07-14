@@ -1,10 +1,10 @@
 {
-    "DESCRIPTION": "Shows the daily fortnite items shop!",
+    "DESCRIPTION": "Mostra a loja diária de itens do fortnite!",
     "USAGE": "{{prefix}}fortniteshop",
     "EXAMPLES": "{{prefix}}fortniteshop",
-    "HEADER": "FORTNITE ITEMS SHOP",
-    "DAILY": "DAILY",
-    "FEATURED": "FEATURED",
-    "DATE": "Fortnite shop for {{date}}",
-    "FOOTER": "Atlanta - Fortnite Shop"
+    "HEADER": "FORTNITE ITENS LOJA",
+    "DAILY": "DIARIAMENTE",
+    "FEATURED": "DESTAQUE",
+    "DATE": "Loja Fortnite para {{date}}",
+    "FOOTER": "Atlanta - Loja Fortnite"
 }
