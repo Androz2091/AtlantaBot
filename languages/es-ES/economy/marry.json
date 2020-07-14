@@ -8,11 +8,11 @@
     "YOURSELF": "¡No puedes casarte contigo mismo!",
     "REQUEST_AUTHOR_TO_AMEMBER": "¡Ya tienes una solicitud pendiente con **{{username}}**!",
     "REQUEST_AMEMBER_TO_AUTHOR": "¡**{{username}}** ya te ha enviado una solicitud! Rechace o acéptelo (o espere hasta que caduque en unos minutos).",
-    "REQUEST_AMEMBER_TO_MEMBER": "**{{secondUsername}}** has already sent a request to **{{firstUsername}}**!",
-    "REQUEST_MEMBER_TO_AMEMBER": "**{{firstUsername}} has already sent a request to **{{secondUsername}}**! Wait until **{{secondUsername}}** accepts or refuses the request from **{{firstUsername}}** or until it expires and try again!",
+    "REQUEST_AMEMBER_TO_MEMBER": "**{{secondUsername}}** ha enviado una solicitud a **{{firstUsername}}**!",
+    "REQUEST_MEMBER_TO_AMEMBER": "¡**{{firstUsername}} ha enviado una solicitud a **{{secondUsername}}**! ¡Espere hasta que **{{secondUsername}}** acepte o rechace la solicitud de **{{firstUsername}}** o hasta que caduque e intente nuevamente!",
     "TIMEOUT": "{{username}} no respondió... ¡Espere hasta que él / ella esté conectado y luego intente nuevamente!",
     "SUCCESS": "🎉 ¡Felicidades! ¡**{{creator}}** y **{{partner}}** se han casado!",
     "DENIED": "{{creator}}, tengo malas noticias... {{partner}} rechazó tu propuesta.",
     "REQUEST": "{{to}}, ¿acepta casarse con {{from}}? ¡Responda con \"Si\" o \"No\"!",
-    "BOT_USER": "You can't marry a bot!"
+    "BOT_USER": "¡No se puede casar con un bot!"
 }

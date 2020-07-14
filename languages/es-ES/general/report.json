@@ -1,11 +1,11 @@
 {
-    "DESCRIPTION": "Send your report to the channel defined for them!",
-    "USAGE": "{{prefix}}report [@user] [reason]",
-    "EXAMPLES": "{{prefix}}report @Androz#2091 Breaking the rules",
-    "MISSING_CHANNEL": "No report channel defined!",
-    "MISSING_REASON": "Please enter a reason for your report!",
-    "MISSING_USER": "Please mention the user you want report!",
-    "INVALID_USER": "You can't report yourself",
-    "SUCCESS": "Your report has been sent in {{channel}}!",
-    "TITLE": "Report - {{user}}"
+    "DESCRIPTION": "¡Envía tu reporte al canal definido para ello!",
+    "USAGE": "{{prefix}}report [@usuario] [razón]",
+    "EXAMPLES": "{{prefix}}report @Androz#2091 Romper las reglas",
+    "MISSING_CHANNEL": "¡No se ha definido ningún canal de reportes!",
+    "MISSING_REASON": "¡Por favor, introduzca una razón para su reporte!",
+    "MISSING_USER": "¡Por favor mencione al usuario que desea reportar!",
+    "INVALID_USER": "No puedes reportarte a ti mismo",
+    "SUCCESS": "¡Su reporte ha sido enviado al canal {{channel}}!",
+    "TITLE": "Reporte - {{user}}"
 }
