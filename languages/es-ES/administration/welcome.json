@@ -11,6 +11,6 @@
     "FORM_SUCCESS": "¡Mensajes de bienvenida activados en {{channel}}! ¡Escriba `{{prefix}}welcome test` para hacer un test del mensaje de bienvenida!",
     "DISABLED": "¡Los mensajes de bienvenida acaban de desactivarse! ¡Escriba `{{prefix}}configuration para ver la configuración!",
     "IMG_WELCOME": "¡Bienvenido a {{server}}!",
-    "IMG_NB": "¡- {{memberCount}} miembro!",
+    "IMG_NB": "¡{{memberCount}} miembro!",
     "TITLE": "BIENVENIDO"
 }
