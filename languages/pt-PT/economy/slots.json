@@ -1,8 +1,8 @@
 {
-    "DESCRIPTION": "The Casino of Atlanta",
+    "DESCRIPTION": "O cassino de Atlanta",
     "USAGE": "{{prefix}}slots [amount]",
     "EXAMPLES": "{{prefix}}slots\n{{prefix}}slots 10",
-    "DEFEAT": "**{{username}}** used {{money}} credit(s) and lost everything.",
-    "VICTORY": "**{{username}}** used {{money}} credit(s) and won {{won}} credit(s)!",
-    "NOT_ENOUGH": "You do not have {{money}} credit(s)."
+    "DEFEAT": "**{{username}}** usou {{money}} crédito (s) e perdeu tudo.",
+    "VICTORY": "**{{username}}** usou {{money}} créditos e ganhos {{won}} créditos!",
+    "NOT_ENOUGH": "Você não tem {{money}} creditos."
 }
