@@ -25,7 +25,7 @@ class Quote extends Command {
 				.setAuthor(m.author.tag, m.author.displayAvatarURL())
 				.setDescription(m.content)
 				.setColor(m.member ? m.member.roles.highest ? m.member.roles.highest.color : data.config.embed.color : data.config.embed.color)
-				.setFooter(m.guild.name+" | #"+m.channel.name)
+				.setFooter(m.guild.name+" | #"+m.channel.name)
 				.setTimestamp(m.createdTimestamp);
 			if(m.attachments.size > 0){
 				embed.setImage(m.attachments.first().url);

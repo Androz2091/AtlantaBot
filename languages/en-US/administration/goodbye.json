@@ -2,7 +2,7 @@
     "DESCRIPTION": "Enable or disable the goodbye messages!",
     "USAGE": "{{prefix}}goodbye",
     "EXAMPLES": "{{prefix}}goodbye",
-    "DEFAULT_MESSAGE": "Goodbye {user}! We're now {membercount} without you... :'(",
+    "DEFAULT_MESSAGE": "Goodbye {user}! We're now {membercount} without you... :'(",
     "TEST_SUCCESS": "Test executed!",
     "FORM_1": "Hello {{author}}! In which channel will the goodbye messages be sent? (mention a channel)",
     "FORM_2": "All right! The messages will therefore be sent in {{channel}}. Enter the goodbye message below: \n\n:information_source: __**Informations:**__\nMention: {user}\nMembers: {membercount}\nServer: {server}\n\n__For example:__\n\n\"Goodbye {user}... We are {membercount}!\"\n:arrow_down:\n\"Goodbye {{author}}... We are {{memberCount}}!\".",

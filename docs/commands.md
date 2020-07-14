@@ -22,7 +22,7 @@ Here's the list of Atlanta commands. This one contains more than **100 commands*
 | **minecraft**    | Shows informations about the Minecraft server!                    | minecraft [ip]                 | 3 seconds |
 | **permissions**  | Displays the member's permissions in the channel                  | permissions (@member)          | 1 seconds |
 | **ping**         | Show bot's ping                                                   | ping                           | 1 seconds |
-| **quote**        | Quote a message in the channel!                                   | quote [messageID] [channel]    | 5 seconds |
+| **quote**        | Quote a message in the channel!                                   | quote [messageID] [channel]    | 5 seconds |
 | **remindme**     | Add a new reminder                                                | remindme [message]             | 3 seconds |
 | **report**       | Send your report to the channel defined for them!                 | report [@user] [reason]        | 5 seconds |
 | **serverinfo**   | Shows informations about the server!                              | serverinfo [ID/Name]           | 3 seconds |
@@ -41,7 +41,7 @@ Here's the list of Atlanta commands. This one contains more than **100 commands*
 | ------------------- | ----------------------------------------------------------- | -------------------------------- | ---------- |
 | **addcommand**      | Add a custom command to the server!                         | addcommand [name] [answer]       | 3 seconds  |
 | **addemoji**        | Add an emoji to the server!                                 | addemoji [image-url] [name]      | 5 seconds  |
-| **automod**         | Enable or disable automatic deletion of Discord invites     | automod [on/off] (#channel)      | 5 seconds  |
+| **automod**         | Enable or disable automatic deletion of Discord invites     | automod [on/off] (#channel)      | 5 seconds  |
 | **autorole**        | Enable/Disable the autorole on the server!                  | autorole [on/off] (role)         | 5 seconds  |
 | **backup**          | Manage your server backups with an efficient way!           | backup [create/load/infos]       | 30 seconds |
 | **configuration**   | Shows the server configuration!                             | configuration                    | 3 seconds  |
