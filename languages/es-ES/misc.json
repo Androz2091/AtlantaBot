@@ -7,7 +7,7 @@
     "INVALID_CHANNEL": "¡Por favor, especifique un canal válido!",
     "INVALID_TIME": "¡Debes ingresar una hora válida! Unidades válidas: `s`, `m`, `h` o `d`",
     "INVALID_NUMBER": "¡Por favor, especifique un número válido!",
-    "INVALID_NUMBER_RANGE": "¡Por favor, especifique un número válido entre**{{min}}** y**{{max}}**!",
+    "INVALID_NUMBER_RANGE": "¡Por favor, especifique un número válido entre **{{min}}** y **{{max}}**!",
     "STATS_FOOTER": "[Dashboard]({{dashboardLink}}) ● [Donar]({{donateLink}}) ● [Invitar]({{inviteLink}}) ● [Server]({{supportLink}}) ● [Github]({{githubLink}})",
     "BOT_USER": "¡Este usuario es un bot!",
     "NO_REASON_PROVIDED": "No se proporcionó ninguna razón",
