@@ -1,6 +1,6 @@
 {
     "DESCRIPTION": "Active ou désactive la suppression automatique des invitations Discord",
-    "USAGE": "{{prefix}}automod [on/off] (#salon)",
+    "USAGE": "{{prefix}}automod [on/off] (#channel)",
     "EXAMPLES": "{{prefix}}automod on\n{{prefix}}automod off #general\n{{prefix}}automod off",
     "MISSING_STATUS": "Veuillez préciser un statut valide ! (`on` ou `off`)",
     "ENABLED": "Les invitations Discord seront automatiquement supprimées ! Si vous voulez ignorer un salon, envoyez `{{prefix}}automod off #salon` ! Cela désactivera l'auto-modération dans le salon mentionné !",
