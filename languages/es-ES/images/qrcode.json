@@ -2,5 +2,6 @@
     "DESCRIPTION": "Genera una imagen de código QR a partir de tu palabra",
     "USAGE": "{{prefix}}qrcode [texto]",
     "EXAMPLES": "{{prefix}}qrcode Hola",
-    "MISSING_TEXT": "¡Especifique un texto para el código QR!"
+    "MISSING_TEXT": "¡Especifique un texto para el código QR!",
+    "SUCCESS": "Here is your QRCode!"
 }

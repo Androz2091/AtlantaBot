@@ -1,6 +1,6 @@
 {
     "DESCRIPTION": "Enable or disable automatic deletion of Discord invites",
-    "USAGE": "{{prefix}}automod [on/off] (#channel)",
+    "USAGE": "{{prefix}}automod [on/off] (#channel)",
     "EXAMPLES": "{{prefix}}automod on\n{{prefix}}automod off #general\n{{prefix}}automod off",
     "MISSING_STATUS": "Please enter a valid status! (`on` or `off`)",
     "ENABLED": "Discord invites will be automatically deleted! If you want to ignore a channel, just type `{{prefix}}automod off #channel`! This will disable auto moderation in the mentioned channel!",

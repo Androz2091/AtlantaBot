@@ -3,8 +3,8 @@
     "USAGE": "{{prefix}}rep [utilisateur]",
     "EXAMPLES": "{{prefix}}rep @Androz#2091",
     "COOLDOWN": "Vous devez attendre {{time}} avant de pouvoir rep quelqu'un !",
-    "INVALID_USER": "Vous devez mentionner une utilisateur valide à qui donner un point de réputation !",
+    "INVALID_USER": "Vous devez mentionner un utilisateur valide à qui donner un point de réputation !",
     "BOT_USER": "Vous ne pouvez pas donner de réputation à un bot !",
     "YOURSELF": "Vous ne pouvez pas donner de points de réputation à vous-même !",
-    "SUCCESS": "Vous avez donné un points de réputation à {{username}} !"
+    "SUCCESS": "Vous avez bien donné un point de réputation à {{username}} !"
 }

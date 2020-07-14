@@ -3,5 +3,5 @@
     "USAGE": "{{prefix}}stop",
     "EXAMPLES": "{{prefix}}stop",
     "VOTE_CONTENT": "Vote: {{voteCount}}/{{requiredCount}}\nRéagissez avec 👍 pour arrêter la musique !",
-    "SUCCESS": "Musique stoppé !"
+    "SUCCESS": "Musique stoppée !"
 }

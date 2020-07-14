@@ -9,9 +9,10 @@
     "FIELD_ALIASES": "Alias",
     "FIELD_EXAMPLES": "Ejemplos",
     "FIELD_PERMISSIONS": "Permisos",
-    "NO_ALIAS": "No hay alias",
+    "NO_ALIAS": "No alias.",
     "CMD_TITLE": "Ayuda para {{prefix}}{{cmd}}",
     "INFO": "● ¡Para obtener ayuda sobre un comando, escriba `{{prefix}}help <comando>`!",
     "CUSTOM_COMMANDS": "Comandos personalizados",
-    "TITLE": "{{name}} | Comandos"
+    "TITLE": "{{name}} | Comandos",
+    "NO_REQUIRED_PERMISSION": "No specific permission required to execute this command."
 }

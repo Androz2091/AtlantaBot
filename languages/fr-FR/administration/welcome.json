@@ -9,5 +9,8 @@
     "FORM_2": "Très bien ! Le message sera envoyé dans le salon {{channel}}. Entrez le message de bienvenue souhaité: \n\n:information_source: __**Informations:**__\nMention: {user}\nMembres: {membercount}\nServeur: {server}\n\n__Par exemple:__\n\n\"Bienvenue {user} sur {server}, nous sommes {membercount} !\"\n:arrow_down:\n\"Bienvenue {{author}} sur {{guildName}}, nous sommes {{memberCount}} !\".",
     "FORM_3": "D'accord ! Voulez-vous également envoyer une belle image de bienvenue ? Répondez par \"oui\" ou \"non\" !",
     "FORM_SUCCESS": "Message de bienvenue activés dans {{channel}} ! Tapez `{{prefix}}welcome test` pour tester le message de bienvenue !",
-    "DISABLED": "Messages de bienvenue désactivés ! Tapez `{{prefix}}configuration` pour voir la nouvelle configuration !"
+    "DISABLED": "Messages de bienvenue désactivés ! Tapez `{{prefix}}configuration` pour voir la nouvelle configuration !",
+    "IMG_WELCOME": "Welcome in {{server}}!",
+    "IMG_NB": "- {{memberCount}}th member!",
+    "TITLE": "WELCOME"
 }

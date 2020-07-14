@@ -5,5 +5,6 @@
     "MISSING_STATUS": "Por favor, especifique un estado válido! (`on` o `off`)",
     "MISSING_ROLE": "¡Especifique un rol válido para agregar a los nuevos miembros!",
     "SUCCESS_ENABLED": "¡Autorol habilitado! Los nuevos miembros recibirán el rol **{{roleName}}**.",
+    "ALREADY_DISABLED": "Autorole is already disabled. Enable it with `{{prefix}}autorole on @YourRole`!",
     "SUCCESS_DISABLED": "¡Autorol deshabilitado! ¡Escriba `{{prefix}}configuration` para ver su nueva configuración!"
 }

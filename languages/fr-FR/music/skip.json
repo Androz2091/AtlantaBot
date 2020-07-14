@@ -2,7 +2,7 @@
     "DESCRIPTION": "Passe à la chanson suivante",
     "USAGE": "{{prefix}}skip",
     "EXAMPLES": "{{prefix}}skip",
-    "NO_NEXT_SONG": "Aucune chanson suivante !",
+    "NO_NEXT_SONG": "Aucune chanson après celle en cours de lecture !",
     "VOTE_CONTENT": "Chanson suivante: {{songName}}\nVote: {{voteCount}}/{{requiredCount}}\nRéagissez avec 👍 pour passer à la chanson suivante !",
-    "SUCCESS": "Chanson passée !"
+    "SUCCESS": "Chanson sautée !"
 }

@@ -7,6 +7,6 @@
     "SMALL": "{{user}} | Le nombre est plus **petit** que `{{number}}` !",
     "WON": "{{winner}} a gagné 10 crédits !",
     "DEFEAT": "Personne n'a trouvé le nombre ! C'était **{{number}}** !",
-    "GAME_STATS": "🎉 | {{winner}} found the number! It was __**{{number}}**__ !\n\n**States of the game: **\n__**Time**__: {{time}}\n__**Number of participants**__ : {{participantCount}}\n__**Participants**__ : \n{{participants}}",
+    "GAME_STATS": "🎉 | {{winner}} a trouvé le nombre ! C'était __**{{number}}**__ !\n\n**Statistiques de la partie: **\n__**Durée**__: {{time}}\n__**Nombre de participants**__ : {{participantCount}}\n__**Participants**__ : \n{{participants}}",
     "GAME_RUNNING": "Une partie est déjà en cours sur ce serveur !"
 }
