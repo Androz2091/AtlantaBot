@@ -2,7 +2,7 @@
     "DESCRIPTION": "¡Activa o desactiva los mensajes de despedida!",
     "USAGE": "{{prefix}}goodbye",
     "EXAMPLES": "{{prefix}}goodbye",
-    "DEFAULT_MESSAGE": "¡Hasta luego {user}! Ahora somos {membercount} sin tí... :'(",
+    "DEFAULT_MESSAGE": "Goodbye {user}! We're now {membercount} without you... :'(",
     "TEST_SUCCESS": "¡Test realizado!",
     "FORM_1": "¡Hola {{author}}! ¿En qué canal se enviarán los mensajes de despedida? (mencionar un canal)",
     "FORM_2": "¡Todo bien! Por lo tanto, los mensajes se enviarán en {{channel}}. Ingrese el mensaje de despedida a continuación: \n:information_source:__**Información:**__\nMención: {user}\nMiembros: {membercount}\nServidor: {server}\n\n__Por ejemplo:__\n\n\"¡Hasta luego {user}... ahora somos {membercount}!\"\n:arrow_down:\n\"¡Hasta luego {{author}}... ahora somos {{memberCount}}!\".",
