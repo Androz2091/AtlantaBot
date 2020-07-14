@@ -15,7 +15,7 @@
     "VOTE_DM": "⬆️ Hello {{user}}, thanks for voting!\nYour reward: 40 credits (on the support server)!",
     "VOTE_LOGS": "⬆️ **{{usertag}}** (`{{userid}}`) voted for **Atlanta** and won **40** credits, thank you!\n<https://discordbots.org/bot/557445719892688897/vote>",
     "PREFIX": "Hello **{{username}}**, my prefix on this server is **\\{{prefix}}**",
-    "GUILD_ONLY": "This command is only available on a server!",
+    "GUILD_ONLY": "¡El comando es solamente válido en servidores!",
     "MISSING_BOT_PERMS": "I need the following permissions to execute this command: {{list}}",
     "MISSING_MEMBER_PERMS": "You need the following permissions to execute this command: {{list}}",
     "RESTRICTED_CHANNEL": "Commands are not allowed in {{channel}}!",
