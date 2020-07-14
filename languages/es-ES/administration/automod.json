@@ -1,6 +1,6 @@
 {
     "DESCRIPTION": "Habilita o deshabilita la eliminación automática de las invitaciones de Discord",
-    "USAGE": "{{prefix}}automod [on/off] (#anal)",
+    "USAGE": "{{prefix}}automod [on/off] (#canal)",
     "EXAMPLES": "{{prefix}}automod on\n{{prefix}}automod off #general\n{{prefix}}automod off",
     "MISSING_STATUS": "Por favor, especifique un estado válido! (`on` o `off`)",
     "ENABLED": "¡Las invitaciones de Discord se eliminarán automáticamente! ¡Si desea ignorar un canal, simplemente escriba `{{prefix}}automod off #canal`! ¡Esto desactivará la moderación automática en el canal mencionado!",
