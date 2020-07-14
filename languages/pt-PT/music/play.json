@@ -3,7 +3,7 @@
     "USAGE": "{{prefix}}play [song]",
     "EXAMPLES": "{{prefix}}play Despacito",
     "NO_VOICE_CHANNEL": "You must be connected in a voice channel!",
-    "VOICE_CHANNEL_CONNECT": " I can't connect into your voice channel!",
+    "VOICE_CHANNEL_CONNECT": "I can't connect into your voice channel!",
     "MISSING_SONG_NAME": "Please enter a song name to search for (or a link)!",
     "RESULTS_FOOTER": "Please enter a value to select one of the search results from 1 to 10.",
     "NO_RESULT": "No result on Youtube!",
