@@ -11,6 +11,6 @@
     "MAX_CHARACT": "¡Su mensaje no debe superar los 1800 caracteres!",
     "DISABLED": "¡Los mensajes de despedida acaban de desactivarse! ¡Escriba `{{prefix}}configuration para ver la configuración!",
     "IMG_GOODBYE": "¡Saliendo de {{server}}!",
-    "IMG_NB": "¡- {{memberCount}} miembro!",
+    "IMG_NB": "¡{{memberCount}} miembro!",
     "TITLE": "HASTA LUEGO"
 }
