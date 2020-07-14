@@ -12,7 +12,7 @@
     "BOT_USER": "¡Este usuario es un bot!",
     "NO_REASON_PROVIDED": "No se proporcionó ninguna razón",
     "NO_USER_FOUND_ID": "¡Ningún usuario en Discord tiene la ID `{{id}}`!",
-    "VOTE_DM": "⬆️ Hello {{user}}, thanks for voting!\nYour reward: 40 credits (on the support server)!",
+    "VOTE_DM": "⬆️ Hola {{user}}, ¡Gracias por votar!\nSu recompensa: 40 créditos (en el servidor de soporte)!",
     "VOTE_LOGS": "⬆️ **{{usertag}}** (`{{userid}}`) voted for **Atlanta** and won **40** credits, thank you!\n<https://discordbots.org/bot/557445719892688897/vote>",
     "PREFIX": "Hello **{{username}}**, my prefix on this server is **\\{{prefix}}**",
     "GUILD_ONLY": "¡El comando es solamente válido en servidores!",
