@@ -47,7 +47,7 @@ class Play extends Command {
 		} else if(tracks[0].fromPlaylist){
 			trackToPlay = args.join(" ");
 			isPlaylist = true;
-		} else if(args.join(" ").match(/(?:youtube\.com\/(?:[^\/]+\/.+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/)([^"&?\/\s]{11})/)){
+		} else if(args.join(" ").match(/(?:youtube\.com\/(?:[^/]+\/.+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/)([^"&?/\s]{11})/)){
 			trackToPlay = tracks[0];
 		} else {
 			try {
