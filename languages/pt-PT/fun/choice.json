@@ -1,9 +1,9 @@
 {
-    "DESCRIPTION": "Randomly pick one of the choices you give me!",
+    "DESCRIPTION": "Escolha aleatoriamente uma das opções que você me dá!",
     "USAGE": "{{prefix}}choice [choice1/choice2/etc...]",
     "EXAMPLES": "{{prefix}}choice Fire/Wind/Water",
-    "MISSING": "You must enter more than two choices!",
-    "EMPTY": "One of your choices seems to be empty.... Please try again!",
-    "PROGRESS": "Choice being made...",
-    "DONE": "Here is my choice:"
+    "MISSING": "Você deve inserir mais de duas opções!",
+    "EMPTY": "Uma de suas escolhas parece estar vazia.... Tente novamente!",
+    "PROGRESS": "Escolha a ser feita...",
+    "DONE": "Aqui está a minha escolha:"
 }
