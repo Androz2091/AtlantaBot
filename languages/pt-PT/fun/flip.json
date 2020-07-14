@@ -1,7 +1,7 @@
 {
-    "DESCRIPTION": "I roll the dice for you!",
+    "DESCRIPTION": "Eu jogo os dados para você!",
     "USAGE": "{{prefix}}flip",
     "EXAMPLES": "{{prefix}}flip",
-    "HEADS": "🎲 | Heads!",
-    "TAILS": "🎲 | Tails!"
+    "HEADS": "🎲 | Cabeças!",
+    "TAILS": "🎲 | Caudas!"
 }
