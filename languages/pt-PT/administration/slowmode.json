@@ -1,8 +1,8 @@
 {
-    "DESCRIPTION": "Set a cooldown in a channel",
-    "USAGE": "{{prefix}}slowmode [#channel] (time)",
-    "EXAMPLES": "{{prefix}}slowmode #general 10m\n{{prefix}}slowmode #general",
-    "DISABLED": "Slowmode has been disabled in {{channel}}!",
-    "ENABLED": "Slowmode enabled in {{channel}} with a time of {{time}}!",
-    "PLEASE_WAIT": "Channel {{channel}} is in slowmode! Please wait {{time}} to be able to post a new message!"
+    "DESCRIPTION": "Definir um cooldown em um canal",
+    "USAGE": "{{prefix}}slowmode [#canal] (tempo)",
+    "EXAMPLES": "{{prefix}}slowmode #geral 10m\n{{prefix}}slowmode #geral",
+    "DISABLED": "O modo lento foi desativado em {{channel}}!",
+    "ENABLED": "Modo lento ativado em {{channel}} com um tempo de{{time}}!",
+    "PLEASE_WAIT": "Canal {{channel}} está no modo lento! Por favor, espere {{time}} para poder enviar uma nova mensagem!"
 }
