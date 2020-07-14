@@ -3,7 +3,7 @@
     "USAGE": "{{prefix}}rob [@miembro] [cantidad]",
     "EXAMPLES": "{{prefix}rob @Androz#2091 100",
     "YOURSELF": "¡No puedes robarte a ti mismo!",
-    "MISSING_MEMBER": "You must specify a valid member to rob!",
+    "MISSING_MEMBER": "¡Debes mencionar a un miembro válido para robar!",
     "MISSING_AMOUNT": "¡Ingrese una cantidad válida para ser robada a **{{username}}**!",
     "NOT_ENOUGH_AUTHOR": "¡Debe tener más de **{{moneyMin}}** créditos para intentar este robo (en realidad tiene **{{moneyCurrent}}** créditos)!",
     "NOT_ENOUGH_MEMBER": "¡No puede intentar robar **{{money}}** créditos a **{{username}}** porque no tiene tantos créditos en efectivo!",
