@@ -40,7 +40,7 @@ class Np extends Command {
 			.setThumbnail(track.thumbnail)
 			.addField(message.translate("music/np:T_TITLE"), track.name, true)
 			.addField(message.translate("music/np:T_CHANNEL"), track.author, true)
-			.addField(message.translate("music/np:T_DURATION"), this.client.functions.convertTime(message.guild, track.durationMS), true)
+			.addField(message.translate("music/np:T_DURATION"), message.convertTime(Date.now()+track.durationMS, "to", true), true)
 			.addField(message.translate("music/np:T_DESCRIPTION"),
 				track.description ?
 					(track.description.substring(0, 150)+"\n"+(message.translate("common:AND_MORE").toLowerCase())) : message.translate("music/np:NO_DESCRIPTION"), true)
