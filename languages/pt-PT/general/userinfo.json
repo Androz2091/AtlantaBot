@@ -1,11 +1,11 @@
 {
-    "DESCRIPTION": "Shows user information!",
+    "DESCRIPTION": "Mostra informações do usuário!",
     "USAGE": "{{prefix}}userinfo (@user/userID)",
     "EXAMPLES": "{{prefix}}userinfo\n{{prefix}}userinfo @Androz#2091\n{{prefix}}userinfo 422820341791064085",
-    "INVALID_USER": "No user on Discord has the ID `{{search}}`!",
-    "NO_GAME": "Not playing",
-    "NO_ROLE": "No role",
-    "NO_NICKNAME": "No nickname",
-    "MORE_ROLES": "and {{count}} others roles",
-    "BOT_STATS": "**{{votes}}** votes (top.gg)\n**{{servers}}** servers\n**{{shards}}** shards\nMade with **{{lib}}**"
+    "INVALID_USER": "Nenhum usuário no Discord tem o ID `{{search}}`!",
+    "NO_GAME": "Não jogar",
+    "NO_ROLE": "Sem Cargo",
+    "NO_NICKNAME": "Sem Apelido",
+    "MORE_ROLES": "e {{count}} outros cargos",
+    "BOT_STATS": "**{{votes}}** votos (top.gg)\n**{{servers}}** servidores\n**{{shards}}** shards\nFeito com **{{lib}}**"
 }
