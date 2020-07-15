@@ -2,10 +2,10 @@
     "DESCRIPTION": "Mostra informações sobre a música atual!",
     "USAGE": "{{prefix}}np",
     "EXAMPLES": "{{prefix}}np",
-    "CURRENTLY_PLAYING": "Currently playing",
-    "T_TITLE": "Title",
-    "T_CHANNEL": "Channel",
-    "T_DURATION": "Duration",
-    "T_DESCRIPTION": "Description",
-    "NO_DESCRIPTION": "No description..."
+    "CURRENTLY_PLAYING": "Tocando neste momento",
+    "T_TITLE": "Título",
+    "T_CHANNEL": "Canal",
+    "T_DURATION": "Duração",
+    "T_DESCRIPTION": "Descrição",
+    "NO_DESCRIPTION": "Sem descrição..."
 }
