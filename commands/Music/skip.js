@@ -52,7 +52,7 @@ class Skip extends Command {
 			const mustVote = Math.floor(members.size/2+1);
 
 			embed.setDescription(message.translate("music/skip:VOTE_CONTENT", {
-				songName: queue.songs[1].name,
+				songName: queue.tracks[0].name,
 				voteCount: 0,
 				requiredCount: mustVote
 			}));
@@ -79,7 +79,7 @@ class Skip extends Command {
 					collector.stop(true);
 				} else {
 					embed.setDescription(message.translate("music/skip:VOTE_CONTENT", {
-						songName: queue.songs[0].title,
+						songName: queue.tracks[0].title,
 						voteCount: haveVoted,
 						requiredCount: mustVote
 					}));
