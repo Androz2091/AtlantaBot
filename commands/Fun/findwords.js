@@ -97,7 +97,7 @@ class FindWords extends Command {
 							return message.error("fun/findwords:NO_WINNER_ALL");
 						}
 						const winnerID = await getWinner(winners);
-						const time = message.convertTime(Date.now()+createdAt, "to", true);
+						const time = message.convertTime(createdAt, "from", true);
 						const user = await this.client.users.fetch(winnerID);
 						message.sendT("fun/findwords:GAME_STATS", {
 							winner: user.username,
