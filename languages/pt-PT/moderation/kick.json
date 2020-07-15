@@ -1,10 +1,10 @@
 {
-    "DESCRIPTION": "Kick the mentioned member!",
-    "USAGE": "{{prefix}}kick [@user] (reason)",
-    "EXAMPLES": "{{prefix}kick @Androz#2091 Spam",
-    "MISSING_MEMBER": "Please specify a valid member to kick!",
-    "MISSING_PERM": "An error has occurred... check that I have the permissions to kick this member and try again!",
-    "KICKED_DM": "Hello {{username}},\nYou have just been kicked from **{{server}}** by **{{moderator}}** for **{{reason}}**!",
-    "KICKED": "**{{username}}** has just been kicked from **{{server}}** by **{{moderator}}** for **{{reason}}**!",
-    "CASE": "Kick | Case #{{count}}"
+    "DESCRIPTION": "Expulse o membro mencionado!",
+    "USAGE": "{{prefix}}kick [@user] (motivo)",
+    "EXAMPLES": "{prefix}kick @Androz#2091 Spam",
+    "MISSING_MEMBER": "Especifique um membro válido para expulsar!",
+    "MISSING_PERM": "Ocorreu um erro... verifique se tenho permissões para expulsar este membro e tente novamente!",
+    "KICKED_DM": "Olá {{username}},\nVocê acabou de ser expulso de **{{server}}** pelo **{{moderator}}** por **{{reason}}**!",
+    "KICKED": "**{{username}}** acaba de ser expulso **{{server}}** pelo **{{moderator}}** por **{{reason}}**!",
+    "CASE": "Kick | Caso #{{count}}"
 }
