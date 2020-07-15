@@ -1,12 +1,12 @@
 {
-    "DESCRIPTION": "Define the sanctions that members will get after a certain number of warns!",
+    "DESCRIPTION": "Defina as sanções que os membros receberão após um certo número de avisos!",
     "USAGE": "{{prefix}}setwarns [kick/ban] [number/reset]",
     "EXAMPLES": "{{prefix}setwarns kick 10\n{{prefix}}setwarns ban 10\n{{prefix}}setwarns ban reset",
-    "MISSING_TYPE": "Please specify a valid sanction type! (`kick`, `ban`)",
-    "SUCCESS_KICK": "Configuration saved! When a member will reach **{{count}}** warns, they will be kicked. Type `{{prefix}}configuration` to see your new configuration!",
-    "SUCCESS_BAN": "Configuration saved! When a member will reach **{{count}}** warns, he will be banned. Type `{{prefix}}configuration` to see your new configuration!",
-    "SUCCESS_KICK_RESET": "Configuration saved! The kick sanction is no longer automatic! Type `{{prefix}}configuration` to see your new configuration!",
-    "SUCCESS_BAN_RESET": "Configuration saved! The ban sanction is no longer automatic! Type `{{prefix}}configuration` to see your new configuration!",
-    "AUTO_BAN": "**{{username}}** was automatically banned because they reach more than **{{count}}** warns!",
+    "MISSING_TYPE": "Especifique um tipo de sanção válido! (`kick`, `ban`)",
+    "SUCCESS_KICK": "Configuração salva! Quando um membro alcançará **{{count}}** avisos, eles serão expulsos. use `{{prefix}}configuration` para ver sua nova configuração!",
+    "SUCCESS_BAN": "Configuração salva! Quando um membro alcançará **{{count}}** avisos, eles serão banidos. use `{{prefix}}configuration` para ver sua nova configuração!",
+    "SUCCESS_KICK_RESET": "Configuração salva! A sanção de expulsão não é mais automática! use `{{prefix}}configuration` para ver sua nova configuração!",
+    "SUCCESS_BAN_RESET": "Configuração salva! A sanção ban não é mais automática! use `{{prefix}}configuration` para ver sua nova configuração!",
+    "AUTO_BAN": "**{{username}}** foi banido automaticamente porque alcançam mais de **{{count}}** avisos!",
     "AUTO_KICK": "**{{username}}** was automatically kicked because they reach more than **{{count}}** warns!"
 }
