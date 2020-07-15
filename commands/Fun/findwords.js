@@ -25,10 +25,9 @@ class FindWords extends Command {
 		if (currentGames[message.guild.id]) {
 			return message.error("fun/number:GAME_RUNNING");
 		}
-
 		// Reads words file
 		const wordList = require("../../assets/json/words/"+message.guild.data.language+".json");
-    
+		
 		// Init some utils variables
 		const participants = [],
 			winners = [],
@@ -45,17 +44,17 @@ class FindWords extends Command {
 
 		let i = 0; // Inits i variable to count games
 		currentGames[message.guild.id] = true; // Update current game variable
-		generegame(words[i]); // Generate a new round
+		generateGame.call(this, words[i]); // Generate a new round
     
-		function generegame(word){
+		function generateGame(word){
     
 			// Launch timer
 			const delay = (i === 0) ? 10000 : 0;
 			if(i === 0){
 				message.sendT("fun/findwords:GAME_STARTING");
 			}
-    
-			setTimeout(function(){
+
+			setTimeout(() => {
                 
 				// Send announcment message
 				message.sendT("fun/findwords:FIND_WORD", {
@@ -91,14 +90,14 @@ class FindWords extends Command {
 					}
 					if(i < nbGames-1) {
 						i++;
-						generegame(words[i]);
+						generateGame.call(this, words[i]);
 					} else {
 						currentGames[message.guild.id] = false;
 						if(winners.length < 1){
 							return message.error("fun/findwords:NO_WINNER_ALL");
 						}
 						const winnerID = await getWinner(winners);
-						const time = message.convertTime(Date.now() - createdAt, "to");
+						const time = message.convertTime(Date.now()+createdAt, "to", true);
 						const user = await this.client.users.fetch(winnerID);
 						message.sendT("fun/findwords:GAME_STATS", {
 							winner: user.username,
