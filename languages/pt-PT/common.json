@@ -50,13 +50,13 @@
     "SETTINGS": "Configurações",
     "CONFIGURATION": "Configuração",
     "PREFIX": "Prefix",
-    "LANGUAGE": "Language",
-    "CHANNEL": "Channel",
-    "UPDATE": "Update",
-    "SUGGESTIONS": "Suggestions",
-    "MODLOGS": "Moderation logs",
-    "FORTNITESHOP": "Fortnite shop",
-    "NO_CHANNEL": "No channel",
+    "LANGUAGE": "Língua",
+    "CHANNEL": "Canal",
+    "UPDATE": "Atualizar",
+    "SUGGESTIONS": "Sugestões",
+    "MODLOGS": "Logs de moderação",
+    "FORTNITESHOP": "Loja Fortnite",
+    "NO_CHANNEL": "Nenhum canal",
     "REPORTS": "Reports",
-    "DISCONNECT": "Disconnect"
+    "DISCONNECT": "Desconectar"
 }
