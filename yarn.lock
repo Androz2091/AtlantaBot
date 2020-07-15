@@ -767,10 +767,10 @@ discord-giveaways@^4.2.1:
   dependencies:
     deepmerge "^4.2.2"
 
-discord-player@^2.0.1:
-  version "2.1.0"
-  resolved "https://registry.yarnpkg.com/discord-player/-/discord-player-2.1.0.tgz#83315794ea5ca81bd4bf07164bc60d7f58b6c715"
-  integrity sha512-uhJcTOc00Dv5Dz9vhbgdRSk2O0zvAb5sas2fA705blYLzshTQpPFcdcTzRXwKAPdwPo2MwKdZoBI3njPLBqbuw==
+discord-player@^2.2.0:
+  version "2.2.0"
+  resolved "https://registry.yarnpkg.com/discord-player/-/discord-player-2.2.0.tgz#ab7e0b39924d245df77e4e1b6d5bce4e382ecab9"
+  integrity sha512-j4ZwrGMzZQvjrlmXDaBKYzeIcVTFYRrw3pEsVqrB5q79Z2Ty+8ra73FE6vULhY1MYOBvPfWmn9iVqxq12/906Q==
   dependencies:
     discord-ytdl-core "^4.0.2"
     merge-options "^2.0.0"
