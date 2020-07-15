@@ -75,8 +75,8 @@ class Poll extends Command {
 				return message.error("misc:TIMES_UP");
 			}
     
-			const success = this.client.config.emojis.success.split(":")[1];
-			const error = this.client.config.emojis.error.split(":")[1];
+			const success = this.client.emojis.success.split(":")[1];
+			const error = this.client.emojis.error.split(":")[1];
 
 			const emotes = [
 				this.client.emojis.cache.find((e) => e.name === success),

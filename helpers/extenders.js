@@ -31,7 +31,7 @@ Message.prototype.success = function(key, args, options = {}) {
 Message.prototype.sendT = function(key, args, options = {}) {
 	let string = this.translate(key, args);
 	if (options.prefixEmoji) {
-		string = `${this.client.config.emojis[options.prefixEmoji]} | ${string}`;
+		string = `${this.client.emojis[options.prefixEmoji]} | ${string}`;
 	}
 	if (options.edit) {
 		return this.edit(string);

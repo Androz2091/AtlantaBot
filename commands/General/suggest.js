@@ -40,8 +40,8 @@ class Suggest extends Command {
 			.setColor(data.config.embed.color)
 			.setFooter(data.config.embed.footer);
 
-		const success = Discord.Util.parseEmoji(this.client.config.emojis.success).id;
-		const error = Discord.Util.parseEmoji(this.client.config.emojis.error).id;
+		const success = Discord.Util.parseEmoji(this.client.emojis.success).id;
+		const error = Discord.Util.parseEmoji(this.client.emojis.error).id;
         
 		suggChannel.send(embed).then(async (m) => {
 			await m.react(success);

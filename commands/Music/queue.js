@@ -39,7 +39,7 @@ class Queue extends Command {
 
 		// Generate discord embed to display the songs list
 		const embed = new Discord.MessageEmbed()
-			.addField(this.client.config.emojis.playlist+" "+message.translate("music/queue:TITLE"), sQueue.join("\n-------\n"))
+			.addField(this.client.emojis.playlist+" "+message.translate("music/queue:TITLE"), sQueue.join("\n-------\n"))
 			.setColor(data.config.embed.color)
 			.setFooter(data.config.embed.footer)
 			.setTimestamp();
