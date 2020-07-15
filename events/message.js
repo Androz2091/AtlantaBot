@@ -41,10 +41,16 @@ module.exports = class {
 
 		// Check if the bot was mentionned
 		if(message.content.match(new RegExp(`^<@!?${client.user.id}>( |)$`))){
-			return message.sendT("misc:PREFIX", {
-				username: message.author.username,
-				prefix: data.guild.prefix || ""
-			});
+			if(message.guild){
+				return message.sendT("misc:PREFIX_SERVER", {
+					username: message.author.username,
+					prefix: data.guild.prefix
+				});
+			} else {
+				return message.sendT("misc:PREFIX_DM", {
+					username: message.author.username
+				});
+			}
 		}
 
 		if(message.content === "@someone" && message.guild){
@@ -139,8 +145,11 @@ module.exports = class {
 				if(customCommand){
 					message.channel.send(customCommand.answer);
 				}
+			} else {
+				return message.sendT("misc:PREFIX_DM", {
+					username: message.author.username
+				});
 			}
-			return;
 		}
 
 		if(cmd.conf.guildOnly && !message.guild){
