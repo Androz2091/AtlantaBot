@@ -2,9 +2,9 @@
     "DESCRIPTION": "Ativar ou desativar a exclusão automática dos convites Discord",
     "USAGE": "{{prefix}}automod [on/off] (#canal)",
     "EXAMPLES": "{{prefix}}automod on\n{{prefix}}automod off #geral\n{{prefix}}automod off",
-    "MISSING_STATUS": "Digite um status válido",
-    "ENABLED": "Convites do Discord serão excluídos automaticamente! Se você deseja ignorar um canal, digite `{{prefix}}automod off #channel`! Isso desativará a moderação automática no canal mencionado!",
-    "DISABLED_CHANNEL": "A Moderação automática não será mais executada no canal {channel}}!",
+    "MISSING_STATUS": "Digite um status válido (`on` ou `off`)",
+    "ENABLED": "Convites do Discord serão excluídos automaticamente! Se você deseja ignorar um canal, digite `{{prefix}}automod off #canal`! Isso desativará a moderação automática no canal mencionado!",
+    "DISABLED_CHANNEL": "A Moderação automática não será mais executada no canal {{channel}}!",
     "DISABLED": "Tudo certo! A moderação automática não está mais ativa neste servidor!",
     "DELETED": "**{{username}}**, sua mensagem continha um convite do Discord e foi excluída. Se não foi intencional, você pode editar sua mensagem novamente, ela foi enviada a você como uma mensagem privada!"
 }
