@@ -1,10 +1,10 @@
 {
-    "DESCRIPTION": "Shows the lyrics of a song",
-    "USAGE": "{{prefix}}lyrics [song-name]",
+    "DESCRIPTION": "Mostra a letra de uma música",
+    "USAGE": "{{prefix}}lyrics [nome da música]",
     "EXAMPLES": "{{prefix}}lyrics Skyfall",
-    "LYRICS_OF": "🎤 Lyrics of {{songName}}",
-    "AND_MORE": "\n**And more...**",
-    "REST": "Click here for the rest",
-    "MISSING_SONG_NAME": "Please specify a song name to search!",
-    "NO_LYRICS_FOUND": "No lyrics found for `{{songName}}` !"
+    "LYRICS_OF": "🎤 Letras de {{songName}}",
+    "AND_MORE": "\n**E mais...**",
+    "REST": "Clique aqui para o resto",
+    "MISSING_SONG_NAME": "Especifique um nome de música para pesquisar!",
+    "NO_LYRICS_FOUND": "Nenhuma letra encontrada para `{{songName}}` !"
 }
