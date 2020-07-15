@@ -41,7 +41,7 @@ class Poll extends Command {
 				collector.stop(true);
 			}
             
-			if(tmsg.content.toLowerCase() === message.translate("common:YES").YES.toLowerCase()){
+			if(tmsg.content.toLowerCase() === message.translate("common:YES").toLowerCase()){
 				tmsg.delete();
 				msg.delete();
 				const tmsg1 = await message.sendT("moderation/announcement:MENTION_TYPE_PROMPT");
@@ -87,8 +87,8 @@ class Poll extends Command {
 				.setAuthor(message.translate("moderation/poll:TITLE"))
 				.setColor(data.config.embed.color)
 				.addField(question, message.translate("moderation/poll:REACT", {
-					success: emotes[0],
-					error: emotes[1]
+					success: emotes[0].toString(),
+					error: emotes[1].toString()
 				}));
             
 			message.channel.send(mention, embed).then(async (m) => {
