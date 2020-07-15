@@ -36,7 +36,7 @@ module.exports = {
 						if(permOverwrites) permOverwrites.delete();
 					});
 				}
-				const user = member ? member.user : await client.users.fetch(member.id);
+				const user = member ? member.user : await client.users.fetch(memberData.id);
 				const embed = new Discord.MessageEmbed()
 					.setDescription(guild.translate("moderation/unmute:SUCCESS_CASE", {
 						user: user.toString(),
