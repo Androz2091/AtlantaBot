@@ -8,5 +8,5 @@
     "SUCCESS_KICK_RESET": "Configuração salva! A sanção de expulsão não é mais automática! use `{{prefix}}configuration` para ver sua nova configuração!",
     "SUCCESS_BAN_RESET": "Configuração salva! A sanção ban não é mais automática! use `{{prefix}}configuration` para ver sua nova configuração!",
     "AUTO_BAN": "**{{username}}** foi banido automaticamente porque alcançam mais de **{{count}}** avisos!",
-    "AUTO_KICK": "**{{username}}** was automatically kicked because they reach more than **{{count}}** warns!"
+    "AUTO_KICK": "**{{username}}** foi expulso automaticamente porque alcançam mais de **{{count}}** avisos!"
 }
