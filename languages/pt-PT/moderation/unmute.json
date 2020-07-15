@@ -1,9 +1,9 @@
 {
-    "DESCRIPTION": "Unmute the mentioned member!",
-    "USAGE": "{{prefix}}unmute [@member]",
+    "DESCRIPTION": "Unmute membro mencionado!",
+    "USAGE": "{{prefix}}unmute [@membro]",
     "EXAMPLES": "{{prefix}unmute @Androz#2091",
-    "MISSING_MEMBER": "Please specify the member you want to unmute!",
-    "NOT_MUTED": "**{{username}}** is not muted to this server!",
-    "SUCCESS": "**{{username}}** has just been unmuted!",
-    "SUCCESS_CASE": "{{user}} (`{{usertag}}`) has just been unmuted! (case of mute: #{{count}})"
+    "MISSING_MEMBER": "Por favor, especifique o membro que você deseja unmute!",
+    "NOT_MUTED": "**{{username}}** não está mudo para este servidor!",
+    "SUCCESS": "**{{username}}** acabou de ficar unmuted!",
+    "SUCCESS_CASE": "{{user}} (`{{usertag}}`) acabou de ficar unmuted! (case of mute: #{{count}})"
 }
