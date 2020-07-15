@@ -1,9 +1,9 @@
 {
-    "DESCRIPTION": "Prevents the member from sending messages and connecting by voice for a period of time!",
-    "USAGE": "{{prefix}}mute [@member] [time]",
+    "DESCRIPTION": "Impede que o membro envie mensagens e se conecte por voz por um período de tempo!",
+    "USAGE": "{{prefix}}mute [@membro] [tempo]",
     "EXAMPLES": "{{prefix}}mute @Androz#2091 Spam",
-    "MISSING_MEMBER": "Please specify a valid member to mute!",
-    "MUTED_DM": "Hello {{username}},\nYou have just been muted in **{{server}}** by **{{moderator}}** for **{{time}}** for **{{reason}}**!",
-    "MUTED": "**{{username}}** is now muted for **{{time}}** for **{{reason}}** !",
-    "CASE": "Mute | Case #{{count}}"
+    "MISSING_MEMBER": "Especifique um membro válido para silenciar!",
+    "MUTED_DM": "Olá {{username}},\nVocê acabou de ser silenciado **{{server}}** pelo **{{moderator}}** por **{{time}}** por **{{reason}}**!",
+    "MUTED": "**{{username}}** agora está silenciado por **{{time}}** por **{{reason}}** !",
+    "CASE": "Mute | Caso #{{count}}"
 }
