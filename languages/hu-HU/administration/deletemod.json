@@ -1,8 +1,8 @@
 {
-    "DESCRIPTION": "Enable or disable the auto deletion of moderation commands!",
+    "DESCRIPTION": "Engedélyezd vagy tiltsd le a moderációs parancsok automatikus törlését!",
     "USAGE": "{{prefix}}deletemod [on/off]",
     "EXAMPLES": "{{prefix}}deletemod on",
-    "MISSING_STATUS": "Please specify a valid status! (`on` or `off`)",
-    "ENABLED": "Moderation commands will be automatically deleted!",
-    "DISABLED": "Moderation commands will no longer be automatically deleted!"
+    "MISSING_STATUS": "Kéréel, adj meg egy érvényes státuszt! (`on` vagy `off`)",
+    "ENABLED": "A moderációs parancsok automatikusan törlődnek!",
+    "DISABLED": "A moderálási parancsok nem lesznek automatikusan törölve!"
 }
