@@ -2,6 +2,6 @@
     "DESCRIPTION": "Állítsd be az ötletek csatornáját!",
     "USAGE": "{{prefix}}setsuggests (#csatorna)",
     "EXAMPLES": "{{prefix}}setsuggests #ötletek\n{{prefix}}setsuggests",
-    "SUCCESS_ENABLED": "Suggestions will be sent in **{{channel}}**!",
-    "SUCCESS_DISABLED": "Suggestions channel deleted!"
+    "SUCCESS_ENABLED": "Az ötleteket a **{{channel}}** csatornába küldöm el!",
+    "SUCCESS_DISABLED": "Ötletek csatorna törölve!"
 }
