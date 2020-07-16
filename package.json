@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/Androz2091/AtlantaBot#readme",
   "dependencies": {
+    "@discordjs/opus": "^0.3.2",
     "@k3rn31p4nic/google-translate-api": "github:k3rn31p4nic/google-translate-api",
     "@sentry/node": "5.19.2",
     "amethyste-api": "github:Androz2091/amethyste-api",
