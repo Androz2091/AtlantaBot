@@ -1,7 +1,7 @@
 {
-    "DESCRIPTION": "Disable or enable commands in a channel",
-    "USAGE": "{{prefix}}ignore [channel]",
-    "EXAMPLES": "{{prefix}}ignore #channel",
-    "ALLOWED": "Commands are now allowed in {{channel}}!",
-    "IGNORED": "Commands are now forbidden in {{channel}}!"
+    "DESCRIPTION": "Parancsok tiltása vagy engedélyezése egy csatornán",
+    "USAGE": "{{prefix}}ignore [csatorna]",
+    "EXAMPLES": "{{prefix}}ignore #csatorna",
+    "ALLOWED": "A parancsok mostantól engedélyezettek a {{channel}} csatornában!",
+    "IGNORED": "A parancsok mostantól letíltva a {{channel}} csatornában!"
 }
