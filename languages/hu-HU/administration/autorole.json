@@ -1,10 +1,10 @@
 {
-    "DESCRIPTION": "Enable/Disable the autorole on the server!",
-    "USAGE": "{{prefix}}autorole [on/off] (role)",
-    "EXAMPLES": "{{prefix}}autorole on @Members\n{{prefix}}autorole off",
-    "MISSING_STATUS": "Please specify a valid status! (`on` or `off`)",
-    "MISSING_ROLE": "Please specify a valid role to add to new members!",
-    "SUCCESS_ENABLED": "Autorole enabled! New members will receive the **{{roleName}}** role.",
+    "DESCRIPTION": "Engedélyezd/letiltsd az autorangot a szerveren!",
+    "USAGE": "{{prefix}}autorole [on/off] (rang)",
+    "EXAMPLES": "{{prefix}}autorole on @Tag\n{{prefix}}autorole off",
+    "MISSING_STATUS": "Kéréel, adj meg egy érvényes státuszt! (`on` vagy `off`)",
+    "MISSING_ROLE": "Kérlek, adj meg egy érvényes rangot, amelyet új tagok kapnak majd meg!",
+    "SUCCESS_ENABLED": "Az Autorang engedélyezve! Az új tagok megkapják a **{{roleName}}** rangot.",
     "ALREADY_DISABLED": "Autorole is already disabled. Enable it with `{{prefix}}autorole on @YourRole`!",
     "SUCCESS_DISABLED": "Autorole disabled! Type `{{prefix}}configuration` to see your new configuration!"
 }
