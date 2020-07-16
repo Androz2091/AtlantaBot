@@ -5,6 +5,6 @@
     "MISSING_STATUS": "Kéréel, adj meg egy érvényes státuszt! (`on` vagy `off`)",
     "MISSING_ROLE": "Kérlek, adj meg egy érvényes rangot, amelyet új tagok kapnak majd meg!",
     "SUCCESS_ENABLED": "Az Autorang engedélyezve! Az új tagok megkapják a **{{roleName}}** rangot.",
-    "ALREADY_DISABLED": "Autorole is already disabled. Enable it with `{{prefix}}autorole on @YourRole`!",
-    "SUCCESS_DISABLED": "Autorole disabled! Type `{{prefix}}configuration` to see your new configuration!"
+    "ALREADY_DISABLED": "Az Autorole már le van tiltva. Engedélyezd a `{{prefix}}autorole on `@TeRangod` paranccsal!",
+    "SUCCESS_DISABLED": "Az Autorole le van tiltva! Írd be a `{{prefix}}configuration` az új konfiguráció megtekintéséhez!"
 }
