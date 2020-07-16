@@ -53,24 +53,24 @@ class Userinfo extends Command {
 			.setAuthor(user.tag, user.displayAvatarURL())
 			.setThumbnail(user.displayAvatarURL())
 			.addField(":man: "+message.translate("common:USERNAME"), user.username, true)
-			.addField(this.client.emojis.discriminator+" "+message.translate("common:DISCRIMINATOR"), user.discriminator, true)
-			.addField(this.client.emojis.bot+" "+message.translate("common:ROBOT"), (user.bot ? message.translate("common:YES") : message.translate("common:NO")), true)
-			.addField(this.client.emojis.calendar+" "+message.translate("common:CREATION"), message.printDate(user.createdAt), true)
-			.addField(this.client.emojis.avatar+" "+message.translate("common:AVATAR"), user.displayAvatarURL())
+			.addField(this.client.emotes.discriminator+" "+message.translate("common:DISCRIMINATOR"), user.discriminator, true)
+			.addField(this.client.emotes.bot+" "+message.translate("common:ROBOT"), (user.bot ? message.translate("common:YES") : message.translate("common:NO")), true)
+			.addField(this.client.emotes.calendar+" "+message.translate("common:CREATION"), message.printDate(user.createdAt), true)
+			.addField(this.client.emotes.avatar+" "+message.translate("common:AVATAR"), user.displayAvatarURL())
 			.setColor(data.config.embed.color)
 			.setFooter(data.config.embed.footer);
 
 		if(displayPresence){
-			embed.addField(this.client.emojis.games+" "+message.translate("common:GAME"), (user.presence.activity ? user.presence.activity.name : message.translate("general/userinfo:NO_GAME")), true)
-				.addField(this.client.emojis.status.online+" "+message.translate("common:STATUS"), message.translate("common:STATUS_"+(user.presence.status.toUpperCase())), true);
+			embed.addField(this.client.emotes.games+" "+message.translate("common:GAME"), (user.presence.activity ? user.presence.activity.name : message.translate("general/userinfo:NO_GAME")), true)
+				.addField(this.client.emotes.status.online+" "+message.translate("common:STATUS"), message.translate("common:STATUS_"+(user.presence.status.toUpperCase())), true);
 		}
             
 		if(member){
-			embed.addField(this.client.emojis.up+" "+message.translate("common:ROLE"), (member.roles.highest ? member.roles.highest : message.translate("general/userinfo:NO_ROLE")), true)
-				.addField(this.client.emojis.calendar2+" "+message.translate("common:JOIN"), message.printDate(member.joinedAt),true)
-				.addField(this.client.emojis.color+" "+message.translate("common:COLOR"), member.displayHexColor, true)
-				.addField(this.client.emojis.pencil+" "+message.translate("common:NICKNAME"), (member.nickname ? member.nickname : message.translate("general/userinfo:NO_NICKNAME")), true)
-				.addField(this.client.emojis.roles+" "+message.translate("common:ROLES"), (
+			embed.addField(this.client.emotes.up+" "+message.translate("common:ROLE"), (member.roles.highest ? member.roles.highest : message.translate("general/userinfo:NO_ROLE")), true)
+				.addField(this.client.emotes.calendar2+" "+message.translate("common:JOIN"), message.printDate(member.joinedAt),true)
+				.addField(this.client.emotes.color+" "+message.translate("common:COLOR"), member.displayHexColor, true)
+				.addField(this.client.emotes.pencil+" "+message.translate("common:NICKNAME"), (member.nickname ? member.nickname : message.translate("general/userinfo:NO_NICKNAME")), true)
+				.addField(this.client.emotes.roles+" "+message.translate("common:ROLES"), (
 					member.roles.size > 10
 						? member.roles.cache.map((r) => r).slice(0, 9).join(", ")+" "+message.translate("general/userinfo:MORE_ROLES", { count: member.roles.cache.size - 10 })
 						: (member.roles.cache.size < 1) ? message.translate("general/userinfo:NO_ROLE") : member.roles.cache.map((r) => r).join(", ")
@@ -83,14 +83,14 @@ class Userinfo extends Command {
 			});
 			const data = await res.json();
 			if(!data.error){
-				embed.addField(this.client.emojis.desc+" "+message.translate("common:DESCRIPTION"), data.shortdesc, true)
-					.addField(this.client.emojis.stats+" "+message.translate("common:STATS"), message.translate("general/userinfo:BOT_STATS", {
+				embed.addField(this.client.emotes.desc+" "+message.translate("common:DESCRIPTION"), data.shortdesc, true)
+					.addField(this.client.emotes.stats+" "+message.translate("common:STATS"), message.translate("general/userinfo:BOT_STATS", {
 						votes: data.monthlyPoints || 0,
 						servers: data.server_count || 0,
 						shards: (data.shards || [0]).length,
 						lib: data.lib || "unknown"
 					}), true)
-					.addField(this.client.emojis.link+" "+message.translate("common:LINKS"), 
+					.addField(this.client.emotes.link+" "+message.translate("common:LINKS"), 
 						`${data.support ? `[${message.translate("common:SUPPORT")}](${data.support}) | ` : ""}${data.invite ?  `[${message.translate("common:INVITE")}](${data.invite}) | ` : ""}${data.github ?  `[GitHub](${data.github}) | ` : ""}${data.website ?  `[${message.translate("common:WEBSITE")}](${data.website})` : ""}`
 						, true);
 			}

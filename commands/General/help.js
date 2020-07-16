@@ -100,7 +100,7 @@ class Help extends Command {
 			}
 		});
 
-		const emojis = this.client.emojis;
+		const emojis = this.client.emotes;
 
 		const embed = new Discord.MessageEmbed()
 			.setDescription(message.translate("general/help:INFO", {
