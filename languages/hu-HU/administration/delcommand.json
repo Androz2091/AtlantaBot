@@ -1,8 +1,8 @@
 {
-    "DESCRIPTION": "Remove a custom command from the server!",
-    "USAGE": "{{prefix}}delcommand [name-of-the-command]",
-    "EXAMPLES": "{{prefix}}delcommand hey",
-    "MISSING_NAME": "Please enter the name of the command you wish to delete!",
-    "UNKNOWN_COMMAND": "The command {{commandName}} does not exist!",
-    "SUCCESS": "The {{commandName}} command has been removed from the server!"
+    "DESCRIPTION": "Távolíts el egy egyéni parancsot a szerverről!",
+    "USAGE": "{{prefix}}delcommand [parancs-neve]",
+    "EXAMPLES": "{{prefix}}delcommand hé",
+    "MISSING_NAME": "Add meg a törölni kívánt parancs nevét!",
+    "UNKNOWN_COMMAND": "A(z) {{commandName}} parancs nem létezik!",
+    "SUCCESS": "A(z) {{commandName}} parancsot eltávolítottuk a szerverről!"
 }
