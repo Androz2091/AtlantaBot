@@ -1,15 +1,15 @@
 {
-    "DESCRIPTION": "Tente roubar um membro!",
-    "USAGE": "{{prefix}}rob [@membro] [amount]",
-    "EXAMPLES": "{prefix}rob @Androz#2091 100",
-    "YOURSELF": "Você não pode se roubar!",
-    "MISSING_MEMBER": "Você deve especificar um membro válido para roubar!",
-    "MISSING_AMOUNT": "Digite um valor válido a ser roubado de **{{username}}**!",
-    "NOT_ENOUGH_AUTHOR": "Você deve ter mais de **{{moneyMin}}** créditos para tentar este assalto (você realmente tem **{{moneyCurrent}}** créditos)!",
-    "NOT_ENOUGH_MEMBER": "Você não pode tentar roubar **{{money}}** créditos para **{{username}}** porque eles não têm tantos créditos em dinheiro!",
-    "COOLDOWN": "🕵️ **{{username}}** está de guarda.... Espere um pouco e tente novamente!",
-    "ROB_WON_1": "🎉 | Parabéns! A polícia não foi rápida o suficiente para impedi-lo de roubar**{{money}}** créditos de **{{username}}**!",
-    "ROB_WON_2": "😕 | **{{username}}** ? Más notícias. Você acabou de ser roubado**{{money}}** créditos!",
-    "ROB_LOSE_1": "🚔 | Ta polícia te pegou em flagrante, impossível negar, sua multa é **{{fine}}** créditos. **{{offset}}** créditos compensados ​​serão pagos a **{{username}}**.",
-    "ROB_LOSE_2": "🚓 | Más notícias....**{{username}}** chamou a polícia a tempo. Sua multa é**{{fine}}** créditos e **{{offset}}** créditos compensados ​​serão pagos a **{{username}}**."
+    "DESCRIPTION": "Try to rob a member!",
+    "USAGE": "{{prefix}}rob [@membre] [amount]",
+    "EXAMPLES": "{{prefix}rob @Androz#2091 100",
+    "YOURSELF": "You can't rob yourself!",
+    "MISSING_MEMBER": "You must specify a valid member to rob!",
+    "MISSING_AMOUNT": "Please enter a valid amount to be robbed to **{{username}}**!",
+    "NOT_ENOUGH_AUTHOR": "You must have more than **{{moneyMin}}** credits to attempt this robbery (you actually have **{{moneyCurrent}}** credits)!",
+    "NOT_ENOUGH_MEMBER": "You can't try to rob **{{money}}** credits to **{{username}}** because they don't have as many credits in cash!",
+    "COOLDOWN": "🕵️ **{{username}}** is on guard.... Wait a while and try again!",
+    "ROB_WON_1": "🎉 | Congratulations! The police weren't fast enough to stop you from robbing **{{money}}** credits to **{{username}}**!",
+    "ROB_WON_2": "😕 | **{{username}}** ? Bad news. You just got robbed **{{money}}** credits!",
+    "ROB_LOSE_1": "🚔 | The police caught you in the act, impossible to deny, your fine is **{{fine}}** credits. **{{offset}}** offset credits will be paid to **{{username}}**.",
+    "ROB_LOSE_2": "🚓 | Bad news.... **{{username}}** called the police in time. Your fine is **{{fine}}** credits and **{{offset}}** offset credits will be paid to **{{username}}**."
 }
