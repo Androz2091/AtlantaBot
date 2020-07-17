@@ -1,0 +1,8 @@
+{
+    "DESCRIPTION": "Add a custom command to the server!",
+    "USAGE": "{{prefix}}addcommand [name] [answer]",
+    "EXAMPLES": "{{prefix}}addcommand hello Hello {user}! How are you?",
+    "MISSING_NAME": "Please provide a command name!",
+    "MISSING_ANSWER": "Please provide a command answer!",
+    "SUCCESS": "Command **{{prefix}}{{commandName}}** added!"
+}
