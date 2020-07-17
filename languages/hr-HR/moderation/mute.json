@@ -4,6 +4,6 @@
     "EXAMPLES": "{{prefix}}mute @Androz#2091 Spam",
     "MISSING_MEMBER": "Please specify a valid member to mute!",
     "MUTED_DM": "Hello {{username}},\nYou have just been muted in **{{server}}** by **{{moderator}}** for **{{time}}** for **{{reason}}**!",
-    "MUTED": "**{{username}}** is now muted for **{{time}}** for **{{reason}}** !",
+    "MUTED": "**{{username}}** is now muted for **{{time}}** for **{{reason}}**!",
     "CASE": "Mute | Case #{{count}}"
 }
