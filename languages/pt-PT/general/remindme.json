@@ -1,9 +1,9 @@
 {
-    "DESCRIPTION": "Adicionar um novo lembrete",
+    "DESCRIPTION": "Add a new reminder",
     "USAGE": "{{prefix}}remindme [message]",
-    "EXAMPLES": "{{prefix}}remindme 24h Comando de trabalho\n{{prefix}}remindme 3m Retire o macarrão da panela!",
-    "MISSING_MESSAGE": "Você deve inserir uma mensagem que será enviada a você no final dos tempos!",
-    "SAVED": "Lembrete salvo, você receberá uma mensagem no final do tempo!",
+    "EXAMPLES": "{{prefix}}remindme 24h Work command\n{{prefix}}remindme 3m Take the pasta out of the pan!",
+    "MISSING_MESSAGE": "You must enter a message that will be sent to you at the end of time!",
+    "SAVED": "Reminder saved, you will receive a message at the end of the time!",
     "TITLE": "Atlanta Reminder",
-    "CREATED": "Mensagem criada {{time}}"
+    "CREATED": "Message created {{time}}"
 }
