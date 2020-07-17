@@ -1,5 +1,5 @@
 const chalk = require("chalk");
-console.log(chalk.blue("Migrating database from v4.6.4 to v4.7.0..."));
+console.log(chalk.blue("Migrating database from v4.6.4 to v4.7.0...\n\n"));
 
 let MongoClient;
 try {
@@ -28,7 +28,7 @@ client.connect().then(async () => {
 	await guilds.updateMany({ language: "french" }, { $set: { language: "fr-FR"} });
     
 	console.log(chalk.green(`${count} guilds migrated.`));
-	console.log(chalk.blue("Database migrated from v4.6.4 to v4.7.0..."));
+	console.log(chalk.blue("\n\nDatabase migrated from v4.6.4 to v4.7.0..."));
 	process.exit(0);
 }).catch(() => {
 	console.log(chalk.red("Couldn't connect to mongoDB database..."));
