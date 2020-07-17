@@ -145,6 +145,7 @@ module.exports = class {
 				if(customCommand){
 					message.channel.send(customCommand.answer);
 				}
+				return;
 			} else {
 				return message.sendT("misc:PREFIX_DM", {
 					username: message.author.username
