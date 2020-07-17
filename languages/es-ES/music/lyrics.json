@@ -6,5 +6,5 @@
     "AND_MORE": "\n**Y más...**",
     "REST": "Haz click aqui para ver el resto",
     "MISSING_SONG_NAME": "¡Por favor, especifique el nombre de una canción para buscar!",
-    "NO_LYRICS_FOUND": "¡No se encontraron letras para `{{songName}}`!"
+    "NO_LYRICS_FOUND": "No lyrics found for `{{songName}}`!"
 }
