@@ -1,13 +1,13 @@
 {
-    "DESCRIPTION": "Mostra informações sobre o servidor!",
+    "DESCRIPTION": "Shows informations about the server!",
     "USAGE": "{{prefix}}serverinfo [ID/Name]",
     "EXAMPLES": "{{prefix}}serverinfo Atlanta\n{{prefix}}serverinfo",
-    "AFK_CHANNEL": "Canal AFK",
-    "NO_AFK_CHANNEL": "Nenhum AFK channel",
-    "MEMBERS": "{{count}} membros",
+    "AFK_CHANNEL": "AFK channel",
+    "NO_AFK_CHANNEL": "No AFK channel",
+    "MEMBERS": "{{count}} members",
     "BOTS": "{{count}} bots",
-    "BOOSTS": "Boosts",
-    "TEXT_CHANNELS": "{{count}} texto",
-    "VOICE_CHANNELS": "{{count}} voz",
-    "CAT_CHANNELS": "{{count}} categorias"
+    "BOOSTS": "Boosts count",
+    "TEXT_CHANNELS": "{{count}} text",
+    "VOICE_CHANNELS": "{{count}} voice",
+    "CAT_CHANNELS": "{{count}} categories"
 }
