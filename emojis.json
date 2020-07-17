@@ -53,5 +53,16 @@
         "w":			"<:atlanta_w:616628945269424158>",
         "r":			"<:atlanta_r:616628944732422212>",
         "d":			"<:atlanta_d:616628944942268456>"
+    },
+    "categories": {
+        "administration": "<:administration_category_atlanta:599210716116811777>",
+        "economy": "<:economy_category_atlanta:599208373937766410>",
+        "fun": "<:fun_category_atlanta:599210365351362561>",
+        "general": "<:general_category_atlanta:599209407816925184>",
+        "images": "<:images_category_atlanta:599226332081029127>",
+        "moderation": "<:moderation_category_atlanta:599209643465637928>",
+        "music": "<:music_category_atlanta:599210024773877772>",
+        "owner": "<:owner_category_atlanta:599209806288388109>",
+        "custom": "<:custom_category_atlanta:600662241829978112>"
     }
 }
