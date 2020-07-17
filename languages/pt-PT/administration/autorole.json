@@ -1,10 +1,10 @@
 {
-    "DESCRIPTION": "Ativar/Desativar o cargo automático no servidor!",
-    "USAGE": "{{prefix}}autorole [on/off] (cargo)",
-    "EXAMPLES": "{{prefix}}autorole on @Membros\n{{prefix}}autorole off",
-    "MISSING_STATUS": "Especifique um status válido! (`on` ou `off`)",
-    "MISSING_ROLE": "Especifique um cargo válido para adicionar aos novos membros!",
-    "SUCCESS_ENABLED": "Cargo automático ativado! Novos membros receberão o cargo **{{roleName}}**.",
-    "ALREADY_DISABLED": "O cargo automático já está desativado. Ative-o com `{{prefix}}autorole on @Cargo`!",
-    "SUCCESS_DISABLED": "Cargo automático desativado! Use `{{prefix}}configuration` o veja sua nova configuração!"
+    "DESCRIPTION": "Enable/Disable the autorole on the server!",
+    "USAGE": "{{prefix}}autorole [on/off] (role)",
+    "EXAMPLES": "{{prefix}}autorole on @Members\n{{prefix}}autorole off",
+    "MISSING_STATUS": "Please specify a valid status! (`on` or `off`)",
+    "MISSING_ROLE": "Please specify a valid role to add to new members!",
+    "SUCCESS_ENABLED": "Autorole enabled! New members will receive the **{{roleName}}** role.",
+    "ALREADY_DISABLED": "Autorole is already disabled. Enable it with `{{prefix}}autorole on @YourRole`!",
+    "SUCCESS_DISABLED": "Autorole disabled! Type `{{prefix}}configuration` to see your new configuration!"
 }
