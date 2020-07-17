@@ -1,14 +1,14 @@
 {
-    "DESCRIPTION": "Shows the list of all the achievements!",
+    "DESCRIPTION": "Megmutatja az összes eredmény listát!",
     "USAGE": "{{prefix}}achievements",
     "EXAMPLES": "{{prefix}}achievements",
-    "SEND_CMD": "Send your first command!",
-    "CLAIM_SALARY": "Claim 10 times your salary!",
-    "MARRY": "Find your half and marry!",
-    "SLOTS": "Win 3 times in a row in slots!",
-    "TIP": "Keep Atlanta alive by tipping!",
-    "REP": "Reach 20 reputation points!",
-    "INVITE": "Invite Atlanta on your server!",
-    "TITLE": "🔥 Achievements",
-    "PROGRESS": "Progress: {{now}}/{{total}} ({{percent}}%)"
+    "SEND_CMD": "Küldd el az első parancsodat!",
+    "CLAIM_SALARY": "Kérd a fizetésednek a 10-szeresét!",
+    "MARRY": "Keresd meg a felát, és feleségül veszed!",
+    "SLOTS": "Nyerj 3 alkalommal egymás után résidőkben!",
+    "TIP": "Tartsd életben Atlantát döntetlennel!",
+    "REP": "Nyújts 20 hírnévpontot!",
+    "INVITE": "Hívd meg az Atlantát a szerveredre!",
+    "TITLE": "🔥 Eredmények",
+    "PROGRESS": "Előrehaladás: {{now}}/{{total}} ({{percent}}%)"
 }
