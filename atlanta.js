@@ -4,16 +4,14 @@ const Sentry = require("@sentry/node"),
 	util = require("util"),
 	fs = require("fs"),
 	readdir = util.promisify(fs.readdir),
-	mongoose = require("mongoose");
+	mongoose = require("mongoose"),
+      	config = require("./config"),
+      	Atlanta = require("./base/Atlanta"),
+	client = new Atlanta();
 
-const config = require("./config");
 if(config.apiKeys.sentryDSN){
 	Sentry.init({ dsn: config.apiKeys.sentryDSN });
-}
-
-// Load Atlanta class
-const Atlanta = require("./base/Atlanta"),
-	client = new Atlanta();
+};
 
 const init = async () => {
 
@@ -59,12 +57,6 @@ const init = async () => {
 };
 
 init();
-
-// if there are errors, log them
-client.on("disconnect", () => client.logger.log("Bot is disconnecting...", "warn"))
-	.on("reconnecting", () => client.logger.log("Bot reconnecting...", "log"))
-	.on("error", (e) => client.logger.log(e, "error"))
-	.on("warn", (info) => client.logger.log(info, "warn"));
 
 // if there is an unhandledRejection, log them
 process.on("unhandledRejection", (err) => {
