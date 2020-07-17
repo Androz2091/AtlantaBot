@@ -1,16 +1,16 @@
 {
-    "DESCRIPTION": "Enable/Disable welcome messages in the server!",
+    "DESCRIPTION": "Az üdvözölő üzenet engedélyezése/letiltása a szerveren!",
     "USAGE": "{{prefix}}welcome",
     "EXAMPLES": "{{prefix}}welcome",
-    "MISSING_STATUS": "You must specify a valid status! (`edit` or `off`)",
-    "DEFAULT_MESSAGE": "Welcome {user} in {server}! We're now {membercount}. Your account was created {createdat}.",
-    "TEST_SUCCESS": "Test executed!",
-    "FORM_1": "Hello {{author}}! In which channel will the welcome messages be sent? (mention a channel)",
-    "FORM_2": "All right! The messages will therefore be sent in {{channel}}. Enter the welcome message below: \n\n:information_source: __**Informations:**__\nMention: {user}\nMembers: {membercount}\nServer: {server}\n\n__For example:__\n\n\"Welcome {user} to {server}, we are {membercount}!\"\n:arrow_down:\n\"Welcome {{author}} to {{guildName}}, we are {{memberCount}}!\".",
-    "FORM_3": "It works! Do you want a great welcome image to be sent too? Answer with \"yes\" or \"no\"!",
-    "FORM_SUCCESS": "Welcome messages enabled in {{channel}} ! Type `{{prefix}}welcome test` to test the welcome message!",
-    "DISABLED": "Goodbye messages have just been disabled! Type `{{prefix}}configuration` to see the new configuration!",
-    "IMG_WELCOME": "Welcome in {{server}}!",
-    "IMG_NB": "- {{memberCount}}th member!",
-    "TITLE": "WELCOME"
+    "MISSING_STATUS": "Meg kell adnod egy érvényes státust! (`edit` vagy `off`)",
+    "DEFAULT_MESSAGE": "Üdvözöllek {user} a {server} szerveren! Mi {membercount} lettünk. A te felhasználód {createdat} készült.",
+    "TEST_SUCCESS": "A teszt végrehajtva!",
+    "FORM_1": "Szia {{author}}! Melyik csatornára küldjem el az üdvözlő üzeneteket? (említs meg egy csatornát)",
+    "FORM_2": "Rendben! Az üzeneteked ide fogom küldeni {{channel}}. Írd be az üdvözlő üzenetet: \n\n:information_source: __**Információk:**__\nMegemlítás: {user}\nFelhasználók: {membercount}\nSzerver: {server}\n\n__Példák:__\n\n\"Üdvözöllek {user}... Mi {membercount} lettünk!\"\n:arrow_down:\n\"Üdvözöllek {{author}}... Mi {{memberCount}} lettünk!\".",
+    "FORM_3": "Működik! Szeretnél egy üdvözlő képet is elküldeni? Válasz: \"yes\" vagy \"no\"!",
+    "FORM_SUCCESS": "Az ÜDVÖZLŐ üzenet engedélyezve lett a {{channel}} csatornában! Írd be a `{{prefix}}welcome test` parancsot az üdvözlő üzenet teszteléséhez!",
+    "DISABLED": "Az üdvözlő üzenet éppen le vannak tiltva! Írd be a `{{prefix}}configuration` az új konfiguráció megtekintéséhez!",
+    "IMG_WELCOME": "Üdvözöllek a {{server}} szerveren!",
+    "IMG_NB": "- {{memberCount}} felhasználó!",
+    "TITLE": "ÜDVÖZLŐ"
 }
