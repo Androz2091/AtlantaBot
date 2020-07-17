@@ -1,8 +1,8 @@
 {
     "DESCRIPTION": "Állíts be egy hűtési csatornát",
-    "USAGE": "{{prefix}}slowmode [#channel] (time)",
-    "EXAMPLES": "{{prefix}}slowmode #general 10m\n{{prefix}}slowmode #general",
-    "DISABLED": "Slowmode has been disabled in {{channel}}!",
-    "ENABLED": "Slowmode enabled in {{channel}} with a time of {{time}}!",
-    "PLEASE_WAIT": "Channel {{channel}} is in slowmode! Please wait {{time}} to be able to post a new message!"
+    "USAGE": "{{prefix}}slowmode [#csatorna] (idő)",
+    "EXAMPLES": "{{prefix}}slowmode #általános 10m\n{{prefix}}slowmode #általános",
+    "DISABLED": "A lassú üzemmód le van tiltva ezen a csatornán: {{channel}}!",
+    "ENABLED": "A lassú üzemmód engedélyezve van a(z) {{channel}} csatornában, idő: {{time}}!",
+    "PLEASE_WAIT": "Csatorna {{channel}} lassú üzemmódban van.! Kérlek várj {{time}} időt az új üzenet küldésére!"
 }
