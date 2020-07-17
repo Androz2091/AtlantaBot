@@ -159,7 +159,7 @@ class Atlanta extends Client {
 		if(this.databaseCache.members.get(`${memberID}${guildID}`)){
 			return isLean ? this.databaseCache.members.get(`${memberID}${guildID}`).toJSON() : this.databaseCache.members.get(`${memberID}${guildID}`);
 		} else {
-			let memberData = (isLean ? await this.membersData.findOne({ id: memberID, guildID }).lean() : await this.membersData.findOne({ id: memberID, guildID }));
+			let memberData = (isLean ? await this.membersData.findOne({ guildID, id: memberID }).lean() : await this.membersData.findOne({ guildID, id: memberID }));
 			if(memberData){
 				if(!isLean) this.databaseCache.members.set(`${memberID}${guildID}`, memberData);
 				return memberData;
