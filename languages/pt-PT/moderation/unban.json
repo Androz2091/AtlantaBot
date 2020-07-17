@@ -1,8 +1,8 @@
 {
-    "DESCRIPTION": "Desbane o usuário do servidor!",
+    "DESCRIPTION": "Unban the user from the server!",
     "USAGE": "{{prefix}}unban [userID/user#0000]",
     "EXAMPLES": "{{prefix}unban 422820341791064085\n{{prefix}}unban Androz#2091",
-    "MISSING_ID": "Por favor, especifique o ID do membro que você deseja desbanir!",
-    "NOT_BANNED": "**{{username}}** não está banido!",
-    "UNBANNED": "**{{username}}** acaba de ser desbanido de **{{server}}**!"
+    "MISSING_ID": "Please specify the ID of the member you wish to unban!",
+    "NOT_BANNED": "**{{username}}** is not banned!",
+    "UNBANNED": "**{{username}}** has just been unbanned from **{{server}}**!"
 }
