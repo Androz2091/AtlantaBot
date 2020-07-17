@@ -1,5 +1,5 @@
 {
-    "DESCRIPTION": "Set a cooldown in a channel",
+    "DESCRIPTION": "Állíts be egy hűtési csatornát",
     "USAGE": "{{prefix}}slowmode [#channel] (time)",
     "EXAMPLES": "{{prefix}}slowmode #general 10m\n{{prefix}}slowmode #general",
     "DISABLED": "Slowmode has been disabled in {{channel}}!",
