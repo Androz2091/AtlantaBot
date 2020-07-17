@@ -75,25 +75,25 @@ class Poll extends Command {
 				return message.error("misc:TIMES_UP");
 			}
     
-			const success = this.client.emotes.success.split(":")[1];
-			const error = this.client.emotes.error.split(":")[1];
+			const success = this.client.customEmojis.success.split(":")[1];
+			const error = this.client.customEmojis.error.split(":")[1];
 
-			const emotes = [
-				this.client.emotes.cache.find((e) => e.name === success),
-				this.client.emotes.cache.find((e) => e.name === error)
+			const emojis = [
+				this.client.customEmojis.cache.find((e) => e.name === success),
+				this.client.customEmojis.cache.find((e) => e.name === error)
 			];
 
 			const embed = new Discord.MessageEmbed()
 				.setAuthor(message.translate("moderation/poll:TITLE"))
 				.setColor(data.config.embed.color)
 				.addField(question, message.translate("moderation/poll:REACT", {
-					success: emotes[0].toString(),
-					error: emotes[1].toString()
+					success: emojis[0].toString(),
+					error: emojis[1].toString()
 				}));
             
 			message.channel.send(mention, embed).then(async (m) => {
-				await m.react(emotes[0]);
-				await m.react(emotes[1]);
+				await m.react(emojis[0]);
+				await m.react(emojis[1]);
 			});
 		});
 

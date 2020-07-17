@@ -50,11 +50,11 @@ class Work extends Command {
 			.setColor(data.config.embed.color);
         
 		const award = [
-			this.client.emotes.letters.a,
-			this.client.emotes.letters.w,
-			this.client.emotes.letters.a,
-			this.client.emotes.letters.r,
-			this.client.emotes.letters.d
+			this.client.customEmojis.letters.a,
+			this.client.customEmojis.letters.w,
+			this.client.customEmojis.letters.a,
+			this.client.customEmojis.letters.r,
+			this.client.customEmojis.letters.d
 		];
 		let won = 200;
 
