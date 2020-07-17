@@ -1,13 +1,13 @@
 {
-    "DESCRIPTION": "Mostra o número de pessoas que você convidou para o servidor!",
-    "USAGE": "{{prefix}}invitations (@membro)",
+    "DESCRIPTION": "Shows the number of people you have invited to the server!",
+    "USAGE": "{{prefix}}invitations (@member)",
     "EXAMPLES": "{{prefix}}invitations\n{{prefix}}invitations @Androz#2091",
-    "NOBODY_AUTHOR": "Você não convidou ninguém para o servidor!",
-    "NOBODY_MEMBER": "{{member}} não convidou ninguém para o servidor!",
-    "CODE": "**{{code}}** ({{uses}} usos) | {{channel}}",
-    "TITLE": "Informações sobre os convites de {{member}} em {{guild}}",
-    "FIELD_INVITED": "👥 Membros Convidados",
-    "FIELD_CODES": "🔑 Códigos",
-    "FIELD_MEMBERS": "{{total}} membros",
-    "TRACKER": "Convida o Rastreador"
+    "NOBODY_AUTHOR": "You didn't invite anyone to the server!",
+    "NOBODY_MEMBER": "{{member}} didn't invite anyone to the server!",
+    "CODE": "**{{code}}** ({{uses}} uses) | {{channel}}",
+    "TITLE": "Information about the invitations of {{member}} on {{guild}}",
+    "FIELD_INVITED": "👥 Invited Members",
+    "FIELD_CODES": "🔑 Codes",
+    "FIELD_MEMBERS": "{{total}} members",
+    "TRACKER": "Invites Tracker"
 }
