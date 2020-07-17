@@ -1,7 +1,7 @@
 {
-    "DESCRIPTION": "Állítsd be a napi Fortnite bolt csatornáját!",
-    "USAGE": "{{prefix}}setfortniteshop (#csatorna)",
-    "EXAMPLES": "{{prefix}}setfortniteshop #bolt\n{{prefix}}setfortniteshop",
-    "DISABLED": "A Fortnite napi bolt le van tiltva!",
-    "ENABLED": "A napi Fortnite bolt engedélyezve van a {{channel}} csatornában!"
+    "DESCRIPTION": "Set the daily Fortnite shop channel!",
+    "USAGE": "{{prefix}}setfortniteshop (#channel)",
+    "EXAMPLES": "{{prefix}}setfortniteshop #shop\n{{prefix}}setfortniteshop",
+    "DISABLED": "Daily Fortnite shop disabled!",
+    "ENABLED": "Daily Fortnite shop enabled in {{channel}}!"
 }
