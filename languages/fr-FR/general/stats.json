@@ -11,7 +11,7 @@
     "MUSIC_TITLE": "• __Music__",
     "MUSIC_CONTENT": "Playing music on `{{count}}` servers",
     "CREDITS_TITLE": ":heart: • __Acknowledgements & credits__",
-    "CREDITS_CONTENT": "Thanks to `https://icones8.fr/icons/`, all the emojis (or almost) come from this site!\n__**Donators**__:\n- `xixi52#0001` **GOD**\n- `Marty#3994` **GOD**\n- `\"</Synaro/>\"#2019` **GOD**\n- `🍮_Lucas_🍮#6171` **SUPPORTER**",
+    "CREDITS_CONTENT": "Thanks to `https://icones8.fr/icons/`, all the emojis (or almost) come from this site!\n__**Donators**__:\n{{donators}}\n__**Translators**__:\n{{translators}}",
     "LINKS_TITLE": "• __Links__",
     "MADE": "Atlanta is an open source bot developed by Androz#2091!"
 }

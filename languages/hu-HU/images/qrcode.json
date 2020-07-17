@@ -1,0 +1,7 @@
+{
+    "DESCRIPTION": "Generates a QR code image from your word",
+    "USAGE": "{{prefix}}qrcode [text]",
+    "EXAMPLES": "{{prefix}}qrcode Hello",
+    "MISSING_TEXT": "Please specify a text for the QR code!",
+    "SUCCESS": "Here is your QRCode!"
+}

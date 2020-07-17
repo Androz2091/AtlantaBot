@@ -1,0 +1,16 @@
+{
+    "DESCRIPTION": "Enable or disable the goodbye messages!",
+    "USAGE": "{{prefix}}goodbye",
+    "EXAMPLES": "{{prefix}}goodbye",
+    "DEFAULT_MESSAGE": "Goodbye {user}! We're now {membercount} without you... :'(",
+    "TEST_SUCCESS": "Test executed!",
+    "FORM_1": "Hello {{author}}! In which channel will the goodbye messages be sent? (mention a channel)",
+    "FORM_2": "All right! The messages will therefore be sent in {{channel}}. Enter the goodbye message below: \n\n:information_source: __**Informations:**__\nMention: {user}\nMembers: {membercount}\nServer: {server}\n\n__For example:__\n\n\"Goodbye {user}... We are {membercount}!\"\n:arrow_down:\n\"Goodbye {{author}}... We are {{memberCount}}!\".",
+    "FORM_3": "It works! Do you want a great goodbye image to be sent too? Answer with \"yes\" or \"no\"!",
+    "FORM_SUCCESS": "Goodbye messages enabled in {{channel}} ! Type `{{prefix}}goodbye test` to test the goodbye message!",
+    "MAX_CHARACT": "Your message must not exceed 1800 characters!",
+    "DISABLED": "Goodbye messages have just been disabled! Type `{{prefix}}configuration` to see the new configuration!",
+    "IMG_GOODBYE": "Leaving from {{server}}!",
+    "IMG_NB": "- {{memberCount}}th member!",
+    "TITLE": "GOODBYE"
+}

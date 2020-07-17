@@ -3,7 +3,7 @@
     "USAGE": "{{prefix}}play [song]",
     "EXAMPLES": "{{prefix}}play Despacito",
     "NO_VOICE_CHANNEL": "Vous devez être connecté dans un salon vocal !",
-    "VOICE_CHANNEL_CONNECT": " Je ne peux pas me connecter dans le salon vocal !",
+    "VOICE_CHANNEL_CONNECT": "I can't connect into your voice channel!",
     "MISSING_SONG_NAME": "Veuillez entrer un nom de vidéo à chercher (ou un lien) !",
     "RESULTS_FOOTER": "Veuillez indiquer une valeur pour sélectionner l'un des résultats de recherche compris entre 1 et 10.",
     "NO_RESULT": "Aucun résultat sur Youtube !",

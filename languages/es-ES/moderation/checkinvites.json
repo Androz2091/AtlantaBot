@@ -2,5 +2,5 @@
     "DESCRIPTION": "¡Compruebe si los miembros tienen un anuncio para su servidor Discord en su estado!",
     "USAGE": "{{prefix}}checkinvites",
     "EXAMPLES": "{{prefix}}checkinvites",
-    "NOBODY": "¡Ningún miembro anuncia su juego!"
+    "NOBODY": "¡Ningún miembro anuncia su servidor!"
 }
