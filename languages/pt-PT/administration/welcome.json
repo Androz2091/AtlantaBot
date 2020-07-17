@@ -1,16 +1,16 @@
 {
-    "DESCRIPTION": "Ativar/desativar mensagens de boas-vindas no servidor!",
+    "DESCRIPTION": "Enable/Disable welcome messages in the server!",
     "USAGE": "{{prefix}}welcome",
     "EXAMPLES": "{{prefix}}welcome",
-    "MISSING_STATUS": "Você deve especificar um status válido!(`edit` ou `off`)",
-    "DEFAULT_MESSAGE": "Bem-vindo (a) {user} no {server}! temos agora {membercount}. Sua conta foi criada {createdat}.",
-    "TEST_SUCCESS": "Teste executado!",
-    "FORM_1": "Olá {{author}}! Em qual canal as mensagens de boas-vindas serão enviadas? (mencione um canal)",
-    "FORM_2": "As mensagens serão,, enviadas em {{channel}}. Digite a mensagem de boas-vindas abaixo:\n\n:information_source: __**Informações:**__\nMenção: {user}\nMembros: {membercount}\nServidor: {server}\n\n__Por exemplo:__\n\n\"Bem-vindo (a) {user} ao {server}, temos agora {membercount}!\"\n:arrow_down:\n\"Bem-vindo (a) {{author}} ao {{guildName}}, temos agora {{memberCount}}!\".",
-    "FORM_3": "Deseja que uma ótima imagem de boas-vindas seja enviada também? Responda com \"yes\" ou \"no\"!",
-    "FORM_SUCCESS": "Mensagens de boas-vindas ativadas em {{channel}} ! use `{{prefix}}welcome test` para testar a mensagem de boas-vindas!",
-    "DISABLED": "As mensagens de despedidas acabaram de ser desativadas! use `{{prefix}}configuration` para ver a nova configuração!",
-    "IMG_WELCOME": "Bem-vindo (a) ao {{server}}!",
-    "IMG_NB": "- {{memberCount}}th membro!",
-    "TITLE": "BEM-VINDO"
+    "MISSING_STATUS": "You must specify a valid status! (`edit` or `off`)",
+    "DEFAULT_MESSAGE": "Welcome {user} in {server}! We're now {membercount}. Your account was created {createdat}.",
+    "TEST_SUCCESS": "Test executed!",
+    "FORM_1": "Hello {{author}}! In which channel will the welcome messages be sent? (mention a channel)",
+    "FORM_2": "All right! The messages will therefore be sent in {{channel}}. Enter the welcome message below: \n\n:information_source: __**Informations:**__\nMention: {user}\nMembers: {membercount}\nServer: {server}\n\n__For example:__\n\n\"Welcome {user} to {server}, we are {membercount}!\"\n:arrow_down:\n\"Welcome {{author}} to {{guildName}}, we are {{memberCount}}!\".",
+    "FORM_3": "It works! Do you want a great welcome image to be sent too? Answer with \"yes\" or \"no\"!",
+    "FORM_SUCCESS": "Welcome messages enabled in {{channel}} ! Type `{{prefix}}welcome test` to test the welcome message!",
+    "DISABLED": "Goodbye messages have just been disabled! Type `{{prefix}}configuration` to see the new configuration!",
+    "IMG_WELCOME": "Welcome in {{server}}!",
+    "IMG_NB": "- {{memberCount}}th member!",
+    "TITLE": "WELCOME"
 }
