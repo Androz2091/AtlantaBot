@@ -1,8 +1,8 @@
 {
-    "DESCRIPTION": "Set your birthday date (which will appear on your profile)",
-    "USAGE": "{{prefix}}birthdate (date)",
+    "DESCRIPTION": "Állítsd be a születésnapi dátumot (amely megjelenik a profilodon)",
+    "USAGE": "{{prefix}}birthdate (dátum)",
     "EXAMPLES": "{{prefix}}birthdate 01/12/2000",
-    "MISSING_DATE": "Please enter a valid date! For example, 01/12/2000",
+    "MISSING_DATE": "Kérlek, adj meg egy érvényes dátumot! Például: 01/12/2000",
     "INVALID_DATE": "You have entered an invalid date. Reminder: the date format must be: Day/Month/Year. For example, 01/12/2000 for December 1, 2000.",
     "INVALID_DATE_FORMAT": "You have entered an invalid date. Reminder: the date format must be: Day/Month/Year. For example, 01/12/2000 for December 1, 2000.",
     "DATE_TOO_HIGH": "More than 80 years old? :eyes:",
