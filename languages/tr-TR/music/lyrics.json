@@ -1,0 +1,10 @@
+{
+    "DESCRIPTION": "Shows the lyrics of a song",
+    "USAGE": "{{prefix}}lyrics [song-name]",
+    "EXAMPLES": "{{prefix}}lyrics Skyfall",
+    "LYRICS_OF": "🎤 Lyrics of {{songName}}",
+    "AND_MORE": "\n**And more...**",
+    "REST": "Click here for the rest",
+    "MISSING_SONG_NAME": "Please specify a song name to search!",
+    "NO_LYRICS_FOUND": "No lyrics found for `{{songName}}`!"
+}
