@@ -1,7 +1,7 @@
 {
-    "DESCRIPTION": "Divorce the person you are currently married to!",
+    "DESCRIPTION": "Válaszd el azt a személyt, akivel jelenleg házas vagy!",
     "USAGE": "{{prefix}}divorce",
     "EXAMPLES": "{{prefix}}divorce",
-    "NOT_MARRIED": "You are not currently married!",
-    "DIVORCED": "You just divorced with **{{username}}** !"
+    "NOT_MARRIED": "Te jelenleg nem vagy házas!",
+    "DIVORCED": "Most váltál el **{{username}}** felhasználóval!"
 }
