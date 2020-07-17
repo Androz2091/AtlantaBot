@@ -1,5 +1,5 @@
 {
-    "DESCRIPTION": "Gera uma imagem de \"missão\" usando a API Amethyste",
-    "USAGE": "{{prefix}}mission (@membro)",
+    "DESCRIPTION": "Generates a \"mission\" image using Amethyste API",
+    "USAGE": "{{prefix}}mission (@member)",
     "EXAMPLES": "{{prefix}}mission\n{{prefix}}mission @Androz#2091"
 }
