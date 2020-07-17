@@ -14,7 +14,7 @@
     "NO_USER_FOUND_ID": "Nenhum usuário no Discord tem o ID `{{id}}`!",
     "VOTE_DM": "⬆️ Olá {{user}}, Obrigado por votar!\nSua recompensa: 40 créditos (no servidor de suporte)!",
     "VOTE_LOGS": "⬆️ **{{usertag}}** (`{{userid}}`) votou em **Atlanta** e ganhou **40** créditos, obrigado!\n<https://discordbots.org/bot/557445719892688897/vote>",
-    "HELLO_SERVER": "Olá **{{username}}**, meu prefixo neste servidor é **\\{{prefix}}**. Use `{{prefix}}help`",
+    "HELLO_SERVER": "Hello **{{username}}**, my prefix on this server is **{{prefix}}**. Use `{{prefix}}help`",
     "HELLO_DM": "Olá **{{username}}**, como você está atualmente em mensagem direta, não precisa adicionar um prefixo antes do nome do comando.",
     "GUILD_ONLY": "Este comando está disponível apenas em um servidor!",
     "MISSING_BOT_PERMS": "Eu preciso das seguintes permissões para executar este comando: {{list}}",
