@@ -1,7 +1,7 @@
 {
-    "DESCRIPTION": "Exibe a lista de infrações cometidas por um membro!",
-    "USAGE": "{{prefix}}sanctions [@membro]",
-    "EXAMPLES": "{prefix}sanctions @Androz#2091",
-    "MISSING_MEMBER": "Você deve especificar o membro cujas sanções você deseja exibir!",
-    "NO_SANCTION": "**{{username}}** não recebeu nenhuma sanção."
+    "DESCRIPTION": "Displays the list of infractions committed by a member!",
+    "USAGE": "{{prefix}}sanctions [@member]",
+    "EXAMPLES": "{{prefix}sanctions @Androz#2091",
+    "MISSING_MEMBER": "You must specify the member whose sanctions you want to display!",
+    "NO_SANCTION": "**{{username}}** did not receive any sanctions."
 }
