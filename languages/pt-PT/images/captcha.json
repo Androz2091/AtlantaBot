@@ -1,5 +1,5 @@
 {
-    "DESCRIPTION": "Gera uma imagem \"captcha\" usando a API Nekobot",
-    "USAGE": "{{prefix}}captcha (@membro)",
+    "DESCRIPTION": "Generates a \"captcha\" image using the Nekobot API",
+    "USAGE": "{{prefix}}captcha (@member)",
     "EXAMPLES": "{{prefix}}captcha\n{{prefix}}captcha @Androz#2091"
 }
