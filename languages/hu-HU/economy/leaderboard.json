@@ -1,7 +1,7 @@
 {
-    "DESCRIPTION": "Megmutatja azokat a felhasználókat, akiknek a legtöbb kredite, szintje vagy hírnévpontja van!",
+    "DESCRIPTION": "Shows users who have the most credits, levels or reputation points!",
     "USAGE": "{{prefix}}leaderboard [rep/levels/credits]",
     "EXAMPLES": "{{prefix}}leaderboard credits\n{{prefix}}leaderboard levels",
     "MISSING_TYPE": "Please enter a type of leaderboard! (`credits`, `level` or `rep`)",
-    "MOBILE": ":confused: Azt észleltem, hogy telefonot használsz. Lehet, hogy a ranglista nem jelenik meg jól a kis képernyő. Próbálj váltani a tájképre (vagy lépjen be a műszerfalra)!"
+    "MOBILE": ":confused: We have detected that you are using a phone.... The leaderboard may not display well on small screens. Try to switch to landscape (or go on the dashboard)!"
 }
