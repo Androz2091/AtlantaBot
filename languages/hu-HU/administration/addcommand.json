@@ -1,8 +1,8 @@
 {
-    "DESCRIPTION": "Adj hozzá egy egyéni parancsot a szerverhez!",
-    "USAGE": "{{prefix}}addcommand [név] [válasz]",
-    "EXAMPLES": "{{prefix}}addcommand helló Hell* {user}! Hogy vagy?",
-    "MISSING_NAME": "Add meg a parancs nevét!",
-    "MISSING_ANSWER": "Add meg a parancs válaszát!",
-    "SUCCESS": "A **{{prefix}}{{commandName}}** parancs hozzáadva!"
+    "DESCRIPTION": "Add a custom command to the server!",
+    "USAGE": "{{prefix}}addcommand [name] [answer]",
+    "EXAMPLES": "{{prefix}}addcommand hello Hello {user}! How are you?",
+    "MISSING_NAME": "Please provide a command name!",
+    "MISSING_ANSWER": "Please provide a command answer!",
+    "SUCCESS": "Command **{{prefix}}{{commandName}}** added!"
 }
