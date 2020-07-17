@@ -42,12 +42,12 @@ module.exports = class {
 		// Check if the bot was mentionned
 		if(message.content.match(new RegExp(`^<@!?${client.user.id}>( |)$`))){
 			if(message.guild){
-				return message.sendT("misc:PREFIX_SERVER", {
+				return message.sendT("misc:HELLO_SERVER", {
 					username: message.author.username,
 					prefix: data.guild.prefix
 				});
 			} else {
-				return message.sendT("misc:PREFIX_DM", {
+				return message.sendT("misc:HELLO_DM", {
 					username: message.author.username
 				});
 			}
