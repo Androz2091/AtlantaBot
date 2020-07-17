@@ -1,5 +1,4 @@
 const config = require("../config"),
-	Discord = require("discord.js"),
 	utils = require("./utils"),
 	CheckAuth = require("./auth/CheckAuth");
 
@@ -23,21 +22,21 @@ module.exports.load = async(client) => {
 
 	/* App configuration */
 	app
-	// For post methods
+		// For post methods
 		.use(express.json())
 		.use(express.urlencoded({ extended: true }))
-	// Set the engine to html (for ejs template)
+		// Set the engine to html (for ejs template)
 		.engine("html", require("ejs").renderFile)
 		.set("view engine", "ejs")
-	// Set the css and js folder to ./public
+		// Set the css and js folder to ./public
 		.use(express.static(path.join(__dirname, "/public")))
-	// Set the ejs templates to ./views
+		// Set the ejs templates to ./views
 		.set("views", path.join(__dirname, "/views"))
-	// Set the dashboard port
+		// Set the dashboard port
 		.set("port", config.dashboard.port)
-	// Set the express session password and configuration
+		// Set the express session password and configuration
 		.use(session({ secret: config.dashboard.expressSessionPassword, resave: false, saveUninitialized: false }))
-	// Multi languages support
+		// Multi languages support
 		.use(async function(req, res, next){
 			req.user = req.session.user;
 			req.client = client;
@@ -56,14 +55,14 @@ module.exports.load = async(client) => {
 		.use("/settings", settingsRouter)
 		.use("/user", userRouter)
 		.use("/", mainRouter)
-		.use(CheckAuth, function(req, res, next){
+		.use(CheckAuth, function(req, res){
 			res.status(404).render("404", {
 				user: req.userInfos,
 				translate: req.translate,
 				currentURL: `${req.protocol}://${req.get("host")}${req.originalUrl}`
 			});
 		})
-		.use(CheckAuth, function(err, req, res, next) {
+		.use(CheckAuth, function(err, req, res) {
 			console.error(err.stack);
 			if(!req.user) return res.redirect("/");
 			res.status(500).render("500", {
@@ -74,7 +73,7 @@ module.exports.load = async(client) => {
 		});
 
 	// Listen
-	app.listen(app.get("port"), (err) => {
+	app.listen(app.get("port"), () => {
 		console.log("Atlanta Dashboard is listening on port "+app.get("port"));
 	});
 
