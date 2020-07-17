@@ -1,0 +1,19 @@
+{
+    "DESCRIPTION": "Manage your server backups with an efficient way!",
+    "USAGE": "{{prefix}}backup [create/load/infos]",
+    "EXAMPLES": "{{prefix}}backup create\n{{prefix}}backup load 558328638911545423\n{{prefix}}backup infos 558328638911545423",
+    "MISSING_STATUS": "You must specify `create`, `load` or `info`!",
+    "MISSING_BACKUP_ID": "Please enter a backup ID!",
+    "NO_BACKUP_FOUND": "No backup found for `{{backupID}}`",
+    "TIMES_UP": "Time's up! Cancelled backup loading!",
+    "SUCCESS_PUBLIC": "Successfully created backup! The backup ID has been sent to you in private messages!",
+    "SUCCESS_PRIVATE": "Here is the ID of your backup: `{{backupID}}`, use it to load your backup on another server!",
+    "CONFIRMATION": ":warning: | When the backup is loaded, all the channels, roles, etc. will be replaced! Type `-confirm` to confirm!",
+    "START_LOADING": "Start loading the backup!",
+    "LOAD_SUCCESS": "Backup successfully loaded!",
+    "TITLE_INFOS": "Backup Informations",
+    "TITLE_ID": "ID",
+    "TITLE_SERVER_ID": "Server ID",
+    "TITLE_SIZE": "Size",
+    "TITLE_CREATED_AT": "Created At"
+}
