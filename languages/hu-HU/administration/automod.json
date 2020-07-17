@@ -1,10 +1,10 @@
 {
-    "DESCRIPTION": "A Discord meghívások automatikus törlésének engedélyezése vagy letiltása",
-    "USAGE": "{{prefix}}automod [on/off] (#csatorna)",
-    "EXAMPLES": "{{prefix}}automod on\n{{prefix}}automod off #általános\n{{prefix}}automod off",
-    "MISSING_STATUS": "Kérjük, adj meg egy érvényes státuszt! (`on` vagy `off`)",
-    "ENABLED": "A discord meghívások automatikusan törlődnek! Ha nem akarsz figyelmen kívül hagyni egy csatornát, írd be a `{{prefix}}automod off #csatorna` parancsot! Ez letiltja az automatikus moderálást az említett csatornán!",
-    "DISABLED_CHANNEL": "Az automatikus moderálást már nem hajthatod végre a(z) {{channel}} csatornán!",
-    "DISABLED": "Rendben! Az automatikus moderálás már nem érvényes ezen a szerveren!",
-    "DELETED": "**{{username}}**, az üzenet tartalmazott Discord meghívást, így azt töröltem. Ha nem volt szándékos újból szerkesztheted az üzeneted, privát üzenetként elküldtem neked!"
+    "DESCRIPTION": "Enable or disable automatic deletion of Discord invites",
+    "USAGE": "{{prefix}}automod [on/off] (#channel)",
+    "EXAMPLES": "{{prefix}}automod on\n{{prefix}}automod off #general\n{{prefix}}automod off",
+    "MISSING_STATUS": "Please enter a valid status! (`on` or `off`)",
+    "ENABLED": "Discord invites will be automatically deleted! If you want to ignore a channel, just type `{{prefix}}automod off #channel`! This will disable auto moderation in the mentioned channel!",
+    "DISABLED_CHANNEL": "Automoderation will no longer be performed in the channel {{channel}}!",
+    "DISABLED": "All right! Auto moderation is no longer effective on this server!",
+    "DELETED": "**{{username}}**, your message contained a Discord invite, so it has been deleted. If it was unintentional you can edit your message again, it was sent to you as a private message!"
 }
