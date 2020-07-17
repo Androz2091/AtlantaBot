@@ -73,6 +73,14 @@ class Atlanta extends Client {
 	get defaultLanguage(){
 		return this.config.languages.find((language) => language.default).name;
 	}
+	
+	errorHandler() #
+	// if there are errors, log them
+		this.on("disconnect", () => this.logger.log("Bot is disconnecting...", "warn"))
+			.on("reconnecting", () => this.logger.log("Bot reconnecting...", "log"))
+			.on("error", (e) => this.logger.log(e, "error"))
+			.on("warn", (info) => this.logger.log(info, "warn"));
+	}
 
 	translate(key, args, locale){
 		if(!locale) locale = this.defaultLanguage;
