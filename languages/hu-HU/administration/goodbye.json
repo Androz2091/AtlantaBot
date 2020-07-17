@@ -1,16 +1,16 @@
 {
-    "DESCRIPTION": "Az elbúcsúzó üzenetek engedélyezése vagy letiltása!",
+    "DESCRIPTION": "Az elbúcsúzó üzenet engedélyezése/letiltása a szerveren!",
     "USAGE": "{{prefix}}goodbye",
     "EXAMPLES": "{{prefix}}goodbye",
     "DEFAULT_MESSAGE": "Viszlát {user}! Most ennyien vagyunk nélküled {membercount}...: '(",
     "TEST_SUCCESS": "A teszt végrehajtva!",
-    "FORM_1": "Szia {{author}}! Melyik csatornára küldjem el a viszlát üzeneteket? (említs meg egy csatornát)",
+    "FORM_1": "Szia {{author}}! Melyik csatornára küldjem el az elbúcsúzó üzenetet? (említs meg egy csatornát)",
     "FORM_2": "Rendben! Az üzeneteked ide fogom küldeni {{channel}}. Írd be az elbúcsúzó üzenetet: \n\n:information_source: __**Információk:**__\nMegemlítás: {user}\nFelhasználók: {membercount}\nSzerver: {server}\n\n__Példák:__\n\n\"Viszlát {user}... Mi {membercount} lettünk!\"\n:arrow_down:\n\"Viszlát {{author}}... Mi {{memberCount}} lettünk!\".",
     "FORM_3": "Működik! Szeretnél egy elbúcsúzó képet is elküldeni? Válasz: \"yes\" vagy \"no\"!",
-    "FORM_SUCCESS": "Az elbúcsúzó üzenetek engedélyezve lettek a {{channel}} csatornában! Írd be a `{{prefix}}goodby test` parancsot az elbúcsúzó üzenet teszteléséhez!",
+    "FORM_SUCCESS": "Az elbúcsúzó üzenet engedélyezve lett a {{channel}} csatornában! Írd be a `{{prefix}}goodby test` parancsot az elbúcsúzó üzenet teszteléséhez!",
     "MAX_CHARACT": "Az üzenet nem haladhatja meg a 1800 karaktert!",
     "DISABLED": "Az elbúcsúzó üzenet éppen le vannak tiltva! Írd be a `{{prefix}}configuration` az új konfiguráció megtekintéséhez!",
-    "IMG_GOODBYE": "Távozás a {{server}} szerverről!",
+    "IMG_GOODBYE": "Távozott a {{server}} szerverről!",
     "IMG_NB": "- {{memberCount}} felhasználó!",
     "TITLE": "ELBÚCSÚZÓ"
 }
