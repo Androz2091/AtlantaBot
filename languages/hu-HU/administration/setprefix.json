@@ -1,8 +1,8 @@
 {
-    "DESCRIPTION": "Állítsd be a szerver prefixet!",
+    "DESCRIPTION": "Set the server prefix!",
     "USAGE": "{{prefix}}setprefix [prefix]",
     "EXAMPLES": "{{prefix}}setprefix +",
-    "MISSING_PREFIX": "Adj meg egy érvényes prefixet!",
-    "TOO_LONG": "Az prefix nem haladhatja meg az 5 karaktert!",
-    "SUCCESS": "A szerveren a prefix `{{prefix}}`-re lett beállítva!"
+    "MISSING_PREFIX": "Please enter a valid prefix!",
+    "TOO_LONG": "The prefix shouldn't exceed 5 characters!",
+    "SUCCESS": "The server prefix has been set to `{{prefix}}`!"
 }
