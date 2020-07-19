@@ -141,7 +141,7 @@ module.exports = class {
 				}
 				return;
 			} else {
-				return message.sendT("misc:PREFIX_DM", {
+				return message.sendT("misc:HELLO_DM", {
 					username: message.author.username
 				});
 			}
