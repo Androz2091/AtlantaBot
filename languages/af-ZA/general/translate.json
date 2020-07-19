@@ -1,0 +1,9 @@
+{
+    "DESCRIPTION": "I translate your text!",
+    "USAGE": "{{prefix}}translate [language] [message]",
+    "EXAMPLES": "{{prefix}}translate fr How are you ?",
+    "LIST_SENT": "The list of languages has just been sent to you by private messages!",
+    "MISSING_LANGUAGE": "Please enter a language! To display the list of languages, type `{{prefix}}translate langs-list`!",
+    "INVALID_LANGUAGE": "The language `{{search}}` does not exist! To display the list of languages, type `{{prefix}}translate langs-list`!",
+    "MISSING_CONTENT": "Please enter a text to be translated!"
+}
