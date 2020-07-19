@@ -1,0 +1,6 @@
+.server-name {
+    overflow: hidden;
+    width: calc(80%);
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
