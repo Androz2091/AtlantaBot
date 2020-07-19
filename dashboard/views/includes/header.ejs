@@ -19,10 +19,18 @@
             <ul class="nav navbar-nav">
                 <!-- User Account: style can be found in dropdown.less -->
                 <li class="dropdown user user-menu">
-                    <a class="dropdown-toggle" data-toggle="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                         <img src="<%= user.displayAvatarURL %>" class="user-image" alt="User Image">
                         <span class="hidden-xs"><%= user.tag %></span>
                     </a>
+                    <ul class="dropdown-menu">
+                        <!-- Menu Footer-->
+                        <li class="user-footer" style="min-width: auto !important;">
+                          <div>
+                            <a href="/logout" class="btn btn-default btn-flat btn-block">Sign out</a>
+                          </div>
+                        </li>
+                      </ul>
                 </li>
             </ul>
         </div>
