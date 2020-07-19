@@ -1,0 +1,7 @@
+{
+    "DESCRIPTION": "Divorce the person you are currently married to!",
+    "USAGE": "{{prefix}}divorce",
+    "EXAMPLES": "{{prefix}}divorce",
+    "NOT_MARRIED": "You are not currently married!",
+    "DIVORCED": "You just divorced with **{{username}}**!"
+}
