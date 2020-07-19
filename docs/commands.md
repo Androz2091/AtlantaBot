@@ -94,7 +94,7 @@ Here's the list of Atlanta commands. This one contains more than **100 commands*
 | **pay**          | Send money to someone!                                                 | pay [@member] [amount]           | 10 seconds |
 | **profile**      | Shows the profile of the mentioned user (or the author of the message) | profile [user]                   | 3 seconds  |
 | **rep**          | Give a reputation point to someone!                                    | rep [user]                       | 3 seconds  |
-| **rob**          | Try to rob a member!                                                   | rob [@membre] [amount]           | 1 seconds  |
+| **rob**          | Try to rob a member!                                                   | rob [@member] [amount]           | 1 seconds  |
 | **setbio**       | Change your biography!                                                 | setbio [biography]               | 5 seconds  |
 | **slots**        | The Casino of Atlanta                                                  | slots [amount]                   | 3 seconds  |
 | **withdraw**     | Withdraw money!                                                        | withdraw [amount]                | 1 seconds  |
