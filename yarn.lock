@@ -771,10 +771,10 @@ detect-libc@^1.0.2, detect-libc@^1.0.3:
   resolved "https://registry.yarnpkg.com/detect-libc/-/detect-libc-1.0.3.tgz#fa137c4bd698edf55cd5cd02ac559f91a4c4ba9b"
   integrity sha1-+hN8S9aY7fVc1c0CrFWfkaTEups=
 
-discord-backup@^2.1.17:
-  version "2.1.17"
-  resolved "https://registry.yarnpkg.com/discord-backup/-/discord-backup-2.1.17.tgz#701d69ba2fc418c1e9f77cb1e6e854c56fa0e34c"
-  integrity sha512-oVg3BoCr0/RcFbHhbvLVqgmfVftwF+A/fVt7UmgwW4HY8LleG8U7a0F1oEPp0xKinVgk99YlpTim47X2Ng1qog==
+discord-backup@^2.1.19:
+  version "2.1.19"
+  resolved "https://registry.yarnpkg.com/discord-backup/-/discord-backup-2.1.19.tgz#ed507f67a3dc0077259a1f59f5f23b5b541ae255"
+  integrity sha512-rGoz0JOy5JEHbdGd/7sAVs2ni/L7oZI9eW4kZ8fffhn7pAFrGfv4v1835UdcRPr20bA5x+NUESamCtTNb+Vvyw==
   dependencies:
     axios "^0.19.0"
     discord.js "^12.0.1"
