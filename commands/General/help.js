@@ -57,7 +57,7 @@ class Help extends Command {
 						prefix: message.guild
 							? data.guild.prefix
 							: "",
-						cmd: cmd.name
+						cmd: cmd.help.name
 					})
 				)
 				.addField(
