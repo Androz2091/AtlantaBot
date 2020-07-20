@@ -13,7 +13,6 @@ module.exports.load = async(client) => {
 
 	/* Routers */
 	const mainRouter = require("./routes/index"),
-		userRouter = require("./routes/user"),
 		discordAPIRouter = require("./routes/discord"),
 		logoutRouter = require("./routes/logout"),
 		settingsRouter = require("./routes/settings"),
@@ -53,7 +52,6 @@ module.exports.load = async(client) => {
 		.use("/manage", guildManagerRouter)
 		.use("/stats", guildStatsRouter)
 		.use("/settings", settingsRouter)
-		.use("/user", userRouter)
 		.use("/", mainRouter)
 		.use(CheckAuth, function(req, res){
 			res.status(404).render("404", {
