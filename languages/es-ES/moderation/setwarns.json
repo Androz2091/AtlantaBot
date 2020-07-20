@@ -1,7 +1,7 @@
 {
     "DESCRIPTION": "¡Defina las sanciones que recibirán los miembros después de un cierto número de advertencias!",
     "USAGE": "{{prefix}}setwarns [kick/ban] [numero/reset]",
-    "EXAMPLES": "{{prefix}setwarns kick 10\n{{prefix}}setwarns ban 10\n{{prefix}}setwarns ban reset",
+    "EXAMPLES": "{{prefix}}setwarns kick 10\n{{prefix}}setwarns ban 10\n{{prefix}}setwarns ban reset",
     "MISSING_TYPE": "¡Por favor especifique un tipo de sanción válido! (`kick`, `ban`)",
     "SUCCESS_KICK": "¡Configuración guardada! Cuando un miembro llegue a **{{count}}** advertencias, será expulsado. ¡Escriba `{{prefix}}configuration` para ver su nueva configuración!",
     "SUCCESS_BAN": "¡Configuración guardada! Cuando un miembro llegue a **{{count}}** advertencias, será baneado. ¡Escriba `{{prefix}}configuration` para ver su nueva configuración!",
