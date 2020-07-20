@@ -6,5 +6,5 @@
     "AND_MORE": "\n**Et plus...**",
     "REST": "Cliquez ici pour lire la suite des paroles",
     "MISSING_SONG_NAME": "Merci de spécifier un nom de chanson à rechercher !",
-    "NO_LYRICS_FOUND": "Pas de paroles trouvées pour `{{songName}}` !"
+    "NO_LYRICS_FOUND": "No lyrics found for `{{songName}}`!"
 }

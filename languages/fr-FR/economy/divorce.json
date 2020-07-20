@@ -3,5 +3,5 @@
     "USAGE": "{{prefix}}divorce",
     "EXAMPLES": "{{prefix}}divorce",
     "NOT_MARRIED": "Vous n'êtes pas marié !",
-    "DIVORCED": "Vous venez de divorcer avec **{{username}}** !"
+    "DIVORCED": "You just divorced with **{{username}}**!"
 }

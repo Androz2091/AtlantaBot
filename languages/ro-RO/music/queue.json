@@ -1,0 +1,6 @@
+{
+    "DESCRIPTION": "Shows the server queue",
+    "USAGE": "{{prefix}}queue",
+    "EXAMPLES": "{{prefix}}queue",
+    "TITLE": "Server Queue (next 20 tracks)"
+}
