@@ -46,7 +46,7 @@
     "mathjs": "^7.1.0",
     "md5": "^2.2.1",
     "moment": "^2.26.0",
-    "mongoose": "^5.9.24"
+    "mongoose": "^5.9.25"
   },
   "devDependencies": {
     "eslint": "^7.4.0"
