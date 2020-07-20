@@ -40,6 +40,8 @@ module.exports = {
 	apiKeys: {
 		// BLAGUE.XYZ: https://blague.xyz/
 		blagueXYZ: "XXXXXXXXXXX",
+		// FORTNITE TRN: https://fortnitetracker.com/site-api
+		fortniteTRN: "XXXXXXXXXXX",
 		// FORTNITE FNBR: https://fnbr.co/api/docs
 		fortniteFNBR: "XXXXXXXXXXX",
 		// DBL: https://discordbots.org/api/docs#mybots
