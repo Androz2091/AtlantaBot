@@ -205,14 +205,23 @@ module.exports = class {
 		if(!uCooldown){
 			cmdCooldown[message.author.id] = {};
 			uCooldown = cmdCooldown[message.author.id];
+			uCooldown[cmd.help.name] = {};
 		}
-		const time = uCooldown[cmd.help.name] || 0;
+		const time = uCooldown[cmd.help.name].time || 0;
 		if(time && (time > Date.now())){
 			return message.error("misc:COOLDOWNED", {
 				seconds: Math.ceil((time-Date.now())/1000)
 			});
 		}
-		cmdCooldown[message.author.id][cmd.help.name] = Date.now() + cmd.conf.cooldown;
+		cmdCooldown[message.author.id][cmd.help.name].time = Date.now() + cmd.conf.cooldown;
+
+		// implement timout for automatly remove cache and better manage RAM
+		cmdCooldown[message.author.id][cmd.help.name].timeout = setTimeout(() => {
+			delete cmdCooldown[message.author.id][cmd.help.name];
+			if (Object.keys(cmdCooldown[message.author.id]) < 1) {
+				delete cmdCooldown[message.author.id];
+			}
+		}, cmd.conf.cooldown);
 
 		client.logger.log(`${message.author.username} (${message.author.id}) ran command ${cmd.help.name}`, "cmd");
 
