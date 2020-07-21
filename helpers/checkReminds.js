@@ -1,6 +1,12 @@
 const Discord = require("discord.js");
 /* THIS CHECK IF THERE IS A REMIND MUST BE SENT */
 
+/**
+ * @prefer use setTimeout for to use proportionally RAM
+ * why don't use setInterval, because instead of use correctly RAM, he makes use of spikes.
+ * And aslo it can redo a loop without the other being finish.
+ */
+
 module.exports = {
     
 	/**
@@ -9,10 +15,21 @@ module.exports = {
      */
 	async init(client){
 		await client.usersData.find({ reminds: { $gt : [] } }).then((users) => {
-			for(const user of users){
+			users.forEach((user) => {
 				if(!client.users.cache.has(user.id)) client.users.fetch(user.id);
-				client.databaseCache.usersReminds.set(user.id, user);
-			}
+				const dUser = client.users.cache.get(user.id);
+				if (dUser) {
+					user.reminds.forEach(async (remind) => {
+						if (remind.sendAt > Date.now()) {
+							this.sendRemind(client, user, dUser, remind);
+						} else {
+							setTimeout(() => {
+								this.sendRemind(client, user, dUser, remind);
+							}, remind.sendAt - Date.now());
+						}
+					});
+				}
+			});
 
 			return; // for Complete await
 		});
@@ -44,26 +61,6 @@ module.exports = {
 				}
 			});
 		}, 1000);*/
-
-		/**
-		 * @prefer use setTimeout for to use proportionally RAM
-		 * why don't use setInterval, because instead of use correctly RAM, he makes use of spikes.
-		 * And aslo it can redo a loop without the other being finish.
-		 */
-		client.databaseCache.usersReminds.forEach(async (user) => {
-			const dUser = client.users.cache.get(user.id);
-			if (dUser) {
-				user.reminds.forEach(async (remind) => {
-					if (remind.sendAt > Date.now()) {
-						this.sendRemind(client, user, dUser, remind);
-					} else {
-						setTimeout(() => {
-							this.sendRemind(client, user, dUser, remind);
-						}, remind.sendAt - Date.now());
-					}
-				});
-			}
-		});
 	},
 
 	async sendRemind(client, user, dUser, remind) {
@@ -82,9 +79,6 @@ module.exports = {
 		const pos = user.reminds.findIndex((r) => r.createdAt === remind.createdAt);
 		user.reminds.splice(pos, 1);
 		user.save();
-		if (user.reminds.length === 0) {
-			client.databaseCache.usersReminds.delete(user.id);
-		}
 	}
 
 };

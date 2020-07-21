@@ -41,7 +41,6 @@ class Atlanta extends Client {
 		this.databaseCache.guilds = new Collection();
 		this.databaseCache.members = new Collection();
 
-		this.databaseCache.usersReminds = new Collection(); // members with active reminds
 		this.databaseCache.mutedUsers = {}; // members who are currently muted
 
 		if(this.config.apiKeys.amethyste){
