@@ -18,6 +18,8 @@ class Addcommand extends Command {
 	}
 
 	async run (message, args, data) {
+
+		if (!args.join("")) args = [""];
         
 		const name = args[0].split("\n")[0];
 		if (!name)
