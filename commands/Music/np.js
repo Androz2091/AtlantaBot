@@ -1,5 +1,5 @@
 const Command = require("../../base/Command.js"),
-	Discord = require("discord.js");
+	{MessageEmbed} = require("discord.js");
 
 class Np extends Command {
 
@@ -35,7 +35,7 @@ class Np extends Command {
 		const track = await this.client.player.nowPlaying(message.guild.id);
 
 		// Generate discord embed to display song informations
-		const embed = new Discord.MessageEmbed()
+		const embed = new MessageEmbed()
 			.setAuthor(message.translate("music/np:CURRENTLY_PLAYING"))
 			.setThumbnail(track.thumbnail)
 			.addField(message.translate("music/np:T_TITLE"), track.name, true)

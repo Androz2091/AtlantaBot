@@ -1,5 +1,5 @@
 const Command = require("../../base/Command.js"),
-	Discord = require("discord.js");
+	{MessageEmbed} = require("discord.js");
 
 class Achievements extends Command {
 
@@ -19,7 +19,7 @@ class Achievements extends Command {
 	}
 
 	async run (message, args, data) {
-		const embed = new Discord.MessageEmbed()
+		const embed = new MessageEmbed()
 			.setAuthor(message.translate("economy/achievements:TITLE"))
 			.setColor(data.config.embed.color)
 			.setFooter(data.config.embed.footer);

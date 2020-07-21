@@ -1,9 +1,9 @@
-const Canvas = require("canvas"),
-	Discord = require("discord.js");
+const {registerFont, createCanvas, loadImage} = require("canvas"),
+	{MessageAttachment} = require("discord.js");
 const { resolve } = require("path");
 // Register assets fonts
-Canvas.registerFont(resolve("./assets/fonts/theboldfont.ttf"), { family: "Bold" });
-Canvas.registerFont(resolve("./assets/fonts/SketchMatch.ttf"), { family: "SketchMatch" });
+registerFont(resolve("./assets/fonts/theboldfont.ttf"), { family: "Bold" });
+registerFont(resolve("./assets/fonts/SketchMatch.ttf"), { family: "SketchMatch" });
 
 const applyText = (canvas, text, defaultFontSize) => {
 	const ctx = canvas.getContext("2d");
@@ -35,11 +35,11 @@ module.exports = class {
 						.replace(/{server}/g, guild.name)
 						.replace(/{membercount}/g, guild.memberCount);
 					if(guildData.plugins.goodbye.withImage){
-						const canvas = Canvas.createCanvas(1024, 450),
+						const canvas = createCanvas(1024, 450),
 							ctx = canvas.getContext("2d");
                     
 						// Background language"
-						const background = await Canvas.loadImage("./assets/img/greetings_background.png");
+						const background = await loadImage("./assets/img/greetings_background.png");
 						// This uses the canvas dimensions to stretch the image onto the entire canvas
 						ctx.drawImage(background, 0, 0, canvas.width, canvas.height);
 						// Draw username
@@ -92,11 +92,11 @@ module.exports = class {
 						ctx.clip();
                     
 						const options = { format: "png", size: 512 },
-							avatar = await Canvas.loadImage(member.user.displayAvatarURL(options));
+							avatar = await loadImage(member.user.displayAvatarURL(options));
 						// Move the image downwards vertically and constrain its height to 200, so it"s a square
 						ctx.drawImage(avatar, 45, 90, 270, 270);
 
-						const attachment = new Discord.MessageAttachment(canvas.toBuffer(), "goodbye-image.png");
+						const attachment = new MessageAttachment(canvas.toBuffer(), "goodbye-image.png");
 						channel.send(message, attachment);
 					} else {
 						channel.send(message);

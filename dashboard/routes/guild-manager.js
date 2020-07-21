@@ -1,7 +1,6 @@
-const express = require("express"),
-	utils = require("../utils"),
-	CheckAuth = require("../auth/CheckAuth"),
-	router = express.Router();
+const router = require("express").Router(),
+	{fetchGuild} = require("../utils"),
+	CheckAuth = require("../auth/CheckAuth");
 
 router.get("/:serverID", CheckAuth, async(req, res) => {
 
@@ -16,7 +15,7 @@ router.get("/:serverID", CheckAuth, async(req, res) => {
 	}
 
 	// Fetch guild informations
-	const guildInfos = await utils.fetchGuild(guild.id, req.client, req.user.guilds);
+	const guildInfos = await fetchGuild(guild.id, req.client, req.user.guilds);
 
 	res.render("manager/guild", {
 		guild: guildInfos,

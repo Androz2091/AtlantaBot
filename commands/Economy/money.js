@@ -1,5 +1,5 @@
 const Command = require("../../base/Command.js"),
-	Discord = require("discord.js");
+	{MessageEmbed} = require("discord.js");
 
 const asyncForEach = async (array, callback) => {
 	for (let index = 0; index < array.length; index++) {
@@ -44,7 +44,7 @@ class Credits extends Command {
 			globalMoney+=memberData.bankSold;
 		});
 
-		const embed = new Discord.MessageEmbed()
+		const embed = new MessageEmbed()
 			.setAuthor(message.translate("economy/money:TITLE", {
 				username: member.user.username
 			}), member.user.displayAvatarURL())

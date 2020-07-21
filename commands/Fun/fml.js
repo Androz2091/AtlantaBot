@@ -1,5 +1,5 @@
 const Command = require("../../base/Command.js"),
-	Discord = require("discord.js");
+	{MessageEmbed} = require("discord.js");
 
 class Fml extends Command {
 
@@ -25,7 +25,7 @@ class Fml extends Command {
 
 		const fml = await this.client.joker.randomVDM(null, data.guild.language.substr(0, 2));
 
-		const embed = new Discord.MessageEmbed()
+		const embed = new MessageEmbed()
 			.setDescription(fml.content)
 			.setFooter(message.translate("fun/fml:FOOTER"))
 			.setColor(this.client.config.embed.color);

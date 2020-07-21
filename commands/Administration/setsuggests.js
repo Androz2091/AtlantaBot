@@ -1,5 +1,5 @@
 const Command = require("../../base/Command.js"),
-	Resolvers = require("../../helpers/resolvers");
+	{resolveChannel} = require("../../helpers/resolvers");
 
 class Setsuggests extends Command {
 
@@ -21,7 +21,7 @@ class Setsuggests extends Command {
 	async run (message, args, data) {
         
 		const areSuggestsEnabled = Boolean(data.guild.plugins.suggestions);
-		const sentChannel = await Resolvers.resolveChannel({
+		const sentChannel = await resolveChannel({
 			message,
 			search: args.join(" "),
 			channelType: "text"

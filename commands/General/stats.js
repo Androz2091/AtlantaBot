@@ -1,5 +1,5 @@
 const Command = require("../../base/Command.js"),
-	Discord = require("discord.js");
+	{MessageEmbed, version} = require("discord.js");
 
 class Stats extends Command {
 
@@ -20,7 +20,7 @@ class Stats extends Command {
 
 	async run (message, args, data) {
 
-		const statsEmbed = new Discord.MessageEmbed()
+		const statsEmbed = new MessageEmbed()
 			.setColor(data.config.embed.color)
 			.setFooter(data.config.embed.footer)
 			.setAuthor(message.translate("common:STATS"))
@@ -29,7 +29,7 @@ class Stats extends Command {
 				servers: this.client.guilds.cache.size,
 				users: this.client.users.cache.size
 			}), true)
-			.addField(this.client.customEmojis.version+" "+message.translate("general/stats:VERSIONS_TITLE"), `\`Discord.js : v${Discord.version}\`\n\`Nodejs : v${process.versions.node}\``, true)
+			.addField(this.client.customEmojis.version+" "+message.translate("general/stats:VERSIONS_TITLE"), `\`Discord.js : v${version}\`\n\`Nodejs : v${process.versions.node}\``, true)
 			.addField(this.client.customEmojis.ram+" "+message.translate("general/stats:RAM_TITLE"), `\`${(process.memoryUsage().heapUsed / 1024 / 1024).toFixed(2)}MB\``, true)
 			.addField(this.client.customEmojis.status.online+" "+message.translate("general/stats:ONLINE_TITLE"), message.translate("general/stats:ONLINE_CONTENT", {
 				time: message.convertTime(Date.now()+this.client.uptime, "from", true)

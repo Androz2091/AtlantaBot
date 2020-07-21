@@ -1,4 +1,4 @@
-const Discord = require("discord.js");
+const {Permissions} = require("discord.js");
 
 /**
  * Fetch guild informations
@@ -22,7 +22,7 @@ async function fetchGuild(guildID, client, guilds){
 async function fetchUser(userData, client, query){
 	if(userData.guilds){
 		userData.guilds.forEach((guild) => {
-			const perms = new Discord.Permissions(guild.permissions);
+			const perms = new Permissions(guild.permissions);
 			if(perms.has("MANAGE_GUILD")){
 				guild.admin = true;
 			}

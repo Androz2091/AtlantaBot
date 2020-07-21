@@ -1,5 +1,5 @@
 const Command = require("../../base/Command.js"),
-	Discord = require("discord.js");
+	{MessageEmbed} = require("discord.js");
 
 class Checkinvites extends Command {
 
@@ -28,7 +28,7 @@ class Checkinvites extends Command {
 			withInvite.map((m) => "`"+m.id+"` ("+m.displayName+") ["+m.user.presence.game.name+"]").join("\n")
 			:   message.translate("moderation/checkinvites:NOBODY"));
 
-		const embed = new Discord.MessageEmbed()
+		const embed = new MessageEmbed()
 			.setDescription(text)
 			.setColor(data.config.embed.color)
 			.setFooter(data.config.embed.footer);

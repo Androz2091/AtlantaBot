@@ -1,5 +1,5 @@
 const Command = require("../../base/Command.js"),
-	Discord = require("discord.js");
+	{MessageEmbed} = require("discord.js");
 
 class Qrcode extends Command {
 
@@ -29,7 +29,7 @@ class Qrcode extends Command {
 			prefixEmoji: "loading"
 		});
         
-		const embed = new Discord.MessageEmbed()
+		const embed = new MessageEmbed()
 			.setImage(`https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${text.replace(new RegExp(" ", "g"), "%20")}`)
 			.setColor(data.config.embed.color);
 

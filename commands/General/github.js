@@ -1,5 +1,5 @@
 const Command = require("../../base/Command.js"),
-	Discord = require("discord.js"),
+	{MessageEmbed} = require("discord.js"),
 	fetch = require("node-fetch");
 
 class Github extends Command {
@@ -24,7 +24,7 @@ class Github extends Command {
 		const res = await fetch("https://api.github.com/repos/Androz2091/AtlantaBot");
 		const json = await res.json();
 
-		const embed = new Discord.MessageEmbed()
+		const embed = new MessageEmbed()
 			.setAuthor(this.client.user.tag, this.client.user.displayAvatarURL())
 			.setDescription("["+message.translate("general/github:CLICK_HERE")+"](https://github.com/Androz2091/AtlantaBot)")
 			.addField("Stars", json.stargazers_count, true)

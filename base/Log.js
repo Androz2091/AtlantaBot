@@ -1,6 +1,6 @@
-const mongoose = require("mongoose");
+const {model, Schema} = require("mongoose");
 
-module.exports = mongoose.model("Log", new mongoose.Schema({
+module.exports = model("Log", new Schema({
 
 	commandName: { type: String, default: "unknown" },
 	date: { type: Number, default: Date.now() },

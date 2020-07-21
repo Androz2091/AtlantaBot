@@ -1,6 +1,6 @@
 const Command = require("../../base/Command.js"),
-	Discord = require("discord.js");
-const permissions = Object.keys(Discord.Permissions.FLAGS);
+	{Permissions: Perm} = require("discord.js");
+const permissions = Object.keys(Perm.FLAGS);
  
 class Permissions extends Command {
 	constructor (client) {

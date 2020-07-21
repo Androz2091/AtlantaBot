@@ -1,7 +1,7 @@
 const Command = require("../../base/Command.js"),
-	Discord = require("discord.js"),
-	backup = require("discord-backup"),
-	Sentry = require("@sentry/node");
+	{MessageEmbed} = require("discord.js"),
+	{fetch, create, load, remove} = require("discord-backup"),
+	{captureException} = require("@sentry/node");
 
 class Backup extends Command {
 
@@ -31,7 +31,7 @@ class Backup extends Command {
 			const m = await message.sendT("misc:PLEASE_WAIT", null, {
 				prefixEmoji: "loading"
 			});
-			backup.create(message.guild).then((backup) => {
+			create(message.guild).then((backup) => {
 				m.delete();
 				message.success("administration/backup:SUCCESS_PUBLIC");
 				message.author.send(message.translate("administration/backup:SUCCESS_PRIVATE", {
@@ -41,7 +41,7 @@ class Backup extends Command {
 					message.error("misc:CANNOT_DM");
 				});
 			}).catch((err) => {
-				Sentry.captureException(err);
+				captureException(err);
 				return message.error("misc:ERR_OCCURRED");
 			});
 		} else if (status === "load"){
@@ -49,7 +49,7 @@ class Backup extends Command {
 			if(!backupID){
 				return message.error("administration/backup:MISSING_BACKUP_ID");
 			}
-			backup.fetch(backupID).then(async () => {
+			fetch(backupID).then(async () => {
 				message.sendT("administration/backup:CONFIRMATION");
 				await message.channel.awaitMessages(m => (m.author.id === message.author.id) && (m.content === "-confirm"), {
 					max: 1,
@@ -62,12 +62,12 @@ class Backup extends Command {
 				// When the author of the command has confirmed that he wants to load the backup on his server
 				message.author.send(message.translate("administration/backup:START_LOADING"));
 				// Load the backup
-				backup.load(backupID, message.guild).then(() => {
+				load(backupID, message.guild).then(() => {
 					// When the backup is loaded, delete them from the server
-					backup.remove(backupID);
+					remove(backupID);
 					message.author.send(message.translate("administration/backup:LOAD_SUCCESS"));
 				}).catch((err) => {
-					Sentry.captureException(err);
+					captureException(err);
 					// If an error occurenced
 					return message.error("misc:ERR_OCCURRED");
 				});
@@ -82,8 +82,8 @@ class Backup extends Command {
 			if(!backupID){
 				return message.error("administration/backup:MISSING_BACKUP_ID");
 			}
-			backup.fetch(backupID).then(async (backupInfos) => {
-				const embed = new Discord.MessageEmbed()
+			fetch(backupID).then(async (backupInfos) => {
+				const embed = new MessageEmbed()
 					.setAuthor(message.translate("administration/backup:TITLE_INFOS"))
 					// Display the backup ID
 					.addField(message.translate("administration/backup:TITLE_ID"), backupInfos.id, true)

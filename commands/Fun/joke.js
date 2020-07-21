@@ -1,5 +1,5 @@
 const Command = require("../../base/Command.js"),
-	Discord = require("discord.js");
+	{MessageEmbed} = require("discord.js");
 
 class Joke extends Command {
 
@@ -27,7 +27,7 @@ class Joke extends Command {
 			data.guild.language.substr(0, 2)
 		);
 
-		const embed = new Discord.MessageEmbed()
+		const embed = new MessageEmbed()
 			.setDescription(joke.toDiscordSpoils())
 			.setFooter(message.translate("fun/joke:FOOTER"))
 			.setColor(this.client.config.embed.color);

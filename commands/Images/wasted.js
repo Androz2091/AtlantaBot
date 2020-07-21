@@ -1,5 +1,5 @@
 const Command = require("../../base/Command.js"),
-	Discord = require("discord.js");
+	{MessageAttachment} = require("discord.js");
 
 class Wasted extends Command {
 	constructor (client) {
@@ -24,7 +24,7 @@ class Wasted extends Command {
 			prefixEmoji: "loading"
 		});
 		const buffer = await this.client.AmeAPI.generate("wasted", { url: user.displayAvatarURL({ format: "png", size: 512 }) });
-		const attachment = new Discord.MessageAttachment(buffer, "wasted.png");
+		const attachment = new MessageAttachment(buffer, "wasted.png");
 		m.delete();
 		message.channel.send(attachment);
 

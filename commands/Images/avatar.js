@@ -1,5 +1,5 @@
 const Command = require("../../base/Command.js"),
-	Discord = require("discord.js");
+	{MessageAttachment} = require("discord.js");
 
 class Avatar extends Command {
 	constructor (client) {
@@ -23,7 +23,7 @@ class Avatar extends Command {
 		if(!user) user = message.author;
 		const avatarURL = user.displayAvatarURL({ size: 512, dynamic: true }).replace(".webp", ".png");
 		if(message.content.includes("-v")) message.channel.send("<"+avatarURL+">");
-		const attachment = new Discord.MessageAttachment(avatarURL, `avatar.${avatarURL.split(".").pop().split("?")[0]}`);
+		const attachment = new MessageAttachment(avatarURL, `avatar.${avatarURL.split(".").pop().split("?")[0]}`);
 		message.channel.send(attachment);
 
 	}

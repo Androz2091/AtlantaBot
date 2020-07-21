@@ -1,5 +1,5 @@
 const Command = require("../../base/Command.js"),
-	Discord = require("discord.js");
+	{MessageEmbed} = require("discord.js");
 
 class Skip extends Command {
 
@@ -37,7 +37,7 @@ class Skip extends Command {
 
 		const members = voice.members.filter((m) => !m.user.bot);
 
-		const embed = new Discord.MessageEmbed()
+		const embed = new MessageEmbed()
 			.setAuthor(message.translate("music/skip:DESCRIPTION"))
 			.setThumbnail(queue.tracks[0].thumbnail)
 			.setFooter(data.config.embed.footer)

@@ -1,5 +1,5 @@
 const Command = require("../../base/Command.js"),
-	Discord = require("discord.js");
+	{MessageEmbed} = require("discord.js");
 
 class Ban extends Command {
 
@@ -95,7 +95,7 @@ class Ban extends Command {
 			if(data.guild.plugins.modlogs){
 				const channel = message.guild.channels.cache.get(data.guild.plugins.modlogs);
 				if(!channel) return;
-				const embed = new Discord.MessageEmbed()
+				const embed = new MessageEmbed()
 					.setAuthor(message.translate("moderation/ban:CASE", {
 						count: data.guild.casesCount
 					}))

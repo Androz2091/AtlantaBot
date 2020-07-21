@@ -1,5 +1,5 @@
 const Command = require("../../base/Command.js"),
-	Discord = require("discord.js");
+	{MessageEmbed} = require("discord.js");
 
 class Help extends Command {
 	constructor (client) {
@@ -51,7 +51,7 @@ class Help extends Command {
 			);
 
 			// Creates the help embed
-			const groupEmbed = new Discord.MessageEmbed()
+			const groupEmbed = new MessageEmbed()
 				.setAuthor(
 					message.translate("general/help:CMD_TITLE", {
 						prefix: message.guild
@@ -102,7 +102,7 @@ class Help extends Command {
 
 		const emojis = this.client.customEmojis;
 
-		const embed = new Discord.MessageEmbed()
+		const embed = new MessageEmbed()
 			.setDescription(message.translate("general/help:INFO", {
 				prefix: message.guild
 					? data.guild.prefix

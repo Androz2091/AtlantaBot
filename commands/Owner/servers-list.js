@@ -1,5 +1,5 @@
 const Command = require("../../base/Command.js"),
-	Discord = require("discord.js");
+	{MessageEmbed} = require("discord.js");
 
 class ServersList extends Command {
 
@@ -33,7 +33,7 @@ class ServersList extends Command {
 			.slice(0, 10)
 			.join("\n");
 
-		const embed = new Discord.MessageEmbed()
+		const embed = new MessageEmbed()
 			.setAuthor(message.author.tag, message.author.displayAvatarURL())
 			.setColor(data.config.embed.color)
 			.setFooter(this.client.user.username)

@@ -1,6 +1,6 @@
 const Command = require("../../base/Command.js"),
-	Canvas = require("discord-canvas"),
-	Discord = require("discord.js");
+	{FortniteStats} = require("discord-canvas"),
+	{MessageAttachment, MessageEmbed} = require("discord.js");
 
 class Fortnite extends Command {
 	constructor (client) {
@@ -24,7 +24,7 @@ class Fortnite extends Command {
 			return message.success("misc:COMMAND_DISABLED");
 		}
 
-		const stats = new Canvas.FortniteStats();
+		const stats = new FortniteStats();
 
 		const platform = args[0];
 		if(!platform || (platform !== "pc" && platform !== "xbl" && platform !== "psn")){
@@ -67,8 +67,8 @@ class Fortnite extends Command {
 		}
 
 		// Send embed
-		const attachment = new Discord.MessageAttachment(statsImage.toBuffer(), "fortnite-stats-image.png"),
-			embed = new Discord.MessageEmbed()
+		const attachment = new MessageAttachment(statsImage.toBuffer(), "fortnite-stats-image.png"),
+			embed = new MessageEmbed()
 				.setDescription(message.translate("general/fortnite:TITLE", {
 					username: `[${stats.data.username}](${stats.data.url.replace(new RegExp(" ", "g"), "%20")})`
 				}))

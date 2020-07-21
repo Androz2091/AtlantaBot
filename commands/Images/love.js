@@ -1,5 +1,5 @@
 const Command = require("../../base/Command.js"),
-	Discord = require("discord.js"),
+	{MessageAttachment} = require("discord.js"),
 	fetch = require("node-fetch");
 
 class Love extends Command {
@@ -31,7 +31,7 @@ class Love extends Command {
 		try {
 			const res = await fetch(encodeURI(`https://nekobot.xyz/api/imagegen?type=ship&user1=${users[0].displayAvatarURL({ format: "png", size: 512 })}&user2=${users[1].displayAvatarURL({ format: "png", size: 512 })}`));
 			const json = await res.json();
-			const attachment = new Discord.MessageAttachment(json.message, "love.png");
+			const attachment = new MessageAttachment(json.message, "love.png");
 			message.channel.send(attachment);
 			m.delete();
 		} catch(e){

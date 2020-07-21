@@ -1,6 +1,5 @@
-const express = require("express"),
-	router = express.Router(),
-	Discord = require("discord.js");
+const router = require("express").Router(),
+	{MessageEmbed} = require("discord.js");
 
 const fetch = require("node-fetch"),
 	btoa = require("btoa");
@@ -76,7 +75,7 @@ router.get("/callback", async (req, res) => {
 	const userDB = await req.client.findOrCreateUser(req.session.user.id);
 	const logsChannel = req.client.channels.cache.get(req.client.config.dashboard.logs);
 	if(!userDB.logged && logsChannel && user){
-		const embed = new Discord.MessageEmbed()
+		const embed = new MessageEmbed()
 			.setAuthor(user.username, user.displayAvatarURL())
 			.setColor("#DA70D6")
 			.setDescription(req.client.translate("dashboard:FIRST_LOGIN", {

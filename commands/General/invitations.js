@@ -1,5 +1,5 @@
 const Command = require("../../base/Command.js"),
-	Discord = require("discord.js");
+	{MessageEmbed} = require("discord.js");
 
 class Invitations extends Command {
 
@@ -48,7 +48,7 @@ class Invitations extends Command {
 		let index = 0;
 		memberInvites.forEach((invite) => index += invite.uses);
         
-		const embed = new Discord.MessageEmbed()
+		const embed = new MessageEmbed()
 			.setColor(data.config.embed.color)
 			.setFooter(data.config.embed.footer)
 			.setAuthor(message.translate("general/invitations:TRACKER"))

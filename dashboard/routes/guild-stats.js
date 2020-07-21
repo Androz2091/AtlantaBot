@@ -1,8 +1,7 @@
-const express = require("express"),
-	utils = require("../utils"),
-	CheckAuth = require("../auth/CheckAuth"),
-	router = express.Router();
-const generator = require("colors-generator");
+const router = require("express").Router(),
+	{fetchGuild, fetchUsers} = require("../utils"),
+	CheckAuth = require("../auth/CheckAuth");
+const {generate} = require("colors-generator");
 
 router.get("/:serverID", CheckAuth, async(req, res) => {
 	// Check if the user has the permissions to edit this guild
@@ -16,7 +15,7 @@ router.get("/:serverID", CheckAuth, async(req, res) => {
 	}
 
 	// Fetch guild informations
-	const guildInfos = await utils.fetchGuild(guild.id, req.client, req.user.guilds);
+	const guildInfos = await fetchGuild(guild.id, req.client, req.user.guilds);
 
 	const membersData = await req.client.membersData.find({ guildID: guild.id }).lean();
     
@@ -29,7 +28,7 @@ router.get("/:serverID", CheckAuth, async(req, res) => {
 		const e = leaderboards[cat];
 		if(e.length > 10) e.length = 10;
 	}
-	const stats = { money: await utils.fetchUsers(leaderboards.money, req.client), level: await utils.fetchUsers(leaderboards.level, req.client) };
+	const stats = { money: await fetchUsers(leaderboards.money, req.client), level: await fetchUsers(leaderboards.level, req.client) };
 	res.render("stats/guild", {
 		stats,
 		commands: getCommands(guildInfos.commands.filter((c) => c.date > Date.now()-604800000)),
@@ -65,7 +64,7 @@ function getCommandsUsage(commands){
 		return acc;
 	}, {});
 	const percentages = getPercentagePerKey(objectCount); // [ { key: "help", percentage: 20 } ]
-	const colors = generator.generate("#86bff2", percentages.length).get();
+	const colors = generate("#86bff2", percentages.length).get();
 	let i = 0;
 	percentages.forEach((p) => {
 		p.color = colors[i];

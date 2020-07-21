@@ -1,5 +1,5 @@
 const Command = require("../../base/Command.js"),
-	Discord = require("discord.js");
+	{MessageCollector} = require("discord.js");
 
 const currentGames = {};
 
@@ -63,7 +63,7 @@ class FindWords extends Command {
 				}, false, false, "warn");
     
 				// init a collector to receive the answers
-				const collector = new Discord.MessageCollector(message.channel, (m) => !m.author.bot, {
+				const collector = new MessageCollector(message.channel, (m) => !m.author.bot, {
 					time: 20000
 				});
     

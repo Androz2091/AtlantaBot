@@ -1,5 +1,5 @@
 const Command = require("../../base/Command.js"),
-	Discord = require("discord.js");
+	{MessageEmbed} = require("discord.js");
 
 class Serverinfo extends Command {
 
@@ -33,7 +33,7 @@ class Serverinfo extends Command {
 
 		guild = await guild.fetch();
 
-		const embed = new Discord.MessageEmbed()
+		const embed = new MessageEmbed()
 			.setAuthor(guild.name, guild.iconURL())
 			.setThumbnail(guild.iconURL())
 			.addField(this.client.customEmojis.title+message.translate("common:NAME"), guild.name, true)

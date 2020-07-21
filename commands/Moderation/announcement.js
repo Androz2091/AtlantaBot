@@ -1,5 +1,5 @@
 const Command = require("../../base/Command.js"),
-	Discord = require("discord.js");
+	{MessageCollector, MessageEmbed} = require("discord.js");
 
 class Announcement extends Command {
 
@@ -34,7 +34,7 @@ class Announcement extends Command {
             
 		const msg = await message.sendT("moderation/announcement:MENTION_PROMPT");
 
-		const collector = new Discord.MessageCollector(message.channel, (m) => m.author.id === message.author.id, { time: 240000 });
+		const collector = new MessageCollector(message.channel, (m) => m.author.id === message.author.id, { time: 240000 });
             
 		collector.on("collect", async (tmsg) => {
     
@@ -48,7 +48,7 @@ class Announcement extends Command {
 				tmsg.delete();
 				msg.delete();
 				const tmsg1 = await message.sendT("moderation/announcement:MENTION_TYPE_PROMPT");
-				const c = new Discord.MessageCollector(message.channel, (m) => m.author.id === message.author.id, { time: 60000 });
+				const c = new MessageCollector(message.channel, (m) => m.author.id === message.author.id, { time: 60000 });
 				c.on("collect", (m) => {
 					if(m.content.toLowerCase() === "here"){
 						mention = "@here";
@@ -78,7 +78,7 @@ class Announcement extends Command {
 				return message.error("misc:TIMES_UP");
 			}
 
-			const embed = new Discord.MessageEmbed()
+			const embed = new MessageEmbed()
 				.setAuthor(message.translate("moderation/announcement:TITLE"))
 				.setColor(data.config.embed.color)
 				.setFooter(message.author.tag)

@@ -1,6 +1,6 @@
 const Command = require("../../base/Command.js"),
-	Discord = require("discord.js"),
-	Canvas = require("discord-canvas");
+	{MessageEmbed, MessageAttachment} = require("discord.js"),
+	{FortniteShop} = require("discord-canvas");
 
 class Fortniteshop extends Command {
 	constructor (client) {
@@ -29,7 +29,7 @@ class Fortniteshop extends Command {
 		});
 
 		const momentName = data.config.languages.find((language) => language.name === data.guild.language || language.aliases.includes(data.guild.language)).moment;
-		const shop = new Canvas.FortniteShop();
+		const shop = new FortniteShop();
 		const image = await shop
 			.setToken(data.config.apiKeys.fortniteFNBR)
 			.setText("header", message.translate("general/fortniteshop:HEADER"))
@@ -41,9 +41,9 @@ class Fortniteshop extends Command {
 			.setText("footer", message.translate("general/fortniteshop:FOOTER"))
 			.lang(momentName)
 			.toAttachment();
-		const attachment = new Discord.MessageAttachment(image, "shop.png");
+		const attachment = new MessageAttachment(image, "shop.png");
 
-		const embed = new Discord.MessageEmbed()
+		const embed = new MessageEmbed()
 			.setAuthor(message.translate("general/fortniteshop:HEADER", {
 				date: message.printDate(new Date(Date.now()))
 			}), this.client.user.displayAvatarURL())

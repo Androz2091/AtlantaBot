@@ -1,5 +1,4 @@
-const express = require("express"),
-	router = express.Router();
+const router = require("express").Router();
 
 // Gets login page
 router.get("/", async function(req, res) {

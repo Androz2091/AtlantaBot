@@ -1,5 +1,5 @@
 const Command = require("../../base/Command.js"),
-	Discord = require("discord.js");
+	{MessageCollector} = require("discord.js");
 
 // An object to store pending requests
 const pendings = {};
@@ -88,7 +88,7 @@ class Marry extends Command {
 			to: member.user.toString()
 		});
 
-		const collector = new Discord.MessageCollector(message.channel, (m) => m.author.id === member.id, {
+		const collector = new MessageCollector(message.channel, (m) => m.author.id === member.id, {
 			time: 120000
 		});
         

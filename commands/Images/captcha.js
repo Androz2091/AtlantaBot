@@ -1,5 +1,5 @@
 const Command = require("../../base/Command.js"),
-	Discord = require("discord.js"),
+	{MessageAttachment} = require("discord.js"),
 	fetch = require("node-fetch");
 
 class Captcha extends Command {
@@ -27,7 +27,7 @@ class Captcha extends Command {
 		try {
 			const res = await fetch(encodeURI(`https://nekobot.xyz/api/imagegen?type=captcha&username=${user.username}&url=${user.displayAvatarURL({ format: "png", size: 512 })}`));
 			const json = await res.json();
-			const attachment = new Discord.MessageAttachment(json.message, "captcha.png");
+			const attachment = new MessageAttachment(json.message, "captcha.png");
 			message.channel.send(attachment);
 			m.delete();
 		} catch(e){

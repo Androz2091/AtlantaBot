@@ -5,7 +5,7 @@ const { Client: Joker } = require("blague.xyz");
 
 const util = require("util"),
 	AmeClient = require("amethyste-api"),
-	path = require("path"),
+	{sep} = require("path"),
 	moment = require("moment");
 
 moment.relativeTimeThreshold("s", 60);
@@ -101,7 +101,7 @@ class Atlanta extends Client {
 	// This function is used to load a command and add it to the collection
 	loadCommand (commandPath, commandName) {
 		try {
-			const props = new (require(`.${commandPath}${path.sep}${commandName}`))(this);
+			const props = new (require(`.${commandPath}${sep}${commandName}`))(this);
 			this.logger.log(`Loading Command: ${props.help.name}. 👌`, "log");
 			props.conf.location = commandPath;
 			if (props.init){
@@ -131,7 +131,7 @@ class Atlanta extends Client {
 		if(command.shutdown){
 			await command.shutdown(this);
 		}
-		delete require.cache[require.resolve(`.${commandPath}${path.sep}${commandName}.js`)];
+		delete require.cache[require.resolve(`.${commandPath}${sep}${commandName}.js`)];
 		return false;
 	}
 

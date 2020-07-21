@@ -1,5 +1,5 @@
 const Command = require("../../base/Command.js"),
-	Resolvers = require("../../helpers/resolvers");
+	{resolveChannel} = require("../../helpers/resolvers");
 
 class Setmodlogs extends Command {
 
@@ -21,7 +21,7 @@ class Setmodlogs extends Command {
 	async run (message, args, data) {
         
 		const areModLogsEnabled = Boolean(data.guild.plugins.modlogs);
-		const sentChannel = await Resolvers.resolveChannel({
+		const sentChannel = await resolveChannel({
 			message,
 			search: args.join(" "),
 			channelType: "text"

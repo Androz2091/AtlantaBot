@@ -1,4 +1,4 @@
-const Discord = require("discord.js");
+const {MessageEmbed} = require("discord.js");
 /* THIS CHECK IF THERE IS A REMIND MUST BE SENT */
 
 /**
@@ -66,7 +66,7 @@ module.exports = {
 	async sendRemind(client, user, dUser, remind) {
 		// RATE-LIMIT
 		await new Promise((resolve) => setTimeout(resolve, 500));
-		const embed = new Discord.MessageEmbed()
+		const embed = new MessageEmbed()
 			.setAuthor(client.translate("general/remindme:TITLE"))
 			.addField(client.translate("common:CREATION"), client.translate("general/remindme:CREATED", {
 				time: client.convertTime(remind.createdAt, "from")

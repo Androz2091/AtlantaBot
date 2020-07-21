@@ -1,5 +1,5 @@
 const Command = require("../../base/Command.js"),
-	Discord = require("discord.js"),
+	{MessageAttachment} = require("discord.js"),
 	fetch = require("node-fetch");
 
 class Phcomment extends Command {
@@ -39,7 +39,7 @@ class Phcomment extends Command {
 		try {
 			const res = await fetch(encodeURI(`https://nekobot.xyz/api/imagegen?type=phcomment&username=${user.username}&image=${user.displayAvatarURL({ format: "png", size: 512 })}&text=${text}`));
 			const json = await res.json();
-			const attachment = new Discord.MessageAttachment(json.message, "phcomment.png");
+			const attachment = new MessageAttachment(json.message, "phcomment.png");
 			message.channel.send(attachment);
 			m.delete();
 		} catch(e){

@@ -1,5 +1,5 @@
-const config = require("../config"),
-	utils = require("./utils"),
+const {dashboard} = require("../config"),
+	{fetchUser} = require("./utils"),
 	CheckAuth = require("./auth/CheckAuth");
 
 module.exports.load = async(client) => {
@@ -32,15 +32,15 @@ module.exports.load = async(client) => {
 		// Set the ejs templates to ./views
 		.set("views", path.join(__dirname, "/views"))
 		// Set the dashboard port
-		.set("port", config.dashboard.port)
+		.set("port", dashboard.port)
 		// Set the express session password and configuration
-		.use(session({ secret: config.dashboard.expressSessionPassword, resave: false, saveUninitialized: false }))
+		.use(session({ secret: dashboard.expressSessionPassword, resave: false, saveUninitialized: false }))
 		// Multi languages support
 		.use(async function(req, res, next){
 			req.user = req.session.user;
 			req.client = client;
 			req.locale = req.user ? (req.user.locale === "fr" ? "fr-FR" : "en-US") : "en-US";
-			if(req.user && req.url !== "/") req.userInfos = await utils.fetchUser(req.user, req.client);
+			if(req.user && req.url !== "/") req.userInfos = await fetchUser(req.user, req.client);
 			if(req.user){
 				req.translate = req.client.translations.get(req.locale);
 				req.printDate = (date) => req.client.printDate(date, null, req.locale);

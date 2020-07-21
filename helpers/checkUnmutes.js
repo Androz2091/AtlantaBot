@@ -1,4 +1,4 @@
-const Discord = require("discord.js");
+const {MessageEmbed} = require("discord.js");
 
 /* THIS CHECK IF THERE IS A USER TO UNMUTE */
 
@@ -91,7 +91,7 @@ module.exports = {
 			});
 		}
 		const user = member ? member.user : client.users.cache.get(memberData.id) || await client.users.fetch(memberData.id);
-		const embed = new Discord.MessageEmbed()
+		const embed = new MessageEmbed()
 			.setDescription(guild.translate("moderation/unmute:SUCCESS_CASE", {
 				user: user.toString(),
 				usertag: user.tag,

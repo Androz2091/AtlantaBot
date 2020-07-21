@@ -1,6 +1,5 @@
-const express = require("express"),
-	CheckAuth = require("../auth/CheckAuth"),
-	router = express.Router();
+const router = require("express").Router(),
+	CheckAuth = require("../auth/CheckAuth");
 
 // Gets profile page
 router.get("/", CheckAuth, async function(req, res) {

@@ -1,6 +1,6 @@
 const Command = require("../../base/Command.js"),
-	Discord = require("discord.js"),
-	cheerio = require("cheerio"),
+	{MessageEmbed} = require("discord.js"),
+	{load} = require("cheerio"),
 	fetch = require("node-fetch");
 
 class Lyrics extends Command {
@@ -27,7 +27,7 @@ class Lyrics extends Command {
 			return message.error("music/lyrics:MISSING_SONG_NAME");
 		}
         
-		const embed = new Discord.MessageEmbed()
+		const embed = new MessageEmbed()
 			.setAuthor(message.translate("music/lyrics:LYRICS_OF", {
 				songName
 			}))
@@ -43,12 +43,12 @@ class Lyrics extends Command {
 
 			let res = await fetch(`https://www.musixmatch.com/search/${songNameFormated}`);
 			res = await res.text();
-			let $ = await cheerio.load(res);
+			let $ = await load(res);
 			const songLink = `https://musixmatch.com${$("h2[class=\"media-card-title\"]").find("a").attr("href")}`;
 
 			res = await fetch(songLink);
 			res = await res.text();
-			$ = await cheerio.load(res);
+			$ = await load(res);
 
 			let lyrics = await $("p[class=\"mxm-lyrics__content \"]").text();
 

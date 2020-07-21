@@ -1,7 +1,7 @@
 const Command = require("../../base/Command.js"),
 	figlet = require("figlet"),
-	util = require("util"),
-	figletAsync = util.promisify(figlet);
+	{promisify} = require("util"),
+	figletAsync = promisify(figlet);
 
 class Ascii extends Command {
 

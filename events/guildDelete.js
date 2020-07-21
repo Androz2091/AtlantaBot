@@ -1,4 +1,4 @@
-const Discord = require("discord.js");
+const {MessageEmbed} = require("discord.js");
 
 module.exports = class {
 
@@ -11,7 +11,7 @@ module.exports = class {
 		const text = "Quelqu'un m'a expulsé de **"+guild.name+"** avec **"+guild.members.cache.filter((m) => !m.user.bot).size+"** membres (et "+guild.members.cache.filter((m) => m.user.bot).size+" bots)";
 
 		// Sends log embed in the logs channel
-		const embed = new Discord.MessageEmbed()
+		const embed = new MessageEmbed()
 			.setAuthor(guild.name, guild.iconURL())
 			.setColor("#B22222")
 			.setDescription(text);

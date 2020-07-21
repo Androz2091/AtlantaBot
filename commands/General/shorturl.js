@@ -1,5 +1,5 @@
 const Command = require("../../base/Command.js"),
-	Discord = require("discord.js"),
+	{MessageEmbed} = require("discord.js"),
 	fetch = require("node-fetch");
 
 class ShortURL extends Command {
@@ -33,7 +33,7 @@ class ShortURL extends Command {
 			return message.error("general/shorturl:MISSING_URL");
 		}
 
-		const embed = new Discord.MessageEmbed()
+		const embed = new MessageEmbed()
 			.setColor(data.config.embed.color)
 			.setFooter(data.config.embed.footer)
 			.setDescription(body);

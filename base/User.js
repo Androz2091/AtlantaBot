@@ -1,5 +1,5 @@
-const mongoose = require("mongoose"),
-	Canvas = require("canvas");
+const {Schema, model} = require("mongoose"),
+	{createCanvas, loadImage} = require("canvas");
 
 const genToken = () => {
 	let token = "";
@@ -10,7 +10,7 @@ const genToken = () => {
 	return token;
 };
 
-const userSchema = new mongoose.Schema({
+const userSchema = new Schema({
 
 	/* REQUIRED */
 	id: { type: String }, // Discord ID of the user
@@ -97,16 +97,16 @@ userSchema.method("genApiToken", async function(){
 });
 
 userSchema.method("getAchievements", async function(){
-	const canvas = Canvas.createCanvas(1800, 250),
+	const canvas = createCanvas(1800, 250),
 		ctx = canvas.getContext("2d");
 	const images = [
-		await Canvas.loadImage("./assets/img/achievements/achievement"+(this.achievements.work.achieved ? "_colored" : "")+"1.png"),
-		await Canvas.loadImage("./assets/img/achievements/achievement"+(this.achievements.firstCommand.achieved ? "_colored" : "")+"2.png"),
-		await Canvas.loadImage("./assets/img/achievements/achievement"+(this.achievements.married.achieved ? "_colored" : "")+"3.png"),
-		await Canvas.loadImage("./assets/img/achievements/achievement"+(this.achievements.slots.achieved ? "_colored" : "")+"4.png"),
-		await Canvas.loadImage("./assets/img/achievements/achievement"+(this.achievements.tip.achieved ? "_colored" : "")+"5.png"),
-		await Canvas.loadImage("./assets/img/achievements/achievement"+(this.achievements.rep.achieved ? "_colored" : "")+"6.png"),
-		await Canvas.loadImage("./assets/img/achievements/achievement"+(this.achievements.invite.achieved ? "_colored" : "")+"7.png")
+		await loadImage("./assets/img/achievements/achievement"+(this.achievements.work.achieved ? "_colored" : "")+"1.png"),
+		await loadImage("./assets/img/achievements/achievement"+(this.achievements.firstCommand.achieved ? "_colored" : "")+"2.png"),
+		await loadImage("./assets/img/achievements/achievement"+(this.achievements.married.achieved ? "_colored" : "")+"3.png"),
+		await loadImage("./assets/img/achievements/achievement"+(this.achievements.slots.achieved ? "_colored" : "")+"4.png"),
+		await loadImage("./assets/img/achievements/achievement"+(this.achievements.tip.achieved ? "_colored" : "")+"5.png"),
+		await loadImage("./assets/img/achievements/achievement"+(this.achievements.rep.achieved ? "_colored" : "")+"6.png"),
+		await loadImage("./assets/img/achievements/achievement"+(this.achievements.invite.achieved ? "_colored" : "")+"7.png")
 	];
 	let dim = 0;
 	for(let i = 0; i < images.length; i++){
@@ -116,4 +116,4 @@ userSchema.method("getAchievements", async function(){
 	return canvas.toBuffer();
 });
 
-module.exports = mongoose.model("User", userSchema);
+module.exports = model("User", userSchema);

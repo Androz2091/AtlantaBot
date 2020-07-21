@@ -1,6 +1,6 @@
 const Command = require("../../base/Command.js"),
-	Discord = require("discord.js"),
-	math = require("mathjs");
+	{MessageEmbed} = require("discord.js"),
+	{evaluate} = require("mathjs");
 
 class Calc extends Command {
 	constructor (client) {
@@ -26,12 +26,12 @@ class Calc extends Command {
 
 		let result;
 		try {
-			result = math.evaluate(args.join(" ").replace(/[x]/gi, "*").replace(/[,]/g, ".").replace(/[÷]/gi, "/"));
+			result = evaluate(args.join(" ").replace(/[x]/gi, "*").replace(/[,]/g, ".").replace(/[÷]/gi, "/"));
 		} catch (e) {
 			return message.error("general/calc:INVALID_CALC");
 		}
 
-		const embed = new Discord.MessageEmbed()
+		const embed = new MessageEmbed()
 			.setColor(data.config.embed.color)
 			.setAuthor(message.translate("general/calc:TITLE"), this.client.user.displayAvatarURL())
 			.addField(message.translate("general/calc:CALCULATION"), `\`\`\`js\n${args.join("").replace(/[x]/gi, "*").replace(/[,]/g, ".").replace(/[÷]/gi, "/")}\`\`\``)

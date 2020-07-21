@@ -1,5 +1,5 @@
 const Command = require("../../base/Command.js"),
-	Discord = require("discord.js");
+	{MessageEmbed} = require("discord.js");
 
 class Configuration extends Command {
 
@@ -22,7 +22,7 @@ class Configuration extends Command {
 
 		const guildData = data.guild;
 
-		const embed = new Discord.MessageEmbed()
+		const embed = new MessageEmbed()
 			.setAuthor(message.guild.name, message.guild.iconURL())
 			.setColor(this.client.config.embed.color)
 			.setFooter(this.client.config.embed.footer);

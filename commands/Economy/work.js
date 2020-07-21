@@ -1,5 +1,5 @@
 const Command = require("../../base/Command.js"),
-	Discord = require("discord.js");
+	{MessageEmbed, Util} = require("discord.js");
 
 class Work extends Command {
 
@@ -45,7 +45,7 @@ class Work extends Command {
 		data.memberData.workStreak = (data.memberData.workStreak || 0) + 1;
 		await data.memberData.save();
 
-		const embed = new Discord.MessageEmbed()
+		const embed = new MessageEmbed()
 			.setFooter(message.translate("economy/work:AWARD"), message.author.displayAvatarURL())
 			.setColor(data.config.embed.color);
         
@@ -68,7 +68,7 @@ class Work extends Command {
 		} else {
 			for(let i = 0; i < award.length; i++){
 				if(data.memberData.workStreak > i){
-					const letter = Discord.Util.parseEmoji(award[i]).name.split("_")[1];
+					const letter = Util.parseEmoji(award[i]).name.split("_")[1];
 					award[i] = `:regional_indicator_${letter}:`;
 				}
 			}

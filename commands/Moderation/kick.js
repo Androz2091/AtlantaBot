@@ -1,5 +1,5 @@
 const Command = require("../../base/Command.js"),
-	Discord = require("discord.js");
+	{MessageEmbed} = require("discord.js");
 
 class Kick extends Command {
 
@@ -83,7 +83,7 @@ class Kick extends Command {
 			if(data.guild.plugins.modlogs){
 				const channel = message.guild.channels.cache.get(data.guild.plugins.modlogs);
 				if(!channel) return;
-				const embed = new Discord.MessageEmbed()
+				const embed = new MessageEmbed()
 					.setAuthor(message.translate("moderation/kick:CASE", {
 						count: data.guild.casesCount
 					}))

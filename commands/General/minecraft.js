@@ -1,8 +1,8 @@
 const Command = require("../../base/Command.js"),
-	Discord = require("discord.js"),
+	{MessageAttachment, MessageEmbed} = require("discord.js"),
 	fetch = require("node-fetch"),
-	gamedig = require("gamedig"),
-	Sentry = require("@sentry/node");
+	{query} = require("gamedig"),
+	{captureException} = require("@sentry/node");
 
 class Minecraft extends Command {
 
@@ -48,18 +48,18 @@ class Minecraft extends Command {
 
 		let json = null;
         
-		await gamedig.query(options).then((res) => {
+		await query(options).then((res) => {
 			json = res;
 		}).catch((err) => {
-			Sentry.captureException(err);
+			captureException(err);
 		});
 
 		if(!json){
 			options.type = "minecraftpe";
-			await gamedig.query(options).then((res) => {
+			await query(options).then((res) => {
 				json = res;
 			}).catch((err) => {
-				Sentry.captureException(err);
+				captureException(err);
 			});
 		}
 
@@ -70,9 +70,9 @@ class Minecraft extends Command {
 		}
 
 		const imgRes = await fetch("https://www.minecraftskinstealer.com/achievement/a.php?i=2&h=Success&t="+ip);
-		const imgAttachment = new Discord.MessageAttachment(await imgRes.buffer(), "success.png");
+		const imgAttachment = new MessageAttachment(await imgRes.buffer(), "success.png");
 
-		const mcEmbed = new Discord.MessageEmbed()
+		const mcEmbed = new MessageEmbed()
 			.setAuthor(message.translate("general/minecraft:FIELD_NAME", {
 				ip: json.name
 			}))

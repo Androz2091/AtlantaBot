@@ -1,5 +1,5 @@
 const Command = require("../../base/Command.js"),
-	Discord = require("discord.js"),
+	{MessageAttachment} = require("discord.js"),
 	fetch = require("node-fetch");
 
 class Tweet extends Command {
@@ -39,7 +39,7 @@ class Tweet extends Command {
 		try {
 			const res = await fetch(encodeURI(`https://nekobot.xyz/api/imagegen?type=tweet&username=${user}&text=${text}`));
 			const json = await res.json();
-			const attachment = new Discord.MessageAttachment(json.message, "tweet.png");
+			const attachment = new MessageAttachment(json.message, "tweet.png");
 			message.channel.send(message.translate("images/tweet:SUCCESS", {
 				user
 			}), attachment);

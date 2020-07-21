@@ -1,5 +1,5 @@
 const Command = require("../../base/Command.js"),
-	Discord = require("discord.js"),
+	{MessageEmbed} = require("discord.js"),
 	fetch = require("node-fetch");
 
 class Userinfo extends Command {
@@ -49,7 +49,7 @@ class Userinfo extends Command {
 			member = await message.guild.members.fetch(user).catch(() => {});
 		}
 
-		const embed = new Discord.MessageEmbed()
+		const embed = new MessageEmbed()
 			.setAuthor(user.tag, user.displayAvatarURL())
 			.setThumbnail(user.displayAvatarURL())
 			.addField(":man: "+message.translate("common:USERNAME"), user.username, true)

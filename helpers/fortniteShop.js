@@ -1,6 +1,6 @@
 const Canvas = require("discord-canvas"),
-	CronJob = require("cron").CronJob,
-	Discord = require("discord.js");
+	{CronJob} = require("cron"),
+	{MessageAttachment, MessageEmbed} = require("discord.js");
 
 async function init(client) {
     
@@ -23,8 +23,8 @@ async function init(client) {
 						.setText("footer", client.translate("general/fortniteshop:FOOTER"), null, guildData.language)
 						.lang(momentName)
 						.toAttachment();
-					const attachment = new Discord.MessageAttachment(image, "shop.png");
-					const embed = new Discord.MessageEmbed()
+					const attachment = new MessageAttachment(image, "shop.png");
+					const embed = new MessageEmbed()
 						.setAuthor(client.translate("general/fortniteshop:DATE", {
 							date: client.printDate(new Date(Date.now()), null, guildData.language)
 						}, guildData.language), client.user.displayAvatarURL())

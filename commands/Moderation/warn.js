@@ -1,5 +1,5 @@
 const Command = require("../../base/Command.js"),
-	Discord = require("discord.js");
+	{MessageEmbed} = require("discord.js");
 
 class Warn extends Command {
 
@@ -61,7 +61,7 @@ class Warn extends Command {
 			reason
 		};
 
-		const embed = new Discord.MessageEmbed()
+		const embed = new MessageEmbed()
 			.addField(message.translate("common:USER"), `\`${member.user.tag}\` (${member.user.toString()})`)
 			.addField(message.translate("common:MODERATOR"), `\`${message.author.tag}\` (${message.author.toString()}`)
 			.addField(message.translate("common:REASON"), reason, true);

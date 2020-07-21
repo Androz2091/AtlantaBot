@@ -1,5 +1,5 @@
 const Command = require("../../base/Command.js"),
-	Discord = require("discord.js"),
+	{MessageEmbed} = require("discord.js"),
 	fetch = require("node-fetch");
 
 class Hastebin extends Command {
@@ -39,7 +39,7 @@ class Hastebin extends Command {
 			}
 			const url = "https://hasteb.in/"+json.key+".js";
 
-			const embed = new Discord.MessageEmbed()
+			const embed = new MessageEmbed()
 				.setAuthor(message.translate("general/hastebin:SUCCESS"))
 				.setDescription(url)
 				.setColor(data.config.embed.color);

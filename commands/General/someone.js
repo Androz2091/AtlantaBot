@@ -1,5 +1,5 @@
 const Command = require("../../base/Command.js"),
-	Discord = require("discord.js");
+	{MessageEmbed} = require("discord.js");
 
 class Someone extends Command {
 
@@ -22,7 +22,7 @@ class Someone extends Command {
         
 		const member = message.guild.members.cache.random(1)[0];
         
-		const embed = new Discord.MessageEmbed()
+		const embed = new MessageEmbed()
 			.addField(message.translate("common:USERNAME"), member.user.username, true)
 			.addField(message.translate("common:DISCRIMINATOR"), member.user.discriminator, true)
 			.addField(message.translate("common:ID"), member.user.id, true)

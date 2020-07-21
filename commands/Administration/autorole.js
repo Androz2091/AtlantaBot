@@ -1,5 +1,5 @@
 const Command = require("../../base/Command.js"),
-	Resolvers = require("../../helpers/resolvers");
+	{resolveRole} = require("../../helpers/resolvers");
 
 class Autorole extends Command {
 
@@ -27,7 +27,7 @@ class Autorole extends Command {
         
 		if(status === "on"){
 
-			const role = await Resolvers.resolveRole({
+			const role = await resolveRole({
 				message,
 				search: args.slice(1).join(" ")
 			});

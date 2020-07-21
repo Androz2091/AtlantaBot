@@ -1,5 +1,5 @@
 const Command = require("../../base/Command.js"),
-	Discord = require("discord.js"),
+	{MessageEmbed} = require("discord.js"),
 	md5 = require("md5");
 
 class Lovecalc extends Command {
@@ -42,7 +42,7 @@ class Lovecalc extends Command {
 			.join("");
 		const percent = parseInt(string.substr(0, 2), 10);
 
-		const embed = new Discord.MessageEmbed()
+		const embed = new MessageEmbed()
 			.setAuthor("❤️ LoveCalc")
 			.setDescription(
 				message.translate("fun/lovecalc:CONTENT", {

@@ -1,5 +1,5 @@
 const Command = require("../../base/Command.js"),
-	Resolvers = require("../../helpers/resolvers");
+	{resolveChannel} = require("../../helpers/resolvers");
 
 class Welcome extends Command {
 
@@ -101,7 +101,7 @@ class Welcome extends Command {
 
 				// If the channel is not filled, it means the user sent it
 				if (!welcome.channel) {
-					const channel = await Resolvers.resolveChannel({
+					const channel = await resolveChannel({
 						message: msg,
 						channelType: "text"
 					});

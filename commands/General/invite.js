@@ -1,5 +1,5 @@
 const Command = require("../../base/Command.js"),
-	Discord = require("discord.js");
+	{MessageEmbed} = require("discord.js");
 
 class Invite extends Command {
 
@@ -28,7 +28,7 @@ class Invite extends Command {
 			return message.channel.send(inviteLink);
 		}
         
-		const embed = new Discord.MessageEmbed()
+		const embed = new MessageEmbed()
 			.setAuthor(message.translate("general/invite:LINKS"))
 			.setDescription(message.translate("general/invite:TIP", {
 				prefix: data.guild.prefix

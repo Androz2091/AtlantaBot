@@ -1,6 +1,6 @@
-const mongoose = require("mongoose");
+const {model, Schema} = require("mongoose");
 
-module.exports = mongoose.model("Member", new mongoose.Schema({
+module.exports = model("Member", new Schema({
 
 	/* REQUIRED */
 	id: { type: String }, // Discord ID of the user

@@ -1,5 +1,5 @@
 const Command = require("../../base/Command.js"),
-	Discord = require("discord.js");
+	{MessageEmbed} = require("discord.js");
 
 class Play extends Command {
 
@@ -53,7 +53,7 @@ class Play extends Command {
 			try {
 				if(tracks.length > 10) tracks.splice(10);
 				let i = 0;
-				const embed = new Discord.MessageEmbed()
+				const embed = new MessageEmbed()
 					.setDescription(tracks.map((t) => `**${++i} -** ${t.name}`).join("\n"))
 					.setFooter(message.translate("music/play:RESULTS_FOOTER"))
 					.setColor(data.config.embed.color);

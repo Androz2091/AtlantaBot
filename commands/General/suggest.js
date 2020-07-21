@@ -1,5 +1,5 @@
 const Command = require("../../base/Command.js"),
-	Discord = require("discord.js");
+	{MessageEmbed, Util} = require("discord.js");
 
 class Suggest extends Command {
 
@@ -30,7 +30,7 @@ class Suggest extends Command {
 			return message.error("general/suggest:MISSING_CONTENT");
 		}
 
-		const embed = new Discord.MessageEmbed()
+		const embed = new MessageEmbed()
 			.setAuthor(message.translate("general/suggest:TITLE", {
 				user: message.author.username
 			}), message.author.displayAvatarURL())
@@ -40,8 +40,8 @@ class Suggest extends Command {
 			.setColor(data.config.embed.color)
 			.setFooter(data.config.embed.footer);
 
-		const success = Discord.Util.parseEmoji(this.client.customEmojis.success).id;
-		const error = Discord.Util.parseEmoji(this.client.customEmojis.error).id;
+		const success = Util.parseEmoji(this.client.customEmojis.success).id;
+		const error = Util.parseEmoji(this.client.customEmojis.error).id;
         
 		suggChannel.send(embed).then(async (m) => {
 			await m.react(success);

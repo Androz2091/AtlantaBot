@@ -1,5 +1,5 @@
 const Command = require("../../base/Command.js"),
-	Discord = require("discord.js");
+	{MessageEmbed, Util} = require("discord.js");
 
 class Report extends Command {
 
@@ -39,7 +39,7 @@ class Report extends Command {
 			return message.error("general/report:MISSING_REASON");
 		}
 
-		const embed = new Discord.MessageEmbed()
+		const embed = new MessageEmbed()
 			.setAuthor(message.translate("general/report:TITLE", {
 				user: member.user.tag
 			}), message.author.displayAvatarURL())
@@ -50,8 +50,8 @@ class Report extends Command {
 			.setColor(data.config.embed.color)
 			.setFooter(data.config.embed.footer);
 
-		const success = Discord.Util.parseEmoji(this.client.customEmojis.success).id;
-		const error = Discord.Util.parseEmoji(this.client.customEmojis.error).id;
+		const success = Util.parseEmoji(this.client.customEmojis.success).id;
+		const error = Util.parseEmoji(this.client.customEmojis.error).id;
         
 		repChannel.send(embed).then(async (m) => {
 			await m.react(success);

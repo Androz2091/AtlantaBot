@@ -1,5 +1,5 @@
 const Command = require("../../base/Command.js"),
-	Discord = require("discord.js");
+	{MessageCollector} = require("discord.js");
 
 const currentGames = {};
 
@@ -34,7 +34,7 @@ class Number extends Command {
 		// Store the date wich the game has started
 		const gameCreatedAt = Date.now();
 
-		const collector = new Discord.MessageCollector(
+		const collector = new MessageCollector(
 			message.channel,
 			m => !m.author.bot,
 			{

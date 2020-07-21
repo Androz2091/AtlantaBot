@@ -1,5 +1,5 @@
 const Command = require("../../base/Command.js"),
-	Discord = require("discord.js");
+	{MessageEmbed} = require("discord.js");
 
 class Sanctions extends Command {
 
@@ -26,7 +26,7 @@ class Sanctions extends Command {
 		}
 		const memberData = await this.client.findOrCreateMember({ id: user.id, guildID: message.guild.id });
 
-		const embed = new Discord.MessageEmbed()
+		const embed = new MessageEmbed()
 			.setAuthor(user.tag, user.displayAvatarURL())
 			.setColor(data.config.embed.color)
 			.setFooter(data.config.embed.footer);

@@ -1,5 +1,5 @@
 const Command = require("../../base/Command.js"),
-	Discord = require("discord.js");
+	{MessageEmbed} = require("discord.js");
 
 class Queue extends Command {
 
@@ -38,7 +38,7 @@ class Queue extends Command {
 		});
 
 		// Generate discord embed to display the songs list
-		const embed = new Discord.MessageEmbed()
+		const embed = new MessageEmbed()
 			.addField(this.client.customEmojis.playlist+" "+message.translate("music/queue:TITLE"), sQueue.join("\n-------\n"))
 			.setColor(data.config.embed.color)
 			.setFooter(data.config.embed.footer)

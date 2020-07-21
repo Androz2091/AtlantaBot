@@ -1,4 +1,4 @@
-const Discord = require("discord.js");
+const {MessageEmbed} = require("discord.js");
 
 module.exports = class {
 
@@ -33,7 +33,7 @@ module.exports = class {
 			await userData.save();
 		}
 
-		const thanksEmbed = new Discord.MessageEmbed()
+		const thanksEmbed = new MessageEmbed()
 			.setAuthor("Thank you for adding me to your guild !")
 			.setDescription("To configure me, type `"+this.client.config.prefix+"help` and look at the administration commands!\nTo change the language, type `"+this.client.config.prefix+"setlang [language]`.")
 			.setColor(this.client.config.embed.color)
@@ -46,7 +46,7 @@ module.exports = class {
 		const text = "J'ai rejoint **"+guild.name+"**, avec **"+guild.members.cache.filter((m) => !m.user.bot).size+"** membres (et "+guild.members.cache.filter((m) => m.user.bot).size+" bots)";
 
 		// Sends log embed in the logs channel
-		const logsEmbed = new Discord.MessageEmbed()
+		const logsEmbed = new MessageEmbed()
 			.setAuthor(guild.name, guild.iconURL())
 			.setColor("#32CD32")
 			.setDescription(text);

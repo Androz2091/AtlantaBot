@@ -1,5 +1,5 @@
 const Command = require("../../base/Command.js"),
-	Discord = require("discord.js");
+	{MessageEmbed} = require("discord.js");
 
 class Stop extends Command {
 
@@ -33,7 +33,7 @@ class Stop extends Command {
 
 		const members = voice.members.filter((m) => !m.user.bot);
 
-		const embed = new Discord.MessageEmbed()
+		const embed = new MessageEmbed()
 			.setAuthor(message.translate("music/stop:DESCRIPTION"))
 			.setFooter(data.config.embed.footer)
 			.setColor(data.config.embed.color);
