@@ -1,5 +1,6 @@
 const Command = require("../../base/Command.js"),
-	ms = require("ms");
+	ms = require("ms"),
+	checkReminds = require("./../../helpers/checkReminds");
 
 class Remindme extends Command {
 
@@ -46,6 +47,10 @@ class Remindme extends Command {
 
 		// Send success message
 		message.success("general/remindme:SAVED");
+
+		setTimeout(() => {
+			checkReminds.sendRemind(this.client, data.userData, message.author, rData);
+		}, rData.sendAt - Date.now());
 	}
 
 }
