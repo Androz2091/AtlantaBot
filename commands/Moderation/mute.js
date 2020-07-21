@@ -1,6 +1,7 @@
-const Command = require("../../base/Command.js"),
-	Discord = require("discord.js"),
-	ms = require("ms");
+const Command = require("../../base/Command.js");
+const {MessageEmbed} = require("discord.js");
+const ms = require("ms");
+const {unMute} = require("./../../helpers/checkUnmutes");
 
 class Mute extends Command {
 
@@ -95,12 +96,14 @@ class Mute extends Command {
 
 		await data.guild.save();
 
-		this.client.databaseCache.mutedUsers.set(`${member.id}${message.guild.id}`, memberData);
+		this.client.databaseCache.mutedUsers[`${member.id}${message.guild.id}`] = setTimeout(async () => {
+			await unMute(this.client, memberData);
+		}, memberData.mute.endDate - Date.now());
 
 		if(data.guild.plugins.modlogs){
 			const channel = message.guild.channels.cache.get(data.guild.plugins.modlogs);
 			if(!channel) return;
-			const embed = new Discord.MessageEmbed()
+			const embed = new MessageEmbed()
 				.setAuthor(message.translate("moderation/mute:CASE", {
 					count: data.guild.casesCount
 				}))
