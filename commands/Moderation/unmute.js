@@ -39,7 +39,6 @@ class Unmute extends Command {
 			message.success("moderation/unmute:SUCCESS", {
 				username: member.user.tag
 			});
-			this.client.databaseCache.mutedUsers.delete(`${member.id}${message.guild.id}`);
 		} else {
 			message.error("moderation/unmute:NOT_MUTED", {
 				username: member.user.tag
