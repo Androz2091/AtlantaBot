@@ -21,7 +21,7 @@ class Atlanta extends Client {
 	constructor (options) {
 		super(options);
 		this.config = require("../config"); // Load the config file
-		this.emotes = require("../emojis.json"); // load the bot's emojis
+		this.customEmojis = require("../emojis.json"); // load the bot's emojis
 		this.commands = new Collection(); // Creates new commands collection
 		this.aliases = new Collection(); // Creates new command aliases collection
 		this.logger = require("../helpers/logger"); // Load the logger file
@@ -159,7 +159,7 @@ class Atlanta extends Client {
 		if(this.databaseCache.members.get(`${memberID}${guildID}`)){
 			return isLean ? this.databaseCache.members.get(`${memberID}${guildID}`).toJSON() : this.databaseCache.members.get(`${memberID}${guildID}`);
 		} else {
-			let memberData = (isLean ? await this.membersData.findOne({ id: memberID, guildID }).lean() : await this.membersData.findOne({ id: memberID, guildID }));
+			let memberData = (isLean ? await this.membersData.findOne({ guildID, id: memberID }).lean() : await this.membersData.findOne({ guildID, id: memberID }));
 			if(memberData){
 				if(!isLean) this.databaseCache.members.set(`${memberID}${guildID}`, memberData);
 				return memberData;

@@ -58,7 +58,7 @@ class Play extends Command {
 					.setFooter(message.translate("music/play:RESULTS_FOOTER"))
 					.setColor(data.config.embed.color);
 				message.channel.send(embed);
-				await message.channel.awaitMessages((m) => m.content > 0 && m.content < 8, { max: 1, time: 20000, errors: ["time"] }).then(async (answers) => {
+				await message.channel.awaitMessages((m) => m.content > 0 && m.content <= 10, { max: 1, time: 20000, errors: ["time"] }).then(async (answers) => {
 					const index = parseInt(answers.first().content, 10);
 					trackToPlay = tracks[index-1];
 				}).catch((e) => {

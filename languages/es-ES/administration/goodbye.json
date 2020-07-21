@@ -7,7 +7,7 @@
     "FORM_1": "¡Hola {{author}}! ¿En qué canal se enviarán los mensajes de despedida? (mencionar un canal)",
     "FORM_2": "¡Todo bien! Por lo tanto, los mensajes se enviarán en {{channel}}. Ingrese el mensaje de despedida a continuación: \n:information_source:__**Información:**__\nMención: {user}\nMiembros: {membercount}\nServidor: {server}\n\n__Por ejemplo:__\n\n\"¡Hasta luego {user}... ahora somos {membercount}!\"\n:arrow_down:\n\"¡Hasta luego {{author}}... ahora somos {{memberCount}}!\".",
     "FORM_3": "¡Funciona! ¿Desea que se envíe una imagen de despedida al mismo tiempo? Responda con \"Si\" o \"No\"!",
-    "FORM_SUCCESS": "¡Mensajes de despedida activados en {{channel}}! ¡Escriba `{{prefix}}goodbye test` para hacer un test del mensaje de despedida!",
+    "FORM_SUCCESS": "Goodbye messages enabled in {{channel}}! Type `{{prefix}}goodbye test` to test the goodbye message!",
     "MAX_CHARACT": "¡Su mensaje no debe superar los 1800 caracteres!",
     "DISABLED": "¡Los mensajes de despedida acaban de desactivarse! ¡Escriba `{{prefix}}configuration para ver la configuración!",
     "IMG_GOODBYE": "¡Saliendo de {{server}}!",

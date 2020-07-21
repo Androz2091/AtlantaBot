@@ -1,6 +1,6 @@
 {
   "name": "atlantabot",
-  "version": "4.6.4",
+  "version": "4.7.1",
   "description": "A very complete Discord bot (more than 70 commands) that uses the Discordjs API!",
   "main": "atlanta.js",
   "scripts": {
@@ -29,7 +29,7 @@
     "colors-generator": "^0.3.4",
     "cron": "^1.7.2",
     "dblapi.js": "^2.3.0",
-    "discord-backup": "^2.1.17",
+    "discord-backup": "^2.1.19",
     "discord-canvas": "^1.3.2",
     "discord-giveaways": "^4.2.1",
     "discord-player": "^2.2.0",
@@ -40,15 +40,15 @@
     "figlet": "^1.5.0",
     "fortnite": "^4.3.2",
     "gamedig": "^2.0.21",
-    "i18next": "^19.6.0",
+    "i18next": "^19.6.2",
     "i18next-node-fs-backend": "^2.1.3",
     "markdown-table": "^1.1.3",
     "mathjs": "^7.1.0",
     "md5": "^2.2.1",
     "moment": "^2.26.0",
-    "mongoose": "^5.9.24"
+    "mongoose": "^5.9.25"
   },
   "devDependencies": {
-    "eslint": "^7.4.0"
+    "eslint": "^7.5.0"
   }
 }

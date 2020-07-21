@@ -130,6 +130,39 @@ const checks = [
 			}
 			resolve();
 		});
+	},
+	() => {
+		console.log("\n\nDashboard");
+		return new Promise(async (resolve) => {
+			if(!config.dashboard.enabled){
+				ignore("Dashboard is not enabled, config shouldn't be checked.");
+			} else {
+				const checkPortTaken = (port) => {
+					return new Promise((resolve) => {
+						const net = require("net");
+						const tester = net.createServer()
+							.once("error", () => {
+								resolve(true);
+							})
+							.once("listening", function() {
+								tester
+									.once("close", function() {
+										resolve(false);
+									})
+									.close();
+							})
+							.listen(port);
+					});
+				};
+				const isPortTaken = await checkPortTaken(config.dashboard.port);
+				if(isPortTaken){
+					error("dashboard port should be available", "you have probably another process using this port");
+				} else {
+					success("dashboard port should be available");
+				}
+			}
+			resolve();
+		});
 	}
 ];
 

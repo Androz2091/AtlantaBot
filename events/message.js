@@ -24,12 +24,6 @@ module.exports = class {
 			await message.guild.members.fetch(message.author.id);
 		}
 
-		if(this.client.config.proMode && message.guild){
-			if((!this.client.config.proUsers.includes(message.guild.ownerID) || this.guilds.filter((g) => g.ownerID === message.guild.ownerID) > 1) && message.guild.ownerID !== this.client.config.owner.id){
-				return message.guild.leave();
-			}
-		}
-
 		const client = this.client;
 		data.config = client.config;
     
@@ -42,12 +36,12 @@ module.exports = class {
 		// Check if the bot was mentionned
 		if(message.content.match(new RegExp(`^<@!?${client.user.id}>( |)$`))){
 			if(message.guild){
-				return message.sendT("misc:PREFIX_SERVER", {
+				return message.sendT("misc:HELLO_SERVER", {
 					username: message.author.username,
 					prefix: data.guild.prefix
 				});
 			} else {
-				return message.sendT("misc:PREFIX_DM", {
+				return message.sendT("misc:HELLO_DM", {
 					username: message.author.username
 				});
 			}
@@ -145,8 +139,9 @@ module.exports = class {
 				if(customCommand){
 					message.channel.send(customCommand.answer);
 				}
+				return;
 			} else {
-				return message.sendT("misc:PREFIX_DM", {
+				return message.sendT("misc:HELLO_DM", {
 					username: message.author.username
 				});
 			}

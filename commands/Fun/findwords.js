@@ -39,7 +39,7 @@ class FindWords extends Command {
     
 		for(let i = 0; i < nbGames; i++){
 			const result = Math.floor((Math.random() * wordList.length));
-			words.push(wordList[result].substring(0, 3));
+			words.push(wordList[result].substring(0, 3).toLowerCase());
 		}
 
 		let i = 0; // Inits i variable to count games
@@ -47,6 +47,7 @@ class FindWords extends Command {
 		generateGame.call(this, words[i]); // Generate a new round
     
 		function generateGame(word){
+			word = word.toLowerCase();
     
 			// Launch timer
 			const delay = (i === 0) ? 10000 : 0;
@@ -70,7 +71,7 @@ class FindWords extends Command {
 					if(!participants.includes(msg.author.id)){
 						participants.push(msg.author.id);
 					}
-					if(msg.content.toLowerCase().indexOf(word) >= 0 && wordList.indexOf(msg.content.toLowerCase()) >= 0){
+					if(msg.content.toLowerCase().indexOf(word) >= 0 && wordList.map((word) => word.toLowerCase()).indexOf(msg.content.toLowerCase()) >= 0){
 						collector.stop(msg.author.id); // Stop the collector
 					} else {
 						msg.error("fun/findwords:INVALID_WORD", {

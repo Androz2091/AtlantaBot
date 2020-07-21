@@ -1,0 +1,8 @@
+{
+    "DESCRIPTION": "Set a cooldown in a channel",
+    "USAGE": "{{prefix}}slowmode [#channel] (time)",
+    "EXAMPLES": "{{prefix}}slowmode #general 10m\n{{prefix}}slowmode #general",
+    "DISABLED": "Slowmode has been disabled in {{channel}}!",
+    "ENABLED": "Slowmode enabled in {{channel}} with a time of {{time}}!",
+    "PLEASE_WAIT": "Channel {{channel}} is in slowmode! Please wait {{time}} to be able to post a new message!"
+}

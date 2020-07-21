@@ -3,7 +3,7 @@ const express = require("express"),
 
 // Gets login page
 router.get("/", async function(req, res) {
-	await req.logout();
+	await req.session.destroy();
 	res.redirect(req.client.config.dashboard.failureURL);
 });
 
