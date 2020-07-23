@@ -1,9 +1,9 @@
 {
-    "DESCRIPTION": "Shows informations about the server!",
+    "DESCRIPTION": "Shows information about the server!",
     "USAGE": "{{prefix}}serverinfo [ID/Name]",
     "EXAMPLES": "{{prefix}}serverinfo Atlanta\n{{prefix}}serverinfo",
     "AFK_CHANNEL": "AFK channel",
-    "NO_AFK_CHANNEL": "No AFK channel",
+    "NO_AFK_CHANNEL": "-",
     "MEMBERS": "{{count}} members",
     "BOTS": "{{count}} bots",
     "BOOSTS": "Boosts count",

@@ -1,5 +1,5 @@
 {
-    "DESCRIPTION": "Executes the code",
+    "DESCRIPTION": "Executes the given code",
     "USAGE": "{{prefix}}eval [code]",
     "EXAMPLES": "{{prefix}}eval message.author.send(message.client.token);"
 }

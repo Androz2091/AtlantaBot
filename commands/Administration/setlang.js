@@ -23,7 +23,7 @@ class Setlang extends Command {
 
 		if(!args[0] || !language){
 			return message.error("administration/setlang:MISSING_LANG", {
-				list: "\n\n"+this.client.config.languages.map((l) => "`"+l.name+"`").join("\n")
+				list: this.client.config.languages.map((l) => "`"+l.name+"`").join(", ")
 			});
 		}
 
