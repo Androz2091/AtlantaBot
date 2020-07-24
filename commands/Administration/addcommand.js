@@ -21,9 +21,10 @@ class Addcommand extends Command {
 
 		if (!args.join("")) args = [""];
         
-		const name = args[0].split("\n")[0];
-		if (!name)
+		if (!args[0])
 			return message.error("administration/addcommand:MISSING_NAME");
+
+		const name = args[0].split("\n")[0];
 
 		if (
 			this.client.commands.get(name) ||
