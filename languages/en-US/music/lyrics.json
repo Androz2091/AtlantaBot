@@ -5,6 +5,6 @@
     "LYRICS_OF": "🎤 {{songName}} lyrics",
     "AND_MORE": "\n**And more...**",
     "REST": "Expand",
-    "MISSING_SONG_NAME": "Please attach a song name!",
+    "MISSING_SONG_NAME": "Please specify a song name!",
     "NO_LYRICS_FOUND": "No lyrics found for `{{songName}}`!"
 }
