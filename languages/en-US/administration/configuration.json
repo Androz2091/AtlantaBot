@@ -11,7 +11,7 @@
     "WELCOME_TITLE": "- Welcome:",
     "WELCOME_CONTENT": "Channel: {{channel}}\nImage: {{withImage}}",
     "WELCOME_DISABLED": "Welcome messages disabled.",
-    "GOODBYE_TITLE": "- Goodbye:",
+    "GOODBYE_TITLE": "Goodbye:",
     "GOODBYE_CONTENT": "Channel: {{channel}}\nImage: {{withImage}}",
     "GOODBYE_DISABLED": "Goodbye messages disabled.",
     "SPECIAL_CHANNELS": "Special channels",
