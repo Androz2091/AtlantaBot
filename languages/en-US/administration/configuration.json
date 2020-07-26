@@ -19,7 +19,7 @@
     "FORTNITESHOP": "Fortnite daily shop: *{{channel}}*",
     "SUGGESTIONS": "Suggestions: *{{channel}}*",
     "REPORTS": "Reports: *{{channel}}*",
-    "AUTOMOD_TITLE": "- Auto-moderation:",
+    "AUTOMOD_TITLE": "Auto-moderation:",
     "AUTOMOD_CONTENT": "Auto-moderation enabled.\n*Ignored channels: {{channels}}*",
     "AUTOMOD_DISABLED": "Auto-moderation disabled.",
     "AUTODELETEMOD": "Auto delete mod commands",
