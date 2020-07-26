@@ -10,7 +10,7 @@
     "NOT_FOUND": "No giveaway found with message ID `{{messageID}}`",
     "NOT_FOUND_ENDED": "No **ended** giveaway found with message ID `{{messageID}}`",
     "MAX_DURATION": "The maximum duration of a giveaway is 15 days.",
-    "MAX_COUNT": "There can only be 4 simultaneous giveawys.",
+    "MAX_COUNT": "There can only be 4 simultaneous giveaways.",
     "TITLE": "🎉🎉 **GIVEAWAY** 🎉🎉",
     "ENDED": "🎉🎉 **GIVEAWAY ENDED** 🎉🎉",
     "TIME_REMAINING": "Time remaining: **{duration}**!",
