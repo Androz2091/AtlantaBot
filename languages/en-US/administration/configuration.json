@@ -5,7 +5,7 @@
     "PREFIX_TITLE": "\n- Server prefix:",
     "IGNORED_CHANNELS_TITLE": "- Ignored channel(s):",
     "NO_IGNORED_CHANNELS": "No ignored channels.",
-    "AUTOROLE_TITLE": "- Autorole:",
+    "AUTOROLE_TITLE": "Autorole:",
     "AUTOROLE_CONTENT": "Role: {{roleName}}",
     "AUTOROLE_DISABLED": "Autorole disabled.",
     "WELCOME_TITLE": "Welcome:",
