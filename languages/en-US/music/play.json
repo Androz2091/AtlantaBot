@@ -1,7 +1,7 @@
 {
     "DESCRIPTION": "Plays music for you!",
     "USAGE": "{{prefix}}play [song]",
-    "EXAMPLES": "{{prefix}}play bad guy",
+    "EXAMPLES": "{{prefix}}play Bye Bye",
     "NO_VOICE_CHANNEL": "You must be connected to a voice channel!",
     "VOICE_CHANNEL_CONNECT": "I can't connect to your voice channel!",
     "MISSING_SONG_NAME": "Please attach a song name or a link!",

@@ -7,6 +7,6 @@
     "SUCCESS_BAN": "Configuration saved! When a member will reach **{{count}}** warns, he will be banned.\nType `{{prefix}}configuration` to see your new configuration!",
     "SUCCESS_KICK_RESET": "Configuration saved! The `kick` sanction is no longer automatic!\nType `{{prefix}}configuration` to see your new configuration!",
     "SUCCESS_BAN_RESET": "Configuration saved! The `ban` sanction is no longer automatic!\nType `{{prefix}}configuration` to see your new configuration!",
-    "AUTO_BAN": "**{{username}}** was automatically banned because he/she reach more than **{{count}}** warns!",
-    "AUTO_KICK": "**{{username}}** was automatically kicked because he/she reach more than **{{count}}** warns!"
+    "AUTO_BAN": "**{{username}}** was automatically banned because they reach more than **{{count}}** warns!",
+    "AUTO_KICK": "**{{username}}** was automatically kicked because they reach more than **{{count}}** warns!"
 }
