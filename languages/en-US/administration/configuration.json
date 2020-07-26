@@ -25,7 +25,7 @@
     "AUTODELETEMOD": "Auto delete mod commands",
     "AUTODELETEMOD_ENABLED": "Automatic moderation commands deletion.",
     "AUTODELETEMOD_DISABLED": "Automatic moderation commands deletion disabled.",
-    "DASHBOARD_TITLE": "- Edit your configuration:",
+    "DASHBOARD_TITLE": "Edit your configuration:",
     "DASHBOARD_CONTENT": "Click here to go on the dashboard!",
     "AUTO_SANCTIONS": "Automatic sanctions",
     "KICK_CONTENT": "__Kick:__ After **{{count}}** warnings.",
