@@ -110,7 +110,7 @@ class Welcome extends Command {
 					}
 					welcome.channel = channel.id;
 					message.sendT("administration/welcome:FORM_2", {
-						channel: channel.toString(),
+						guildName: message.guild.name,
 						author: msg.author.tag,
 						memberCount: msg.guild.memberCount
 					});
