@@ -3,7 +3,7 @@
     "USAGE": "{{prefix}}serverinfo [ID/Name]",
     "EXAMPLES": "{{prefix}}serverinfo Atlanta\n{{prefix}}serverinfo",
     "AFK_CHANNEL": "AFK channel",
-    "NO_AFK_CHANNEL": "-",
+    "NO_AFK_CHANNEL": "No AFK channel",
     "MEMBERS": "{{count}} members",
     "BOTS": "{{count}} bots",
     "BOOSTS": "Boosts count",
