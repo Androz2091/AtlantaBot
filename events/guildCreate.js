@@ -41,7 +41,7 @@ module.exports = class {
 			.setTimestamp();
 		messageOptions.embed = thanksEmbed;
 
-		guild.owner.send(messageOptions).catch((err) => {});
+		guild.owner.send(messageOptions).catch(() => {});
 
 		const text = "J'ai rejoint **"+guild.name+"**, avec **"+guild.members.cache.filter((m) => !m.user.bot).size+"** membres (et "+guild.members.cache.filter((m) => m.user.bot).size+" bots)";
 
