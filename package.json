@@ -4,7 +4,9 @@
     "description": "A very complete Discord bot (more than 70 commands) that uses the Discordjs API!",
     "main": "atlanta.js",
     "scripts": {
-        "start": "node atlanta.js"
+        "start": "node .",
+        "lint": "eslint . --ext .js",
+        "testcfg": "node scripts/verify-config.js"
     },
     "repository": {
         "type": "git",
