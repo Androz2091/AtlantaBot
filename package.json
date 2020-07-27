@@ -75,10 +75,6 @@
                 "error",
                 "tab"
             ],
-            "linebreak-style": [
-                "error",
-                "unix"
-            ],
             "quotes": [
                 "error",
                 "double"
@@ -87,6 +83,7 @@
                 "error",
                 "always"
             ],
+            "linebreak-style": 0,
             "require-atomic-updates": 0
         }
     },
