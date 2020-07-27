@@ -5,6 +5,6 @@
     "MISSING_STATUS": "Please specify a valid value between `on` and `off`",
     "MISSING_ROLE": "Please specify a valid role!",
     "SUCCESS_ENABLED": "Auto-role enabled! New members will automatically receive the **{{roleName}}** role.",
-    "ALREADY_DISABLED": "**The auto-role is already disabled.**\n\n:arrow_right_hook: *Answer by typing `{{prefix}}autorole on @YourRole` to enable it again!*",
-    "SUCCESS_DISABLED": "**Auto-role disabled!**\n\n:arrow_right_hook: *Answer by typing `{{prefix}}configuration` to see the updated configuration!*"
+    "ALREADY_DISABLED": "**The auto-role is already disabled.**\n\n:arrow_right_hook: *Answer by sending `{{prefix}}autorole on @YourRole` to enable it again!*",
+    "SUCCESS_DISABLED": "**Auto-role disabled!**\n\n:arrow_right_hook: *Answer by sending `{{prefix}}configuration` to see the updated configuration!*"
 }

@@ -8,7 +8,7 @@
     "TIMES_UP": "Time's up! Cancelled backup loading!",
     "SUCCESS_PUBLIC": "Backup successfully created! The backup ID has been sent to you in private messages!",
     "SUCCESS_PRIVATE": "Here's your backup ID: `{{backupID}}`, use it to load your backup on an another server!",
-    "CONFIRMATION": ":warning: | **Loading a backup will replace the actual server with the saved one.**\n\n:arrow_right_hook: *Answer by typing `confirm` to confirm this action!*",
+    "CONFIRMATION": ":warning: | **Loading a backup will replace the actual server with the saved one.**\n\n:arrow_right_hook: *Answer by sending `confirm` to confirm this action!*",
     "START_LOADING": "Backup loading started!",
     "LOAD_SUCCESS": "Backup successfully loaded!",
     "TITLE_INFOS": "Backup Information",
