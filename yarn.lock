@@ -796,17 +796,17 @@ discord-giveaways@^4.2.1:
   dependencies:
     deepmerge "^4.2.2"
 
-discord-player@^2.2.0:
-  version "2.2.0"
-  resolved "https://registry.yarnpkg.com/discord-player/-/discord-player-2.2.0.tgz#ab7e0b39924d245df77e4e1b6d5bce4e382ecab9"
-  integrity sha512-j4ZwrGMzZQvjrlmXDaBKYzeIcVTFYRrw3pEsVqrB5q79Z2Ty+8ra73FE6vULhY1MYOBvPfWmn9iVqxq12/906Q==
+discord-player@^2.3.0:
+  version "2.3.0"
+  resolved "https://registry.yarnpkg.com/discord-player/-/discord-player-2.3.0.tgz#01298263f96323647c8f15baff4a11892f3ab9b1"
+  integrity sha512-ZVXvqV7SRk2PlZsUXQWN3IjaB0BnIIBtc3tvCWg2nwJ1ezq3/pYYZF37hARw+8f3ajumFO13UvQWBWqfrqiVMg==
   dependencies:
     discord-ytdl-core "^4.0.2"
     merge-options "^2.0.0"
     node-fetch "^2.6.0"
     spotify-url-info "^1.3.1"
-    ytpl "^0.1.22"
-    ytsr "^0.1.15"
+    ytpl "^0.2.0"
+    ytsr "^0.1.18"
 
 discord-ytdl-core@^4.0.2:
   version "4.0.5"
@@ -2738,16 +2738,16 @@ ytdl-core@^3.1.2:
     miniget "^2.0.1"
     sax "^1.1.3"
 
-ytpl@^0.1.22:
-  version "0.1.22"
-  resolved "https://registry.yarnpkg.com/ytpl/-/ytpl-0.1.22.tgz#b256db8feb309ccfb14c8d50ccb905b862744192"
-  integrity sha512-3o/zmo7VA6EH6SA6z4Ni2t5bmRzPNSJgsDP60f+FFjPr7nOOOEjkU0Z8ky5TfDUocFs4iQNB19BDd0owrzRZ2g==
+ytpl@^0.2.0:
+  version "0.2.2"
+  resolved "https://registry.yarnpkg.com/ytpl/-/ytpl-0.2.2.tgz#c9b5de9ab7980a9a860d1a3a67d2111d041caa0a"
+  integrity sha512-VtdKIPTTjV/oMZg7NQrNpX7rBneDfGnma+YF4CG/MUEmJGFXvsN6yBcbZGWYCKMxU7NCFaF/0I4ceWZ6WNd2NQ==
   dependencies:
     html-entities "^1.1.3"
 
-ytsr@^0.1.15:
-  version "0.1.15"
-  resolved "https://registry.yarnpkg.com/ytsr/-/ytsr-0.1.15.tgz#15c27e779d66c9cdab3cfc7b5744c7841767079e"
-  integrity sha512-oOzklBMlRn4SVODMPG/McgX78R5pVBio32TPAoZtP2LBGo/glIbf+QqH8FXbkzIc03Qzp4tsEtQAHOJzg1noFg==
+ytsr@^0.1.18:
+  version "0.1.19"
+  resolved "https://registry.yarnpkg.com/ytsr/-/ytsr-0.1.19.tgz#45fd29c3c29ffb5ac5d4c670a8d00a35ae3a77b0"
+  integrity sha512-RMezzIRoJQnIu2mtLa+FwXzWdqhyX4GfvEOUZC21UfdJGJh2neaPYSUq8ckdWEWKJwPXnQ87CXYSdE48i+pNhw==
   dependencies:
     html-entities "^1.1.3"
