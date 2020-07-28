@@ -1,0 +1,16 @@
+{
+    "DESCRIPTION": "Plays music for you!",
+    "USAGE": "{{prefix}}play [song]",
+    "EXAMPLES": "{{prefix}}play Bye Bye",
+    "NO_VOICE_CHANNEL": "You must be connected to a voice channel!",
+    "VOICE_CHANNEL_CONNECT": "I can't connect to your voice channel!",
+    "MISSING_SONG_NAME": "Please specify a song name or a link!",
+    "RESULTS_FOOTER": "Please select a song by sending a number between 1 and 10.",
+    "NO_RESULT": "Cannot be find on Youtube!",
+    "NOW_PLAYING": "Now playing {{songName}}",
+    "CANCELLED": "Selection cancelled",
+    "NOT_PLAYING": "No songs are currently playing in this server.",
+    "QUEUE_ENDED": "Queue has ended. No more music to play...",
+    "ADDED_QUEUE": "{{songName}} has been added to the queue!",
+    "ADDED_QUEUE_COUNT": "{{songCount}} songs added to the queue!"
+}
