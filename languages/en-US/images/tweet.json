@@ -3,6 +3,6 @@
     "USAGE": "{{prefix}}tweet [@twitter_username] [content]",
     "EXAMPLES": "{{prefix}}tweet @ElonMusk Hello",
     "MISSING_USERNAME": "You have to enter someone's twitter nickname!",
-    "MISSING_TEXT": "You have to specify a tweet's content!",
+    "MISSING_TEXT": "You have to specify the tweet content!",
     "SUCCESS": "New tweet by {{user}}:"
 }
