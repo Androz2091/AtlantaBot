@@ -67,7 +67,7 @@ module.exports = class {
 					if(uSlowmode){
 						if(uSlowmode.time > Date.now()){
 							message.delete();
-							const delay = message.convertTime(Math.ceil((uSlowmode.time - Date.now())), "to");
+							const delay = message.convertTime(uSlowmode.time, "to", true);
 							return message.author.send(message.translate("administration/slowmode:PLEASE_WAIT", {
 								time: delay,
 								channel: message.channel.toString()
