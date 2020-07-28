@@ -1,18 +1,18 @@
 {
-    "DESCRIPTION": "Afficher la liste des commandes ou des informations sur une commande.",
+    "DESCRIPTION": "Show commands list or specific command help.",
     "USAGE": "{{prefix}}help (commande)",
     "EXAMPLES": "{{prefix}}help\n{{prefix}}help ping",
-    "CUSTOM": "La commande `{{cmd}}` n'a pas de page d'aide car c'est une commande personnalisée.",
-    "NOT_FOUND": "Pas de commande trouvée pour: `{{search}}`",
+    "CUSTOM": "A custom command doesn't have help page.",
+    "NOT_FOUND": "`{{search}}` is not a valid command",
     "FIELD_USAGE": "Usage",
     "FIELD_DESCRIPTION": "Description",
     "FIELD_ALIASES": "Alias",
     "FIELD_EXAMPLES": "Exemples",
     "FIELD_PERMISSIONS": "Permissions",
-    "NO_ALIAS": "No alias.",
-    "CMD_TITLE": "Aide pour {{prefix}}{{cmd}}",
-    "INFO": "● Pour obtenir de l'aide sur une commande, tapez `{{prefix}}help <commande>` !",
+    "NO_ALIAS": "No alias",
+    "CMD_TITLE": "`{{prefix}}{{cmd}}` help",
+    "INFO": "● To get help on a specific command type `{{prefix}}help <command>`!",
     "CUSTOM_COMMANDS": "Commandes personnalisées",
     "TITLE": "{{name}} | Commandes",
-    "NO_REQUIRED_PERMISSION": "No specific permission required to execute this command."
+    "NO_REQUIRED_PERMISSION": "No specific permission is required to execute this command."
 }
