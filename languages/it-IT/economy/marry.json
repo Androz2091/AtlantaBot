@@ -1,0 +1,18 @@
+{
+    "DESCRIPTION": "Marry someone you love!",
+    "USAGE": "{{prefix}}marry [@member]",
+    "EXAMPLES": "{{prefix}}marry @Androz#2091",
+    "INVALID_MEMBER": "You must mention a valid member!",
+    "ALREADY_MARRIED": "You are already married! First use `{{prefix}}divorce` to divorce.",
+    "ALREADY_MARRIED_USER": "The place is taken, companion! **{{username}}** is already married!",
+    "YOURSELF": "You can't marry yourself!",
+    "REQUEST_AUTHOR_TO_AMEMBER": "You already have a pending request to **{{username}}**!",
+    "REQUEST_AMEMBER_TO_AUTHOR": "**{{username}}** has already sent you a request! Please refuse or accept it (or wait until it expires in a few minutes).",
+    "REQUEST_AMEMBER_TO_MEMBER": "**{{secondUsername}}** has already sent a request to **{{firstUsername}}**!",
+    "REQUEST_MEMBER_TO_AMEMBER": "**{{firstUsername}} has already sent a request to **{{secondUsername}}**! Wait until **{{secondUsername}}** accepts or refuses the request from **{{firstUsername}}** or until it expires and try again!",
+    "TIMEOUT": "{{username}} did not answer... Wait until he/she is logged in and try again!",
+    "SUCCESS": "🎉 Congratulations! **{{creator}}** and **{{partner}}** you are now married!",
+    "DENIED": "{{creator}}, I have some bad news... {{partner}} refused your proposal.",
+    "REQUEST": "{{to}}, do you agree to marry {{from}}? Answer with \"yes\" or \"no\"!",
+    "BOT_USER": "It refused your proposal!"
+}
