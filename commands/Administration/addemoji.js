@@ -24,7 +24,7 @@ class Addemoji extends Command {
 			return message.error("administration/addemoji:MISSING_URL");
 		}
 
-		const name = args[1].replace(/[^a-z0-9]/gi, "");
+		const name = args[1] ? args[1].replace(/[^a-z0-9]/gi, "") : null;
 		if (!name) {
 			return message.error("administration/addemoji:MISSING_NAME");
 		}
