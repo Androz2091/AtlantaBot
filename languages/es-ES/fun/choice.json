@@ -1,9 +1,9 @@
 {
-    "DESCRIPTION": "¡Elige al azar una de las opciones que me das!",
+    "DESCRIPTION": "Helps you choose between the given choices!",
     "USAGE": "{{prefix}}choice [opcion1/opcion2/etc...]",
     "EXAMPLES": "{{prefix}}choice Fuego/Aire/Agua",
-    "MISSING": "¡Debe ingresar más de dos opciones!",
+    "MISSING": "You must enter more than two choices!\n(or use the `flip` command instead)",
     "EMPTY": "Una de sus opciones parece estar vacía... ¡Inténtelo nuevamente!",
     "PROGRESS": "Elección hecha...",
-    "DONE": "Aquí está mi elección:"
+    "DONE": "Here's my choice:"
 }
