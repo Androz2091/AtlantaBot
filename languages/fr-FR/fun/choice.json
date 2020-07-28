@@ -1,9 +1,9 @@
 {
-    "DESCRIPTION": "Choisi aléatoirement un des choix que vous me donnez !",
+    "DESCRIPTION": "Helps you choose between the given choices!",
     "USAGE": "{{prefix}}choice [choix1/choix2/etc...]",
     "EXAMPLES": "{{prefix}}choice Feu/Vent/Eau",
-    "MISSING": "Vous devez entrer plus de 2 choix !",
+    "MISSING": "You must enter more than two choices!\n(or use the `flip` command instead)",
     "EMPTY": "Un de vos choix semble être vide... Veuillez réessayer !",
     "PROGRESS": "Choix en cours...",
-    "DONE": "Voici mon choix :"
+    "DONE": "Here's my choice:"
 }
