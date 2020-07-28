@@ -1,0 +1,7 @@
+{
+    "DESCRIPTION": "Shows users who have the most credits, levels or reputation points!",
+    "USAGE": "{{prefix}}leaderboard [rep/levels/credits]",
+    "EXAMPLES": "{{prefix}}leaderboard credits\n{{prefix}}leaderboard levels",
+    "MISSING_TYPE": "Please specify the leaderboard type between `credits`, `level` and `rep`",
+    "MOBILE": ":confused: We've detected that you are using a phone.... The leaderboard may not display well on small screens. Try to switch to landscape or go on the dashboard!"
+}
