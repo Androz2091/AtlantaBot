@@ -1,8 +1,8 @@
 {
-    "DESCRIPTION": "¡Activa o desactiva la eliminación automática de los comandos de moderación!",
+    "DESCRIPTION": "Toggle moderation commands auto deletion!",
     "USAGE": "{{prefix}}deletemod [on/off]",
     "EXAMPLES": "{{prefix}}deletemod on",
-    "MISSING_STATUS": "Por favor, especifique un estado válido! (`on` o `off`)",
-    "ENABLED": "¡Los comandos de moderación se eliminarán automáticamente!",
-    "DISABLED": "¡Los comandos de moderación ya no se eliminarán automáticamente!"
+    "MISSING_STATUS": "You must specify `on` or `off`",
+    "ENABLED": "Automatic moderation commands deletion!",
+    "DISABLED": "Automatic moderation commands deletion disabled!"
 }
