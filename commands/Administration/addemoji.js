@@ -28,17 +28,21 @@ class Addemoji extends Command {
 		if (!name) {
 			return message.error("administration/addemoji:MISSING_NAME");
 		}
+		if (name.length < 2 || name > 32) {
+			return message.error("administration/addemoji:INVALID_NAME");
+		}
 
 		message.guild.emojis
 			.create(URL, name)
 			.then(emoji => {
 				message.success("administration/addemoji:SUCCESS", {
-					emojiName: emoji.name,
-					emojiString: emoji.toString()
+					emojiName: emoji.name
 				});
 			})
 			.catch(() => {
-				message.error("administration/addemoji:ERROR");
+				message.error("administration/addemoji:ERROR", {
+					emojiName: name
+				});
 			});
 	}
 
