@@ -1,8 +1,8 @@
 {
-    "DESCRIPTION": "El Casino de Atlanta",
+    "DESCRIPTION": "The Atlanta casino",
     "USAGE": "{{prefix}}slots [cantidad]",
     "EXAMPLES": "{{prefix}}slots\n{{prefix}}slots 10",
     "DEFEAT": "**{{username}}** ha usado {{money}} crédito(s) y lo ha perdido todo.",
     "VICTORY": "**{{username}}** ha usado {{money}} crédito(s) y ha ganado {{won}} crédito(s)!",
-    "NOT_ENOUGH": "No tiene {{money}} crédito(s)."
+    "NOT_ENOUGH": "You need at least **{{money}}** credit(s)."
 }
