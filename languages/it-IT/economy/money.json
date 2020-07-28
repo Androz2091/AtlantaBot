@@ -1,0 +1,6 @@
+{
+    "DESCRIPTION": "Shows your credits",
+    "USAGE": "{{prefix}}money (@member)",
+    "EXAMPLES": "{{prefix}}money\n{{prefix}}money @user#0000",
+    "TITLE": "{{username}}'s money"
+}
