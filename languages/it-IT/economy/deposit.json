@@ -1,0 +1,9 @@
+{
+    "DESCRIPTION": "Deposit your money in the bank",
+    "USAGE": "{{prefix}}deposit [amount]",
+    "EXAMPLES": "{{prefix}}deposit 400",
+    "MISSING_AMOUNT": "Please specify an amount!",
+    "NO_CREDIT": "You have no credit to deposit in the bank!",
+    "NO_ENOUGH_CREDIT": "You don't have `{{money}}` credits!",
+    "SUCCESS": "**{{money}}** credits deposited in the bank!"
+}
