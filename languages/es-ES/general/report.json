@@ -3,7 +3,7 @@
     "USAGE": "{{prefix}}report [@usuario] [razón]",
     "EXAMPLES": "{{prefix}}report @Androz#2091 Romper las reglas",
     "MISSING_CHANNEL": "¡No se ha definido ningún canal de reportes!",
-    "MISSING_REASON": "¡Por favor, introduzca una razón para su reporte!",
+    "MISSING_REASON": "Please enter a report reason!",
     "MISSING_USER": "¡Por favor mencione al usuario que desea reportar!",
     "INVALID_USER": "No puedes reportarte a ti mismo",
     "SUCCESS": "¡Su reporte ha sido enviado al canal {{channel}}!",
