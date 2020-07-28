@@ -148,29 +148,29 @@ module.exports = class {
 		}
 
 		if(message.guild){
-			let neededPermission = [];
+			let neededPermissions = [];
 			if(!cmd.conf.botPermissions.includes("EMBED_LINKS")){
 				cmd.conf.botPermissions.push("EMBED_LINKS");
 			}
 			cmd.conf.botPermissions.forEach((perm) => {
 				if(!message.channel.permissionsFor(message.guild.me).has(perm)){
-					neededPermission.push(perm);
+					neededPermissions.push(perm);
 				}
 			});
-			if(neededPermission.length > 0){
+			if(neededPermissions.length > 0){
 				return message.error("misc:MISSING_BOT_PERMS", {
-					list: neededPermission.map((p) => `\`${p}\``).join(", ")
+					list: neededPermissions.map((p) => `\`${p}\``).join(", ")
 				});
 			}
-			neededPermission = [];
+			neededPermissions = [];
 			cmd.conf.memberPermissions.forEach((perm) => {
 				if(!message.channel.permissionsFor(message.member).has(perm)){
-					neededPermission.push(perm);
+					neededPermissions.push(perm);
 				}
 			});
-			if(neededPermission.length > 0){
+			if(neededPermissions.length > 0){
 				return message.error("misc:MISSING_MEMBER_PERMS", {
-					list: neededPermission.map((p) => `\`${p}\``).join(", ")
+					list: neededPermissions.map((p) => `\`${p}\``).join(", ")
 				});
 			}
 			if(data.guild.ignoredChannels.includes(message.channel.id) && !message.member.hasPermission("MANAGE_MESSAGES")){
