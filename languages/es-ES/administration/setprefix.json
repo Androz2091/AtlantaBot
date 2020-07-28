@@ -4,5 +4,5 @@
     "EXAMPLES": "{{prefix}}setprefix +",
     "MISSING_PREFIX": "¡Por favor ingrese un prefijo válido!",
     "TOO_LONG": "¡El prefijo no debe superar los 5 caracteres!",
-    "SUCCESS": "¡El prefijo del servidor se ha establecido en `{{prefix}}`!"
+    "SUCCESS": "The bot prefix has been set to `{{prefix}}`!"
 }
