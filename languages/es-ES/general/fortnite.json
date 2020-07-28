@@ -2,9 +2,9 @@
     "DESCRIPTION": "¡Muestra las estadísticas de Fortnite de un jugador!",
     "USAGE": "{{prefix}}fortnite [psn/xbl/pc] [pseudo]",
     "EXAMPLES": "{{prefix}}fortnite pc Ninja",
-    "MISSING_PLATFORM": "¡Introduzca una plataforma válida: `psn`, `pc` o `xbl`!",
-    "MISSING_USERNAME": "¡Introduce un nombre de usuario válido de Epic Games!",
-    "NOT_FOUND": "¡El usuario `{{search}}` no se encuentra en la plataforma `{{platform}}`!",
+    "MISSING_PLATFORM": "Please specify a platform between `psn`, `pc` or `xbl`!",
+    "MISSING_USERNAME": "Please enter a valid epic games username!",
+    "NOT_FOUND": "{{search}}` was not found on `{{platform}}`!",
     "TITLE": "Estadísticas de {{username}}",
     "AVERAGE_KILLS": "BAJAS/PARTIDA",
     "AVERAGE_KILL": "BAJA/PARTIDA",
@@ -17,5 +17,5 @@
     "MATCH": "Partida",
     "KILLS": "Bajas",
     "KILL": "Baja",
-    "FOOTER": "Atlanta | Open Source - fortnitetracker.com"
+    "FOOTER": "By Atlanta using fortnitetracker.com"
 }
