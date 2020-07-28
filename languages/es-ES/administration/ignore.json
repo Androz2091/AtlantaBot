@@ -1,5 +1,5 @@
 {
-    "DESCRIPTION": "Deshabilitar o habilitar comandos en un canal",
+    "DESCRIPTION": "Toggle commands in a channel",
     "USAGE": "{{prefix}}ignore [canal]",
     "EXAMPLES": "{{prefix}}ignore #canal",
     "ALLOWED": "¡Los comandos ahora están permitidos en {{channel}}!",
