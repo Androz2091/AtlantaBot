@@ -1,6 +1,6 @@
 {
-    "DESCRIPTION": "Displays the member's permissions in the channel",
-    "USAGE": "{{prefix}}permissions (@member)",
+    "DESCRIPTION": "Visualizza i permessi dei membri nel canale",
+    "USAGE": "{{prefix}}permissions (@membro)",
     "EXAMPLES": "{{prefix}}permissions\n{{prefix}permissions @Androz#2091",
-    "TITLE": "{{user}}'s permissions in {{channel}}"
+    "TITLE": "Permessi di {{user}} in {{channel}}"
 }
