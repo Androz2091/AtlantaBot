@@ -1,13 +1,13 @@
 {
-    "DESCRIPTION": "Shows the number of people you have invited to the server!",
-    "USAGE": "{{prefix}}invitations (@member)",
+    "DESCRIPTION": "A szerverre meghívott felhasználók számánk megtekintése!",
+    "USAGE": "{{prefix}}invitations (@tag)",
     "EXAMPLES": "{{prefix}}invitations\n{{prefix}}invitations @Androz#2091",
-    "NOBODY_AUTHOR": "You didn't invite anyone to the server!",
-    "NOBODY_MEMBER": "{{member}} didn't invite anyone to the server!",
-    "CODE": "**{{code}}** ({{uses}} uses) | {{channel}}",
-    "TITLE": "Information about the invitations of {{member}} on {{guild}}",
-    "FIELD_INVITED": "👥 Invited Members",
-    "FIELD_CODES": "🔑 Codes",
-    "FIELD_MEMBERS": "{{total}} members",
-    "TRACKER": "Invites Tracker"
+    "NOBODY_AUTHOR": "Nem hívtál meg senkit a szerverre!",
+    "NOBODY_MEMBER": "{{member}} nem hívott meg senkit a szerverre!",
+    "CODE": "**{{code}}** ({{uses}} felhasználások) | {{channel}}",
+    "TITLE": "Információk {{member}} felhasználóról a {{guild}} szerverről",
+    "FIELD_INVITED": "👥 Meghívott Felhasználók",
+    "FIELD_CODES": "🔑 Kódók",
+    "FIELD_MEMBERS": "{{total}} felhasználók",
+    "TRACKER": "Nyomozó Meghívása"
 }
