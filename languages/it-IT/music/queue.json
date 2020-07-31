@@ -1,6 +1,6 @@
 {
-    "DESCRIPTION": "Shows the server queue",
+    "DESCRIPTION": "Mostra la coda del server",
     "USAGE": "{{prefix}}queue",
     "EXAMPLES": "{{prefix}}queue",
-    "TITLE": "Server Queue (next 20 tracks)"
+    "TITLE": "Coda Server (prossime 20 tracce)"
 }
