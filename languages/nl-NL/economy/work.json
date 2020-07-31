@@ -1,10 +1,10 @@
 {
-    "DESCRIPTION": "Claim your salary!",
+    "DESCRIPTION": "Claim je salaris!",
     "USAGE": "{{prefix}}work",
     "EXAMPLES": "{{prefix}}work",
     "COOLDOWN": "You have to wait {{time}} before working again!",
-    "AWARD": "Complete the word AWARD to win 200 bonus credits!",
-    "SALARY": "Salary",
+    "AWARD": "Vul het woord AWARD in om 200 bonuspunten te winnen!",
+    "SALARY": "Salaris",
     "SALARY_CONTENT": "You've gained {{won}} credits!",
     "STREAK": "Streak",
     "STREAK_CONTENT": "🎉 You've won 200 bonus credits!"
