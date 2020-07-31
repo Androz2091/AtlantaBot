@@ -1,9 +1,9 @@
 {
-    "DESCRIPTION": "Withdraw money!",
-    "USAGE": "{{prefix}}withdraw [amount]",
+    "DESCRIPTION": "Preleva denaro!",
+    "USAGE": "{{prefix}}whitdraw [quantità]",
     "EXAMPLES": "{{prefix}}withdraw 400",
-    "MISSING_AMOUNT": "Please specify an amount to be withdrawn!",
-    "NO_CREDIT": "You don't have any credit in your bank!",
-    "NOT_ENOUGH": "You need at least `{{money}}` credit(s)!",
-    "SUCCESS": "**{{money}}** credit(s) withdrawn!"
+    "MISSING_AMOUNT": "Si prega di specificare un importo da prelevare!",
+    "NO_CREDIT": "Non hai credito nella tua banca!",
+    "NOT_ENOUGH": "Devi avere almeno `{{money}}` credito(i)!",
+    "SUCCESS": "**{{money}}** crediti ritirati!"
 }
