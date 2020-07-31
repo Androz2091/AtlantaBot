@@ -1,12 +1,12 @@
 {
-    "DESCRIPTION": "¡Encuentra el número que elegí!",
+    "DESCRIPTION": "Find the right number!",
     "USAGE": "{{prefix}}number",
     "EXAMPLES": "{{prefix}}number",
     "GAME_START": "¡Número elegido, puedes comenzar!",
-    "BIG": "{{user}} | ¡El número es **más grande** que `{{number}}`!",
-    "SMALL": "{{user}} | ¡El número es **más pequeño** que `{{number}}`!",
+    "BIG": "{{user}} | My number is **bigger** than `{{number}}`!",
+    "SMALL": "{{user}} | My number is **smaller** than `{{number}}`!",
     "WON": "¡{{winner}} ha ganado 10 créditos!",
     "DEFEAT": "No one could find the number! It was **{{number}}**!",
-    "GAME_STATS": "🎉 | {{winner}} found the number! It was __**{{number}}**__!\n\n**States of the game: **\n__**Time**__: {{time}}\n__**Number of participants**__ : {{participantCount}}\n__**Participants**__ : \n{{participants}}",
+    "GAME_STATS": "🎉 | {{winner}} found the correct number! It was __**{{number}}**__!\n\n**Stats:**\n*-* __**Duration**__: {{time}}\n*-* __**Participants**__: {{participants}} ({{participantCount}})",
     "GAME_RUNNING": "¡Ya se está ejecutando un juego en este servidor!"
 }

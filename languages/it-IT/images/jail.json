@@ -1,0 +1,5 @@
+{
+    "DESCRIPTION": "Genera un'immagine \"jail\" utilizzando l'API di Amethyste",
+    "USAGE": "{{prefix}}jail (@membro)",
+    "EXAMPLES": "{{prefix}}jail\n{{prefix}}jail @Androz#2091"
+}

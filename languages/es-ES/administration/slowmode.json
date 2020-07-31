@@ -1,8 +1,8 @@
 {
-    "DESCRIPTION": "Establece el modo pausado en un canal",
+    "DESCRIPTION": "Set a channel cooldown",
     "USAGE": "{{prefix}}slowmode [#canal] (tiempo)",
     "EXAMPLES": "{{prefix}}slowmode #general 10m\n{{prefix}}slowmode #general",
-    "DISABLED": "¡El modo pausado ha sido desactivado en {{channel}}!",
-    "ENABLED": "¡El modo pausado ha sido activado en {{channel}} con un tiempo de {{time}}!",
-    "PLEASE_WAIT": "¡El canal {{channel}} está en slowmode! ¡Por favor espere {{time}} para poder enviar otro mensaje!"
+    "DISABLED": "**Slow-mode has just been disabled in {{channel}}!**\n\n:arrow_right_hook: *Answer by sending `{{prefix}}slowmode [#channel] (time)` to enable it again!*",
+    "ENABLED": "**A slow-mode of `{{time}}` has just been enabled in `{{channel}}`!**\n\n:arrow_right_hook: *Answer by sending `{{prefix}}slowmode {{channel}} 0` to disable it!*",
+    "PLEASE_WAIT": "Channel {{channel}} is in slowmode! Please wait {{time}} between each message!"
 }

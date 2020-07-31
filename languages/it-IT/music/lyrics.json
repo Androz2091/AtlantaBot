@@ -1,0 +1,10 @@
+{
+    "DESCRIPTION": "Mostra i testi delle canzoni",
+    "USAGE": "{{prefix}}lyrics [nome-canzone]",
+    "EXAMPLES": "{{prefix}}lyrics Skyfall",
+    "LYRICS_OF": "🎤 {{songName}} testi",
+    "AND_MORE": "\n**E altro...**",
+    "REST": "Espandere",
+    "MISSING_SONG_NAME": "Si prega di specificare il nome di una canzone!",
+    "NO_LYRICS_FOUND": "Nessun testo trovato per `{{songName}}`!"
+}

@@ -1,0 +1,10 @@
+{
+    "DESCRIPTION": "Mostra lo shop giornaliero degli articoli di Fortnite!",
+    "USAGE": "{{prefix}}fortniteshop",
+    "EXAMPLES": "{{prefix}}fortniteshop",
+    "HEADER": "FORTNITE ITEMS SHOP",
+    "DAILY": "GIORNALIERO",
+    "FEATURED": "IN PRIMO PIANO",
+    "DATE": "Fortnite shop di {{date}}",
+    "FOOTER": "Atlanta - Fortnite Shop"
+}

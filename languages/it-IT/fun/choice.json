@@ -1,0 +1,9 @@
+{
+    "DESCRIPTION": "Ti aiuta a scegliere tra le opzioni indicate!",
+    "USAGE": "{{prefix}}choice [opzione1/opzione2/etc...]",
+    "EXAMPLES": "{{prefix}}choice Fuoco/Vento/Acqua",
+    "MISSING": "Devi inserire più di due opzioni!\n(o usa invece il comando `flip`)",
+    "EMPTY": "Una delle tue opzioni sembra essere vuota... Riprova di nuovo!",
+    "PROGRESS": "Scelta in corso...",
+    "DONE": "Ecco la mia scelta:"
+}

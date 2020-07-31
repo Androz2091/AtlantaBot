@@ -2,5 +2,5 @@
     "DESCRIPTION": "Affiche les permissions d'un membre dans un salon",
     "USAGE": "{{prefix}}permissions (@membre)",
     "EXAMPLES": "{{prefix}}permissions\n{{prefix}permissions @Androz#2091",
-    "TITLE": "Permissions de {{user}} dans {{channel}}"
+    "TITLE": "{{user}}'s permissions in {{channel}}"
 }

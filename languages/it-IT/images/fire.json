@@ -1,0 +1,5 @@
+{
+    "DESCRIPTION": "Genera un'immagine di \"Fuoco\" utilizzando l'API di Amethyste",
+    "USAGE": "{{prefix}}fire (@membro)",
+    "EXAMPLES": "{{prefix}}fire\n{{prefix}}fire @Androz#2091"
+}

@@ -1,10 +1,10 @@
 {
-    "DESCRIPTION": "Active ou désactive la suppression automatique des invitations Discord",
+    "DESCRIPTION": "Toggle Discord invites automatic deletion",
     "USAGE": "{{prefix}}automod [on/off] (#salon)",
     "EXAMPLES": "{{prefix}}automod on\n{{prefix}}automod off #general\n{{prefix}}automod off",
-    "MISSING_STATUS": "Veuillez préciser un statut valide ! (`on` ou `off`)",
-    "ENABLED": "Les invitations Discord seront automatiquement supprimées ! Si vous voulez ignorer un salon, envoyez `{{prefix}}automod off #salon` ! Cela désactivera l'auto-modération dans le salon mentionné !",
-    "DISABLED_CHANNEL": "L'auto-modération n'est maintenant plus effective dans le salon {{channel}} !",
+    "MISSING_STATUS": "Please enter a valid value between `on` and `off`",
+    "ENABLED": "**Discord invites will be automatically deleted!**\n\n:arrow_right_hook: *Answer by sending `{{prefix}}automod off #channel` to ignore a channel!*",
+    "DISABLED_CHANNEL": "Auto-moderation will no longer be performed in {{channel}}!",
     "DISABLED": "D'accord ! L'auto-modération n'est maintenant plus effective sur ce serveur !",
-    "DELETED": "**{{username}}**, votre message contient une invitation Discord, il a donc été supprimé. Si cela n'était pas intentionnel, vous pouvez modifier votre message, il vous a été envoyé en message privé !"
+    "DELETED": "Your message was deleted because Discord invitations are not allowed on this server!"
 }

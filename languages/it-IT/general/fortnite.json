@@ -1,0 +1,21 @@
+{
+    "DESCRIPTION": "Mostra le statistiche di Fortnite di un giocatore!",
+    "USAGE": "{{prefix}}fortnite [psn/xbl/pc] [pseudo]",
+    "EXAMPLES": "{{prefix}}fortnite pc Ninja",
+    "MISSING_PLATFORM": "Specifica una piattaforma tra `psn`, `pc` o `xbl`!",
+    "MISSING_USERNAME": "Inserisci un nome utente valido di Epic Games!",
+    "NOT_FOUND": "{{search}}` non è stato trovato nella piattaforma `{{platform}}`!",
+    "TITLE": "{{username}} Statistiche di Fortnite",
+    "AVERAGE_KILLS": "UCCISIONI/PARTITA",
+    "AVERAGE_KILL": "UCCISIONE/PARTITA",
+    "W_PERCENT": "V%",
+    "WIN_PERCENT": "VITTORIE%",
+    "KD": "KD",
+    "WINS": "Vittorie",
+    "WIN": "Vittoria",
+    "MATCHES": "Partite",
+    "MATCH": "Partita",
+    "KILLS": "Uccisioni",
+    "KILL": "Uccisione",
+    "FOOTER": "Atlanta | fortnitetracker.com"
+}

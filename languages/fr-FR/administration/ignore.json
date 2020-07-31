@@ -1,5 +1,5 @@
 {
-    "DESCRIPTION": "Activer ou désactiver les commandes dans un salon",
+    "DESCRIPTION": "Toggle commands in a channel",
     "USAGE": "{{prefix}}ignore [salon]",
     "EXAMPLES": "{{prefix}}ignore #salon",
     "ALLOWED": "Les commandes sont désormais autorisées dans {{channel}} !",

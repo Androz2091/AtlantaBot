@@ -1,0 +1,18 @@
+{
+    "DESCRIPTION": "Mostra l'elenco dei comandi o l'aiuto specifico dei comandi.",
+    "USAGE": "{{prefix}}help (comando)",
+    "EXAMPLES": "{{prefix}}help\n{{prefix}}help ping",
+    "CUSTOM": "Un comando personalizzato non ha una pagina di aiuto.",
+    "NOT_FOUND": "`{{search}}` non è un comando valido",
+    "FIELD_USAGE": "Uso",
+    "FIELD_DESCRIPTION": "Descrizione",
+    "FIELD_ALIASES": "Alias",
+    "FIELD_EXAMPLES": "Esempi",
+    "FIELD_PERMISSIONS": "Permessi",
+    "NO_ALIAS": "Nessun alias",
+    "CMD_TITLE": "`{{prefix}}{{cmd}}` help",
+    "INFO": "● Per ottenere assistenza su uno specifico comando, digitare `{{prefix}} help <comando>`!",
+    "CUSTOM_COMMANDS": "Comandi personalizzati",
+    "TITLE": "{{name}} | Comandi",
+    "NO_REQUIRED_PERMISSION": "Non è richiesta alcuna autorizzazione specifica per eseguire questo comando."
+}

@@ -1,7 +1,7 @@
 {
     "DESCRIPTION": "¡Lanza una encuesta en el canal actual!",
     "USAGE": "{{prefix}}poll [pregunta]",
-    "EXAMPLES": "{{prefix}}poll ¿Quieres un nuevo canal?",
+    "EXAMPLES": "{{prefix}}poll Is the Earth flat?",
     "MISSING_QUESTION": "¡Por favor especifique una pregunta!",
     "REACT": "¡Reacciona con {{success}} o {{error}}!",
     "TITLE": "📊 Encuesta:"

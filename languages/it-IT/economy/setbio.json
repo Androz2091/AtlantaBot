@@ -1,0 +1,8 @@
+{
+    "DESCRIPTION": "Modifica la tua biografia!",
+    "USAGE": "{{prefix}}setbio [biografia]",
+    "EXAMPLES": "{{prefix}}setbio Mi chiamo Jake, ho 19 anni e adoro programmare!",
+    "MISSING": "Devi specificare una biografia!",
+    "MAX_CHARACT": "La tua biografia non deve superare i 500 caratteri!",
+    "SUCCESS": "La tua biografia è stata modificata!"
+}

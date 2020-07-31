@@ -1,0 +1,7 @@
+{
+    "DESCRIPTION": "Imposta il canale per i registri di moderazione!",
+    "USAGE": "{{prefix}}setmodlogs (#canale)",
+    "EXAMPLES": "{{prefix}}setmodlogs #modlogs\n{{prefix}}setmodlogs",
+    "SUCCESS_ENABLED": "I registri di moderazione verranno inviati in **{{channel}}**!",
+    "SUCCESS_DISABLED": "Canale dei registri di moderazione eliminato!"
+}

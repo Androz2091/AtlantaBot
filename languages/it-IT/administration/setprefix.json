@@ -1,0 +1,8 @@
+{
+    "DESCRIPTION": "Imposta il prefisso nel server!",
+    "USAGE": "{{prefix}}setprefix [prefix]",
+    "EXAMPLES": "{{prefix}}setprefix +",
+    "MISSING_PREFIX": "Si prega di inserire un prefisso valido!",
+    "TOO_LONG": "Il prefisso non deve superare i 5 caratteri!",
+    "SUCCESS": "Il prefisso del bot è stato impostato su `{{prefix}}`!"
+}

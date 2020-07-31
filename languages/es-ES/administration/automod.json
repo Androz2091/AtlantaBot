@@ -1,10 +1,10 @@
 {
-    "DESCRIPTION": "Habilita o deshabilita la eliminación automática de las invitaciones de Discord",
+    "DESCRIPTION": "Toggle Discord invites automatic deletion",
     "USAGE": "{{prefix}}automod [on/off] (#canal)",
     "EXAMPLES": "{{prefix}}automod on\n{{prefix}}automod off #general\n{{prefix}}automod off",
-    "MISSING_STATUS": "Por favor, especifique un estado válido! (`on` o `off`)",
-    "ENABLED": "¡Las invitaciones de Discord se eliminarán automáticamente! ¡Si desea ignorar un canal, simplemente escriba `{{prefix}}automod off #canal`! ¡Esto desactivará la moderación automática en el canal mencionado!",
-    "DISABLED_CHANNEL": "¡La automoderación ya no se realizará en el canal {{channel}}!",
+    "MISSING_STATUS": "Please enter a valid value between `on` and `off`",
+    "ENABLED": "**Discord invites will be automatically deleted!**\n\n:arrow_right_hook: *Answer by sending `{{prefix}}automod off #channel` to ignore a channel!*",
+    "DISABLED_CHANNEL": "Auto-moderation will no longer be performed in {{channel}}!",
     "DISABLED": "¡Todo bien! ¡La moderación automática ya no está activa en este servidor!",
-    "DELETED": "**{{username}}**, tu mensaje contenía una invitación de Discord, así que ha sido borrado. Si no fue intencional puedes editar tu mensaje de nuevo, ¡se te envió como un mensaje privado!"
+    "DELETED": "Your message was deleted because Discord invitations are not allowed on this server!"
 }

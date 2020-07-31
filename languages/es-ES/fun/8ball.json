@@ -2,7 +2,7 @@
     "DESCRIPTION": "¡Te cuento la verdad!",
     "USAGE": "{{prefix}}8ball [pregunta]",
     "EXAMPLES": "{{prefix}}8ball ¿Es Atlanta el mejor bot de Discord?",
-    "ERR_QUESTION": "¡Tienes que ingresar una pregunta para hacerme!",
+    "ERR_QUESTION": "You must enter a question!",
     "RESPONSE_1": "Estoy seguro de ello.",
     "RESPONSE_2": "Definitivamente es seguro.",
     "RESPONSE_3": "Definitivamente si.",

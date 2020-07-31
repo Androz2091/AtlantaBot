@@ -1,0 +1,5 @@
+{
+    "DESCRIPTION": "Genera un'immagine \"ricercata\" utilizzando l'API Nekobot",
+    "USAGE": "{{prefix}}wanted (@membro)",
+    "EXAMPLES": "{{prefix}}wanted\n{{prefix}}wanted @Androz#2091"
+}

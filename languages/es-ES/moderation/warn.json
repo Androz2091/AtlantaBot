@@ -1,10 +1,10 @@
 {
     "DESCRIPTION": "Advierte a un miembro en mensajes privados",
     "USAGE": "{{prefix}}warn [@miembro] [razón]",
-    "EXAMPLES": "{{prefix}warn @Androz#2091 Spam",
+    "EXAMPLES": "{{prefix}warn @Androz#2091 Dumb",
     "MISSING_MEMBER": "¡Por favor especifique el miembro que desea advertir!",
     "MISSING_REASON": "¡Por favor, introduzca una razón!",
     "WARNED_DM": "Hola {{username}},\n¡Usted acaba de ser avisado en **{{server}}** por **{{moderator}}** a razón de **{{reason}}**!",
-    "WARNED": "¡**{{username}}** ha sido avisado en mensajes privados a razón de **{{reason}}**!",
+    "WARNED": "**{{username}}** has been warned in private messages for **{{reason}}**!",
     "CASE": "Aviso | Caso #{{caseNumber}}"
 }

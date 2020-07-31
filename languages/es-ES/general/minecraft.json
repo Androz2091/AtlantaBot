@@ -1,5 +1,5 @@
 {
-    "DESCRIPTION": "¡Muestra información sobre el servidor de Minecraft!",
+    "DESCRIPTION": "Shows information about a Minecraft server!",
     "USAGE": "{{prefix}}minecraft [ip]",
     "EXAMPLES": "{{prefix}}minecraft mc.hypixel.net",
     "MISSING_IP": "¡Por favor ingrese una dirección IP válida!",

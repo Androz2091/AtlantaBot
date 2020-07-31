@@ -1,0 +1,8 @@
+{
+    "DESCRIPTION": "Salta la canzone attuale",
+    "USAGE": "{{prefix}}skip",
+    "EXAMPLES": "{{prefix}}skip",
+    "NO_NEXT_SONG": "Non c'è nessuna canzone dopo questa!",
+    "VOTE_CONTENT": "Prossima canzone: {{songName}}\nReagisci con 👍 per fermare la musica! {{requiredCount}} sono richiesti piu voti.\n",
+    "SUCCESS": "Canzone saltata!"
+}

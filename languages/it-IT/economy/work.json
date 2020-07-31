@@ -1,0 +1,11 @@
+{
+    "DESCRIPTION": "Richiedi il tuo stipendio!",
+    "USAGE": "{{prefix}}work",
+    "EXAMPLES": "{{prefix}}work",
+    "COOLDOWN": "Devi aspettare {{time}} prima di lavorare di nuovo!",
+    "AWARD": "Completa la parola AWARD per vincere 200 crediti bonus!",
+    "SALARY": "Stipendio",
+    "SALARY_CONTENT": "Hai guadagnato {{won}} crediti!",
+    "STREAK": "Striscia",
+    "STREAK_CONTENT": "🎉 Hai vinto 200 crediti bonus!"
+}

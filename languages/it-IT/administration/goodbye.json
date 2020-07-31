@@ -1,0 +1,16 @@
+{
+    "DESCRIPTION": "Attiva / disattiva i messaggi di addio!",
+    "USAGE": "{{prefix}}goodbye",
+    "EXAMPLES": "{{prefix}}goodbye",
+    "DEFAULT_MESSAGE": "Addio {user}! Ora siamo {membercount} senza di te ... :'(",
+    "TEST_SUCCESS": "Test eseguito!",
+    "FORM_1": "**In quale canale verranno inviati i messaggi di addio?**\n\n:arrow_right_hook: *Rispondi menzionando un canale! *",
+    "FORM_2": "**Inserisci il messaggio di addio desiderato.**\n\n**Se lo desideri:**\n*-* __Menziona l'utente__: {user}\n*-* __Ottieni il conteggio dei membri__: {membercount}\n*-* __Ottieni il nome del server__: {server}\n\n**Esempio di utilizzo:**\nAddio {user}, ci mancherai! Ora siamo {membercount}.\n:fast_forward:\nAddio {{author}}, ci mancherai! Ora siamo {{memberCount}}.",
+    "FORM_3": "**Vuoi anche un'immagine di addio?**\n\n:arrow_right_hook: *Rispondi inviando `Si` o `No`!*",
+    "FORM_SUCCESS": "**Va bene, fatto!**\n\n:arrow_right_hook: *Rispondi inviando `{{prefix}}goodbye test` per visualizzare in anteprima il tuo messaggio di addio personalizzato!*",
+    "MAX_CHARACT": "Il tuo messaggio non deve superare i 1800 caratteri!",
+    "DISABLED": "**I messaggi di addio sono stati appena disabilitati!**\n\n:arrow_right_hook: *Rispondi inviando `{{prefix}}configuration` per vedere la configurazione aggiornata!*",
+    "IMG_GOODBYE": "E' uscito {{server}}!",
+    "IMG_NB": "- {{memberCount}}° membro!",
+    "TITLE": "ADDIO"
+}

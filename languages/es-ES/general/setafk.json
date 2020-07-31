@@ -4,6 +4,6 @@
     "EXAMPLES": "{{prefix}}setafk Estoy en clase",
     "MISSING_REASON": "¡Especifique el motivo de su estado de AFK!",
     "SUCCESS": "Estás AFK (razón: {{reason}})",
-    "DELETED": "¡**{{username}}** acaba de salir de AFK!",
+    "DELETED": "**{{username}}**, your AFK status has just been deleted!",
     "IS_AFK": "**{{user}}** está AFK, razón:\n```{{reason}}```"
 }

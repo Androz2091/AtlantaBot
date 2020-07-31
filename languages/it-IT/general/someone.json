@@ -1,0 +1,5 @@
+{
+    "DESCRIPTION": "Scegli un membro casuale nel server!",
+    "USAGE": "{{prefix}}someone",
+    "EXAMPLES": "{{prefix}}someone"
+}

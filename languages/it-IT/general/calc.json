@@ -1,0 +1,10 @@
+{
+    "DESCRIPTION": "Calcolatrice in grado di risolvere operazioni complesse e convertire unità!",
+    "USAGE": "{{prefix}}calc [calcolo]",
+    "EXAMPLES": "{{prefix}}10*5+sin(3)\n{{prefix}}calc 10cm in m",
+    "MISSING_CALC": "Si prega di inserire un calcolo!",
+    "INVALID_CALC": "Inserisci un calcolo **valido**!",
+    "TITLE": "Calcolatrice",
+    "CALCULATION": "Calcolo",
+    "RESULT": "Risultato"
+}

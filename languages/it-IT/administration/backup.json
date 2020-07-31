@@ -1,0 +1,19 @@
+{
+    "DESCRIPTION": "Gestisci i tuoi backup del server in modo efficiente!",
+    "USAGE": "{{prefix}}backup [create/load/infos]",
+    "EXAMPLES": "{{prefix}}backup create\n{{prefix}}backup load 558328638911545423\n{{prefix}}backup infos 558328638911545423",
+    "MISSING_STATUS": "Seleziona un'azione tra: `create`, `load` e `info`!",
+    "MISSING_BACKUP_ID": "Inserisci un ID di backup!",
+    "NO_BACKUP_FOUND": "Nessun backup trovato per `{{backupID}}`",
+    "TIMES_UP": "Tempo scaduto! Caricamento del backup annullato!",
+    "SUCCESS_PUBLIC": "Backup creato con successo! L'ID di backup ti è stato inviato nei messaggi privati!",
+    "SUCCESS_PRIVATE": "Ecco il tuo ID di backup: `{{backupID}}`, usalo per caricare il tuo backup su un altro server!",
+    "CONFIRMATION": ":warning: | **Il caricamento di un backup sostituirà il server effettivo con quello salvato.**\n\n:arrow_right_hook: *Rispondi inviando `confirm` per confermare questa azione!*",
+    "START_LOADING": "Caricamento del backup avviato!",
+    "LOAD_SUCCESS": "Backup caricato correttamente!",
+    "TITLE_INFOS": "Backup Information",
+    "TITLE_ID": "ID",
+    "TITLE_SERVER_ID": "ID server",
+    "TITLE_SIZE": "Formato",
+    "TITLE_CREATED_AT": "Creato a"
+}

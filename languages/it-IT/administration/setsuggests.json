@@ -1,0 +1,7 @@
+{
+    "DESCRIPTION": "Imposta il canale dei suggerimenti!",
+    "USAGE": "{{prefix}}setsuggests (#canale)",
+    "EXAMPLES": "{{prefix}}setsuggests #suggerimenti\n{{prefix}}setsuggests",
+    "SUCCESS_ENABLED": "I suggerimenti verranno inviati in **{{channel}}**!",
+    "SUCCESS_DISABLED": "Canale dei suggerimenti eliminato!"
+}

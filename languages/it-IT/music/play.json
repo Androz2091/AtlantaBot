@@ -1,0 +1,16 @@
+{
+    "DESCRIPTION": "Riproduce musica per te!",
+    "USAGE": "{{prefix}}play [brano]",
+    "EXAMPLES": "{{prefix}}play Bye Bye",
+    "NO_VOICE_CHANNEL": "Devi essere collegato a un canale vocale!",
+    "VOICE_CHANNEL_CONNECT": "Non riesco a collegarmi al tuo canale vocale!",
+    "MISSING_SONG_NAME": "Si prega di specificare il nome di una canzone o un link!",
+    "RESULTS_FOOTER": "Seleziona un brano inviando un numero compreso tra 1 e 10.",
+    "NO_RESULT": "Non è possibile trovare su Youtube!",
+    "NOW_PLAYING": "In riproduzione {{songName}}",
+    "CANCELLED": "Selezione annullata",
+    "NOT_PLAYING": "Nessun brano è attualmente in riproduzione su questo server.",
+    "QUEUE_ENDED": "La coda è terminata. Niente più musica da riprodurre...",
+    "ADDED_QUEUE": "{{songName}} è stata aggiunta alla coda!",
+    "ADDED_QUEUE_COUNT": "{{songCount}} brani aggiunti alla coda!"
+}

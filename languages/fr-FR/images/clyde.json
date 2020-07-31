@@ -1,6 +1,6 @@
 {
-    "DESCRIPTION": "Génère une image \"clyde\" en utilisant l'API Nekobot",
+    "DESCRIPTION": "Generates a \"Clyde\" message image using the Nekobot API",
     "USAGE": "{{prefix}}clyde [texte]",
-    "EXAMPLES": "{{prefix}}clyde Discord fermera le 11 novembre 2020. Bonne journée.",
-    "MISSING_TEXT": "Veuillez préciser un texte valide !"
+    "EXAMPLES": "{{prefix}}clyde Discord will close on December 11, 2002. Goodbye.",
+    "MISSING_TEXT": "Please specify the message text!"
 }

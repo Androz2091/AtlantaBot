@@ -1,0 +1,6 @@
+{
+    "DESCRIPTION": "Genera un collegamento LMGTFY con la tua ricerca",
+    "USAGE": "{{prefix}}lmg [ricerca]",
+    "EXAMPLES": "{{prefix}}lmg Come creare un bot di Discord?",
+    "MISSING": "Devi specificare una ricerca!"
+}

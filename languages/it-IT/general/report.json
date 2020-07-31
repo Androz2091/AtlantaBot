@@ -1,0 +1,11 @@
+{
+    "DESCRIPTION": "Invia la tua segnalazione al canale definito per lui!",
+    "USAGE": "{{prefix}}report [@utente] [motivo]",
+    "EXAMPLES": "{{prefix}}report @Androz#2091 Infrangere le regole",
+    "MISSING_CHANNEL": "Nessun canale di segnalazione definito!",
+    "MISSING_REASON": "Inserisci un motivo della segnalazione!",
+    "MISSING_USER": "Si prega di indicare l'utente che si desidera segnalare!",
+    "INVALID_USER": "Non puoi segnalarti",
+    "SUCCESS": "La tua segnalazione è stata inviata in {{channel}}!",
+    "TITLE": "Segnalazione - {{user}}"
+}

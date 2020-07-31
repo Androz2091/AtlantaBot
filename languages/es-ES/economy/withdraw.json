@@ -3,7 +3,7 @@
     "USAGE": "{{prefix}}withdraw [cantidad]",
     "EXAMPLES": "{{prefix}}withdraw 400",
     "MISSING_AMOUNT": "¡Por favor, especifique una cantidad a retirar!",
-    "NO_CREDIT": "¡No tienes créditos en el banco!",
-    "NOT_ENOUGH": "¡No tienes `{{money}}` créditos en el banco!",
-    "SUCCESS": "¡**{{money}}** créditos retirados!"
+    "NO_CREDIT": "You don't have any credit in your bank!",
+    "NOT_ENOUGH": "You need at least `{{money}}` credit(s)!",
+    "SUCCESS": "**{{money}}** credit(s) withdrawn!"
 }

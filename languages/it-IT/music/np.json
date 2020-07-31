@@ -1,0 +1,11 @@
+{
+    "DESCRIPTION": "Mostra le informazioni sul brano corrente!",
+    "USAGE": "{{prefix}}np",
+    "EXAMPLES": "{{prefix}}np",
+    "CURRENTLY_PLAYING": "Attualmente in riproduzione",
+    "T_TITLE": "Titolo",
+    "T_CHANNEL": "Canale",
+    "T_DURATION": "Durata",
+    "T_DESCRIPTION": "Descrizione",
+    "NO_DESCRIPTION": "Nessuna descrizione..."
+}

@@ -1,0 +1,10 @@
+{
+    "DESCRIPTION": "Invia un annuncio nel canale corrente!",
+    "USAGE": "{{prefix}}announcement [testo]",
+    "EXAMPLES": "{{prefix}}announcement Nuovo membro dello staff!",
+    "MISSING_TEXT": "Devi inserire il testo dell'annuncio!",
+    "TOO_LONG": "Il testo deve essere inferiore a 1030 caratteri!",
+    "MENTION_PROMPT": "Vuoi aggiungere una menzione al tuo messaggio?\nRispondi digitando \"Si\" o \"No\"!",
+    "MENTION_TYPE_PROMPT": "Digita una delle seguenti risposte: `every` (per menzionare @everyone) o `here` (per menzionare @here)!",
+    "TITLE": "📢 Annuncio:"
+}

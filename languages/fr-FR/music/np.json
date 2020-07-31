@@ -1,5 +1,5 @@
 {
-    "DESCRIPTION": "Affiche des informations sur la chanson en cours de lecture !",
+    "DESCRIPTION": "Shows information about the current song!",
     "USAGE": "{{prefix}}np",
     "EXAMPLES": "{{prefix}}np",
     "CURRENTLY_PLAYING": "En cours de lecture",

@@ -1,0 +1,7 @@
+{
+    "DESCRIPTION": "Imposta il canale delle segnalazioni!",
+    "USAGE": "{{prefix}}setreports (#canale)",
+    "EXAMPLES": "{{prefix}}setreports #segnalazioni\n{{prefix}}setreports",
+    "SUCCESS_ENABLED": "Le segnalazioni verranno inviate in **{{channel}}**!",
+    "SUCCESS_DISABLED": "Canale delle segnalazioni eliminato!"
+}

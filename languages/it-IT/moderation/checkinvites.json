@@ -1,0 +1,6 @@
+{
+    "DESCRIPTION": "Controlla se i membri hanno un collegamento al server Discord nel loro stato!",
+    "USAGE": "{{prefix}}checkinvites",
+    "EXAMPLES": "{{prefix}}checkinvites",
+    "NOBODY": "Nessun membro fa pubblicità nel suo stato!"
+}

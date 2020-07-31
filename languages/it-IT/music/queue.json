@@ -1,0 +1,6 @@
+{
+    "DESCRIPTION": "Mostra la coda del server",
+    "USAGE": "{{prefix}}queue",
+    "EXAMPLES": "{{prefix}}queue",
+    "TITLE": "Coda Server (prossime 20 tracce)"
+}

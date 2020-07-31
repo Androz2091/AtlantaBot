@@ -1,0 +1,5 @@
+{
+    "DESCRIPTION": "Mostra l'avatar del membro menzionato",
+    "USAGE": "{{prefix}}avatar (@membro)",
+    "EXAMPLES": "{{prefix}}avatar\n{{prefix}}avatar @Androz#2091"
+}

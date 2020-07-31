@@ -4,6 +4,7 @@
     "EXAMPLES": "{{prefix}}addemoji https://via.placeholder.com/150 test-emoji",
     "MISSING_URL": "Por favor proporcione una URL de una imagen!",
     "MISSING_NAME": "Por favor, proporcione el nombre del emoji!",
-    "SUCCESS": "El emoji **{{emojiName}}**ha sido agregado! Su string es: `{{emojiString}}`.",
+    "INVALID_NAME": "The length of the emoji name must be between 2 and 32!",
+    "SUCCESS": ":{{emojiName}}: added!",
     "ERROR": "{{emojiName}} no se pudo agregar. ¡Comprueba si tu servidor tiene espacio para nuevos emojis!"
 }

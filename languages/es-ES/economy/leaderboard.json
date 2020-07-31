@@ -2,6 +2,6 @@
     "DESCRIPTION": "¡Muestra a los usuarios que tienen más créditos, niveles o puntos de reputación!",
     "USAGE": "{{prefix}}leaderboard [rep/levels/credits]",
     "EXAMPLES": "{{prefix}}leaderboard credits\n{{prefix}}leaderboard levels",
-    "MISSING_TYPE": "Please enter a type of leaderboard! (`credits`, `level` or `rep`)",
-    "MOBILE": ":confused: Hemos detectado que está utilizando un teléfono... Es posible que la tabla de clasificación no se muestre bien en pantallas pequeñas. ¡Intenta cambiar a horizontal (o ir al dashboard)!"
+    "MISSING_TYPE": "Please specify the leaderboard type between `credits`, `level` and `rep`",
+    "MOBILE": ":confused: We've detected that you are using a phone.... The leaderboard may not display well on small screens. Try to switch to landscape or go on the dashboard!"
 }

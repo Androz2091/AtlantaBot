@@ -1,0 +1,10 @@
+{
+    "DESCRIPTION": "Attiva o disattiva la rimozione automatica degli inviti di Discord",
+    "USAGE": "{{prefix}}automod [on/off] (#canale)",
+    "EXAMPLES": "{{prefix}}automod on\n{{prefix}}automod off #generale\n{{prefix}}automod off",
+    "MISSING_STATUS": "Si prega di specificare un valore valido! (`on` o `off`)",
+    "ENABLED": "**Gli inviti di Discord verranno automaticamente eliminati!**\n\n:arrow_right_hook: *Rispondi inviando `{{prefix}}automod off #canale` per ignorare un canale!*",
+    "DISABLED_CHANNEL": "La moderazione automatica non verrà più eseguita in {{channel}}!",
+    "DISABLED": "Tutto ok! La moderazione automatica non è più efficace su questo server!",
+    "DELETED": "Il tuo messaggio è stato eliminato perché gli inviti di Discord non sono consentiti su questo server!"
+}

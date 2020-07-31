@@ -1,0 +1,8 @@
+{
+    "DESCRIPTION": "Lancia un sondaggio nel canale attuale!",
+    "USAGE": "{{prefix}}poll [domanda]",
+    "EXAMPLES": "{{prefix}}poll La terra è piatta?",
+    "MISSING_QUESTION": "Si prega di specificare una domanda!",
+    "REACT": "Reagisci con {{success}} o {{error}}!",
+    "TITLE": "📊 Sondaggio:"
+}

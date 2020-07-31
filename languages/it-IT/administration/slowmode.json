@@ -1,0 +1,8 @@
+{
+    "DESCRIPTION": "Imposta la modalità di pausa in un canale",
+    "USAGE": "{{prefix}}slowmode [#canale] (tempo)",
+    "EXAMPLES": "{{prefix}}slowmode #generale 10m\n{{prefix}}slowmode #generale",
+    "DISABLED": "**La modalità lenta è stata disabilitata in {{channel}}!**\n\n:arrow_right_hook: *Rispondi inviando `{{prefix}}slowmode [#canale] (tempo)` per abilitarlo di nuovo!*",
+    "ENABLED": "**Una modalità lenta di `{{time}}` è stata appena abilitata in `{{channel}}`!**\n\n:arrow_right_hook: *Rispondi inviando `{{prefix}}slowmode {{channel}} 0` per disabilitarlo!*",
+    "PLEASE_WAIT": "Il canale {{channel}} è in modalità lenta! Si prega di attendere {{time}} per inviare un altro messaggio!"
+}

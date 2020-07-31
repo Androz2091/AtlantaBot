@@ -1,0 +1,8 @@
+{
+    "DESCRIPTION": "Attiva / disattiva la cancellazione automatica dei comandi di moderazione!",
+    "USAGE": "{{prefix}}deletemod [on/off]",
+    "EXAMPLES": "{{prefix}}deletemod on",
+    "MISSING_STATUS": "È necessario specificare `on` o `off`\n",
+    "ENABLED": "Cancellazione automatica dei comandi di moderazione!",
+    "DISABLED": "Cancellazione automatica dei comandi di moderazione disabilitata!\n"
+}

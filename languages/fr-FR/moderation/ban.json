@@ -4,10 +4,10 @@
     "EXAMPLES": "{{prefix}ban @Androz#2091 Spam",
     "MISSING_MEMBER": "Veuillez préciser un utilisateur valide à ban !",
     "YOURSELF": "Vous ne pouvez pas vous sanctionner vous même !",
-    "SUPERIOR": "You cannot sanction or update a sanction for a member with a role superior (or equal) to yours!",
+    "SUPERIOR": "You can't sanction or update a sanction for a member who has an higher or equal role hierarchy to yours!",
     "ALREADY_BANNED": "**{{username}}** est déjà banni !",
-    "MISSING_PERM": "Une erreur est survenue... vérifiez que j'ai bien les permissions de bannir ce membre et réessayez !",
-    "BANNED_DM": "Bonjour {{username}},\nVous venez d'être banni de **{{server}}** par **{{moderator}}** pour **{{reason}}** !",
-    "BANNED": "**{{username}}** vient d'être banni de **{{server}}*** par **{{moderator}}*** pour **{{reason}}** !",
+    "MISSING_PERM": "An error has occurred... Please check that I have the permission to ban this specific member and try again!",
+    "BANNED_DM": "Hello {{username}},\nYou have just been banned from **{{server}}** by **{{moderator}}** because of **{{reason}}**!",
+    "BANNED": "**{{username}}** has just been banned from **{{server}}** by **{{moderator}}** because of **{{reason}}**!",
     "CASE": "Ban | Cas #{{count}}"
 }

@@ -3,6 +3,6 @@
     "USAGE": "{{prefix}}tweet [@pseudo_twitter] [contenu]",
     "EXAMPLES": "{{prefix}}tweet @ElonMusk Bonjour",
     "MISSING_USERNAME": "Vous devez entrer un pseudo Twitter !",
-    "MISSING_TEXT": "Vous n'avez pas spécifié le contenu du tweet !",
+    "MISSING_TEXT": "You have to specify the tweet content!",
     "SUCCESS": "Nouveau tweet par {{user}}:"
 }

@@ -5,6 +5,6 @@
     "HEADER": "FORTNITE ITEMS SHOP",
     "DAILY": "DAILY",
     "FEATURED": "FEATURED",
-    "DATE": "Fortnite shop for {{date}}",
-    "FOOTER": "Atlanta - Fortnite Shop"
+    "DATE": "{{date}} Fortnite shop",
+    "FOOTER": "Fortnite Shop by Atlanta"
 }

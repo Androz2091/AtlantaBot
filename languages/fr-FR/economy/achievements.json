@@ -1,9 +1,9 @@
 {
-    "DESCRIPTION": "Affiche la liste de tous les succès !",
+    "DESCRIPTION": "Shows your achievements list!",
     "USAGE": "{{prefix}}achievements",
     "EXAMPLES": "{{prefix}}achievements",
     "SEND_CMD": "Envoyez votre première commande !",
-    "CLAIM_SALARY": "Réclamez 10 fois votre salaire !",
+    "CLAIM_SALARY": "Claim your salary 10 times!",
     "MARRY": "Trouvez votre moitié et marriez-vous !",
     "SLOTS": "Gagnez 3 fois de suite à la machine à sous !",
     "TIP": "Maintenez Atlanta en vie en faisant un don !",

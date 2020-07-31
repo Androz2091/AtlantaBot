@@ -1,0 +1,9 @@
+{
+    "DESCRIPTION": "Aggiungi un nuovo promemoria personale",
+    "USAGE": "{{prefix}}remindme [messaggio]",
+    "EXAMPLES": "{{prefix}}remindme 24h Comando di lavoro\n{{prefix}}remindme 3m Prendi la pasta dalla padella!",
+    "MISSING_MESSAGE": "Devi inserire un messaggio!",
+    "SAVED": "Promemoria salvato, riceverai un messaggio alla fine del tempo!",
+    "TITLE": "Promemoria di Atlanta",
+    "CREATED": "Messaggio creato {{time}}"
+}

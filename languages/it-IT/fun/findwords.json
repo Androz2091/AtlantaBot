@@ -1,0 +1,13 @@
+{
+    "DESCRIPTION": "Inizia un gioco di ricerca di parole, un gioco in cui devi trovare le parole!",
+    "USAGE": "{{prefix}}findwords",
+    "EXAMPLES": "{{prefix}}findwords",
+    "INVALID_WORD": "{{member}} | La tua parola non è valida!",
+    "GAME_STARTING": ":timer: | Il gioco inizia tra 10 secondi!",
+    "FIND_WORD": "20 secondi per trovare una parola contenente \"__ **{{word}}** __\"!",
+    "WORD_FOUND": "Ben fatto {{winner}}! Sei stato il più veloce a inserire una parola valida!",
+    "GAME_STATS": "🎉 | {{winner}} ha vinto il gioco!\n\n**Statistiche:**\n*-* __**Durata**__: {{time}}\n*-* __**Partecipanti**__: {{participants}} ({{participantCount}})**Statistiche del gioco: **\n__**Durata**__: {{duration}}\n__**Numero di partecipanti**__ : {{participantCount}}\n__**Partecipanti**__ : \n{{participantList}}",
+    "CREDITS": "{{winner}} vince 15 crediti! 🎉",
+    "NO_WINNER_ALL": "Nessuna parola trovata, nessuno vince!",
+    "NO_WINNER": "Nessuna parola trovata, nessuno vince!"
+}

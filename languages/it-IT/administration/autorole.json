@@ -1,0 +1,10 @@
+{
+    "DESCRIPTION": "Attiva o disattiva autoruolo nel tuo server!",
+    "USAGE": "{{prefix}}autorole [on/off] (ruolo)",
+    "EXAMPLES": "{{prefix}}autorole on @Membri\n{{prefix}}autorole off",
+    "MISSING_STATUS": "Si prega di specificare un valore valido! (`on` o `off`)",
+    "MISSING_ROLE": "Si prega di specificare un ruolo valido!",
+    "SUCCESS_ENABLED": "Autorole abilitato! I nuovi membri riceveranno automaticamente il ruolo **{{roleName}}**.",
+    "ALREADY_DISABLED": "**L'autorole è già disabilitato.**\n\n:arrow_right_hook: *Rispondi inviando `{{prefix}}autorole su @Iltuoruolo` per abilitarlo di nuovo!*",
+    "SUCCESS_DISABLED": "**Autorole disattivato.**\n\n:arrow_right_hook: *Rispondi inviando `{{prefix}}configuration` per vedere la configurazione aggiornata!*"
+}

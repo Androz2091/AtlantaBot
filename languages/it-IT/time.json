@@ -1,0 +1,10 @@
+{
+    "ONE_DAY": "1 giorno",
+    "DAYS": "{{amount}} giorni",
+    "ONE_HOUR": "1 ora",
+    "HOURS": "{{amount}} ore",
+    "ONE_MINUTE": "1 minuto",
+    "MINUTES": "{{amount}} minuti",
+    "ONE_SECOND": "1 secondo",
+    "SECONDS": "{{amount}} secondi"
+}

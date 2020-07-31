@@ -1,5 +1,5 @@
 {
-    "DESCRIPTION": "Shows informations about the current song!",
+    "DESCRIPTION": "Shows information about the current song!",
     "USAGE": "{{prefix}}np",
     "EXAMPLES": "{{prefix}}np",
     "CURRENTLY_PLAYING": "Currently playing",

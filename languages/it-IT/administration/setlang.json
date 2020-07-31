@@ -1,0 +1,7 @@
+{
+    "DESCRIPTION": "Cambia la lingua del server!",
+    "USAGE": "{{prefix}}setlang [lingua]",
+    "EXAMPLES": "{{prefix}}setlang french\n{{prefix}}setlang english",
+    "MISSING_LANG": "Inserisci una lingua valida tra le tesi: {{list}}",
+    "SUCCESS": ":flag_gb: La lingua di questo server è ora inglese!"
+}

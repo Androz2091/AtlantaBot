@@ -1,9 +1,9 @@
 {
-    "DESCRIPTION": "¡Traduzco tu texto!",
+    "DESCRIPTION": "Translate your text!",
     "USAGE": "{{prefix}}translate [idioma] [mensaje]\n{{prefix}}translate langs-list",
     "EXAMPLES": "{{prefix}}translate fr ¿Qué tal?",
-    "LIST_SENT": "¡La lista de idiomas acaba de ser enviada por mensaje privado!",
-    "MISSING_LANGUAGE": "¡Por favor ingrese un idioma! ¡Para mostrar la lista de idiomas, escriba `{{prefix}}translate langs-list`!",
-    "INVALID_LANGUAGE": "¡El idioma `{{search}}` no existe! ¡Para mostrar la lista de idiomas, escriba `{{prefix}}translate langs-list`!",
+    "LIST_SENT": "The languages list has just been sent to you by private messages!",
+    "MISSING_LANGUAGE": "Please enter a language! To display the languages list, type `{{prefix}}translate langs-list`!",
+    "INVALID_LANGUAGE": "The language `{{search}}` does not exist! To display the languages list, type `{{prefix}}translate langs-list`!",
     "MISSING_CONTENT": "¡Por favor, introduzca un texto para traducir!"
 }

@@ -1,0 +1,13 @@
+{
+    "DESCRIPTION": "Mostra il numero di persone che hai invitato al server!",
+    "USAGE": "{{prefix}}invitations (@membro)",
+    "EXAMPLES": "{{prefix}}invitations\n{{prefix}}invitations @Androz#2091",
+    "NOBODY_AUTHOR": "Non hai invitato nessuno al server!",
+    "NOBODY_MEMBER": "{{member}} non ha invitato nessuno al server!",
+    "CODE": "**{{code}}** ({{uses}} usi) | {{channel}}",
+    "TITLE": "Informazioni sugli inviti di {{member}} in {{guild}}",
+    "FIELD_INVITED": "👥 Membri invitati",
+    "FIELD_CODES": "🔑 Codici",
+    "FIELD_MEMBERS": "{{total}} membri",
+    "TRACKER": "Monitoraggio degli inviti"
+}
