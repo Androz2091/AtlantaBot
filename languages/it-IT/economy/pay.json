@@ -1,11 +1,11 @@
 {
-    "DESCRIPTION": "Send money to someone!",
-    "USAGE": "{{prefix}}pay [@member] [amount]",
+    "DESCRIPTION": "Invia i soldi a qualcuno!",
+    "USAGE": "{{prefix}}pay [@membro] [quantità]",
     "EXAMPLES": "{{prefix}}pay Androz#2091 100",
-    "INVALID_MEMBER": "You must mention a valid member!",
-    "BOT_USER": "Bots are already rich 💰!",
-    "YOURSELF": "You can't pay yourself!",
-    "INVALID_AMOUNT": "You must specify a valid amount",
-    "ENOUGH_MONEY": "You can't afford **{{amount}}**",
-    "SUCCESS": "You just paid **{{amount}}** to **{{username}}**!"
+    "INVALID_MEMBER": "Devi menzionare un membro valido!",
+    "BOT_USER": "I bot sono già ricchi 💰!",
+    "YOURSELF": "Non puoi pagare te stesso!",
+    "INVALID_AMOUNT": "Devi specificare una quantità valida",
+    "ENOUGH_MONEY": "Non puoi permetterti di pagare**{{amount}}**",
+    "SUCCESS": "Hai appena consegnato **{{amount}}** a **{{username}}**!"
 }
