@@ -1,10 +1,10 @@
 {
-    "DESCRIPTION": "Toggle Discord invites automatic deletion",
-    "USAGE": "{{prefix}}automod [on/off] (#channel)",
-    "EXAMPLES": "{{prefix}}automod on\n{{prefix}}automod off #general\n{{prefix}}automod off",
-    "MISSING_STATUS": "Please enter a valid value between `on` and `off`",
-    "ENABLED": "**Discord invites will be automatically deleted!**\n\n:arrow_right_hook: *Answer by sending `{{prefix}}automod off #channel` to ignore a channel!*",
-    "DISABLED_CHANNEL": "Auto-moderation will no longer be performed in {{channel}}!",
-    "DISABLED": "All right! Auto moderation is no longer effective on this server!",
-    "DELETED": "Your message was deleted because Discord invitations are not allowed on this server!"
+    "DESCRIPTION": "Attiva o disattiva la rimozione automatica degli inviti di Discord",
+    "USAGE": "{{prefix}}automod [on/off] (#canale)",
+    "EXAMPLES": "{{prefix}}automod on\n{{prefix}}automod off #generale\n{{prefix}}automod off",
+    "MISSING_STATUS": "Si prega di specificare un valore valido! (`on` o `off`)",
+    "ENABLED": "**Gli inviti di Discord verranno automaticamente eliminati!**\n\n:arrow_right_hook: *Rispondi inviando `{{prefix}}automod off #canale` per ignorare un canale!*",
+    "DISABLED_CHANNEL": "La moderazione automatica non verrà più eseguita in {{channel}}!",
+    "DISABLED": "Tutto ok! La moderazione automatica non è più efficace su questo server!",
+    "DELETED": "Il tuo messaggio è stato eliminato perché gli inviti di Discord non sono consentiti su questo server!"
 }
