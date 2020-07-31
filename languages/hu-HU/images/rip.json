@@ -1,5 +1,5 @@
 {
-    "DESCRIPTION": "Generates a \"rip\" image using Nekobot API",
-    "USAGE": "{{prefix}}rip (@member)",
+    "DESCRIPTION": "\"Nehéz\" képet generálok a Nekobot API használatával",
+    "USAGE": "{{prefix}}rip (@tag)",
     "EXAMPLES": "{{prefix}}rip\n{{prefix}}rip @Androz#2091"
 }
