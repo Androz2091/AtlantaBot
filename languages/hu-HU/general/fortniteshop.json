@@ -1,10 +1,10 @@
 {
-    "DESCRIPTION": "Shows the daily fortnite items shop!",
+    "DESCRIPTION": "A napi fortnite cikk megtekintése!",
     "USAGE": "{{prefix}}fortniteshop",
     "EXAMPLES": "{{prefix}}fortniteshop",
-    "HEADER": "FORTNITE ITEMS SHOP",
-    "DAILY": "DAILY",
-    "FEATURED": "FEATURED",
+    "HEADER": "FORTINTE TÉTELEK BOLT",
+    "DAILY": "NAPI",
+    "FEATURED": "KIEMELT",
     "DATE": "{{date}} Fortnite shop",
     "FOOTER": "Fortnite Shop by Atlanta"
 }
