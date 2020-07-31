@@ -1,7 +1,7 @@
 {
-    "DESCRIPTION": "Set the moderation logs channel!",
-    "USAGE": "{{prefix}}setmodlogs (#channel)",
-    "EXAMPLES": "{{prefix}}setmodlogs #modlogs\n{{prefix}}setmodlogs",
-    "SUCCESS_ENABLED": "Moderation logs will be sent in **{{channel}}**!",
-    "SUCCESS_DISABLED": "Moderation logs channel deleted!"
+    "DESCRIPTION": "Defina o canal para registos de moderação!",
+    "USAGE": "{{prefix}}setmodlogs (#canal)",
+    "EXAMPLES": "{{prefix}}setmodlogs #registoMod\n{{prefix}}setmodlogs",
+    "SUCCESS_ENABLED": "Os registos de moderação serão enviados no canal **{{channel}}**!",
+    "SUCCESS_DISABLED": "Canal para registos de moderação excluído!"
 }
