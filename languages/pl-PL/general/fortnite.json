@@ -1,0 +1,21 @@
+{
+    "DESCRIPTION": "Shows a player's Fortnite stats!",
+    "USAGE": "{{prefix}}fortnite [psn/xbl/pc] [pseudo]",
+    "EXAMPLES": "{{prefix}}fortnite pc Ninja",
+    "MISSING_PLATFORM": "Please specify a platform between `psn`, `pc` or `xbl`!",
+    "MISSING_USERNAME": "Please enter a valid epic games username!",
+    "NOT_FOUND": "`{{search}}` was not found on `{{platform}}`!",
+    "TITLE": "{{username}} Fortnite Stats",
+    "AVERAGE_KILLS": "KILLS/MATCH",
+    "AVERAGE_KILL": "KILL/MATCH",
+    "W_PERCENT": "W%",
+    "WIN_PERCENT": "WIN%",
+    "KD": "KD",
+    "WINS": "Wins",
+    "WIN": "Win",
+    "MATCHES": "Matches",
+    "MATCH": "Match",
+    "KILLS": "Kills",
+    "KILL": "Kill",
+    "FOOTER": "By Atlanta using fortnitetracker.com"
+}
