@@ -1,10 +1,10 @@
 {
-    "DESCRIPTION": "Calculator able to solve complex operations and to convert units!",
-    "USAGE": "{{prefix}}calc [calculation]",
+    "DESCRIPTION": "Számológép, amely képes komplex műveletek megoldására és egységek konvertálására!",
+    "USAGE": "{{prefix}}calc [számítás]",
     "EXAMPLES": "{{prefix}}10*5+sin(3)\n{{prefix}}calc 10cm to m",
-    "MISSING_CALC": "Please enter a calculation!",
-    "INVALID_CALC": "Please enter a **valid** calculation!",
-    "TITLE": "Calculator",
-    "CALCULATION": "Calculation",
-    "RESULT": "Result"
+    "MISSING_CALC": "Kérlek, adj meg egy számítást!",
+    "INVALID_CALC": "Kérlek, adj meg egy **érvényes** számítást!",
+    "TITLE": "Számológép",
+    "CALCULATION": "Számítás",
+    "RESULT": "Eredmény"
 }
