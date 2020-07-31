@@ -1,8 +1,8 @@
 {
-    "DESCRIPTION": "Generates a \"tweet\" image using Nekobot API",
-    "USAGE": "{{prefix}}tweet [@twitter_username] [content]",
-    "EXAMPLES": "{{prefix}}tweet @ElonMusk Hello",
-    "MISSING_USERNAME": "You have to enter someone's twitter nickname!",
-    "MISSING_TEXT": "You have to specify the tweet content!",
-    "SUCCESS": "New tweet by {{user}}:"
+    "DESCRIPTION": "Genera un'immagine \"tweet\" utilizzando l'API Nekobot",
+    "USAGE": "{{prefix}}tweet [@twitter_nomeutente] [contenuto]",
+    "EXAMPLES": "{{prefix}}tweet @ElonMusk Ciao",
+    "MISSING_USERNAME": "Devi inserire il nickname twitter di qualcuno!",
+    "MISSING_TEXT": "Devi specificare il contenuto del tweet!",
+    "SUCCESS": "Nuovo tweet di {{user}}"
 }
