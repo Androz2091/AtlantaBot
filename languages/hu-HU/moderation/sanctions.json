@@ -1,7 +1,7 @@
 {
-    "DESCRIPTION": "Displays the list of infractions committed by a member!",
-    "USAGE": "{{prefix}}sanctions [@member]",
+    "DESCRIPTION": "Megjeleníti a tag által elkövetett jogsértések listáját!",
+    "USAGE": "{{prefix}}sanctions [@tag]",
     "EXAMPLES": "{{prefix}}sanctions @Androz#2091",
     "MISSING_MEMBER": "You must specify a member!",
-    "NO_SANCTION": "**{{username}}** did not receive any sanctions."
+    "NO_SANCTION": "**{{username}}** nem kapott szankciókat."
 }
