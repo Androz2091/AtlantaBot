@@ -1,7 +1,7 @@
 {
-    "DESCRIPTION": "Upload your text on hastebin!",
+    "DESCRIPTION": "Upload uw tekst op hastebin!",
     "USAGE": "{{prefix}}hastebin [text]",
-    "EXAMPLES": "{{prefix}}hastebin Hello World!",
+    "EXAMPLES": "{{prefix}}hastebin Hallo Wereld!",
     "MISSING_TEXT": "Please enter a valid text!",
-    "SUCCESS": "Upload complete!"
+    "SUCCESS": "Upload compleet!"
 }

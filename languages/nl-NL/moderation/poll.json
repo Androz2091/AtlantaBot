@@ -1,8 +1,8 @@
 {
-    "DESCRIPTION": "Launch a survey in the current channel!",
+    "DESCRIPTION": "Start een enquête in het huidige kanaal!",
     "USAGE": "{{prefix}}poll [question]",
     "EXAMPLES": "{{prefix}}poll Is the Earth flat?",
-    "MISSING_QUESTION": "Please specify a question!",
-    "REACT": "React with {{success}} or {{error}}!",
+    "MISSING_QUESTION": "Geef een vraag op!",
+    "REACT": "Reageer met {{success}} of {{error}}!",
     "TITLE": "📊 Poll:"
 }

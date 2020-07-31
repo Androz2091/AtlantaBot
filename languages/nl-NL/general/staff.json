@@ -3,8 +3,8 @@
     "USAGE": "{{prefix}}staff",
     "EXAMPLES": "{{prefix}}staff",
     "TITLE": "{{guild}} staff",
-    "ADMINS": "Administrators",
-    "NO_ADMINS": "No administrators",
-    "MODS": "Moderators",
-    "NO_MODS": "No moderators"
+    "ADMINS": "Beheerders",
+    "NO_ADMINS": "Geen beheerders",
+    "MODS": "Moderatoren",
+    "NO_MODS": "Geen moderatoren"
 }

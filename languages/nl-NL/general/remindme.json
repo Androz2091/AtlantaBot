@@ -1,9 +1,9 @@
 {
     "DESCRIPTION": "Add a new personal reminder",
     "USAGE": "{{prefix}}remindme [message]",
-    "EXAMPLES": "{{prefix}}remindme 24h Work command\n{{prefix}}remindme 3m Take the pasta out of the pan!",
+    "EXAMPLES": "{{prefix}}remindme 24h Werkopdracht\n{{prefix}}remindme 3m Take the pasta out of the pan!",
     "MISSING_MESSAGE": "You must enter a message!",
-    "SAVED": "Reminder saved, you will receive a message at the end of the time!",
-    "TITLE": "Atlanta Reminder",
-    "CREATED": "Message created {{time}}"
+    "SAVED": "Herinnering opgeslagen, u ontvangt aan het einde van de tijd een bericht!",
+    "TITLE": "Atlanta herinnering",
+    "CREATED": "Bericht gemaakt op {{time}}"
 }

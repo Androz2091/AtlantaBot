@@ -1,6 +1,6 @@
 {
-    "DESCRIPTION": "Pause the current song!",
+    "DESCRIPTION": "Pauzeer het huidige nummer!",
     "USAGE": "{{prefix}}pause",
     "EXAMPLES": "{{prefix}}pause",
-    "SUCCESS": "⏸️ Music paused."
+    "SUCCESS": "⏸️ Muziek onderbroken."
 }

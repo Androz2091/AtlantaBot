@@ -1,8 +1,8 @@
 {
-    "DESCRIPTION": "Skip the current song",
+    "DESCRIPTION": "Sla het huidige nummer over",
     "USAGE": "{{prefix}}skip",
     "EXAMPLES": "{{prefix}}skip",
-    "NO_NEXT_SONG": "There's no song after this one!",
+    "NO_NEXT_SONG": "Er is geen nummer na deze!",
     "VOTE_CONTENT": "Next song: {{songName}}\nReact with 👍 to stop the music! {{requiredCount}} more votes are required.",
-    "SUCCESS": "Song skipped!"
+    "SUCCESS": "Nummer overgeslagen!"
 }

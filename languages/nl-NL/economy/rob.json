@@ -1,15 +1,15 @@
 {
-    "DESCRIPTION": "Try to rob a member!",
-    "USAGE": "{{prefix}}rob [@member] [amount]",
+    "DESCRIPTION": "Probeer een lid te beroven!",
+    "USAGE": "{{prefix}}rob [@membre] [amount]",
     "EXAMPLES": "{{prefix}rob @Androz#2091 100",
-    "YOURSELF": "You can't rob yourself!",
-    "MISSING_MEMBER": "You must specify a valid member to rob!",
+    "YOURSELF": "Je kunt jezelf niet beroven!",
+    "MISSING_MEMBER": "Je moet een geldig lid opgeven om te beroven!",
     "MISSING_AMOUNT": "Please enter a valid amount!",
     "NOT_ENOUGH_AUTHOR": "You must have more than **{{moneyMin}}** credits to attempt this robbery (you have **{{moneyCurrent}}** credits for now)!",
     "NOT_ENOUGH_MEMBER": "You can't try your robbery because **{{username}}** doesn't have as many credits in cash!",
-    "COOLDOWN": "🕵️ **{{username}}** is on guard.... Wait a while and try again!",
-    "ROB_WON_1": "🎉 | Congratulations! The police weren't fast enough to stop you from robbing **{{money}}** credits to **{{username}}**!",
-    "ROB_WON_2": "😕 | **{{username}}** ? Bad news. You just got robbed **{{money}}** credits!",
-    "ROB_LOSE_1": "🚔 | The police caught you in the act, impossible to deny, your fine is **{{fine}}** credits. **{{offset}}** offset credits will be paid to **{{username}}**.",
-    "ROB_LOSE_2": "🚓 | Bad news.... **{{username}}** called the police in time. Your fine is **{{fine}}** credits and **{{offset}}** offset credits will be paid to **{{username}}**."
+    "COOLDOWN": "🕵️ **{{username}}** is op haar hoede... Wacht even en probeer het opnieuw!",
+    "ROB_WON_1": "🎉 | Gefeliciteerd! De politie was niet snel genoeg om te voorkomen dat u **{{money}}** credits van **{{username}}** beroofde!",
+    "ROB_WON_2": "😕 | **{{username}}**? Slecht nieuws. U bent zojuist van **{{money}}** credits beroofd!",
+    "ROB_LOSE_1": "🚔 | De politie heeft je betrapt, onmogelijk te ontkennen, je boete is **{{fine}}** credits. **{{offset}}** de credits worden betaald aan **{{username}}**.",
+    "ROB_LOSE_2": "🚓 | Slecht nieuws.... **{{username}}** belde op tijd de politie. Uw boete is **{{fine}}** credits en **{{offset}}** offset credits worden betaald aan **{{username}}**."
 }
