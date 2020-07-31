@@ -2,13 +2,13 @@
     "DESCRIPTION": "Shows your achievements list!",
     "USAGE": "{{prefix}}achievements",
     "EXAMPLES": "{{prefix}}achievements",
-    "SEND_CMD": "Send your first command!",
+    "SEND_CMD": "Envie o seu primeiro comando!",
     "CLAIM_SALARY": "Claim your salary 10 times!",
-    "MARRY": "Find your half and marry!",
-    "SLOTS": "Win 3 times in a row in slots!",
-    "TIP": "Keep Atlanta alive by tipping!",
-    "REP": "Reach 20 reputation points!",
-    "INVITE": "Invite Atlanta on your server!",
-    "TITLE": "🔥 Achievements",
-    "PROGRESS": "Progress: {{now}}/{{total}} ({{percent}}%)"
+    "MARRY": "Encontre a sua metade e case!",
+    "SLOTS": "Ganhe 3 vezes seguidas em slots!",
+    "TIP": "Mantenha Atlanta viva dando gorjeta!",
+    "REP": "Alcance 20 pontos de reputação!",
+    "INVITE": "Convide Atlanta no seu servidor!",
+    "TITLE": "🔥 Conquistas",
+    "PROGRESS": "Progresso: {{now}}/{{total}} ({{percent}}%)"
 }
