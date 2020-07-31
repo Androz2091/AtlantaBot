@@ -106,6 +106,42 @@ module.exports = {
 				"es",
 				"es_es"
 			]
+		},
+		{
+			name: "it-IT",
+			nativeName: "Italiano",
+			defaultMomentFormat: "Do MMMM YYYY",
+			moment: "it",
+			default: false,
+			aliases: [
+				"Italian",
+				"it",
+				"it_it"
+			]
+		},
+		{
+			name: "nl-NL",
+			nativeName: "Nederlands",
+			defaultMomentFormat: "Do MMMM YYYY",
+			moment: "nl",
+			default: false,
+			aliases: [
+				"Dutch",
+				"nl",
+				"nl_nl"
+			]
+		},
+		{
+			name: "pt-PT",
+			nativeName: "Português",
+			defaultMomentFormat: "Do MMMM YYYY",
+			moment: "pt",
+			default: false,
+			aliases: [
+				"Portuguese",
+				"pt",
+				"pt_pt"
+			]
 		}
 	]
 };
