@@ -1,7 +1,7 @@
 {
-    "DESCRIPTION": "I roll the dice for you!",
+    "DESCRIPTION": "Dobom a kockát neked!",
     "USAGE": "{{prefix}}flip",
     "EXAMPLES": "{{prefix}}flip",
-    "HEADS": "🎲 | Heads!",
-    "TAILS": "🎲 | Tails!"
+    "HEADS": "🎲 | Fej!",
+    "TAILS": "🎲 | Írás!"
 }
