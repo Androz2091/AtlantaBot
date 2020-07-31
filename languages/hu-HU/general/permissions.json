@@ -1,6 +1,6 @@
 {
-    "DESCRIPTION": "Displays the member's permissions in the channel",
-    "USAGE": "{{prefix}}permissions (@member)",
+    "DESCRIPTION": "A tag engedélyének megtekintése a csatornán",
+    "USAGE": "{{prefix}}permissions (@tag)",
     "EXAMPLES": "{{prefix}}permissions\n{{prefix}permissions @Androz#2091",
     "TITLE": "{{user}}'s permissions in {{channel}}"
 }
