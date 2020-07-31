@@ -1,9 +1,9 @@
 {
-    "DESCRIPTION": "Become AFK (members who mention you will receive a message)",
-    "USAGE": "{{prefix}}setafk [reason]",
-    "EXAMPLES": "{{prefix}}setafk I'm eating =)",
-    "MISSING_REASON": "Please specify the reason for your AFK status!",
-    "SUCCESS": "You're now AFK (reason: {{reason}})",
+    "DESCRIPTION": "Legyél AFK (tagok, akik megemlítenek egy üzenetet kapnak)",
+    "USAGE": "{{prefix}}setafk [indok]",
+    "EXAMPLES": "{{prefix}}setafk Eszek =)",
+    "MISSING_REASON": "Kérlek, add meg az AFK státuszodnak az okát!",
+    "SUCCESS": "Te most AFK vagy (indok: {{reason}})",
     "DELETED": "**{{username}}**, your AFK status has just been deleted!",
-    "IS_AFK": "**{{user}}** is currently AFK, reason:\n```{{reason}}```"
+    "IS_AFK": "**{{user}}** jelenleg AFK, indok:\n```{{reason}}```"
 }

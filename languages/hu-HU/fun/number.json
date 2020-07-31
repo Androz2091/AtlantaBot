@@ -2,11 +2,11 @@
     "DESCRIPTION": "Find the right number!",
     "USAGE": "{{prefix}}number",
     "EXAMPLES": "{{prefix}}number",
-    "GAME_START": "Number chosen, you can start!",
+    "GAME_START": "Válassz egy számot, és elkezdheted!",
     "BIG": "{{user}} | My number is **bigger** than `{{number}}`!",
     "SMALL": "{{user}} | My number is **smaller** than `{{number}}`!",
-    "WON": "{{winner}} has won 10 credits!",
-    "DEFEAT": "No one could find the number! It was **{{number}}**!",
+    "WON": "{{winner}} nyertél 10 kreditet!",
+    "DEFEAT": "Senki sem találta meg a számot! Ez volt a szám: **{{number}}**!",
     "GAME_STATS": "🎉 | {{winner}} found the correct number! It was __**{{number}}**__!\n\n**Stats:**\n*-* __**Duration**__: {{time}}\n*-* __**Participants**__: {{participants}} ({{participantCount}})",
-    "GAME_RUNNING": "A game is already running on this server!"
+    "GAME_RUNNING": "A játék már fut ezen a szerveren!"
 }

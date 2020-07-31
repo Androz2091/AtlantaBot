@@ -1,11 +1,11 @@
 {
-    "DESCRIPTION": "Send your report to the channel defined for them!",
-    "USAGE": "{{prefix}}report [@user] [reason]",
-    "EXAMPLES": "{{prefix}}report @Androz#2091 Breaking the rules",
-    "MISSING_CHANNEL": "No report channel defined!",
+    "DESCRIPTION": "Küldj el jelentésedet a nekik meghatározott csatornába!",
+    "USAGE": "{{prefix}}report [@felhasználó] [indok]",
+    "EXAMPLES": "{{prefix}}report @Androz#2091 Szabályzat megszegése",
+    "MISSING_CHANNEL": "Nincs meghatározva jelentési csatorna!",
     "MISSING_REASON": "Please enter a report reason!",
-    "MISSING_USER": "Please mention the user you want report!",
-    "INVALID_USER": "You can't report yourself",
-    "SUCCESS": "Your report has been sent in {{channel}}!",
-    "TITLE": "Report - {{user}}"
+    "MISSING_USER": "Kérlek, említsd meg a jelentni kívánt felhasználót!",
+    "INVALID_USER": "Nem tudod jelenteni magadat",
+    "SUCCESS": "A te jelentésed elküldve a {{channel}} csatornába!",
+    "TITLE": "Jelentés - {{user}}"
 }

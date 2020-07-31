@@ -1,10 +1,10 @@
 {
-    "DESCRIPTION": "Add an emoji to the server!",
+    "DESCRIPTION": "Voeg een emoji toe aan de server!",
     "USAGE": "{{prefix}}addemoji [image-url] [name]",
     "EXAMPLES": "{{prefix}}addemoji https://via.placeholder.com/150 test-emoji",
-    "MISSING_URL": "Please provide an image URL!",
-    "MISSING_NAME": "Please provide an emoji name!",
+    "MISSING_URL": "Geef een afbeeldings-URL op!",
+    "MISSING_NAME": "Geef een emoji-naam op!",
     "INVALID_NAME": "The length of the emoji name must be between 2 and 32!",
     "SUCCESS": ":{{emojiName}}: added!",
-    "ERROR": "{{emojiName}} couldn't be added. Check if your server still has space for new emojis!"
+    "ERROR": "{{emojiName}} kan niet worden toegevoegd. Controleer of je server nog ruimte heeft voor nieuwe emoji's!"
 }

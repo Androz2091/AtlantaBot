@@ -1,5 +1,5 @@
 {
-    "DESCRIPTION": "Generates a \"scary\" image using Nekobot API",
-    "USAGE": "{{prefix}}scary (@member)",
+    "DESCRIPTION": "\"Ijesztő\" képet generálok a Nekobot API segítségével",
+    "USAGE": "{{prefix}}scary (@tag)",
     "EXAMPLES": "{{prefix}}scary\n{{prefix}}scary @Androz#2091"
 }

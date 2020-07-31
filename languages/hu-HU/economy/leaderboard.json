@@ -1,5 +1,5 @@
 {
-    "DESCRIPTION": "Shows users who have the most credits, levels or reputation points!",
+    "DESCRIPTION": "Megmutatja azokat a felhasználókat, akiknek a legtöbb kredite, szintje vagy hírnévpontja van!",
     "USAGE": "{{prefix}}leaderboard [rep/levels/credits]",
     "EXAMPLES": "{{prefix}}leaderboard credits\n{{prefix}}leaderboard levels",
     "MISSING_TYPE": "Please specify the leaderboard type between `credits`, `level` and `rep`",

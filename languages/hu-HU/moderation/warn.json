@@ -1,10 +1,10 @@
 {
-    "DESCRIPTION": "Warn a member in private messages",
-    "USAGE": "{{prefix}}warn [@member] [reason]",
+    "DESCRIPTION": "Figyelmeztesd a tagot privát üzenetben",
+    "USAGE": "{{prefix}}warn [@tag] [indok]",
     "EXAMPLES": "{{prefix}warn @Androz#2091 Dumb",
-    "MISSING_MEMBER": "Please specify the member you want to warn!",
-    "MISSING_REASON": "Please enter a reason!",
-    "WARNED_DM": "Hello {{username}},\nYou've just been warned on **{{server}}** by **{{moderator}}** for **{{reason}}**!",
+    "MISSING_MEMBER": "Kérlek, add meg a figyelmeztetni kívánt tagot!",
+    "MISSING_REASON": "Kérjük, írd be az okot!",
+    "WARNED_DM": "Szia {{username}},\nFigyelmeztetve lettél a **{{server}}** szerveren **{{moderator}}** álltal **{{reason}}** indokkal!",
     "WARNED": "**{{username}}** has been warned in private messages for **{{reason}}**!",
-    "CASE": "Warn | Case #{{caseNumber}}"
+    "CASE": "Figyelmeztetés | Ügy #{{caseNumber}}"
 }

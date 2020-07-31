@@ -1,15 +1,15 @@
 {
-    "DESCRIPTION": "Try to rob a member!",
-    "USAGE": "{{prefix}}rob [@member] [amount]",
+    "DESCRIPTION": "Próbálj meg egy tagot kirabolni!",
+    "USAGE": "{{prefix}}rob [@tag] [összeg]",
     "EXAMPLES": "{{prefix}rob @Androz#2091 100",
-    "YOURSELF": "You can't rob yourself!",
-    "MISSING_MEMBER": "You must specify a valid member to rob!",
+    "YOURSELF": "Nem rabolhatod el magadat!",
+    "MISSING_MEMBER": "Meg kell adnod egy érvényes tagot a rabláshoz!",
     "MISSING_AMOUNT": "Please enter a valid amount!",
     "NOT_ENOUGH_AUTHOR": "You must have more than **{{moneyMin}}** credits to attempt this robbery (you have **{{moneyCurrent}}** credits for now)!",
     "NOT_ENOUGH_MEMBER": "You can't try your robbery because **{{username}}** doesn't have as many credits in cash!",
-    "COOLDOWN": "🕵️ **{{username}}** is on guard.... Wait a while and try again!",
-    "ROB_WON_1": "🎉 | Congratulations! The police weren't fast enough to stop you from robbing **{{money}}** credits to **{{username}}**!",
-    "ROB_WON_2": "😕 | **{{username}}** ? Bad news. You just got robbed **{{money}}** credits!",
-    "ROB_LOSE_1": "🚔 | The police caught you in the act, impossible to deny, your fine is **{{fine}}** credits. **{{offset}}** offset credits will be paid to **{{username}}**.",
-    "ROB_LOSE_2": "🚓 | Bad news.... **{{username}}** called the police in time. Your fine is **{{fine}}** credits and **{{offset}}** offset credits will be paid to **{{username}}**."
+    "COOLDOWN": "🕵️ **{{username}}** az őr.... Várj egy kicsit, és próbáld újra!",
+    "ROB_WON_1": "🎉 | Gratulálok! A rendőrség nem volt elég gyors ahhoz, hogy megakadályozza **{{money}}** kredit ellopását **{{username}}** felhasználótól!",
+    "ROB_WON_2": "😕 | **{{username}}** ? Rossz hír. Kiraboltak téged **{{money}}** kredittel!",
+    "ROB_LOSE_1": "🚔 | A rendőrség elkapott téged a cselekedetből, lehetetlen tagadni, a bírságod **{{fine}}** kredit. **{{offset}}** ellopott kredit visszakerült **{{username}}** felhasználóhoz.",
+    "ROB_LOSE_2": "🚓 | Rossz hír.... **{{username}}** időben felhívta a rendőrséget. Bírságod **{{fine}}** kredit és **{{offset}}** kredit került befizetésre **{{username}}** felhasználónak."
 }

@@ -1,13 +1,13 @@
 {
     "DESCRIPTION": "Shows information about the server!",
-    "USAGE": "{{prefix}}serverinfo [ID/Name]",
+    "USAGE": "{{prefix}}serverinfo [ID/Név]",
     "EXAMPLES": "{{prefix}}serverinfo Atlanta\n{{prefix}}serverinfo",
-    "AFK_CHANNEL": "AFK channel",
-    "NO_AFK_CHANNEL": "No AFK channel",
-    "MEMBERS": "{{count}} members",
-    "BOTS": "{{count}} bots",
-    "BOOSTS": "Boosts count",
-    "TEXT_CHANNELS": "{{count}} text",
-    "VOICE_CHANNELS": "{{count}} voice",
-    "CAT_CHANNELS": "{{count}} categories"
+    "AFK_CHANNEL": "AFK csatora",
+    "NO_AFK_CHANNEL": "Nincs AFK csatorna",
+    "MEMBERS": "{{count}} felhasználók",
+    "BOTS": "{{count}} botok",
+    "BOOSTS": "Kiemelési szám",
+    "TEXT_CHANNELS": "{{count}} szöveg",
+    "VOICE_CHANNELS": "{{count}} hang",
+    "CAT_CHANNELS": "{{count}} kategoriák"
 }

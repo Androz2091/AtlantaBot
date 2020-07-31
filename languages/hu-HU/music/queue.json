@@ -1,6 +1,6 @@
 {
-    "DESCRIPTION": "Shows the server queue",
+    "DESCRIPTION": "Szerver várólista megtekintése",
     "USAGE": "{{prefix}}queue",
     "EXAMPLES": "{{prefix}}queue",
-    "TITLE": "Server Queue (next 20 tracks)"
+    "TITLE": "Szerver Várólista (következő 20 zene)"
 }

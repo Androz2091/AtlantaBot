@@ -1,5 +1,5 @@
 {
-    "DESCRIPTION": "Generates a \"facepalm\" image using canvas",
-    "USAGE": "{{prefix}}facepalm (@member)",
+    "DESCRIPTION": "\"Captcha\" képet hozok létre vászon használatával",
+    "USAGE": "{{prefix}}facepalm (@tag)",
     "EXAMPLES": "{{prefix}}facepalm\n{{prefix}}facepalm Androz#2091"
 }

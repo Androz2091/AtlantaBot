@@ -1,9 +1,9 @@
 {
-    "DESCRIPTION": "Send your suggestion to the defined channel!",
-    "USAGE": "{{prefix}}suggest [message]",
-    "EXAMPLES": "{{prefix}}suggest New channel #offtopic please",
-    "MISSING_CHANNEL": "No suggestion channel defined!",
-    "MISSING_CONTENT": "Please enter a suggestion!",
-    "TITLE": "Suggestion - {{user}}",
-    "SUCCESS": "Your suggestion is being voted in {{channel}}!"
+    "DESCRIPTION": "Küldd el a javaslatodat a megadott csatornára!",
+    "USAGE": "{{prefix}}suggest [üzenet]",
+    "EXAMPLES": "{{prefix}}suggest Új csatorna #offtopic kérem",
+    "MISSING_CHANNEL": "Nincs javaslat csatorna definiálva!",
+    "MISSING_CONTENT": "Kérlek, írj be egy javaslatot!",
+    "TITLE": "Javaslat - {{user}}",
+    "SUCCESS": "Az javaslatodra a {{channel}} csatornában lehet szavazni!"
 }

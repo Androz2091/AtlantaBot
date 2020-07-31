@@ -4,7 +4,7 @@
     "EXAMPLES": "{{prefix}}fortnite pc Ninja",
     "MISSING_PLATFORM": "Specifica una piattaforma tra `psn`, `pc` o `xbl`!",
     "MISSING_USERNAME": "Inserisci un nome utente valido di Epic Games!",
-    "NOT_FOUND": "{{search}}` non è stato trovato nella piattaforma `{{platform}}`!",
+    "NOT_FOUND": "`{{search}}` was not found on `{{platform}}`!",
     "TITLE": "{{username}} Statistiche di Fortnite",
     "AVERAGE_KILLS": "UCCISIONI/PARTITA",
     "AVERAGE_KILL": "UCCISIONE/PARTITA",

@@ -1,8 +1,8 @@
 {
-    "DESCRIPTION": "Change your biography!",
-    "USAGE": "{{prefix}}setbio [biography]",
-    "EXAMPLES": "{{prefix}}setbio My name is Jake, I'm 19 and I love programming!",
-    "MISSING": "You must specify a biography!",
-    "MAX_CHARACT": "Your biography must not exceed 500 characters!",
-    "SUCCESS": "Your biography has been modified!"
+    "DESCRIPTION": "Változtasd meg az életrajzodat!",
+    "USAGE": "{{prefix}}setbio [életrajz]",
+    "EXAMPLES": "{{prefix}}setbio A nevem Jake, 19 éves vagyok és szeretem a programozást!",
+    "MISSING": "Meg kell adnod az életrajzodat!",
+    "MAX_CHARACT": "Életrajzod nem haladhatja meg az 500 karaktert!",
+    "SUCCESS": "Életrajzod módosult!"
 }

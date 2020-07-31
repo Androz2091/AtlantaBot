@@ -1,16 +1,16 @@
 {
     "DESCRIPTION": "I'm telling you the truth!",
-    "USAGE": "{{prefix}}8ball [question]",
-    "EXAMPLES": "{{prefix}}8ball Is Atlanta the best Discord bot?",
+    "USAGE": "{{prefix}}8ball [kérdés]",
+    "EXAMPLES": "{{prefix}}8ball Az Atlanta a legjobb Discord bot?",
     "ERR_QUESTION": "You must enter a question!",
-    "RESPONSE_1": "I'm sure of it.",
-    "RESPONSE_2": "it's definitely safe.",
-    "RESPONSE_3": "yes, definitely.",
-    "RESPONSE_4": "better not tell you now.",
-    "RESPONSE_5": "ask again later.",
-    "RESPONSE_6": "don't count on it.",
-    "RESPONSE_7": "I don't think.",
-    "RESPONSE_8": "my sources say no.",
-    "RESPONSE_9": "no.",
-    "RESPONSE_10": "outlook not so good."
+    "RESPONSE_1": "Biztos vagyok benne.",
+    "RESPONSE_2": "Ez határozottan biztonságos.",
+    "RESPONSE_3": "Igen határozottan.",
+    "RESPONSE_4": "Jobb, ha nem mondom most.",
+    "RESPONSE_5": "Később kérdezd újra.",
+    "RESPONSE_6": "Ne számíts rá.",
+    "RESPONSE_7": "Nem hiszem.",
+    "RESPONSE_8": "A forrásom nem.",
+    "RESPONSE_9": "Nem.",
+    "RESPONSE_10": "A kilátások nem olyan jók."
 }

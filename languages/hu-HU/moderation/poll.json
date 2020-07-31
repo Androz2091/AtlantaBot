@@ -1,8 +1,8 @@
 {
-    "DESCRIPTION": "Launch a survey in the current channel!",
-    "USAGE": "{{prefix}}poll [question]",
+    "DESCRIPTION": "Indíts felmérést az aktuális csatornára!",
+    "USAGE": "{{prefix}}poll [kérdés]",
     "EXAMPLES": "{{prefix}}poll Is the Earth flat?",
-    "MISSING_QUESTION": "Please specify a question!",
-    "REACT": "React with {{success}} or {{error}}!",
-    "TITLE": "📊 Poll:"
+    "MISSING_QUESTION": "Kérlek, adj meg a kérdést!",
+    "REACT": "Reagálj {{success}} vagy {{error}}!",
+    "TITLE": "📊 Közvélemény kutatás:"
 }

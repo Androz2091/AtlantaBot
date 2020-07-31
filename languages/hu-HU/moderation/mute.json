@@ -1,9 +1,9 @@
 {
     "DESCRIPTION": "Prevents a member from sending messages and connecting to a voice chat room for a defined period of time!",
-    "USAGE": "{{prefix}}mute [@member] [time]",
+    "USAGE": "{{prefix}}mute [@tag] [idő]",
     "EXAMPLES": "{{prefix}}mute @Androz#2091 Spam",
-    "MISSING_MEMBER": "Please specify a valid member to mute!",
+    "MISSING_MEMBER": "Kérlek, adj meg egy érvényes tagot a némításhoz!",
     "MUTED_DM": "Hello {{username}},\nYou've just been muted on **{{server}}** by **{{moderator}}** for **{{time}}** because of **{{reason}}**!",
     "MUTED": "**{{username}}** is now muted for **{{time}}** because of **{{reason}}**!",
-    "CASE": "Mute | Case #{{count}}"
+    "CASE": "Némítás | Ügy #{{count}}"
 }
