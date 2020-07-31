@@ -1,6 +1,6 @@
 {
-    "DESCRIPTION": "Pause the current song!",
+    "DESCRIPTION": "Jelenlegi dal megállítása!",
     "USAGE": "{{prefix}}pause",
     "EXAMPLES": "{{prefix}}pause",
-    "SUCCESS": "⏸️ Music paused."
+    "SUCCESS": "⏸️ Zene megállítva."
 }
