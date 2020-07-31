@@ -1,8 +1,8 @@
 {
-    "DESCRIPTION": "Set the server prefix!",
+    "DESCRIPTION": "Stel de server prefix in!",
     "USAGE": "{{prefix}}setprefix [prefix]",
     "EXAMPLES": "{{prefix}}setprefix +",
-    "MISSING_PREFIX": "Please enter a valid prefix!",
-    "TOO_LONG": "The prefix shouldn't exceed 5 characters!",
+    "MISSING_PREFIX": "Voer een geldig prefix in!",
+    "TOO_LONG": "De prefix mag niet langer zijn dan 5 tekens!",
     "SUCCESS": "The bot prefix has been set to `{{prefix}}`!"
 }
