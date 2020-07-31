@@ -1,5 +1,5 @@
 {
-    "DESCRIPTION": "Gets a random FML",
+    "DESCRIPTION": "Ottieni un FML casuale",
     "USAGE": "{{prefix}}fml",
     "EXAMPLES": "{{prefix}}fml",
     "FOOTER": "blague.xyz | By Skiz#0001"
