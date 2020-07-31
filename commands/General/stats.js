@@ -39,7 +39,7 @@ class Stats extends Command {
 			}))
 			.addField(message.translate("general/stats:CREDITS_TITLE"), message.translate("general/stats:CREDITS_CONTENT", {
 				donators: [ "`Marty#0303` (**GOD**)", "`Reese's Cup#9637` (**SUPPORTER**)", "`\"</Synaro/>\"#2020` (**SUPPORTER**)", "`✰Donjͥบaͣnͫ✰#7777` (**SUPPORTER**)" ].join("\n"),
-				translators: [ "`Lil Ethan. 💤#1337` (:flag_fr:)", "`Mizuki#2477` (:flag_fr:)", "`shaynlink#9070` (:flag_fr:)", "`Androz#2091` (:flag_fr:)", "`kevinava#4941` (:flag_es:)" ].join("\n")
+				translators: [ "`Lil Ethan. 💤#1337` (:flag_fr:)", "`Mizuki#2477` (:flag_fr:)", "`shaynlink#9070` (:flag_fr:)", "`Androz#2091` (:flag_fr:)", "`kevinava#4941` (:flag_es:)", "`Gaming Mineblox#0256` (:flag_nl:)", "`!Slayx#0917` (:flag_it:)", "`Melocet#1645` (:flag_tr:)", "`Kobayakawa Takakage#7414` (:flag_za:)", "`sarkanyka444#7446` (:flag_hu:)" ].join("\n")
 			}));
 
 		statsEmbed.addField(this.client.customEmojis.link+" "+message.translate("general/stats:LINKS_TITLE"), message.translate("misc:STATS_FOOTER", {
