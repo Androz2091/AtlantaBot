@@ -1,8 +1,8 @@
 {
-    "DESCRIPTION": "Withdraw money!",
+    "DESCRIPTION": "Geld opnemen!",
     "USAGE": "{{prefix}}withdraw [amount]",
     "EXAMPLES": "{{prefix}}withdraw 400",
-    "MISSING_AMOUNT": "Please specify an amount to be withdrawn!",
+    "MISSING_AMOUNT": "Geef een bedrag op dat moet worden opgenomen!",
     "NO_CREDIT": "You don't have any credit in your bank!",
     "NOT_ENOUGH": "You need at least `{{money}}` credit(s)!",
     "SUCCESS": "**{{money}}** credit(s) withdrawn!"
