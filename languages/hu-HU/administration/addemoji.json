@@ -1,10 +1,10 @@
 {
-    "DESCRIPTION": "Add an emoji to the server!",
-    "USAGE": "{{prefix}}addemoji [image-url] [name]",
-    "EXAMPLES": "{{prefix}}addemoji https://via.placeholder.com/150 test-emoji",
-    "MISSING_URL": "Please provide an image URL!",
-    "MISSING_NAME": "Please provide an emoji name!",
-    "INVALID_NAME": "The length of the emoji name must be between 2 and 32!",
-    "SUCCESS": ":{{emojiName}}: added!",
-    "ERROR": "{{emojiName}} couldn't be added. Check if your server still has space for new emojis!"
+    "DESCRIPTION": "Adj hozzá hangulatjelet a szerverhez!",
+    "USAGE": "{{prefix}}addemoji [kép-url] [név]",
+    "EXAMPLES": "{{prefix}}addemoji https://via.placeholder.com/150 teszt-emoji",
+    "MISSING_URL": "Kérlek, add meg a kép URL-jét!",
+    "MISSING_NAME": "Add meg a hangulatjel nevét!",
+    "INVALID_NAME": "Az emoji név hosszának 2 és 32 között kell lennie!",
+    "SUCCESS": ":{{emojiName}}: hozzáadva!",
+    "ERROR": "{{emojiName}} hangulatjelet nem lehetett hozzáadni. Ellenőrizd, hogy a szerveren van-e még hely új hangulatjelek számára!"
 }
