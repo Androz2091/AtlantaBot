@@ -8,7 +8,7 @@
 [![](https://img.shields.io/badge/patreon-donate-orange.svg)](https://www.patreon.com/androz2091)
 [![](https://www.codefactor.io/repository/github/Androz2091/AtlantaBot/badge)](https://www.codefactor.io/repository/github/Androz2091/AtlantaBot)
 
-> This bot is used by more than 90,000 Discord users and more than 500 servers.
+> This bot is used by more than 130,000 Discord users and more than 700 servers.
 
 Atlanta is a open source Discord bot coded in JavaScript with [Discord.js](https://discord.js.org) and [Mongoose](https://mongoosejs.com/docs/api.html) by [Androz2091](https://github.com/Androz2091).  
 Feel free to add a star ⭐ to the repository to promote the project!
