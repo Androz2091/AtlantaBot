@@ -1,16 +1,16 @@
 {
-    "DESCRIPTION": "Toggle goodbye messages!",
+    "DESCRIPTION": "Váltás az elbúcsúzó üzenetre!",
     "USAGE": "{{prefix}}goodbye",
     "EXAMPLES": "{{prefix}}goodbye",
-    "DEFAULT_MESSAGE": "Goodbye {user}! We're now {membercount} without you... :'(",
-    "TEST_SUCCESS": "Test executed!",
-    "FORM_1": "**In which channel will goodbye messages be sent?**\n\n:arrow_right_hook: *Answer by mentioning a channel!*",
+    "DEFAULT_MESSAGE": "Viszlát {user}! Most ennyien vagyunk nélküled {membercount}...: '(",
+    "TEST_SUCCESS": "A teszt végrehajtva!",
+    "FORM_1": "**Melyik csatornán küldjek elbúcsúzó üzeneteket?**\n\n:arrow_right_hook: *Válasz egy csatorna megemlítésével!*",
     "FORM_2": "**Please enter your desired welcome message.**\n\n**If you want to:**\n*-* __Mention the user__: {user}\n*-* __Get the member count__: {membercount}\n*-* __Get the server name__: {server}\n\n**Usage example:**\nGoodbye {user}, we will miss you! We are now {membercount}.\n:fast_forward:\nGoodbye {{author}}, we will miss you! We are now {{memberCount}}.",
     "FORM_3": "**Do you want a great goodbye image too?**\n\n:arrow_right_hook: *Answer by sending `yes` or `no`!*",
     "FORM_SUCCESS": "**Alright, done!**\n\n:arrow_right_hook: *Answer by sending `{{prefix}}goodbye test` to preview your custom goodbye message!*",
-    "MAX_CHARACT": "Your message must not exceed 1800 characters!",
+    "MAX_CHARACT": "Az üzenet nem haladhatja meg a 1800 karaktert!",
     "DISABLED": "**Goodbye messages have just been disabled!**\n\n:arrow_right_hook: *Answer by sending `{{prefix}}configuration` to see the updated server configuration!*",
-    "IMG_GOODBYE": "Leaving from {{server}}!",
-    "IMG_NB": "- {{memberCount}}th member!",
-    "TITLE": "GOODBYE"
+    "IMG_GOODBYE": "Távozott a {{server}} szerverről!",
+    "IMG_NB": "- {{memberCount}} felhasználó!",
+    "TITLE": "ELBÚCSÚZÓ"
 }
