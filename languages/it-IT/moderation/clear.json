@@ -1,10 +1,10 @@
 {
-    "DESCRIPTION": "Quickly delete multiple messages!",
-    "USAGE": "{{prefix}}clear [number-of-messages] (@member)",
-    "EXAMPLES": "{{prefix}clear 10\n{{prefix}clear 10 @Androz#2091",
-    "MISSING_AMOUNT": "You must specify a number of messages to delete!",
-    "ALL_CONFIRM": "All the channel messages will be deleted! To confirm type `-confirm`",
-    "CHANNEL_CLEARED": "Channel cleared!",
-    "CLEARED": "**{{amount}}** were messages deleted!",
-    "CLEARED_MEMBER": "**{{amount}}** messages of **{{username}}** were deleted!"
+    "DESCRIPTION": "Elimina rapidamente più messaggi!",
+    "USAGE": "{{prefix}}clear [numero-di-messaggi] (@membro)",
+    "EXAMPLES": "{{prefix}}clear 10\n{{prefix}}clear 10 @Androz#2091",
+    "MISSING_AMOUNT": "Devi specificare un numero di messaggi da eliminare!",
+    "ALL_CONFIRM": "Tutti i messaggi del canale verranno eliminati! Per confermare digita `-confirm`",
+    "CHANNEL_CLEARED": "Canale pulito!",
+    "CLEARED": "**{{amount}}** sono stati i messaggi eliminati!",
+    "CLEARED_MEMBER": "**{{amount}}** messaggi di **{{username}}** sono stati cancellati!"
 }
