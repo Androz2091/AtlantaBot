@@ -1,6 +1,6 @@
 {
-    "DESCRIPTION": "Generates a \"phcomment\" image using Nekobot API",
-    "USAGE": "{{prefix}}phcomment (@member) [text]",
-    "EXAMPLES": "{{prefix}}phcomment Hi!\n{{prefix}}phcomment @Androz#2091 Hi!",
+    "DESCRIPTION": "\"Nevezetes\" képet generálok a Nekobot API segítségével",
+    "USAGE": "{{prefix}}phcomment (@tag) [szöveg]",
+    "EXAMPLES": "{{prefix}}phcomment Szia!\n{{prefix}}phcomment @Androz#2091 Szia!",
     "MISSING_TEXT": "Please specify the comment text!"
 }
