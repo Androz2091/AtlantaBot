@@ -1,6 +1,6 @@
 {
-    "DESCRIPTION": "Check if members have a Discord server link in their status!",
+    "DESCRIPTION": "Controlla se i membri hanno un collegamento al server Discord nel loro stato!",
     "USAGE": "{{prefix}}checkinvites",
     "EXAMPLES": "{{prefix}}checkinvites",
-    "NOBODY": "No member advertises in their status!"
+    "NOBODY": "Nessun membro fa pubblicità nel suo stato!"
 }
