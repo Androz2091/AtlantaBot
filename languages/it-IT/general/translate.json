@@ -1,9 +1,9 @@
 {
-    "DESCRIPTION": "Translate your text!",
-    "USAGE": "{{prefix}}translate [language] [message]",
-    "EXAMPLES": "{{prefix}}translate fr How are you ?",
-    "LIST_SENT": "The languages list has just been sent to you by private messages!",
-    "MISSING_LANGUAGE": "Please enter a language! To display the languages list, type `{{prefix}}translate langs-list`!",
-    "INVALID_LANGUAGE": "The language `{{search}}` does not exist! To display the languages list, type `{{prefix}}translate langs-list`!",
-    "MISSING_CONTENT": "Please enter a text to be translated!"
+    "DESCRIPTION": "Traduci il tuo testo!",
+    "USAGE": "{{prefix}}translate [lingua] [messaggio]",
+    "EXAMPLES": "{{prefix}}translate fr Come stai?",
+    "LIST_SENT": "L'elenco delle lingue ti è appena stato inviato nei messaggi privati!",
+    "MISSING_LANGUAGE": "Per favore, inserisci una lingua! Per visualizzare l'elenco delle lingue, digitare `{{prefix}}translate langs-list`!",
+    "INVALID_LANGUAGE": "La lingua `{{search}}` non esiste! Per visualizzare l'elenco delle lingue, digitare `{{prefix}}translate langs-list`!",
+    "MISSING_CONTENT": "Inserisci un testo da tradurre!"
 }
