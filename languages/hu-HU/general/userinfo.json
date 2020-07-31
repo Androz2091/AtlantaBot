@@ -1,11 +1,11 @@
 {
-    "DESCRIPTION": "Shows user information!",
-    "USAGE": "{{prefix}}userinfo (@user/userID)",
+    "DESCRIPTION": "A felhasználói információk megtekintése!",
+    "USAGE": "{{prefix}}userinfo (@tag/tagID)",
     "EXAMPLES": "{{prefix}}userinfo\n{{prefix}}userinfo @Androz#2091\n{{prefix}}userinfo 422820341791064085",
     "INVALID_USER": "No user on Discord has the `{{search}}` ID!",
-    "NO_GAME": "Not playing",
-    "NO_ROLE": "No role",
-    "NO_NICKNAME": "No nickname",
-    "MORE_ROLES": "and {{count}} others roles",
+    "NO_GAME": "Nem játszik",
+    "NO_ROLE": "Nincs rangja",
+    "NO_NICKNAME": "Nincs beceneve",
+    "MORE_ROLES": "és {{count}} más rangok",
     "BOT_STATS": "**{{votes}}** votes ([top.gg](https://top.gg))\n**{{servers}}** servers\n**{{shards}}** shards\nUsing **{{lib}}**"
 }
