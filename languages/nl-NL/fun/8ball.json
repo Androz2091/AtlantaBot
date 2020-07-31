@@ -1,16 +1,16 @@
 {
-    "DESCRIPTION": "I'm telling you the truth!",
+    "DESCRIPTION": "Ik vertel je de waarheid!",
     "USAGE": "{{prefix}}8ball [question]",
-    "EXAMPLES": "{{prefix}}8ball Is Atlanta the best Discord bot?",
+    "EXAMPLES": "{{prefix}}8ball Is GLXY de beste Discord bot?",
     "ERR_QUESTION": "You must enter a question!",
-    "RESPONSE_1": "I'm sure of it.",
-    "RESPONSE_2": "it's definitely safe.",
-    "RESPONSE_3": "yes, definitely.",
-    "RESPONSE_4": "better not tell you now.",
-    "RESPONSE_5": "ask again later.",
-    "RESPONSE_6": "don't count on it.",
-    "RESPONSE_7": "I don't think.",
-    "RESPONSE_8": "my sources say no.",
-    "RESPONSE_9": "no.",
-    "RESPONSE_10": "outlook not so good."
+    "RESPONSE_1": "Ik ben er zeker van.",
+    "RESPONSE_2": "Het is absoluut veilig.",
+    "RESPONSE_3": "Ja absoluut.",
+    "RESPONSE_4": "Het is beter om het jou nu niet te vertellen.",
+    "RESPONSE_5": "Vraag later opnieuw.",
+    "RESPONSE_6": "Reken er niet op.",
+    "RESPONSE_7": "Ik denk het niet.",
+    "RESPONSE_8": "Mijn bronnen zeggen nee.",
+    "RESPONSE_9": "Nee.",
+    "RESPONSE_10": "Vooruitzichten niet zo goed."
 }
