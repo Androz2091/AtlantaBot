@@ -3,8 +3,8 @@
     "USAGE": "{{prefix}}lyrics [song-name]",
     "EXAMPLES": "{{prefix}}lyrics Skyfall",
     "LYRICS_OF": "🎤 {{songName}} lyrics",
-    "AND_MORE": "\n**And more...**",
+    "AND_MORE": "\n**En meer...**",
     "REST": "Expand",
     "MISSING_SONG_NAME": "Please specify a song name!",
-    "NO_LYRICS_FOUND": "No lyrics found for `{{songName}}`!"
+    "NO_LYRICS_FOUND": "Geen songteksten gevonden voor `{{songName}}`!"
 }
