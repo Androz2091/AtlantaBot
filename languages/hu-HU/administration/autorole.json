@@ -5,6 +5,6 @@
     "MISSING_STATUS": "Adj meg egy érvényes értéket a következők között: `on` és `off`",
     "MISSING_ROLE": "Kérlek, adj meg egy érvényes rangot!",
     "SUCCESS_ENABLED": "Az Autorang engedélyezve! Az új tagok megkapják automatikusan a(z) **{{roleName}}** rangot.",
-    "ALREADY_DISABLED": "**Az autorole le van tiltva.**\n\n:arrow_right_hook: *Írd be a `{{prefix}}autorole on @Rang` parancsot hogy újra engedélyezve legyen a rang!*",
-    "SUCCESS_DISABLED": "**Autorole letíltva!**\n\n:arrow_right_hook: *Írd be a `{{prefix}}configuration` parancsot a frissített konfiguráció megtekintéséhez!*"
+    "ALREADY_DISABLED": "**The autorole is already disabled.**\n\n:arrow_right_hook: *Send `{{prefix}}autorole on @YourRole` to enable it again!*",
+    "SUCCESS_DISABLED": "**Autorole disabled!**\n\n:arrow_right_hook: *Send `{{prefix}}configuration` to see the updated configuration!*"
 }
