@@ -1,7 +1,7 @@
 {
     "DESCRIPTION": "Ban het genoemde lid!",
     "USAGE": "{{prefix}}ban [@user] (reden)",
-    "EXAMPLES": "{{prefix}ban @Androz#2091 Spam",
+    "EXAMPLES": "{{prefix}}ban @Androz#2091 Spam",
     "MISSING_MEMBER": "Geef een geldig lid op om te verbannen!",
     "YOURSELF": "Je kunt jezelf niet bestraffen!",
     "SUPERIOR": "You can't sanction or update a sanction for a member who has an higher or equal role hierarchy to yours!",
