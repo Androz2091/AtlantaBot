@@ -1,7 +1,7 @@
 {
     "DESCRIPTION": "Essayer de voler un membre !",
     "USAGE": "{{prefix}}rob [@member] [amount]",
-    "EXAMPLES": "{{prefix}rob @Androz#2091 100",
+    "EXAMPLES": "{{prefix}}rob @Androz#2091 100",
     "YOURSELF": "Vous ne pouvez pas vous voler vous-même !",
     "MISSING_MEMBER": "Vous devez spécifier un membre valide à voler !",
     "MISSING_AMOUNT": "Please enter a valid amount!",
