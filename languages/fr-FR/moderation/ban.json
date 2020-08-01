@@ -1,7 +1,7 @@
 {
     "DESCRIPTION": "Banni le membre mentionné !",
     "USAGE": "{{prefix}}ban [@user] (raison)",
-    "EXAMPLES": "{{prefix}ban @Androz#2091 Spam",
+    "EXAMPLES": "{{prefix}}ban @Androz#2091 Spam",
     "MISSING_MEMBER": "Veuillez préciser un utilisateur valide à ban !",
     "YOURSELF": "Vous ne pouvez pas vous sanctionner vous même !",
     "SUPERIOR": "You can't sanction or update a sanction for a member who has an higher or equal role hierarchy to yours!",
