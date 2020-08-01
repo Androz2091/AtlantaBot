@@ -87,7 +87,7 @@ class Giveaway extends Command {
 		} else if(status === "reroll"){
 			const messageID = args[1];
 			if(!messageID){
-				return message.error("moderation/giveaway:MISSING_ID_REROLL");
+				return message.error("moderation/giveaway:MISSING_ID");
 			}
 			this.client.giveawaysManager.reroll(messageID, {
 				congrat: message.translate("moderation/giveaway:REROLL_CONGRAT"),
@@ -102,7 +102,7 @@ class Giveaway extends Command {
 		} else if(status === "delete"){
 			const messageID = args[1];
 			if(!messageID){
-				return message.error("moderation/giveaway:MISSING_ID_DELETE");
+				return message.error("moderation/giveaway:MISSING_ID");
 			}
 			this.client.giveawaysManager.delete(messageID).then(() => {
 				return message.success("moderation/giveaway:GIVEAWAY_DELETED");
@@ -114,7 +114,7 @@ class Giveaway extends Command {
 		} else if(status === "end"){
 			const messageID = args[1];
 			if(!messageID){
-				return message.error("moderation/giveaway:MISSING_ID_END");
+				return message.error("moderation/giveaway:MISSING_ID");
 			}
 			try {
 				this.client.giveawaysManager.edit(messageID, {
