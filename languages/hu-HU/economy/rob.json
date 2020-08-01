@@ -1,7 +1,7 @@
 {
     "DESCRIPTION": "Próbálj meg egy tagot kirabolni!",
     "USAGE": "{{prefix}}rob [@tag] [összeg]",
-    "EXAMPLES": "{{prefix}rob @Androz#2091 100",
+    "EXAMPLES": "{{prefix}}rob @Androz#2091 100",
     "YOURSELF": "Nem rabolhatod el magadat!",
     "MISSING_MEMBER": "Meg kell adnod egy érvényes tagot a rabláshoz!",
     "MISSING_AMOUNT": "Please enter a valid amount!",
