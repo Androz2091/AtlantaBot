@@ -1,7 +1,7 @@
 {
     "DESCRIPTION": "Smuta il membro menzionato!",
     "USAGE": "{{prefix}}unmute [@membro]",
-    "EXAMPLES": "{{prefix}}unmute @Androz#209",
+    "EXAMPLES": "{{prefix}}unmute @Androz#2091",
     "MISSING_MEMBER": "Si prega di specificare il membro che si desidera smutare!",
     "NOT_MUTED": "**{{username}}** non è mutato in questo server!",
     "SUCCESS": "**{{username}}** è stato appena smutato!",
