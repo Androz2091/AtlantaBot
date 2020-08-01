@@ -1,7 +1,7 @@
 {
     "DESCRIPTION": "Figyelmeztesd a tagot privát üzenetben",
     "USAGE": "{{prefix}}warn [@tag] [indok]",
-    "EXAMPLES": "{{prefix}warn @Androz#2091 Dumb",
+    "EXAMPLES": "{{prefix}}warn @Androz#2091 Dumb",
     "MISSING_MEMBER": "Kérlek, add meg a figyelmeztetni kívánt tagot!",
     "MISSING_REASON": "Kérjük, írd be az okot!",
     "WARNED_DM": "Szia {{username}},\nFigyelmeztetve lettél a **{{server}}** szerveren **{{moderator}}** álltal **{{reason}}** indokkal!",
