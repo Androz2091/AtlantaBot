@@ -1,7 +1,7 @@
 {
     "DESCRIPTION": "A megemlített felhasználó némításának feloldása!",
     "USAGE": "{{prefix}}unmute [@tag]",
-    "EXAMPLES": "{{prefix}unmute @Androz#2091",
+    "EXAMPLES": "{{prefix}}unmute @Androz#2091",
     "MISSING_MEMBER": "Kérlek, add meg a tagot, amelyet szeretnél némítani!",
     "NOT_MUTED": "**{{username}}** is not muted on this server!",
     "SUCCESS": "**{{username}}** némítása fel lett oldva!",
