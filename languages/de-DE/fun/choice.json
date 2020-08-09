@@ -1,0 +1,9 @@
+{
+    "DESCRIPTION": "Helps you choose between the given choices!",
+    "USAGE": "{{prefix}}choice [choice1/choice2/etc...]",
+    "EXAMPLES": "{{prefix}}choice Fire/Wind/Water",
+    "MISSING": "You must enter more than two choices!\n(or use the `flip` command instead)",
+    "EMPTY": "One of your choices seems to be empty.... Please try again!",
+    "PROGRESS": "Choice being made...",
+    "DONE": "Here's my choice:"
+}
