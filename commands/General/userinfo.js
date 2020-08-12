@@ -51,7 +51,7 @@ class Userinfo extends Command {
 
 		const embed = new Discord.MessageEmbed()
 			.setAuthor(user.tag, user.displayAvatarURL())
-			.setThumbnail(user.displayAvatarURL())
+			.setThumbnail(user.displayAvatarURL({ dynamic: true }))
 			.addField(":man: "+message.translate("common:USERNAME"), user.username, true)
 			.addField(this.client.customEmojis.discriminator+" "+message.translate("common:DISCRIMINATOR"), user.discriminator, true)
 			.addField(this.client.customEmojis.bot+" "+message.translate("common:ROBOT"), (user.bot ? message.translate("common:YES") : message.translate("common:NO")), true)
