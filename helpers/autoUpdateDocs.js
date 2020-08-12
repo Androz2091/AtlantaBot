@@ -48,8 +48,10 @@ module.exports = {
 			text += `${table(arrCat)}\n\n`;
 		});
 		const fs = require("fs");
-		fs.writeFileSync("./docs/commands.md", text);
-		client.logger.log("Docs updated!");
+		if(fs.existsSync("./docs")){
+			fs.writeFileSync("./docs/commands.md", text);
+			client.logger.log("Docs updated!");
+		}
 	}
 
 };
