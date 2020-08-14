@@ -11,6 +11,17 @@ const delay = (ms) => new Promise((r) => setTimeout(r, ms));
 
 const checks = [
 	() => {
+		console.log("\n\nEnvironnement");
+		return new Promise((res) => {
+			if(parseInt(process.version.split(".")[0].split("v")[1]) >= 12){
+				success("node.js version should be equal or higher than v12");
+			} else {
+				error("node.js version should be equal or higher than v12");
+			}
+			res();
+		});
+	},
+	() => {
 		console.log("\n\nDiscord Bot");
 		return new Promise((res) => {
 			const Discord = require("discord.js");
