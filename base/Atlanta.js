@@ -1,6 +1,6 @@
 const { MessageEmbed } = require("discord.js");
 const { GiveawaysManager } = require("discord-giveaways");
-const { Player } = require("../../discord-music");
+const { Player } = require("discord-player");
 const { Client, Collection } = require("discord.js");
 const { Client: Joker } = require("blague.xyz");
 
