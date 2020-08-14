@@ -1,0 +1,9 @@
+{
+    "DESCRIPTION": "Enable or disable a filter!",
+    "USAGE": "{{prefix}}filter [filter]",
+    "EXAMPLES": "{{prefix}}filter vaporwave",
+    "MISSING_FILTER": "Please specify a valid filter to enable or disable! (or send `{{prefix}}filters` to get the statuses of the filters)",
+    "UNKNOWN_FILTER": "This filter doesn't exist! Send `{{prefix}}filters` to get the list!",
+    "ADDING_FILTER": "I'm adding the filter to the music, please wait... Note: the shorter the music, the faster it will be.",
+    "REMOVING_FILTER": "I'm removing the filter to the music, please wait... Note: the shorter the music, the faster it will be."
+}

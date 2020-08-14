@@ -1,5 +1,6 @@
+const { MessageEmbed } = require("discord.js");
 const { GiveawaysManager } = require("discord-giveaways");
-const { Player } = require("discord-player");
+const { Player } = require("../../discord-music");
 const { Client, Collection } = require("discord.js");
 const { Client: Joker } = require("blague.xyz");
 
@@ -57,6 +58,72 @@ class Atlanta extends Client {
 		this.player = new Player(this, {
 			leaveOnEmpty: false
 		});
+		this.player
+			.on("trackStart", (message, track) => {
+				console.log("received");
+				message.success("music/play:NOW_PLAYING", {
+					songName: track.title
+				});
+			})
+			.on("playlistStart", (message, queue, playlist, track) => {
+				message.channel.send(this.customEmojis.success+" | "+message.translate("music/play:PLAYING_PLAYLIST", {
+					playlistTitle: playlist.title,
+					playlistEmoji: this.customEmojis.playlist,
+					songName: track.title
+				}));
+			})
+			.on("searchResults", (message, query, tracks) => {
+				const embed = new MessageEmbed()
+					.setDescription(tracks.map((t, i) => `**${++i} -** ${t.title}`).join("\n"))
+					.setFooter(message.translate("music/play:RESULTS_FOOTER"))
+					.setColor(this.config.embed.color);
+				message.channel.send(embed);
+			})
+			.on("searchInvalidResponse", (message, query, tracks) => {
+				message.error("misc:INVALID_NUMBER_RANGE", {
+					min: 1,
+					max: tracks.length
+				});
+			})
+			.on("searchCancel", (message) => {
+				message.error("misc:TIMES_UP");
+			})
+			.on("botDisconnect", (message) => {
+				message.error("music/play:STOP_DISCONNECTED");
+			})
+			.on("noResults", (message) => {
+				message.error("music/play:NO_RESULT");
+			})
+			.on("queueEnd", (message) => {
+				message.channel.send("music/play:QUEUE_ENDED");
+			})
+			.on("playlistAdd", (message, queue, playlist) => {
+				message.success("music/play:ADDED_QUEUE_COUNT", {
+					songCount: playlist.items.length
+				});
+			})
+			.on("trackAdd", (message, queue, track) => {
+				message.success("music/play:ADDED_QUEUE", {
+					songName: track.title
+				});
+			})
+			.on("channelEmpty", (message) => {
+				// do nothing, leaveOnEmpty is not enabled
+			})
+			.on("error", (message, error) => {
+				switch (error) {
+					case "NotConnected":
+						message.error("music/play:NO_VOICE_CHANNEL");
+						break;
+					case "UnableToJoin":
+						message.error("music/play:VOICE_CHANNEL_CONNECT");
+						break;
+					case "NotPlaying":
+						message.error("music/play:NOT_PLAYING");
+						break;
+				}
+			});
+
 
 		this.giveawaysManager = new GiveawaysManager(this, {
 			storage: "../giveaways.json",

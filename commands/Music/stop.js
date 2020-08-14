@@ -20,7 +20,7 @@ class Stop extends Command {
 
 	async run (message, args, data) {
 
-		const queue = await this.client.player.getQueue(message.guild.id);
+		const queue = await this.client.player.getQueue(message);
 
 		const voice = message.member.voice.channel;
 		if(!voice){
@@ -67,7 +67,7 @@ class Stop extends Command {
 			collector.on("collect", (reaction) => {
 				const haveVoted = reaction.count-1;
 				if(haveVoted >= mustVote){
-					this.client.player.stop(message.guild.id);
+					this.client.player.stop(message);
 					embed.setDescription(message.translate("music/stop:SUCCESS"));
 					m.edit(embed);
 					collector.stop(true);
@@ -87,7 +87,7 @@ class Stop extends Command {
 			});
 
 		} else {
-			this.client.player.stop(message.guild.id);
+			this.client.player.stop(message);
 			embed.setDescription(message.translate("music/stop:SUCCESS"));
 			m.edit(embed);
 		}

@@ -19,7 +19,7 @@ class Pause extends Command {
 
 	async run (message) {
 
-		const queue = this.client.player.getQueue(message.guild.id);
+		const queue = this.client.player.getQueue(message);
 
 		const voice = message.member.voice.channel;
 		if (!voice){
@@ -31,7 +31,7 @@ class Pause extends Command {
 		}
 
 		// Gets the current song
-		await this.client.player.pause(message.guild.id);
+		await this.client.player.pause(message);
         
 		// Send the embed in the current channel
 		message.sendT("music/pause:SUCCESS");

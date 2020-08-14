@@ -1,5 +1,6 @@
 const Command = require("../../base/Command.js"),
-	Discord = require("discord.js");
+	Discord = require("discord.js"),
+	Pagination = require("discord-paginationembed");
 
 class Queue extends Command {
 
@@ -25,27 +26,36 @@ class Queue extends Command {
 			return message.error("music/play:NO_VOICE_CHANNEL");
 		}
         
-		const queue = this.client.player.getQueue(message.guild.id);
+		const queue = this.client.player.getQueue(message);
 
 		if(!queue){
-			return message.error("music:play:NOT_PLAYING");
+			return message.error("music/play:NOT_PLAYING");
 		}
 
-		const tracks = [ ...[ queue.playing ], ...queue.tracks ];
-		if(tracks.length > 20) tracks.splice(20);
-		const sQueue = tracks.map((track, i) => {
-			return `${i === 0 ? "\nCurrently playing...\n" : ""} **${message.translate("common:TITLE")}**: ${track.name}\n**${message.translate("common:AUTHOR")}**: ${track.author}`;
-		});
+		if(queue.tracks.length === 1){
+			const embed = new Discord.MessageEmbed()
+				.setColor(data.config.embed.color)
+				.setAuthor(message.translate("music/queue:TITLE"), message.guild.iconURL({ dynamic: true }))
+				.addField(message.translate("music/np:CURRENTLY_PLAYING"), `[${queue.tracks[0].title}](${queue.tracks[0].url})\n*Requested by ${queue.tracks[0].requestedBy}*\n`);
+			return message.channel.send(embed);
+		}
+		let i = 0;
 
-		// Generate discord embed to display the songs list
-		const embed = new Discord.MessageEmbed()
-			.addField(this.client.customEmojis.playlist+" "+message.translate("music/queue:TITLE"), sQueue.join("\n-------\n"))
+		const FieldsEmbed = new Pagination.FieldsEmbed();
+
+		FieldsEmbed.embed
 			.setColor(data.config.embed.color)
-			.setFooter(data.config.embed.footer)
-			.setTimestamp();
-        
-		// Then, send the embed in the current channel
-		message.channel.send(embed);
+			.setAuthor(message.translate("music/queue:TITLE"), message.guild.iconURL({ dynamic: true }))
+			.addField(message.translate("music/np:CURRENTLY_PLAYING"), `[${queue.tracks[0].title}](${queue.tracks[0].url})\n*Requested by ${queue.tracks[0].requestedBy}*\n`);
+		
+		FieldsEmbed.setArray(queue.tracks[1] ? queue.tracks.slice(1, queue.tracks.length) : [])
+			.setAuthorizedUsers([message.author.id])
+			.setChannel(message.channel)
+			.setElementsPerPage(5)
+			.setPageIndicator(true)
+			.formatField("Queue", (track) => `${++i}. [${track.title}](${track.url})\n*Requested by ${track.requestedBy}*\n`);
+ 
+		FieldsEmbed.build();
         
 	}
 

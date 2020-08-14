@@ -20,7 +20,7 @@ class Skip extends Command {
 
 	async run (message, args, data) {
         
-		const queue = this.client.player.getQueue(message.guild.id);
+		const queue = this.client.player.getQueue(message);
 
 		const voice = message.member.voice.channel;
 		if (!voice){
@@ -73,7 +73,7 @@ class Skip extends Command {
 			collector.on("collect", (reaction) => {
 				const haveVoted = reaction.count-1;
 				if(haveVoted >= mustVote){
-					this.client.player.skip(message.guild.id);
+					this.client.player.skip(message);
 					embed.setDescription(message.translate("music/skip:SUCCESS"));
 					m.edit(embed);
 					collector.stop(true);
@@ -94,7 +94,7 @@ class Skip extends Command {
 			});
 
 		} else {
-			this.client.player.skip(message.guild.id);
+			this.client.player.skip(message);
 			embed.setDescription(message.translate("music/skip:SUCCESS"));
 			m.edit(embed);
 		}
