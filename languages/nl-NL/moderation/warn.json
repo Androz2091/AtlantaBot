@@ -1,7 +1,7 @@
 {
     "DESCRIPTION": "Waarschuw een lid in privéberichten",
     "USAGE": "{{prefix}}warn [@member] [reason]",
-    "EXAMPLES": "{{prefix}warn @Androz#2091 Dumb",
+    "EXAMPLES": "{{prefix}}warn @Androz#2091 Dumb",
     "MISSING_MEMBER": "Geef het lid op dat je wilt waarschuwen!",
     "MISSING_REASON": "Geef een reden op!",
     "WARNED_DM": "Hallo {{username}},\nJe bent zojuist gewaarschuwd op **{{server}}** door **{{moderator}}** voor **{{reason}}**!",

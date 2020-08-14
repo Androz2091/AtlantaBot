@@ -1,7 +1,7 @@
 {
     "DESCRIPTION": "Probeer een lid te beroven!",
     "USAGE": "{{prefix}}rob [@membre] [amount]",
-    "EXAMPLES": "{{prefix}rob @Androz#2091 100",
+    "EXAMPLES": "{{prefix}}rob @Androz#2091 100",
     "YOURSELF": "Je kunt jezelf niet beroven!",
     "MISSING_MEMBER": "Je moet een geldig lid opgeven om te beroven!",
     "MISSING_AMOUNT": "Please enter a valid amount!",

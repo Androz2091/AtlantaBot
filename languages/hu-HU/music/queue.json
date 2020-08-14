@@ -2,5 +2,5 @@
     "DESCRIPTION": "Szerver várólista megtekintése",
     "USAGE": "{{prefix}}queue",
     "EXAMPLES": "{{prefix}}queue",
-    "TITLE": "Szerver Várólista (következő 20 zene)"
+    "TITLE": "Server Queue"
 }

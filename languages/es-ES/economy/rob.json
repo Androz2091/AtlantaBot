@@ -1,7 +1,7 @@
 {
     "DESCRIPTION": "¡Intenta robar a un miembro!",
     "USAGE": "{{prefix}}rob [@member] [amount]",
-    "EXAMPLES": "{{prefix}rob @Androz#2091 100",
+    "EXAMPLES": "{{prefix}}rob @Androz#2091 100",
     "YOURSELF": "¡No puedes robarte a ti mismo!",
     "MISSING_MEMBER": "¡Debes mencionar a un miembro válido para robar!",
     "MISSING_AMOUNT": "Please enter a valid amount!",

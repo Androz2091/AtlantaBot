@@ -7,10 +7,12 @@
     "MISSING_SONG_NAME": "Please specify a song name or a link!",
     "RESULTS_FOOTER": "Please select a song by sending a number between 1 and 10.",
     "NO_RESULT": "Cannot be find on Youtube!",
-    "NOW_PLAYING": "Joue maintenant {{songName}}",
+    "NOW_PLAYING": "Now playing **{{songName}}** :musical_note:",
+    "PLAYING_PLAYLIST": "Starting playlist **{{playlistTitle}}**. {{playlistEmoji}}\nPlaying the first song, **{{songName}}**! :musical_note:",
     "CANCELLED": "Selection cancelled",
     "NOT_PLAYING": "No songs are currently playing in this server.",
     "QUEUE_ENDED": "La file d'attente est finie. Plus de musique à jouer...",
     "ADDED_QUEUE": "{{songName}} a été ajoutée à la file d'attente !",
-    "ADDED_QUEUE_COUNT": "{{songCount}} chanons ajoutées à la queue !"
+    "ADDED_QUEUE_COUNT": "{{songCount}} chanons ajoutées à la queue !",
+    "STOP_DISCONNECTED": "I've just stopped the music as I have been disconnected from the channel."
 }

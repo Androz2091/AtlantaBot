@@ -3,6 +3,6 @@
     "USAGE": "{{prefix}}setprefix [prefix]",
     "EXAMPLES": "{{prefix}}setprefix +",
     "MISSING_PREFIX": "Adj meg egy érvényes prefixet!",
-    "TOO_LONG": "Az prefix nem haladhatja meg az 5 karaktert!",
+    "TOO_LONG": "The prefix shouldn't exceed 5 characters!",
     "SUCCESS": "The bot prefix has been set to `{{prefix}}`!"
 }

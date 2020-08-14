@@ -10,7 +10,7 @@
     "FIELD_EXAMPLES": "Esempi",
     "FIELD_PERMISSIONS": "Permessi",
     "NO_ALIAS": "Nessun alias",
-    "CMD_TITLE": "`{{prefix}}{{cmd}}` help",
+    "CMD_TITLE": "{{prefix}}{{cmd}} help",
     "INFO": "● Per ottenere assistenza su uno specifico comando, digitare `{{prefix}} help <comando>`!",
     "CUSTOM_COMMANDS": "Comandi personalizzati",
     "TITLE": "{{name}} | Comandi",

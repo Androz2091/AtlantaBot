@@ -10,7 +10,7 @@
     "FIELD_EXAMPLES": "Példák",
     "FIELD_PERMISSIONS": "Jogok",
     "NO_ALIAS": "No alias",
-    "CMD_TITLE": "`{{prefix}}{{cmd}}` help",
+    "CMD_TITLE": "{{prefix}}{{cmd}} help",
     "INFO": "● To get help on a specific command type `{{prefix}}help <command>`!",
     "CUSTOM_COMMANDS": "Egyéni parancsok",
     "TITLE": "{{name}} | Parancsok",

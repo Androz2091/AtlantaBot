@@ -1,7 +1,7 @@
 {
     "DESCRIPTION": "A megemlített felhasználó kitíltása!",
     "USAGE": "{{prefix}}ban [@felhasználó] (indok)",
-    "EXAMPLES": "{{prefix}ban @Androz#2091 Spam",
+    "EXAMPLES": "{{prefix}}ban @Androz#2091 Spam",
     "MISSING_MEMBER": "Kérlek, adj meg egy érvényes tagot a kitiltáshoz!",
     "YOURSELF": "Nem szankcionálhatod magad!",
     "SUPERIOR": "You can't sanction or update a sanction for a member who has an higher or equal role hierarchy to yours!",
