@@ -34,8 +34,8 @@ class Serverinfo extends Command {
 		guild = await guild.fetch();
 
 		const embed = new Discord.MessageEmbed()
-			.setAuthor(guild.name, guild.iconURL())
-			.setThumbnail(guild.iconURL())
+			.setAuthor(guild.name, guild.iconURL({ dynamic: true }))
+			.setThumbnail(guild.iconURL({ dynamic: true }))
 			.addField(this.client.customEmojis.title+message.translate("common:NAME"), guild.name, true)
 			.addField(this.client.customEmojis.calendar+message.translate("common:CREATION"), message.printDate(guild.createdAt), true)
 			.addField(this.client.customEmojis.users+message.translate("common:MEMBERS"), message.translate("general/serverinfo:MEMBERS", {
