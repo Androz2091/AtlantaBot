@@ -79,8 +79,8 @@ class Poll extends Command {
 			const error = this.client.customEmojis.error.split(":")[1];
 
 			const emojis = [
-				this.client.customEmojis.cache.find((e) => e.name === success),
-				this.client.customEmojis.cache.find((e) => e.name === error)
+				this.client.emojis.cache.find((e) => e.name === success),
+				this.client.emojis.cache.find((e) => e.name === error)
 			];
 
 			const embed = new Discord.MessageEmbed()
