@@ -77,7 +77,7 @@ class Backup extends Command {
 					backupID
 				});
 			});
-		} else if (status === "infos"){
+		} else if (status === "info"){
 			const backupID = args[1];
 			if(!backupID){
 				return message.error("administration/backup:MISSING_BACKUP_ID");
