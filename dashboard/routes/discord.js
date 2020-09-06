@@ -14,7 +14,7 @@ router.get("/login", async function(req, res) {
 });
 
 router.get("/callback", async (req, res) => {
-	if(req.query.state.startsWith("invite")){
+	if(req.query.state && req.query.state.startsWith("invite")){
 		if(req.query.code){
 			const guildID = req.query.state.substr("invite".length, req.query.state.length);
 			req.client.knownGuilds.push({ id: guildID, user: req.user.id });
