@@ -60,7 +60,7 @@ class Ban extends Command {
 		await user.send(message.translate("moderation/ban:BANNED_DM", {
 			username: user.tag,
 			server: message.guild.name,
-			moderation: message.author.tag,
+			moderator: message.author.tag,
 			reason
 		})).catch(() => {});
 
