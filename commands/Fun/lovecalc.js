@@ -25,7 +25,7 @@ class Lovecalc extends Command {
 			return message.error("fun/lovecalc:MISSING");
 		const secondMember =
 			message.mentions.members
-				.filter(m => m.id !== firstMember)
+				.filter(m => m.id !== firstMember.id)
 				.filter(m => m.id !== message.author.id)
 				.first() || message.member;
 		if (!secondMember)
