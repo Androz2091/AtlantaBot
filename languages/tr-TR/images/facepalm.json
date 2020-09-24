@@ -1,5 +1,5 @@
 {
-    "DESCRIPTION": "Generates a \"facepalm\" image using canvas",
-    "USAGE": "{{prefix}}facepalm (@member)",
+    "DESCRIPTION": "\"facepalm\" ifadesini canvas kullanarak oluştur",
+    "USAGE": "{{prefix}}facepalm (@üye)",
     "EXAMPLES": "{{prefix}}facepalm\n{{prefix}}facepalm Androz#2091"
 }
