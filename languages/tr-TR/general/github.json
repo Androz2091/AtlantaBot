@@ -1,8 +1,8 @@
 {
-    "DESCRIPTION": "Shows Atlanta's Github repository information!",
+    "DESCRIPTION": "Atlanta Botunun Github sayfasını gösterir!",
     "USAGE": "{{prefix}}github",
     "EXAMPLES": "{{prefix}}github",
-    "CLICK_HERE": "Click here to access the github of Atlanta",
-    "LANGUAGE": "Programming language",
-    "OWNER": "Atlanta's repository owner"
+    "CLICK_HERE": "Tıkla ve atlanta github sayfasına git",
+    "LANGUAGE": "Programlama dili",
+    "OWNER": "Atlanta botunun sahibi"
 }
