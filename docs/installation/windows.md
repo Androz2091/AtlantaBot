@@ -15,7 +15,6 @@ Obtain the necessary API keys:
 *   [FortniteTracker](https://fortnitetracker.com/site-api) API key is used for the fortnite stats command
 *   [FortniteFNBR](https://fnbr.co/oauth/discord) API key is used for the fortnite shop image
 *   [Discordbots](https://discordbots.org/api/docs#mybots) API key is used for stats posting and votes rewards
-*   [SimpleYoutube](https://console.developers.google.com/) API key is used to search videos on Youtube (play command)
 
 {% hint style="info" %}
 If you do not have some API keys, such as the Discordbots key, leave the fields empty, the commands/features that use them will be automatically disabled.
