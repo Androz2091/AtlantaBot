@@ -142,6 +142,18 @@ module.exports = {
 				"pt",
 				"pt_pt"
 			]
+		},
+		{
+			name: "tr-TR",
+			nativeName: "Türk",
+			defaultMomentFormat: "Do MMMM YYYY",
+			moment: "tr",
+			default: false,
+			aliases: [
+				"Turkish",
+				"tr",
+				"tr_tr"
+			]
 		}
 	]
 };
