@@ -1,5 +1,5 @@
 {
-    "DESCRIPTION": "Generates a \"mission\" image using Amethyste API",
-    "USAGE": "{{prefix}}mission (@member)",
+    "DESCRIPTION": "Amethyste API yı kullanarak \"mission\" resmi yap",
+    "USAGE": "{{prefix}}mission (@üye)",
     "EXAMPLES": "{{prefix}}mission\n{{prefix}}mission @Androz#2091"
 }
