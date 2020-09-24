@@ -1,9 +1,9 @@
 {
-    "DESCRIPTION": "Helps you choose between the given choices!",
-    "USAGE": "{{prefix}}choice [choice1/choice2/etc...]",
-    "EXAMPLES": "{{prefix}}choice Fire/Wind/Water",
-    "MISSING": "You must enter more than two choices!\n(or use the `flip` command instead)",
-    "EMPTY": "One of your choices seems to be empty.... Please try again!",
-    "PROGRESS": "Choice being made...",
-    "DONE": "Here's my choice:"
+    "DESCRIPTION": "Verilen seçenekler arasında seçim yapmanıza yardımcı olur!",
+    "USAGE": "{{prefix}}choice [seçenek1/seçenek2/vb...]",
+    "EXAMPLES": "{{prefix}}choice Ateş/Hava/Su",
+    "MISSING": "İkiden fazla seçenek girmelisiniz!\n(veya bunun yerine `flip` komutunu kullanın)",
+    "EMPTY": "Seçeneklerinizden biri boş görünüyor... Lütfen tekrar deneyin!",
+    "PROGRESS": "Seçim yapılıyor...",
+    "DONE": "İşte benim seçeneğim:"
 }
