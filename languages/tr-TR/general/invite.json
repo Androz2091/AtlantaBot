@@ -1,10 +1,10 @@
 {
-    "DESCRIPTION": "Shows Atlanta links!",
+    "DESCRIPTION": "Atlanta linklerini göster!",
     "USAGE": "{{prefix}}invite (copy)",
     "EXAMPLES": "{{prefix}}invite\n{{prefix}}invite copy",
-    "LINKS": "Atlanta links",
-    "TIP": "Send `{{prefix}}invite copy` to be able to copy the invite link!",
-    "ADD": "Invite Atlanta",
-    "VOTE": "Vote for Atlanta",
-    "SUPPORT": "Get Support"
+    "LINKS": "Atlanta linkleri",
+    "TIP": "Şunu yazarak `{{prefix}}invite copy` davet linkini kopyala!",
+    "ADD": "Atlanta'yı Kendi sunucuna ekle",
+    "VOTE": "Atlanta'ya oy ver",
+    "SUPPORT": "Destek al"
 }
