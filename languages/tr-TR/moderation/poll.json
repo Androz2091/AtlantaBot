@@ -1,8 +1,8 @@
 {
-    "DESCRIPTION": "Launch a survey in the current channel!",
+    "DESCRIPTION": "Şuanki kanalda bir anket başlat!",
     "USAGE": "{{prefix}}poll [question]",
-    "EXAMPLES": "{{prefix}}poll Is the Earth flat?",
-    "MISSING_QUESTION": "Please specify a question!",
-    "REACT": "React with {{success}} or {{error}}!",
-    "TITLE": "📊 Poll:"
+    "EXAMPLES": "{{prefix}}poll Dünya Düzmü?",
+    "MISSING_QUESTION": "Lütfen uygun bir soru girin!",
+    "REACT": "Tepki ver! {{success}} veya {{error}}!",
+    "TITLE": "📊 Anket:"
 }
