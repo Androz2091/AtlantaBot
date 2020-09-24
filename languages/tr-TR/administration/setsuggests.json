@@ -1,7 +1,7 @@
 {
-    "DESCRIPTION": "Set the suggestions channel!",
-    "USAGE": "{{prefix}}setsuggests (#channel)",
+    "DESCRIPTION": "Öneriler kanalını ayarla!",
+    "USAGE": "{{prefix}}setsuggests (#kanal)",
     "EXAMPLES": "{{prefix}}setsuggests #suggestions\n{{prefix}}setsuggests",
-    "SUCCESS_ENABLED": "Suggestions will be sent in **{{channel}}**!",
-    "SUCCESS_DISABLED": "Suggestions channel deleted!"
+    "SUCCESS_ENABLED": "Öneriler **{{channel}}** kanalına gönderilecek!",
+    "SUCCESS_DISABLED": "Öneriler kanalı silindi!"
 }
