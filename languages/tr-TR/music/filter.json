@@ -1,9 +1,9 @@
 {
-    "DESCRIPTION": "Enable or disable a filter!",
+    "DESCRIPTION": "Filtreyi açıp/kapat!",
     "USAGE": "{{prefix}}filter [filter]",
     "EXAMPLES": "{{prefix}}filter vaporwave",
-    "MISSING_FILTER": "Please specify a valid filter to enable or disable! (or send `{{prefix}}filters` to get the statuses of the filters)",
-    "UNKNOWN_FILTER": "This filter doesn't exist! Send `{{prefix}}filters` to get the list!",
-    "ADDING_FILTER": "I'm adding the filter to the music, please wait... Note: the shorter the music, the faster it will be.",
-    "REMOVING_FILTER": "I'm removing the filter to the music, please wait... Note: the shorter the music, the faster it will be."
+    "MISSING_FILTER": "Lütfen etkinleştirmek veya devre dışı bırakmak için geçerli bir filtre belirtin! (veya filtrelerin durumlarını almak için `{{prefix}} filtreleri` gönderin)",
+    "UNKNOWN_FILTER": "Bu filtre mevcut değil! Listeyi almak için `{{prefix}} filters\" komutunu kullanın!",
+    "ADDING_FILTER": "Müziğe filtre ekliyorum, lütfen bekleyin... Not: Müzik ne kadar kısa olursa o kadar hızlı eklerim.",
+    "REMOVING_FILTER": "Müzikteki filtre yi kaldırıyorum, lütfen bekleyin... Not: Müzik ne kadar kısa olursa o kadar hızlı kaldırırım."
 }
