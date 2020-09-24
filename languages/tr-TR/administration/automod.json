@@ -1,10 +1,10 @@
 {
-    "DESCRIPTION": "Toggle Discord invites automatic deletion",
-    "USAGE": "{{prefix}}automod [on/off] (#channel)",
+    "DESCRIPTION": "Discord Sunucu davetlerini otomatik silmeyi engelle",
+    "USAGE": "{{prefix}}automod [on/off] (#kanal)",
     "EXAMPLES": "{{prefix}}automod on\n{{prefix}}automod off #general\n{{prefix}}automod off",
-    "MISSING_STATUS": "Please enter a valid value between `on` and `off`",
-    "ENABLED": "**Discord invites will be automatically deleted!**\n\n:arrow_right_hook: *Send `{{prefix}}automod off #channel` to ignore a channel!*",
-    "DISABLED_CHANNEL": "Auto-moderation will no longer be performed in {{channel}}!",
-    "DISABLED": "All right! Auto moderation is no longer effective on this server!",
-    "DELETED": "Your message was deleted because Discord invitations are not allowed on this server!"
+    "MISSING_STATUS": "Lütfen `on` veya `off` olarak açık mı kapalı mı olduğunu belirtin",
+    "ENABLED": "**Discord daveti otomatik olarak silindi!**\n\n:arrow_right_hook: *Şunu `{{prefix}}automod off #kanal` yazarak kanal için kapatabilirsiniz!*",
+    "DISABLED_CHANNEL": "Otomatik moderasyon artık {{channel}} bu kanal için çalışmayacak!",
+    "DISABLED": "Tamamdır! Otomatik moderasyon bu sunucu için kapatıldı!",
+    "DELETED": "Senin Discord mesajın silindi çünkü bu sunucuda reklam yapmak yasaklanmıştır!"
 }
