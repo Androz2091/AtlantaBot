@@ -1,12 +1,12 @@
 {
-    "DESCRIPTION": "Find the right number!",
+    "DESCRIPTION": "Doğru sayıyı bul!",
     "USAGE": "{{prefix}}number",
     "EXAMPLES": "{{prefix}}number",
-    "GAME_START": "Number chosen, you can start!",
-    "BIG": "{{user}} | My number is **bigger** than `{{number}}`!",
-    "SMALL": "{{user}} | My number is **smaller** than `{{number}}`!",
-    "WON": "{{winner}} has won 10 credits!",
-    "DEFEAT": "No one could find the number! It was **{{number}}**!",
-    "GAME_STATS": "🎉 | {{winner}} found the correct number! It was __**{{number}}**__!\n\n**Stats:**\n*-* __**Duration**__: {{time}}\n*-* __**Participants**__: {{participants}} ({{participantCount}})",
-    "GAME_RUNNING": "A game is already running on this server!"
+    "GAME_START": "Numara seçildi, başlayabilirsin!",
+    "BIG": "{{user}} | Benim numaram `{{number}}` dan **büyük**!",
+    "SMALL": "{{user}} | Benim numaram `{{number}}` dan **küçük**!",
+    "WON": "{{winner}} 10 kredi kazandı!",
+    "DEFEAT": "Kimse numarayı bulamadı! numara **{{number}}**!",
+    "GAME_STATS": "🎉 | {{winner}} Doğru sayıyı buldu! numara __**{{number}}**__!\n\n**Durum:**\n*-* __**Süre**__: {{time}}\n*-* __**Katılımcılar**__: {{participants}} ({{participantCount}})",
+    "GAME_RUNNING": "Bu sunucuda zaten bir oyun çalışıyor!"
 }
