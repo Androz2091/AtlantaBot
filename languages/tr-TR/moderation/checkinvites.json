@@ -1,6 +1,6 @@
 {
-    "DESCRIPTION": "Check if members have a Discord server link in their status!",
+    "DESCRIPTION": "Hangi üyenin discord a ne kadar üye getirdiğini gör!",
     "USAGE": "{{prefix}}checkinvites",
     "EXAMPLES": "{{prefix}}checkinvites",
-    "NOBODY": "No member advertises in their status!"
+    "NOBODY": "Bu durumda hiçbir üye reklam yapamaz!"
 }
