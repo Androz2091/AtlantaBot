@@ -1,10 +1,10 @@
 {
-    "DESCRIPTION": "Toggle autorole on the server!",
-    "USAGE": "{{prefix}}autorole [on/off] (role)",
-    "EXAMPLES": "{{prefix}}autorole on @Members\n{{prefix}}autorole off",
-    "MISSING_STATUS": "Please specify a valid value between `on` and `off`",
-    "MISSING_ROLE": "Please specify a valid role!",
-    "SUCCESS_ENABLED": "Autorole enabled! New members will automatically receive the **{{roleName}}** role.",
-    "ALREADY_DISABLED": "**The autorole is already disabled.**\n\n:arrow_right_hook: *Send `{{prefix}}autorole on @YourRole` to enable it again!*",
-    "SUCCESS_DISABLED": "**Autorole disabled!**\n\n:arrow_right_hook: *Send `{{prefix}}configuration` to see the updated configuration!*"
+    "DESCRIPTION": "Otomatik rol vermeyi aç!",
+    "USAGE": "{{prefix}}autorole [on/off] (rol)",
+    "EXAMPLES": "{{prefix}}autorole on @Rol\n{{prefix}}autorole off",
+    "MISSING_STATUS": "Lütfen `on` veya `off` olarak açık mı kapalı mı olduğunu belirtin",
+    "MISSING_ROLE": "Lütfen uygun bir rol girin!",
+    "SUCCESS_ENABLED": "Otomatik rol açıldı! yeni üyeler artık bu rolu alacak **{{roleName}}**.",
+    "ALREADY_DISABLED": "**Otomatik rol devre dışı bırakıldı.**\n\n:arrow_right_hook: *Şöyle yaparak `{{prefix}}autorole on @Rolün` ile tekrar aktif et!*",
+    "SUCCESS_DISABLED": "**Otomatik rol devre dışı bırakıldı!**\n\n:arrow_right_hook: *Ayarlara bakmak için `{{prefix}}configuration` komutunu kullanabilirsin!*"
 }
