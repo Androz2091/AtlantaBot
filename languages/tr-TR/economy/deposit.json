@@ -1,9 +1,9 @@
 {
-    "DESCRIPTION": "Deposit your money in the bank",
+    "DESCRIPTION": "Paranı bankada sakla",
     "USAGE": "{{prefix}}deposit [amount]",
     "EXAMPLES": "{{prefix}}deposit 400",
-    "MISSING_AMOUNT": "Please specify an amount!",
-    "NO_CREDIT": "You have no credit to deposit in the bank!",
-    "NO_ENOUGH_CREDIT": "You don't have `{{money}}` credits!",
-    "SUCCESS": "**{{money}}** credits deposited in the bank!"
+    "MISSING_AMOUNT": "Lütfen uygun bir miktar gir!",
+    "NO_CREDIT": "Bankaya koyacak paran yok!",
+    "NO_ENOUGH_CREDIT": "`{{money}}` kadar paran yok!",
+    "SUCCESS": "**{{money}}** Paranı banka hesabına yatrıdım!"
 }

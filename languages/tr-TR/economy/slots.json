@@ -1,8 +1,8 @@
 {
-    "DESCRIPTION": "The Atlanta casino",
+    "DESCRIPTION": "Atlanta Kumarhanesi",
     "USAGE": "{{prefix}}slots [amount]",
     "EXAMPLES": "{{prefix}}slots\n{{prefix}}slots 10",
-    "DEFEAT": "**{{username}}** used {{money}} credit(s) and lost everything.",
-    "VICTORY": "**{{username}}** used {{money}} credit(s) and won {{won}} credit(s)!",
-    "NOT_ENOUGH": "You need at least **{{money}}** credit(s)."
+    "DEFEAT": "**{{username}}** adlı üye {{money}} kredi kullandı ve herşeyini kaybetti.",
+    "VICTORY": "**{{username}}** adlı üye{{money}} kredi kullandı ve {{won}} kredi kazandı!",
+    "NOT_ENOUGH": "Şu kadar kredi **{{money}}** lazım yapabilmek için."
 }

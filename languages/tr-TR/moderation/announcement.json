@@ -1,10 +1,10 @@
 {
-    "DESCRIPTION": "Send an announcement in the current channel!",
+    "DESCRIPTION": "Bulunan kanala duyuru mesajı gönder!",
     "USAGE": "{{prefix}}announcement [text]",
-    "EXAMPLES": "{{prefix}}announcement New staff member!",
-    "MISSING_TEXT": "You must enter the announcement text!",
-    "TOO_LONG": "Your text should be shorter than 1030 characters!",
-    "MENTION_PROMPT": "Would you like to add a mention to your message?\nAnswer by sending `yes` or `no`!",
-    "MENTION_TYPE_PROMPT": "Choose to mention `@`everyone by typing `every` or to mention `@`here by typing `here`!",
-    "TITLE": "📢 Announcement:"
+    "EXAMPLES": "{{prefix}}announcement Yeni destek yetkili!",
+    "MISSING_TEXT": "Duyuru mesajı girmen gerek!",
+    "TOO_LONG": "Duyuru mesajı 1030 karakterden düşük olmalı!",
+    "MENTION_PROMPT": "Duyuru mesajına etiket koyuyum mu?\nŞöyle cevap ver `evet` veya `hayır`!",
+    "MENTION_TYPE_PROMPT": "Bir etiketleme yöntemi seç `@`everyone yazarak `herkesi` veya `@`here yazarak`buradakileri`etiketle!",
+    "TITLE": "📢 Duyuru:"
 }

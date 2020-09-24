@@ -1,10 +1,10 @@
 {
-    "DESCRIPTION": "Give a reputation point to someone!",
+    "DESCRIPTION": "Birisine güven puanı ver!",
     "USAGE": "{{prefix}}rep [user]",
     "EXAMPLES": "{{prefix}}rep @Androz#2091",
-    "COOLDOWN": "You have to wait {{time}} before being able to `rep` someone!",
-    "INVALID_USER": "You must mention a valid user!",
-    "BOT_USER": "Bots don't accept reputation points!",
-    "YOURSELF": "You can't give yourself a reputation point!",
-    "SUCCESS": "You just gave a reputation point to {{username}}!"
+    "COOLDOWN": "Birisine Güven puanı vermeden önce {{time}} Beklemen gerekiyor!",
+    "INVALID_USER": "Lütfen uygun bir üyeyi seç!",
+    "BOT_USER": "Botlara Güven puanı ekleyemezsin!",
+    "YOURSELF": "Kendine güven puanı veremezsin!",
+    "SUCCESS": "{{username}} kullanıcısına güven puanı verdin!"
 }

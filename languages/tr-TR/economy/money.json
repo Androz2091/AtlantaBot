@@ -1,6 +1,6 @@
 {
-    "DESCRIPTION": "Shows your credits",
-    "USAGE": "{{prefix}}money (@member)",
+    "DESCRIPTION": "Paranı gösterir",
+    "USAGE": "{{prefix}}money (@üye)",
     "EXAMPLES": "{{prefix}}money\n{{prefix}}money @user#0000",
-    "TITLE": "{{username}}'s money"
+    "TITLE": "{{username}}'in parası"
 }

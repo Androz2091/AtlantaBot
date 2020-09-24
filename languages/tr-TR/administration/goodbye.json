@@ -1,16 +1,16 @@
 {
-    "DESCRIPTION": "Toggle goodbye messages!",
+    "DESCRIPTION": "Güle Güle mesajlarını aç!",
     "USAGE": "{{prefix}}goodbye",
     "EXAMPLES": "{{prefix}}goodbye",
-    "DEFAULT_MESSAGE": "Goodbye {user}! We're now {membercount} without you... :'(",
-    "TEST_SUCCESS": "Test executed!",
-    "FORM_1": "**In which channel will goodbye messages be sent?**\n\n:arrow_right_hook: *Answer by mentioning a channel!*",
-    "FORM_2": "**Please enter your desired goodbye message.**\n\n**If you want to:**\n*-* __Mention the user__: {user}\n*-* __Get the member count__: {membercount}\n*-* __Get the server name__: {server}\n\n**Usage example:**\nGoodbye {user}, we will miss you! We are now {membercount}.\n:fast_forward:\nGoodbye {{author}}, we will miss you! We are now {{memberCount}}.",
-    "FORM_3": "**Do you want a great goodbye image too?**\n\n:arrow_right_hook: *Answer by sending `yes` or `no`!*",
-    "FORM_SUCCESS": "**Alright, done!**\n\n:arrow_right_hook: *Answer by sending `{{prefix}}goodbye test` to preview your custom goodbye message!*",
-    "MAX_CHARACT": "Your message must not exceed 1800 characters!",
-    "DISABLED": "**Goodbye messages have just been disabled!**\n\n:arrow_right_hook: *Answer by sending `{{prefix}}configuration` to see the updated server configuration!*",
-    "IMG_GOODBYE": "Leaving from {{server}}!",
-    "IMG_NB": "- {{memberCount}}th member!",
-    "TITLE": "GOODBYE"
+    "DEFAULT_MESSAGE": "Güle Güle {user}! sen yokken {membercount} kişi kaldık... :'(",
+    "TEST_SUCCESS": "Test ettim!",
+    "FORM_1": "**Güle güle mesajını hangi kanala gönderiyim?**\n\n:arrow_right_hook: *cevap olarak kanalı etiketle!*",
+    "FORM_2": "**Lütfen istediğiniz hoşçakal mesajını girin.**\n\n**Eğer isterseniz:**\n*-* __Üye adını göstermek için__: {user}\n*-* __Üye sayısını göstermek için__: {membercount}\n*-* __Sunucu adını göstermek için__: {server}\n\n**Örnek Kullanım:**\nHoşçakal {user}, seni şimdiden özledik! sensiz {membercount} kişi kaldık.\n:fast_forward:\nHoşçakal {{author}}, seni şimdiden özledik! sensiz {{memberCount}} kişi kaldık.",
+    "FORM_3": "**Güzel birde resim yapıyımı istersen?**\n\n:arrow_right_hook: *şöyle cevap ver `yes` veya `no`!*",
+    "FORM_SUCCESS": "**Tamamdır, halletim!**\n\n:arrow_right_hook: *Eğer ki denemek istersen şunu yap: `{{prefix}}goodbye test` !*",
+    "MAX_CHARACT": "Yazdığın mesaj 1800 karakterden fazla bunu yapamazsın!",
+    "DISABLED": "**Güle Güle Mesajı devre dışı bırakıldı!**\n\n:arrow_right_hook: *Ayarları görmek için`{{prefix}}configuration` komutunu kullanabilirsin!*",
+    "IMG_GOODBYE": "{{server}} Sunucusundan çıkış yapıldı!",
+    "IMG_NB": "- {{memberCount}}. Üyemiz!",
+    "TITLE": "Güle Güle"
 }

@@ -1,0 +1,16 @@
+{
+    "DESCRIPTION": "Shows information about a Minecraft server!",
+    "USAGE": "{{prefix}}minecraft [ip]",
+    "EXAMPLES": "{{prefix}}minecraft mc.hypixel.net",
+    "MISSING_IP": "Please enter a valid IP address!",
+    "FAILED": "This server is offline or blocking access!",
+    "ONLINE": "Online",
+    "OFFLINE": "Offline",
+    "PLAYERS": "{{count}} player(s)",
+    "FIELD_NAME": "Informations about {{ip}}",
+    "FIELD_VERSION": "Version",
+    "FIELD_CONNECTED": "Currently connected",
+    "FIELD_MAX": "Maximum",
+    "FIELD_STATUS": "Status",
+    "FIELD_IP": "Full IP"
+}

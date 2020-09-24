@@ -1,7 +1,7 @@
 {
-    "DESCRIPTION": "Generates a QR code image from a given text",
+    "DESCRIPTION": "Verilen yazıyı QR code a dönüştür",
     "USAGE": "{{prefix}}qrcode [text]",
-    "EXAMPLES": "{{prefix}}qrcode Hello",
-    "MISSING_TEXT": "Please specify the QR code source text!",
-    "SUCCESS": "Here's your QRCode!"
+    "EXAMPLES": "{{prefix}}qrcode Merhaba",
+    "MISSING_TEXT": "Lütfen QR code için uygun bir mesaj giriniz!",
+    "SUCCESS": "Işte senin QRCode un!"
 }

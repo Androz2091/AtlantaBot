@@ -1,0 +1,16 @@
+{
+    "DESCRIPTION": "I'm telling you the truth!",
+    "USAGE": "{{prefix}}8ball [question]",
+    "EXAMPLES": "{{prefix}}8ball Is Atlanta the best Discord bot?",
+    "ERR_QUESTION": "You must enter a question!",
+    "RESPONSE_1": "I'm sure of it.",
+    "RESPONSE_2": "it's definitely safe.",
+    "RESPONSE_3": "yes, definitely.",
+    "RESPONSE_4": "better not tell you now.",
+    "RESPONSE_5": "ask again later.",
+    "RESPONSE_6": "don't count on it.",
+    "RESPONSE_7": "I don't think.",
+    "RESPONSE_8": "my sources say no.",
+    "RESPONSE_9": "no.",
+    "RESPONSE_10": "outlook not so good."
+}

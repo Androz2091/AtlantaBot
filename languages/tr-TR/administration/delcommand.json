@@ -1,8 +1,8 @@
 {
-    "DESCRIPTION": "Remove a custom command!",
+    "DESCRIPTION": "Özel Komut sil!",
     "USAGE": "{{prefix}}delcommand [name-of-the-command]",
     "EXAMPLES": "{{prefix}}delcommand hey",
-    "MISSING_NAME": "Please enter a valid custom command name!",
-    "UNKNOWN_COMMAND": "The command {{commandName}} doesn't exist!",
-    "SUCCESS": "The {{commandName}} command has been removed from the server!"
+    "MISSING_NAME": "Lütfen buraya uygun bir komut gir!",
+    "UNKNOWN_COMMAND": "Şu komut{{commandName}} yok!",
+    "SUCCESS": "Şu komut {{commandName}} sunucundan başarılı bir şekilde silindi!"
 }

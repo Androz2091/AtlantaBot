@@ -1,0 +1,8 @@
+{
+    "DESCRIPTION": "Skip the current song",
+    "USAGE": "{{prefix}}skip",
+    "EXAMPLES": "{{prefix}}skip",
+    "NO_NEXT_SONG": "There's no song after this one!",
+    "VOTE_CONTENT": "Next song: {{songName}}\nReact with 👍 to stop the music! {{requiredCount}} more votes are required.",
+    "SUCCESS": "Song skipped!"
+}

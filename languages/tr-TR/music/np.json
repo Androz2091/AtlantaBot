@@ -1,11 +1,11 @@
 {
-    "DESCRIPTION": "Shows information about the current song!",
-    "USAGE": "{{prefix}}np",
+    "DESCRIPTION": "Şuan ki şarkı hakkında bilgi gösterir!",
+    "USAGE": "{{prefix}}np\n",
     "EXAMPLES": "{{prefix}}np",
-    "CURRENTLY_PLAYING": "Currently playing",
-    "T_TITLE": "Title",
-    "T_CHANNEL": "Channel",
-    "T_DURATION": "Duration",
-    "T_DESCRIPTION": "Description",
-    "NO_DESCRIPTION": "No description..."
+    "CURRENTLY_PLAYING": "Şuanda Dinleniyor",
+    "T_TITLE": "Başlık",
+    "T_CHANNEL": "Kanal",
+    "T_DURATION": "Süre",
+    "T_DESCRIPTION": "Açıklama",
+    "NO_DESCRIPTION": "Açıklama yok..."
 }

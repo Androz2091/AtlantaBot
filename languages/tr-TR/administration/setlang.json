@@ -1,7 +1,7 @@
 {
-    "DESCRIPTION": "Change the server language!",
+    "DESCRIPTION": "Sunucu dilini değiştir!",
     "USAGE": "{{prefix}}setlang [language]",
     "EXAMPLES": "{{prefix}}setlang french\n{{prefix}}setlang english",
-    "MISSING_LANG": "Please enter a valid language between theses: {{list}}",
-    "SUCCESS": ":flag_gb: The language of this server is now english!"
+    "MISSING_LANG": "Lütfen şu diller arasından seçim yapınız: {{list}}",
+    "SUCCESS": ":flag_tr: Sunucu Dili Türkçe olarak ayarlandı!"
 }

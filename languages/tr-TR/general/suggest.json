@@ -1,9 +1,9 @@
 {
-    "DESCRIPTION": "Send your suggestion to the defined channel!",
+    "DESCRIPTION": "Sunucu için önerinizi gönderin!",
     "USAGE": "{{prefix}}suggest [message]",
-    "EXAMPLES": "{{prefix}}suggest New channel #offtopic please",
-    "MISSING_CHANNEL": "No suggestion channel defined!",
-    "MISSING_CONTENT": "Please enter a suggestion!",
-    "TITLE": "Suggestion - {{user}}",
-    "SUCCESS": "Your suggestion is being voted in {{channel}}!"
+    "EXAMPLES": "{{prefix}}suggest Yeni kanal #konudisi lütfen",
+    "MISSING_CHANNEL": "Öneri kanalı ayarlanmamış!",
+    "MISSING_CONTENT": "Lütfen öneri giriniz!",
+    "TITLE": "Öneri - {{user}}",
+    "SUCCESS": "Öneri oylamaya {{channel}} kanalında sunuldu!"
 }

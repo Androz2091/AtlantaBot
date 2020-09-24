@@ -1,0 +1,8 @@
+{
+    "DESCRIPTION": "Launch a survey in the current channel!",
+    "USAGE": "{{prefix}}poll [question]",
+    "EXAMPLES": "{{prefix}}poll Is the Earth flat?",
+    "MISSING_QUESTION": "Please specify a question!",
+    "REACT": "React with {{success}} or {{error}}!",
+    "TITLE": "📊 Poll:"
+}
