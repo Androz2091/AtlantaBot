@@ -1,7 +1,7 @@
 {
-    "DESCRIPTION": "Stop the music",
+    "DESCRIPTION": "Müziği Durdur",
     "USAGE": "{{prefix}}stop",
     "EXAMPLES": "{{prefix}}stop",
-    "VOTE_CONTENT": "React with 👍 to stop the music! {{requiredCount}} more votes are required.",
-    "SUCCESS": "Music stopped!"
+    "VOTE_CONTENT": "Tepkisini vererek 👍 müziği durdur! {{requiredCount}} oy daha gerekli.",
+    "SUCCESS": "Müzik Durduruldu!"
 }
