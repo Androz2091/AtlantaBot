@@ -1,7 +1,7 @@
 {
-    "DESCRIPTION": "Send the list of all the filters and their status",
+    "DESCRIPTION": "Tüm filtrelerin listesini ve durumlarına bakın",
     "USAGE": "{{prefix}}filters",
     "EXAMPLES": "{{prefix}}filters",
-    "TITLE": "**Filters**",
-    "CONTENT": "Here is the list of all filters enabled or disabled.\nUse `{{prefix}}filter` to change the status of one of them."
+    "TITLE": "**Filtreler**",
+    "CONTENT": "İşte filtrelerin listesi.\n`{{prefix}}filter` komutunu kullanarak filtre durumunu değiştirin."
 }
