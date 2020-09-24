@@ -1,8 +1,8 @@
 {
-    "DESCRIPTION": "Add a custom command!",
+    "DESCRIPTION": "Özel Komut ekle!",
     "USAGE": "{{prefix}}addcommand [name] [answer]",
-    "EXAMPLES": "{{prefix}}addcommand hello Hello {user}! How are you?",
-    "MISSING_NAME": "Please provide a command name!",
-    "MISSING_ANSWER": "Please provide a command answer!",
-    "SUCCESS": "Command **{{prefix}}{{commandName}}** added!"
+    "EXAMPLES": "{{prefix}}addcommand merhaba Merhaba {user}! Nasılsın?",
+    "MISSING_NAME": "Lütfen bir komut adı girin!",
+    "MISSING_ANSWER": "Lütfen komut için bir cevap girin!",
+    "SUCCESS": "Komut **{{prefix}}{{commandName}}** eklendi!"
 }
