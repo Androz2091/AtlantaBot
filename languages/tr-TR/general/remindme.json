@@ -1,9 +1,9 @@
 {
-    "DESCRIPTION": "Add a new personal reminder",
+    "DESCRIPTION": "Kişisel bir hatırlatıcı ekle",
     "USAGE": "{{prefix}}remindme [message]",
-    "EXAMPLES": "{{prefix}}remindme 24h Work command\n{{prefix}}remindme 3m Take the pasta out of the pan!",
-    "MISSING_MESSAGE": "You must enter a message!",
-    "SAVED": "Reminder saved, you will receive a message at the end of the time!",
-    "TITLE": "Atlanta Reminder",
-    "CREATED": "Message created {{time}}"
+    "EXAMPLES": "{{prefix}}remindme 24h Muzları maymuna ver\n{{prefix}}remindme 3m kediyi dışarı çıkart!",
+    "MISSING_MESSAGE": "Bir mesaj girmen gerek!",
+    "SAVED": "Hatırlatıcı kaydedildi, süre dolduğu zaman bir mesaj alacaksın!",
+    "TITLE": "Atlanta Hatırlatıcı",
+    "CREATED": "Mesaj oluşturuldu {{time}}"
 }
