@@ -60,7 +60,6 @@ class Atlanta extends Client {
 		});
 		this.player
 			.on("trackStart", (message, track) => {
-				console.log("received");
 				message.success("music/play:NOW_PLAYING", {
 					songName: track.title
 				});
@@ -73,6 +72,7 @@ class Atlanta extends Client {
 				}));
 			})
 			.on("searchResults", (message, query, tracks) => {
+				if (tracks.length > 20) tracks = tracks.slice(0, 20);
 				const embed = new MessageEmbed()
 					.setDescription(tracks.map((t, i) => `**${++i} -** ${t.title}`).join("\n"))
 					.setFooter(message.translate("music/play:RESULTS_FOOTER"))
