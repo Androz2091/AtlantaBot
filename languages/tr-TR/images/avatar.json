@@ -1,5 +1,5 @@
 {
-    "DESCRIPTION": "Shows the avatar of the mentionned member",
-    "USAGE": "{{prefix}}avatar (@member)",
+    "DESCRIPTION": "Etiketlenmiş üyenin profil resmini gösterir",
+    "USAGE": "{{prefix}}avatar (@üye)",
     "EXAMPLES": "{{prefix}}avatar\n{{prefix}}avatar @Androz#2091"
 }
