@@ -1,11 +1,11 @@
 {
-    "DESCRIPTION": "Send your report to the channel defined for them!",
-    "USAGE": "{{prefix}}report [@user] [reason]",
-    "EXAMPLES": "{{prefix}}report @Androz#2091 Breaking the rules",
-    "MISSING_CHANNEL": "No report channel defined!",
-    "MISSING_REASON": "Please enter a report reason!",
-    "MISSING_USER": "Please mention the user you want report!",
-    "INVALID_USER": "You can't report yourself",
-    "SUCCESS": "Your report has been sent in {{channel}}!",
-    "TITLE": "Report - {{user}}"
+    "DESCRIPTION": "Şikayetinizi gönderin!",
+    "USAGE": "{{prefix}}report [@kullanıcı] [reason]",
+    "EXAMPLES": "{{prefix}}report @Androz#2091 Kuralları çiğniyor",
+    "MISSING_CHANNEL": "Şikayet kanalı ayarlanmamış!",
+    "MISSING_REASON": "Lütfen şikayet için bir sebep giriniz!",
+    "MISSING_USER": "Şikayet etmek istediğiniz üyeyi etiket etiketlemeniz gerek!",
+    "INVALID_USER": "Kendini şikayet edemezsin",
+    "SUCCESS": "Şikayetin {{channel}} kanalına gönderildi!",
+    "TITLE": "Şikayet - {{user}}"
 }
