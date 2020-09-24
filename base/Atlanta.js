@@ -107,7 +107,7 @@ class Atlanta extends Client {
 					songName: track.title
 				});
 			})
-			.on("channelEmpty", (message) => {
+			.on("channelEmpty", () => {
 				// do nothing, leaveOnEmpty is not enabled
 			})
 			.on("error", (message, error) => {
