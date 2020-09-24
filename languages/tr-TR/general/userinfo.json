@@ -1,11 +1,11 @@
 {
-    "DESCRIPTION": "Shows user information!",
-    "USAGE": "{{prefix}}userinfo (@user/userID)",
+    "DESCRIPTION": "Kullanıcı hakkında bilgi gösterir!",
+    "USAGE": "{{prefix}}userinfo (@Kullanıcı/KullanıcıID)",
     "EXAMPLES": "{{prefix}}userinfo\n{{prefix}}userinfo @Androz#2091\n{{prefix}}userinfo 422820341791064085",
-    "INVALID_USER": "No user on Discord has the `{{search}}` ID!",
-    "NO_GAME": "Not playing",
-    "NO_ROLE": "No role",
-    "NO_NICKNAME": "No nickname",
-    "MORE_ROLES": "and {{count}} others roles",
-    "BOT_STATS": "**{{votes}}** votes ([top.gg](https://top.gg))\n**{{servers}}** servers\n**{{shards}}** shards\nUsing **{{lib}}**"
+    "INVALID_USER": "Bu `{{search}}` ID de bir kullanıcı yok!",
+    "NO_GAME": "Oynamıyor",
+    "NO_ROLE": "Rol yok",
+    "NO_NICKNAME": "Kullanıcı adı yok",
+    "MORE_ROLES": "ve {{count}} diğer rol sayısı",
+    "BOT_STATS": "**{{votes}}** oylar ([top.gg](https://top.gg))\n**{{servers}}** sunucular\n**{{shards}}** shards\nKulllanıyor **{{lib}}**"
 }
