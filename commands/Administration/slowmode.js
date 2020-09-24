@@ -33,7 +33,8 @@ class Slowmode extends Command {
 			data.guild.markModified("slowmode.channels");
 			data.guild.save();
 			message.success("administration/slowmode:DISABLED", {
-				channel: channel.toString()
+				prefix: data.guild.prefix,
+				channel: `#${channel.name}`
 			});
 		} else {
 			if(isNaN(ms(time))){
@@ -49,7 +50,8 @@ class Slowmode extends Command {
 			data.guild.markModified("slowmode.channels");
 			data.guild.save();
 			message.success("administration/slowmode:ENABLED", {
-				channel: channel.toString(),
+				prefix: data.guild.prefix,
+				channel: `#${channel.name}`,
 				time: this.client.functions.convertTime(message.guild, ms(time))
 			});
 		}
