@@ -1,10 +1,10 @@
 {
-    "DESCRIPTION": "Calculator able to solve complex operations and to convert units!",
+    "DESCRIPTION": "Hesap makinesi karmaşık işlemleri çözebilir ve birimleri dönüştürebilir!",
     "USAGE": "{{prefix}}calc [calculation]",
     "EXAMPLES": "{{prefix}}10*5+sin(3)\n{{prefix}}calc 10cm to m",
-    "MISSING_CALC": "Please enter a calculation!",
-    "INVALID_CALC": "Please enter a **valid** calculation!",
-    "TITLE": "Calculator",
-    "CALCULATION": "Calculation",
-    "RESULT": "Result"
+    "MISSING_CALC": "Lütfen Hesaplama giriniz!",
+    "INVALID_CALC": "Lütfen **Uygun** bir Hesaplama giriniz!",
+    "TITLE": "Hesap Makinesi",
+    "CALCULATION": "Hesaplama",
+    "RESULT": "Sonuç"
 }
