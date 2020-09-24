@@ -1,14 +1,14 @@
 {
-    "DESCRIPTION": "Shows your achievements list!",
+    "DESCRIPTION": "Başarım listeni göster!",
     "USAGE": "{{prefix}}achievements",
     "EXAMPLES": "{{prefix}}achievements",
-    "SEND_CMD": "Send your first command!",
-    "CLAIM_SALARY": "Claim your salary 10 times!",
-    "MARRY": "Find your half and marry!",
-    "SLOTS": "Win 3 times in a row in slots!",
-    "TIP": "Keep Atlanta alive by tipping!",
-    "REP": "Reach 20 reputation points!",
-    "INVITE": "Invite Atlanta on your server!",
-    "TITLE": "🔥 Achievements",
-    "PROGRESS": "Progress: {{now}}/{{total}} ({{percent}}%)"
+    "SEND_CMD": "İlk komutunu gönder!",
+    "CLAIM_SALARY": "Maaşını 10 kere al!",
+    "MARRY": "Bir eş bul ve evlen!",
+    "SLOTS": "Slot makinesinde 3 kere kazan!",
+    "TIP": "Atlanta ya bağış yap!",
+    "REP": "20 +rep puanına ulaş!",
+    "INVITE": "Atlanta'yı Sunucuna davet et!",
+    "TITLE": "🔥 Başarımlar",
+    "PROGRESS": "İlerleme: {{now}}/{{total}} ({{percent}}%)"
 }
