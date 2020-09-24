@@ -1,10 +1,10 @@
 {
-    "DESCRIPTION": "Shows the server staff members list!",
+    "DESCRIPTION": "Sunucudaki yetkilileri listeler!",
     "USAGE": "{{prefix}}staff",
     "EXAMPLES": "{{prefix}}staff",
     "TITLE": "{{guild}} staff",
-    "ADMINS": "Administrators",
-    "NO_ADMINS": "No administrators",
-    "MODS": "Moderators",
-    "NO_MODS": "No moderators"
+    "ADMINS": "Yetkililer",
+    "NO_ADMINS": "Yetkili yok",
+    "MODS": "Moderatörler",
+    "NO_MODS": "Moderatör Yok"
 }
