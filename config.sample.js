@@ -46,7 +46,7 @@ module.exports = {
 		dbl: "XXXXXXXXXXX",
 		// AMETHYSTE: https://api.amethyste.moe
 		amethyste: "XXXXXXXXXXX",
-		// SENTRY: https://sentry.io (this is not required and not recommended)
+		// SENTRY: https://sentry.io (this is not required and not recommended - you can delete the field)
 		sentryDSN: "XXXXXXXXXXX"
 	},
 	/* The others utils links */
