@@ -1,5 +1,5 @@
 {
-    "DESCRIPTION": "Pick a random member on the server!",
+    "DESCRIPTION": "Sunucudan rastgele bir üye seç!",
     "USAGE": "{{prefix}}someone",
     "EXAMPLES": "{{prefix}}someone"
 }
