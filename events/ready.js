@@ -1,3 +1,5 @@
+const chalk = require("chalk");
+
 module.exports = class {
 
 	constructor (client) {
@@ -43,6 +45,10 @@ module.exports = class {
 			if(status[parseInt(i+1, 10)]) i++;
 			else i = 0;
 		}, 20000); // Every 20 seconds
+
+		setTimeout(() => {
+			console.log(chalk.magenta("\n\nLike this bot?"), "Support us by adding a star on GitHub ❤️   https://github.com/Androz2091/AtlantaBot");
+		}, 400);
 
 	}
 };  
