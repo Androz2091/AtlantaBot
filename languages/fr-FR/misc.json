@@ -13,16 +13,16 @@
     "NO_REASON_PROVIDED": "Aucune raison spécifiée",
     "NO_USER_FOUND_ID": "Aucune utilisateur sur Discord ne possède l'ID `{{id}}` !",
     "VOTE_DM": "⬆️ Bonjour {{user}}, merci d'avoir voté !\nVoici votre récompense: 40 crédits (sur le serveur support)!",
-    "VOTE_LOGS": "⬆️ **{{usertag}}** (`{{userid}}`) à voté pour **Atlanta** et à gagné **40** credits, merci !\n<https://discordbots.org/bot/557445719892688897/vote>",
+    "VOTE_LOGS": "⬆️ **{{usertag}}** (`{{userid}}`) a voté pour **Atlanta** et a gagné **40** credits, merci !\n<https://discordbots.org/bot/557445719892688897/vote>",
     "HELLO_SERVER": "Bonjour **{{username}}**, mon prefix sur ce serveur est `{{prefix}}`. Use `{{prefix}}help` pour avoir la liste des commandes !",
-    "HELLO_DM": "Bonjour **{{username}}**, comme vous êtes actuellement dans les messages directs, vous n'avez pas besoin d'ajouter un prefix avant le nom de la commande.",
+    "HELLO_DM": "Bonjour **{{username}}**, comme vous êtes actuellement dans les messages privés, vous n'avez pas besoin d'ajouter un prefix avant le nom de la commande.",
     "GUILD_ONLY": "Cette commande est seulement disponible sur un serveur !",
     "MISSING_BOT_PERMS": "J'ai besoin des permissions suivantes pour exécuter cette commande : {{list}}",
     "MISSING_MEMBER_PERMS": "Vous avez besoin des permissions suivantes pour exécuter cette commande : {{list}}",
-    "RESTRICTED_CHANNEL": "Les commandes ne sont pas autorisés sur {{channel}}!",
+    "RESTRICTED_CHANNEL": "Les commandes ne sont pas autorisées dans {{channel}}!",
     "EVERYONE_MENTION": "Vous n'avez pas l'autorisation de mentionner tout le monde (everyone) ou here dans les commandes.",
     "NSFW_COMMAND": "Vous devez exécuter cette commande dans un channel qui autorise la NSFW !",
-    "OWNER_ONLY": "Seulement le propriétaire d'Atlanta peut faire ces commandes !",
-    "COOLDOWNED": "Vous devez attendre **{{seconds}}** seconde(s) pour être capable d'encore lancer cette commande !",
-    "CANNOT_DM": "Je n'ai pas les permissions pour vous envoyer des messages privés... S'il vous plaît, mettez à jour vos paramètres de confidentialités !"
+    "OWNER_ONLY": "Seul le propriétaire d'Atlanta peut faire ces commandes !",
+    "COOLDOWNED": "Vous devez attendre **{{seconds}}** seconde(s) pour pouvoir exécuter cette commande de nouveau !",
+    "CANNOT_DM": "Je n'ai pas les permissions pour vous envoyer des messages privés... S'il vous plaît, mettez à jour vos paramètres de confidentialité !"
 }
