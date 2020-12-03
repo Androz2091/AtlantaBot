@@ -1,15 +1,15 @@
 {
-    "DESCRIPTION": "Try to rob a member!",
-    "USAGE": "{{prefix}}rob [@member] [amount]",
+    "DESCRIPTION": "Coba untuk merampok anggota!",
+    "USAGE": "{{prefix}}rob [@anggota] [jumlah]",
     "EXAMPLES": "{{prefix}}rob @Androz#2091 100",
-    "YOURSELF": "You can't rob yourself!",
-    "MISSING_MEMBER": "You must specify a valid member to rob!",
-    "MISSING_AMOUNT": "Please enter a valid amount!",
-    "NOT_ENOUGH_AUTHOR": "You must have more than **{{moneyMin}}** credits to attempt this robbery (you have **{{moneyCurrent}}** credits for now)!",
-    "NOT_ENOUGH_MEMBER": "You can't try your robbery because **{{username}}** doesn't have as many credits in cash!",
-    "COOLDOWN": "🕵️ **{{username}}** is on guard.... Wait a while and try again!",
-    "ROB_WON_1": "🎉 | Congratulations! The police weren't fast enough to stop you from robbing **{{money}}** credits to **{{username}}**!",
-    "ROB_WON_2": "😕 | **{{username}}** ? Bad news. You just got robbed **{{money}}** credits!",
-    "ROB_LOSE_1": "🚔 | The police caught you in the act, impossible to deny, your fine is **{{fine}}** credits. **{{offset}}** offset credits will be paid to **{{username}}**.",
-    "ROB_LOSE_2": "🚓 | Bad news.... **{{username}}** called the police in time. Your fine is **{{fine}}** credits and **{{offset}}** offset credits will be paid to **{{username}}**."
+    "YOURSELF": "Kamu tidak dapat merampok dirimu sendiri!",
+    "MISSING_MEMBER": "Kamu harus menentukan anggota yang valid untuk merampok!",
+    "MISSING_AMOUNT": "Harap berikan jumlah yang valid!",
+    "NOT_ENOUGH_AUTHOR": "Kamu harus punya lebih dari **{{moneyMin}}** kredit untuk mencoba perampokan ini (kamu punya **{{moneyCurrent}}** kredit saat ini)!",
+    "NOT_ENOUGH_MEMBER": "Kamu tidak dapat mencoba perampokanmu karena **{{username}}** tidak punya kredit sebanyak itu di tunai!",
+    "COOLDOWN": "🕵️ **{{username}}** dalam pengawasan.... Tunggu sejenak dan coba lagi!",
+    "ROB_WON_1": "🎉 | Selamat! Polisi tidak cukup cepat untuk menghentikanmu merampok **{{money}}** kredit dari **{{username}}**!",
+    "ROB_WON_2": "😕 | **{{username}}** ? Kabar buruk. Kamu baru saja dirampok **{{money}}** kredit!",
+    "ROB_LOSE_1": "🚔 | Polisi menangkapmu dalam tindakan itu, tidak mungkin untuk menyangkal, Kamu didenda **{{fine}}** kredit. **{{offset}}** kredit offset akan dibayarkan ke **{{username}}**.",
+    "ROB_LOSE_2": "🚓 | Kabar buruk.... **{{username}}** memanggil polisi tepat waktu. Kamu didenda **{{fine}}** kredit dan **{{offset}}** kredit offset akan dibayarkan ke **{{username}}**."
 }

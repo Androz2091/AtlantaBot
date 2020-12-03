@@ -2,17 +2,17 @@
     "DESCRIPTION": "Házasodj valakvel, akit szeretsz!",
     "USAGE": "{{prefix}}marry [@tag]",
     "EXAMPLES": "{{prefix}}marry @Androz#2091",
-    "INVALID_MEMBER": "You must mention a valid member!",
+    "INVALID_MEMBER": "Meg kell említened egy érvényes tagot!",
     "ALREADY_MARRIED": "Már házas vagy! Először használd a `{{prefix}}divorce` parancsot a váláshoz.",
     "ALREADY_MARRIED_USER": "A hely elfoglalva, társ! **{{username}}** már házad!",
     "YOURSELF": "Nem mehetsz feleségül!",
     "REQUEST_AUTHOR_TO_AMEMBER": "Már van függőben lévő kérelmed **{{username}}** felhasználóra vonatkozóan!",
     "REQUEST_AMEMBER_TO_AUTHOR": "**{{username}}** már küldött egy kérést! Kérlek, utasítsd el, vagy fogadd el (vagy várj, amíg néhány perc alatt lejár).",
     "REQUEST_AMEMBER_TO_MEMBER": "**{{secondUsername}}** már küldött kérelmet **{{firstUsername}}** felhasználónak!",
-    "REQUEST_MEMBER_TO_AMEMBER": "**{{firstUsername}} has already sent a request to **{{secondUsername}}**! Wait until **{{secondUsername}}** accepts or refuses the request from **{{firstUsername}}** or until it expires and try again!",
-    "TIMEOUT": "{{username}} did not answer... Wait until he/she is logged in and try again!",
+    "REQUEST_MEMBER_TO_AMEMBER": "**{{secondUsername}}** már küldött kérelmet **{{firstUsername}}** felhasználónak! Várj, amíg **{{secondUsername}}** elfogadja vagy elutasítja a **{{firstUsername}}** kérését, vagy amíg le nem jár, és próbáld újra!",
+    "TIMEOUT": "{{username}} nem válaszolt... Várd meg amíg bejelentkezik és próbáld újra!",
     "SUCCESS": "🎉 Gratulálok! **{{creator}}** és **{{partner}}** házasok lettek!",
     "DENIED": "{{creator}}, van néhány rossz hír... {{partner}} felhasználó elutasította a kérést.",
     "REQUEST": "{{to}}, egyetértesz feleségül venni {{from}}? Válaszd a \"yes\" vagy \"no\" szót!",
-    "BOT_USER": "It refused your proposal!"
+    "BOT_USER": "Elutasítottad a kérést!"
 }

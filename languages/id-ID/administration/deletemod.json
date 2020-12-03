@@ -1,8 +1,8 @@
 {
-    "DESCRIPTION": "Toggle moderation commands auto deletion!",
+    "DESCRIPTION": "Alihkan auto penghapusan perintah moderasi!",
     "USAGE": "{{prefix}}deletemod [on/off]",
     "EXAMPLES": "{{prefix}}deletemod on",
-    "MISSING_STATUS": "You must specify `on` or `off`",
-    "ENABLED": "Automatic moderation commands deletion!",
-    "DISABLED": "Automatic moderation commands deletion disabled!"
+    "MISSING_STATUS": "Kamu harus menentukan `on` atau `off`",
+    "ENABLED": "Penghapusan otomatis perintah moderasi!",
+    "DISABLED": "Penghapusan otomatis perintah moderasi dinonaktifkan!"
 }

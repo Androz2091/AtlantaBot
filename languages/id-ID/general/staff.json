@@ -1,10 +1,10 @@
 {
-    "DESCRIPTION": "Shows the server staff members list!",
+    "DESCRIPTION": "Menunjukan daftar anggota staf server ini!",
     "USAGE": "{{prefix}}staff",
     "EXAMPLES": "{{prefix}}staff",
-    "TITLE": "{{guild}} staff",
-    "ADMINS": "Administrators",
-    "NO_ADMINS": "No administrators",
-    "MODS": "Moderators",
-    "NO_MODS": "No moderators"
+    "TITLE": "{{guild}} staf",
+    "ADMINS": "Administrator",
+    "NO_ADMINS": "Tidak ada administrator",
+    "MODS": "Moderator",
+    "NO_MODS": "Tidak ada moderator"
 }

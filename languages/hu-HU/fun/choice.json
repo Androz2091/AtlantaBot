@@ -1,9 +1,9 @@
 {
-    "DESCRIPTION": "Helps you choose between the given choices!",
+    "DESCRIPTION": "Segít választani a megadott lehetőségek közül!",
     "USAGE": "{{prefix}}choice [választás1/választás2/stb...]",
     "EXAMPLES": "{{prefix}}choice Fire/Wind/Water",
-    "MISSING": "You must enter more than two choices!\n(or use the `flip` command instead)",
+    "MISSING": "Kettőnél több lehetőséget kell megadnod!\n(vagy használd a `flip` parancsot)",
     "EMPTY": "Az egyik választásod üresnek tűnik.... Kérlek, próbáld újra!",
     "PROGRESS": "Választás történik...",
-    "DONE": "Here's my choice:"
+    "DONE": "Itt van a választásom:"
 }

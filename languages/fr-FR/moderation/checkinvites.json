@@ -1,6 +1,6 @@
 {
-    "DESCRIPTION": "Check if members have a Discord server link in their status!",
+    "DESCRIPTION": "Vérifie si les membres n'ont pas une publicité pour leur serveur Discord dans leur statut !",
     "USAGE": "{{prefix}}checkinvites",
     "EXAMPLES": "{{prefix}}checkinvites",
-    "NOBODY": "No member advertises in their status!"
+    "NOBODY": "Aucun membre ne fait de la publicité dans son status !"
 }

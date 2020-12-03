@@ -3,6 +3,6 @@
     "USAGE": "{{prefix}}tweet [@twitter_felhasználónév] [tartalom]",
     "EXAMPLES": "{{prefix}}tweet @ElonMusk Helló",
     "MISSING_USERNAME": "Meg kell adnod valakinek a Twitter becenevét!",
-    "MISSING_TEXT": "You have to specify the tweet content!",
+    "MISSING_TEXT": "Meg kell adnod egy tweet tartalmát!",
     "SUCCESS": "Új tweet a következőtől: {{user}}:"
 }

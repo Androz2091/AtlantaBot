@@ -1,16 +1,16 @@
 {
-    "DESCRIPTION": "Toggle welcome messages!",
+    "DESCRIPTION": "Basculez les messages de bienvenue !",
     "USAGE": "{{prefix}}welcome",
     "EXAMPLES": "{{prefix}}welcome",
-    "MISSING_STATUS": "You must specify an action between `edit` and `off`",
-    "DEFAULT_MESSAGE": "Welcome {user} in {server}, we're now {membercount}! Your account was created {createdat}.",
+    "MISSING_STATUS": "Vous devez spécifier une action entre `edit` et `off`",
+    "DEFAULT_MESSAGE": "Bienvenue {user} dans {server}, nous sommes maintenant {membercount} ! Ton compte a été créé le {createdat}.",
     "TEST_SUCCESS": "Test exécuté !",
-    "FORM_1": "**In which channel will welcome messages be sent?**\n\n:arrow_right_hook: *Answer by mentioning a channel!*",
-    "FORM_2": "**Please enter your desired welcome message.**\n\n**If you want to:**\n*-* __Mention the user__: {user}\n*-* __Get the member count__: {membercount}\n*-* __Get the server name__: {server}\n\n**Usage example:**\nWelcome to {server}, {user}! We are now {membercount}!\n:fast_forward:\nWelcome to {{guildName}}, {{author}}! We are now {{memberCount}}!",
-    "FORM_3": "**Do you want a great welcome image too?**\n\n:arrow_right_hook: *Answer by sending `yes` or `no`!*",
-    "FORM_SUCCESS": "**Alright, done!**\n\n:arrow_right_hook: *Answer by sending `{{prefix}}welcome test` to preview your custom welcome message!*",
-    "DISABLED": "**Goodbye messages have just been disabled!**\n\n:arrow_right_hook: *Answer by sending `{{prefix}}configuration` to see the updated server configuration!*",
-    "IMG_WELCOME": "Welcome in {{server}}!",
-    "IMG_NB": "- {{memberCount}}th member!",
-    "TITLE": "WELCOME"
+    "FORM_1": "**Sur quel canal les messages de bienvenue seront-ils envoyés ?**\n\n:arrow_right_hook: *Répondez en mentionnant un salon !*",
+    "FORM_2": "**Veuillez saisir votre message de bienvenue souhaité.**\n**Si vous souhaitez:**\n*-* __Mention de l'utilisateur__: {user}\n*-* __Obtenir le nombre de membres__: {memberCount}\n*-* __Obtenir le nom du serveur__: {server}\n\n**Exemple d'utilisation:**\nBeinvenue sur {server}, {user} ! Nous sommes maintenant {{memberCount}} !\n:fast_forward:\nBienvenue dans {{guildName}}, {{author}} ! Nous sommes maintenant {{memberCount}} !",
+    "FORM_3": "**Voulez-vous aussi une bonne image de bienvenue ?**\n\n:arrow_right_hook: *Répondez en envoyant `oui` ou `non` !*",
+    "FORM_SUCCESS": "**Très bien c'est fait !**\n\n:arrow_right_hook: *Répondez en envoyant `{{prefix}}welcome test` pour voir votre message de bienvenue !*",
+    "DISABLED": "**Les messages d'adieu viennent d'être désactivés !**\n\n:arrow_right_hook: *Répondez en envoyant `{{prefix}}configuration` pour voir la mise à jour de la configuration du serveur !*",
+    "IMG_WELCOME": "Bienvenue dans {{server}}!",
+    "IMG_NB": "- {{memberCount}} membre(s)!",
+    "TITLE": "BIENVENUE"
 }

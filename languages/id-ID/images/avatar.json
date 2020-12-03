@@ -1,5 +1,5 @@
 {
-    "DESCRIPTION": "Shows the avatar of the mentionned member",
-    "USAGE": "{{prefix}}avatar (@member)",
+    "DESCRIPTION": "Menunjukan avatar anggota yang disebutkan",
+    "USAGE": "{{prefix}}avatar (@anggota)",
     "EXAMPLES": "{{prefix}}avatar\n{{prefix}}avatar @Androz#2091"
 }

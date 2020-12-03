@@ -1,7 +1,7 @@
 {
-    "DESCRIPTION": "Generates a QR code image from a given text",
+    "DESCRIPTION": "Generálok egy QR-kód képet a szövegedből",
     "USAGE": "{{prefix}}qrcode [szöveg]",
     "EXAMPLES": "{{prefix}}qrcode Helló",
-    "MISSING_TEXT": "Please specify the QR code source text!",
-    "SUCCESS": "Here's your QRCode!"
+    "MISSING_TEXT": "Kérlek add meg az üzenet szövegét!",
+    "SUCCESS": "Itt van a QRKód!"
 }

@@ -1,8 +1,8 @@
 {
-    "DESCRIPTION": "Launch a survey in the current channel!",
+    "DESCRIPTION": "Lancez une enquête dans le salon actuel !",
     "USAGE": "{{prefix}}poll [question]",
-    "EXAMPLES": "{{prefix}}poll Is the Earth flat?",
-    "MISSING_QUESTION": "Please specify a question!",
-    "REACT": "React with {{success}} or {{error}}!",
-    "TITLE": "📊 Poll:"
+    "EXAMPLES": "{{prefix}}poll La Terre est plate ?",
+    "MISSING_QUESTION": "Veuillez spécifier une question !",
+    "REACT": "Réagissez avec {{success}} ou {{error}} !",
+    "TITLE": "📊 Sondage:"
 }

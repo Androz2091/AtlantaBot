@@ -1,10 +1,10 @@
 {
-    "DESCRIPTION": "Toggle autorole on the server!",
+    "DESCRIPTION": "Schakel autorole op de server!",
     "USAGE": "{{prefix}}autorole [on/off] (role)",
     "EXAMPLES": "{{prefix}}autorole on @Members\n{{prefix}}autorole off",
-    "MISSING_STATUS": "Please specify a valid value between `on` and `off`",
-    "MISSING_ROLE": "Please specify a valid role!",
-    "SUCCESS_ENABLED": "Autorole enabled! New members will automatically receive the **{{roleName}}** role.",
-    "ALREADY_DISABLED": "**The autorole is already disabled.**\n\n:arrow_right_hook: *Send `{{prefix}}autorole on @YourRole` to enable it again!*",
-    "SUCCESS_DISABLED": "**Autorole disabled!**\n\n:arrow_right_hook: *Send `{{prefix}}configuration` to see the updated configuration!*"
+    "MISSING_STATUS": "Geef een geldige waarde op tussen `op` en `af`.",
+    "MISSING_ROLE": "Geef een geldige rol aan!",
+    "SUCCESS_ENABLED": "Autorole ingeschakeld! Nieuwe leden krijgen automatisch de **{{roleName}}** rol.",
+    "ALREADY_DISABLED": "**De autorole is al uitgeschakeld.**\n:arrow_right_hook: *Stuur `{{prefix}}autorole op @YourRole` om het weer in te schakelen! *",
+    "SUCCESS_DISABLED": "**Autorole uitgeschakeld! **\n:arrow_right_hook: *Stuur `{{prefix}}configuratie` om de bijgewerkte configuratie te zien! *"
 }

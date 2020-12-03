@@ -1,8 +1,8 @@
 {
-    "DESCRIPTION": "Set the server prefix!",
-    "USAGE": "{{prefix}}setprefix [prefix]",
+    "DESCRIPTION": "Atur prefiks server!",
+    "USAGE": "{{prefix}}setprefix [prefiks]",
     "EXAMPLES": "{{prefix}}setprefix +",
-    "MISSING_PREFIX": "Please enter a valid prefix!",
-    "TOO_LONG": "The prefix shouldn't exceed 5 characters!",
-    "SUCCESS": "The bot prefix has been set to `{{prefix}}`!"
+    "MISSING_PREFIX": "Harap berikan prefiks yang valid!",
+    "TOO_LONG": "Prefiks tidak boleh melebihi 5 karakter!",
+    "SUCCESS": "Prefiks bot telah diatur ke `{{prefix}}`!"
 }

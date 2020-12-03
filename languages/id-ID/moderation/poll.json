@@ -1,8 +1,8 @@
 {
-    "DESCRIPTION": "Launch a survey in the current channel!",
-    "USAGE": "{{prefix}}poll [question]",
-    "EXAMPLES": "{{prefix}}poll Is the Earth flat?",
-    "MISSING_QUESTION": "Please specify a question!",
-    "REACT": "React with {{success}} or {{error}}!",
-    "TITLE": "📊 Poll:"
+    "DESCRIPTION": "Luncurkan survei di saluran saat ini!",
+    "USAGE": "{{prefix}}poll [pertanyaan]",
+    "EXAMPLES": "{{prefix}}poll Apa bumi itu bulat?",
+    "MISSING_QUESTION": "Harap tentukan pertanyaannya!",
+    "REACT": "Reaksi dengan {{success}} atau {{error}}!",
+    "TITLE": "📊 Pemilihan:"
 }

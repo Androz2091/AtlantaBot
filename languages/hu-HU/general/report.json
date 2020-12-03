@@ -3,7 +3,7 @@
     "USAGE": "{{prefix}}report [@felhasználó] [indok]",
     "EXAMPLES": "{{prefix}}report @Androz#2091 Szabályzat megszegése",
     "MISSING_CHANNEL": "Nincs meghatározva jelentési csatorna!",
-    "MISSING_REASON": "Please enter a report reason!",
+    "MISSING_REASON": "Kérlek, írd be a jelentési indokot!",
     "MISSING_USER": "Kérlek, említsd meg a jelentni kívánt felhasználót!",
     "INVALID_USER": "Nem tudod jelenteni magadat",
     "SUCCESS": "A te jelentésed elküldve a {{channel}} csatornába!",

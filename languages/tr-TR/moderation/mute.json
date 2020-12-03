@@ -1,9 +1,9 @@
 {
-    "DESCRIPTION": "Prevents a member from sending messages and connecting to a voice chat room for a defined period of time!",
-    "USAGE": "{{prefix}}mute [@member] [time]",
+    "DESCRIPTION": "Bir üyenin mesaj göndermesini ve belirli bir süre için sesli sohbet odasına bağlanmasını engeller!",
+    "USAGE": "{{prefix}}mute [@üye] [time]",
     "EXAMPLES": "{{prefix}}mute @Androz#2091 Spam",
-    "MISSING_MEMBER": "Please specify a valid member to mute!",
-    "MUTED_DM": "Hello {{username}},\nYou've just been muted on **{{server}}** by **{{moderator}}** for **{{time}}** because of **{{reason}}**!",
-    "MUTED": "**{{username}}** is now muted for **{{time}}** because of **{{reason}}**!",
-    "CASE": "Mute | Case #{{count}}"
+    "MISSING_MEMBER": "Lütfen susturmak için uygun bir üye seçin!",
+    "MUTED_DM": "Merhaba {{username}},\nSen **{{server}}** sunucusundan **{{moderator}}** tarafından susturuldun **{{reason}}** sebebi!",
+    "MUTED": "**{{username}}** susturuldu **{{time}}** çünkü**{{reason}}**!",
+    "CASE": "Susturma | Durumu #{{count}}"
 }

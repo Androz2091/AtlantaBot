@@ -1,9 +1,9 @@
 {
-    "DESCRIPTION": "Helps you choose between the given choices!",
-    "USAGE": "{{prefix}}choice [choice1/choice2/etc...]",
-    "EXAMPLES": "{{prefix}}choice Fire/Wind/Water",
-    "MISSING": "You must enter more than two choices!\n(or use the `flip` command instead)",
-    "EMPTY": "One of your choices seems to be empty.... Please try again!",
-    "PROGRESS": "Choice being made...",
-    "DONE": "Here's my choice:"
+    "DESCRIPTION": "Membantumu memilih diantara pilihan yang diberikan!",
+    "USAGE": "{{prefix}}choice [pilihan1/pilihan2/dll...]",
+    "EXAMPLES": "{{prefix}}choice Api/Angin/Air",
+    "MISSING": "Kamu harus memberikan lebih dari dua pilihan!\n(atau gunakan perintah `flip` sebagai gantinya)",
+    "EMPTY": "Salah satu pilihanmu sepertinya kosong.... Silakan coba lagi!",
+    "PROGRESS": "Pilihan sedang dibuat...",
+    "DONE": "Berikut pilihanku:"
 }

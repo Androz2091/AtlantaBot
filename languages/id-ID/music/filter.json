@@ -1,9 +1,9 @@
 {
-    "DESCRIPTION": "Enable or disable a filter!",
+    "DESCRIPTION": "Aktifkan atau Nonaktifkan filter!",
     "USAGE": "{{prefix}}filter [filter]",
     "EXAMPLES": "{{prefix}}filter vaporwave",
-    "MISSING_FILTER": "Please specify a valid filter to enable or disable! (or send `{{prefix}}filters` to get the statuses of the filters)",
-    "UNKNOWN_FILTER": "This filter doesn't exist! Send `{{prefix}}filters` to get the list!",
-    "ADDING_FILTER": "I'm adding the filter to the music, please wait... Note: the shorter the music, the faster it will be.",
-    "REMOVING_FILTER": "I'm removing the filter to the music, please wait... Note: the shorter the music, the faster it will be."
+    "MISSING_FILTER": "Harap tentukan filter yang valid untuk mengaktifkan atau menonaktifkan! (atau kirim `{{prefix}}filters` untuk mendapatkan status filter)",
+    "UNKNOWN_FILTER": "Filter ini tidak ada! Kirim `{{prefix}}filters` untuk mendapatkan daftarnya!",
+    "ADDING_FILTER": "Aku sedang menambahkan filternya ke musik, mohon tunggu...\nCatatan: semakin pendek musiknya, semakin cepat jadinya.",
+    "REMOVING_FILTER": "Aku sedang menghapus filternya dari musik, mohon tunggu...\nCatatan: semakin pendek musiknya, semakin cepat jadinya."
 }

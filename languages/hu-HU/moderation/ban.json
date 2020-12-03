@@ -4,10 +4,10 @@
     "EXAMPLES": "{{prefix}}ban @Androz#2091 Spam",
     "MISSING_MEMBER": "Kérlek, adj meg egy érvényes tagot a kitiltáshoz!",
     "YOURSELF": "Nem szankcionálhatod magad!",
-    "SUPERIOR": "You can't sanction or update a sanction for a member who has an higher or equal role hierarchy to yours!",
+    "SUPERIOR": "Nem szankcionálhatsz vagy frissíthetsz szankciót egy olyan tag esetében, aki magasabb vagy egyenlő a ranggal rendelkezik, mint a tiéd!",
     "ALREADY_BANNED": "**{{username}}** már ki van tíltva!",
-    "MISSING_PERM": "An error has occurred... Please check that I have the permission to ban this specific member and try again!",
-    "BANNED_DM": "Hello {{username}},\nYou have just been banned from **{{server}}** by **{{moderator}}** because of **{{reason}}**!",
-    "BANNED": "**{{username}}** has just been banned from **{{server}}** by **{{moderator}}** because of **{{reason}}**!",
+    "MISSING_PERM": "Hiba történt... Kérlek ellenőrizd, hogy van-e jogom kitiltani ezt a tagot, és próbálkozz újra!",
+    "BANNED_DM": "Szia {{username}},\nKi lettél tíltva a(z) **{{server}}** szerverről **{{moderator}}** álltal **{{reason}}** indokkal!",
+    "BANNED": "**{{username}}** ki lett tíltva a(z) **{{server}}** szerverről **{{moderator}}** álltal **{{reason}}** indokkal!",
     "CASE": "Kitíltás | Ügy #{{count}}"
 }

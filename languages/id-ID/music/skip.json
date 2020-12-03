@@ -1,8 +1,8 @@
 {
-    "DESCRIPTION": "Skip the current song",
+    "DESCRIPTION": "Lompati lagu saat ini",
     "USAGE": "{{prefix}}skip",
     "EXAMPLES": "{{prefix}}skip",
-    "NO_NEXT_SONG": "There's no song after this one!",
-    "VOTE_CONTENT": "Next song: {{songName}}\nReact with 👍 to stop the music! {{requiredCount}} more votes are required.",
-    "SUCCESS": "Song skipped!"
+    "NO_NEXT_SONG": "Tidak ada lagu setelah yang satu ini!",
+    "VOTE_CONTENT": "Lagu selanjutnya: {{songName}}\nReaksi dengan 👍 untuk menghentikan musik! {{requiredCount}} lebih banyak suara dibutuhkan.",
+    "SUCCESS": "Lagu dilompati!"
 }

@@ -1,8 +1,8 @@
 {
-    "DESCRIPTION": "The Atlanta casino",
+    "DESCRIPTION": "Az Atlanta kaszinó",
     "USAGE": "{{prefix}}slots [összeg]",
     "EXAMPLES": "{{prefix}}slots\n{{prefix}}slots 10",
     "DEFEAT": "**{{username}}** felhasznált {{money}} kredited, és mindent elveszített.",
     "VICTORY": "**{{username}}** felhasznált {{money}} kreditet és nyert {{won}} kreditet!",
-    "NOT_ENOUGH": "You need at least **{{money}}** credit(s)."
+    "NOT_ENOUGH": "Legalább **{{money}}** kreditre van szükséged."
 }

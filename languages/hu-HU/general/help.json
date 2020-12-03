@@ -1,18 +1,18 @@
 {
-    "DESCRIPTION": "Show commands list or specific command help.",
+    "DESCRIPTION": "A parancsok listájának vagy a konkrét parancs súgójának megjelenítése.",
     "USAGE": "{{prefix}}help (parancs)",
     "EXAMPLES": "{{prefix}}help\n{{prefix}}help ping",
-    "CUSTOM": "A custom command doesn't have help page.",
-    "NOT_FOUND": "`{{search}}` is not a valid command",
+    "CUSTOM": "Az egyéni parancsnak nincs súgóoldala.",
+    "NOT_FOUND": "`{{search}}` nem érvényes parancs",
     "FIELD_USAGE": "Használat",
     "FIELD_DESCRIPTION": "Leírás",
     "FIELD_ALIASES": "Álnév",
     "FIELD_EXAMPLES": "Példák",
     "FIELD_PERMISSIONS": "Jogok",
-    "NO_ALIAS": "No alias",
+    "NO_ALIAS": "Nincs álnév",
     "CMD_TITLE": "{{prefix}}{{cmd}} help",
-    "INFO": "● To get help on a specific command type `{{prefix}}help <command>`!",
+    "INFO": "● Segítséghez írd be ezt a parancsot: `{{prefix}}help <parancs>`!",
     "CUSTOM_COMMANDS": "Egyéni parancsok",
     "TITLE": "{{name}} | Parancsok",
-    "NO_REQUIRED_PERMISSION": "No specific permission is required to execute this command."
+    "NO_REQUIRED_PERMISSION": "A parancs végrehajtásához nem kell engedély."
 }

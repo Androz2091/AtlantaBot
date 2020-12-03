@@ -1,7 +1,7 @@
 {
     "DESCRIPTION": "Indíts felmérést az aktuális csatornára!",
     "USAGE": "{{prefix}}poll [kérdés]",
-    "EXAMPLES": "{{prefix}}poll Is the Earth flat?",
+    "EXAMPLES": "{{prefix}}poll A Föld lapos?",
     "MISSING_QUESTION": "Kérlek, adj meg a kérdést!",
     "REACT": "Reagálj {{success}} vagy {{error}}!",
     "TITLE": "📊 Közvélemény kutatás:"

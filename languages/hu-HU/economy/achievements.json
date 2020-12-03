@@ -1,9 +1,9 @@
 {
-    "DESCRIPTION": "Shows your achievements list!",
+    "DESCRIPTION": "Az erdemények listájának megtekintése!",
     "USAGE": "{{prefix}}achievements",
     "EXAMPLES": "{{prefix}}achievements",
     "SEND_CMD": "Küldd el az első parancsodat!",
-    "CLAIM_SALARY": "Claim your salary 10 times!",
+    "CLAIM_SALARY": "Tízszer követeld a fizetését!",
     "MARRY": "Keresd meg a felát, és feleségül veszed!",
     "SLOTS": "Nyerj 3 alkalommal egymás után résidőkben!",
     "TIP": "Tartsd életben Atlantát döntetlennel!",

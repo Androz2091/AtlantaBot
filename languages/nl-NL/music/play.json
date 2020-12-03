@@ -1,11 +1,11 @@
 {
     "DESCRIPTION": "Speelt muziek voor je!",
     "USAGE": "{{prefix}}play [song]",
-    "EXAMPLES": "{{prefix}}play Bye Bye",
+    "EXAMPLES": "{{prefix}} speel maar tot ziens",
     "NO_VOICE_CHANNEL": "You must be connected to a voice channel!",
     "VOICE_CHANNEL_CONNECT": "I can't connect to your voice channel!",
     "MISSING_SONG_NAME": "Please specify a song name or a link!",
-    "RESULTS_FOOTER": "Please select a song by sending a number between 1 and 10.",
+    "RESULTS_FOOTER": "Asjeblieft selecteer een liedje door het versturen van een nummer tussen 1 en 10.",
     "NO_RESULT": "Cannot be find on Youtube!",
     "NOW_PLAYING": "Now playing **{{songName}}** :musical_note:",
     "PLAYING_PLAYLIST": "Starting playlist **{{playlistTitle}}**. {{playlistEmoji}}\nPlaying the first song, **{{songName}}**! :musical_note:",

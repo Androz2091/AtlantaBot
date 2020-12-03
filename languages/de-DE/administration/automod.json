@@ -1,10 +1,10 @@
 {
-    "DESCRIPTION": "Toggle Discord invites automatic deletion",
-    "USAGE": "{{prefix}}automod [on/off] (#channel)",
-    "EXAMPLES": "{{prefix}}automod on\n{{prefix}}automod off #general\n{{prefix}}automod off",
-    "MISSING_STATUS": "Please enter a valid value between `on` and `off`",
-    "ENABLED": "**Discord invites will be automatically deleted!**\n\n:arrow_right_hook: *Send `{{prefix}}automod off #channel` to ignore a channel!*",
-    "DISABLED_CHANNEL": "Auto-moderation will no longer be performed in {{channel}}!",
-    "DISABLED": "All right! Auto moderation is no longer effective on this server!",
-    "DELETED": "Your message was deleted because Discord invitations are not allowed on this server!"
+    "DESCRIPTION": "Discog umschalten lädt zum automatischen Löschen ein",
+    "USAGE": "{{prefix}}automod [ein / aus] (#channel)",
+    "EXAMPLES": "{{prefix}}Automod ein\n{{prefix}}automod aus #general\n{{prefix}}Automod aus",
+    "MISSING_STATUS": "Bitte geben Sie einen gültigen Wert zwischen \"Ein\" und \"Aus\" ein",
+    "ENABLED": "** Zwietracht Einladungen werden automatisch gelöscht! **\n\n:arrow_right_hook: * Sende `{{prefix}} automod off # channel`, um einen Kanal zu ignorieren! *",
+    "DISABLED_CHANNEL": "Die automatische Moderation wird in {{channel}} nicht mehr durchgeführt!",
+    "DISABLED": "Gut! Die automatische Moderation ist auf diesem Server nicht mehr wirksam!",
+    "DELETED": "Ihre Nachricht wurde gelöscht, da Discord-Einladungen auf diesem Server nicht zulässig sind!"
 }

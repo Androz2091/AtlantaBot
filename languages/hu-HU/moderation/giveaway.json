@@ -1,14 +1,14 @@
 {
-    "DESCRIPTION": "Easily manage your giveaways!",
+    "DESCRIPTION": "Könnyen kezelheted ajándékaidat!",
     "USAGE": "{{prefix}}giveaway [create/reroll/delete/end] (idő) (nyertesek száma) (nyeremény)",
     "EXAMPLES": "{{prefix}}giveaway create 10m 2 5$ PayPal!\n{{prefix}}giveaway reroll 597812898022031374",
-    "MISSING_STATUS": "You must specify an action between `create`, `reroll`, `end` or `delete`!",
-    "INVALID_CREATE": "You must enter the information like this: \n\n`{{prefix}}giveaway create [time] [winners count] [prize]`",
-    "MISSING_ID": "You must enter the giveaway message ID!",
+    "MISSING_STATUS": "Meg kell adnod a műveletek a között a `create`, `reroll`, `end` vagy a `delete` szót!",
+    "INVALID_CREATE": "Így kell megadnod az információkat: \n\n`{{prefix}}giveaway create [idő] [nyertesek száma] [nyeremény]`",
+    "MISSING_ID": "Meg kell adnod a nyereményjáték üzenet ID-jét!",
     "NOT_FOUND": "Nem található ilyen nyereményjáték üzenet ID: `{{messageID}}",
     "NOT_FOUND_ENDED": "Nincs **vége** a talált nyereményjáték üzenet ID-nek `{{messageID}}`",
     "MAX_DURATION": "A nyereményjáték maximális időtartama 15 nap.",
-    "MAX_COUNT": "There can only be 4 simultaneous giveaways.",
+    "MAX_COUNT": "Csak 4 egyidejű nyereményjáték lehet.",
     "TITLE": "🎉🎉 **NYEREMÉNYJÁTÉK** 🎉🎉",
     "ENDED": "🎉🎉 **NYEREMÉNYJÁTÉK VÉGE** 🎉🎉",
     "TIME_REMAINING": "Hátralévő idő: **{duration}**!",
@@ -22,6 +22,6 @@
     "REROLL_ERROR": "Nincsenek érvényes pályaművek, és győztesek nem választhatók ki!",
     "GIVEAWAY_CREATED": "Az Nyereményjáték elindult!",
     "GIVEAWAY_REROLLED": "A nyereményjáték újrasorsolva!",
-    "GIVEAWAY_ENDED": "The giveaway will end in less than 15 seconds!",
+    "GIVEAWAY_ENDED": "A nyereményjáték kevesebb, mint 15 másodperc múlva véget ér!",
     "GIVEAWAY_DELETED": "Nyereményjáték törölve!"
 }

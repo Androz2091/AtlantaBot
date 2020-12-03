@@ -1,5 +1,5 @@
 {
-    "DESCRIPTION": "Toggle commands in a channel",
+    "DESCRIPTION": "Parancsok váltása egy csatornán",
     "USAGE": "{{prefix}}ignore [csatorna]",
     "EXAMPLES": "{{prefix}}ignore #csatorna",
     "ALLOWED": "A parancsok mostantól engedélyezettek a {{channel}} csatornában!",

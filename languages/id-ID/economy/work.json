@@ -1,11 +1,11 @@
 {
-    "DESCRIPTION": "Claim your salary!",
+    "DESCRIPTION": "Klaim gajimu!",
     "USAGE": "{{prefix}}work",
     "EXAMPLES": "{{prefix}}work",
-    "COOLDOWN": "You have to wait {{time}} before working again!",
-    "AWARD": "Complete the word AWARD to win 200 bonus credits!",
-    "SALARY": "Salary",
-    "SALARY_CONTENT": "You've gained {{won}} credits!",
+    "COOLDOWN": "Kamu harus menunggu {{time}} sebelum bekerja lagi!",
+    "AWARD": "Lengkapi kata AWARD untuk memenangkan 200 kredit bonus!",
+    "SALARY": "Gaji",
+    "SALARY_CONTENT": "Kamu mendapatkan {{won}} kredit!",
     "STREAK": "Streak",
-    "STREAK_CONTENT": "🎉 You've won 200 bonus credits!"
+    "STREAK_CONTENT": "🎉 Kamu memenangkan 200 kredit bonus!"
 }

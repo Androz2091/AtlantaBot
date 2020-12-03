@@ -1,9 +1,9 @@
 {
-    "DESCRIPTION": "Prevents a member from sending messages and connecting to a voice chat room for a defined period of time!",
-    "USAGE": "{{prefix}}mute [@member] [time]",
+    "DESCRIPTION": "Mencegah anggota mengirim pesan dan menyambung ke ruang obrolan suara untuk jangka waktu tertentu!",
+    "USAGE": "{{prefix}}mute [@anggota] [waktu]",
     "EXAMPLES": "{{prefix}}mute @Androz#2091 Spam",
-    "MISSING_MEMBER": "Please specify a valid member to mute!",
-    "MUTED_DM": "Hello {{username}},\nYou've just been muted on **{{server}}** by **{{moderator}}** for **{{time}}** because of **{{reason}}**!",
-    "MUTED": "**{{username}}** is now muted for **{{time}}** because of **{{reason}}**!",
-    "CASE": "Mute | Case #{{count}}"
+    "MISSING_MEMBER": "Harap tentukan anggota yang valid untuk di bungkam!",
+    "MUTED_DM": "Halo {{username}},\nKamu baru saja dibungkam di **{{server}}** oleh **{{moderator}}** selama **{{time}}** karena **{{reason}}**!",
+    "MUTED": "**{{username}}** sekarang dibungkam selama **{{time}}** karena **{{reason}}**!",
+    "CASE": "Bungkam | Kasus #{{count}}"
 }

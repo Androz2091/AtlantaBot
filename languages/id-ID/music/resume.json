@@ -1,6 +1,6 @@
 {
-    "DESCRIPTION": "Resume the current song!",
+    "DESCRIPTION": "Lanjutkan lagu saat ini!",
     "USAGE": "{{prefix}}resume",
     "EXAMPLES": "{{prefix}}resume",
-    "SUCCESS": "▶️ Music resumed!"
+    "SUCCESS": "▶️ Musik dilanjutkan!"
 }

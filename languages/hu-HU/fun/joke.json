@@ -1,5 +1,5 @@
 {
-    "DESCRIPTION": "Gets a wonderful joke specially made for you!",
+    "DESCRIPTION": "Kapsz egy csodálatos viccet, amelyet kifejezetten neked készítettek!",
     "USAGE": "{{prefix}}joke",
     "EXAMPLES": "{{prefix}}joke",
     "FOOTER": "blague.xyz | Írta: Skiz#0001"

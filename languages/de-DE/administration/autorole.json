@@ -1,10 +1,10 @@
 {
-    "DESCRIPTION": "Toggle autorole on the server!",
-    "USAGE": "{{prefix}}autorole [on/off] (role)",
-    "EXAMPLES": "{{prefix}}autorole on @Members\n{{prefix}}autorole off",
-    "MISSING_STATUS": "Please specify a valid value between `on` and `off`",
-    "MISSING_ROLE": "Please specify a valid role!",
-    "SUCCESS_ENABLED": "Autorole enabled! New members will automatically receive the **{{roleName}}** role.",
-    "ALREADY_DISABLED": "**The autorole is already disabled.**\n\n:arrow_right_hook: *Send `{{prefix}}autorole on @YourRole` to enable it again!*",
-    "SUCCESS_DISABLED": "**Autorole disabled!**\n\n:arrow_right_hook: *Send `{{prefix}}configuration` to see the updated configuration!*"
+    "DESCRIPTION": "Autorole auf dem Server umschalten!",
+    "USAGE": "{{prefix}}autorole [Ein/Aus] (Rolle)",
+    "EXAMPLES": "{{prefix}} autorole bei @Members\n{{prefix}} autorole aus",
+    "MISSING_STATUS": "Bitte geben Sie einen gültigen Wert zwischen \"Ein\" und \"Aus\" an",
+    "MISSING_ROLE": "Bitte geben Sie eine gültige Rolle an!",
+    "SUCCESS_ENABLED": "Autorole aktiviert! Neue Mitglieder erhalten automatisch die Rolle ** {{roleName}} **.",
+    "ALREADY_DISABLED": "** Die Autorole ist bereits deaktiviert. **\n\n:arrow_right_hook: * Sende eine {{prefix}} Autorole auf @YourRole`, um sie wieder zu aktivieren! *",
+    "SUCCESS_DISABLED": "** Autorole deaktiviert! **\n\n:arrow_right_hook: * Sende `{{prefix}} Konfiguration`, um die aktualisierte Konfiguration zu sehen! *"
 }

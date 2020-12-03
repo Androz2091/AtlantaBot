@@ -1,7 +1,7 @@
 {
-    "DESCRIPTION": "Toggle commands in a channel",
-    "USAGE": "{{prefix}}ignore [channel]",
-    "EXAMPLES": "{{prefix}}ignore #channel",
-    "ALLOWED": "Commands are now allowed in {{channel}}!",
-    "IGNORED": "Commands are now forbidden in {{channel}}!"
+    "DESCRIPTION": "Alihkan perintah di saluran",
+    "USAGE": "{{prefix}}ignore [saluran]",
+    "EXAMPLES": "{{prefix}}ignore #saluran",
+    "ALLOWED": "Sekarang perintah tidak diperbolehkan di {{channel}}!",
+    "IGNORED": "Sekarang perintah dilarang di {{channel}}!"
 }

@@ -1,5 +1,5 @@
 {
-    "DESCRIPTION": "Add a custom command!",
+    "DESCRIPTION": "Agregue un comando personalizado!",
     "USAGE": "{{prefix}}addcommand [nombre] [respuesta]",
     "EXAMPLES": "{{prefix}}addcommand hola Hola {user}! ¿Qué tal estás?",
     "MISSING_NAME": "Por favor proporcione un nombre para el comando!",

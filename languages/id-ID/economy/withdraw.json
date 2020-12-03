@@ -1,9 +1,9 @@
 {
-    "DESCRIPTION": "Withdraw money!",
-    "USAGE": "{{prefix}}withdraw [amount]",
+    "DESCRIPTION": "Tarik uang!",
+    "USAGE": "{{prefix}}withdraw [jumlah]",
     "EXAMPLES": "{{prefix}}withdraw 400",
-    "MISSING_AMOUNT": "Please specify an amount to be withdrawn!",
-    "NO_CREDIT": "You don't have any credit in your bank!",
-    "NOT_ENOUGH": "You need at least `{{money}}` credit(s)!",
-    "SUCCESS": "**{{money}}** credit(s) withdrawn!"
+    "MISSING_AMOUNT": "Harap tentukan jumlah yang akan ditarik!",
+    "NO_CREDIT": "Kamu tidak punya kredit sedikitpun di bankmu!",
+    "NOT_ENOUGH": "Kamu butuh setidaknya `{{money}}` kredit!",
+    "SUCCESS": "**{{money}}** kredit ditarik!"
 }

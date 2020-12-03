@@ -6,8 +6,8 @@
     "GAME_STARTING": ":timer: | La partie commence dans 10 secondes !",
     "FIND_WORD": "20 seconds to find a word containing \"__**{{word}}**__\"!",
     "WORD_FOUND": "Well done {{winner}}! You were the fastest to enter a valid word!",
-    "GAME_STATS": "🎉 | {{winner}} won the game!\n\n**Stats:**\n*-* __**Duration**__: {{time}}\n*-* __**Participants**__: {{participants}} ({{participantCount}})**Stats of the game: **\n__**Duration**__: {{duration}}\n__**Number of participants**__ : {{participantCount}}\n__**Participants**__ : \n{{participantList}}",
+    "GAME_STATS": "🎉 | {{winner}} a gagné le giveaway !\n\n**Statistiques:**\n*-* __ ** Durée ** __: {{time}}\n*-* __ ** Participants ** __: {{participants}} ({{participantCount}})** Statistiques du jeu: **\n__** Durée ** __: {{duration}}\n__ ** Nombre de participants **__: {{participantCount}}\n__** Participants ** __:\n{{participantList}}",
     "CREDITS": "{{winner}} gagne 15 crédits ! 🎉",
-    "NO_WINNER_ALL": "No words founds, no one wins!",
-    "NO_WINNER": "No words founds, no one wins!"
+    "NO_WINNER_ALL": "Personne n'as trouvé de mots, personne ne gagne !",
+    "NO_WINNER": "Personne n'as trouvé de mots, personne ne gagne !"
 }

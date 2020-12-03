@@ -1,10 +1,10 @@
 {
-    "DESCRIPTION": "Toggle Discord invites automatic deletion",
-    "USAGE": "{{prefix}}automod [on/off] (#channel)",
-    "EXAMPLES": "{{prefix}}automod on\n{{prefix}}automod off #general\n{{prefix}}automod off",
-    "MISSING_STATUS": "Please enter a valid value between `on` and `off`",
-    "ENABLED": "**Discord invites will be automatically deleted!**\n\n:arrow_right_hook: *Send `{{prefix}}automod off #channel` to ignore a channel!*",
-    "DISABLED_CHANNEL": "Auto-moderation will no longer be performed in {{channel}}!",
-    "DISABLED": "All right! Auto moderation is no longer effective on this server!",
-    "DELETED": "Your message was deleted because Discord invitations are not allowed on this server!"
+    "DESCRIPTION": "Alihkan penghapusan otomatis undangan Discord",
+    "USAGE": "{{prefix}}automod [on/off] (#saluran)",
+    "EXAMPLES": "{{prefix}}automod on\n{{prefix}}automod off #umum\n{{prefix}}automod off",
+    "MISSING_STATUS": "Harap berikan nilai yang valid antara `on` dan `off`",
+    "ENABLED": "**Undangan Discord akan secara otomatis dihapus!**\n\n:arrow_right_hook: *Kirim `{{prefix}}automod off #saluran` untuk mengabaikan saluran!*",
+    "DISABLED_CHANNEL": "Auto-moderasi tidak dapat lagi dilakukan di {{channel}}!",
+    "DISABLED": "Baiklah! Auto moderasi tidak lagi efektif di server ini!",
+    "DELETED": "Pesanmu telah dihapus karena undangan Discord tidak diperbolehkan di server ini!"
 }

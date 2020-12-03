@@ -1,8 +1,8 @@
 {
-    "DESCRIPTION": "Set a channel cooldown",
-    "USAGE": "{{prefix}}slowmode [#channel] (time)",
+    "DESCRIPTION": "Atur jeda saluran",
+    "USAGE": "{{prefix}}slowmode [#saluran] (waktu)",
     "EXAMPLES": "{{prefix}}slowmode #general 10m\n{{prefix}}slowmode #general",
-    "DISABLED": "**Slow-mode has just been disabled in {{channel}}!**\n\n:arrow_right_hook: *Send `{{prefix}}slowmode [#channel] (time)` to enable it again!*",
-    "ENABLED": "**A slow-mode of `{{time}}` has just been enabled in `{{channel}}`!**\n\n:arrow_right_hook: *Send `{{prefix}}slowmode {{channel}}` to disable it!*",
-    "PLEASE_WAIT": "Channel {{channel}} is in slowmode! Please wait {{time}} between each message!"
+    "DISABLED": "**Mode-pelan telah dinonaktifkan di {{channel}}!**\n\n:arrow_right_hook: *Kirim `{{prefix}}slowmode [#saluran] (waktu)` untuk mengaktifkannya lagi!*",
+    "ENABLED": "**Mode-pelan dari `{{time}}` telah diaktifkan di `{{channel}}`!**\n\n:arrow_right_hook: *Kirim `{{prefix}}slowmode {{channel}}` untuk menonaktifkannya!*",
+    "PLEASE_WAIT": "Saluran {{channel}} dalam mode pelan! Mohon tunggu {{time}} antara setiap pesan!"
 }

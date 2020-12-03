@@ -1,5 +1,5 @@
 {
-    "DESCRIPTION": "Gets a wonderful joke specially made for you!",
+    "DESCRIPTION": "Obtient une merveilleuse blague spécialement conçue pour vous !",
     "USAGE": "{{prefix}}joke",
     "EXAMPLES": "{{prefix}}joke",
     "FOOTER": "blague.xyz | Par Skiz#0001"

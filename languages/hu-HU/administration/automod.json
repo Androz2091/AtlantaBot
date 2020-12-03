@@ -1,10 +1,10 @@
 {
-    "DESCRIPTION": "Toggle Discord invites automatic deletion",
+    "DESCRIPTION": "Discord meghívások automatikus törlése",
     "USAGE": "{{prefix}}automod [on/off] (#csatorna)",
     "EXAMPLES": "{{prefix}}automod on\n{{prefix}}automod off #általános\n{{prefix}}automod off",
-    "MISSING_STATUS": "Please enter a valid value between `on` and `off`",
-    "ENABLED": "**Discord invites will be automatically deleted!**\n\n:arrow_right_hook: *Send `{{prefix}}automod off #channel` to ignore a channel!*",
-    "DISABLED_CHANNEL": "Auto-moderation will no longer be performed in {{channel}}!",
+    "MISSING_STATUS": "Kérlek írj be egy érvényes értéket a következők közül: `on` és `off`",
+    "ENABLED": "**A Discord meghívások automatikusan törlődnek!**\n\n:arrow_right_hook: *Írd be a `{{prefix}}automod off #csatorna` parancsot ha egy csatornát figyelmen kívül akarsz hagyni!*",
+    "DISABLED_CHANNEL": "Az Auto-moderálást már nem hajthatod végre a(z) {{channel}} csatornán!",
     "DISABLED": "Rendben! Az automatikus moderálás már nem érvényes ezen a szerveren!",
-    "DELETED": "Your message was deleted because Discord invitations are not allowed on this server!"
+    "DELETED": "Üzenetedet töröltük, mert a Discord meghívások nem engedélyezettek ezen a szerveren!"
 }

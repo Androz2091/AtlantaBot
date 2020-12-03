@@ -2,11 +2,11 @@
     "DESCRIPTION": "Határozd meg a szankciókat, amelyeket a tagok bizonyos számú figyelmeztetés után kapnak!",
     "USAGE": "{{prefix}}setwarns [kick/ban] [szám/reset]",
     "EXAMPLES": "{{prefix}}setwarns kick 10\n{{prefix}}setwarns ban 10\n{{prefix}}setwarns ban reset",
-    "MISSING_TYPE": "Please specify sanction between `kick` and `ban`",
-    "SUCCESS_KICK": "** `{{count}}` warnings will result in an expulsion!**\n\n:arrow_right_hook: *Send `{{prefix}}configuration` to see the updated configuration!*",
-    "SUCCESS_BAN": "** `{{count}}` warnings will result in a ban!**\n\n:arrow_right_hook: *Send `{{prefix}}configuration` to see the updated configuration!*",
-    "SUCCESS_KICK_RESET": "**Members can no longer be automatically kicked!**\n\n:arrow_right_hook: *Send `{{prefix}}configuration` to see the updated configuration!*",
-    "SUCCESS_BAN_RESET": "**Members can no longer be automatically banned!**\n\n:arrow_right_hook: *Send `{{prefix}}configuration` to see the updated configuration!*",
+    "MISSING_TYPE": "Kérlek, pontosítsd a szankciót a `kick` és a `ban` között",
+    "SUCCESS_KICK": "** `{{count}}` figyelmeztetés után utasítást eredményez!**\n\n:arrow_right_hook: *Írd be a `{{prefix}}configuration` parancsot a frissített konfiguráció megtekintéséhez!*",
+    "SUCCESS_BAN": "** `{{count}}` figyelmeztetés után kitíltást eredményez!**\n\n:arrow_right_hook: *Írd be a `{{prefix}}configuration` parancsot a frissített konfiguráció megtekintéséhez!*",
+    "SUCCESS_KICK_RESET": "***A tagokat már nem lehet automatikusan kirúgni!**\n\n:arrow_right_hook: *Írd be a `{{prefix}}configuration` parancsot a frissített konfiguráció megtekintéséhez!*",
+    "SUCCESS_BAN_RESET": "***A tagokat már nem lehet automatikusan kitiltni!**\n\n:arrow_right_hook: *Írd be a `{{prefix}}configuration` parancsot a frissített konfiguráció megtekintéséhez!*",
     "AUTO_BAN": "**{{username}}** automatikusan ki lett tíltva, mert elérte a **{{count}}** figyelmeztetést!",
     "AUTO_KICK": "**{{username}}** automatikusan ki lett rúgva, mert elérte a **{{count}}** figyelmeztetést!"
 }

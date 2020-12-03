@@ -1,17 +1,17 @@
 {
-    "DESCRIPTION": "Shows the bot stats!",
+    "DESCRIPTION": "Megmutatja a bot statisztikáját!",
     "USAGE": "{{prefix}}stats",
     "EXAMPLES": "{{prefix}}stats",
     "COUNTS_TITLE": "• __Statisztika__",
     "COUNTS_CONTENT": "`Szerverek: {{servers}}`\n`Felhasználók: {{users}}`",
-    "VERSIONS_TITLE": "• __Using__",
+    "VERSIONS_TITLE": "• __Használata__",
     "RAM_TITLE": "• __RAM__",
     "ONLINE_TITLE": "• __Elérhető__",
     "ONLINE_CONTENT": "Elérhető vagyok {{time}} ideje",
     "MUSIC_TITLE": "• __Zene__",
     "MUSIC_CONTENT": "Zene lejátszása `{{count}}` szerveren",
     "CREDITS_TITLE": ":heart: • __Köszönetnyilvánítások és kreditek__",
-    "CREDITS_CONTENT": "Thanks to [Icons8](https://icons8.com/) for almost all the emojis!\n__**Donators**__:\n{{donators}}\n__**Translators**__:\n{{translators}}",
+    "CREDITS_CONTENT": "Köszönet az [Icons8](https://icons8.com/)-nak szinte az összes hangulatjeletet!\n__**Támogatók**__:\n{{donators}}\n__**Fordítók**__:\n{{translators}}",
     "LINKS_TITLE": "• __Linkek__",
     "MADE": "Az Atlanta Androz#2091 által kifejlesztett nyílt forráskódú bot!"
 }

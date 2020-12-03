@@ -1,10 +1,10 @@
 {
-    "DESCRIPTION": "Shows Atlanta links!",
+    "DESCRIPTION": "Atlanta linkekjeinek megtekintése!",
     "USAGE": "{{prefix}}invite (copy)",
     "EXAMPLES": "{{prefix}}invite\n{{prefix}}invite copy",
-    "LINKS": "Atlanta links",
+    "LINKS": "Atlanta Linkjei",
     "TIP": "Írd be a `{{prefix}}invite copy` parancsot, hogy másold a meghívó linket!",
     "ADD": "Atlanta Meghívása",
     "VOTE": "Szavazás az Atlantára",
-    "SUPPORT": "Get Support"
+    "SUPPORT": "Támogatást kapni"
 }

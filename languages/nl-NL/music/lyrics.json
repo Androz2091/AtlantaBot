@@ -1,10 +1,10 @@
 {
-    "DESCRIPTION": "Shows the song lyrics",
+    "DESCRIPTION": "Toont de songtekst",
     "USAGE": "{{prefix}}lyrics [song-name]",
     "EXAMPLES": "{{prefix}}lyrics Skyfall",
     "LYRICS_OF": "🎤 {{songName}} lyrics",
     "AND_MORE": "\n**En meer...**",
-    "REST": "Expand",
-    "MISSING_SONG_NAME": "Please specify a song name!",
+    "REST": "Uitbreiden",
+    "MISSING_SONG_NAME": "Geef a. u. b. een songnaam op!",
     "NO_LYRICS_FOUND": "Geen songteksten gevonden voor `{{songName}}`!"
 }

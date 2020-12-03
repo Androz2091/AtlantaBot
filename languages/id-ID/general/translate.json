@@ -1,9 +1,9 @@
 {
-    "DESCRIPTION": "Translate your text!",
-    "USAGE": "{{prefix}}translate [language] [message]",
-    "EXAMPLES": "{{prefix}}translate fr How are you ?",
-    "LIST_SENT": "The languages list has just been sent to you by private messages!",
-    "MISSING_LANGUAGE": "Please enter a language! To display the languages list, type `{{prefix}}translate langs-list`!",
-    "INVALID_LANGUAGE": "The language `{{search}}` does not exist! To display the languages list, type `{{prefix}}translate langs-list`!",
-    "MISSING_CONTENT": "Please enter a text to be translated!"
+    "DESCRIPTION": "Terjemahkan teks-mu!",
+    "USAGE": "{{prefix}}translate [bahasa] [pesan]",
+    "EXAMPLES": "{{prefix}}translate fr Apa kabarmu ?",
+    "LIST_SENT": "Daftar bahasa baru saja dikirimkan kepada Anda melalui pesan pribadi!",
+    "MISSING_LANGUAGE": "Harap masukkan bahasa! Untuk menampilkan daftar bahasa, ketik `{{prefix}}translate langs-list`!",
+    "INVALID_LANGUAGE": "Bahasa `{{search}}` tidak ada! Untuk menampilkan daftar bahasa, ketik `{{prefix}} translate langs-list`!",
+    "MISSING_CONTENT": "Harap berikan teks untuk diterjemahkan!"
 }

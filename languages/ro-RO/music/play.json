@@ -1,5 +1,5 @@
 {
-    "DESCRIPTION": "Plays music for you!",
+    "DESCRIPTION": "Redă muzică pentru tine!",
     "USAGE": "{{prefix}}play [song]",
     "EXAMPLES": "{{prefix}}play Bye Bye",
     "NO_VOICE_CHANNEL": "You must be connected to a voice channel!",
@@ -11,8 +11,8 @@
     "PLAYING_PLAYLIST": "Starting playlist **{{playlistTitle}}**. {{playlistEmoji}}\nPlaying the first song, **{{songName}}**! :musical_note:",
     "CANCELLED": "Selection cancelled",
     "NOT_PLAYING": "No songs are currently playing in this server.",
-    "QUEUE_ENDED": "Queue has ended. No more music to play...",
-    "ADDED_QUEUE": "{{songName}} has been added to the queue!",
-    "ADDED_QUEUE_COUNT": "{{songCount}} songs added to the queue!",
+    "QUEUE_ENDED": "Coada s-a încheiat. Nu mai e muzică de redat...",
+    "ADDED_QUEUE": "{{songName}} a fost adăugat la coadă!",
+    "ADDED_QUEUE_COUNT": "{{songCount}} melodii adăugate la coadă!",
     "STOP_DISCONNECTED": "I've just stopped the music as I have been disconnected from the channel."
 }

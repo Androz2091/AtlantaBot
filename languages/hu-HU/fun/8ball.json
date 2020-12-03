@@ -1,8 +1,8 @@
 {
-    "DESCRIPTION": "I'm telling you the truth!",
+    "DESCRIPTION": "Az igazat mondom neked!",
     "USAGE": "{{prefix}}8ball [kérdés]",
     "EXAMPLES": "{{prefix}}8ball Az Atlanta a legjobb Discord bot?",
-    "ERR_QUESTION": "You must enter a question!",
+    "ERR_QUESTION": "Meg kell adnod egy kérdést!",
     "RESPONSE_1": "Biztos vagyok benne.",
     "RESPONSE_2": "Ez határozottan biztonságos.",
     "RESPONSE_3": "Igen határozottan.",

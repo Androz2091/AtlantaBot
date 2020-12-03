@@ -2,6 +2,6 @@
     "DESCRIPTION": "Megjeleníti a tag által elkövetett jogsértések listáját!",
     "USAGE": "{{prefix}}sanctions [@tag]",
     "EXAMPLES": "{{prefix}}sanctions @Androz#2091",
-    "MISSING_MEMBER": "You must specify a member!",
+    "MISSING_MEMBER": "Meg kell adnod egy tagot!",
     "NO_SANCTION": "**{{username}}** nem kapott szankciókat."
 }

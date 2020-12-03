@@ -3,7 +3,7 @@
     "USAGE": "{{prefix}}unmute [@tag]",
     "EXAMPLES": "{{prefix}}unmute @Androz#2091",
     "MISSING_MEMBER": "Kérlek, add meg a tagot, amelyet szeretnél némítani!",
-    "NOT_MUTED": "**{{username}}** is not muted on this server!",
+    "NOT_MUTED": "**{{username}}** nincs némítva a szerveren!",
     "SUCCESS": "**{{username}}** némítása fel lett oldva!",
-    "SUCCESS_CASE": "{{user}} (`{{usertag}}`) has just been unmuted! (mute case: #{{count}})"
+    "SUCCESS_CASE": "{{user}} (`{{usertag}}`) némítása fel lett oldva! (némítása: #{{count}})"
 }

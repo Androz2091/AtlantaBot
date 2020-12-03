@@ -2,9 +2,9 @@
     "DESCRIPTION": "Adj hírnév pontot valakinek!",
     "USAGE": "{{prefix}}rep [felhasználó]",
     "EXAMPLES": "{{prefix}}rep @Androz#2091",
-    "COOLDOWN": "You have to wait {{time}} before being able to `rep` someone!",
-    "INVALID_USER": "You must mention a valid user!",
-    "BOT_USER": "Bots don't accept reputation points!",
+    "COOLDOWN": "Várnod kell {{time}}-t, mielőtt megismételheted a `rep` parancsot!",
+    "INVALID_USER": "Meg kell említened egy érvényes felhasználót!",
+    "BOT_USER": "A botok nem fogadnak el jó hírnév pontokat!",
     "YOURSELF": "Magadnak nem adhatsz hírnév pontot!",
     "SUCCESS": "Most adtál egy hírnév pontot {{username}} felhasználónak!"
 }

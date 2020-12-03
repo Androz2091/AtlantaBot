@@ -1,11 +1,11 @@
 {
-    "DESCRIPTION": "Set the birthday date that appear on your profile",
+    "DESCRIPTION": "Állítsd be a profilodba megjelenő születésnapi dátumot",
     "USAGE": "{{prefix}}birthdate (dátum)",
     "EXAMPLES": "{{prefix}}birthdate 01/12/2000",
     "MISSING_DATE": "Kérlek, adj meg egy érvényes dátumot! Például: 01/12/2000",
-    "INVALID_DATE": "You must use the following date format: DD/MM/YYYY. For example, `December 1, 2000` will be `01/12/2000`.",
-    "INVALID_DATE_FORMAT": "You must use the following date format: DD/MM/YYYY. For example, `December 1, 2000` will be `01/12/2000`.",
+    "INVALID_DATE": "A következő dátumformátumot kell használnod: NN/HH/ ÉÉÉÉ. Például: `December 1, 2000`, ezt így kell megadni: `01/12/2000`.",
+    "INVALID_DATE_FORMAT": "A következő dátumformátumot kell használnod: NN/HH/ ÉÉÉÉ. Például: `December 1, 2000`, ezt így kell megadni: `01/12/2000`.",
     "DATE_TOO_HIGH": "Tényleg 80 éves vagy? :eyes:",
-    "DATE_TOO_LOW": "Humm, nop! You must be born!",
+    "DATE_TOO_LOW": "Humm, nop! Születsz!",
     "SUCCESS": "A születésnapodat {{date}} dátumra állítottad!"
 }

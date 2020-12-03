@@ -1,8 +1,8 @@
 {
-    "DESCRIPTION": "Add a custom command!",
-    "USAGE": "{{prefix}}addcommand [name] [answer]",
-    "EXAMPLES": "{{prefix}}addcommand hello Hello {user}! How are you?",
-    "MISSING_NAME": "Please provide a command name!",
-    "MISSING_ANSWER": "Please provide a command answer!",
-    "SUCCESS": "Command **{{prefix}}{{commandName}}** added!"
+    "DESCRIPTION": "Tambahkan perintah buatan!",
+    "USAGE": "{{prefix}}addcommand [nama] [jawaban]",
+    "EXAMPLES": "{{prefix}}addcommand halo Hallo {user}! Apa kabarmu?",
+    "MISSING_NAME": "Harap sediakan nama perintah!",
+    "MISSING_ANSWER": "Harap sediakan jawaban perintah!",
+    "SUCCESS": "Perintah **{{prefix}}{{commandName}}** ditambahkan!"
 }

@@ -2,7 +2,7 @@
     "DESCRIPTION": "Tölts be pénzt a bankba",
     "USAGE": "{{prefix}}deposit [összeg]",
     "EXAMPLES": "{{prefix}}deposit 400",
-    "MISSING_AMOUNT": "Please specify an amount!",
+    "MISSING_AMOUNT": "Kérlek ad meg egy összeget!",
     "NO_CREDIT": "Nincs hiteled a bankba történő befizetésre!",
     "NO_ENOUGH_CREDIT": "Nincs ennyi kredited: `{{money}}`!",
     "SUCCESS": "**{{money}}** kredit berakva a bankba!"

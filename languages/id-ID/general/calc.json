@@ -1,10 +1,10 @@
 {
-    "DESCRIPTION": "Calculator able to solve complex operations and to convert units!",
-    "USAGE": "{{prefix}}calc [calculation]",
-    "EXAMPLES": "{{prefix}}10*5+sin(3)\n{{prefix}}calc 10cm to m",
-    "MISSING_CALC": "Please enter a calculation!",
-    "INVALID_CALC": "Please enter a **valid** calculation!",
-    "TITLE": "Calculator",
-    "CALCULATION": "Calculation",
-    "RESULT": "Result"
+    "DESCRIPTION": "Kalkulator mampu menyelesaikan operasi kompleks dan mengonversi satuan!",
+    "USAGE": "{{prefix}}calc [perhitungan]",
+    "EXAMPLES": "{{prefix}}10*5+sin(3)\n{{prefix}}calc 10cm ke m",
+    "MISSING_CALC": "Harap berikan perhitungan!",
+    "INVALID_CALC": "Harap berikan perhitungan yang **valid**!",
+    "TITLE": "Kalkulator",
+    "CALCULATION": "Perhitungan",
+    "RESULT": "Hasil"
 }

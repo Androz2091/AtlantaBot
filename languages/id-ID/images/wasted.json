@@ -1,5 +1,5 @@
 {
-    "DESCRIPTION": "Generates a \"wasted\" image using Nekobot API",
-    "USAGE": "{{prefix}}wasted (@member)",
+    "DESCRIPTION": "Menghasilkan gambar \"wasted\" menggunakan Nekobot API",
+    "USAGE": "{{prefix}}wasted (@anggota)",
     "EXAMPLES": "{{prefix}}wasted\n{{prefix}}wasted @Androz#2091"
 }

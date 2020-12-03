@@ -1,7 +1,7 @@
 {
-    "DESCRIPTION": "Set the moderation logs channel!",
-    "USAGE": "{{prefix}}setmodlogs (#channel)",
-    "EXAMPLES": "{{prefix}}setmodlogs #modlogs\n{{prefix}}setmodlogs",
-    "SUCCESS_ENABLED": "Moderation logs will be sent in **{{channel}}**!",
-    "SUCCESS_DISABLED": "Moderation logs channel deleted!"
+    "DESCRIPTION": "Atur saluran log moderasi!",
+    "USAGE": "{{prefix}}setmodlogs (#saluran)",
+    "EXAMPLES": "{{prefix}}setmodlogs #logmod\n{{prefix}}setmodlogs",
+    "SUCCESS_ENABLED": "Log moderasi akan dikirimkan di **{{channel}}**!",
+    "SUCCESS_DISABLED": "Saluran log moderasi dihapus!"
 }

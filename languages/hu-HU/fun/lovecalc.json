@@ -1,7 +1,7 @@
 {
-    "DESCRIPTION": "How much love is there between two people?\n*This is a fun command, not to be taken seriously*",
+    "DESCRIPTION": "Mennyi szeretet van két ember között? *Ez egy szórakoztató parancs, nem szabad komolyan venni*",
     "USAGE": "{{prefix}}lovecalc [@tag1] (@tag2)",
     "EXAMPLES": "{{prefix}}lovecalc @Androz#2091\n{{prefix}}lovecalc @Androz#2091 @Atlanta#6770",
     "MISSING": "Két tagot kell megemlítened!",
-    "CONTENT": "There's **{{percent}}%** of love between **{{firstUsername}}** and **{{secondUsername}}**!\n**Congrats!**"
+    "CONTENT": "Van **{{percent}}%** a szeretetre **{{firstUsername}}** és **{{secondUsername}}** felhasználók között!\n**Gratulálok!**"
 }

@@ -1,6 +1,6 @@
 {
-    "DESCRIPTION": "Check if members have a Discord server link in their status!",
+    "DESCRIPTION": "Ellenőrizd, hogy a tagok állapotában van-e Discord szerver link!",
     "USAGE": "{{prefix}}checkinvites",
     "EXAMPLES": "{{prefix}}checkinvites",
-    "NOBODY": "No member advertises in their status!"
+    "NOBODY": "Egyik tag sem hirdet az állapotukban!"
 }

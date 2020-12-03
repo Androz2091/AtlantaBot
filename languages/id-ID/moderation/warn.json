@@ -1,10 +1,10 @@
 {
-    "DESCRIPTION": "Warn a member in private messages",
-    "USAGE": "{{prefix}}warn [@member] [reason]",
-    "EXAMPLES": "{{prefix}}warn @Androz#2091 Dumb",
-    "MISSING_MEMBER": "Please specify the member you want to warn!",
-    "MISSING_REASON": "Please enter a reason!",
-    "WARNED_DM": "Hello {{username}},\nYou've just been warned on **{{server}}** by **{{moderator}}** for **{{reason}}**!",
-    "WARNED": "**{{username}}** has been warned in private messages for **{{reason}}**!",
-    "CASE": "Warn | Case #{{caseNumber}}"
+    "DESCRIPTION": "Peringatkan anggota dalam pesan pribadi",
+    "USAGE": "{{prefix}}warn [@anggota] [alasan]",
+    "EXAMPLES": "{{prefix}}warn @Androz#2091 Bodoh",
+    "MISSING_MEMBER": "Harap tentukan anggota yang ingin kamu peringatkan!",
+    "MISSING_REASON": "Harap berikan alasannya!",
+    "WARNED_DM": "Halo {{username}},\nKau baru saja diperingatkan di **{{server}}** oleh **{{moderator}}** karena **{{reason}}**!",
+    "WARNED": "**{{username}}** baru saja diperingatkan di pesan pribadi karena **{{reason}}**!",
+    "CASE": "Peringatan | Kasus #{{caseNumber}}"
 }

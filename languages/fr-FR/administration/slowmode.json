@@ -1,8 +1,8 @@
 {
-    "DESCRIPTION": "Set a channel cooldown",
+    "DESCRIPTION": "Définir un temps de cooldown dans un salon",
     "USAGE": "{{prefix}}slowmode [#salon] (temps)",
     "EXAMPLES": "{{prefix}}slowmode #general 10m\n{{prefix}}slowmode #general",
-    "DISABLED": "**Slow-mode has just been disabled in {{channel}}!**\n\n:arrow_right_hook: *Send `{{prefix}}slowmode [#channel] (time)` to enable it again!*",
-    "ENABLED": "**A slow-mode of `{{time}}` has just been enabled in `{{channel}}`!**\n\n:arrow_right_hook: *Send `{{prefix}}slowmode {{channel}}` to disable it!*",
-    "PLEASE_WAIT": "Channel {{channel}} is in slowmode! Please wait {{time}} between each message!"
+    "DISABLED": "**Le mode lent vient d'être désactivé dans {{channel}} !**\n\n:arrow_right_hook: *Envoyez `{{prefix}}slowmode [#salon] (temps)` pour l'activer a nouveau !*",
+    "ENABLED": "**Un mode lent de `{{time}}` vient d'être activé dans `{{channel}}`!**\n\n:arrow_right_hook: *Envoyez `{{prefix}}slowmode {{channel}}` pour le désactiver !*",
+    "PLEASE_WAIT": "Le salon {{channel}} est en mode lent ! Veuillez attendre {{time}} pour pouvoir envoyer un nouveau message !"
 }

@@ -4,7 +4,7 @@
     "EXAMPLES": "{{prefix}}addemoji https://via.placeholder.com/150 test-emoji",
     "MISSING_URL": "Geef een afbeeldings-URL op!",
     "MISSING_NAME": "Geef een emoji-naam op!",
-    "INVALID_NAME": "The length of the emoji name must be between 2 and 32!",
-    "SUCCESS": ":{{emojiName}}: added!",
+    "INVALID_NAME": "De lengte van de emoji naam moet tussen 2 en 32 liggen!",
+    "SUCCESS": ":{{emojiName}}: toegevoegd!",
     "ERROR": "{{emojiName}} kan niet worden toegevoegd. Controleer of je server nog ruimte heeft voor nieuwe emoji's!"
 }

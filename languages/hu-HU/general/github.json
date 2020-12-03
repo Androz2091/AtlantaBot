@@ -1,5 +1,5 @@
 {
-    "DESCRIPTION": "Shows Atlanta's Github repository information!",
+    "DESCRIPTION": "Az Atlanta Github adattár információinak megtekintése!",
     "USAGE": "{{prefix}}github",
     "EXAMPLES": "{{prefix}}github",
     "CLICK_HERE": "Ide kattintva elérheted az Atlanta github-ját",

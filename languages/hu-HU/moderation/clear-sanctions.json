@@ -1,7 +1,7 @@
 {
-    "DESCRIPTION": "Clear a member sanctions!",
+    "DESCRIPTION": "A tag szankcióinak törlése!",
     "USAGE": "{{prefix}}clear-sanctions [@tag]",
     "EXAMPLES": "{{prefix}}clear-sanctions @Androz#2091",
-    "MISSING_MEMBER": "Please mention the member you wish to remove the sanctions from!",
-    "SUCCESS": "**{{username}}**'s sanctions were deleted!"
+    "MISSING_MEMBER": "Kérlek, említsd meg azt a tagot, akinek a szankcióit el akarod törölni!",
+    "SUCCESS": "**{{username}}** szankciói törölve lettek!"
 }

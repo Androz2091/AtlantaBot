@@ -1,13 +1,13 @@
 {
-    "DESCRIPTION": "Start a Findwords party, a game where you have to find words!",
+    "DESCRIPTION": "Indíts el egy Findwords partyt, egy játékot, ahol meg kell találni a szavakat!",
     "USAGE": "{{prefix}}findwords",
     "EXAMPLES": "{{prefix}}findwords",
     "INVALID_WORD": "{{member}} | A szavad nem érvényes!",
     "GAME_STARTING": ":timer: | A játék 10 másodperc múlva indul!",
-    "FIND_WORD": "20 seconds to find a word containing \"__**{{word}}**__\"!",
-    "WORD_FOUND": "Well done {{winner}}! You were the fastest to enter a valid word!",
-    "GAME_STATS": "🎉 | {{winner}} won the game!\n\n**Stats:**\n*-* __**Duration**__: {{time}}\n*-* __**Participants**__: {{participants}} ({{participantCount}})**Stats of the game: **\n__**Duration**__: {{duration}}\n__**Number of participants**__ : {{participantCount}}\n__**Participants**__ : \n{{participantList}}",
+    "FIND_WORD": "20 másodperc, hogy megtaláld ezt a szót tartalmazó \"__**{{word}}**__\"!",
+    "WORD_FOUND": "Sikerült {{winner}}! A leggyorsabban adtad meg a helyes szót!",
+    "GAME_STATS": "🎉 | {{winner}} nyerte meg a játékot!\n\n**Statisztika:**\n*-* __**Időtartam**__: {{time}}\n*-* __**Résztvevők**__: {{participants}} ({{participantCount}})**játék statisztikái: **\n__**Időtartam**__: {{duration}}\n__**Résztvevők Száma**__ : {{participantCount}}\n__**Résztvevők**__ : \n{{participantList}}",
     "CREDITS": "{{winner}} nyerél 15 kreditet! 🎉",
-    "NO_WINNER_ALL": "No words founds, no one wins!",
-    "NO_WINNER": "No words founds, no one wins!"
+    "NO_WINNER_ALL": "Nincs szó, senki sem nyert!",
+    "NO_WINNER": "Nincs szó, senki sem nyert!"
 }

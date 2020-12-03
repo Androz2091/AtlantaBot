@@ -1,7 +1,7 @@
 {
-    "DESCRIPTION": "Stop the music",
+    "DESCRIPTION": "Opriți muzica",
     "USAGE": "{{prefix}}stop",
     "EXAMPLES": "{{prefix}}stop",
     "VOTE_CONTENT": "React with 👍 to stop the music! {{requiredCount}} more votes are required.",
-    "SUCCESS": "Music stopped!"
+    "SUCCESS": "Muzica s-a oprit!"
 }

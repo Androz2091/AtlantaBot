@@ -1,8 +1,8 @@
 {
-    "DESCRIPTION": "Add a new personal reminder",
+    "DESCRIPTION": "Új személyes emlékeztető hozzáadása",
     "USAGE": "{{prefix}}remindme [üzenet]",
     "EXAMPLES": "{{prefix}}remindme 24h Munka parancs\n{{prefix}}remindme 3m Vedd ki a tésztát a serpenyőből!",
-    "MISSING_MESSAGE": "You must enter a message!",
+    "MISSING_MESSAGE": "Meg kell adnod egy üzenetet!",
     "SAVED": "Az emlékeztető mentve, az idő végén üzenetet fogsz kapni!",
     "TITLE": "Atlanta emlékeztető",
     "CREATED": "Üzenet létrehozva: {{time}}"

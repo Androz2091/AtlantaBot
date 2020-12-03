@@ -2,9 +2,9 @@
     "DESCRIPTION": "Egy Fortnite játékos statisztikáinak megtekintése!",
     "USAGE": "{{prefix}}fortnite [psn/xbl/pc] [pszeudo]",
     "EXAMPLES": "{{prefix}}fortnite pc Ninja",
-    "MISSING_PLATFORM": "Please specify a platform between `psn`, `pc` or `xbl`!",
-    "MISSING_USERNAME": "Please enter a valid epic games username!",
-    "NOT_FOUND": "`{{search}}` was not found on `{{platform}}`!",
+    "MISSING_PLATFORM": "Kérjük, adja meg egy platformot ezek közül: `psn` `pc` vagy `xbl`!",
+    "MISSING_USERNAME": "Kérlek adj meg egy érvényes epic games felhasználónevet!",
+    "NOT_FOUND": "`{{search}}` nemntalálható a(z) `{{platform}}` platformon!",
     "TITLE": "{{username}} Fortinte Statisztikái",
     "AVERAGE_KILLS": "ÖLÉSEK/MECCSEK",
     "AVERAGE_KILL": "ÖLÉS/MECCS",
@@ -17,5 +17,5 @@
     "MATCH": "Meccs",
     "KILLS": "Ölések",
     "KILL": "Ölés",
-    "FOOTER": "By Atlanta using fortnitetracker.com"
+    "FOOTER": "Atlanta által fortnitetracker.com használatával"
 }

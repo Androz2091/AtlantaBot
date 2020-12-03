@@ -1,16 +1,16 @@
 {
-    "DESCRIPTION": "Toggle goodbye messages!",
+    "DESCRIPTION": "Basculez les messages d'adieu !",
     "USAGE": "{{prefix}}goodbye",
     "EXAMPLES": "{{prefix}}goodbye",
-    "DEFAULT_MESSAGE": "Goodbye {user}! We're now {membercount} without you... :'(",
+    "DEFAULT_MESSAGE": "Au revoir {user} ! Nous sommes maintenant {membercount} sans vous... :'(",
     "TEST_SUCCESS": "Test exécuté !",
-    "FORM_1": "**In which channel will goodbye messages be sent?**\n\n:arrow_right_hook: *Answer by mentioning a channel!*",
-    "FORM_2": "**Please enter your desired goodbye message.**\n\n**If you want to:**\n*-* __Mention the user__: {user}\n*-* __Get the member count__: {membercount}\n*-* __Get the server name__: {server}\n\n**Usage example:**\nGoodbye {user}, we will miss you! We are now {membercount}.\n:fast_forward:\nGoodbye {{author}}, we will miss you! We are now {{memberCount}}.",
-    "FORM_3": "**Do you want a great goodbye image too?**\n\n:arrow_right_hook: *Answer by sending `yes` or `no`!*",
-    "FORM_SUCCESS": "**Alright, done!**\n\n:arrow_right_hook: *Answer by sending `{{prefix}}goodbye test` to preview your custom goodbye message!*",
+    "FORM_1": "**Sur quel canal les messages d'adieu seront-ils envoyés  ?**\n\n:arrow_right_hook: *Répondez en mentionnant un salon !*",
+    "FORM_2": "**Veuillez saisir votre message d'adieu souhaité.**\n**Si vous souhaitez:**\n*-* __Mention de l'utilisateur__: {user}\n*-* __Obtenir le nombre de membres__: {memberCount}\n*-* __Obtenir le nom du serveur__: {server}\n**Exemple d'utilisation:**\nAu revoir {user}, vous nous manquerez! Nous sommes maintenant {memberCount}.\n:fast_forward:\n Au revoir {{author}}, vous nous nous manquer! Nous sommes maintenant {{memberCount}}.",
+    "FORM_3": "**Voulez-vous aussi une bonne image d'adieu ?**\n\n:arrow_right_hook: *Répondez en envoyant `oui` ou `non` !*",
+    "FORM_SUCCESS": "**Très bien c'est fait !**\n\n:arrow_right_hook: *Répondez en envoyant `{{prefix}}goodbye test` pour voir votre message d'adieu !*",
     "MAX_CHARACT": "Votre message ne doit pas dépasser les 1800 caractères !",
-    "DISABLED": "**Goodbye messages have just been disabled!**\n\n:arrow_right_hook: *Answer by sending `{{prefix}}configuration` to see the updated server configuration!*",
-    "IMG_GOODBYE": "Leaving from {{server}}!",
-    "IMG_NB": "- {{memberCount}}th member!",
-    "TITLE": "GOODBYE"
+    "DISABLED": "**Les messages d'adieu viennent d'être désactivés !**\n\n:arrow_right_hook: *Répondez en envoyant `{{prefix}}configuration` pour voir la mise à jour de la configuration du serveur !*",
+    "IMG_GOODBYE": "S'en va de {{server}}!",
+    "IMG_NB": "- {{membercount}} membre(s) !",
+    "TITLE": "AU REVOIR"
 }

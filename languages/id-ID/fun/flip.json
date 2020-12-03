@@ -1,7 +1,7 @@
 {
-    "DESCRIPTION": "I roll the dice for you!",
+    "DESCRIPTION": "Aku melempar dadu untukmu!",
     "USAGE": "{{prefix}}flip",
     "EXAMPLES": "{{prefix}}flip",
-    "HEADS": "🎲 | Heads!",
-    "TAILS": "🎲 | Tails!"
+    "HEADS": "🎲 | Kepala!",
+    "TAILS": "🎲 | Ekor!"
 }

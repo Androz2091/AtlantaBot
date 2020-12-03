@@ -1,7 +1,7 @@
 {
-    "DESCRIPTION": "Send the list of all the filters and their status",
+    "DESCRIPTION": "Mengirim daftar semua filter dan statusnya",
     "USAGE": "{{prefix}}filters",
     "EXAMPLES": "{{prefix}}filters",
-    "TITLE": "**Filters**",
-    "CONTENT": "Here is the list of all filters enabled or disabled.\nUse `{{prefix}}filter` to change the status of one of them."
+    "TITLE": "**Filter**",
+    "CONTENT": "Berikut daftar semua filter yg diaktifkan atau dinonaktifkan. Gunakan `{{prefix}}filter` untuk mengganti status salah satu dari mereka."
 }

@@ -1,5 +1,5 @@
 {
-    "DESCRIPTION": "Unban the user from the server!",
+    "DESCRIPTION": "Débannir l'utilisateur du serveur !",
     "USAGE": "{{prefix}}unban [userID/user#0000]",
     "EXAMPLES": "{{prefix}}unban 422820341791064085\n{{prefix}}unban Androz#2091",
     "MISSING_ID": "Please specify the ID of the member you wish to unban!",

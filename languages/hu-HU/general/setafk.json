@@ -4,6 +4,6 @@
     "EXAMPLES": "{{prefix}}setafk Eszek =)",
     "MISSING_REASON": "Kérlek, add meg az AFK státuszodnak az okát!",
     "SUCCESS": "Te most AFK vagy (indok: {{reason}})",
-    "DELETED": "**{{username}}**, your AFK status has just been deleted!",
+    "DELETED": "**{{username}}**, az AFK státuszt töröltem!",
     "IS_AFK": "**{{user}}** jelenleg AFK, indok:\n```{{reason}}```"
 }

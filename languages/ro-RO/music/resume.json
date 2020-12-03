@@ -1,6 +1,6 @@
 {
-    "DESCRIPTION": "Resume the current song!",
+    "DESCRIPTION": "Reluați melodia curentă!",
     "USAGE": "{{prefix}}resume",
     "EXAMPLES": "{{prefix}}resume",
-    "SUCCESS": "▶️ Music resumed!"
+    "SUCCESS": "▶️Muzica a fost reluată!"
 }

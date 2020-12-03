@@ -1,13 +1,13 @@
 {
-    "DESCRIPTION": "Shows information about the server!",
-    "USAGE": "{{prefix}}serverinfo [ID/Name]",
+    "DESCRIPTION": "Menunjukan informasi tentang server!",
+    "USAGE": "{{prefix}}serverinfo [ID/Nama]",
     "EXAMPLES": "{{prefix}}serverinfo Atlanta\n{{prefix}}serverinfo",
-    "AFK_CHANNEL": "AFK channel",
-    "NO_AFK_CHANNEL": "No AFK channel",
-    "MEMBERS": "{{count}} members",
-    "BOTS": "{{count}} bots",
-    "BOOSTS": "Boosts count",
-    "TEXT_CHANNELS": "{{count}} text",
-    "VOICE_CHANNELS": "{{count}} voice",
-    "CAT_CHANNELS": "{{count}} categories"
+    "AFK_CHANNEL": "Saluran AFK",
+    "NO_AFK_CHANNEL": "Tidak ada saluran AFK",
+    "MEMBERS": "{{count}} anggota",
+    "BOTS": "{{count}} bot",
+    "BOOSTS": "Jumlah Boost",
+    "TEXT_CHANNELS": "{{count}} saluran teks",
+    "VOICE_CHANNELS": "{{count}} saluran suara",
+    "CAT_CHANNELS": "{{count}} kategori"
 }

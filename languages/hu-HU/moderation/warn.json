@@ -5,6 +5,6 @@
     "MISSING_MEMBER": "Kérlek, add meg a figyelmeztetni kívánt tagot!",
     "MISSING_REASON": "Kérjük, írd be az okot!",
     "WARNED_DM": "Szia {{username}},\nFigyelmeztetve lettél a **{{server}}** szerveren **{{moderator}}** álltal **{{reason}}** indokkal!",
-    "WARNED": "**{{username}}** has been warned in private messages for **{{reason}}**!",
+    "WARNED": "**{{username}}** figyelmeztetve lett, és privát üzenetbe elküldtem ezt neki: **{{reason}}**!",
     "CASE": "Figyelmeztetés | Ügy #{{caseNumber}}"
 }

@@ -15,7 +15,7 @@
     "VOTE_DM": "⬆️ Hello {{user}}, thanks for voting!\nHere's your reward: 40 credits (on the support server)!",
     "VOTE_LOGS": "⬆️ **{{usertag}}** (`{{userid}}`) ha votado por **Atlanta** y ha ganado **40** créditos, ¡gracias!\n<https://discordbots.org/bot/557445719892688897/vote>",
     "HELLO_SERVER": "Hello **{{username}}**, my prefix on this server is `{{prefix}}`. Use `{{prefix}}help` to get the list of the commands!",
-    "HELLO_DM": "Hello **{{username}}**, as you are currently in direct message you don't need to add a prefix before command name.",
+    "HELLO_DM": "Hola **{{username}}**, ya que actualmente estás en mensaje directo no necesitas añadir un prefijo antes del nombre del comando.",
     "GUILD_ONLY": "¡El comando es solamente válido en servidores!",
     "MISSING_BOT_PERMS": "Necesito los siguientes permisos para ejecutar este comando: {{list}}",
     "MISSING_MEMBER_PERMS": "Necesita los siguientes permisos para ejecutar este comando: {{list}}",

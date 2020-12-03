@@ -2,10 +2,10 @@
     "DESCRIPTION": "Igényeld a fizetésedet!",
     "USAGE": "{{prefix}}work",
     "EXAMPLES": "{{prefix}}work",
-    "COOLDOWN": "You have to wait {{time}} before working again!",
+    "COOLDOWN": "Meg kell várnod {{time}}-t, mielőtt újra dolgozni tudsz!",
     "AWARD": "Töltsd ki az AWARD szót 200 bónusz kredit nyeréséhez!",
     "SALARY": "Fizetés",
-    "SALARY_CONTENT": "You've gained {{won}} credits!",
+    "SALARY_CONTENT": "{{won}} kreditet nyertél!",
     "STREAK": "Csík",
-    "STREAK_CONTENT": "🎉 You've won 200 bonus credits!"
+    "STREAK_CONTENT": "🎉 Nyertél 200 bónusz kreditet!"
 }

@@ -1,6 +1,6 @@
 {
-    "DESCRIPTION": "Check if members have a Discord server link in their status!",
+    "DESCRIPTION": "Cek jika anggota mempunyai tautan server Discord di status mereka!",
     "USAGE": "{{prefix}}checkinvites",
     "EXAMPLES": "{{prefix}}checkinvites",
-    "NOBODY": "No member advertises in their status!"
+    "NOBODY": "Tidak ada anggota yang beriklan di status mereka!"
 }

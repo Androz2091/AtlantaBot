@@ -1,10 +1,10 @@
 {
-    "DESCRIPTION": "Give a reputation point to someone!",
-    "USAGE": "{{prefix}}rep [user]",
+    "DESCRIPTION": "Berikan poin reputasi ke seseorang!",
+    "USAGE": "{{prefix}}rep [pengguna]",
     "EXAMPLES": "{{prefix}}rep @Androz#2091",
-    "COOLDOWN": "You have to wait {{time}} before being able to `rep` someone!",
-    "INVALID_USER": "You must mention a valid user!",
-    "BOT_USER": "Bots don't accept reputation points!",
-    "YOURSELF": "You can't give yourself a reputation point!",
-    "SUCCESS": "You just gave a reputation point to {{username}}!"
+    "COOLDOWN": "Kamu harus menunggu {{time}} sebelum bisa `rep` seseorang!",
+    "INVALID_USER": "Kamu harus menyebut pengguna yang valid!",
+    "BOT_USER": "Bot tidak menerima poin reputasi!",
+    "YOURSELF": "Kamu tidak dapat memberikan poin reputasi pada dirimu sendiri!",
+    "SUCCESS": "Kamu baru saja memberikan reputasi poin ke {{username}}!"
 }

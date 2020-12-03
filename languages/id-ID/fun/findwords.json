@@ -1,13 +1,13 @@
 {
-    "DESCRIPTION": "Start a Findwords party, a game where you have to find words!",
+    "DESCRIPTION": "Mulai pesta Mencarikata, sebuah permainan dimana kamu harus mencari kata - kata!",
     "USAGE": "{{prefix}}findwords",
     "EXAMPLES": "{{prefix}}findwords",
-    "INVALID_WORD": "{{member}} | Your word is not valid!",
-    "GAME_STARTING": ":timer: | The game starts in 10 seconds!",
-    "FIND_WORD": "20 seconds to find a word containing \"__**{{word}}**__\"!",
-    "WORD_FOUND": "Well done {{winner}}! You were the fastest to enter a valid word!",
-    "GAME_STATS": "🎉 | {{winner}} won the game!\n\n**Stats:**\n*-* __**Duration**__: {{time}}\n*-* __**Participants**__: {{participants}} ({{participantCount}})**Stats of the game: **\n__**Duration**__: {{duration}}\n__**Number of participants**__ : {{participantCount}}\n__**Participants**__ : \n{{participantList}}",
-    "CREDITS": "{{winner}} wins 15 credits! 🎉",
-    "NO_WINNER_ALL": "No words founds, no one wins!",
-    "NO_WINNER": "No words founds, no one wins!"
+    "INVALID_WORD": "{{member}} | Kata-mu tidak valid!",
+    "GAME_STARTING": ":timer: | Permainan dimulai dalam 10 detik!",
+    "FIND_WORD": "20 detik untuk mencari kata mengandung \"__**{{word}}**__\"!",
+    "WORD_FOUND": "Kerja bagus {{winner}}! Kamu adalah yang tercepat untuk memberikan kata yang valid!",
+    "GAME_STATS": "🎉 | {{winner}} memenangkan permainan!\n\n**Statistik:**\n*-* __**Durasi**__: {{time}}\n*-* __**Peserta**__: {{participants}} ({{participantCount}})**Statistik permainan: **\n__**Durasi**__: {{duration}}\n__**Junlah peserta**__ : {{participantCount}}\n__**Peserta**__ : \n{{participantList}}",
+    "CREDITS": "{{winner}} memenangkan 15 kredit! 🎉",
+    "NO_WINNER_ALL": "Tidak ada kata ditemukan, tidak ada yang menang!",
+    "NO_WINNER": "Tidak ada kata ditemukan, tidak ada yang menang!"
 }

@@ -1,16 +1,16 @@
 {
-    "DESCRIPTION": "Shows information about a Minecraft server!",
+    "DESCRIPTION": "Menunjukan informasi tentang server Minecraft!",
     "USAGE": "{{prefix}}minecraft [ip]",
     "EXAMPLES": "{{prefix}}minecraft mc.hypixel.net",
-    "MISSING_IP": "Please enter a valid IP address!",
-    "FAILED": "This server is offline or blocking access!",
+    "MISSING_IP": "Harap berikan alamat IP yang valid!",
+    "FAILED": "Server ini offline atau memblokir akses!",
     "ONLINE": "Online",
     "OFFLINE": "Offline",
-    "PLAYERS": "{{count}} player(s)",
-    "FIELD_NAME": "Informations about {{ip}}",
-    "FIELD_VERSION": "Version",
-    "FIELD_CONNECTED": "Currently connected",
-    "FIELD_MAX": "Maximum",
+    "PLAYERS": "{{count}} pemain",
+    "FIELD_NAME": "Informasi tentang {{ip}}",
+    "FIELD_VERSION": "Versi",
+    "FIELD_CONNECTED": "Saat ini terhubung",
+    "FIELD_MAX": "Maksimum",
     "FIELD_STATUS": "Status",
-    "FIELD_IP": "Full IP"
+    "FIELD_IP": "IP Penuh"
 }

@@ -1,9 +1,9 @@
 {
-    "DESCRIPTION": "Unmute the mentioned member!",
-    "USAGE": "{{prefix}}unmute [@member]",
+    "DESCRIPTION": "Batalkan pembungkaman anggota yang disebut!",
+    "USAGE": "{{prefix}}unmute [@anggota]",
     "EXAMPLES": "{{prefix}}unmute @Androz#2091",
-    "MISSING_MEMBER": "Please specify the member you want to unmute!",
-    "NOT_MUTED": "**{{username}}** is not muted on this server!",
-    "SUCCESS": "**{{username}}** has just been unmuted!",
-    "SUCCESS_CASE": "{{user}} (`{{usertag}}`) has just been unmuted! (mute case: #{{count}})"
+    "MISSING_MEMBER": "Harap tentukan anggota yang ingin kamu batalkan pembungkamannya!",
+    "NOT_MUTED": "**{{username}}** tidak dibungkam di server ini!",
+    "SUCCESS": "**{{username}}** baru saja dibatalkan pembungkamannya!",
+    "SUCCESS_CASE": "{{user}} (`{{usertag}}`) baru saja dibatalkan pembungkamannya! (kasus bungkam: #{{count}})"
 }

@@ -6,8 +6,8 @@
     "YOURSELF": "Kendini yasaklayamazsın!",
     "SUPERIOR": "Sizinkine eşit veya daha yüksek bir rol sahip bir üyeyi yasaklayamazsınız!",
     "ALREADY_BANNED": "**{{username}}** zaten yasaklı!",
-    "MISSING_PERM": "An error has occurred... Please check that I have the permission to ban this specific member and try again!",
-    "BANNED_DM": "Hello {{username}},\nYou have just been banned from **{{server}}** by **{{moderator}}** because of **{{reason}}**!",
-    "BANNED": "**{{username}}** has just been banned from **{{server}}** by **{{moderator}}** because of **{{reason}}**!",
-    "CASE": "Ban | Case #{{count}}"
+    "MISSING_PERM": "Bir hata oluştu.. Lütfen birini banlayabilmem için gereken yetkimin olup olmadığını kontrol edin!",
+    "BANNED_DM": "Merhaba {{username}},\nSen **{{server}}** sunucusundan **{{moderator}}** tarafından banlandın **{{reason}}** sebebi!",
+    "BANNED": "**{{username}}** **{{server}}** sunucusundan **{{moderator}}** tarafından banlandı **{{reason}}** sebebi!",
+    "CASE": "Yasak | Durumu #{{count}}"
 }

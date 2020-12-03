@@ -1,12 +1,12 @@
 {
-    "DESCRIPTION": "Find the right number!",
+    "DESCRIPTION": "Találd meg a megfelelő számot!",
     "USAGE": "{{prefix}}number",
     "EXAMPLES": "{{prefix}}number",
     "GAME_START": "Válassz egy számot, és elkezdheted!",
-    "BIG": "{{user}} | My number is **bigger** than `{{number}}`!",
-    "SMALL": "{{user}} | My number is **smaller** than `{{number}}`!",
+    "BIG": "{{user}} | A te számod **nagyobb** mint `{{number}}`!",
+    "SMALL": "{{user}} | Az én számom **kisebb** mint `{{number}}`!",
     "WON": "{{winner}} nyertél 10 kreditet!",
     "DEFEAT": "Senki sem találta meg a számot! Ez volt a szám: **{{number}}**!",
-    "GAME_STATS": "🎉 | {{winner}} found the correct number! It was __**{{number}}**__!\n\n**Stats:**\n*-* __**Duration**__: {{time}}\n*-* __**Participants**__: {{participants}} ({{participantCount}})",
+    "GAME_STATS": "🎉 | {{winner}} megtalálta a helyes számot! A szám __**{{number}}**__ volt!\n\n**Statisztikák:**\n*-* __**Időtartam**__: {{time}}\n*-* __**Résztvevők**__: {{participants}} ({{participantCount}})",
     "GAME_RUNNING": "A játék már fut ezen a szerveren!"
 }

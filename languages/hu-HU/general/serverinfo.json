@@ -1,5 +1,5 @@
 {
-    "DESCRIPTION": "Shows information about the server!",
+    "DESCRIPTION": "A szerverről információk megtekintése!",
     "USAGE": "{{prefix}}serverinfo [ID/Név]",
     "EXAMPLES": "{{prefix}}serverinfo Atlanta\n{{prefix}}serverinfo",
     "AFK_CHANNEL": "AFK csatora",

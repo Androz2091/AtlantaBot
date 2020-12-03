@@ -1,9 +1,9 @@
 {
-    "DESCRIPTION": "Unmute the mentioned member!",
-    "USAGE": "{{prefix}}unmute [@member]",
+    "DESCRIPTION": "Etiketli üyenin susturulmasını kaldır!",
+    "USAGE": "{{prefix}}unmute [@üye]",
     "EXAMPLES": "{{prefix}}unmute @Androz#2091",
-    "MISSING_MEMBER": "Please specify the member you want to unmute!",
-    "NOT_MUTED": "**{{username}}** is not muted on this server!",
-    "SUCCESS": "**{{username}}** has just been unmuted!",
-    "SUCCESS_CASE": "{{user}} (`{{usertag}}`) has just been unmuted! (mute case: #{{count}})"
+    "MISSING_MEMBER": "Lütfen uygun bir üye giriniz!",
+    "NOT_MUTED": "**{{username}}** zaten susturulmadı!",
+    "SUCCESS": "**{{username}}** susturulma yasağı kaldırıldı!",
+    "SUCCESS_CASE": "{{user}} (`{{usertag}}`) Susturulması kaldırıldı! (susturma durumu: #{{count}})"
 }

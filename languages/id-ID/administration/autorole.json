@@ -1,10 +1,10 @@
 {
-    "DESCRIPTION": "Toggle autorole on the server!",
+    "DESCRIPTION": "Alihkan autorole di server!",
     "USAGE": "{{prefix}}autorole [on/off] (role)",
-    "EXAMPLES": "{{prefix}}autorole on @Members\n{{prefix}}autorole off",
-    "MISSING_STATUS": "Please specify a valid value between `on` and `off`",
-    "MISSING_ROLE": "Please specify a valid role!",
-    "SUCCESS_ENABLED": "Autorole enabled! New members will automatically receive the **{{roleName}}** role.",
-    "ALREADY_DISABLED": "**The autorole is already disabled.**\n\n:arrow_right_hook: *Send `{{prefix}}autorole on @YourRole` to enable it again!*",
-    "SUCCESS_DISABLED": "**Autorole disabled!**\n\n:arrow_right_hook: *Send `{{prefix}}configuration` to see the updated configuration!*"
+    "EXAMPLES": "{{prefix}}autorole on @Anggota\n{{prefix}}autorole off",
+    "MISSING_STATUS": "Harap tentukan nilai yang valid antara `on` dan `off`",
+    "MISSING_ROLE": "Harap tentukan role yang valid!",
+    "SUCCESS_ENABLED": "Autorole diaktifkan! Anggota baru akan secara otomatis menerima **{{roleName}}** role.",
+    "ALREADY_DISABLED": "**Autorole sudah dinonaktifkan.**\n\n:arrow_right_hook: *Kirim `{{prefix}}autorole on @RoleMu` untuk mengaktifkannya lagi!*",
+    "SUCCESS_DISABLED": "**Autorole dinonaktifkan!**\n\n:arrow_right_hook: *Kirim `{{prefix}}configuration` untuk melihat konfigurasi yang telah diperbarui!*"
 }

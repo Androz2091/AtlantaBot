@@ -2,10 +2,10 @@
     "DESCRIPTION": "Küldj pénzt valakinek!",
     "USAGE": "{{prefix}}pay [@tag] [összeg]",
     "EXAMPLES": "{{prefix}}pay Androz#2091 100",
-    "INVALID_MEMBER": "You must mention a valid member!",
-    "BOT_USER": "Bots are already rich 💰!",
+    "INVALID_MEMBER": "Meg kell említened egy érvényes tagot!",
+    "BOT_USER": "A botok már gazdagok 💰!",
     "YOURSELF": "Nem küldhetsz magadnak!",
-    "INVALID_AMOUNT": "You must specify a valid amount",
-    "ENOUGH_MONEY": "You can't afford **{{amount}}**",
+    "INVALID_AMOUNT": "Meg kell adnod egy érvényes összeget",
+    "ENOUGH_MONEY": "Nem engedheted meg ezt magadnak: **{{amount}}**",
     "SUCCESS": "Küldtél **{{username}}** felhasználónak **{{amount}}** pénzt!"
 }

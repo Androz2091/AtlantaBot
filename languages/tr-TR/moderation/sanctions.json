@@ -1,7 +1,7 @@
 {
-    "DESCRIPTION": "Displays the list of infractions committed by a member!",
-    "USAGE": "{{prefix}}sanctions [@member]",
+    "DESCRIPTION": "Bir üye tarafından işlenen uyarıların listesini görüntüler!",
+    "USAGE": "{{prefix}}sanctions [@üye]",
     "EXAMPLES": "{{prefix}}sanctions @Androz#2091",
-    "MISSING_MEMBER": "You must specify a member!",
-    "NO_SANCTION": "**{{username}}** did not receive any sanctions."
+    "MISSING_MEMBER": "Lütfen uygun bir üye seç!",
+    "NO_SANCTION": "**{{username}}** hiç uyarı almadı."
 }

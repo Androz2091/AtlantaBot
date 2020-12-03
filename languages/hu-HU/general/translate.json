@@ -1,9 +1,9 @@
 {
-    "DESCRIPTION": "Translate your text!",
+    "DESCRIPTION": "Lefordítom a szöveget!",
     "USAGE": "{{prefix}}translate [nyelv] [üzenet]",
-    "EXAMPLES": "{{prefix}}translate fr How are you ?",
-    "LIST_SENT": "The languages list has just been sent to you by private messages!",
-    "MISSING_LANGUAGE": "Please enter a language! To display the languages list, type `{{prefix}}translate langs-list`!",
-    "INVALID_LANGUAGE": "The language `{{search}}` does not exist! To display the languages list, type `{{prefix}}translate langs-list`!",
+    "EXAMPLES": "{{prefix}}translate hu How are you?",
+    "LIST_SENT": "A nyelvi listát nemrégiben privát üzenetbe küldtem el neked!",
+    "MISSING_LANGUAGE": "Kérlek, írd be a nyelvet! A nyelvek listájának megtekintéséhez írd be a `{{prefix}}translate langs-list` parancsot!",
+    "INVALID_LANGUAGE": "A nyelv `{{search}}` nem található! A nyelvek listájának megtekintéséhez írd be ezt a parancsot `{{prefix}}translate langs-list`!",
     "MISSING_CONTENT": "Kérlek, írd be a lefordítandó szöveget!"
 }

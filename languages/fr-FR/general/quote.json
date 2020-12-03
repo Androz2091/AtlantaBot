@@ -1,8 +1,8 @@
 {
-    "DESCRIPTION": "Quote a message in the channel!",
+    "DESCRIPTION": "Citez un message dans le salon !",
     "USAGE": "{{prefix}}quote [messageID] [channel]",
     "EXAMPLES": "{{prefix}}quote 596018101921906698\n{{prefix}}quote 596018101921906698 573508780520898581\n{{prefix}}quote 596018101921906698 #blabla",
-    "NO_MESSAGE_ID": "No message has this ID.",
-    "NO_CHANNEL_ID": "No channel has this ID.",
-    "MISSING_ID": "Please enter a valid message ID to quote!"
+    "NO_MESSAGE_ID": "Aucun message n'a cet ID.",
+    "NO_CHANNEL_ID": "Aucun salon n'a cet ID.",
+    "MISSING_ID": "Veuillez entrer un identifiant de message valide pour citer !"
 }

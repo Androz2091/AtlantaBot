@@ -1,10 +1,10 @@
 {
-    "DESCRIPTION": "Warn a member in private messages",
+    "DESCRIPTION": "Özel mesaj yoluyla üyeyi uyar",
     "USAGE": "{{prefix}}warn [@member] [reason]",
-    "EXAMPLES": "{{prefix}}warn @Androz#2091 Dumb",
-    "MISSING_MEMBER": "Please specify the member you want to warn!",
-    "MISSING_REASON": "Please enter a reason!",
-    "WARNED_DM": "Hello {{username}},\nYou've just been warned on **{{server}}** by **{{moderator}}** for **{{reason}}**!",
-    "WARNED": "**{{username}}** has been warned in private messages for **{{reason}}**!",
-    "CASE": "Warn | Case #{{caseNumber}}"
+    "EXAMPLES": "{{prefix}}warn @Androz#2091 Ahmak",
+    "MISSING_MEMBER": "Uyarmak için lütfen uygun bir üye seçin!",
+    "MISSING_REASON": "Lütfen bir sebep girin!",
+    "WARNED_DM": "Merhaba {{username}},\n **{{server}}** sunucusundan **{{moderator}}** tarfından uyarı aldın sebep: **{{reason}}**!",
+    "WARNED": "**{{username}}** özel mesaj yoluyla uyarıldı sebep: **{{reason}}**!",
+    "CASE": "Uyarı | Durum #{{caseNumber}}"
 }

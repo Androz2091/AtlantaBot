@@ -1,9 +1,9 @@
 {
-    "DESCRIPTION": "Send your suggestion to the defined channel!",
-    "USAGE": "{{prefix}}suggest [message]",
-    "EXAMPLES": "{{prefix}}suggest New channel #offtopic please",
-    "MISSING_CHANNEL": "No suggestion channel defined!",
-    "MISSING_CONTENT": "Please enter a suggestion!",
-    "TITLE": "Suggestion - {{user}}",
-    "SUCCESS": "Your suggestion is being voted in {{channel}}!"
+    "DESCRIPTION": "Kirim saranmu ke saluran yang ditentukan!",
+    "USAGE": "{{prefix}}suggest [pesan]",
+    "EXAMPLES": "{{prefix}}suggest tolong buat saluran baru #offtopic",
+    "MISSING_CHANNEL": "Tidak ada saluran yang ditentukan!",
+    "MISSING_CONTENT": "Harap berikan saran!",
+    "TITLE": "Saran - {{user}}",
+    "SUCCESS": "Saranmu sedang diberikan suara di {{channel}}!"
 }

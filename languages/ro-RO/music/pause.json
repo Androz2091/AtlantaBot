@@ -1,6 +1,6 @@
 {
-    "DESCRIPTION": "Pause the current song!",
-    "USAGE": "{{prefix}}pause",
-    "EXAMPLES": "{{prefix}}pause",
-    "SUCCESS": "⏸️ Music paused."
+    "DESCRIPTION": "Puneți în pauză melodia curentă!",
+    "USAGE": "{{prefix}}pauză",
+    "EXAMPLES": "{{prefix}}pauză",
+    "SUCCESS": "⏸️Muzica s-a întrerupt."
 }

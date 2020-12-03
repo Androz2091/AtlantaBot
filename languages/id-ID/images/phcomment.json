@@ -1,6 +1,6 @@
 {
-    "DESCRIPTION": "Generates a \"phcomment\" image using Nekobot API",
-    "USAGE": "{{prefix}}phcomment (@member) [text]",
-    "EXAMPLES": "{{prefix}}phcomment Hi!\n{{prefix}}phcomment @Androz#2091 Hi!",
-    "MISSING_TEXT": "Please specify the comment text!"
+    "DESCRIPTION": "Menghasilkan gambar \"phcomment\" menggunakan Nekobot API",
+    "USAGE": "{{prefix}}phcomment (@anggota) [teks]",
+    "EXAMPLES": "{{prefix}}phcomment Hai!\n{{prefix}}phcomment @Androz#2091 Hai!",
+    "MISSING_TEXT": "Harap tentukan teks komentar!"
 }

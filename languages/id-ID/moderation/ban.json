@@ -1,13 +1,13 @@
 {
-    "DESCRIPTION": "Ban the mentioned member!",
-    "USAGE": "{{prefix}}ban [@user] (reason)",
+    "DESCRIPTION": "Cekal anggota yang disebutkan!",
+    "USAGE": "{{prefix}}ban [@pengguna] (alasan)",
     "EXAMPLES": "{{prefix}}ban @Androz#2091 Spam",
-    "MISSING_MEMBER": "Please specify a valid member to ban!",
-    "YOURSELF": "You can't sanction yourself!",
-    "SUPERIOR": "You can't sanction or update a sanction for a member who has an higher or equal role hierarchy to yours!",
-    "ALREADY_BANNED": "**{{username}}** is already banned!",
-    "MISSING_PERM": "An error has occurred... Please check that I have the permission to ban this specific member and try again!",
-    "BANNED_DM": "Hello {{username}},\nYou have just been banned from **{{server}}** by **{{moderator}}** because of **{{reason}}**!",
-    "BANNED": "**{{username}}** has just been banned from **{{server}}** by **{{moderator}}** because of **{{reason}}**!",
-    "CASE": "Ban | Case #{{count}}"
+    "MISSING_MEMBER": "Harap tentukan anggota yang valid untuk di cekal!",
+    "YOURSELF": "Kamu tidak dapat memberi sanksi pada dirimu sendiri!",
+    "SUPERIOR": "Kamu tidak dapat memberikan atau perbarui sanksi anggota yang hirarkinya lebih tinggi atau sama dengamu!",
+    "ALREADY_BANNED": "**{{username}}** sudah di cekal!",
+    "MISSING_PERM": "Telah terjadi kesalahan... Periksa apakah aku memiliki izin untuk mencekal anggota tertentu ini dan coba lagi!",
+    "BANNED_DM": "Halo {{username}},\nKamu baru saja dicekal dari **{{server}}** oleh **{{moderator}}** karena **{{reason}}**!",
+    "BANNED": "**{{username}}** baru saja dicekal dari **{{server}}** oleh **{{moderator}}** karena **{{reason}}**!",
+    "CASE": "Cekal | Kasus #{{count}}"
 }

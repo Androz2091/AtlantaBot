@@ -1,7 +1,7 @@
 {
-    "DESCRIPTION": "Shows users who have the most credits, levels or reputation points!",
+    "DESCRIPTION": "Menunjukan pengguna dengan kredit terbanyak, tingkatan atau poin reputasi!",
     "USAGE": "{{prefix}}leaderboard [rep/levels/credits]",
     "EXAMPLES": "{{prefix}}leaderboard credits\n{{prefix}}leaderboard levels",
-    "MISSING_TYPE": "Please specify the leaderboard type between `credits`, `level` and `rep`",
-    "MOBILE": ":confused: We've detected that you are using a phone.... The leaderboard may not display well on small screens. Try to switch to landscape or go on the dashboard!"
+    "MISSING_TYPE": "Harap tentukan tipe papan peringkat antara `credits`, `level` dan `rep`",
+    "MOBILE": ":confused: Kami mendeteksi bahwa Anda menggunakan telepon.... Papan peringkat mungkin tidak ditampilkan dengan baik di layar kecil. Cobalah untuk beralih ke lanskap atau buka dasbor!"
 }

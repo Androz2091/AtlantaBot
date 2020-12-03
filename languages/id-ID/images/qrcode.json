@@ -1,7 +1,7 @@
 {
-    "DESCRIPTION": "Generates a QR code image from a given text",
-    "USAGE": "{{prefix}}qrcode [text]",
-    "EXAMPLES": "{{prefix}}qrcode Hello",
-    "MISSING_TEXT": "Please specify the QR code source text!",
-    "SUCCESS": "Here's your QRCode!"
+    "DESCRIPTION": "Menghasilkan gambar kode QR dari teks yang diberikan",
+    "USAGE": "{{prefix}}qrcode [teks]",
+    "EXAMPLES": "{{prefix}}qrcode Halo",
+    "MISSING_TEXT": "Harap tentukan teks sumber kode QR!",
+    "SUCCESS": "Berikut kode QR-mu!"
 }
