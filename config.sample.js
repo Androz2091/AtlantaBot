@@ -154,6 +154,52 @@ module.exports = {
 				"tr",
 				"tr_tr"
 			]
-		}
+		},
+		{
+			name: "id-ID",
+			nativeName: "bahasa Indonesia",
+			defaultMomentFormat: "Do MMMM YYYY",
+			moment: "id",
+			default: false,
+			aliases: [
+				"Indonesian",
+				"id",
+				"id_id"
+			]
+		},
+        {
+			name: "ro-RO",
+			nativeName: "Română",
+			moment: "ro",
+			default: false,
+			aliases: [
+				"Romanian",
+				"ro",
+				"ro_ro"
+			]
+        },
+        {
+			name: "tr-TR",
+			nativeName: "Türk",
+			moment: "tr",
+			default: false,
+			aliases: [
+				"Turkish",
+				"Turk",
+				"tr",
+				"tr_tr"
+			]
+        },
+        {
+			name: "nl-NL",
+			nativeName: "NEDERLAND",
+			moment: "nl",
+			default: false,
+			aliases: [
+				"Netherland",
+				"nl",
+				"nl_nl"
+			]
+        }
 	]
 };
