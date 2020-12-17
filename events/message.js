@@ -132,7 +132,8 @@ module.exports = class {
 		const customCommand = message.guild ? data.guild.customCommands.find((c) => c.name === command) : null;
 		const customCommandAnswer = customCommand ? customCommandAnswer.answer : "";
 		
-		if(!cmd && !customCommandAnswer){
+		if(!cmd && !customCommandAnswer && message.guild) return;
+		else if (!cmd && !customCommandAnswer && !message.guild) {
 			return message.sendT("misc:HELLO_DM", {
 				username: message.author.username
 			});
