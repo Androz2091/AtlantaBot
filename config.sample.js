@@ -167,7 +167,7 @@ module.exports = {
 				"id_id"
 			]
 		},
-        {
+		{
 			name: "ro-RO",
 			nativeName: "Română",
 			moment: "ro",
@@ -177,8 +177,8 @@ module.exports = {
 				"ro",
 				"ro_ro"
 			]
-        },
-        {
+		},
+		{
 			name: "tr-TR",
 			nativeName: "Türk",
 			moment: "tr",
@@ -189,8 +189,8 @@ module.exports = {
 				"tr",
 				"tr_tr"
 			]
-        },
-        {
+		},
+		{
 			name: "nl-NL",
 			nativeName: "NEDERLAND",
 			moment: "nl",
@@ -200,6 +200,6 @@ module.exports = {
 				"nl",
 				"nl_nl"
 			]
-        }
+		}
 	]
 };

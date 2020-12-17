@@ -130,7 +130,7 @@ module.exports = class {
 		const cmd = client.commands.get(command) || client.commands.get(client.aliases.get(command));
 		
 		const customCommand = message.guild ? data.guild.customCommands.find((c) => c.name === command) : null;
-		const customCommandAnswer = customCommand ? customCommandAnswer.answer : '';
+		const customCommandAnswer = customCommand ? customCommandAnswer.answer : "";
 		
 		if(!cmd && !customCommandAnswer){
 			return message.sendT("misc:HELLO_DM", {
