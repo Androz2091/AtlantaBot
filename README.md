@@ -21,4 +21,4 @@ No, unlike most abandoned projects, this is not the problem. We decided that Atl
 
 **ALl right, and does this branch work?**
 
-This branch can work, if you have a good knowledge you should be able to leave it without any harm, but there is no documentation and we won't provide any help for the installation. No pull request to this branch will be accepted.
+This branch can work, if you have a good knowledge you should be able to install it easily, but there is no documentation and we won't provide any help for the installation. No pull request to this branch will be accepted.
