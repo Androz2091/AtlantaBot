@@ -102,35 +102,13 @@
     {
         "name": "ro-RO",
         "nativeName": "Română",
+        "defaultMomentFormat": "Do MMMM YYYY",
         "moment": "ro",
         "default": false,
         "aliases": [
             "Romanian",
             "ro",
             "ro_ro"
-        ]
-    },
-    {
-        "name": "tr-TR",
-        "nativeName": "Türk",
-        "moment": "tr",
-        "default": false,
-        "aliases": [
-            "Turkish",
-            "Turk",
-            "tr",
-            "tr_tr"
-        ]
-    },
-    {
-        "name": "nl-NL",
-        "nativeName": "Nederland",
-        "moment": "nl",
-        "default": false,
-        "aliases": [
-            "Netherland",
-            "nl",
-            "nl_nl"
         ]
     }
 ]
