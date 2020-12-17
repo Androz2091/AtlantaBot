@@ -52,6 +52,9 @@ module.exports = class AtlantaCluster extends Client {
             defaultLang: "en"
         });
 
+        // Set initializer to false
+        this.initializer = false;
+
         this.login();
     }
 
@@ -94,6 +97,15 @@ module.exports = class AtlantaCluster extends Client {
 
     get totalRAM() {
         return Math.round(process.memoryUsage().heapTotal / 1048576);
+    }
+
+    /**
+     * get initialize for all shard
+     * @return {Promise<Array<Boolean>>}
+     */
+    get fetchInitializer() {
+        return this.shard.broadcastEval(`this.initializer`)
+            .then((result) => this.helpers.flatStack.execute(result))
     }
 
     translate(languageName, key, args) {
