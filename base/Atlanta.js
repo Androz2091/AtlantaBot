@@ -23,6 +23,7 @@ class Atlanta extends Client {
 		super(options);
 		this.config = require("../config"); // Load the config file
 		this.customEmojis = require("../emojis.json"); // load the bot's emojis
+		this.languages = require("../languages/language-meta.json"); // Load the bot's languages
 		this.commands = new Collection(); // Creates new commands collection
 		this.aliases = new Collection(); // Creates new command aliases collection
 		this.logger = require("../helpers/logger"); // Load the logger file
@@ -138,7 +139,7 @@ class Atlanta extends Client {
 	}
 
 	get defaultLanguage(){
-		return this.config.languages.find((language) => language.default).name;
+		return this.languages.find((language) => language.default).name;
 	}
 
 	translate(key, args, locale){
@@ -150,7 +151,7 @@ class Atlanta extends Client {
 
 	printDate(date, format, locale){
 		if(!locale) locale = this.defaultLanguage;
-		const languageData = this.config.languages.find((language) => language.name === locale || language.aliases.includes(locale));
+		const languageData = this.languages.find((language) => language.name === locale || language.aliases.includes(locale));
 		if(!format) format = languageData.defaultMomentFormat;
 		return moment(new Date(date))
 			.locale(languageData.moment)
@@ -160,7 +161,7 @@ class Atlanta extends Client {
 	convertTime(time, type, noPrefix, locale){
 		if(!type) time = "to";
 		if(!locale) locale = this.defaultLanguage;
-		const languageData = this.config.languages.find((language) => language.name === locale || language.aliases.includes(locale));
+		const languageData = this.languages.find((language) => language.name === locale || language.aliases.includes(locale));
 		const m = moment(time)
 			.locale(languageData.moment);
 		return (type === "to" ? m.toNow(noPrefix) : m.fromNow(noPrefix));

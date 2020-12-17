@@ -44,7 +44,7 @@ router.post("/:serverID", CheckAuth, async(req, res) => {
 	const data = req.body;
     
 	if(data.language){
-		const language = req.client.config.languages.find((language) => language.aliases[0].toLowerCase() === data.language.toLowerCase());
+		const language = req.client.languages.find((language) => language.aliases[0].toLowerCase() === data.language.toLowerCase());
 		if(language){
 			guildData.language = language.name;
 		}

@@ -1,0 +1,136 @@
+[
+    {
+        "name": "en-US",
+        "nativeName": "English",
+        "moment": "en",
+        "defaultMomentFormat": "MMMM Do YYYY",
+        "default": true,
+        "aliases": [
+            "English",
+            "en",
+            "en-us",
+            "en_us",
+            "en_US"
+        ]
+    },
+    {
+        "name": "fr-FR",
+        "nativeName": "Français",
+        "defaultMomentFormat": "Do MMMM YYYY",
+        "moment": "fr",
+        "default": false,
+        "aliases": [
+            "French",
+            "français",
+            "francais",
+            "fr",
+            "fr_fr"
+        ]
+    },
+    {
+        "name": "es-ES",
+        "nativeName": "Español",
+        "defaultMomentFormat": "MMM Do, YYYY",
+        "moment": "es",
+        "default": false,
+        "aliases": [
+            "Spanish",
+            "es",
+            "es_es"
+        ]
+    },
+    {
+        "name": "it-IT",
+        "nativeName": "Italiano",
+        "defaultMomentFormat": "Do MMMM YYYY",
+        "moment": "it",
+        "default": false,
+        "aliases": [
+            "Italian",
+            "it",
+            "it_it"
+        ]
+    },
+    {
+        "name": "nl-NL",
+        "nativeName": "Nederlands",
+        "defaultMomentFormat": "Do MMMM YYYY",
+        "moment": "nl",
+        "default": false,
+        "aliases": [
+            "Dutch",
+            "nl",
+            "nl_nl"
+        ]
+    },
+    {
+        "name": "pt-PT",
+        "nativeName": "Português",
+        "defaultMomentFormat": "Do MMMM YYYY",
+        "moment": "pt",
+        "default": false,
+        "aliases": [
+            "Portuguese",
+            "pt",
+            "pt_pt"
+        ]
+    },
+    {
+        "name": "tr-TR",
+        "nativeName": "Türk",
+        "defaultMomentFormat": "Do MMMM YYYY",
+        "moment": "tr",
+        "default": false,
+        "aliases": [
+            "Turkish",
+            "tr",
+            "tr_tr"
+        ]
+    },
+    {
+        "name": "id-ID",
+        "nativeName": "bahasa Indonesia",
+        "defaultMomentFormat": "Do MMMM YYYY",
+        "moment": "id",
+        "default": false,
+        "aliases": [
+            "Indonesian",
+            "id",
+            "id_id"
+        ]
+    },
+    {
+        "name": "ro-RO",
+        "nativeName": "Română",
+        "moment": "ro",
+        "default": false,
+        "aliases": [
+            "Romanian",
+            "ro",
+            "ro_ro"
+        ]
+    },
+    {
+        "name": "tr-TR",
+        "nativeName": "Türk",
+        "moment": "tr",
+        "default": false,
+        "aliases": [
+            "Turkish",
+            "Turk",
+            "tr",
+            "tr_tr"
+        ]
+    },
+    {
+        "name": "nl-NL",
+        "nativeName": "Nederland",
+        "moment": "nl",
+        "default": false,
+        "aliases": [
+            "Netherland",
+            "nl",
+            "nl_nl"
+        ]
+    }
+]

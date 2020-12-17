@@ -28,7 +28,7 @@ class Fortniteshop extends Command {
 			prefixEmoji: "loading"
 		});
 
-		const momentName = data.config.languages.find((language) => language.name === data.guild.language || language.aliases.includes(data.guild.language)).moment;
+		const momentName = this.client.languages.find((language) => language.name === data.guild.language || language.aliases.includes(data.guild.language)).moment;
 		const shop = new Canvas.FortniteShop();
 		const image = await shop
 			.setToken(data.config.apiKeys.fortniteFNBR)

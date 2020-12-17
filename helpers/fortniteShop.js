@@ -11,7 +11,7 @@ async function init(client) {
 			if(guildData.plugins.fortniteshop) {
 				const fnChannel = client.channels.cache.get(guildData.plugins.fortniteshop);
 				if(fnChannel) {
-					const momentName = client.config.languages.find((language) => language.name === guildData.language || language.aliases.includes(guildData.language)).moment;
+					const momentName = client.languages.find((language) => language.name === guildData.language || language.aliases.includes(guildData.language)).moment;
 					const image = await new Canvas.FortniteShop()
 						.setToken(client.config.apiKeys.fortniteFNBR)
 						.setText("header", client.translate("general/fortniteshop:HEADER").replace("{{date}}", "{date}"), null, guildData.language)

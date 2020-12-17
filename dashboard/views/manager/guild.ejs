@@ -67,7 +67,7 @@
                                         <div class="form-group">
                                             <label><%= translate("common:LANGUAGE") %></label>
                                             <select class="form-control" name="language">
-                                                <% bot.config.languages.forEach((language) => { %>
+                                                <% bot.languages.forEach((language) => { %>
                                                     <% if(guild.language === language.name){ %>
                                                         <option selected="selected"><%= language.aliases[0] %></option>
                                                     <% } else { %>
