@@ -1,4 +1,7 @@
 {
+	"To get access to these emojis,": "add your bot on https://www.atlanta-bot.fr/emojis",
+	
+	
 	"stats": "<:atlanta_stats:598179382657286152>",
 	"ram": "<:atlanta_ram:598178809031688192>",
 	"version": "<:atlanta_version:598178475525931014>",
@@ -11,7 +14,7 @@
 	"warn": "<:atlanta_warn:598179558927106058>",
 	"error": "<:atlanta_error:736144198318686278>",
 	"success": "<:atlanta_success:736144092123234354>",
-	"loading": "<a:atlanta_loading:565214530121105418>",
+	"loading": "<a:atlanta_loading:743090350490648727>",
 	"score": "<:atlanta_score:598175051216584744>",
 	"games": "<:atlanta_games:598174813860921344>",
 	"kills": "<:atlanta_kills:598174305599094784>",
