@@ -261,7 +261,7 @@ async function updateXp(msg, data){
 			return;
 		}
 	}
-	// Records in the database the time when the member will be able to win xp again (3min)
+	// Records in the database the time when the member will be able to win xp again (1min)
 	const toWait = Date.now()+60000;
 	xpCooldown[msg.author.id] = toWait;
     
