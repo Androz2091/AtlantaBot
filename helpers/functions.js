@@ -1,4 +1,4 @@
-const languages = require("../config").languages.map((l) => l.moment).filter((l) => l !== "en");
+const languages = require("../languages/language-meta.json").map((l) => l.moment).filter((l) => l !== "en");
 languages.forEach((l) => {
 	require(`moment/locale/${l}.js`);
 });
