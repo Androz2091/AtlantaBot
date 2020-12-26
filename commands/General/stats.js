@@ -45,7 +45,9 @@ class Stats extends Command {
 		statsEmbed.addField(this.client.customEmojis.link+" "+message.translate("general/stats:LINKS_TITLE"), message.translate("misc:STATS_FOOTER", {
 			donateLink: "https://patreon.com/Androz2091",
 			dashboardLink: "https://dashboard.atlanta-bot.fr",
-			inviteLink: await this.client.generateInvite("ADMINISTRATOR"),
+			inviteLink: await this.client.generateInvite({
+				permissions: ["ADMINISTRATOR"]
+			}),
 			githubLink: "https://github.com/Androz2091",
 			supportLink: "https://discord.atlanta-bot.fr"
 		})
