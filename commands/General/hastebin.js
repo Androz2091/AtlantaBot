@@ -27,7 +27,7 @@ class Hastebin extends Command {
 		}
 
 		try {
-			const res = await fetch("https://hasteb.in/documents", {
+			const res = await fetch("https://hastebin.com/documents", {
 				method: "POST",
 				body: content,
 				headers: { "Content-Type": "text/plain" }
@@ -37,7 +37,7 @@ class Hastebin extends Command {
 			if(!json.key){
 				return message.error("misc:ERR_OCCURRED");
 			}
-			const url = "https://hasteb.in/"+json.key+".js";
+			const url = "https://hastebin.com/"+json.key+".js";
 
 			const embed = new Discord.MessageEmbed()
 				.setAuthor(message.translate("general/hastebin:SUCCESS"))
