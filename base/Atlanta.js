@@ -80,7 +80,11 @@ class Atlanta extends Client {
 					.setColor(this.config.embed.color);
 				message.channel.send(embed);
 			})
-			.on("searchInvalidResponse", (message, query, tracks) => {
+			.on("searchInvalidResponse", (message, query, tracks, content, collector) => {
+				if (content === "cancel") {
+					collector.stop();
+					return message.success("music/play:RESULTS_CANCEL");
+				}
 				message.error("misc:INVALID_NUMBER_RANGE", {
 					min: 1,
 					max: tracks.length
