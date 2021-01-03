@@ -126,6 +126,14 @@ class Atlanta extends Client {
 					case "NotPlaying":
 						message.error("music/play:NOT_PLAYING");
 						break;
+					case "LiveVideo":
+						message.error("music/play:LIVE_VIDEO");
+						break;
+					default:
+						message.error("music/play:ERR_OCCURRED", {
+							error
+						});
+						break;
 				}
 			});
 
