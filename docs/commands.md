@@ -119,6 +119,22 @@ Here's the list of Atlanta commands. This one contains more than **110 commands*
 | **unmute**          | Unmute the mentioned member!                                                                              | unmute [@member]                                                   | 3 seconds |
 | **warn**            | Warn a member in private messages                                                                         | warn [@member] [reason]                                            | 3 seconds |
 
+### Music (11 commands)
+
+| Name        | Description                                       | Usage              | Cooldown  |
+| ----------- | ------------------------------------------------- | ------------------ | --------- |
+| **back**    | DESCRIPTION                                       | USAGE              | 5 seconds |
+| **filter**  | Enable or disable a filter!                       | filter [filter]    | 5 seconds |
+| **filters** | Send the list of all the filters and their status | filters            | 5 seconds |
+| **lyrics**  | Shows the song lyrics                             | lyrics [song-name] | 5 seconds |
+| **np**      | Shows information about the current song!         | np                 | 5 seconds |
+| **pause**   | Pause the current song!                           | pause              | 5 seconds |
+| **play**    | Plays music for you!                              | play [song]        | 5 seconds |
+| **queue**   | Shows the server queue                            | queue              | 5 seconds |
+| **resume**  | Resume the current song!                          | resume             | 5 seconds |
+| **skip**    | Skip the current song                             | skip               | 5 seconds |
+| **stop**    | Stop the music                                    | stop               | 5 seconds |
+
 ### Fun (10 commands)
 
 | Name          | Description                                                                                   | Usage                           | Cooldown  |
@@ -134,21 +150,6 @@ Here's the list of Atlanta commands. This one contains more than **110 commands*
 | **lovecalc**  | How much love is there between two people?
 *This is a fun command, not to be taken seriously* | lovecalc [@member1] (@member2)  | 1 seconds |
 | **number**    | Find the right number!                                                                        | number                          | 5 seconds |
-
-### Music (10 commands)
-
-| Name        | Description                                       | Usage              | Cooldown  |
-| ----------- | ------------------------------------------------- | ------------------ | --------- |
-| **filter**  | Enable or disable a filter!                       | filter [filter]    | 5 seconds |
-| **filters** | Send the list of all the filters and their status | filters            | 5 seconds |
-| **lyrics**  | Shows the song lyrics                             | lyrics [song-name] | 5 seconds |
-| **np**      | Shows information about the current song!         | np                 | 5 seconds |
-| **pause**   | Pause the current song!                           | pause              | 5 seconds |
-| **play**    | Plays music for you!                              | play [song]        | 5 seconds |
-| **queue**   | Shows the server queue                            | queue              | 5 seconds |
-| **resume**  | Resume the current song!                          | resume             | 5 seconds |
-| **skip**    | Skip the current song                             | skip               | 5 seconds |
-| **stop**    | Stop the music                                    | stop               | 5 seconds |
 
 ### Owner (3 commands)
 

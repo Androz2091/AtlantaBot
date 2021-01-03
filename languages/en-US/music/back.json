@@ -1,0 +1,8 @@
+{
+    "DESCRIPTION": "Play back the previous song",
+    "USAGE": "{{prefix}}back",
+    "EXAMPLES": "{{prefix}}back",
+    "NO_NEXT_SONG": "There was no song before this one!",
+    "VOTE_CONTENT": "Previous song: {{songName}}\nReact with 👍 to play the previous song! {{requiredCount}} more votes are required.",
+    "SUCCESS": "Playing previous song!"
+}
