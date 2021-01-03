@@ -100,7 +100,7 @@ class Atlanta extends Client {
 				message.error("music/play:NO_RESULT");
 			})
 			.on("queueEnd", (message) => {
-				message.channel.send("music/play:QUEUE_ENDED");
+				message.success("music/play:QUEUE_ENDED");
 			})
 			.on("playlistAdd", (message, queue, playlist) => {
 				message.success("music/play:ADDED_QUEUE_COUNT", {
