@@ -123,7 +123,7 @@ Here's the list of Atlanta commands. This one contains more than **110 commands*
 
 | Name        | Description                                       | Usage              | Cooldown  |
 | ----------- | ------------------------------------------------- | ------------------ | --------- |
-| **back**    | DESCRIPTION                                       | USAGE              | 5 seconds |
+| **back**    | Play back the previous song                       | back               | 5 seconds |
 | **filter**  | Enable or disable a filter!                       | filter [filter]    | 5 seconds |
 | **filters** | Send the list of all the filters and their status | filters            | 5 seconds |
 | **lyrics**  | Shows the song lyrics                             | lyrics [song-name] | 5 seconds |
