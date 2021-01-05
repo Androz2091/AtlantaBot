@@ -75,9 +75,7 @@ class Atlanta extends Client {
 			.on("searchResults", (message, query, tracks) => {
 				if (tracks.length > 20) tracks = tracks.slice(0, 20);
 				const embed = new MessageEmbed()
-					.setDescription(Util.escapeMarkdown(tracks.map((t, i) => `**${++i} -** ${t.title}`, {
-						bold: false
-					}).join("\n")))
+					.setDescription(Util.escapeSpoiler(tracks.map((t, i) => `**${++i} -** ${t.title}`).join("\n")))
 					.setFooter(message.translate("music/play:RESULTS_FOOTER"))
 					.setColor(this.config.embed.color);
 				message.channel.send(embed);
