@@ -1,4 +1,4 @@
-const { MessageEmbed } = require("discord.js");
+const { MessageEmbed, Util } = require("discord.js");
 const { GiveawaysManager } = require("discord-giveaways");
 const { Player } = require("discord-player");
 const { Client, Collection } = require("discord.js");
@@ -75,7 +75,7 @@ class Atlanta extends Client {
 			.on("searchResults", (message, query, tracks) => {
 				if (tracks.length > 20) tracks = tracks.slice(0, 20);
 				const embed = new MessageEmbed()
-					.setDescription(tracks.map((t, i) => `**${++i} -** ${t.title}`).join("\n"))
+					.setDescription(Util.escapeMarkdown(tracks.map((t, i) => `**${++i} -** ${t.title}`).join("\n")))
 					.setFooter(message.translate("music/play:RESULTS_FOOTER"))
 					.setColor(this.config.embed.color);
 				message.channel.send(embed);
