@@ -139,7 +139,7 @@ module.exports = class {
 			});
 		}
 
-		if(data.guild.ignoredChannels.includes(message.channel.id) && !message.member.hasPermission("MANAGE_MESSAGES")){
+		if(message.guild && data.guild.ignoredChannels.includes(message.channel.id) && !message.member.hasPermission("MANAGE_MESSAGES")){
 			message.delete();
 			message.author.send(message.translate("misc:RESTRICTED_CHANNEL", {
 				channel: message.channel.toString()
