@@ -98,7 +98,7 @@ class Warn extends Command {
 					count: data.guild.casesCount
 				}))
 					.setColor("#e88709");
-				message.guild.members.kick(member).catch(() => {});
+				member.kick().catch(() => {});
 				message.success("moderation/setwarns:AUTO_KICK", {
 					username: member.tag,
 					count: banCount
