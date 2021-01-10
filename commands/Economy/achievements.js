@@ -57,7 +57,7 @@ class Achievements extends Command {
 		embed.addField(message.translate("economy/achievements:INVITE"), message.translate("economy/achievements:PROGRESS", {
 			now: data.userData.achievements.invite.progress.now,
 			total: data.userData.achievements.invite.progress.total,
-			percent: Math.round(100 * (data.userData.achievements.rep.progress.now/data.userData.achievements.invite.progress.total))
+			percent: Math.round(100 * (data.userData.achievements.invite.progress.now/data.userData.achievements.invite.progress.total))
 		}));
 
 		message.channel.send(embed);
