@@ -11,7 +11,7 @@ class Invitations extends Command {
 			guildOnly: true,
 			aliases: [],
 			memberPermissions: [],
-			botPermissions: [ "SEND_MESSAGES", "EMBED_LINKS", "MANAGE_CHANNELS" ],
+			botPermissions: [ "SEND_MESSAGES", "EMBED_LINKS", "MANAGE_GUILD" ],
 			nsfw: false,
 			ownerOnly: false,
 			cooldown: 3000
@@ -25,6 +25,7 @@ class Invitations extends Command {
 
 		// Gets the invites
 		const invites = await message.guild.fetchInvites().catch(() => {});
+		if (!invites) return message.error("misc:ERR_OCCURRED");
         
 		const memberInvites = invites.filter((i) => i.inviter && i.inviter.id === member.user.id);
 
