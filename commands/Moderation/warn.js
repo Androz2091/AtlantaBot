@@ -81,7 +81,7 @@ class Warn extends Command {
 					.setColor("#e02316");
 				message.guild.members.ban(member).catch(() => {});
 				message.success("moderation/setwarns:AUTO_BAN", {
-					username: member.tag,
+					username: member.user.tag,
 					count: banCount
 				});
 			}
@@ -100,8 +100,8 @@ class Warn extends Command {
 					.setColor("#e88709");
 				member.kick().catch(() => {});
 				message.success("moderation/setwarns:AUTO_KICK", {
-					username: member.tag,
-					count: banCount
+					username: member.user.tag,
+					count: kickCount
 				});
 			}
 		} else {
