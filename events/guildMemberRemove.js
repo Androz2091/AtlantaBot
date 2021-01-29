@@ -1,3 +1,4 @@
+const stringCleaner = require("@sindresorhus/slugify");
 const Canvas = require("canvas"),
 	Discord = require("discord.js");
 const { resolve } = require("path");
@@ -44,8 +45,14 @@ module.exports = class {
 						ctx.drawImage(background, 0, 0, canvas.width, canvas.height);
 						// Draw username
 						ctx.fillStyle = "#ffffff";
-						ctx.font = applyText(canvas, member.user.username, 48);
-						ctx.fillText(member.user.username, canvas.width - 660, canvas.height - 248);
+						const username = stringCleaner(member.user.username, {
+							separator: " ",
+							lowercase: false,
+							decamelize: false,
+							preserveLeadingUnderscore: true,
+						});
+						ctx.font = applyText(canvas, username, 48);
+						ctx.fillText(username, canvas.width - 660, canvas.height - 248);
 						// Draw server name
 						ctx.font = applyText(canvas, member.guild.translate("administration/goodbye:IMG_GOODBYE", {
 							server: member.guild.name
