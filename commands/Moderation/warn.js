@@ -85,7 +85,9 @@ class Warn extends Command {
 					count: banCount
 				});
 			}
-		} else if(kickCount){
+		}
+		
+		if(kickCount){
 			if(sanctions >= kickCount){
 				member.send(message.translate("moderation/kick:KICKED_DM", {
 					username: member.user,
@@ -104,23 +106,23 @@ class Warn extends Command {
 					count: kickCount
 				});
 			}
-		} else {
-			member.send(message.translate("moderation/warn:WARNED_DM", {
-				username: member.user.tag,
-				server: message.guild.name,
-				moderator: message.author.tag,
-				reason
-			}));
-			caseInfo.type = "warn";
-			embed.setAuthor(message.translate("moderation/warn:CASE", {
-				count: data.guild.casesCount
-			}))
-				.setColor("#8c14e2");
-			message.success("moderation/warn:WARNED", {
-				username: member.user.tag,
-				reason
-			});
 		}
+
+		member.send(message.translate("moderation/warn:WARNED_DM", {
+			username: member.user.tag,
+			server: message.guild.name,
+			moderator: message.author.tag,
+			reason
+		}));
+		caseInfo.type = "warn";
+		embed.setAuthor(message.translate("moderation/warn:CASE", {
+			count: data.guild.casesCount
+		}))
+			.setColor("#8c14e2");
+		message.success("moderation/warn:WARNED", {
+			username: member.user.tag,
+			reason
+		});
 
 		memberData.sanctions.push(caseInfo);
 		memberData.save();
