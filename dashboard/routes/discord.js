@@ -14,16 +14,14 @@ router.get("/login", async function(req, res) {
 });
 
 router.get("/callback", async (req, res) => {
+	if(!req.query.code) return res.redirect(req.client.config.dashboard.failureURL);
 	if(req.query.state && req.query.state.startsWith("invite")){
 		if(req.query.code){
 			const guildID = req.query.state.substr("invite".length, req.query.state.length);
 			req.client.knownGuilds.push({ id: guildID, user: req.user.id });
 			return res.redirect("/manage/"+guildID);
-		} else {
-			return res.redirect("/selector");
 		}
 	}
-	if(!req.query.code) res.redirect(req.client.config.failureURL);
 	const redirectURL = req.client.states[req.query.state] || "/selector";
 	const params = new URLSearchParams();
 	params.set("grant_type", "authorization_code");
