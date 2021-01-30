@@ -116,7 +116,7 @@ class Warn extends Command {
 		}));
 		caseInfo.type = "warn";
 		embed.setAuthor(message.translate("moderation/warn:CASE", {
-			count: data.guild.casesCount
+			caseNumber: data.guild.casesCount
 		}))
 			.setColor("#8c14e2");
 		message.success("moderation/warn:WARNED", {
