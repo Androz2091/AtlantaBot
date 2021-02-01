@@ -19,7 +19,7 @@
     },
     "homepage": "https://github.com/Androz2091/AtlantaBot#readme",
     "dependencies": {
-        "@discordjs/opus": "^0.3.2",
+        "@discordjs/opus": "^0.4.0",
         "@k3rn31p4nic/google-translate-api": "github:k3rn31p4nic/google-translate-api",
         "@sentry/node": "6.0.1",
         "@sindresorhus/slugify": "^1.1.0",
