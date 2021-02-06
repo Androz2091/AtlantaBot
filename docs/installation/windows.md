@@ -34,3 +34,20 @@ For emojis, you must add them on one of your bot's servers and enter the string 
 1. Run `npm install -g pm2` to install PM2.
 2. Run `pm2 start atlanta.js` to run the bot.
 3. Enjoy it!
+
+## Run the bot in the cloud
+1. Open [repl.it][https://repl.it/~]
+2. Signup if you haven't yet
+3. Create a Nodejs Repl
+4. Open the shell and write ```npm install -g pm2```
+- ```pm2 start atlanta.js```
+- If it doesn't work
+5. ```npm install```
+```node atlanta.js```
+- if this also doesnt work then open an issue at github.com/BhavishyaMaheshwari/AtlantaBot/issues or github.com/androz2091/atlantabot/issues
+6. now create a url like this 
+- atlantabot.yourusername.repl.co
+7. search cactus pinger on the web then open the website
+8. put your atlantabot.yourusername.repl.co in the bot
+9. wait for sometime
+10. enjoy or open and error
