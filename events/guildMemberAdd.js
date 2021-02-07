@@ -22,7 +22,7 @@ module.exports = class {
 
 	async run (member) {
     
-		member.guild.fetch().then(async (guild) => {
+		member.guild.members.fetch().then(async (guild) => {
 
 			const guildData = await this.client.findOrCreateGuild({ id: guild.id });
 			member.guild.data = guildData;
