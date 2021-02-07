@@ -68,7 +68,7 @@ class Work extends Command {
 		} else {
 			for(let i = 0; i < award.length; i++){
 				if(data.memberData.workStreak > i){
-					const letter = Discord.Util.parseEmoji(award[i]).name.split("_")[1];
+					const letter = Discord.Util.parseEmoji(award[i]).name.split("_")[0];
 					award[i] = `:regional_indicator_${letter.toLowerCase()}:`;
 				}
 			}

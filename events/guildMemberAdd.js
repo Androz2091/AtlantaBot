@@ -85,7 +85,7 @@ module.exports = class {
 							memberCount: member.guild.memberCount
 						}), 40, canvas.height - 50);
 						// Draw # for discriminator
-						ctx.fillStyle = "#44d14a";
+						ctx.fillStyle = "#03A9F4";
 						ctx.font = "75px SketchMatch";
 						ctx.fillText("#", canvas.width - 690, canvas.height - 165);
 						// Draw Title with gradient
@@ -94,8 +94,8 @@ module.exports = class {
 						ctx.lineWidth = 15;
 						ctx.strokeText(member.guild.translate("administration/welcome:TITLE"), canvas.width - 620, canvas.height - 330);
 						var gradient = ctx.createLinearGradient(canvas.width - 780, 0, canvas.width - 30, 0);
-						gradient.addColorStop(0, "#e15500");
-						gradient.addColorStop(1, "#e7b121");
+						gradient.addColorStop(0, "#0273f4");
+						gradient.addColorStop(1, "#03A9F4");
 						ctx.fillStyle = gradient;
 						ctx.fillText(member.guild.translate("administration/welcome:TITLE"), canvas.width - 620, canvas.height - 330);
                 

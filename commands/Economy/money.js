@@ -15,7 +15,7 @@ class Credits extends Command {
 			dirname: __dirname,
 			enabled: true,
 			guildOnly: true,
-			aliases: [ "credits", "balance" ],
+			aliases: [ "credits", "balance", "wallet" ],
 			memberPermissions: [],
 			botPermissions: [ "SEND_MESSAGES", "EMBED_LINKS" ],
 			nsfw: false,

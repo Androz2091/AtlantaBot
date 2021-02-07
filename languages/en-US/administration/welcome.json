@@ -10,7 +10,7 @@
     "FORM_3": "**Do you want a great welcome image too?**\n\n:arrow_right_hook: *Answer by sending `yes` or `no`!*",
     "FORM_SUCCESS": "**Alright, done!**\n\n:arrow_right_hook: *Answer by sending `{{prefix}}welcome test` to preview your custom welcome message!*",
     "DISABLED": "**Goodbye messages have just been disabled!**\n\n:arrow_right_hook: *Answer by sending `{{prefix}}configuration` to see the updated server configuration!*",
-    "IMG_WELCOME": "Welcome in {{server}}!",
-    "IMG_NB": "- {{memberCount}}th member!",
+    "IMG_WELCOME": "Welcome to {{server}}!",
+    "IMG_NB": "Member Count: {{memberCount}}",
     "TITLE": "WELCOME"
 }

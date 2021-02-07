@@ -1,10 +1,10 @@
 {
-    "DESCRIPTION": "Shows Atlanta links!",
+    "DESCRIPTION": "Shows SickGamingBot links!",
     "USAGE": "{{prefix}}invite (copy)",
     "EXAMPLES": "{{prefix}}invite\n{{prefix}}invite copy",
-    "LINKS": "Atlanta links",
+    "LINKS": "SickGamingBot links",
     "TIP": "Send `{{prefix}}invite copy` to be able to copy the invite link!",
-    "ADD": "Invite Atlanta",
-    "VOTE": "Vote for Atlanta",
+    "ADD": "Invite SickGamingBot",
+    "VOTE": "Vote for SickGamingBot",
     "SUPPORT": "Get Support"
 }
