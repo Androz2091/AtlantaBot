@@ -1,0 +1,5 @@
+{
+    "DESCRIPTION": "Staff command to remove users from server roles!",
+    "USAGE": "{{prefix}}removerole [@member] [role]",
+    "EXAMPLES": "{{prefix}}removerole @SickProdigy Rust"
+}

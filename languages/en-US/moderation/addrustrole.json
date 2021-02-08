@@ -1,0 +1,6 @@
+{
+    "DESCRIPTION": "For Rust-Generals to add users to the clan! (Only works in MAIN RUST CHANNELS)",
+    "USAGE": "{{prefix}}addrustrole [@member] [role]",
+    "EXAMPLES": "{{prefix}}addrustrole @SickProdigy Rust-Enlisted",
+	"CASE": "AddRustRole | Case #{{count}}"
+}

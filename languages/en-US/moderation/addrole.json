@@ -1,0 +1,11 @@
+{
+    "DESCRIPTION": "For staff to add users to server roles!",
+    "USAGE": "{{prefix}}addrole [@member] [role]",
+    "EXAMPLES": "{{prefix}}addrole @SickProdigy Rust",
+    "MISSING_MEMBER": "Please specify a valid member to add a role to!",
+	"YOURSELF": "Please specify a member other than yourself!",
+	"MISSING_ROLE": "Please specify a valid role to assign to the user!",
+	"SUPERIOR": "You can't add roles for a member who has a higher or equal role hierarchy to yours!!",
+    "ADDROLE_DM": "Hello {{username}},\nYou've just been added to the Role: **{{userRoles}}** on **{{server}}** by **{{moderator}}**!",
+    "ROLEADDED": "**{{username}}** is now added to **{{userRoles}}** role by **{{moderator}}**!"
+}
