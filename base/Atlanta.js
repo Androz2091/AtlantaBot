@@ -72,7 +72,7 @@ class Atlanta extends Client {
 				}));
 			})
 			.on("searchResults", (message, query, tracks) => {
-				if (tracks.length > 20) tracks = tracks.slice(0, 20);
+				if (tracks.length > 10) tracks = tracks.slice(0, 10);
 				const embed = new MessageEmbed()
 					.setDescription(Util.escapeSpoiler(tracks.map((t, i) => `**${++i} -** ${t.title}`).join("\n")))
 					.setFooter(message.translate("music/play:RESULTS_FOOTER"))
