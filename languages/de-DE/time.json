@@ -2,9 +2,9 @@
     "ONE_DAY": "1 Tag",
     "DAYS": "{{amount}} Tage",
     "ONE_HOUR": "1 Stunde",
-    "HOURS": "{{amount}} Stunde",
+    "HOURS": "{{amount}} Stunden",
     "ONE_MINUTE": "1 Minute",
-    "MINUTES": "{{amount}} minuten",
+    "MINUTES": "{{amount}} Minuten",
     "ONE_SECOND": "1 Sekunde",
-    "SECONDS": "{{amount}} sekunden"
+    "SECONDS": "{{amount}} Sekunden"
 }
