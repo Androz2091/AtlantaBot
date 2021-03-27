@@ -41,7 +41,7 @@ class Number extends Command {
 				time: 480000 // 8 minutes
 			}
 		);
-		currentGames[message.guild.id] = message.guild.id;
+		currentGames[message.guild.id] = true;
 
 		collector.on("collect", async msg => {
 			if (!participants.includes(msg.author.id)) {
