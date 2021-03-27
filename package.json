@@ -21,7 +21,7 @@
     "dependencies": {
         "@discordjs/opus": "^0.4.0",
         "@k3rn31p4nic/google-translate-api": "github:k3rn31p4nic/google-translate-api",
-        "@sentry/node": "6.2.0",
+        "@sentry/node": "6.2.3",
         "@sindresorhus/slugify": "^1.1.0",
         "amethyste-api": "github:Androz2091/amethyste-api",
         "ascii-table": "0.0.9",
