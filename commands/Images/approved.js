@@ -4,7 +4,7 @@ const Command = require("../../base/Command.js"),
 class Approved extends Command {
 	constructor (client) {
 		super(client, {
-			name: "batslap",
+			name: "approved",
 			dirname: __dirname,
 			enabled: true,
 			guildOnly: false,
