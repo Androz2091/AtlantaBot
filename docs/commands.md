@@ -7,33 +7,60 @@ Here's the list of Atlanta commands. This one contains more than **110 commands*
 **Usage**: The arguments/options that the command takes in parameters  
 **Cooldown**: The time that must elapse between each command so that it can be executed again by the user
 
-### General (23 commands)
+### Images (23 commands)
 
-| Name             | Description                                                       | Usage                          | Cooldown  |
-| ---------------- | ----------------------------------------------------------------- | ------------------------------ | --------- |
-| **calc**         | Calculator able to solve complex operations and to convert units! | calc [calculation]             | 1 seconds |
-| **fortnite**     | Shows a player's Fortnite stats!                                  | fortnite [psn/xbl/pc] [pseudo] | 1 seconds |
-| **fortniteshop** | Shows the daily fortnite items shop!                              | fortniteshop                   | 1 seconds |
-| **github**       | Shows Atlanta's Github repository information!                    | github                         | 5 seconds |
-| **hastebin**     | Upload your text on hastebin!                                     | hastebin [text]                | 5 seconds |
-| **help**         | Show commands list or specific command help.                      | help (command)                 | 5 seconds |
-| **invitations**  | Shows the number of people you have invited to the server!        | invitations (@member)          | 3 seconds |
-| **invite**       | Shows Atlanta links!                                              | invite (copy)                  | 5 seconds |
-| **minecraft**    | Shows information about a Minecraft server!                       | minecraft [ip]                 | 3 seconds |
-| **permissions**  | Displays the member's permissions in the channel                  | permissions (@member)          | 1 seconds |
-| **ping**         | Show bot's ping                                                   | ping                           | 1 seconds |
-| **quote**        | Quote a message in the channel!                                   | quote [messageID] [channel]    | 5 seconds |
-| **remindme**     | Add a new personal reminder                                       | remindme [message]             | 3 seconds |
-| **report**       | Send your report to the channel defined for them!                 | report [@user] [reason]        | 5 seconds |
-| **serverinfo**   | Shows information about the server!                               | serverinfo [ID/Name]           | 3 seconds |
-| **setafk**       | Become AFK (members who mention you will receive a message)       | setafk [reason]                | 3 seconds |
-| **shorturl**     | Make your links shorter!                                          | shorturl [url]                 | 5 seconds |
-| **someone**      | Pick a random member on the server!                               | someone                        | 1 seconds |
-| **staff**        | Shows the server staff members list!                              | staff                          | 3 seconds |
-| **stats**        | Shows the bot stats!                                              | stats                          | 3 seconds |
-| **suggest**      | Send your suggestion to the defined channel!                      | suggest [message]              | 5 seconds |
-| **translate**    | Translate your text!                                              | translate [language] [message] | 8 seconds |
-| **userinfo**     | Shows user information!                                           | userinfo (@user/userID)        | 5 seconds |
+| Name              | Description                                             | Usage                               | Cooldown  |
+| ----------------- | ------------------------------------------------------- | ----------------------------------- | --------- |
+| **avatar**        | Shows the avatar of the mentionned member               | avatar (@member)                    | 5 seconds |
+| **batslap**       | DESCRIPTION                                             | USAGE                               | 5 seconds |
+| **beautiful**     | DESCRIPTION                                             | USAGE                               | 5 seconds |
+| **brazzers**      | DESCRIPTION                                             | USAGE                               | 5 seconds |
+| **burn**          | DESCRIPTION                                             | USAGE                               | 5 seconds |
+| **captcha**       | Generates a "captcha" image using the Nekobot API       | captcha (@member)                   | 5 seconds |
+| **challenger**    | DESCRIPTION                                             | USAGE                               | 5 seconds |
+| **clyde**         | Generates a "Clyde" message image using the Nekobot API | clyde [text]                        | 5 seconds |
+| **dictator**      | DESCRIPTION                                             | USAGE                               | 5 seconds |
+| **facepalm**      | Generates a "facepalm" image using canvas               | facepalm (@member)                  | 5 seconds |
+| **fire**          | Generates a "fire" image using Amethyste API            | fire (@member)                      | 5 seconds |
+| **jail**          | Generates a "jail" image using Amethyste API            | jail (@member)                      | 5 seconds |
+| **love**          | Generates a "love" image using the Nekobot API          | love [@member1] (@member2)          | 5 seconds |
+| **mission**       | Generates a "mission" image using Amethyste API         | mission (@member)                   | 5 seconds |
+| **phcomment**     | Generates a "phcomment" image using Nekobot API         | phcomment (@member) [text]          | 5 seconds |
+| **qrcode**        | Generates a QR code image from a given text             | qrcode [text]                       | 3 seconds |
+| **rip**           | Generates a "rip" image using Nekobot API               | rip (@member)                       | 5 seconds |
+| **scary**         | Generates a "scary" image using Nekobot API             | scary (@member)                     | 5 seconds |
+| **tobecontinued** | Generates a "tobecontinued" image using Nekobot API     | tobecontinued (@member)             | 5 seconds |
+| **triggered**     | Generates a "triggered" image using Nekobot API         | triggered (@member)                 | 5 seconds |
+| **tweet**         | Generates a "tweet" image using Nekobot API             | tweet [@twitter_username] [content] | 5 seconds |
+| **wanted**        | Generates a "wanted" image using Nekobot API            | wanted (@member)                    | 5 seconds |
+| **wasted**        | Generates a "wasted" image using Nekobot API            | wasted (@member)                    | 5 seconds |
+
+### General (22 commands)
+
+| Name             | Description                                                 | Usage                          | Cooldown  |
+| ---------------- | ----------------------------------------------------------- | ------------------------------ | --------- |
+| **fortnite**     | Shows a player's Fortnite stats!                            | fortnite [psn/xbl/pc] [pseudo] | 1 seconds |
+| **fortniteshop** | Shows the daily fortnite items shop!                        | fortniteshop                   | 1 seconds |
+| **github**       | Shows Atlanta's Github repository information!              | github                         | 5 seconds |
+| **hastebin**     | Upload your text on hastebin!                               | hastebin [text]                | 5 seconds |
+| **help**         | Show commands list or specific command help.                | help (command)                 | 5 seconds |
+| **invitations**  | Shows the number of people you have invited to the server!  | invitations (@member)          | 3 seconds |
+| **invite**       | Shows Atlanta links!                                        | invite (copy)                  | 5 seconds |
+| **minecraft**    | Shows information about a Minecraft server!                 | minecraft [ip]                 | 3 seconds |
+| **permissions**  | Displays the member's permissions in the channel            | permissions (@member)          | 1 seconds |
+| **ping**         | Show bot's ping                                             | ping                           | 1 seconds |
+| **quote**        | Quote a message in the channel!                             | quote [messageID] [channel]    | 5 seconds |
+| **remindme**     | Add a new personal reminder                                 | remindme [message]             | 3 seconds |
+| **report**       | Send your report to the channel defined for them!           | report [@user] [reason]        | 5 seconds |
+| **serverinfo**   | Shows information about the server!                         | serverinfo [ID/Name]           | 3 seconds |
+| **setafk**       | Become AFK (members who mention you will receive a message) | setafk [reason]                | 3 seconds |
+| **shorturl**     | Make your links shorter!                                    | shorturl [url]                 | 5 seconds |
+| **someone**      | Pick a random member on the server!                         | someone                        | 1 seconds |
+| **staff**        | Shows the server staff members list!                        | staff                          | 3 seconds |
+| **stats**        | Shows the bot stats!                                        | stats                          | 3 seconds |
+| **suggest**      | Send your suggestion to the defined channel!                | suggest [message]              | 5 seconds |
+| **translate**    | Translate your text!                                        | translate [language] [message] | 8 seconds |
+| **userinfo**     | Shows user information!                                     | userinfo (@user/userID)        | 5 seconds |
 
 ### Administration (18 commands)
 
@@ -57,28 +84,6 @@ Here's the list of Atlanta commands. This one contains more than **110 commands*
 | **setsuggests**     | Set the suggestions channel!                    | setsuggests (#channel)           | 3 seconds  |
 | **slowmode**        | Set a channel cooldown                          | slowmode [#channel] (time)       | 3 seconds  |
 | **welcome**         | Toggle welcome messages!                        | welcome                          | 3 seconds  |
-
-### Images (17 commands)
-
-| Name              | Description                                             | Usage                               | Cooldown  |
-| ----------------- | ------------------------------------------------------- | ----------------------------------- | --------- |
-| **avatar**        | Shows the avatar of the mentionned member               | avatar (@member)                    | 5 seconds |
-| **captcha**       | Generates a "captcha" image using the Nekobot API       | captcha (@member)                   | 5 seconds |
-| **clyde**         | Generates a "Clyde" message image using the Nekobot API | clyde [text]                        | 5 seconds |
-| **facepalm**      | Generates a "facepalm" image using canvas               | facepalm (@member)                  | 5 seconds |
-| **fire**          | Generates a "fire" image using Amethyste API            | fire (@member)                      | 5 seconds |
-| **jail**          | Generates a "jail" image using Amethyste API            | jail (@member)                      | 5 seconds |
-| **love**          | Generates a "love" image using the Nekobot API          | love [@member1] (@member2)          | 5 seconds |
-| **mission**       | Generates a "mission" image using Amethyste API         | mission (@member)                   | 5 seconds |
-| **phcomment**     | Generates a "phcomment" image using Nekobot API         | phcomment (@member) [text]          | 5 seconds |
-| **qrcode**        | Generates a QR code image from a given text             | qrcode [text]                       | 3 seconds |
-| **rip**           | Generates a "rip" image using Nekobot API               | rip (@member)                       | 5 seconds |
-| **scary**         | Generates a "scary" image using Nekobot API             | scary (@member)                     | 5 seconds |
-| **tobecontinued** | Generates a "tobecontinued" image using Nekobot API     | tobecontinued (@member)             | 5 seconds |
-| **triggered**     | Generates a "triggered" image using Nekobot API         | triggered (@member)                 | 5 seconds |
-| **tweet**         | Generates a "tweet" image using Nekobot API             | tweet [@twitter_username] [content] | 5 seconds |
-| **wanted**        | Generates a "wanted" image using Nekobot API            | wanted (@member)                    | 5 seconds |
-| **wasted**        | Generates a "wasted" image using Nekobot API            | wasted (@member)                    | 5 seconds |
 
 ### Economy (15 commands)
 
@@ -119,21 +124,22 @@ Here's the list of Atlanta commands. This one contains more than **110 commands*
 | **unmute**          | Unmute the mentioned member!                                                                              | unmute [@member]                                                   | 3 seconds |
 | **warn**            | Warn a member in private messages                                                                         | warn [@member] [reason]                                            | 3 seconds |
 
-### Music (11 commands)
+### Music (12 commands)
 
-| Name        | Description                                       | Usage              | Cooldown  |
-| ----------- | ------------------------------------------------- | ------------------ | --------- |
-| **back**    | Play back the previous song                       | back               | 5 seconds |
-| **filter**  | Enable or disable a filter!                       | filter [filter]    | 5 seconds |
-| **filters** | Send the list of all the filters and their status | filters            | 5 seconds |
-| **lyrics**  | Shows the song lyrics                             | lyrics [song-name] | 5 seconds |
-| **np**      | Shows information about the current song!         | np                 | 5 seconds |
-| **pause**   | Pause the current song!                           | pause              | 5 seconds |
-| **play**    | Plays music for you!                              | play [song]        | 5 seconds |
-| **queue**   | Shows the server queue                            | queue              | 5 seconds |
-| **resume**  | Resume the current song!                          | resume             | 5 seconds |
-| **skip**    | Skip the current song                             | skip               | 5 seconds |
-| **stop**    | Stop the music                                    | stop               | 5 seconds |
+| Name        | Description                                                            | Usage              | Cooldown  |
+| ----------- | ---------------------------------------------------------------------- | ------------------ | --------- |
+| **back**    | Play back the previous song                                            | back               | 5 seconds |
+| **filter**  | Enable or disable a filter!                                            | filter [filter]    | 5 seconds |
+| **filters** | Send the list of all the filters and their status                      | filters            | 5 seconds |
+| **lyrics**  | Shows the song lyrics                                                  | lyrics [song-name] | 5 seconds |
+| **np**      | Shows information about the current song!                              | np                 | 5 seconds |
+| **pause**   | Pause the current song!                                                | pause              | 5 seconds |
+| **play**    | Plays music for you!                                                   | play [song]        | 5 seconds |
+| **queue**   | Shows the server queue                                                 | queue              | 5 seconds |
+| **resume**  | Resume the current song!                                               | resume             | 5 seconds |
+| **seek**    | Go forward or backward a specific amount of time in the current song!! | seek [time]        | 5 seconds |
+| **skip**    | Skip the current song                                                  | skip               | 5 seconds |
+| **stop**    | Stop the music                                                         | stop               | 5 seconds |
 
 ### Fun (10 commands)
 

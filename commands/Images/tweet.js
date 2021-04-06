@@ -1,6 +1,5 @@
 const Command = require("../../base/Command.js"),
-	Discord = require("discord.js"),
-	fetch = require("node-fetch");
+	Discord = require("discord.js");
 
 class Tweet extends Command {
 
@@ -21,7 +20,7 @@ class Tweet extends Command {
 
 	async run (message, args) {
 
-		const user = args[0];
+		const user = message.mentions.users.first() || message.author;
 		const text = args.slice(1).join(" ");
 
 		if(!user){
@@ -36,18 +35,19 @@ class Tweet extends Command {
 			prefixEmoji: "loading"
 		});
 
-		try {
-			const res = await fetch(encodeURI(`https://nekobot.xyz/api/imagegen?type=tweet&username=${user}&text=${text}`));
-			const json = await res.json();
-			const attachment = new Discord.MessageAttachment(json.message, "tweet.png");
-			message.channel.send(message.translate("images/tweet:SUCCESS", {
-				user
-			}), attachment);
-			m.delete();
-		} catch(e){
-			console.log(e);
-			m.error("misc:ERROR_OCCURRED", null, false, false, true);
-		}
+		await message.guild.members.fetch();
+		const randomMembers = message.guild.members.cache.random(3);
+
+		const buffer = await this.client.AmeAPI.generate("twitter", {
+			url: user.displayAvatarURL(),
+			avatar1: randomMembers[0].user.displayAvatarURL(),
+			avatar2: randomMembers[1].user.displayAvatarURL(),
+			avatar3: randomMembers[2].user.displayAvatarURL(),
+			text
+		});
+		const attachment = new Discord.MessageAttachment(buffer, "twitter.png");
+		m.delete();
+		message.channel.send(attachment);
 
 	}
 
