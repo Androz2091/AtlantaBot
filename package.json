@@ -27,6 +27,7 @@
         "ascii-table": "0.0.9",
         "blague.xyz": "^2.0.4",
         "btoa": "^1.2.1",
+        "canvacord": "^5.1.0",
         "canvas": "^2.6.1",
         "chalk": "^4.1.0",
         "colors-generator": "^0.3.4",
