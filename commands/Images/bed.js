@@ -2,10 +2,10 @@ const Command = require("../../base/Command.js"),
 	Discord = require("discord.js"),
 	canvacord = require("canvacord");
 
-class Phcomment extends Command {
+class Bed extends Command {
 	constructor (client) {
 		super(client, {
-			name: "phcomment",
+			name: "bed",
 			dirname: __dirname,
 			enabled: true,
 			guildOnly: false,
@@ -19,30 +19,18 @@ class Phcomment extends Command {
 	}
 
 	async run (message, args) {
-
-		let user = await this.client.resolveUser(args[0]);
-		let text = args.join(" ");
-
-		if(user){
-			text = args.slice(1).join(" ");
-		} else {
-			user = message.author;
-		}
-
-		if(!text){
-			return message.error("images/phcomment:MISSING_TEXT");
-		}
+        
+		const users = [
+			await this.client.resolveUser(args[0]) || message.author,
+			await this.client.resolveUser(args[1]) || message.author
+		];
 
 		const m = await message.sendT("misc:PLEASE_WAIT", null, {
 			prefixEmoji: "loading"
 		});
 		try {
-			const buffer = await canvacord.Canvas.phub({
-				username: user.username,
-				image: user.displayAvatarURL({ format: "png" }),
-				message: text
-			});
-			const attachment = new Discord.MessageAttachment(buffer, "phcomment.png");
+			const buffer = await canvacord.Canvas.bed(users[0].displayAvatarURL({ format: "png" }), users[1].displayAvatarURL({ format: "png" }));
+			const attachment = new Discord.MessageAttachment(buffer, "bed.png");
 			message.channel.send(attachment);
 			m.delete();
 		} catch(e){
@@ -56,4 +44,4 @@ class Phcomment extends Command {
 
 }
 
-module.exports = Phcomment;
+module.exports = Bed;

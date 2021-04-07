@@ -1,5 +1,5 @@
 # Commands  
-Here's the list of Atlanta commands. This one contains more than **110 commands** in **8 categories**!  
+Here's the list of Atlanta commands. This one contains more than **120 commands** in **8 categories**!  
 
 #### Contents of the table  
 **Name**: The name of the command  
@@ -7,35 +7,37 @@ Here's the list of Atlanta commands. This one contains more than **110 commands*
 **Usage**: The arguments/options that the command takes in parameters  
 **Cooldown**: The time that must elapse between each command so that it can be executed again by the user
 
-### Images (25 commands)
+### Images (27 commands)
 
 | Name                | Description                                             | Usage                               | Cooldown  |
 | ------------------- | ------------------------------------------------------- | ----------------------------------- | --------- |
-| **approved**        | DESCRIPTION                                             | USAGE                               | 5 seconds |
+| **approved**        | Generates a "approved" image                            | approved (@member)                  | 5 seconds |
 | **avatar**          | Shows the avatar of the mentionned member               | avatar (@member)                    | 5 seconds |
-| **batslap**         | DESCRIPTION                                             | USAGE                               | 5 seconds |
-| **beautiful**       | DESCRIPTION                                             | USAGE                               | 5 seconds |
-| **brazzers**        | DESCRIPTION                                             | USAGE                               | 5 seconds |
-| **burn**            | DESCRIPTION                                             | USAGE                               | 5 seconds |
+| **batslap**         | Generates a "batslap" image                             | batslap (@member1) (@member2)       | 5 seconds |
+| **beautiful**       | Generates a "beautiful" image                           | beautiful (@member)                 | 5 seconds |
+| **bed**             | Generates a "love" image using the Nekobot API          | love [@member1] (@member2)          | 5 seconds |
+| **brazzers**        | Generates a "dictator" image                            | dictator (@member)                  | 5 seconds |
+| **burn**            | Generates a "brazzers" image                            | brazzers (@member)                  | 5 seconds |
 | **captcha**         | Generates a "captcha" image using the Nekobot API       | captcha (@member)                   | 5 seconds |
-| **challenger**      | DESCRIPTION                                             | USAGE                               | 5 seconds |
+| **challenger**      | Generates a "challenger" image                          | challenger (@member)                | 5 seconds |
 | **clyde**           | Generates a "Clyde" message image using the Nekobot API | clyde [text]                        | 5 seconds |
-| **dictator**        | DESCRIPTION                                             | USAGE                               | 5 seconds |
+| **dictator**        | Generates a "burn" image                                | burn (@member)                      | 5 seconds |
 | **facepalm**        | Generates a "facepalm" image using canvas               | facepalm (@member)                  | 5 seconds |
 | **fire**            | Generates a "fire" image using Amethyste API            | fire (@member)                      | 5 seconds |
 | **jail**            | Generates a "jail" image using Amethyste API            | jail (@member)                      | 5 seconds |
-| **love**            | Generates a "love" image using the Nekobot API          | love [@member1] (@member2)          | 5 seconds |
+| **love**            | Generates a "bed" image                                 | bed [@member1] (@member2)           | 5 seconds |
 | **mission**         | Generates a "mission" image using Amethyste API         | mission (@member)                   | 5 seconds |
-| **phcomment**       | Generates a "phcomment" image using Nekobot API         | phcomment (@member) [text]          | 5 seconds |
+| **phcomment**       | Generates a "phcomment" image                           | phcomment (@member) [text]          | 5 seconds |
 | **qrcode**          | Generates a QR code image from a given text             | qrcode [text]                       | 3 seconds |
 | **rip**             | Generates a "rip" image using Nekobot API               | rip (@member)                       | 5 seconds |
 | **scary**           | Generates a "scary" image using Nekobot API             | scary (@member)                     | 5 seconds |
 | **tobecontinued**   | Generates a "tobecontinued" image using Nekobot API     | tobecontinued (@member)             | 5 seconds |
+| **trash**           | Generates a "trash" image                               | trash (@member)                     | 5 seconds |
 | **triggered**       | Generates a "triggered" image using Nekobot API         | triggered (@member)                 | 5 seconds |
 | **tweet**           | Generates a "tweet" image using Nekobot API             | tweet [@twitter_username] [content] | 5 seconds |
 | **wanted**          | Generates a "wanted" image using Nekobot API            | wanted (@member)                    | 5 seconds |
 | **wasted**          | Generates a "wasted" image using Nekobot API            | wasted (@member)                    | 5 seconds |
-| **youtube-comment** | DESCRIPTION                                             | USAGE                               | 5 seconds |
+| **youtube-comment** | Generates a "youtube-comment" image                     | youtube-comment (@member) [text]    | 5 seconds |
 
 ### General (22 commands)
 
