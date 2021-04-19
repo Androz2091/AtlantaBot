@@ -1,5 +1,5 @@
 {
-    "DESCRIPTION": "Add a new personal reminder",
+    "DESCRIPTION": "Adicione um novo lembrete pessoal",
     "USAGE": "{{prefix}}remindme [message]",
     "EXAMPLES": "{{prefix}}remindme 24h Comando de trabalho\n{{prefix}}remindme 3m Retire o macarrão da panela!",
     "MISSING_MESSAGE": "You must enter a message!",
