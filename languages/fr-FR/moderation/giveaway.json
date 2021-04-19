@@ -1,14 +1,14 @@
 {
-    "DESCRIPTION": "Easily manage your giveaways!",
+    "DESCRIPTION": "Gérez facilement vos giveaways !",
     "USAGE": "{{prefix}}giveaway [create/reroll/delete/end] (temps) (nombre de gagnants) (prix)",
     "EXAMPLES": "{{prefix}}giveaway create 10m 2 5€ PayPal !\n{{prefix}}giveaway reroll 597812898022031374",
-    "MISSING_STATUS": "You must specify an action between `create`, `reroll`, `end` or `delete`!",
-    "INVALID_CREATE": "You must enter the information like this: \n\n`{{prefix}}giveaway create [time] [winners count] [prize]`",
-    "MISSING_ID": "You must enter the giveaway message ID!",
+    "MISSING_STATUS": "Vous devez spécifier une action entre `create`, `reroll`, `end` ou `delete`!",
+    "INVALID_CREATE": "Vous devez entrer les informations comme ceci : \n\n`{{prefix}}giveaway create [time] [winners count] [prize]`",
+    "MISSING_ID": "Vous devez saisir l'ID du message du giveaway !",
     "NOT_FOUND": "Pas de giveaway trouvé avec l'ID du message\n`{{messageID}}`",
     "NOT_FOUND_ENDED": "Pas de giveaway **fini** avec l'ID du message\n`{{messageID}}`",
     "MAX_DURATION": "La durée maximale du giveaway est de 15 jours.",
-    "MAX_COUNT": "There can only be 4 simultaneous giveaways.",
+    "MAX_COUNT": "Il ne peut y avoir que 4 giveaways simultanés.",
     "TITLE": "🎉🎉 **GIVEAWAY** 🎉🎉",
     "ENDED": "🎉🎉 **GIVEAWAY FINI** 🎉🎉",
     "TIME_REMAINING": "Durée restante: **{duration}**!",
@@ -22,6 +22,6 @@
     "REROLL_ERROR": "Pas d'entree valide, pas de gagnant(s) pouvant être choisi!",
     "GIVEAWAY_CREATED": "Giveaway lancé!",
     "GIVEAWAY_REROLLED": "Giveaway relancé!",
-    "GIVEAWAY_ENDED": "The giveaway will end in less than 15 seconds!",
+    "GIVEAWAY_ENDED": "Le giveaway se terminera dans moins de 15 secondes!",
     "GIVEAWAY_DELETED": "Giveaway supprimé!"
 }
