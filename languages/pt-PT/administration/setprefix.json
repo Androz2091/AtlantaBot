@@ -4,5 +4,5 @@
     "EXAMPLES": "{{prefix}}setprefix +",
     "MISSING_PREFIX": "Insira um prefixo válido!",
     "TOO_LONG": "O prefixo não deve exceder 5 carateres!",
-    "SUCCESS": "The bot prefix has been set to `{{prefix}}`!"
+    "SUCCESS": "Meu novo prefixo agora é `{{prefix}}`!"
 }
