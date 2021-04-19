@@ -1,0 +1,5 @@
+{
+    "DESCRIPTION": "Generates a \"approved\" image",
+    "USAGE": "{{prefix}}approved (@member)",
+    "EXAMPLES": "{{prefix}}approved\n{{prefix}}approved @Androz#2091"
+}
