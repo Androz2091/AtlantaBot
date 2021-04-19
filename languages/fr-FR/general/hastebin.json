@@ -2,6 +2,6 @@
     "DESCRIPTION": "Envoyez votre texte sur hastebin!",
     "USAGE": "{{prefix}}hastebin [texte]",
     "EXAMPLES": "{{prefix}}hastebin Bonjour tout le monde!",
-    "MISSING_TEXT": "Please enter a valid text!",
+    "MISSING_TEXT": "Veuillez entrer un texte valide !",
     "SUCCESS": "Envoi comfirmé!"
 }
