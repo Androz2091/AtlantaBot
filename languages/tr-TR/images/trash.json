@@ -1,0 +1,5 @@
+{
+    "DESCRIPTION": "Generates a \"trash\" image",
+    "USAGE": "{{prefix}}trash (@member)",
+    "EXAMPLES": "{{prefix}}trash\n{{prefix}}trash @Androz#2091"
+}
