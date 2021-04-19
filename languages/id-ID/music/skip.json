@@ -3,6 +3,6 @@
     "USAGE": "{{prefix}}skip",
     "EXAMPLES": "{{prefix}}skip",
     "NO_NEXT_SONG": "Tidak ada lagu setelah yang satu ini!",
-    "VOTE_CONTENT": "Lagu selanjutnya: {{songName}}\nReaksi dengan 👍 untuk menghentikan musik! {{requiredCount}} lebih banyak suara dibutuhkan.",
+    "VOTE_CONTENT": "Next song: {{songName}}\nReact with 👍 to skip the music! {{requiredCount}} more votes are required.",
     "SUCCESS": "Lagu dilompati!"
 }
