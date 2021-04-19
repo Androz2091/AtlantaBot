@@ -14,5 +14,8 @@
     "QUEUE_ENDED": "La coda è terminata. Niente più musica da riprodurre...",
     "ADDED_QUEUE": "{{songName}} è stata aggiunta alla coda!",
     "ADDED_QUEUE_COUNT": "{{songCount}} brani aggiunti alla coda!",
-    "STOP_DISCONNECTED": "I've just stopped the music as I have been disconnected from the channel."
+    "STOP_DISCONNECTED": "I've just stopped the music as I have been disconnected from the channel.",
+    "RESULTS_CANCEL": "Search cancelled!",
+    "LIVE_VIDEO": "Lives are not yet supported!",
+    "ERR_OCCURRED": "An error occurred... Code: `{{error}}`"
 }
