@@ -2,6 +2,6 @@
     "DESCRIPTION": "Generates a QR code image from a given text",
     "USAGE": "{{prefix}}qrcode [text]",
     "EXAMPLES": "{{prefix}}qrcode Olá",
-    "MISSING_TEXT": "Please specify the QR code source text!",
-    "SUCCESS": "Here's your QRCode!"
+    "MISSING_TEXT": "Por favor, especifique o texto do seu código QR!",
+    "SUCCESS": "Aqui está seu QRCode!"
 }
