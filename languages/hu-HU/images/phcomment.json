@@ -1,5 +1,5 @@
 {
-    "DESCRIPTION": "\"Nevezetes\" képet generálok a Nekobot API segítségével",
+    "DESCRIPTION": "Generates a \"phcomment\" image",
     "USAGE": "{{prefix}}phcomment (@tag) [szöveg]",
     "EXAMPLES": "{{prefix}}phcomment Szia!\n{{prefix}}phcomment @Androz#2091 Szia!",
     "MISSING_TEXT": "Kérlek add meg a komment szövegét!"
