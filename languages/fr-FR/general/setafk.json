@@ -4,6 +4,6 @@
     "EXAMPLES": "{{prefix}}setafk Je mange =)",
     "MISSING_REASON": "Merci de spécifier une raison pour votre statut d'AFK!",
     "SUCCESS": "Vous êtes AFK (raison: {{reason}})",
-    "DELETED": "**{{username}}**, your AFK status has just been deleted!",
+    "DELETED": "**{{username}}**, votre status d'AFK viens d'être retiré !",
     "IS_AFK": "**{{user}}** est AFK, raison:\n```{{reason}}```"
 }
