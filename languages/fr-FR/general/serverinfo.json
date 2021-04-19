@@ -1,5 +1,5 @@
 {
-    "DESCRIPTION": "Shows information about the server!",
+    "DESCRIPTION": "Affiche les informations à propos du serveur !",
     "USAGE": "{{prefix}}serverinfo [ID/Nom]",
     "EXAMPLES": "{{prefix}}serverinfo Atlanta\n{{prefix}}serverinfo",
     "AFK_CHANNEL": "Salon AFK",
