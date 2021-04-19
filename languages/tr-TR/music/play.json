@@ -14,5 +14,8 @@
     "QUEUE_ENDED": "Liste tamamlandı. Oynatılıcak müzik yok...",
     "ADDED_QUEUE": "{{songName}} Listeye eklendi!",
     "ADDED_QUEUE_COUNT": "{{songCount}} tane şarkı listeye eklendi!",
-    "STOP_DISCONNECTED": "Kanalla bağlantım kesildiğinden müziği durdurdum."
+    "STOP_DISCONNECTED": "Kanalla bağlantım kesildiğinden müziği durdurdum.",
+    "RESULTS_CANCEL": "Search cancelled!",
+    "LIVE_VIDEO": "Lives are not yet supported!",
+    "ERR_OCCURRED": "An error occurred... Code: `{{error}}`"
 }
