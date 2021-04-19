@@ -1,10 +1,10 @@
 {
     "DESCRIPTION": "Envoie une annonce dans le salon actuel !",
     "USAGE": "{{prefix}}announcement [texte]",
-    "EXAMPLES": "{{prefix}}announcement New staff member!",
-    "MISSING_TEXT": "You must enter the announcement text!",
-    "TOO_LONG": "Your text should be shorter than 1030 characters!",
-    "MENTION_PROMPT": "Would you like to add a mention to your message?\nAnswer by sending `yes` or `no`!",
-    "MENTION_TYPE_PROMPT": "Choose to mention `@`everyone by typing `every` or to mention `@`here by typing `here`!",
+    "EXAMPLES": "{{prefix}}annonce d'un nouveau membre du staff !",
+    "MISSING_TEXT": "Vous devez saisir le texte de l'annonce !",
+    "TOO_LONG": "Ton texte doit être plus court que 1030 caractères !",
+    "MENTION_PROMPT": "Voulez-vous ajouter une mention à votre message ?\nRépondre en envoyant `oui` ou `non` !",
+    "MENTION_TYPE_PROMPT": "Choisissez de mentionner `@`everyone en tapant `every` ou de mentionner `@`here en tapant `here`!",
     "TITLE": "📢 Annonce:"
 }
