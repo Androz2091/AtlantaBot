@@ -1,5 +1,5 @@
 {
-    "DESCRIPTION": "Shows Atlanta's Github repository information!",
+    "DESCRIPTION": "Mostra as informações do repositório do GitHub do Atlanta!",
     "USAGE": "{{prefix}}github",
     "EXAMPLES": "{{prefix}}github",
     "CLICK_HERE": "Clique aqui para acessar o github de Atlanta",
