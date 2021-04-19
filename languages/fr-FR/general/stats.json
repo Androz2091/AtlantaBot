@@ -1,17 +1,17 @@
 {
-    "DESCRIPTION": "Shows the bot stats!",
+    "DESCRIPTION": "Affiche les statistiques du bot !",
     "USAGE": "{{prefix}}stats",
     "EXAMPLES": "{{prefix}}stats",
     "COUNTS_TITLE": "• __Statistiques__",
     "COUNTS_CONTENT": "`Serveurs: {{servers}}`\n`Utilisateurs: {{users}}`",
-    "VERSIONS_TITLE": "• __Using__",
+    "VERSIONS_TITLE": "• __Utilisation__",
     "RAM_TITLE": "• __RAM__",
     "ONLINE_TITLE": "• __En ligne__",
     "ONLINE_CONTENT": "En ligne depuis {{time}}",
     "MUSIC_TITLE": "• __Musiques__",
     "MUSIC_CONTENT": "Joue de la musique sur `{{count}}` serveurs",
     "CREDITS_TITLE": ":heart: • __Réputation & crédits__",
-    "CREDITS_CONTENT": "Thanks to [Icons8](https://icons8.com/) for almost all the emojis!\n__**Donators**__:\n{{donators}}\n__**Translators**__:\n{{translators}}",
+    "CREDITS_CONTENT": "Merci à [Icons8](https://icons8.com/) pour presque tous les emojis !\n__**Donateurs**__:\n{{donators}}\n__**Traducteurs**__:\n{{translators}}",
     "LINKS_TITLE": "• __Liens__",
     "MADE": "Atlanta est un bot source ouverte développé par Androz#2091!"
 }
