@@ -14,5 +14,8 @@
     "QUEUE_ENDED": "Queue has ended. No more music to play...",
     "ADDED_QUEUE": "{{songName}} has been added to the queue!",
     "ADDED_QUEUE_COUNT": "{{songCount}} songs added to the queue!",
-    "STOP_DISCONNECTED": "I've just stopped the music as I have been disconnected from the channel."
+    "STOP_DISCONNECTED": "I've just stopped the music as I have been disconnected from the channel.",
+    "RESULTS_CANCEL": "Search cancelled!",
+    "LIVE_VIDEO": "Lives are not yet supported!",
+    "ERR_OCCURRED": "An error occurred... Code: `{{error}}`"
 }
