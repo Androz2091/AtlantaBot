@@ -2,7 +2,7 @@
     "DESCRIPTION": "Marriez vous avec la personne que vous aimez !",
     "USAGE": "{{prefix}}marry [@membre]",
     "EXAMPLES": "{{prefix}}marry @Androz#2091",
-    "INVALID_MEMBER": "You must mention a valid member!",
+    "INVALID_MEMBER": "Vous devez mentionner un membre valide !",
     "ALREADY_MARRIED": "Vous êtes déjà marié ! Tapez d'abord `{{prefix}}divorce` pour divorcer.",
     "ALREADY_MARRIED_USER": "La place est déjà prise camarade ! **{{username}}** est déjà marié !",
     "YOURSELF": "Vous ne pouvez pas vous mariez avec vous même !",
@@ -10,9 +10,9 @@
     "REQUEST_AMEMBER_TO_AUTHOR": "**{{username}}** vous a déjà envoyé une demande ! Veuillez d'abord refuser ou accepter la demande (ou attendez quelque minutes que la demande expire).",
     "REQUEST_AMEMBER_TO_MEMBER": "**{{secondUsername}}** a déjà envoyé une demande à **{{firstUsername}}** !",
     "REQUEST_MEMBER_TO_AMEMBER": "**{{firstUsername}} a déjà envoyé une requête à **{{secondUsername}}** ! Attendez que **{{secondUsername}}** accepte ou refuse la requête de **{{firstUsername}}** ou jusqu'à ce qu'elle expire, et réessayez !",
-    "TIMEOUT": "{{username}} did not answer... Wait until he/she is logged in and try again!",
+    "TIMEOUT": "{{username}} n'a pas répondu... Attendez qu'il/elle soit connecté et réessayez après !",
     "SUCCESS": "🎉 Félicitations ! **{{creator}}** et **{{partner}}** vous êtes maintenant mariés !",
     "DENIED": "{{creator}}, j'ai de mauvaises nouvelles... {{partner}} a refusé votre demande.",
     "REQUEST": "{{to}}, voulez-vous épouser {{from}} ? Répondez par \"oui\" ou \"non\" !",
-    "BOT_USER": "It refused your proposal!"
+    "BOT_USER": "Il a refusé votre proposition !"
 }
