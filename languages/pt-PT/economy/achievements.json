@@ -1,9 +1,9 @@
 {
-    "DESCRIPTION": "Shows your achievements list!",
+    "DESCRIPTION": "Mostra a sua lista de conquistas!",
     "USAGE": "{{prefix}}achievements",
     "EXAMPLES": "{{prefix}}achievements",
     "SEND_CMD": "Envie o seu primeiro comando!",
-    "CLAIM_SALARY": "Claim your salary 10 times!",
+    "CLAIM_SALARY": "Resgate seu salário 10 vezes!",
     "MARRY": "Encontre a sua metade e case!",
     "SLOTS": "Ganhe 3 vezes seguidas em slots!",
     "TIP": "Mantenha Atlanta viva dando gorjeta!",

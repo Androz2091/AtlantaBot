@@ -1,11 +1,11 @@
 {
-    "DESCRIPTION": "Set the birthday date that appear on your profile",
+    "DESCRIPTION": "Déterminer une date d'anniversaire qui apparaît sur votre profil",
     "USAGE": "{{prefix}}birthdate (date)",
     "EXAMPLES": "{{prefix}}birthdate 01/12/2000",
     "MISSING_DATE": "Veuillez entrer une date valide ! Par exemple, 01/12/2000",
-    "INVALID_DATE": "You must use the following date format: DD/MM/YYYY. For example, `December 1, 2000` will be `01/12/2000`.",
-    "INVALID_DATE_FORMAT": "You must use the following date format: DD/MM/YYYY. For example, `December 1, 2000` will be `01/12/2000`.",
+    "INVALID_DATE": "Vous devez suivre ce format: DD/MM/YYY. Par exemple, `1 décembre 2000` sera `01/12/2000`.",
+    "INVALID_DATE_FORMAT": "Vous devez suivre ce format: DD/MM/YYY. Par exemple, `1 décembre 2000` sera `01/12/2000`.",
     "DATE_TOO_HIGH": "Plus de 80 ans ? :eyes:",
-    "DATE_TOO_LOW": "Humm, nop! You must be born!",
+    "DATE_TOO_LOW": "Humm, nop ! Tu dois être vivant !",
     "SUCCESS": "Votre anniversaire a été définie à cette date : {{date}} !"
 }

@@ -1,5 +1,5 @@
 {
-    "DESCRIPTION": "Send your suggestion to the defined channel!",
+    "DESCRIPTION": "Envoyez votre suggestion au salon défini !",
     "USAGE": "{{prefix}}suggest [message]",
     "EXAMPLES": "{{prefix}}suggest Nouveau salon #astuces s'il vous plaît",
     "MISSING_CHANNEL": "Pas de salon de suggestion défini!",

@@ -7,12 +7,15 @@
     "MISSING_SONG_NAME": "Veuillez spécifier un nom de chanson ou un lien!",
     "RESULTS_FOOTER": "Veuillez sélectionner une chanson en envoyant un nombre entre 1 et 10.",
     "NO_RESULT": "Ne peut pas être trouvé sur Youtube!",
-    "NOW_PLAYING": "Now playing **{{songName}}** :musical_note:",
-    "PLAYING_PLAYLIST": "Starting playlist **{{playlistTitle}}**. {{playlistEmoji}}\nPlaying the first song, **{{songName}}**! :musical_note:",
-    "CANCELLED": "Selection cancelled",
-    "NOT_PLAYING": "No songs are currently playing in this server.",
+    "NOW_PLAYING": "Lecture en cours **{{songName}}** :musical_note:",
+    "PLAYING_PLAYLIST": "Démarrage de la playlist **{{playlistTitle}}**. {{playlistEmoji}}\nJoue la première chanson, **{{songName}}**! :musical_note:",
+    "CANCELLED": "Sélection annulée",
+    "NOT_PLAYING": "Aucune musique n'est jouée actuellement sur le serveur.",
     "QUEUE_ENDED": "La file d'attente est finie. Plus de musique à jouer...",
     "ADDED_QUEUE": "{{songName}} a été ajoutée à la file d'attente !",
     "ADDED_QUEUE_COUNT": "{{songCount}} chanons ajoutées à la queue !",
-    "STOP_DISCONNECTED": "I've just stopped the music as I have been disconnected from the channel."
+    "STOP_DISCONNECTED": "Je viens d'arrêter la musique car j'ai été déconnecté de la chaîne.",
+    "RESULTS_CANCEL": "Search cancelled!",
+    "LIVE_VIDEO": "Lives are not yet supported!",
+    "ERR_OCCURRED": "An error occurred... Code: `{{error}}`"
 }

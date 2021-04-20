@@ -2,5 +2,5 @@
     "DESCRIPTION": "Mostra a fila do servidor",
     "USAGE": "{{prefix}}queue",
     "EXAMPLES": "{{prefix}}queue",
-    "TITLE": "Server Queue"
+    "TITLE": "Fila do Servidor"
 }

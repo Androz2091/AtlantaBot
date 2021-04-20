@@ -1,9 +1,9 @@
 {
-    "DESCRIPTION": "Helps you choose between the given choices!",
+    "DESCRIPTION": "Vous aide à choisir entre les choix donnés !",
     "USAGE": "{{prefix}}choice [choix1/choix2/etc...]",
     "EXAMPLES": "{{prefix}}choice Feu/Vent/Eau",
-    "MISSING": "You must enter more than two choices!\n(or use the `flip` command instead)",
+    "MISSING": "You devez entrer plus de deux choix !\n(ou utilisez la commande `flip` à la place)",
     "EMPTY": "Un de vos choix semble être vide... Veuillez réessayer !",
     "PROGRESS": "Choix en cours...",
-    "DONE": "Here's my choice:"
+    "DONE": "Voici mon choix:"
 }

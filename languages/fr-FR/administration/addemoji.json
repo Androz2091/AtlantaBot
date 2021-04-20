@@ -4,7 +4,7 @@
     "EXAMPLES": "{{prefix}}addemoji https://via.placeholder.com/150 test-emoji",
     "MISSING_URL": "Veuillez préciser une URL d'image !",
     "MISSING_NAME": "Veuillez préciser un nom d'émoji !",
-    "INVALID_NAME": "Le nom de l'émoji doit être entre 2 et 32 caractères!",
+    "INVALID_NAME": "Le nom de l'emoji doit contenir entre 2 et 32 caractères !",
     "SUCCESS": ":{{emojiName}}: ajouté !",
     "ERROR": "{{emojiName}} ne peut pas être ajouté. Vérifiez si votre serveur a assez de place pour de nouveaux émojis !"
 }

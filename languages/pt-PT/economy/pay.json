@@ -2,7 +2,7 @@
     "DESCRIPTION": "Envie dinheiro para alguém!",
     "USAGE": "{{prefix}}pay [@membro] [amount]",
     "EXAMPLES": "{{prefix}}pay Androz#2091 100",
-    "INVALID_MEMBER": "You must mention a valid member!",
+    "INVALID_MEMBER": "Você deve mencionar um membro válido!",
     "BOT_USER": "Bots are already rich 💰!",
     "YOURSELF": "Você não pode se pagar!",
     "INVALID_AMOUNT": "You must specify a valid amount",

@@ -1,10 +1,10 @@
 {
-    "DESCRIPTION": "Basculez l'autorole sur le serveur!",
+    "DESCRIPTION": "Activez/Désactivez l'autorole sur le serveur !",
     "USAGE": "{{prefix}}autorole [on/off] (rôle)",
     "EXAMPLES": "{{prefix}}autorole on @Membres\n{{prefix}}autorole off",
-    "MISSING_STATUS": "Veuillez spécifier une valeur valide entre `on` et `off`",
+    "MISSING_STATUS": "Veuillez spécifier une valeur valide (`on` ou `off`)",
     "MISSING_ROLE": "Veuillez spécifier un rôle valide !",
     "SUCCESS_ENABLED": "Autorole activé ! Les nouveaux membres recevront automatiquement le rôle **{{roleName}}**.",
     "ALREADY_DISABLED": "**L'autorôle est déjà désactivé.**\n\n:arrow_right_hook: *Envoyez `{{prefix}}autorole on @VotreRôle` pour l'activer !*",
-    "SUCCESS_DISABLED": "**Autorole désactivé !**\n\n:arrow_right_hook: *Envoyez `{{prefix}}configuration` pour voir la configuration mise à jour !*"
+    "SUCCESS_DISABLED": "**Autorôle désactivé !**\n\n:arrow_right_hook: *Envoyez `{{prefix}}configuration` pour voir la configuration mise à jour !*"
 }

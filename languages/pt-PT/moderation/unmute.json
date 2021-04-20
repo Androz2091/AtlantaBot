@@ -3,7 +3,7 @@
     "USAGE": "{{prefix}}unmute [@membro]",
     "EXAMPLES": "{{prefix}}unmute @Androz#2091",
     "MISSING_MEMBER": "Por favor, especifique o membro que você deseja unmute!",
-    "NOT_MUTED": "**{{username}}** is not muted on this server!",
+    "NOT_MUTED": "**{{username}}** não está silenciado neste servidor!",
     "SUCCESS": "**{{username}}** acabou de ficar unmuted!",
-    "SUCCESS_CASE": "{{user}} (`{{usertag}}`) has just been unmuted! (mute case: #{{count}})"
+    "SUCCESS_CASE": "{{user}} (`{{usertag}}`) acabou de ser silenciado! (caso: #{{count}})"
 }

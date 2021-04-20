@@ -5,7 +5,7 @@
     "TIMES_UP": "Le temps est écoulé ! Veuillez envoyer à nouveau la commande !",
     "INVALID_YES_NO": "Vous devez envoyer \"oui\" ou \"non\" !",
     "INVALID_CHANNEL": "Veuillez spécifier un salon valide !",
-    "INVALID_TIME": "Vous devez entrer un temps valide ! Unités disponibles : `s`, `m`, `h` or `d`",
+    "INVALID_TIME": "Vous devez entrer une heure valide ! Unités valides : `s`, `m`, `h` ou `d`",
     "INVALID_NUMBER": "Veuillez préciser un nombre valide !",
     "INVALID_NUMBER_RANGE": "Veuillez indiquer un nombre valide entre **{{min}}** et **{{max}}** !",
     "STATS_FOOTER": "[Dashboard]({{dashboardLink}}) ● [Don]({{donateLink}}) ● [Invitation]({{inviteLink}}) ● [Serveur]({{supportLink}}) ● [Github]({{githubLink}})",

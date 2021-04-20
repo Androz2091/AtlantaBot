@@ -3,6 +3,6 @@
     "USAGE": "{{prefix}}skip",
     "EXAMPLES": "{{prefix}}skip",
     "NO_NEXT_SONG": "¡No hay ninguna canción después de esta!",
-    "VOTE_CONTENT": "Next song: {{songName}}\nReact with 👍 to stop the music! {{requiredCount}} more votes are required.",
+    "VOTE_CONTENT": "Next song: {{songName}}\nReact with 👍 to skip the music! {{requiredCount}} more votes are required.",
     "SUCCESS": "¡Canción saltada!"
 }

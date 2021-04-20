@@ -1,5 +1,5 @@
 {
-    "DESCRIPTION": "Send your suggestion to the defined channel!",
+    "DESCRIPTION": "Envie a sua sugestão para o canal definido!",
     "USAGE": "{{prefix}}suggest [message]",
     "EXAMPLES": "{{prefix}}suggest Novo canal #offtopic, por favor",
     "MISSING_CHANNEL": "Nenhum canal de sugestão definido!",

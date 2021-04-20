@@ -2,9 +2,9 @@
     "DESCRIPTION": "Montre les statistiques d'un joueur Fortnite !",
     "USAGE": "{{prefix}}fortnite [psn/xbl/pc] [pseudo]",
     "EXAMPLES": "{{prefix}}fortnite pc Ninja",
-    "MISSING_PLATFORM": "Please specify a platform between `psn`, `pc` or `xbl`!",
-    "MISSING_USERNAME": "Please enter a valid epic games username!",
-    "NOT_FOUND": "`{{search}}` was not found on `{{platform}}`!",
+    "MISSING_PLATFORM": "Veuillez spécifier une plate-forme entre `psn`, `pc` ou `xbl` !",
+    "MISSING_USERNAME": "Veuillez entrer un pseudo epc games valide !",
+    "NOT_FOUND": "`{{search}}` n'a pas été trouvé sur `{{platform}}` !",
     "TITLE": "Statistiques fortnite de {{username}}",
     "AVERAGE_KILLS": "ELIMINATIONS/PARTIE",
     "AVERAGE_KILL": "ELIMINATION/PARTIE",
@@ -17,5 +17,5 @@
     "MATCH": "Match",
     "KILLS": "Tués",
     "KILL": "Tué",
-    "FOOTER": "By Atlanta using fortnitetracker.com"
+    "FOOTER": "Par Atlanta en utilisant fortnitetracker.com"
 }

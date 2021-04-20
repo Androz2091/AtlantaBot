@@ -1,10 +1,10 @@
 {
-    "DESCRIPTION": "Shows Atlanta links!",
+    "DESCRIPTION": "Mostra os links Atlanta!",
     "USAGE": "{{prefix}}invite (copy)",
     "EXAMPLES": "{{prefix}}invite\n{{prefix}}invite copy",
-    "LINKS": "Atlanta links",
+    "LINKS": "Links Atlanta",
     "TIP": "Enviar `{{prefix}}invite copy` para poder copiar o link do convite!",
     "ADD": "Convidar Atlanta",
     "VOTE": "Vote em Atlanta",
-    "SUPPORT": "Get Support"
+    "SUPPORT": "Obter Suporte"
 }

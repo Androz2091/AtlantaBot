@@ -14,5 +14,8 @@
     "QUEUE_ENDED": "Antrian berakhir. Tidak ada lagi musik untuk diputar...",
     "ADDED_QUEUE": "{{songName}} telah ditambahkan ke antrian!",
     "ADDED_QUEUE_COUNT": "{{songCount}} lagu ditambahkan ke antrian!",
-    "STOP_DISCONNECTED": "Aku baru saja menghentikan musik karena aku telah diputus dari saluran."
+    "STOP_DISCONNECTED": "Aku baru saja menghentikan musik karena aku telah diputus dari saluran.",
+    "RESULTS_CANCEL": "Search cancelled!",
+    "LIVE_VIDEO": "Lives are not yet supported!",
+    "ERR_OCCURRED": "An error occurred... Code: `{{error}}`"
 }

@@ -1,7 +1,7 @@
 {
-    "DESCRIPTION": "Add a custom command!",
-    "USAGE": "{{prefix}}addcommand [name] [answer]",
-    "EXAMPLES": "{{prefix}}addcommand hello Hello {user}! How are you?",
+    "DESCRIPTION": "Adaugă o comandă custom!",
+    "USAGE": "{{prefix}}addcommand [nume] [raspuns]",
+    "EXAMPLES": "{{prefix}}addcommand salut Buna ziua {user}! Cum ești?",
     "MISSING_NAME": "Vă rugăm să furnizați un nume pentru comandă!",
     "MISSING_ANSWER": "Vă rugăm să furnizați un răspuns pentru comandă!",
     "SUCCESS": "Comanda **{{prefix}}{{commandName}}** adăugată!"

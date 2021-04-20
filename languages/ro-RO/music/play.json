@@ -14,5 +14,8 @@
     "QUEUE_ENDED": "Coada s-a încheiat. Nu mai e muzică de redat...",
     "ADDED_QUEUE": "{{songName}} a fost adăugat la coadă!",
     "ADDED_QUEUE_COUNT": "{{songCount}} melodii adăugate la coadă!",
-    "STOP_DISCONNECTED": "I've just stopped the music as I have been disconnected from the channel."
+    "STOP_DISCONNECTED": "I've just stopped the music as I have been disconnected from the channel.",
+    "RESULTS_CANCEL": "Search cancelled!",
+    "LIVE_VIDEO": "Lives are not yet supported!",
+    "ERR_OCCURRED": "An error occurred... Code: `{{error}}`"
 }

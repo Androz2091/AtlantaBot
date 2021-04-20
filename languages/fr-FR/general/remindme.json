@@ -1,8 +1,8 @@
 {
-    "DESCRIPTION": "Add a new personal reminder",
+    "DESCRIPTION": "Ajouter un nouveau rappel personnel",
     "USAGE": "{{prefix}}remindme [message]",
     "EXAMPLES": "{{prefix}}remindme 24h Commande work\n{{prefix}}remindme 3m Sortir les pâtes de la casserole!",
-    "MISSING_MESSAGE": "You must enter a message!",
+    "MISSING_MESSAGE": "Vous devez entrer un message !",
     "SAVED": "Rappel enregistré, vous recevez un message à la fin du temps !",
     "TITLE": "Atlanta Rappel",
     "CREATED": "Message créé {{time}}"

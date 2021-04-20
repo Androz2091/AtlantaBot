@@ -1,5 +1,5 @@
 {
-    "DESCRIPTION": "Shows the server staff members list!",
+    "DESCRIPTION": "Affiche la liste des membres du staff du serveur !",
     "USAGE": "{{prefix}}staff",
     "EXAMPLES": "{{prefix}}staff",
     "TITLE": "{{guild}} staff",

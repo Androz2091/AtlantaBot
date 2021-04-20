@@ -1,10 +1,10 @@
 {
-    "DESCRIPTION": "Shows the mentioned user or author profile",
+    "DESCRIPTION": "Affiche le profil de l'autheur ou de l'utilisateur mentionné",
     "USAGE": "{{prefix}}profile [utilisateur]",
     "EXAMPLES": "{{prefix}}profile Androz#2091",
-    "TITLE": "{{username}}'s profile",
+    "TITLE": "Profile de {{username}}",
     "NO_BIO": "",
-    "BOT_USER": "Bots don't have profile page!",
+    "BOT_USER": "Les bots n'ont pas de profile !",
     "CASH": "💵 Cash",
     "BANK": "💳 Banque",
     "GLOBAL": "🌍 Argent global",

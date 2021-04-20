@@ -1,9 +1,9 @@
 {
     "DESCRIPTION": "Envia um anúncio no canal atual!",
     "USAGE": "{{prefix}}announcement [texto]",
-    "EXAMPLES": "{{prefix}}announcement New staff member!",
-    "MISSING_TEXT": "You must enter the announcement text!",
-    "TOO_LONG": "Your text should be shorter than 1030 characters!",
+    "EXAMPLES": "{{prefix}}announcement Novo membro na equipe!",
+    "MISSING_TEXT": "Você precisa digitar o texto do anúncio!",
+    "TOO_LONG": "Seu texto deve ser menor que 1030 caracteres!",
     "MENTION_PROMPT": "Would you like to add a mention to your message?\nAnswer by sending `yes` or `no`!",
     "MENTION_TYPE_PROMPT": "Choose to mention `@`everyone by typing `every` or to mention `@`here by typing `here`!",
     "TITLE": "📢 Anúncio:"
