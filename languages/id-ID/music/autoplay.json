@@ -1,0 +1,7 @@
+{
+    "DESCRIPTION": "Enable or disable the autoplay feature",
+    "USAGE": "{{prefix}}autoplay",
+    "EXAMPLES": "{{prefix}}autoplay",
+    "SUCCESS_ENABLED": "{{success}} Auto play is now enabled!",
+    "SUCCESS_DISABLED": "{{success}} Auto play is now disabled!"
+}
