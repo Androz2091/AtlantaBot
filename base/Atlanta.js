@@ -56,7 +56,8 @@ class Atlanta extends Client {
 		}
 
 		this.player = new Player(this, {
-			leaveOnEmpty: false
+			leaveOnEmpty: false,
+			enableLive: true
 		});
 		this.player
 			.on("trackStart", (message, track) => {
@@ -114,7 +115,7 @@ class Atlanta extends Client {
 			.on("channelEmpty", () => {
 				// do nothing, leaveOnEmpty is not enabled
 			})
-			.on("error", (message, error) => {
+			.on("error", (error, message) => {
 				switch (error) {
 					case "NotConnected":
 						message.error("music/play:NO_VOICE_CHANNEL");
