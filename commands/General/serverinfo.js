@@ -31,7 +31,7 @@ class Serverinfo extends Command {
 			}
 		}
 
-		guild = await guild.members.fetch();
+		await guild.members.fetch();
 
 		const embed = new Discord.MessageEmbed()
 			.setAuthor(guild.name, guild.iconURL({ dynamic: true }))
