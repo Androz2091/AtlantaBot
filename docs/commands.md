@@ -7,7 +7,7 @@ Here's the list of Atlanta commands. This one contains more than **120 commands*
 **Usage**: The arguments/options that the command takes in parameters  
 **Cooldown**: The time that must elapse between each command so that it can be executed again by the user
 
-### Images (27 commands)
+### Images (28 commands)
 
 | Name                | Description                                             | Usage                               | Cooldown  |
 | ------------------- | ------------------------------------------------------- | ----------------------------------- | --------- |
@@ -25,6 +25,7 @@ Here's the list of Atlanta commands. This one contains more than **120 commands*
 | **facepalm**        | Generates a "facepalm" image using canvas               | facepalm (@member)                  | 5 seconds |
 | **fire**            | Generates a "fire" image using Amethyste API            | fire (@member)                      | 5 seconds |
 | **jail**            | Generates a "jail" image using Amethyste API            | jail (@member)                      | 5 seconds |
+| **kiss**            | DESCRIPTION                                             | USAGE                               | 5 seconds |
 | **love**            | Generates a "bed" image                                 | bed [@member1] (@member2)           | 5 seconds |
 | **mission**         | Generates a "mission" image using Amethyste API         | mission (@member)                   | 5 seconds |
 | **phcomment**       | Generates a "phcomment" image                           | phcomment (@member) [text]          | 5 seconds |
@@ -128,22 +129,23 @@ Here's the list of Atlanta commands. This one contains more than **120 commands*
 | **unmute**          | Unmute the mentioned member!                                                                              | unmute [@member]                                                   | 3 seconds |
 | **warn**            | Warn a member in private messages                                                                         | warn [@member] [reason]                                            | 3 seconds |
 
-### Music (12 commands)
+### Music (13 commands)
 
-| Name        | Description                                                            | Usage              | Cooldown  |
-| ----------- | ---------------------------------------------------------------------- | ------------------ | --------- |
-| **back**    | Play back the previous song                                            | back               | 5 seconds |
-| **filter**  | Enable or disable a filter!                                            | filter [filter]    | 5 seconds |
-| **filters** | Send the list of all the filters and their status                      | filters            | 5 seconds |
-| **lyrics**  | Shows the song lyrics                                                  | lyrics [song-name] | 5 seconds |
-| **np**      | Shows information about the current song!                              | np                 | 5 seconds |
-| **pause**   | Pause the current song!                                                | pause              | 5 seconds |
-| **play**    | Plays music for you!                                                   | play [song]        | 5 seconds |
-| **queue**   | Shows the server queue                                                 | queue              | 5 seconds |
-| **resume**  | Resume the current song!                                               | resume             | 5 seconds |
-| **seek**    | Go forward or backward a specific amount of time in the current song!! | seek [time]        | 5 seconds |
-| **skip**    | Skip the current song                                                  | skip               | 5 seconds |
-| **stop**    | Stop the music                                                         | stop               | 5 seconds |
+| Name         | Description                                                            | Usage              | Cooldown  |
+| ------------ | ---------------------------------------------------------------------- | ------------------ | --------- |
+| **autoplay** | Enable or disable the autoplay feature                                 | autoplay           | 5 seconds |
+| **back**     | Play back the previous song                                            | back               | 5 seconds |
+| **filter**   | Enable or disable a filter!                                            | filter [filter]    | 5 seconds |
+| **filters**  | Send the list of all the filters and their status                      | filters            | 5 seconds |
+| **lyrics**   | Shows the song lyrics                                                  | lyrics [song-name] | 5 seconds |
+| **np**       | Shows information about the current song!                              | np                 | 5 seconds |
+| **pause**    | Pause the current song!                                                | pause              | 5 seconds |
+| **play**     | Plays music for you!                                                   | play [song]        | 5 seconds |
+| **queue**    | Shows the server queue                                                 | queue              | 5 seconds |
+| **resume**   | Resume the current song!                                               | resume             | 5 seconds |
+| **seek**     | Go forward or backward a specific amount of time in the current song!! | seek [time]        | 5 seconds |
+| **skip**     | Skip the current song                                                  | skip               | 5 seconds |
+| **stop**     | Stop the music                                                         | stop               | 5 seconds |
 
 ### Fun (10 commands)
 
