@@ -34,7 +34,7 @@ class ServersList extends Command {
 			.join("\n");
 
 		const embed = new Discord.MessageEmbed()
-			.setAuthor(message.author.tag, message.author.displayAvatarURL())
+			.setAuthor(message.author.tag, message.author.displayAvatarURL({ size: 512, dynamic: true, format: 'png' }))
 			.setColor(data.config.embed.color)
 			.setFooter(this.client.user.username)
 			.setTitle(`${message.translate("common:PAGE")}: ${page}/${Math.ceil(this.client.guilds.cache.size/10)}`)
