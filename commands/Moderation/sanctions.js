@@ -27,7 +27,7 @@ class Sanctions extends Command {
 		const memberData = await this.client.findOrCreateMember({ id: user.id, guildID: message.guild.id });
 
 		const embed = new Discord.MessageEmbed()
-			.setAuthor(user.tag, user.displayAvatarURL())
+			.setAuthor(user.tag, user.displayAvatarURL({ size: 512, dynamic: true, format: 'png' }))
 			.setColor(data.config.embed.color)
 			.setFooter(data.config.embed.footer);
 
