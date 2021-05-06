@@ -42,7 +42,7 @@ class Report extends Command {
 		const embed = new Discord.MessageEmbed()
 			.setAuthor(message.translate("general/report:TITLE", {
 				user: member.user.tag
-			}), message.author.displayAvatarURL())
+			}), message.author.displayAvatarURL({ size: 512, dynamic: true, format: 'png' }))
 			.addField(message.translate("common:AUTHOR"), message.author.tag, true)
 			.addField(message.translate("common:DATE"), message.printDate(new Date(Date.now())), true)
 			.addField(message.translate("common:REASON"), "**"+rep+"**", true)

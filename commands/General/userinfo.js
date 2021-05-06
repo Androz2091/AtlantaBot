@@ -50,13 +50,13 @@ class Userinfo extends Command {
 		}
 
 		const embed = new Discord.MessageEmbed()
-			.setAuthor(user.tag, user.displayAvatarURL())
+			.setAuthor(user.tag, user.displayAvatarURL({ size: 512, dynamic: true, format: 'png' }))
 			.setThumbnail(user.displayAvatarURL({ dynamic: true }))
 			.addField(":man: "+message.translate("common:USERNAME"), user.username, true)
 			.addField(this.client.customEmojis.discriminator+" "+message.translate("common:DISCRIMINATOR"), user.discriminator, true)
 			.addField(this.client.customEmojis.bot+" "+message.translate("common:ROBOT"), (user.bot ? message.translate("common:YES") : message.translate("common:NO")), true)
 			.addField(this.client.customEmojis.calendar+" "+message.translate("common:CREATION"), message.printDate(user.createdAt), true)
-			.addField(this.client.customEmojis.avatar+" "+message.translate("common:AVATAR"), user.displayAvatarURL())
+			.addField(this.client.customEmojis.avatar+" "+message.translate("common:AVATAR"), user.displayAvatarURL({ size: 512, dynamic: true, format: 'png' }))
 			.setColor(data.config.embed.color)
 			.setFooter(data.config.embed.footer);
 
