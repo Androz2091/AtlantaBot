@@ -1,5 +1,5 @@
 {
     "DESCRIPTION": "Generates a \"dictator\" image",
-    "USAGE": "{{prefix}}dictator (@member)",
+    "USAGE": "{{prefix}}dictator (@tag)",
     "EXAMPLES": "{{prefix}}dictator\n{{prefix}}dictator @Androz#2091"
 }
