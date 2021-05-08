@@ -1,5 +1,5 @@
 {
     "DESCRIPTION": "Generates a \"beautiful\" image",
-    "USAGE": "{{prefix}}beautiful (@member)",
+    "USAGE": "{{prefix}}beautiful (@tag)",
     "EXAMPLES": "{{prefix}}beautiful\n{{prefix}}beautiful @Androz#2091"
 }
