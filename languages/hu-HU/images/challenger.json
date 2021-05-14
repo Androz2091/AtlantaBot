@@ -1,5 +1,5 @@
 {
-    "DESCRIPTION": "Generates a \"challenger\" image",
+    "DESCRIPTION": "\"Kihívó\" kép generálása",
     "USAGE": "{{prefix}}challenger (@tag)",
     "EXAMPLES": "{{prefix}}challenger\n{{prefix}}challenger @Androz#2091"
 }
