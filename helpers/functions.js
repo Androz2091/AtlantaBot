@@ -34,7 +34,7 @@ module.exports = {
 	async supportLink(client){
 		const guild = client.guilds.cache.get(client.config.support.id);
 		const member = guild.me;
-		const channel = guild.channels.cache.find((ch) => ch.permissionsFor(member.id).has("CREATE_INSTANT_INVITE"));
+		const channel = guild.channels.cache.find((ch) => ch.permissionsFor(member.id).has("CREATE_INSTANT_INVITE") && ch.type === "text" || ch.type === "voice");
 		if(channel){
 			const invite = await channel.createInvite({ maxAge: 0 }).catch(() => {});
 			return invite ? invite.url : null;
