@@ -1,7 +1,7 @@
 {
-    "DESCRIPTION": "Go forward or backward a specific amount of time in the current song!!",
+    "DESCRIPTION": "Menj előre vagy hátra egy bizonyos ideig az aktuális zenében!!",
     "USAGE": "{{prefix}}seek [idő]",
     "EXAMPLES": "{{prefix}}resume 10s",
-    "INVALID_TIME": "You must specify a valid number of time!",
-    "SUCCESS": "▶️ Music sought!"
+    "INVALID_TIME": "Érvényes számú időt kell megadnod! ",
+    "SUCCESS": "▶️ Zene keresett!"
 }
