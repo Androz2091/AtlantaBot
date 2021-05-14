@@ -1,5 +1,5 @@
 {
-    "DESCRIPTION": "Generates a \"bed\" image",
-    "USAGE": "{{prefix}}bed [@member1] (@member2)",
+    "DESCRIPTION": "\"Ágy\" kép generálása",
+    "USAGE": "{{prefix}}bee [@tag1] (@tag2)",
     "EXAMPLES": "{{prefix}}bed @Androz#2091\n{{prefix}}bed @Androz#2091 @Marty#0303"
 }

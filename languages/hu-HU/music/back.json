@@ -1,8 +1,8 @@
 {
-    "DESCRIPTION": "Play back the previous song",
+    "DESCRIPTION": "Előző dal lejátszása",
     "USAGE": "{{prefix}}back",
     "EXAMPLES": "{{prefix}}back",
-    "NO_PREV_SONG": "There was no song before this one!",
-    "VOTE_CONTENT": "Previous song: {{songName}}\nReact with 👍 to play the previous song! {{requiredCount}} more votes are required.",
-    "SUCCESS": "Playing previous song!"
+    "NO_PREV_SONG": "Ez előtt nem volt dal!",
+    "VOTE_CONTENT": "Előző dal: {{songName}}\nNyomj egy 👍 az előző zene lejátszásához! {{requiredCount}} további szavazatra van szükség.",
+    "SUCCESS": "Az előző zene szól! "
 }

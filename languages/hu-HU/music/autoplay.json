@@ -1,0 +1,7 @@
+{
+    "DESCRIPTION": "Engedélyezd vagy tiltsd le az automatikus lejátszás funkciót",
+    "USAGE": "{{prefix}}autoplay",
+    "EXAMPLES": "{{prefix}}autoplay",
+    "SUCCESS_ENABLED": "{{success}} Az automatikus lejátszás engedélyezve van!",
+    "SUCCESS_DISABLED": "{{success}} Az automatikus lejátszás letiltva van!"
+}

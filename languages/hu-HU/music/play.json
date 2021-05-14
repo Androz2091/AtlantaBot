@@ -15,7 +15,7 @@
     "ADDED_QUEUE": "{{songName}} hozzáadva a lejátszási listába!",
     "ADDED_QUEUE_COUNT": "{{songCount}} dalok hozzáadva a várólistához!",
     "STOP_DISCONNECTED": "Leállítottam a zenét, mivel leválasztottak a csatornáról.",
-    "RESULTS_CANCEL": "Search cancelled!",
-    "LIVE_VIDEO": "Lives are not yet supported!",
-    "ERR_OCCURRED": "An error occurred... Code: `{{error}}`"
+    "RESULTS_CANCEL": "Keresés megszakítva!",
+    "LIVE_VIDEO": "Az előket még nem támogatjuk!",
+    "ERR_OCCURRED": "Valami hiba történt... Kód: `{{error}}`"
 }
