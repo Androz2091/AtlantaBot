@@ -15,7 +15,7 @@ module.exports = class {
 			}
 		}
         
-		guild = await guild.members.fetch();
+		await guild.members.fetch();
 
 		const messageOptions = {};
 
