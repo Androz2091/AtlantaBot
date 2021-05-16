@@ -1,4 +1,4 @@
-const { MessageEmbed, Util, Client, Collection } = require("discord.js");
+const { MessageEmbed, Util, Client, Collection, Intents } = require("discord.js");
 const { GiveawaysManager } = require("discord-giveaways");
 const { Player } = require("discord-player");
 const { Client: Joker } = require("blague.xyz");
@@ -18,8 +18,16 @@ moment.relativeTimeThreshold("M", 12);
 // Creates Atlanta class
 class Atlanta extends Client {
 
-	constructor (options) {
-		super(options);
+	constructor () {
+		super({
+			intents: [
+				Intents.FLAGS.GUILDS,
+				Intents.FLAGS.GUILD_MEMBERS,
+				Intents.FLAGS.GUILD_MESSAGES,
+				Intents.FLAGS.GUILD_MESSAGE_REACTIONS,
+				Intents.FLAGS.DIRECT_MESSAGES
+			]
+		});
 		this.config = require("../config"); // Load the config file
 		this.customEmojis = require("../emojis.json"); // load the bot's emojis
 		this.languages = require("../languages/language-meta.json"); // Load the bot's languages
