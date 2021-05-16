@@ -120,9 +120,18 @@ module.exports = class {
 					ctx.drawImage(avatar, 45, 90, 270, 270);
 
 					const attachment = new Discord.MessageAttachment(canvas.toBuffer(), "welcome-image.png");
-					channel.send(message, attachment);
+					channel.send(message, {
+						files: [attachment],
+						allowedMentions: {
+							parse: ["users", "everyone", "roles"]
+						}
+					});
 				} else {
-					channel.send(message);
+					channel.send(message, {
+						allowedMentions: {
+							parse: ["users", "everyone", "roles"]
+						}
+					});
 				}
 			}
 		}
