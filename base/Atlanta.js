@@ -26,7 +26,10 @@ class Atlanta extends Client {
 				Intents.FLAGS.GUILD_MESSAGES,
 				Intents.FLAGS.GUILD_MESSAGE_REACTIONS,
 				Intents.FLAGS.DIRECT_MESSAGES
-			]
+			],
+			allowedMentions: {
+				parse: ["users"]
+			}
 		});
 		this.config = require("../config"); // Load the config file
 		this.customEmojis = require("../emojis.json"); // load the bot's emojis

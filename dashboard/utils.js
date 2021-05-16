@@ -22,7 +22,7 @@ async function fetchGuild(guildID, client, guilds){
 async function fetchUser(userData, client, query){
 	if(userData.guilds){
 		userData.guilds.forEach((guild) => {
-			const perms = new Discord.Permissions(guild.permissions);
+			const perms = new Discord.Permissions(BigInt(guild.permissions));
 			if(perms.has("MANAGE_GUILD")){
 				guild.admin = true;
 			}

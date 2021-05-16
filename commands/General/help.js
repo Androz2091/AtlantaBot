@@ -124,14 +124,14 @@ class Help extends Command {
 			donateLink: "https://patreon.com/Androz2091",
 			dashboardLink: "https://dashboard.atlanta-bot.fr",
 			inviteLink: await this.client.generateInvite({
-				permissions: ["ADMINISTRATOR"]
+				permissions: [Discord.Permissions.FLAGS.ADMINISTRATOR]
 			}),
 			githubLink: "https://github.com/Androz2091",
 			supportLink: "https://discord.atlanta-bot.fr"
 		}));
 		embed.setAuthor(message.translate("general/help:TITLE", {
 			name: this.client.user.username
-		}), this.client.user.displayAvatarURL({ size: 512, dynamic: true, format: 'png' }));
+		}), this.client.user.displayAvatarURL({ size: 512, dynamic: true, format: "png" }));
 		return message.channel.send(embed);
 	}
 

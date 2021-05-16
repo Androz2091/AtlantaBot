@@ -45,7 +45,7 @@ class Serverinfo extends Command {
 			}), true)
 			.addField(this.client.customEmojis.afk+message.translate("general/serverinfo:AFK_CHANNEL"), guild.afkChannel || message.translate("general/serverinfo:NO_AFK_CHANNEL"), true)
 			.addField(this.client.customEmojis.id+message.translate("common:ID"), guild.id, true)
-			.addField(this.client.customEmojis.crown+message.translate("common:OWNER"), guild.owner, true)
+			.addField(this.client.customEmojis.crown+message.translate("common:OWNER"), `<@${guild.ownerID}>`, true)
 			.addField(this.client.customEmojis.boost+message.translate("general/serverinfo:BOOSTS"), guild.premiumSubscriptionCount || 0, true)
 			.addField(this.client.customEmojis.channels+message.translate("common:CHANNELS"), message.translate("general/serverinfo:TEXT_CHANNELS", {
 				count: guild.channels.cache.filter(c => c.type === "text").size
