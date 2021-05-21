@@ -19,18 +19,18 @@ class Eightball extends Command {
   async run(message, args) {
     if (!args[0] || !message.content.endsWith("?")) {
       return message.error("fun/8ball:ERR_QUESTION");
-    };
+    }
     if (message.content.toLowerCase() == "suis je beau ?" || "am i beautiful ?" || "suis-je beau ?") {
       const answer = message.translate(`fun/8ball:RESPONSE_2`);
 
       message.channel.send(`${message.author.username}, ${answer}`);
     } else {
       const answerNO = parseInt(Math.floor(Math.random() * 10), 10);
-      const answer = message.translate(`fun/8ball:RESPONSE_${answerNO + 1}`);
+      let answer = message.translate(`fun/8ball:RESPONSE_${answerNO + 1}`);
 
       message.channel.send(`${message.author.username}, ${answer}`);
     }
   }
-};
+}
 
 module.exports = Eightball;
