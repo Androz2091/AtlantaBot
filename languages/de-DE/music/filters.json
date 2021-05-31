@@ -1,7 +1,7 @@
 {
-    "DESCRIPTION": "Send the list of all the filters and their status",
-    "USAGE": "{{prefix}}filters",
-    "EXAMPLES": "{{prefix}}filters",
-    "TITLE": "**Filters**",
-    "CONTENT": "Here is the list of all filters enabled or disabled.\nUse `{{prefix}}filter` to change the status of one of them."
+    "DESCRIPTION": "Liste aller Filter und ihres Statuses",
+    "USAGE": "{{prefix}}Filter",
+    "EXAMPLES": "{{prefix}}Filter",
+    "TITLE": "**Filter**",
+    "CONTENT": "Hier ist die Liste aller aktivierten oder deaktivierten Filter.\nVerwende `{{prefix}}Filter, um den Status eines dieser Filter zu ändern."
 }
