@@ -3,5 +3,5 @@
     "USAGE": "{{prefix}}ignorieren [channel]",
     "EXAMPLES": "{{prefix}}ignorieren #channel",
     "ALLOWED": "Befehle sind nicht erlaubt in {{channel}}!",
-    "IGNORED": "Commands are now forbidden in {{channel}}!"
+    "IGNORED": "Befehle sind nicht erlaubt in {{channel}}!"
 }
