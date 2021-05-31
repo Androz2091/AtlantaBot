@@ -16,6 +16,6 @@
     "ADDED_QUEUE_COUNT": "{{songCount}} Titel zur Warteschlange hinzugefügt!",
     "STOP_DISCONNECTED": "Ich habe gerade die Musik gestoppt, da ich vom Kanal getrennt worden bin.",
     "RESULTS_CANCEL": "Suche abgebrochen!",
-    "LIVE_VIDEO": "Lives are not yet supported!",
-    "ERR_OCCURRED": "An error occurred... Code: `{{error}}`"
+    "LIVE_VIDEO": "Livestreams werden nicht unterstützt!",
+    "ERR_OCCURRED": "Ein Fehler ist aufgetreten... Code: `{{error}}`"
 }
