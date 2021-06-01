@@ -1,5 +1,5 @@
 {
-    "DESCRIPTION": "Set the server prefix!",
+    "DESCRIPTION": "Ändere den Server Prefix!",
     "USAGE": "{{prefix}}setprefix [prefix]",
     "EXAMPLES": "{{prefix}}setprefix +",
     "MISSING_PREFIX": "Please enter a valid prefix!",
