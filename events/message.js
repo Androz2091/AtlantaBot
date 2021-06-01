@@ -234,10 +234,10 @@ module.exports = class {
 
 
 			cmd.run(message, args, data).catch(error =>{
-			console.error(error)
+			console.error(error);
 				// there u can add your webhook with error
 			return message.error("misc:ERR_OCCURRED");
-			})
+			});
 			if(cmd.help.category === "Moderation" && data.guild.autoDeleteModCommands){
 				message.delete();
 			}
