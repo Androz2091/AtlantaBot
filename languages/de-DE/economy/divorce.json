@@ -1,7 +1,7 @@
 {
-    "DESCRIPTION": "Divorce the person you are currently married to!",
+    "DESCRIPTION": "Scheide dich von der Person, mit der du gerade verheiratet bist!",
     "USAGE": "{{prefix}}divorce",
     "EXAMPLES": "{{prefix}}divorce",
-    "NOT_MARRIED": "You are not currently married!",
+    "NOT_MARRIED": "Du bist derzeit nicht verheiratet!",
     "DIVORCED": "You just divorced with **{{username}}**!"
 }
