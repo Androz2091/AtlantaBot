@@ -89,7 +89,7 @@ class Help extends Command {
 		}
 
 		const categories = [];
-		const commands = this.client.commands.filter((c) => c.enabled);
+		const commands = this.client.commands.filter((c) => c.conf.enabled);
 
 		commands.forEach((command) => {
 			if(!categories.includes(command.help.category)){
