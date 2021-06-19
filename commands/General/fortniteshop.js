@@ -51,7 +51,7 @@ class Fortniteshop extends Command {
 			.setImage("attachment://shop.png")
 			.setColor(this.client.config.embed.color)
 			.setFooter(this.client.config.embed.footer);
-		await message.channel.send(embed);
+		await message.channel.send({ embeds: [embed] });
 		await m.delete();
 		return;
         

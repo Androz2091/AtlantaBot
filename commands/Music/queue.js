@@ -37,7 +37,7 @@ class Queue extends Command {
 				.setColor(data.config.embed.color)
 				.setAuthor(message.translate("music/queue:TITLE"), message.guild.iconURL({ dynamic: true }))
 				.addField(message.translate("music/np:CURRENTLY_PLAYING"), `[${queue.tracks[0].title}](${queue.tracks[0].url})\n*Requested by ${queue.tracks[0].requestedBy}*\n`);
-			return message.channel.send(embed);
+			return message.channel.send({ embeds: [embed] });
 		}
 		let i = 0;
 

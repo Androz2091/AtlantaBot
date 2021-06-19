@@ -95,7 +95,7 @@ class Backup extends Command {
 					.addField(message.translate("administration/backup:TITLE_CREATED_AT"), message.printDate(new Date(backupInfos.data.createdTimestamp)), true)
 					.setColor(data.config.embed.color)
 					.setFooter(data.config.embed.footer);
-				message.channel.send(embed);
+				message.channel.send({ embeds: [embed] });
 			}).catch(() => {
 				// if the backup wasn't found
 				return message.error("administration/backup:NO_BACKUP_FOUND", {

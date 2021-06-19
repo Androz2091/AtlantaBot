@@ -35,7 +35,7 @@ class Github extends Command {
 			.setColor(data.config.embed.color)
 			.setFooter(data.config.embed.footer);
 
-		message.channel.send(embed);
+		message.channel.send({ embeds: [embed] });
 	}
 
 }

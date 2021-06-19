@@ -32,7 +32,7 @@ async function init(client) {
 						.setImage("attachment://shop.png")
 						.setColor(client.config.embed.color)
 						.setFooter(client.config.embed.footer);
-					const msg = await fnChannel.send(embed);
+					const msg = await fnChannel.send({ embeds: [embed] });
 					await msg.react("😍");
 					await msg.react("😐");
 					await msg.react("😭");

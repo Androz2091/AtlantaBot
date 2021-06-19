@@ -123,7 +123,7 @@ class Configuration extends Command {
 		// Dashboard link
 		embed.addField(message.translate("administration/configuration:DASHBOARD_TITLE"), `[${message.translate("administration/configuration:DASHBOARD_CONTENT")}](${this.client.config.supportURL})`);
 
-		message.channel.send(embed);
+		message.channel.send({ embeds: [embed] });
 	}
 
 }

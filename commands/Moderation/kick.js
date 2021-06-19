@@ -91,7 +91,7 @@ class Kick extends Command {
 					.addField(message.translate("common:MODERATOR"), `\`${message.author.tag}\` (${message.author.toString()})`, true)
 					.addField(message.translate("common:REASON"), reason, true)
 					.setColor("#e88709");
-				channel.send(embed);
+				channel.send({ embeds: [embed] });
 			}
 
 		}).catch(() => {

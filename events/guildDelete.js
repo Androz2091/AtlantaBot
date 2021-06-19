@@ -15,7 +15,7 @@ module.exports = class {
 			.setAuthor(guild.name, guild.iconURL())
 			.setColor("#B22222")
 			.setDescription(text);
-		this.client.channels.cache.get(this.client.config.support.logs).send(embed);
+		this.client.channels.cache.get(this.client.config.support.logs).send({ embeds: [embed] });
 
 	}
 };  

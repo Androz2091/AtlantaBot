@@ -90,7 +90,7 @@ class Atlanta extends Client {
 					.setDescription(Util.escapeSpoiler(tracks.map((t, i) => `**${++i} -** ${t.title}`).join("\n")))
 					.setFooter(message.translate("music/play:RESULTS_FOOTER"))
 					.setColor(this.config.embed.color);
-				message.channel.send(embed);
+				message.channel.send({ embeds: [embed] });
 			})
 			.on("searchInvalidResponse", (message, query, tracks, content, collector) => {
 				if (content === "cancel") {

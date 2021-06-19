@@ -43,7 +43,7 @@ class Suggest extends Command {
 		const success = Discord.Util.parseEmoji(this.client.customEmojis.success).id;
 		const error = Discord.Util.parseEmoji(this.client.customEmojis.error).id;
         
-		suggChannel.send(embed).then(async (m) => {
+		suggChannel.send({ embeds: [embed] }).then(async (m) => {
 			await m.react(success);
 			await m.react(error);
 		});

@@ -43,7 +43,7 @@ class Back extends Command {
 			.setFooter(data.config.embed.footer)
 			.setColor(data.config.embed.color);
 
-		const m = await message.channel.send(embed);
+		const m = await message.channel.send({ embeds: [embed] });
 
 		if(members.size > 1){
             

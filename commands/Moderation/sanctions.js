@@ -27,7 +27,7 @@ class Sanctions extends Command {
 		const memberData = await this.client.findOrCreateMember({ id: user.id, guildID: message.guild.id });
 
 		const embed = new Discord.MessageEmbed()
-			.setAuthor(user.tag, user.displayAvatarURL({ size: 512, dynamic: true, format: 'png' }))
+			.setAuthor(user.tag, user.displayAvatarURL({ size: 512, dynamic: true, format: "png" }))
 			.setColor(data.config.embed.color)
 			.setFooter(data.config.embed.footer);
 
@@ -35,14 +35,14 @@ class Sanctions extends Command {
 			embed.setDescription(message.translate("moderation/sanctions:NO_SANCTION", {
 				username: user.tag
 			}));
-			return message.channel.send(embed);
+			return message.channel.send({ embeds: [embed] });
 		} else {
 			memberData.sanctions.forEach((s) => {
 				embed.addField(s.type+" | #"+s.case, `${message.translate("common:MODERATOR")}: <@${s.moderator}>\n${message.translate("common:REASON")}: ${s.reason}`, true);
 			});
 		}
 
-		message.channel.send(embed);
+		message.channel.send({ embeds: [embed] });
 	}
 
 }

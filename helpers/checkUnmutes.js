@@ -47,7 +47,7 @@ module.exports = {
 					.setFooter(guild.client.config.embed.footer);
 				const channel = guild.channels.cache.get(guildData.plugins.modlogs);
 				if(channel){
-					channel.send(embed);
+					channel.send({ embeds: [embed] });
 				}
 				memberData.mute = {
 					muted: false,

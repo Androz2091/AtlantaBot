@@ -30,7 +30,7 @@ class Staff extends Command {
 			.addField(message.translate("general/staff:MODS"), (moderators.size > 0 ? moderators.map((m) => `${this.client.customEmojis.status[m.presence.status]} | ${m.user.tag}`).join("\n") : message.translate("general/staff:NO_MODS")))
 			.setColor(data.config.embed.color)
 			.setFooter(data.config.embed.footer);
-		message.channel.send(embed);
+		message.channel.send({ embeds: [embed] });
 	}
 
 }

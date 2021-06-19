@@ -37,7 +37,7 @@ class ShortURL extends Command {
 			.setColor(data.config.embed.color)
 			.setFooter(data.config.embed.footer)
 			.setDescription(body);
-		message.channel.send(embed);
+		message.channel.send({ embeds: [embed] });
 
 	}
 

@@ -80,7 +80,7 @@ router.get("/callback", async (req, res) => {
 			.setDescription(req.client.translate("dashboard:FIRST_LOGIN", {
 				user: user.tag
 			}));
-		logsChannel.send(embed);
+		logsChannel.send({ embeds: [embed] });
 		userDB.logged = true;
 		userDB.save();
 	}
