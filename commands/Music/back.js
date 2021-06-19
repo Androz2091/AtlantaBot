@@ -56,7 +56,7 @@ class Back extends Command {
 				voteCount: 0,
 				requiredCount: mustVote
 			}));
-			m.edit(embed);
+			m.edit({ embeds: [embed] );
     
 			const filter = (reaction, user) => {
 				const member = message.guild.members.cache.get(user.id);
@@ -75,7 +75,7 @@ class Back extends Command {
 				if(haveVoted >= mustVote){
 					this.client.player.back(message);
 					embed.setDescription(message.translate("music/back:SUCCESS"));
-					m.edit(embed);
+					m.edit({ embeds: [embed] );
 					collector.stop(true);
 				} else {
 					embed.setDescription(message.translate("music/back:VOTE_CONTENT", {
@@ -83,7 +83,7 @@ class Back extends Command {
 						voteCount: haveVoted,
 						requiredCount: mustVote
 					}));
-					m.edit(embed);
+					m.edit({ embeds: [embed] );
 				}
 			});
 
@@ -96,7 +96,7 @@ class Back extends Command {
 		} else {
 			this.client.player.back(message);
 			embed.setDescription(message.translate("music/back:SUCCESS"));
-			m.edit(embed);
+			m.edit({ embeds: [embed] );
 		}
         
 	}
