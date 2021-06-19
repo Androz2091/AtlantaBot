@@ -85,7 +85,7 @@ class Help extends Command {
 				.setFooter(this.client.config.embed.footer);
 
 			// and send the embed in the current channel
-			return message.channel.send(groupEmbed);
+			return message.channel.send({ embeds: [groupEmbed] });
 		}
 
 		const categories = [];

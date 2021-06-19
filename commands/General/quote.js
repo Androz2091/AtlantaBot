@@ -22,7 +22,7 @@ class Quote extends Command {
 
 		function embed(m){
 			const embed = new Discord.MessageEmbed()
-				.setAuthor(m.author.tag, m.author.displayAvatarURL({ size: 512, dynamic: true, format: 'png' }))
+				.setAuthor(m.author.tag, m.author.displayAvatarURL({ size: 512, dynamic: true, format: "png" }))
 				.setDescription(m.content)
 				.setColor(m.member ? m.member.roles.highest ? m.member.roles.highest.color : data.config.embed.color : data.config.embed.color)
 				.setFooter(m.guild.name+" | #"+m.channel.name)
@@ -66,7 +66,7 @@ class Quote extends Command {
 				return;
 			}).then((msg) => {
 				message.delete();
-				message.channel.send(embed(msg));
+				message.channel.send({ embeds: [embed(msg)] });
 			});
 		} else {
 			channel.messages.fetch(msgID).catch(() => {
@@ -78,7 +78,7 @@ class Quote extends Command {
 				return;
 			}).then((msg) => {
 				message.delete();
-				message.channel.send(embed(msg));
+				message.channel.send({ embeds: [embed(msg)] });
 			});
 		}
 	}

@@ -67,13 +67,13 @@ class Translate extends Command {
 		const translated = await translate(toTranslate, { to: language });
 
 		const resEmbed = new Discord.MessageEmbed()
-			.setAuthor("Translator", this.client.user.displayAvatarURL({ size: 512, dynamic: true, format: 'png' }))
+			.setAuthor("Translator", this.client.user.displayAvatarURL({ size: 512, dynamic: true, format: "png" }))
 			.addField(translated.from.language.iso, "```"+toTranslate+"```")
 			.addField(language, "```"+translated.text+"```")
 			.setColor(data.config.embed.color)
 			.setFooter(data.config.embed.footer);
 
-		return pWait.edit("", { embed: resEmbed });
+		return pWait.edit({ embeds: [resEmbed] });
         
 	}
 

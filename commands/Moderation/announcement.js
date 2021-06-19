@@ -85,8 +85,9 @@ class Announcement extends Command {
 				.setTimestamp()
 				.setDescription(text);
             
-			message.channel.send(mention, {
-				embed,
+			message.channel.send({
+				content: mention,
+				embeds: [embed],
 				allowedMentions: {
 					parse: ["users", "everyone", "roles"]
 				}

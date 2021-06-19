@@ -52,7 +52,7 @@ class Stats extends Command {
 			supportLink: "https://discord.atlanta-bot.fr"
 		})
 		);
-		message.channel.send(statsEmbed);
+		message.channel.send({ embeds: [statsEmbed] });
 
 	}
 

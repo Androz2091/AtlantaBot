@@ -91,7 +91,7 @@ class Poll extends Command {
 					error: emojis[1].toString()
 				}));
             
-			message.channel.send(mention, embed).then(async (m) => {
+			message.channel.send({ content: mention, embeds: [embed] }).then(async (m) => {
 				await m.react(emojis[0]);
 				await m.react(emojis[1]);
 			});

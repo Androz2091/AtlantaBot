@@ -95,7 +95,7 @@ class Minecraft extends Command {
 			.setThumbnail(favicon)
 			.setFooter(data.config.embed.footer);
 
-		m.edit(null, [ mcEmbed, imgAttachment ]);
+		m.edit({ embeds: [mcEmbed], files: [imgAttachment] });
 
 	}
 
