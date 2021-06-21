@@ -56,7 +56,7 @@
         "moment": "^2.26.0",
         "mongoose": "^5.9.25",
         "ms": "^2.1.3",
-        "string-sanitizer": "^1.1.1"
+        "string-sanitizer": "^2.0.2"
     },
     "devDependencies": {
         "eslint": "^7.5.0"
