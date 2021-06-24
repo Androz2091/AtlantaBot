@@ -76,7 +76,7 @@ class ServersList extends Command {
 					.setDescription(description);
             
 				// Edit the message 
-				msg.edit({ embeds: [embed] );
+				msg.edit({ embeds: [embed]});
             
 			}
 
@@ -106,7 +106,7 @@ class ServersList extends Command {
 					.setDescription(description);
             
 				// Edit the message 
-				msg.edit({ embeds: [embed] );
+				msg.edit({ embeds: [embed] });
 
 			}
 
