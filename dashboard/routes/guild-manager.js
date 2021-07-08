@@ -17,7 +17,9 @@ router.get("/:serverID", CheckAuth, async(req, res) => {
 
 	// Fetch guild informations
 	const guildInfos = await utils.fetchGuild(guild.id, req.client, req.user.guilds);
-
+	// Getting the guilds language from the guild object and setting this as the new language to be translated
+	req.translate = req.client.translations.get(guildInfos.language);
+	
 	res.render("manager/guild", {
 		guild: guildInfos,
 		user: req.userInfos,
