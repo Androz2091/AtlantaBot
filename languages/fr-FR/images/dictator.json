@@ -1,5 +1,5 @@
 {
-    "DESCRIPTION": "Generates a \"burn\" image",
+    "DESCRIPTION": "Génère une image de votre logo avec des effets de flamme",
     "USAGE": "{{prefix}}burn (@member)",
     "EXAMPLES": "{{prefix}}burn\n{{prefix}}burn @Androz#2091"
 }

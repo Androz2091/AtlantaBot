@@ -1,5 +1,5 @@
 {
-    "DESCRIPTION": "Generates a \"bed\" image",
+    "DESCRIPTION": "Génère un même avec votre logo sur des lits",
     "USAGE": "{{prefix}}bed [@member1] (@member2)",
     "EXAMPLES": "{{prefix}}bed @Androz#2091\n{{prefix}}bed @Androz#2091 @Marty#0303"
 }

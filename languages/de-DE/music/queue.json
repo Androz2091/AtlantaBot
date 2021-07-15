@@ -1,6 +1,6 @@
 {
-    "DESCRIPTION": "Shows the server queue",
-    "USAGE": "{{prefix}}queue",
-    "EXAMPLES": "{{prefix}}queue",
-    "TITLE": "Server Queue"
+    "DESCRIPTION": "Zeigt die aktuelle Warteschlange an",
+    "USAGE": "{{prefix}}Warteschlange",
+    "EXAMPLES": "{{prefix}}Warteschlange",
+    "TITLE": "Server-Warteschlange"
 }
