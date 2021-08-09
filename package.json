@@ -34,7 +34,7 @@
         "colors-generator": "^0.3.4",
         "cron": "^1.7.2",
         "dblapi.js": "^2.3.0",
-        "discord-backup": "^2.1.19",
+        "discord-backup": "^3.0.0",
         "discord-canvas": "^1.3.2",
         "discord-giveaways": "^4.4.3",
         "discord-paginationembed": "^2.1.0",
