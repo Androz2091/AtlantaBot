@@ -30,7 +30,10 @@ class Atlanta extends Client {
 			],
 			allowedMentions: {
 				parse: ["users"]
-			}
+			},
+			partials: [
+				"CHANNEL"
+			],
 		});
 		this.config = require("../config"); // Load the config file
 		this.customEmojis = require("../emojis.json"); // load the bot's emojis
