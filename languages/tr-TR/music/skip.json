@@ -3,6 +3,6 @@
     "USAGE": "{{prefix}}skip",
     "EXAMPLES": "{{prefix}}skip",
     "NO_NEXT_SONG": "Sonraki şarkı yok!",
-    "VOTE_CONTENT": "Next song: {{songName}}\nReact with 👍 to skip the music! {{requiredCount}} more votes are required.",
+    "VOTE_CONTENT": "Yeni Şarkı: {{songName}}\n👍 Tepkisini vererek bu muziği geç! {{requiredCount}} oy gerekli.",
     "SUCCESS": "Sonraki şarkıya geçildi!"
 }
