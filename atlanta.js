@@ -5,7 +5,8 @@ const Sentry = require("@sentry/node"),
 	fs = require("fs"),
 	readdir = util.promisify(fs.readdir),
 	mongoose = require("mongoose"),
-	chalk = require("chalk");
+	chalk = require("chalk"),
+	synchronizeSlashCommands = require("discord-sync-commands");
 
 const config = require("./config");
 if(config.apiKeys.sentryDSN){
@@ -23,10 +24,13 @@ const Atlanta = require("./base/Atlanta"),
 
 const init = async () => {
 
+	const languages = require("./helpers/languages");
+	client.translations = await languages();
+
 	// Search for all commands
 	const directories = await readdir("./commands/");
 	client.logger.log(`Loading a total of ${directories.length} categories.`, "log");
-	directories.forEach(async (dir) => {
+	await Promise.all(directories.map(async (dir) => {
 		const commands = await readdir("./commands/"+dir+"/");
 		commands.filter((cmd) => cmd.split(".").pop() === "js").forEach((cmd) => {
 			const response = client.loadCommand("./commands/"+dir, cmd);
@@ -34,6 +38,26 @@ const init = async () => {
 				client.logger.log(response, "error");
 			}
 		});
+	}));
+
+	const slashCommands = client.commands.filter((c) => c.conf.options);
+	console.log(slashCommands.first());
+	synchronizeSlashCommands(client, slashCommands.map((command) => ({
+		name: command.help.name,
+		description: client.translations.get("en-US")(`${command.help.category.toLowerCase()}/${command.help.name}:DESCRIPTION`),
+		options: command.conf.options.map((opt) => ({
+			...opt,
+			description: client.translations.get("en-US")(`${command.help.category.toLowerCase()}/${command.help.name}:OPT_${opt.name.toUpperCase()}_DESCRIPTION`),
+			options: opt.options?.map((o) => ({
+				...o,
+				description: client.translations.get("en-US")(`${command.help.category.toLowerCase()}/${command.help.name}:OPT_${o.name.toUpperCase()}_DESCRIPTION`)
+			})
+			)
+		})
+		)
+	})), {
+		debug: true,
+		guildId: config.support.id
 	});
 
 	// Then we load events, which will include our message and ready event.
@@ -55,9 +79,6 @@ const init = async () => {
 	}).catch((err) => {
 		client.logger.log("Unable to connect to the Mongodb database. Error:"+err, "error");
 	});
-
-	const languages = require("./helpers/languages");
-	client.translations = await languages();
     
 	const autoUpdateDocs = require("./helpers/autoUpdateDocs.js");
 	autoUpdateDocs.update(client);

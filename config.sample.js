@@ -18,11 +18,6 @@ module.exports = {
 	},
 	mongoDB: "mongodb://localhost:27017/AtlantaBot", // The URl of the mongodb database
 	prefix: "*", // The default prefix for the bot
-	/* For the embeds (embeded messages) */
-	embed: {
-		color: "#0091fc", // The default color for the embeds
-		footer: "Atlanta | Open Source" // And the default footer for the embeds
-	},
 	/* Bot's owner informations */
 	owner: {
 		id: "XXXXXXXXXXX", // The ID of the bot's owner
@@ -48,11 +43,6 @@ module.exports = {
 		amethyste: "XXXXXXXXXXX",
 		// SENTRY: https://sentry.io (this is not required and not recommended - you can delete the field)
 		sentryDSN: "XXXXXXXXXXX"
-	},
-	/* The others utils links */
-	others: {
-		github: "https://github.com/Androz2091", // Founder's github account
-		donate: "https://patreon.com/Androz2091" // Donate link
 	},
 	/* The Bot status */
 	status: [
