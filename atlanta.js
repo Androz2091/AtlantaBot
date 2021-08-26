@@ -1,5 +1,3 @@
-require("./helpers/extenders");
-
 const Sentry = require("@sentry/node"),
 	util = require("util"),
 	fs = require("fs"),
