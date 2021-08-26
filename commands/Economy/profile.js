@@ -7,7 +7,7 @@ const asyncForEach = async (array, callback) => {
 	}
 };
 
-class Profile extends Command {
+module.exports = class extends Command {
 
 	constructor (client) {
 		super(client, {
@@ -92,4 +92,3 @@ class Profile extends Command {
 
 }
 
-module.exports = Profile;

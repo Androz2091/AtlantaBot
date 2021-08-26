@@ -2,7 +2,7 @@ const Command = require("../../base/Command.js"),
 	Discord = require("discord.js"),
 	md5 = require("md5");
 
-class Lovecalc extends Command {
+module.exports = class extends Command {
 
 	constructor (client) {
 		super(client, {
@@ -66,6 +66,6 @@ class Lovecalc extends Command {
         
 	}
 
-}
+};
 
-module.exports = Lovecalc;
+

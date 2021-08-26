@@ -3,7 +3,7 @@ const Command = require("../../base/Command.js"),
 	util = require("util"),
 	figletAsync = util.promisify(figlet);
 
-class Ascii extends Command {
+module.exports = class extends Command {
 
 	constructor (client) {
 		super(client, {
@@ -34,6 +34,5 @@ class Ascii extends Command {
 
 	}
 
-}
+};
 
-module.exports = Ascii;

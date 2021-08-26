@@ -2,7 +2,7 @@ const Command = require("../../base/Command.js"),
 	Discord = require("discord.js"),
 	FiltersList = require("../../assets/json/filters.json");
 
-class Filters extends Command {
+module.exports = class extends Command {
 
 	constructor (client) {
 		super(client, {
@@ -58,4 +58,3 @@ class Filters extends Command {
 
 }
 
-module.exports = Filters;

@@ -2,7 +2,7 @@ const Command = require("../../base/Command.js"),
 	Discord = require("discord.js"),
 	lyricsParse = require("lyrics-finder");
 
-class Lyrics extends Command {
+module.exports = class extends Command {
 
 	constructor (client) {
 		super(client, {
@@ -67,4 +67,3 @@ class Lyrics extends Command {
 
 }
 
-module.exports = Lyrics;

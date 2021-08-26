@@ -1,6 +1,6 @@
 const Command = require("../../base/Command.js");
 
-class Withdraw extends Command {
+module.exports = class extends Command {
 
 	constructor (client) {
 		super(client, {
@@ -57,4 +57,3 @@ class Withdraw extends Command {
 
 }
 
-module.exports = Withdraw;

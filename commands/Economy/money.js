@@ -7,7 +7,7 @@ const asyncForEach = async (array, callback) => {
 	}
 };
 
-class Credits extends Command {
+module.exports = class extends Command {
 
 	constructor (client) {
 		super(client, {
@@ -64,4 +64,4 @@ class Credits extends Command {
 
 }
 
-module.exports = Credits;
+

@@ -2,7 +2,7 @@ const Command = require("../../base/Command.js"),
 	Discord = require("discord.js");
 const { Embed } = require("../../helpers/constants.js");
 
-class Achievements extends Command {
+module.exports = class extends Command {
 
 	constructor (client) {
 		super(client, {
@@ -67,6 +67,6 @@ class Achievements extends Command {
 
 	}
 
-}
+};
 
-module.exports = Achievements;
+

@@ -2,7 +2,7 @@ const Command = require("../../base/Command.js"),
 	Discord = require("discord.js"),
 	fetch = require("node-fetch");
 
-class Hastebin extends Command {
+module.exports = class extends Command {
 
 	constructor (client) {
 		super(client, {
@@ -59,6 +59,6 @@ class Hastebin extends Command {
         
 	}
 
-}
+};
 
-module.exports = Hastebin;
+

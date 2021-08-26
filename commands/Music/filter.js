@@ -1,7 +1,7 @@
 const Command = require("../../base/Command.js"),
 	FiltersList = require("../../assets/json/filters.json");
 
-class Filter extends Command {
+module.exports = class extends Command {
 
 	constructor (client) {
 		super(client, {
@@ -65,4 +65,3 @@ content: translate("music/filter:REMOVING_FILTER")
 
 }
 
-module.exports = Filter;

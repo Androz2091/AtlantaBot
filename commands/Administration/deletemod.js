@@ -1,6 +1,6 @@
 const Command = require("../../base/Command.js");
 
-class Deletemod extends Command {
+module.exports = class extends Command {
 
 	constructor (client) {
 		super(client, {
@@ -40,6 +40,5 @@ class Deletemod extends Command {
 		}
 	}
 
-}
+};
 
-module.exports = Deletemod;

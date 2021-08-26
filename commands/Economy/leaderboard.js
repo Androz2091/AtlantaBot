@@ -1,7 +1,7 @@
 const Command = require("../../base/Command.js"),
 	AsciiTable = require("ascii-table");
 
-class Leaderboard extends Command {
+module.exports = class extends Command {
 
 	constructor (client) {
 		super(client, {
@@ -100,6 +100,6 @@ class Leaderboard extends Command {
 		}
 	}
 
-}
+};
 
-module.exports = Leaderboard;
+

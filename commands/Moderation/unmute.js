@@ -1,6 +1,6 @@
 const Command = require("../../base/Command.js");
 
-class Unmute extends Command {
+module.exports = class extends Command {
 
 	constructor (client) {
 		super(client, {
@@ -53,6 +53,5 @@ class Unmute extends Command {
 
 	}
 
-}
+};
 
-module.exports = Unmute;

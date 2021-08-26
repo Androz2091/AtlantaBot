@@ -2,7 +2,7 @@ const Command = require("../../base/Command.js"),
 	Discord = require("discord.js");
 const permissions = Object.keys(Discord.Permissions.FLAGS);
  
-class Permissions extends Command {
+module.exports = class extends Command {
 	constructor (client) {
 		super(client, {
 			name: "permissions",
@@ -41,6 +41,6 @@ class Permissions extends Command {
 		text += `\n${total.allowed} ✅ | ${total.denied} ❌`+"\n```";
 		message.channel.send(text);
 	}
-}
+};
 
-module.exports = Permissions;
+

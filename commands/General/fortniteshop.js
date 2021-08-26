@@ -2,7 +2,7 @@ const Command = require("../../base/Command.js"),
 	Discord = require("discord.js"),
 	Canvas = require("discord-canvas");
 
-class Fortniteshop extends Command {
+module.exports = class extends Command {
 	constructor (client) {
 		super(client, {
 			name: "fortniteshop",
@@ -56,6 +56,6 @@ class Fortniteshop extends Command {
 		return;
         
 	}
-}
+};
 
-module.exports = Fortniteshop;
+

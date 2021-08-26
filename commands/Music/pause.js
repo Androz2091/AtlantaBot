@@ -1,6 +1,6 @@
 const Command = require("../../base/Command.js");
 
-class Pause extends Command {
+module.exports = class extends Command {
 
 	constructor (client) {
 		super(client, {
@@ -48,4 +48,3 @@ class Pause extends Command {
 
 }
 
-module.exports = Pause;

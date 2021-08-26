@@ -3,7 +3,7 @@ const Command = require("../../base/Command.js"),
 
 const currentGames = {};
 
-class FindWords extends Command {
+module.exports = class extends Command {
 
 	constructor (client) {
 		super(client, {
@@ -152,6 +152,5 @@ class FindWords extends Command {
 		}
 	}
 
-}
+};
 
-module.exports = FindWords;

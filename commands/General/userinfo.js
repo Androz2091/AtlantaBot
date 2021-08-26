@@ -2,7 +2,7 @@ const Command = require("../../base/Command.js"),
 	Discord = require("discord.js"),
 	fetch = require("node-fetch");
 
-class Userinfo extends Command {
+module.exports = class extends Command {
 
 	constructor (client) {
 		super(client, {
@@ -99,6 +99,6 @@ class Userinfo extends Command {
 		message.channel.send({ embeds: [embed] });
 	}
 
-}
+};
 
-module.exports = Userinfo;
+

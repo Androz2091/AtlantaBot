@@ -2,7 +2,7 @@
 	Discord = require("discord.js"),
 	Canvas = require("discord-canvas");
 
-class Setfortniteshop extends Command {
+module.exports = class extends Command {
 
 	constructor(client) {
 		super(client, {
@@ -76,6 +76,5 @@ class Setfortniteshop extends Command {
 
 	}
 
-}
+};
 
-module.exports = Setfortniteshop;

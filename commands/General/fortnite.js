@@ -2,7 +2,7 @@ const Command = require("../../base/Command.js"),
 	Canvas = require("discord-canvas"),
 	Discord = require("discord.js");
 
-class Fortnite extends Command {
+module.exports = class extends Command {
 	constructor (client) {
 		super(client, {
 			name: "fortnite",
@@ -87,6 +87,6 @@ class Fortnite extends Command {
 		message.channel.send({ embeds: [embed] });
 		m.delete();
 	}
-}
+};
 
-module.exports = Fortnite;
+

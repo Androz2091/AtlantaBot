@@ -1,6 +1,6 @@
 const Command = require("../../base/Command.js");
 
-class Lmg extends Command {
+module.exports = class extends Command {
 
 	constructor (client) {
 		super(client, {
@@ -28,6 +28,5 @@ class Lmg extends Command {
 		message.delete().catch(() => {});
 	}
 
-}
+};
 
-module.exports = Lmg;

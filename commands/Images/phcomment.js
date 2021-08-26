@@ -2,7 +2,7 @@ const Command = require("../../base/Command.js"),
 	Discord = require("discord.js"),
 	canvacord = require("canvacord");
 
-class Phcomment extends Command {
+module.exports = class extends Command {
 	constructor (client) {
 		super(client, {
 			name: "phcomment",
@@ -59,4 +59,3 @@ class Phcomment extends Command {
 
 }
 
-module.exports = Phcomment;

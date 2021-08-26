@@ -4,7 +4,7 @@ const Command = require("../../base/Command.js"),
 	gamedig = require("gamedig"),
 	Sentry = require("@sentry/node");
 
-class Minecraft extends Command {
+module.exports = class extends Command {
 
 	constructor (client) {
 		super(client, {
@@ -102,6 +102,5 @@ class Minecraft extends Command {
 
 	}
 
-}
+};
 
-module.exports = Minecraft;

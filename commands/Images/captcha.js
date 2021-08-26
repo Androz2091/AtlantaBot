@@ -2,7 +2,7 @@ const Command = require("../../base/Command.js"),
 	Discord = require("discord.js"),
 	fetch = require("node-fetch");
 
-class Captcha extends Command {
+module.exports = class extends Command {
 	constructor (client) {
 		super(client, {
 			name: "captcha",
@@ -39,6 +39,5 @@ class Captcha extends Command {
 
 	}
 
-}
+};
 
-module.exports = Captcha;

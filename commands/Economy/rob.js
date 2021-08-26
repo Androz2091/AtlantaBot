@@ -1,6 +1,6 @@
 const Command = require("../../base/Command.js");
 
-class Rob extends Command {
+module.exports = class extends Command {
 
 	constructor (client) {
 		super(client, {
@@ -102,4 +102,4 @@ class Rob extends Command {
 
 }
 
-module.exports = Rob;
+

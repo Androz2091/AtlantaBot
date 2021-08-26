@@ -2,7 +2,7 @@ const Command = require("../../base/Command.js"),
 	Discord = require("discord.js"),
 	Pagination = require("discord-paginationembed");
 
-class Queue extends Command {
+module.exports = class extends Command {
 
 	constructor (client) {
 		super(client, {
@@ -67,4 +67,3 @@ class Queue extends Command {
 
 }
 
-module.exports = Queue;

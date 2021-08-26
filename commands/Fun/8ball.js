@@ -1,6 +1,6 @@
 const Command = require("../../base/Command.js");
 
-class Eightball extends Command {
+module.exports = class extends Command {
 
 	constructor (client) {
 		super(client, {
@@ -32,6 +32,5 @@ class Eightball extends Command {
 		message.channel.send(`${interaction.user.username}, ${answer}`);
 	}
 
-}
+};
 
-module.exports = Eightball;

@@ -1,7 +1,7 @@
 const Command = require("../../base/Command.js"),
 	Resolvers = require("../../helpers/resolvers");
 
-class Autorole extends Command {
+module.exports = class extends Command {
 
 	constructor (client) {
 		super(client, {
@@ -76,6 +76,5 @@ class Autorole extends Command {
         
 	}
 
-}
+};
 
-module.exports = Autorole;

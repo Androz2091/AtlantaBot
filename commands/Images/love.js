@@ -2,7 +2,7 @@ const Command = require("../../base/Command.js"),
 	Discord = require("discord.js"),
 	fetch = require("node-fetch");
 
-class Love extends Command {
+module.exports = class extends Command {
 	constructor (client) {
 		super(client, {
 			name: "love",
@@ -43,6 +43,5 @@ class Love extends Command {
 
 	}
 
-}
+};
 
-module.exports = Love;

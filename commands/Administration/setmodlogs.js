@@ -1,7 +1,7 @@
 const Command = require("../../base/Command.js"),
 	Resolvers = require("../../helpers/resolvers");
 
-class Setmodlogs extends Command {
+module.exports = class extends Command {
 
 	constructor (client) {
 		super(client, {
@@ -48,6 +48,5 @@ class Setmodlogs extends Command {
 		}
 	}
 
-}
+};
 
-module.exports = Setmodlogs;

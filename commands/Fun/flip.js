@@ -1,6 +1,6 @@
 const Command = require("../../base/Command.js");
 
-class Flip extends Command {
+module.exports = class extends Command {
 
 	constructor (client) {
 		super(client, {
@@ -30,4 +30,3 @@ content: translate("fun/flip:TAILS")
 
 }
 
-module.exports = Flip;

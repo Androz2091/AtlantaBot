@@ -1,6 +1,6 @@
 const Command = require("../../base/Command.js");
 
-class Unban extends Command {
+module.exports = class extends Command {
 
 	constructor (client) {
 		super(client, {
@@ -72,6 +72,5 @@ class Unban extends Command {
 
 	}
 
-}
+};
 
-module.exports = Unban;

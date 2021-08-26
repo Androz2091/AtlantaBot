@@ -1,7 +1,7 @@
 const Command = require("../../base/Command.js"),
 	Discord = require("discord.js");
 
-class Fml extends Command {
+module.exports = class extends Command {
 
 	constructor (client) {
 		super(client, {
@@ -37,6 +37,6 @@ class Fml extends Command {
 
 	}
 
-}
+};
 
-module.exports = Fml;
+

@@ -3,7 +3,7 @@ const Command = require("../../base/Command.js"),
 	backup = require("discord-backup"),
 	Sentry = require("@sentry/node");
 
-class Backup extends Command {
+module.exports = class extends Command {
 
 	constructor (client) {
 		super(client, {
@@ -136,6 +136,5 @@ class Backup extends Command {
         
 	}
 
-}
+};
 
-module.exports = Backup;

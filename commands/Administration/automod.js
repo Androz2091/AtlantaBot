@@ -1,6 +1,6 @@
 const Command = require("../../base/Command.js");
 
-class Automod extends Command {
+module.exports = class extends Command {
 
 	constructor (client) {
 		super(client, {
@@ -54,6 +54,5 @@ class Automod extends Command {
 		}
 	}
 
-}
+};
 
-module.exports = Automod;

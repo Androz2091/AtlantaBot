@@ -2,7 +2,7 @@ const Command = require("../../base/Command.js"),
 	Discord = require("discord.js"),
 	canvacord = require("canvacord");
 
-class YouTubeComment extends Command {
+module.exports = class extends Command {
 	constructor (client) {
 		super(client, {
 			name: "youtube-comment",
@@ -50,6 +50,5 @@ class YouTubeComment extends Command {
 
 	}
 
-}
+};
 
-module.exports = YouTubeComment;

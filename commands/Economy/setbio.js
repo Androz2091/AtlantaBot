@@ -1,6 +1,6 @@
 const Command = require("../../base/Command.js");
 
-class Setbio extends Command {
+module.exports = class extends Command {
 
 	constructor (client) {
 		super(client, {
@@ -40,4 +40,3 @@ class Setbio extends Command {
 
 }
 
-module.exports = Setbio;

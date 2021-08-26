@@ -2,7 +2,7 @@ const Command = require("../../base/Command.js"),
 	Canvas = require("canvas"),
 	Discord = require("discord.js");
 
-class Facepalm extends Command {
+module.exports = class extends Command {
 	constructor (client) {
 		super(client, {
 			name: "facepalm",
@@ -49,4 +49,4 @@ class Facepalm extends Command {
 
 }
 
-module.exports = Facepalm;
+
