@@ -54,7 +54,7 @@ class Marry extends Command {
 			});
 		}
 
-		if(member.id === message.author.id){
+		if(member.id === interaction.user.id){
 			return interaction.reply({
 				content: translate("economy/marry:YOURSELF"),
 				ephemeral: true
@@ -64,12 +64,12 @@ class Marry extends Command {
 		for(const requester in pendings){
 			const receiver = pendings[requester];
 			// If the member already sent a request to someone
-			if(requester === message.author.id){
+			if(requester === interaction.user.id){
 				const user =  this.client.users.cache.get(receiver) || await this.client.users.fetch(receiver);
 				return message.error("economy/marry:REQUEST_AUTHOR_TO_AMEMBER", {
 					username: user.tag
 				});
-			} else if (receiver === message.author.id){ // If there is a pending request for this member
+			} else if (receiver === interaction.user.id){ // If there is a pending request for this member
 				const user =  this.client.users.cache.get(requester) || await this.client.users.fetch(requester);
 				return message.error("economy/marry:REQUEST_AMEMBER_TO_AUTHOR", {
 					username: user.tag
@@ -90,10 +90,10 @@ class Marry extends Command {
 		}
 
 		// Update pending requests
-		pendings[message.author.id] = member.id;
+		pendings[interaction.user.id] = member.id;
 
 		message.sendT("economy/marry:REQUEST", {
-			from: message.author.toString(),
+			from: interaction.user.toString(),
 			to: member.user.toString()
 		});
 
@@ -102,10 +102,10 @@ class Marry extends Command {
 		});
         
 		collector.on("collect", (msg) => {
-			if(msg.content.toLowerCase() === message.translate("common:YES").toLowerCase()){
+			if(msg.content.toLowerCase() === translate("common:YES").toLowerCase()){
 				return collector.stop(true);
 			}
-			if(msg.content.toLowerCase() === message.translate("common:NO").toLowerCase()){
+			if(msg.content.toLowerCase() === translate("common:NO").toLowerCase()){
 				return collector.stop(false);
 			} else {
 				return interaction.reply({
@@ -117,7 +117,7 @@ class Marry extends Command {
 
 		collector.on("end", async (_collected, reason) => {
 			// Delete pending request 
-			delete pendings[message.author.id];
+			delete pendings[interaction.user.id];
 			if(reason === "time"){
 				return message.error("economy/marry:TIMEOUT", {
 					username: member.user.toString()
@@ -126,10 +126,10 @@ class Marry extends Command {
 			if(reason){
 				data.userData.lover = member.id;
 				await data.userData.save();
-				userData.lover = message.author.id;
+				userData.lover = interaction.user.id;
 				await userData.save();
 				const messageOptions = {
-					content: `${member.toString()} :heart: ${message.author.toString()}`,
+					content: `${member.toString()} :heart: ${interaction.user.toString()}`,
 					files: [
 						{
 							name: "unlocked.png",
@@ -154,12 +154,12 @@ class Marry extends Command {
 					data.userData.save();
 				}
 				return message.success("economy/marry:SUCCESS", {
-					creator: message.author.toString(),
+					creator: interaction.user.toString(),
 					partner: member.user.toString()
 				});
 			} else {
 				return message.success("economy/marry:DENIED", {
-					creator: message.author.toString(),
+					creator: interaction.user.toString(),
 					partner: member.user.toString()
 				});
 			}

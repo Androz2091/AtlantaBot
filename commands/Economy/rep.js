@@ -45,7 +45,7 @@ class Rep extends Command {
 				ephemeral: true
 			});
 		}
-		if(user.id === message.author.id){
+		if(user.id === interaction.user.id){
 			return interaction.reply({
 				content: translate("economy/rep:YOURSELF"),
 				ephemeral: true

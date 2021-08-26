@@ -20,7 +20,7 @@ class Lovecalc extends Command {
 	}
 
 	async run (message) {
-		const firstMember = message.mentions.members.filter(m => m.id !== message.author.id).first();
+		const firstMember = message.mentions.members.filter(m => m.id !== interaction.user.id).first();
 		if (!firstMember)
 			return interaction.reply({
 				content: translate("fun/lovecalc:MISSING"),
@@ -29,7 +29,7 @@ class Lovecalc extends Command {
 		const secondMember =
 			message.mentions.members
 				.filter(m => m.id !== firstMember.id)
-				.filter(m => m.id !== message.author.id)
+				.filter(m => m.id !== interaction.user.id)
 				.first() || message.member;
 		if (!secondMember)
 			return interaction.reply({
@@ -53,7 +53,7 @@ class Lovecalc extends Command {
 		const embed = new Discord.MessageEmbed()
 			.setAuthor("❤️ LoveCalc")
 			.setDescription(
-				message.translate("fun/lovecalc:CONTENT", {
+				translate("fun/lovecalc:CONTENT", {
 					percent,
 					firstUsername: firstMember.user.username,
 					secondUsername: secondMember.user.username

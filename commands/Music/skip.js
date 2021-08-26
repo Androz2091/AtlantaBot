@@ -47,7 +47,7 @@ class Skip extends Command {
 		const members = voice.members.filter((m) => !m.user.bot);
 
 		const embed = new Discord.MessageEmbed()
-			.setAuthor(message.translate("music/skip:DESCRIPTION"))
+			.setAuthor(translate("music/skip:DESCRIPTION"))
 			.setThumbnail(queue.tracks[0].thumbnail)
 			.setFooter(data.config.embed.footer)
 			.setColor(data.config.embed.color);
@@ -60,7 +60,7 @@ class Skip extends Command {
 
 			const mustVote = Math.floor(members.size/2+1);
 
-			embed.setDescription(message.translate("music/skip:VOTE_CONTENT", {
+			embed.setDescription(translate("music/skip:VOTE_CONTENT", {
 				songName: queue.tracks[0].name,
 				voteCount: 0,
 				requiredCount: mustVote
@@ -83,11 +83,11 @@ class Skip extends Command {
 				const haveVoted = reaction.count-1;
 				if(haveVoted >= mustVote){
 					this.client.player.skip(message);
-					embed.setDescription(message.translate("music/skip:SUCCESS"));
+					embed.setDescription(translate("music/skip:SUCCESS"));
 					m.edit({ embeds: [embed] });
 					collector.stop(true);
 				} else {
-					embed.setDescription(message.translate("music/skip:VOTE_CONTENT", {
+					embed.setDescription(translate("music/skip:VOTE_CONTENT", {
 						songName: queue.tracks[0].title,
 						voteCount: haveVoted,
 						requiredCount: mustVote
@@ -107,7 +107,7 @@ class Skip extends Command {
 
 		} else {
 			this.client.player.skip(message);
-			embed.setDescription(message.translate("music/skip:SUCCESS"));
+			embed.setDescription(translate("music/skip:SUCCESS"));
 			m.edit({ embeds: [embed] });
 		}
         

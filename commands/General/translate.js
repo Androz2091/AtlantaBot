@@ -25,7 +25,7 @@ class Translate extends Command {
         
 		if(args[0] === "langs-list"){
 			const langsList = "```Css\n"+(langs.map((l, i) => `#${i+1} - ${l}`).join("\n"))+"```";
-			message.author.send(langsList).then(() => {
+			interaction.user.send(langsList).then(() => {
 				interaction.reply({
 					content: translate("general/translate:LIST_SENT")
 				});

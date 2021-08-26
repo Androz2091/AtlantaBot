@@ -26,7 +26,7 @@ class Clearsanctions extends Command {
 				ephemeral: true
 			});
 		}
-		const memberData = await this.client.findOrCreateMember({ id: member.id, guildID: message.guild.id });
+		const memberData = await this.client.findOrCreateMember({ id: member.id, guildID: interaction.guild.id });
 		memberData.sanctions = [];
 		memberData.save();
 		message.success("moderation/clear-sanctions:SUCCESS", {

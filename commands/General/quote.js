@@ -35,7 +35,7 @@ class Quote extends Command {
         
 		const msgID = args[0];
 		if(isNaN(msgID)){
-			message.author.send(message.translate("general/quote:MISSING_ID")).then(() => {
+			interaction.user.send(translate("general/quote:MISSING_ID")).then(() => {
 				message.delete();
 			}).catch(() => {
 				interaction.reply({
@@ -50,7 +50,7 @@ class Quote extends Command {
 		if(args[1] && !channel){
 			channel = this.client.channels.cache.get(args[1]);
 			if(!channel){
-				message.author.send(message.translate("general/quote:NO_MESSAGE_ID")).then(() => {
+				interaction.user.send(translate("general/quote:NO_MESSAGE_ID")).then(() => {
 					message.delete();
 				}).catch(() => {
 					interaction.reply({
@@ -64,7 +64,7 @@ class Quote extends Command {
 
 		if(!channel){
 			message.channel.messages.fetch(msgID).catch(() => {
-				message.author.send((message.translate("general/quote:NO_MESSAGE_ID"))).then(() => {
+				interaction.user.send((translate("general/quote:NO_MESSAGE_ID"))).then(() => {
 					message.delete();
 				}).catch(() => {
 					interaction.reply({
@@ -79,7 +79,7 @@ class Quote extends Command {
 			});
 		} else {
 			channel.messages.fetch(msgID).catch(() => {
-				message.author.send(message.translate("general/quote:NO_MESSAGE_ID")).then(() => {
+				interaction.user.send(translate("general/quote:NO_MESSAGE_ID")).then(() => {
 					message.delete();
 				}).catch(() => {
 					interaction.reply({

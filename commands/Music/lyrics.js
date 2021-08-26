@@ -30,7 +30,7 @@ class Lyrics extends Command {
 		}
         
 		const embed = new Discord.MessageEmbed()
-			.setAuthor(message.translate("music/lyrics:LYRICS_OF", {
+			.setAuthor(translate("music/lyrics:LYRICS_OF", {
 				songName
 			}))
 			.setColor(data.config.embed.color)
@@ -46,7 +46,7 @@ class Lyrics extends Command {
 			let lyrics = await lyricsParse(songNameFormated, artistName) || "Not Found!";
 
 			if(lyrics.length > 2040) {
-				lyrics = lyrics.substr(0, 2000) + message.translate("music/lyrics:AND_MORE") + " ["+message.translate("music/lyrics:CLICK_HERE")+"]"+`https://www.musixmatch.com/search/${songName}`;
+				lyrics = lyrics.substr(0, 2000) + translate("music/lyrics:AND_MORE") + " ["+translate("music/lyrics:CLICK_HERE")+"]"+`https://www.musixmatch.com/search/${songName}`;
 			} else if(!lyrics.length) {
 				return message.error("music/lyrics:NO_LYRICS_FOUND", {
 					songName

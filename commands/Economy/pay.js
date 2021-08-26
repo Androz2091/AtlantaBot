@@ -32,7 +32,7 @@ class Pay extends Command {
 				ephemeral: true
 			});
 		}
-		if(member.id === message.author.id){
+		if(member.id === interaction.user.id){
 			return interaction.reply({
 				content: translate("economy/pay:YOURSELF"),
 				ephemeral: true
@@ -54,7 +54,7 @@ class Pay extends Command {
 			});
 		}
 
-		const memberData = await this.client.findOrCreateMember({ id: member.id, guildID: message.guild.id });
+		const memberData = await this.client.findOrCreateMember({ id: member.id, guildID: interaction.guild.id });
 
 		data.memberData.money = data.memberData.money - parseInt(amount, 10);
 		data.memberData.save();

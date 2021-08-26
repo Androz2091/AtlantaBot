@@ -37,7 +37,7 @@ class Checkinvites extends Command {
 
 		const text = (withInvite.length > 0 ?
 			withInvite.map((m) => "`"+m.id+"` ("+m.tag+") : "+m.links).join("\n")
-			:   message.translate("moderation/checkinvites:NOBODY"));
+			:   translate("moderation/checkinvites:NOBODY"));
 
 		const embed = new Discord.MessageEmbed()
 			.setDescription(text)

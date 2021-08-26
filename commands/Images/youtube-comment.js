@@ -26,7 +26,7 @@ class YouTubeComment extends Command {
 		if(user){
 			text = args.slice(1).join(" ");
 		} else {
-			user = message.author;
+			user = interaction.user;
 		}
 
 		if(!text){

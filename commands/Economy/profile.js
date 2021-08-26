@@ -40,8 +40,8 @@ class Profile extends Command {
 		}
 
 		// Gets the data of the user whose profile you want to display
-		const memberData = (member.id === message.author.id ? data.memberData : await client.findOrCreateMember({ id: member.id, guildID: message.guild.id}));
-		const userData = (member.id === message.author.id ? data.userData : await client.findOrCreateUser({ id: member.id }));
+		const memberData = (member.id === interaction.user.id ? data.memberData : await client.findOrCreateMember({ id: member.id, guildID: interaction.guild.id}));
+		const userData = (member.id === interaction.user.id ? data.userData : await client.findOrCreateUser({ id: member.id }));
 
 		// Check if the lover is cached 
 		if(userData.lover && !this.client.users.cache.get(userData.lover)){
@@ -57,30 +57,30 @@ class Profile extends Command {
 		});
 
 		const profileEmbed = new Discord.MessageEmbed()
-			.setAuthor(message.translate("economy/profile:TITLE", {
+			.setAuthor(translate("economy/profile:TITLE", {
 				username: member.user.tag
 			}), member.user.displayAvatarURL({ size: 512, dynamic: true, format: "png" }))
 			.attachFiles([{ attachment: await userData.getAchievements(), name: "achievements.png" }])
 			.setImage("attachment://achievements.png")
-			.setDescription(userData.bio ? userData.bio : message.translate("economy/profile:NO_BIO"))
-			.addField(message.translate("economy/profile:CASH"), message.translate("economy/profile:MONEY", {
+			.setDescription(userData.bio ? userData.bio : translate("economy/profile:NO_BIO"))
+			.addField(translate("economy/profile:CASH"), translate("economy/profile:MONEY", {
 				money: memberData.money
 			}), true)
-			.addField(message.translate("economy/profile:BANK"), message.translate("economy/profile:MONEY", {
+			.addField(translate("economy/profile:BANK"), translate("economy/profile:MONEY", {
 				money: memberData.bankSold
 			}), true)
-			.addField(message.translate("economy/profile:GLOBAL"), message.translate("economy/profile:MONEY", {
+			.addField(translate("economy/profile:GLOBAL"), translate("economy/profile:MONEY", {
 				money: globalMoney
 			}), true)
-			.addField(message.translate("economy/profile:REPUTATION"), message.translate("economy/profile:REP_POINTS", {
+			.addField(translate("economy/profile:REPUTATION"), translate("economy/profile:REP_POINTS", {
 				points: userData.rep
 			}), true)
-			.addField(message.translate("economy/profile:LEVEL"), `**${memberData.level}**`, true)
-			.addField(message.translate("economy/profile:EXP"), `**${memberData.exp}** xp`, true)
-			.addField(message.translate("economy/profile:REGISTERED"), message.printDate(new Date(memberData.registeredAt)), true)
-			.addField(message.translate("economy/profile:BIRTHDATE"), (!userData.birthdate ? message.translate("economy/profile:NO_BIRTHDATE"): message.printDate(new Date(userData.birthdate))), true)
-			.addField(message.translate("economy/profile:LOVER"), (!userData.lover ? message.translate("economy/profile:NO_LOVER") : this.client.users.cache.get(userData.lover).tag), true)
-			.addField(message.translate("economy/profile:ACHIEVEMENTS"), message.translate("economy/profile:ACHIEVEMENTS_CONTENT", {
+			.addField(translate("economy/profile:LEVEL"), `**${memberData.level}**`, true)
+			.addField(translate("economy/profile:EXP"), `**${memberData.exp}** xp`, true)
+			.addField(translate("economy/profile:REGISTERED"), message.printDate(new Date(memberData.registeredAt)), true)
+			.addField(translate("economy/profile:BIRTHDATE"), (!userData.birthdate ? translate("economy/profile:NO_BIRTHDATE"): message.printDate(new Date(userData.birthdate))), true)
+			.addField(translate("economy/profile:LOVER"), (!userData.lover ? translate("economy/profile:NO_LOVER") : this.client.users.cache.get(userData.lover).tag), true)
+			.addField(translate("economy/profile:ACHIEVEMENTS"), translate("economy/profile:ACHIEVEMENTS_CONTENT", {
 				prefix: data.guild.prefix
 			}))
 			.setColor(data.config.embed.color) // Sets the color of the embed

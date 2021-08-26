@@ -76,24 +76,24 @@ class Minecraft extends Command {
 		const imgAttachment = new Discord.MessageAttachment(await imgRes.buffer(), "success.png");
 
 		const mcEmbed = new Discord.MessageEmbed()
-			.setAuthor(message.translate("general/minecraft:FIELD_NAME", {
+			.setAuthor(translate("general/minecraft:FIELD_NAME", {
 				ip: json.name
 			}))
-			.addField(message.translate("general/minecraft:FIELD_VERSION"),
+			.addField(translate("general/minecraft:FIELD_VERSION"),
 				json.raw.vanilla.raw.version.name
 			)
-			.addField(message.translate("general/minecraft:FIELD_CONNECTED"),
-				message.translate("general/minecraft:PLAYERS", {
+			.addField(translate("general/minecraft:FIELD_CONNECTED"),
+				translate("general/minecraft:PLAYERS", {
 					count: (json.raw.players ? json.raw.players.online : json.players.length)
 				})
 			)
-			.addField(message.translate("general/minecraft:FIELD_MAX"),
-				message.translate("general/minecraft:PLAYERS", {
+			.addField(translate("general/minecraft:FIELD_MAX"),
+				translate("general/minecraft:PLAYERS", {
 					count: (json.raw.players ? json.raw.players.max : json.maxplayers)
 				})
 			)
-			.addField(message.translate("general/minecraft:FIELD_STATUS"), message.translate("general/minecraft:ONLINE"))
-			.addField(message.translate("general/minecraft:FIELD_IP"), json.connect)
+			.addField(translate("general/minecraft:FIELD_STATUS"), translate("general/minecraft:ONLINE"))
+			.addField(translate("general/minecraft:FIELD_IP"), json.connect)
 			.setColor(data.config.embed.color)
 			.setThumbnail(favicon)
 			.setFooter(data.config.embed.footer);

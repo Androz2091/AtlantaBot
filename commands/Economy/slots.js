@@ -81,13 +81,13 @@ class Slots extends Command {
 			msg += colonnes[0][i3] + " : " + colonnes[1][j3] + " : "+ colonnes[2][k3] + "\n------------------\n";
             
 			if((colonnes[0][i2] == colonnes[1][j2]) && (colonnes[1][j2] == colonnes[2][k2])){
-				msg += "| : : :  **"+(message.translate("common:VICTORY").toUpperCase())+"**  : : : |";
+				msg += "| : : :  **"+(translate("common:VICTORY").toUpperCase())+"**  : : : |";
 				tmsg.edit(msg);
 				const credits = getCredits(amount, true);
-				message.channel.send("**!! JACKPOT !!**\n"+message.translate("economy/slots:VICTORY", {
+				message.channel.send("**!! JACKPOT !!**\n"+translate("economy/slots:VICTORY", {
 					money: amount,
 					won: credits,
-					username: message.author.username
+					username: interaction.user.username
 				}));
 				const toAdd = credits - amount;
 				data.memberData.money = data.memberData.money + toAdd;
@@ -105,13 +105,13 @@ class Slots extends Command {
 			}
             
 			if(colonnes[0][i2] == colonnes[1][j2] || colonnes[1][j2] == colonnes[2][k2] || colonnes[0][i2] == colonnes[2][k2]){
-				msg += "| : : :  **"+(message.translate("common:VICTORY").toUpperCase())+"**  : : : |";
+				msg += "| : : :  **"+(translate("common:VICTORY").toUpperCase())+"**  : : : |";
 				tmsg.edit(msg);
 				const credits = getCredits(amount, false);
-				message.channel.send(message.translate("economy/slots:VICTORY", {
+				message.channel.send(translate("economy/slots:VICTORY", {
 					money: amount,
 					won: credits,
-					username: message.author.username
+					username: interaction.user.username
 				}));
 				const toAdd = credits - amount;
 				data.memberData.money = data.memberData.money + toAdd;
@@ -128,10 +128,10 @@ class Slots extends Command {
 				return;
 			}
             
-			msg += "| : : :  **"+(message.translate("common:DEFEAT").toUpperCase())+"**  : : : |";
-			message.channel.send(message.translate("economy/slots:DEFEAT", {
+			msg += "| : : :  **"+(translate("common:DEFEAT").toUpperCase())+"**  : : : |";
+			message.channel.send(translate("economy/slots:DEFEAT", {
 				money: amount,
-				username: message.author.username
+				username: interaction.user.username
 			}));
 			data.memberData.money = data.memberData.money - amount;
 			if(!data.userData.achievements.slots.achieved){

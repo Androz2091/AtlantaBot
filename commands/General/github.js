@@ -26,11 +26,11 @@ class Github extends Command {
 
 		const embed = new Discord.MessageEmbed()
 			.setAuthor(this.client.user.tag, this.client.user.displayAvatarURL({ size: 512, dynamic: true, format: "png" }))
-			.setDescription("["+message.translate("general/github:CLICK_HERE")+"](https://github.com/Androz2091/AtlantaBot)")
+			.setDescription("["+translate("general/github:CLICK_HERE")+"](https://github.com/Androz2091/AtlantaBot)")
 			.addField("Stars", json.stargazers_count, true)
 			.addField("Forks", json.forks_count, true)
-			.addField(message.translate("general/github:LANGUAGE"), json.language, true)
-			.addField(message.translate("general/github:OWNER"), "["+json.owner.login+"]("+json.owner.html_url+")")
+			.addField(translate("general/github:LANGUAGE"), json.language, true)
+			.addField(translate("general/github:OWNER"), "["+json.owner.login+"]("+json.owner.html_url+")")
 			.setImage(json.owner.avatar_url)
 			.setColor(data.config.embed.color)
 			.setFooter(data.config.embed.footer);

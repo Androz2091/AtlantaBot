@@ -42,14 +42,14 @@ class Np extends Command {
 
 		// Generate discord embed to display song informations
 		const embed = new Discord.MessageEmbed()
-			.setAuthor(message.translate("music/np:CURRENTLY_PLAYING"))
+			.setAuthor(translate("music/np:CURRENTLY_PLAYING"))
 			.setThumbnail(track.thumbnail)
-			.addField(message.translate("music/np:T_TITLE"), track.title, true)
-			.addField(message.translate("music/np:T_CHANNEL"), track.author, true)
-			.addField(message.translate("music/np:T_DURATION"), message.convertTime(Date.now()+track.durationMS, "to", true), true)
-			.addField(message.translate("music/np:T_DESCRIPTION"),
+			.addField(translate("music/np:T_TITLE"), track.title, true)
+			.addField(translate("music/np:T_CHANNEL"), track.author, true)
+			.addField(translate("music/np:T_DURATION"), message.convertTime(Date.now()+track.durationMS, "to", true), true)
+			.addField(translate("music/np:T_DESCRIPTION"),
 				track.description ?
-					(track.description.substring(0, 150)+"\n"+(message.translate("common:AND_MORE").toLowerCase())) : message.translate("music/np:NO_DESCRIPTION"), true)
+					(track.description.substring(0, 150)+"\n"+(translate("common:AND_MORE").toLowerCase())) : translate("music/np:NO_DESCRIPTION"), true)
 			.addField("\u200B", this.client.player.createProgressBar(message, { timecodes: true }))
 			.setTimestamp()
 			.setColor(data.config.embed.color)

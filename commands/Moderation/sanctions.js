@@ -27,7 +27,7 @@ class Sanctions extends Command {
 				ephemeral: true
 			});
 		}
-		const memberData = await this.client.findOrCreateMember({ id: user.id, guildID: message.guild.id });
+		const memberData = await this.client.findOrCreateMember({ id: user.id, guildID: interaction.guild.id });
 
 		const embed = new Discord.MessageEmbed()
 			.setAuthor(user.tag, user.displayAvatarURL({ size: 512, dynamic: true, format: "png" }))
@@ -35,13 +35,13 @@ class Sanctions extends Command {
 			.setFooter(data.config.embed.footer);
 
 		if(memberData.sanctions.length < 1){
-			embed.setDescription(message.translate("moderation/sanctions:NO_SANCTION", {
+			embed.setDescription(translate("moderation/sanctions:NO_SANCTION", {
 				username: user.tag
 			}));
 			return message.channel.send({ embeds: [embed] });
 		} else {
 			memberData.sanctions.forEach((s) => {
-				embed.addField(s.type+" | #"+s.case, `${message.translate("common:MODERATOR")}: <@${s.moderator}>\n${message.translate("common:REASON")}: ${s.reason}`, true);
+				embed.addField(s.type+" | #"+s.case, `${translate("common:MODERATOR")}: <@${s.moderator}>\n${translate("common:REASON")}: ${s.reason}`, true);
 			});
 		}
 

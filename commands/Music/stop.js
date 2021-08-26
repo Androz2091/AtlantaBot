@@ -40,7 +40,7 @@ class Stop extends Command {
 		const members = voice.members.filter((m) => !m.user.bot);
 
 		const embed = new Discord.MessageEmbed()
-			.setAuthor(message.translate("music/stop:DESCRIPTION"))
+			.setAuthor(translate("music/stop:DESCRIPTION"))
 			.setFooter(data.config.embed.footer)
 			.setColor(data.config.embed.color);
 
@@ -52,7 +52,7 @@ class Stop extends Command {
 
 			const mustVote = Math.floor(members.size/2+1);
 
-			embed.setDescription(message.translate("music/stop:VOTE_CONTENT", {
+			embed.setDescription(translate("music/stop:VOTE_CONTENT", {
 				voteCount: 0,
 				requiredCount: mustVote
 			}));
@@ -74,11 +74,11 @@ class Stop extends Command {
 				const haveVoted = reaction.count-1;
 				if(haveVoted >= mustVote){
 					this.client.player.stop(message);
-					embed.setDescription(message.translate("music/stop:SUCCESS"));
+					embed.setDescription(translate("music/stop:SUCCESS"));
 					m.edit({ embeds: [embed] });
 					collector.stop(true);
 				} else {
-					embed.setDescription(message.translate("music/stop:VOTE_CONTENT", {
+					embed.setDescription(translate("music/stop:VOTE_CONTENT", {
 						voteCount: haveVoted,
 						requiredCount: mustVote
 					}));
@@ -97,7 +97,7 @@ class Stop extends Command {
 
 		} else {
 			this.client.player.stop(message);
-			embed.setDescription(message.translate("music/stop:SUCCESS"));
+			embed.setDescription(translate("music/stop:SUCCESS"));
 			m.edit({ embeds: [embed] });
 		}
         

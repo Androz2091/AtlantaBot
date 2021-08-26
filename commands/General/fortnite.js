@@ -52,18 +52,18 @@ class Fortnite extends Command {
 			.setToken(data.config.apiKeys.fortniteTRN)
 			.setUser(user)
 			.setPlatform(platform)
-			.setText("averageKills", message.translate("general/fortnite:AVERAGE_KILLS"))
-			.setText("averageKill", message.translate("general/fortnite:AVERAGE_KILL"))
-			.setText("wPercent", message.translate("general/fortnite:W_PERCENT"))
-			.setText("winPercent", message.translate("general/fortnite:WIN_PERCENT"))
-			.setText("kD", message.translate("general/fortnite:KD"))
-			.setText("wins", message.translate("general/fortnite:WINS"))
-			.setText("win", message.translate("general/fortnite:WIN"))
-			.setText("kills", message.translate("general/fortnite:KILLS"))
-			.setText("kill", message.translate("general/fortnite:KILL"))
-			.setText("matches", message.translate("general/fortnite:MATCHES"))
-			.setText("match", message.translate("general/fortnite:MATCH"))
-			.setText("footer", message.translate("general/fortnite:FOOTER"))
+			.setText("averageKills", translate("general/fortnite:AVERAGE_KILLS"))
+			.setText("averageKill", translate("general/fortnite:AVERAGE_KILL"))
+			.setText("wPercent", translate("general/fortnite:W_PERCENT"))
+			.setText("winPercent", translate("general/fortnite:WIN_PERCENT"))
+			.setText("kD", translate("general/fortnite:KD"))
+			.setText("wins", translate("general/fortnite:WINS"))
+			.setText("win", translate("general/fortnite:WIN"))
+			.setText("kills", translate("general/fortnite:KILLS"))
+			.setText("kill", translate("general/fortnite:KILL"))
+			.setText("matches", translate("general/fortnite:MATCHES"))
+			.setText("match", translate("general/fortnite:MATCH"))
+			.setText("footer", translate("general/fortnite:FOOTER"))
 			.toAttachment();
         
 		if(!statsImage){
@@ -77,7 +77,7 @@ class Fortnite extends Command {
 		// Send embed
 		const attachment = new Discord.MessageAttachment(statsImage.toBuffer(), "fortnite-stats-image.png"),
 			embed = new Discord.MessageEmbed()
-				.setDescription(message.translate("general/fortnite:TITLE", {
+				.setDescription(translate("general/fortnite:TITLE", {
 					username: `[${stats.data.username}](${stats.data.url.replace(new RegExp(" ", "g"), "%20")})`
 				}))
 				.attachFiles(attachment)

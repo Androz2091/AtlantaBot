@@ -29,13 +29,13 @@ class Invite extends Command {
 		}
         
 		const embed = new Discord.MessageEmbed()
-			.setAuthor(message.translate("general/invite:LINKS"))
-			.setDescription(message.translate("general/invite:TIP", {
+			.setAuthor(translate("general/invite:LINKS"))
+			.setDescription(translate("general/invite:TIP", {
 				prefix: data.guild.prefix
 			}))
-			.addField(message.translate("general/invite:ADD"), inviteLink)
-			.addField(message.translate("general/invite:VOTE"), voteURL)
-			.addField(message.translate("general/invite:SUPPORT"), supportURL)
+			.addField(translate("general/invite:ADD"), inviteLink)
+			.addField(translate("general/invite:VOTE"), voteURL)
+			.addField(translate("general/invite:SUPPORT"), supportURL)
 			.setColor(data.config.embed.color)
 			.setFooter(data.config.embed.footer);
         

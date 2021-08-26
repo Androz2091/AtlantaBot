@@ -30,7 +30,7 @@ class Report extends Command {
 			return message.error("general/report:MISSING_USER");
 		}
 
-		if(member.id === message.author.id){
+		if(member.id === interaction.user.id){
 			return message.error("general/report:INVALID_USER");
 		}
 
@@ -40,13 +40,13 @@ class Report extends Command {
 		}
 
 		const embed = new Discord.MessageEmbed()
-			.setAuthor(message.translate("general/report:TITLE", {
+			.setAuthor(translate("general/report:TITLE", {
 				user: member.user.tag
-			}), message.author.displayAvatarURL({ size: 512, dynamic: true, format: "png" }))
-			.addField(message.translate("common:AUTHOR"), message.author.tag, true)
-			.addField(message.translate("common:DATE"), message.printDate(new Date(Date.now())), true)
-			.addField(message.translate("common:REASON"), "**"+rep+"**", true)
-			.addField(message.translate("common:USER"), `\`${member.user.tag}\` (${member.user.toString()})`, true)
+			}), interaction.user.displayAvatarURL({ size: 512, dynamic: true, format: "png" }))
+			.addField(translate("common:AUTHOR"), interaction.user.tag, true)
+			.addField(translate("common:DATE"), message.printDate(new Date(Date.now())), true)
+			.addField(translate("common:REASON"), "**"+rep+"**", true)
+			.addField(translate("common:USER"), `\`${member.user.tag}\` (${member.user.toString()})`, true)
 			.setColor(data.config.embed.color)
 			.setFooter(data.config.embed.footer);
 

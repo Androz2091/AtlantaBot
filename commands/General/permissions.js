@@ -20,7 +20,7 @@ class Permissions extends Command {
  
 	async run (message) {
 		const member = message.mentions.members.first() || message.member;
-		let text = "```\n"+message.translate("general/permissions:TITLE", {
+		let text = "```\n"+translate("general/permissions:TITLE", {
 			user: member.user.username,
 			channel: message.channel.name
 		})+"\n\n";

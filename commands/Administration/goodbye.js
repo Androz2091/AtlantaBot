@@ -60,10 +60,10 @@ class Goodbye extends Command {
 			};
 
 			message.sendT("administration/goodbye:FORM_1", {
-				author: message.author.toString()
+				author: interaction.user.toString()
 			});
 			const collector = message.channel.createMessageCollector(
-				m => m.author.id === message.author.id,
+				m => m.author.id === interaction.user.id,
 				{
 					time: 120000 // 2 minutes
 				}
@@ -74,12 +74,12 @@ class Goodbye extends Command {
 				if (goodbye.message) {
 					if (
 						msg.content.toLowerCase() ===
-                        message.translate("common:YES").toLowerCase()
+                        translate("common:YES").toLowerCase()
 					) {
 						goodbye.withImage = true;
 					} else if (
 						msg.content.toLowerCase() ===
-                        message.translate("common:NO").toLowerCase()
+                        translate("common:NO").toLowerCase()
 					) {
 						goodbye.withImage = false;
 					} else {

@@ -60,10 +60,10 @@ class Welcome extends Command {
 			};
 
 			message.sendT("administration/welcome:FORM_1", {
-				author: message.author.toString()
+				author: interaction.user.toString()
 			});
 			const collector = message.channel.createMessageCollector(
-				m => m.author.id === message.author.id,
+				m => m.author.id === interaction.user.id,
 				{
 					time: 120000 // 2 minutes
 				}
@@ -74,12 +74,12 @@ class Welcome extends Command {
 				if (welcome.message) {
 					if (
 						msg.content.toLowerCase() ===
-                        message.translate("common:YES").toLowerCase()
+                        translate("common:YES").toLowerCase()
 					) {
 						welcome.withImage = true;
 					} else if (
 						msg.content.toLowerCase() ===
-                        message.translate("common:NO").toLowerCase()
+                        translate("common:NO").toLowerCase()
 					) {
 						welcome.withImage = false;
 					} else {

@@ -30,7 +30,7 @@ class Fml extends Command {
 
 		const embed = new Discord.MessageEmbed()
 			.setDescription(fml.content)
-			.setFooter(message.translate("fun/fml:FOOTER"))
+			.setFooter(translate("fun/fml:FOOTER"))
 			.setColor(this.client.config.embed.color);
 
 		message.channel.send({ embeds: [embed] });

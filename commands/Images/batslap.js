@@ -20,8 +20,8 @@ class BatSlap extends Command {
 	async run (interaction, translate) {
 
 		const users = [
-			await this.client.resolveUser(args[0]) || message.author,
-			await this.client.resolveUser(args[1]) || message.author
+			await this.client.resolveUser(args[0]) || interaction.user,
+			await this.client.resolveUser(args[1]) || interaction.user
 		];
 		const m = await message.sendT("misc:PLEASE_WAIT", null, {
 			prefixEmoji: "loading"

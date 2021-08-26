@@ -22,7 +22,7 @@ class Number extends Command {
 
 	async run (message) {
 
-		if (currentGames[message.guild.id]) {
+		if (currentGames[interaction.guild.id]) {
 			return interaction.reply({
 				content: translate("fun/number:GAME_RUNNING"),
 				ephemeral: true
@@ -46,7 +46,7 @@ class Number extends Command {
 				time: 480000 // 8 minutes
 			}
 		);
-		currentGames[message.guild.id] = true;
+		currentGames[interaction.guild.id] = true;
 
 		collector.on("collect", async msg => {
 			if (!participants.includes(msg.author.id)) {
@@ -72,7 +72,7 @@ class Number extends Command {
 				message.sendT("fun/number:WON", {
 					winner: msg.author.toString()
 				});
-				const userdata = await this.client.findOrCreateMember({ id: msg.author.id, guildID: message.guild.id });
+				const userdata = await this.client.findOrCreateMember({ id: msg.author.id, guildID: interaction.guild.id });
 				userdata.money = userdata.money + 10;
 				userdata.save();
 				collector.stop(msg.author.username);
@@ -92,7 +92,7 @@ class Number extends Command {
 		});
 
 		collector.on("end", (_collected, reason) => {
-			delete currentGames[message.guild.id];
+			delete currentGames[interaction.guild.id];
 			if (reason === "time") {
 				return interaction.reply({
 					content: translate("fun/number:DEFEAT", { number }),

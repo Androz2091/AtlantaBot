@@ -20,7 +20,7 @@ class Avatar extends Command {
 	async run (interaction, translate) {
 
 		let user = await this.client.resolveUser(args[0]);
-		if(!user) user = message.author;
+		if(!user) user = interaction.user;
 		const avatarURL = user.displayAvatarURL({ size: 512, dynamic: true, format: "png" });
 		if(message.content.includes("-v")) message.channel.send("<"+avatarURL+">");
 		const attachment = new Discord.MessageAttachment(avatarURL, `avatar.${avatarURL.split(".").pop().split("?")[0]}`);

@@ -22,7 +22,7 @@ class FindWords extends Command {
 
 	async run (interaction, translate, data) {
 
-		if (currentGames[message.guild.id]) {
+		if (currentGames[interaction.guild.id]) {
 			return interaction.reply({
 				content: translate("fun/number:GAME_RUNNING"),
 				ephemeral: true
@@ -46,7 +46,7 @@ class FindWords extends Command {
 		}
 
 		let i = 0; // Inits i variable to count games
-		currentGames[message.guild.id] = true; // Update current game variable
+		currentGames[interaction.guild.id] = true; // Update current game variable
 		generateGame.call(this, words[i]); // Generate a new round
     
 		function generateGame(word){
@@ -101,7 +101,7 @@ class FindWords extends Command {
 						i++;
 						generateGame.call(this, words[i]);
 					} else {
-						currentGames[message.guild.id] = false;
+						currentGames[interaction.guild.id] = false;
 						if(winners.length < 1){
 							return interaction.reply({
 								content: translate("fun/findwords:NO_WINNER_ALL"),
@@ -121,7 +121,7 @@ class FindWords extends Command {
 							message.sendT("fun/findwords:CREDITS", {
 								winner: user.username
 							});
-							const userdata = await this.client.findOrCreateMember({ id: user.id, guildID: message.guild.id });
+							const userdata = await this.client.findOrCreateMember({ id: user.id, guildID: interaction.guild.id });
 							userdata.money = userdata.money + 15;
 							userdata.save();
 						}

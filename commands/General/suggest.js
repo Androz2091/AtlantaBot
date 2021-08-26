@@ -31,12 +31,12 @@ class Suggest extends Command {
 		}
 
 		const embed = new Discord.MessageEmbed()
-			.setAuthor(message.translate("general/suggest:TITLE", {
-				user: message.author.username
-			}), message.author.displayAvatarURL({ size: 512, dynamic: true, format: "png" }))
-			.addField(message.translate("common:AUTHOR"), `\`${message.author.username}#${message.author.discriminator}\``, true)
-			.addField(message.translate("common:DATE"), message.printDate(new Date(Date.now())), true)
-			.addField(message.translate("common:CONTENT"), "**"+sugg+"**")
+			.setAuthor(translate("general/suggest:TITLE", {
+				user: interaction.user.username
+			}), interaction.user.displayAvatarURL({ size: 512, dynamic: true, format: "png" }))
+			.addField(translate("common:AUTHOR"), `\`${interaction.user.username}#${interaction.user.discriminator}\``, true)
+			.addField(translate("common:DATE"), message.printDate(new Date(Date.now())), true)
+			.addField(translate("common:CONTENT"), "**"+sugg+"**")
 			.setColor(data.config.embed.color)
 			.setFooter(data.config.embed.footer);
 

@@ -28,24 +28,24 @@ class Kick extends Command {
 			});
 		}
 
-		if(member.id === message.author.id){
+		if(member.id === interaction.user.id){
 			return interaction.reply({
 				content: translate("moderation/ban:YOURSELF"),
 				ephemeral: true
 			});
 		}
         
-		const memberData = await this.client.findOrCreateMember({ id: member.id, guildID: message.guild.id });
+		const memberData = await this.client.findOrCreateMember({ id: member.id, guildID: interaction.guild.id });
         
 		// Gets the kcik reason
 		let reason = args.slice(1).join(" ");
 		if(!reason){
-			reason = message.translate("misc:NO_REASON_PROVIDED");
+			reason = translate("misc:NO_REASON_PROVIDED");
 		}
         
 		const memberPosition = member.roles.highest.position;
 		const moderationPosition = message.member.roles.highest.position;
-		if(message.member.ownerID !== message.author.id && !(moderationPosition > memberPosition)){
+		if(message.member.ownerID !== interaction.user.id && !(moderationPosition > memberPosition)){
 			return interaction.reply({
 				content: translate("moderation/ban:SUPERIOR"),
 				ephemeral: true
@@ -59,10 +59,10 @@ class Kick extends Command {
 			});
 		}
 
-		await member.send(message.translate("moderation/kick:KICKED_DM", {
+		await member.send(translate("moderation/kick:KICKED_DM", {
 			username: member.user.tag,
 			server: message.guild.name,
-			moderator: message.author.tag,
+			moderator: interaction.user.tag,
 			reason
 		})).catch(() => {});
 
@@ -73,7 +73,7 @@ class Kick extends Command {
 			message.sendT("moderation/kick:KICKED", {
 				username: member.user.tag,
 				server: message.guild.name,
-				moderator: message.author.tag,
+				moderator: interaction.user.tag,
 				reason
 			});
 
@@ -82,7 +82,7 @@ class Kick extends Command {
 
 			const caseInfo = {
 				channel: message.channel.id,
-				moderator: message.author.id,
+				moderator: interaction.user.id,
 				date: Date.now(),
 				type: "kick",
 				case: data.guild.casesCount,
@@ -96,12 +96,12 @@ class Kick extends Command {
 				const channel = message.guild.channels.cache.get(data.guild.plugins.modlogs);
 				if(!channel) return;
 				const embed = new Discord.MessageEmbed()
-					.setAuthor(message.translate("moderation/kick:CASE", {
+					.setAuthor(translate("moderation/kick:CASE", {
 						count: data.guild.casesCount
 					}))
-					.addField(message.translate("common:USER"), `\`${member.user.tag}\` (${member.user.toString()})`, true)
-					.addField(message.translate("common:MODERATOR"), `\`${message.author.tag}\` (${message.author.toString()})`, true)
-					.addField(message.translate("common:REASON"), reason, true)
+					.addField(translate("common:USER"), `\`${member.user.tag}\` (${member.user.toString()})`, true)
+					.addField(translate("common:MODERATOR"), `\`${interaction.user.tag}\` (${interaction.user.toString()})`, true)
+					.addField(translate("common:REASON"), reason, true)
 					.setColor("#e88709");
 				channel.send({ embeds: [embed] });
 			}

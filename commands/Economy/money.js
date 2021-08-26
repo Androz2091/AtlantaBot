@@ -34,7 +34,7 @@ class Credits extends Command {
 			return message.error("misc:BOT_USER");
 		}
 
-		const memberData = (message.author === user) ? data.memberData : await this.client.findOrCreateMember({ id: user.id, guildID: message.guild.id }); 
+		const memberData = (interaction.user === user) ? data.memberData : await this.client.findOrCreateMember({ id: user.id, guildID: interaction.guild.id }); 
 
 		const commonsGuilds = this.client.guilds.cache.filter((g) => g.members.cache.get(user.id));
 		let globalMoney = 0;
@@ -45,16 +45,16 @@ class Credits extends Command {
 		});
 
 		const embed = new Discord.MessageEmbed()
-			.setAuthor(message.translate("economy/money:TITLE", {
+			.setAuthor(translate("economy/money:TITLE", {
 				username: member.user.username
 			}), member.user.displayAvatarURL({ size: 512, dynamic: true, format: "png" }))
-			.addField(message.translate("economy/profile:CASH"), message.translate("economy/profile:MONEY", {
+			.addField(translate("economy/profile:CASH"), translate("economy/profile:MONEY", {
 				money: memberData.money
 			}), true)
-			.addField(message.translate("economy/profile:BANK"), message.translate("economy/profile:MONEY", {
+			.addField(translate("economy/profile:BANK"), translate("economy/profile:MONEY", {
 				money: memberData.bankSold
 			}), true)
-			.addField(message.translate("economy/profile:GLOBAL"), message.translate("economy/profile:MONEY", {
+			.addField(translate("economy/profile:GLOBAL"), translate("economy/profile:MONEY", {
 				money: globalMoney
 			}), true)
 			.setColor(this.client.config.embed.color)

@@ -23,7 +23,7 @@ class Clear extends Command {
 			interaction.reply({
 				content: translate("moderation/clear:ALL_CONFIRM")
 			});
-			await message.channel.awaitMessages((m) => (m.author.id === message.author.id) && (m.content === "-confirm"), {
+			await message.channel.awaitMessages((m) => (m.author.id === interaction.user.id) && (m.content === "-confirm"), {
 				max: 1,
 				time: 20000,
 				errors: ["time"]
@@ -37,7 +37,7 @@ class Clear extends Command {
 			const newChannel = await message.channel.clone();
 			await message.channel.delete();
 			newChannel.setPosition(position);
-			return newChannel.send(message.translate("moderation/clear:CHANNEL_CLEARED"));
+			return newChannel.send(translate("moderation/clear:CHANNEL_CLEARED"));
 		}
 
 		let amount = args[0];

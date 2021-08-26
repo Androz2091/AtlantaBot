@@ -20,7 +20,7 @@ class Tweet extends Command {
 
 	async run (interaction, translate) {
 
-		const user = message.mentions.users.first() || message.author;
+		const user = message.mentions.users.first() || interaction.user;
 		const text = args.slice(1).join(" ");
 
 		if(!user){

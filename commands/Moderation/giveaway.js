@@ -29,7 +29,7 @@ class Giveaway extends Command {
 		}
 
 		if(status === "create"){
-			const currentGiveaways = this.client.giveawaysManager.giveaways.filter((g) => g.guildID === message.guild.id && !g.ended).length;
+			const currentGiveaways = this.client.giveawaysManager.giveaways.filter((g) => g.guildID === interaction.guild.id && !g.ended).length;
 			if(currentGiveaways > 3){
 				return interaction.reply({
 					content: translate("moderation/giveaway:MAX_COUNT"),
@@ -77,20 +77,20 @@ class Giveaway extends Command {
 				prize: prize,
 				winnerCount: parseInt(winnersCount, 10),
 				messages: {
-					giveaway: message.translate("moderation/giveaway:TITLE"),
-					giveawayEnded: message.translate("moderation/giveaway:ENDED"),
-					timeRemaining: message.translate("moderation/giveaway:TIME_REMAINING"),
-					inviteToParticipate: message.translate("moderation/giveaway:INVITE_PARTICIPATE"),
-					winMessage: message.translate("moderation/giveaway:WIN_MESSAGE"),
-					embedFooter: message.translate("moderation/giveaway:FOOTER"),
-					noWinner: message.translate("moderation/giveaway:NO_WINNER"),
-					winners: message.translate("moderation/giveaway:WINNERS"),
-					endedAt: message.translate("moderation/giveaway:END_AT"),
+					giveaway: translate("moderation/giveaway:TITLE"),
+					giveawayEnded: translate("moderation/giveaway:ENDED"),
+					timeRemaining: translate("moderation/giveaway:TIME_REMAINING"),
+					inviteToParticipate: translate("moderation/giveaway:INVITE_PARTICIPATE"),
+					winMessage: translate("moderation/giveaway:WIN_MESSAGE"),
+					embedFooter: translate("moderation/giveaway:FOOTER"),
+					noWinner: translate("moderation/giveaway:NO_WINNER"),
+					winners: translate("moderation/giveaway:WINNERS"),
+					endedAt: translate("moderation/giveaway:END_AT"),
 					units: {
-						seconds: message.translate("time:SECONDS", { amount: "" }).trim(),
-						minutes: message.translate("time:MINUTES", { amount: "" }).trim(),
-						hours: message.translate("time:HOURS", { amount: "" }).trim(),
-						days: message.translate("time:DAYS", { amount: "" }).trim()
+						seconds: translate("time:SECONDS", { amount: "" }).trim(),
+						minutes: translate("time:MINUTES", { amount: "" }).trim(),
+						hours: translate("time:HOURS", { amount: "" }).trim(),
+						days: translate("time:DAYS", { amount: "" }).trim()
 					}	
 				}
 			}).then(() => {
@@ -107,8 +107,8 @@ class Giveaway extends Command {
 				});
 			}
 			this.client.giveawaysManager.reroll(messageID, {
-				congrat: message.translate("moderation/giveaway:REROLL_CONGRAT"),
-				error: message.translate("moderation/giveaway:REROLL_ERROR")
+				congrat: translate("moderation/giveaway:REROLL_CONGRAT"),
+				error: translate("moderation/giveaway:REROLL_ERROR")
 			}).then(() => {
 				return interaction.reply({
 					content: translate("moderation/giveaway:GIVEAWAY_REROLLED")

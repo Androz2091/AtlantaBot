@@ -27,14 +27,14 @@ class Rob extends Command {
 			});
 		}
 
-		if(member.id === message.author.id){
+		if(member.id === interaction.user.id){
 			return interaction.reply({
 				content: translate("economy/rob:YOURSELF"),
 				ephemeral: true
 			});
 		}
 
-		const memberData = await this.client.findOrCreateMember({ id: member.id, guildID: message.guild.id });
+		const memberData = await this.client.findOrCreateMember({ id: member.id, guildID: interaction.guild.id });
 		const isInCooldown = memberData.cooldowns.rob || 0;
 		if(isInCooldown){
 			if(isInCooldown > Date.now()){

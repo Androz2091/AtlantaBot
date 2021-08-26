@@ -46,7 +46,7 @@ class Invitations extends Command {
 		}
 
 		const content = memberInvites.map((i) => {
-			return message.translate("general/invitations:CODE", {
+			return translate("general/invitations:CODE", {
 				uses: i.uses,
 				code: i.code,
 				channel: i.channel.toString()
@@ -58,15 +58,15 @@ class Invitations extends Command {
 		const embed = new Discord.MessageEmbed()
 			.setColor(data.config.embed.color)
 			.setFooter(data.config.embed.footer)
-			.setAuthor(message.translate("general/invitations:TRACKER"))
-			.setDescription(message.translate("general/invitations:TITLE", {
+			.setAuthor(translate("general/invitations:TRACKER"))
+			.setDescription(translate("general/invitations:TITLE", {
 				member: member.user.tag,
 				guild: message.guild.name
 			}))
-			.addField(message.translate("general/invitations:FIELD_INVITED"), message.translate("general/invitations:FIELD_MEMBERS", {
+			.addField(translate("general/invitations:FIELD_INVITED"), translate("general/invitations:FIELD_MEMBERS", {
 				total: index
 			}))
-			.addField(message.translate("general/invitations:FIELD_CODES"), content);
+			.addField(translate("general/invitations:FIELD_CODES"), content);
 
 		message.channel.send({ embeds: [embed] });
 	}

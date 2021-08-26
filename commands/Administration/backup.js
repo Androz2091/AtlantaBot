@@ -39,7 +39,7 @@ class Backup extends Command {
 				interaction.reply({
 					content: translate("administration/backup:SUCCESS_PUBLIC")
 				});
-				message.author.send(message.translate("administration/backup:SUCCESS_PRIVATE", {
+				interaction.user.send(translate("administration/backup:SUCCESS_PRIVATE", {
 					backupID: backup.id
 				})).catch(() => {
 					backup.remove(backup.id);
@@ -67,7 +67,7 @@ class Backup extends Command {
 				interaction.reply({
 					content: translate("administration/backup:CONFIRMATION")
 				});
-				await message.channel.awaitMessages(m => (m.author.id === message.author.id) && (m.content === "-confirm"), {
+				await message.channel.awaitMessages(m => (m.author.id === interaction.user.id) && (m.content === "-confirm"), {
 					max: 1,
 					time: 20000,
 					errors: ["time"]
@@ -79,12 +79,12 @@ class Backup extends Command {
 					});
 				});
 				// When the author of the command has confirmed that he wants to load the backup on his server
-				message.author.send(message.translate("administration/backup:START_LOADING"));
+				interaction.user.send(translate("administration/backup:START_LOADING"));
 				// Load the backup
 				backup.load(backupID, message.guild).then(() => {
 					// When the backup is loaded, delete them from the server
 					backup.remove(backupID);
-					message.author.send(message.translate("administration/backup:LOAD_SUCCESS"));
+					interaction.user.send(translate("administration/backup:LOAD_SUCCESS"));
 				}).catch((err) => {
 					Sentry.captureException(err);
 					// If an error occurenced
@@ -109,15 +109,15 @@ class Backup extends Command {
 			}
 			backup.fetch(backupID).then(async (backupInfos) => {
 				const embed = new Discord.MessageEmbed()
-					.setAuthor(message.translate("administration/backup:TITLE_INFOS"))
+					.setAuthor(translate("administration/backup:TITLE_INFOS"))
 					// Display the backup ID
-					.addField(message.translate("administration/backup:TITLE_ID"), backupInfos.id, true)
+					.addField(translate("administration/backup:TITLE_ID"), backupInfos.id, true)
 					// Displays the server from which this backup comes
-					.addField(message.translate("administration/backup:TITLE_SERVER_ID"), backupInfos.data.guildID, true)
+					.addField(translate("administration/backup:TITLE_SERVER_ID"), backupInfos.data.guildID, true)
 					// Display the size (in mb) of the backup
-					.addField(message.translate("administration/backup:TITLE_SIZE"), backupInfos.size+" mb", true)
+					.addField(translate("administration/backup:TITLE_SIZE"), backupInfos.size+" mb", true)
 					// Display when the backup was created
-					.addField(message.translate("administration/backup:TITLE_CREATED_AT"), message.printDate(new Date(backupInfos.data.createdTimestamp)), true)
+					.addField(translate("administration/backup:TITLE_CREATED_AT"), message.printDate(new Date(backupInfos.data.createdTimestamp)), true)
 					.setColor(data.config.embed.color)
 					.setFooter(data.config.embed.footer);
 				message.channel.send({ embeds: [embed] });

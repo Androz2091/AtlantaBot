@@ -46,7 +46,7 @@ class Hastebin extends Command {
 			const url = "https://hastebin.com/"+json.key+".js";
 
 			const embed = new Discord.MessageEmbed()
-				.setAuthor(message.translate("general/hastebin:SUCCESS"))
+				.setAuthor(translate("general/hastebin:SUCCESS"))
 				.setDescription(url)
 				.setColor(data.config.embed.color);
 			message.channel.send({ embeds: [embed] });

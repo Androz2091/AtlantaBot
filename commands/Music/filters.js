@@ -46,10 +46,10 @@ class Filters extends Command {
 		});
 
 		const list = new Discord.MessageEmbed()
-			.setDescription(message.translate("music/filters:CONTENT", {
+			.setDescription(translate("music/filters:CONTENT", {
 				prefix: data.guild.prefix
 			}))
-			.addField(message.translate("music/filters:TITLE"), filtersStatuses[0].join("\n"), true)
+			.addField(translate("music/filters:TITLE"), filtersStatuses[0].join("\n"), true)
 			.addField("** **", filtersStatuses[1].join("\n"), true)
 			.setColor(data.config.embed.color);
 

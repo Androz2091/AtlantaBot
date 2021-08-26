@@ -46,7 +46,7 @@ class Work extends Command {
 		await data.memberData.save();
 
 		const embed = new Discord.MessageEmbed()
-			.setFooter(message.translate("economy/work:AWARD"), message.author.displayAvatarURL({ size: 512, dynamic: true, format: "png" }))
+			.setFooter(translate("economy/work:AWARD"), interaction.user.displayAvatarURL({ size: 512, dynamic: true, format: "png" }))
 			.setColor(data.config.embed.color);
         
 		const award = [
@@ -60,10 +60,10 @@ class Work extends Command {
 
 		if(data.memberData.workStreak >= 5){
 			won += 200;
-			embed.addField(message.translate("economy/work:SALARY"), message.translate("economy/work:SALARY_CONTENT", {
+			embed.addField(translate("economy/work:SALARY"), translate("economy/work:SALARY_CONTENT", {
 				won
 			}))
-				.addField(message.translate("economy/work:STREAK"), message.translate("economy/work:STREAK_CONTENT"));
+				.addField(translate("economy/work:STREAK"), translate("economy/work:STREAK_CONTENT"));
 			data.memberData.workStreak = 0;
 		} else {
 			for(let i = 0; i < award.length; i++){
@@ -72,10 +72,10 @@ class Work extends Command {
 					award[i] = `:regional_indicator_${letter.toLowerCase()}:`;
 				}
 			}
-			embed.addField(message.translate("economy/work:SALARY"), message.translate("economy/work:SALARY_CONTENT", {
+			embed.addField(translate("economy/work:SALARY"), translate("economy/work:SALARY_CONTENT", {
 				won
 			}))
-				.addField(message.translate("economy/work:STREAK"), award.join(""));
+				.addField(translate("economy/work:STREAK"), award.join(""));
 		}
 
 		data.memberData.money = data.memberData.money + won;

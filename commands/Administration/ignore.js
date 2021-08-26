@@ -19,7 +19,7 @@ class Ignore extends Command {
 
 	async run (interaction, translate, data) {
 
-		const channel = message.mentions.channels.filter((ch) => ch.type === "text" && ch.guild.id === message.guild.id).first();
+		const channel = message.mentions.channels.filter((ch) => ch.type === "text" && ch.guild.id === interaction.guild.id).first();
 		if(!channel){
 			return interaction.reply({
 				content: translate("misc:INVALID_CHANNEL"),

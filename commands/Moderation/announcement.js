@@ -42,23 +42,23 @@ class Announcement extends Command {
 			content: translate("moderation/announcement:MENTION_PROMPT")
 		});
 
-		const collector = new Discord.MessageCollector(message.channel, (m) => m.author.id === message.author.id, { time: 240000 });
+		const collector = new Discord.MessageCollector(message.channel, (m) => m.author.id === interaction.user.id, { time: 240000 });
             
 		collector.on("collect", async (tmsg) => {
     
-			if(tmsg.content.toLowerCase() === message.translate("common:NO").toLowerCase()){
+			if(tmsg.content.toLowerCase() === translate("common:NO").toLowerCase()){
 				tmsg.delete();
 				msg.delete();
 				collector.stop(true);
 			}
             
-			if(tmsg.content.toLowerCase() === message.translate("common:YES").toLowerCase()){
+			if(tmsg.content.toLowerCase() === translate("common:YES").toLowerCase()){
 				tmsg.delete();
 				msg.delete();
 				const tmsg1 = await interaction.reply({
 					content: translate("moderation/announcement:MENTION_TYPE_PROMPT")
 				});
-				const c = new Discord.MessageCollector(message.channel, (m) => m.author.id === message.author.id, { time: 60000 });
+				const c = new Discord.MessageCollector(message.channel, (m) => m.author.id === interaction.user.id, { time: 60000 });
 				c.on("collect", (m) => {
 					if(m.content.toLowerCase() === "here"){
 						mention = "@here";
@@ -95,9 +95,9 @@ class Announcement extends Command {
 			}
 
 			const embed = new Discord.MessageEmbed()
-				.setAuthor(message.translate("moderation/announcement:TITLE"))
+				.setAuthor(translate("moderation/announcement:TITLE"))
 				.setColor(data.config.embed.color)
-				.setFooter(message.author.tag)
+				.setFooter(interaction.user.tag)
 				.setTimestamp()
 				.setDescription(text);
             

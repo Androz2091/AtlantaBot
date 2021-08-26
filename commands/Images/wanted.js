@@ -19,7 +19,7 @@ class Wanted extends Command {
 
 	async run (interaction, translate) {
 
-		const user = await this.client.resolveUser(args[0]) || message.author;
+		const user = await this.client.resolveUser(args[0]) || interaction.user;
 		const m = await message.sendT("misc:PLEASE_WAIT", null, {
 			prefixEmoji: "loading"
 		});

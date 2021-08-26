@@ -32,19 +32,19 @@ class Fortniteshop extends Command {
 		const shop = new Canvas.FortniteShop();
 		const image = await shop
 			.setToken(data.config.apiKeys.fortniteFNBR)
-			.setText("header", message.translate("general/fortniteshop:HEADER"))
-			.setText("daily", message.translate("general/fortniteshop:DAILY"))
-			.setText("featured", message.translate("general/fortniteshop:FEATURED"))
-			.setText("date", message.translate("general/fortniteshop:DATE", {
+			.setText("header", translate("general/fortniteshop:HEADER"))
+			.setText("daily", translate("general/fortniteshop:DAILY"))
+			.setText("featured", translate("general/fortniteshop:FEATURED"))
+			.setText("date", translate("general/fortniteshop:DATE", {
 				skipInterpolation: true
 			}).replace("{{date}}", "{date}"))
-			.setText("footer", message.translate("general/fortniteshop:FOOTER"))
+			.setText("footer", translate("general/fortniteshop:FOOTER"))
 			.lang(momentName)
 			.toAttachment();
 		const attachment = new Discord.MessageAttachment(image, "shop.png");
 
 		const embed = new Discord.MessageEmbed()
-			.setAuthor(message.translate("general/fortniteshop:HEADER", {
+			.setAuthor(translate("general/fortniteshop:HEADER", {
 				date: message.printDate(new Date(Date.now()))
 			}), this.client.user.displayAvatarURL({ size: 512, dynamic: true, format: "png" }))
 			.attachFiles(attachment)

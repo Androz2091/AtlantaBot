@@ -23,9 +23,9 @@ class Someone extends Command {
 		const member = message.guild.members.cache.random(1)[0];
         
 		const embed = new Discord.MessageEmbed()
-			.addField(message.translate("common:USERNAME"), member.user.username, true)
-			.addField(message.translate("common:DISCRIMINATOR"), member.user.discriminator, true)
-			.addField(message.translate("common:ID"), member.user.id, true)
+			.addField(translate("common:USERNAME"), member.user.username, true)
+			.addField(translate("common:DISCRIMINATOR"), member.user.discriminator, true)
+			.addField(translate("common:ID"), member.user.id, true)
 			.setThumbnail(member.user.displayAvatarURL({ size: 512, dynamic: true, format: "png" }))
 			.setColor(data.config.embed.color);
 		message.channel.send({ embeds: [embed] });

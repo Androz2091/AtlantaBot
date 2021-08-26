@@ -28,14 +28,14 @@ class Unmute extends Command {
 
 		const memberPosition = member.roles.highest.position;
 		const moderationPosition = message.member.roles.highest.position;
-		if(message.member.ownerID !== message.author.id && !(moderationPosition > memberPosition)){
+		if(message.member.ownerID !== interaction.user.id && !(moderationPosition > memberPosition)){
 			return interaction.reply({
 				content: translate("moderation/ban:SUPERIOR"),
 				ephemeral: true
 			});
 		}
 
-		const memberData = await this.client.findOrCreateMember({ id: member.id, guildID: message.guild.id });
+		const memberData = await this.client.findOrCreateMember({ id: member.id, guildID: interaction.guild.id });
 
 		if(memberData.mute.muted){
 			memberData.mute.endDate = Date.now();

@@ -36,23 +36,23 @@ class Poll extends Command {
 			content: translate("moderation/announcement:MENTION_PROMPT")
 		});
 
-		const collector = new Discord.MessageCollector(message.channel, (m) => m.author.id === message.author.id, { time: 240000 });
+		const collector = new Discord.MessageCollector(message.channel, (m) => m.author.id === interaction.user.id, { time: 240000 });
             
 		collector.on("collect", async (tmsg) => {
     
-			if(tmsg.content.toLowerCase() === message.translate("common:NO").toLowerCase()){
+			if(tmsg.content.toLowerCase() === translate("common:NO").toLowerCase()){
 				tmsg.delete();
 				msg.delete();
 				collector.stop(true);
 			}
             
-			if(tmsg.content.toLowerCase() === message.translate("common:YES").toLowerCase()){
+			if(tmsg.content.toLowerCase() === translate("common:YES").toLowerCase()){
 				tmsg.delete();
 				msg.delete();
 				const tmsg1 = await interaction.reply({
 					content: translate("moderation/announcement:MENTION_TYPE_PROMPT")
 				});
-				const c = new Discord.MessageCollector(message.channel, (m) => m.author.id === message.author.id, { time: 60000 });
+				const c = new Discord.MessageCollector(message.channel, (m) => m.author.id === interaction.user.id, { time: 60000 });
 				c.on("collect", (m) => {
 					if(m.content.toLowerCase() === "here"){
 						mention = "@here";
@@ -97,9 +97,9 @@ class Poll extends Command {
 			];
 
 			const embed = new Discord.MessageEmbed()
-				.setAuthor(message.translate("moderation/poll:TITLE"))
+				.setAuthor(translate("moderation/poll:TITLE"))
 				.setColor(data.config.embed.color)
-				.addField(question, message.translate("moderation/poll:REACT", {
+				.addField(question, translate("moderation/poll:REACT", {
 					success: emojis[0].toString(),
 					error: emojis[1].toString()
 				}));
