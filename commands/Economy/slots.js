@@ -1,19 +1,27 @@
 const Command = require("../../base/Command.js");
+const Emojis = require("../../emojis.json");
 
 module.exports = class extends Command {
 
 	constructor (client) {
 		super(client, {
 			name: "slots",
-			dirname: __dirname,
+
+			options: [
+				{
+					name: "amount",
+					type: "INTEGER"
+				}
+			],
+
 			enabled: true,
 			guildOnly: true,
-			
 			memberPermissions: [],
 			botPermissions: [ "SEND_MESSAGES", "EMBED_LINKS" ],
 			nsfw: false,
 			ownerOnly: false,
-			cooldown: 3000
+
+			dirname: __dirname
 		});
 	}
 
@@ -31,13 +39,16 @@ module.exports = class extends Command {
 		];
 
 		// Gets the amount provided
-		let amount = args[0];
+		let amount = interaction.options.getInteger("amount");
 		if(!amount || isNaN(amount) || amount < 1){
 			amount = 1;
 		}
 		if(amount > data.memberData.money){
-			return message.error("economy/slots:NOT_ENOUGH", {
-				money: amount
+			return interaction.reply({
+				content: translate("economy/slots:NOT_ENOUGH", {
+					money: amount
+				}),
+				ephemeral: true
 			});
 		}
 		amount = Math.round(amount);
@@ -52,8 +63,8 @@ module.exports = class extends Command {
 			return Math.round(number);
 		}
 
-		const tmsg = await message.sendT("misc:loading", null, {
-			prefixEmoji: "loading"
+		const tmsg = await interaction.reply({
+			content: Emojis.loading + " | " + translate("misc:loading")
 		});
 		editMsg();
 		const interval = setInterval(editMsg, 1000);
@@ -84,7 +95,7 @@ module.exports = class extends Command {
 				msg += "| : : :  **"+(translate("common:VICTORY").toUpperCase())+"**  : : : |";
 				tmsg.edit(msg);
 				const credits = getCredits(amount, true);
-				message.channel.send("**!! JACKPOT !!**\n"+translate("economy/slots:VICTORY", {
+				interaction.channel.send("**!! JACKPOT !!**\n"+translate("economy/slots:VICTORY", {
 					money: amount,
 					won: credits,
 					username: interaction.user.username
@@ -95,7 +106,7 @@ module.exports = class extends Command {
 					data.userData.achievements.slots.progress.now += 1;
 					if(data.userData.achievements.slots.progress.now === data.userData.achievements.slots.progress.total){
 						data.userData.achievements.slots.achieved = true;
-						message.channel.send({ files: [ { name: "unlocked.png", attachment: "./assets/img/achievements/achievement_unlocked4.png" } ] });
+						interaction.channel.send({ files: [ { name: "unlocked.png", attachment: "./assets/img/achievements/achievement_unlocked4.png" } ] });
 					}
 					data.userData.markModified("achievements.slots");
 					await data.userData.save();
@@ -108,7 +119,7 @@ module.exports = class extends Command {
 				msg += "| : : :  **"+(translate("common:VICTORY").toUpperCase())+"**  : : : |";
 				tmsg.edit(msg);
 				const credits = getCredits(amount, false);
-				message.channel.send(translate("economy/slots:VICTORY", {
+				interaction.channel.send(translate("economy/slots:VICTORY", {
 					money: amount,
 					won: credits,
 					username: interaction.user.username
@@ -119,7 +130,7 @@ module.exports = class extends Command {
 					data.userData.achievements.slots.progress.now += 1;
 					if(data.userData.achievements.slots.progress.now === data.userData.achievements.slots.progress.total){
 						data.userData.achievements.slots.achieved = true;
-						message.channel.send({ files: [ { name: "unlocked.png", attachment: "./assets/img/achievements/achievement_unlocked4.png" } ] });
+						interaction.channel.send({ files: [ { name: "unlocked.png", attachment: "./assets/img/achievements/achievement_unlocked4.png" } ] });
 					}
 					data.userData.markModified("achievements.slots");
 					await data.userData.save();
@@ -129,7 +140,7 @@ module.exports = class extends Command {
 			}
             
 			msg += "| : : :  **"+(translate("common:DEFEAT").toUpperCase())+"**  : : : |";
-			message.channel.send(translate("economy/slots:DEFEAT", {
+			interaction.channel.send(translate("economy/slots:DEFEAT", {
 				money: amount,
 				username: interaction.user.username
 			}));
