@@ -32,7 +32,9 @@ class Poll extends Command {
 
 		let mention = "";
             
-		const msg = await message.sendT("moderation/announcement:MENTION_PROMPT");
+		const msg = await interaction.reply({
+			content: translate("moderation/announcement:MENTION_PROMPT")
+		});
 
 		const collector = new Discord.MessageCollector(message.channel, (m) => m.author.id === message.author.id, { time: 240000 });
             
@@ -47,7 +49,9 @@ class Poll extends Command {
 			if(tmsg.content.toLowerCase() === message.translate("common:YES").toLowerCase()){
 				tmsg.delete();
 				msg.delete();
-				const tmsg1 = await message.sendT("moderation/announcement:MENTION_TYPE_PROMPT");
+				const tmsg1 = await interaction.reply({
+					content: translate("moderation/announcement:MENTION_TYPE_PROMPT")
+				});
 				const c = new Discord.MessageCollector(message.channel, (m) => m.author.id === message.author.id, { time: 60000 });
 				c.on("collect", (m) => {
 					if(m.content.toLowerCase() === "here"){

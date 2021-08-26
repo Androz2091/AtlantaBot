@@ -32,7 +32,9 @@ class Setbio extends Command {
 			});
 		}
 		data.userData.bio = newBio;
-		message.success("economy/setbio:SUCCESS");
+		interaction.reply({
+			content: translate("economy/setbio:SUCCESS")
+		});
 		await data.userData.save();
 	}
 

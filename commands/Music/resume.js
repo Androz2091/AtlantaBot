@@ -40,7 +40,9 @@ class Resume extends Command {
 		await this.client.player.resume(message);
         
 		// Send the embed in the current channel
-		message.sendT("music/resume:SUCCESS");
+		interaction.reply({
+			content: translate("music/resume:SUCCESS")
+		});
 	}
 
 }

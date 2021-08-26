@@ -20,8 +20,12 @@ class Flip extends Command {
 	async run (message) {
 		const isHeads = Math.random() > 0.5;
 		isHeads
-			? message.sendT("fun/flip:HEADS")
-			: message.sendT("fun/flip:TAILS");
+			? interaction.reply({
+content: translate("fun/flip:HEADS")
+});
+			: interaction.reply({
+content: translate("fun/flip:TAILS")
+});;
 	}
 
 }

@@ -51,7 +51,9 @@ class Remindme extends Command {
 		this.client.databaseCache.usersReminds.set(message.author.id, data.userData);
 
 		// Send success message
-		message.success("general/remindme:SAVED");
+		interaction.reply({
+			content: translate("general/remindme:SAVED")
+		});
 	}
 
 }

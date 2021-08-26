@@ -25,7 +25,9 @@ class Welcome extends Command {
             data.guild.plugins.welcome.enabled
 		) {
 			this.client.emit("guildMemberAdd", message.member);
-			return message.success("administration/welcome:TEST_SUCCESS");
+			return interaction.reply({
+				content: translate("administration/welcome:TEST_SUCCESS")
+			});
 		}
 
 		if (
@@ -100,7 +102,9 @@ class Welcome extends Command {
 				if (welcome.channel && !welcome.message) {
 					if (msg.content.length < 1800) {
 						welcome.message = msg.content;
-						return message.sendT("administration/welcome:FORM_3");
+						return interaction.reply({
+							content: translate("administration/welcome:FORM_3")
+						});
 					}
 					return interaction.reply({
 						content: translate("administration/goodbye:MAX_CHARACT"),

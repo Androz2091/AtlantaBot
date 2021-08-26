@@ -49,7 +49,9 @@ class Seek extends Command {
 		await this.client.player.setPosition(message, queue.currentStreamTime + time);
         
 		// Send the embed in the current channel
-		message.sendT("music/seek:SUCCESS");
+		interaction.reply({
+			content: translate("music/seek:SUCCESS")
+		});
 	}
 
 }

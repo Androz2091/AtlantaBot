@@ -20,7 +20,9 @@ class Clear extends Command {
 	async run (message, args) {
 
 		if(args[0] === "all"){
-			message.sendT("moderation/clear:ALL_CONFIRM");
+			interaction.reply({
+				content: translate("moderation/clear:ALL_CONFIRM")
+			});
 			await message.channel.awaitMessages((m) => (m.author.id === message.author.id) && (m.content === "-confirm"), {
 				max: 1,
 				time: 20000,

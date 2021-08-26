@@ -55,8 +55,12 @@ class Filter extends Command {
 		filtersUpdated[filterRealName] = queueFilters[filterRealName] ? false : true;
 		this.client.player.setFilters(message, filtersUpdated);
     
-		if(filtersUpdated[filterRealName]) message.success("music/filter:ADDING_FILTER");
-		else message.success("music/filter:REMOVING_FILTER");
+		if(filtersUpdated[filterRealName]) interaction.reply({
+content: translate("music/filter:ADDING_FILTER")
+});;
+		else interaction.reply({
+content: translate("music/filter:REMOVING_FILTER")
+});;
 	}
 
 }

@@ -40,7 +40,9 @@ class AutoPlay extends Command {
 		await this.client.player.setAutoPlay(message, !queue.autoPlay);
         
 		// Send the embed in the current channel
-		message.sendT(`music/autoplay:SUCCESS_${queue.autoPlay ? "ENABLED" : "DISABLED"}`);
+		interaction.reply({
+			content: translate(`music/autoplay:SUCCESS_${queue.autoPlay ? "ENABLED" : "DISABLED"}`)
+		});
         
 	}
 

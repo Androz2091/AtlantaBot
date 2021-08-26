@@ -72,7 +72,9 @@ class Leaderboard extends Command {
 		}
 
 		if(isOnlyOnMobile){
-			message.sendT("economy/leaderboard:MOBILE");
+			interaction.reply({
+				content: translate("economy/leaderboard:MOBILE")
+			});
 		}
         
 		async function fetchUsers(array, table, client) {

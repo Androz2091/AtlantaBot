@@ -26,7 +26,9 @@ class Translate extends Command {
 		if(args[0] === "langs-list"){
 			const langsList = "```Css\n"+(langs.map((l, i) => `#${i+1} - ${l}`).join("\n"))+"```";
 			message.author.send(langsList).then(() => {
-				message.success("general/translate:LIST_SENT");
+				interaction.reply({
+					content: translate("general/translate:LIST_SENT")
+				});
 			}).catch(() => {
 				interaction.reply({
 					content: translate("misc:CANNOT_DM"),

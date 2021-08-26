@@ -28,11 +28,15 @@ class Deletemod extends Command {
 		if(status === "on"){
 			data.guild.autoDeleteModCommands = true;
 			data.guild.save();
-			message.success("administration/deletemod:ENABLED");
+			interaction.reply({
+				content: translate("administration/deletemod:ENABLED")
+			});
 		} else {
 			data.guild.autoDeleteModCommands = false;
 			data.guild.save();
-			message.success("administration/deletemod:DISABLED");
+			interaction.reply({
+				content: translate("administration/deletemod:DISABLED")
+			});
 		}
 	}
 

@@ -21,7 +21,9 @@ class Fortnite extends Command {
 	async run (message, args, data) {
 
 		if(!data.config.apiKeys.fortniteTRN || data.config.apiKeys.fortniteTRN.length === ""){
-			return message.success("misc:COMMAND_DISABLED");
+			return interaction.reply({
+				content: translate("misc:COMMAND_DISABLED")
+			});
 		}
 
 		const stats = new Canvas.FortniteStats();

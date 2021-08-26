@@ -36,7 +36,9 @@ class Backup extends Command {
 			});
 			backup.create(message.guild).then((backup) => {
 				m.delete();
-				message.success("administration/backup:SUCCESS_PUBLIC");
+				interaction.reply({
+					content: translate("administration/backup:SUCCESS_PUBLIC")
+				});
 				message.author.send(message.translate("administration/backup:SUCCESS_PRIVATE", {
 					backupID: backup.id
 				})).catch(() => {
@@ -62,7 +64,9 @@ class Backup extends Command {
 				});
 			}
 			backup.fetch(backupID).then(async () => {
-				message.sendT("administration/backup:CONFIRMATION");
+				interaction.reply({
+					content: translate("administration/backup:CONFIRMATION")
+				});
 				await message.channel.awaitMessages(m => (m.author.id === message.author.id) && (m.content === "-confirm"), {
 					max: 1,
 					time: 20000,

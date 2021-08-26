@@ -25,7 +25,9 @@ class Goodbye extends Command {
             data.guild.plugins.goodbye.enabled
 		) {
 			this.client.emit("guildMemberRemove", message.member);
-			return message.success("administration/goodbye:TEST_SUCCESS");
+			return interaction.reply({
+				content: translate("administration/goodbye:TEST_SUCCESS")
+			});
 		}
 
 		if (
@@ -100,7 +102,9 @@ class Goodbye extends Command {
 				if (goodbye.channel && !goodbye.message) {
 					if (msg.content.length < 1800) {
 						goodbye.message = msg.content;
-						return message.sendT("administration/goodbye:FORM_3");
+						return interaction.reply({
+							content: translate("administration/goodbye:FORM_3")
+						});
 					}
 					return interaction.reply({
 						content: translate("administration/goodbye:MAX_CHARACT"),

@@ -55,7 +55,9 @@ class FindWords extends Command {
 			// Launch timer
 			const delay = (i === 0) ? 10000 : 0;
 			if(i === 0){
-				message.sendT("fun/findwords:GAME_STARTING");
+				interaction.reply({
+					content: translate("fun/findwords:GAME_STARTING")
+				});
 			}
 
 			setTimeout(() => {

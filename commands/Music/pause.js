@@ -40,7 +40,9 @@ class Pause extends Command {
 		await this.client.player.pause(message);
         
 		// Send the embed in the current channel
-		message.sendT("music/pause:SUCCESS");
+		interaction.reply({
+			content: translate("music/pause:SUCCESS")
+		});
         
 	}
 

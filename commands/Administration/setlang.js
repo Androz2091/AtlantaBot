@@ -30,7 +30,9 @@ class Setlang extends Command {
 		data.guild.language = language.name;
 		await data.guild.save();
         
-		return message.sendT("administration/setlang:SUCCESS");
+		return interaction.reply({
+			content: translate("administration/setlang:SUCCESS")
+		});
         
 	}
 

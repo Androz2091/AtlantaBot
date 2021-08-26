@@ -94,7 +94,9 @@ class Giveaway extends Command {
 					}	
 				}
 			}).then(() => {
-				message.success("moderation/giveaway:GIVEAWAY_CREATED");
+				interaction.reply({
+					content: translate("moderation/giveaway:GIVEAWAY_CREATED")
+				});
 			});
 		} else if(status === "reroll"){
 			const messageID = args[1];
@@ -108,7 +110,9 @@ class Giveaway extends Command {
 				congrat: message.translate("moderation/giveaway:REROLL_CONGRAT"),
 				error: message.translate("moderation/giveaway:REROLL_ERROR")
 			}).then(() => {
-				return message.success("moderation/giveaway:GIVEAWAY_REROLLED");
+				return interaction.reply({
+					content: translate("moderation/giveaway:GIVEAWAY_REROLLED")
+				});
 			}).catch(() => {
 				return message.error("moderation/giveaway:NOT_FOUND_ENDED", {
 					messageID
@@ -123,7 +127,9 @@ class Giveaway extends Command {
 				});
 			}
 			this.client.giveawaysManager.delete(messageID).then(() => {
-				return message.success("moderation/giveaway:GIVEAWAY_DELETED");
+				return interaction.reply({
+					content: translate("moderation/giveaway:GIVEAWAY_DELETED")
+				});
 			}).catch(() => {
 				return message.error("moderation/giveaway:NOT_FOUND", {
 					messageID
@@ -141,7 +147,9 @@ class Giveaway extends Command {
 				this.client.giveawaysManager.edit(messageID, {
 					setEndTimestamp: Date.now()
 				});
-				return message.success("moderation/giveaway:GIVEAWAY_ENDED");
+				return interaction.reply({
+					content: translate("moderation/giveaway:GIVEAWAY_ENDED")
+				});
 			} catch(e){
 				return message.error("moderation/giveaway:NOT_FOUND", {
 					messageID

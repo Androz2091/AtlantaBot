@@ -32,7 +32,9 @@ class Setfortniteshop extends Command {
 			data.guild.plugins.fortniteshop = false;
 			data.guild.markModified("plugins.fortniteshop");
 			data.guild.save();
-			return message.success("administration/setfortniteshop:DISABLED");
+			return interaction.reply({
+				content: translate("administration/setfortniteshop:DISABLED")
+			});
 		}
 
 		const channel = message.mentions.channels.first() || message.channel;

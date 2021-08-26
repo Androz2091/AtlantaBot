@@ -32,7 +32,9 @@ class Number extends Command {
 		const participants = [];
 		const number = Math.floor(Math.random() * 3000);
 
-		await message.sendT("fun/number:GAME_START");
+		await interaction.reply({
+			content: translate("fun/number:GAME_START")
+		});
 
 		// Store the date wich the game has started
 		const gameCreatedAt = Date.now();
