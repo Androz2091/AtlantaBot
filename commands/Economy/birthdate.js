@@ -9,7 +9,8 @@ class Birthdate extends Command {
 			options: [
 				{
 					name: "date",
-					type: "STRING"
+					type: "STRING",
+					required: true
 				}
 			],
 
