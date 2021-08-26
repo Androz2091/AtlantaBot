@@ -5,15 +5,23 @@ module.exports = class extends Command {
 	constructor (client) {
 		super(client, {
 			name: "rep",
-			dirname: __dirname,
+
+			options: [
+				{
+					name: "user",
+					type: "USER",
+					required: true
+				}
+			],
+
 			enabled: true,
 			guildOnly: true,
-			
 			memberPermissions: [],
 			botPermissions: [ "SEND_MESSAGES", "EMBED_LINKS" ],
 			nsfw: false,
 			ownerOnly: false,
-			cooldown: 3000
+
+			dirname: __dirname
 		});
 	}
 
@@ -26,13 +34,15 @@ module.exports = class extends Command {
             when the member will be able to execute the order again 
             is greater than the current date, display an error message */
 			if(isInCooldown > Date.now()){
-				return message.error("economy/rep:COOLDOWN", {
-					time: message.convertTime(isInCooldown, "to", true)
+				return interaction.reply({
+					content: translate("economy/rep:COOLDOWN", {
+						time: this.client.convertTime(isInCooldown, "to", true, data.guildData.language)
+					})
 				});
 			}
 		}
 
-		const user = await this.client.resolveUser(args[0]);
+		const user = interaction.options.getUser("user");
 		if(!user){
 			return interaction.reply({
 				content: translate("economy/rep:INVALID_USER"),
@@ -65,14 +75,16 @@ module.exports = class extends Command {
 			userData.achievements.rep.progress.now = (userData.rep > userData.achievements.rep.progress.total ? userData.achievements.rep.progress.total : userData.rep);
 			if(userData.achievements.rep.progress.now >= userData.achievements.rep.progress.total){
 				userData.achievements.rep.achieved = true;
-				message.channel.send({ files: [ { name: "unlocked.png", attachment: "./assets/img/achievements/achievement_unlocked6.png"}]});
+				interaction.channel.send({ files: [ { name: "unlocked.png", attachment: "./assets/img/achievements/achievement_unlocked6.png"}]});
 			}
 			userData.markModified("achievements.rep");
 		}
 		await userData.save();
 
-		message.success("economy/rep:SUCCESS", {
-			username: user.username
+		interaction.reply({
+			content: translate("economy/rep:SUCCESS", {
+				username: user.username
+			})
 		});
 
 	}
