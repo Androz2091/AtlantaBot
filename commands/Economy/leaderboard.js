@@ -17,7 +17,7 @@ module.exports = class extends Command {
 
 			enabled: true,
 			guildOnly: true,
-			aliases: [ "lb" ],
+			
 			memberPermissions: [],
 			botPermissions: [ "SEND_MESSAGES", "EMBED_LINKS" ],
 			nsfw: false,

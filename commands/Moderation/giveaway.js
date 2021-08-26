@@ -9,7 +9,7 @@ module.exports = class extends Command {
 			dirname: __dirname,
 			enabled: true,
 			guildOnly: true,
-			aliases: [ "gway" ],
+			
 			memberPermissions: [ "MENTION_EVERYONE" ],
 			botPermissions: [ "SEND_MESSAGES", "EMBED_LINKS" ],
 			nsfw: false,

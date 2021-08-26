@@ -8,7 +8,7 @@ module.exports = class extends Command {
 			dirname: __dirname,
 			enabled: true,
 			guildOnly: false,
-			aliases: [ "pong", "latency" ],
+			
 			memberPermissions: [],
 			botPermissions: [ "SEND_MESSAGES" ],
 			nsfw: false,
