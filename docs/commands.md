@@ -128,13 +128,12 @@ Here's the list of Atlanta commands. This one contains more than **120 commands*
 | **unmute**          | Unmute the mentioned member!                                                                              | unmute [@member]                                                   | NaN seconds |
 | **warn**            | Warn a member in private messages                                                                         | warn [@member] [reason]                                            | NaN seconds |
 
-### Music (13 commands)
+### Music (12 commands)
 
 | Name         | Description                                                            | Usage              | Cooldown    |
 | ------------ | ---------------------------------------------------------------------- | ------------------ | ----------- |
 | **autoplay** | Enable or disable the autoplay feature                                 | autoplay           | NaN seconds |
 | **back**     | Play back the previous song                                            | back               | NaN seconds |
-| **filter**   | Enable or disable a filter!                                            | filter [filter]    | NaN seconds |
 | **filters**  | Send the list of all the filters and their status                      | filters            | NaN seconds |
 | **lyrics**   | Shows the song lyrics                                                  | lyrics [song-name] | NaN seconds |
 | **np**       | Shows information about the current song!                              | np                 | NaN seconds |
@@ -146,7 +145,7 @@ Here's the list of Atlanta commands. This one contains more than **120 commands*
 | **skip**     | Skip the current song                                                  | skip               | NaN seconds |
 | **stop**     | Stop the music                                                         | stop               | NaN seconds |
 
-### Fun (10 commands)
+### Fun (9 commands)
 
 | Name          | Description                                                                                   | Usage                           | Cooldown    |
 | ------------- | --------------------------------------------------------------------------------------------- | ------------------------------- | ----------- |
@@ -154,7 +153,6 @@ Here's the list of Atlanta commands. This one contains more than **120 commands*
 | **ascii**     | Turn your text into ascii characters!                                                         | ascii [text]                    | NaN seconds |
 | **choice**    | Helps you choose between the given choices!                                                   | choice [choice1/choice2/etc...] | NaN seconds |
 | **findwords** | Start a Findwords party, a game where you have to find words!                                 | findwords                       | NaN seconds |
-| **flip**      | I roll the dice for you!                                                                      | flip                            | NaN seconds |
 | **fml**       | Gets a random FML                                                                             | fml                             | NaN seconds |
 | **joke**      | Gets a wonderful joke specially made for you!                                                 | joke                            | NaN seconds |
 | **lmg**       | Generate a LMGTFY link with your search                                                       | lmg [search]                    | NaN seconds |

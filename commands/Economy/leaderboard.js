@@ -6,7 +6,15 @@ class Leaderboard extends Command {
 	constructor (client) {
 		super(client, {
 			name: "leaderboard",
-			dirname: __dirname,
+
+			options: [
+				{
+					name: "type",
+					type: "STRING",
+					choices: ["money", "level", "rep"].map((c) => ({ name: c, value: c }))
+				}
+			],
+
 			enabled: true,
 			guildOnly: true,
 			aliases: [ "lb" ],
@@ -14,24 +22,20 @@ class Leaderboard extends Command {
 			botPermissions: [ "SEND_MESSAGES", "EMBED_LINKS" ],
 			nsfw: false,
 			ownerOnly: false,
-			cooldown: 5000
+			cooldown: 5000,
+
+			dirname: __dirname
 		});
 	}
 
 	async run (interaction, translate) {
         
-		const isOnlyOnMobile = (message.author.presence.clientStatus ? JSON.stringify(Object.keys(message.author.presence.clientStatus)) === JSON.stringify([ "mobile" ]) : false);
+		const isOnlyOnMobile = (interaction.user.presence.clientStatus ? JSON.stringify(Object.keys(interaction.user.presence.clientStatus)) === JSON.stringify([ "mobile" ]) : false);
 
-		const type = args[0];
-		if(!type || (type !== "credits" && type !== "level" && type !== "rep")){
-			return interaction.reply({
-				content: translate("economy/leaderboard:MISSING_TYPE"),
-				ephemeral: true
-			});
-		}
+		const type = interaction.options.getString("type");
 
 		if(type === "credits"){
-			const members = await this.client.membersData.find({ guildID: message.guild.id }).lean(),
+			const members = await this.client.membersData.find({ guildID: interaction.guild.id }).lean(),
 				membersLeaderboard = members.map((m) => {
 					return {
 						id: m.id,
@@ -39,12 +43,12 @@ class Leaderboard extends Command {
 					};
 				}).sort((a,b) => b.value - a.value);
 			const table = new AsciiTable("LEADERBOARD");
-			table.setHeading("#", message.translate("common:USER"), message.translate("common:CREDITS"));
+			table.setHeading("#", translate("common:USER"), translate("common:CREDITS"));
 			if(membersLeaderboard.length > 20) membersLeaderboard.length = 20;
 			const newTable = await fetchUsers(membersLeaderboard, table, this.client);
-			message.channel.send("```\n"+newTable.toString()+"```");
+			interaction.reply("```\n"+newTable.toString()+"```");
 		} else if(type === "level"){
-			const members = await this.client.membersData.find({ guildID: message.guild.id }).lean(),
+			const members = await this.client.membersData.find({ guildID: interaction.guild.id }).lean(),
 				membersLeaderboard = members.map((m) => {
 					return {
 						id: m.id,
@@ -52,10 +56,10 @@ class Leaderboard extends Command {
 					};
 				}).sort((a,b) => b.value - a.value);
 			const table = new AsciiTable("LEADERBOARD");
-			table.setHeading("#", message.translate("common:USER"), message.translate("common:LEVEL"));
+			table.setHeading("#", translate("common:USER"), translate("common:LEVEL"));
 			if(membersLeaderboard.length > 20) membersLeaderboard.length = 20;
 			const newTable = await fetchUsers(membersLeaderboard, table, this.client);
-			message.channel.send("```\n"+newTable.toString()+"```");
+			interaction.reply("```\n"+newTable.toString()+"```");
 		} else if(type === "rep"){
 			const users = await this.client.usersData.find().lean(),
 				usersLeaderboard = users.map((u) => {
@@ -65,14 +69,15 @@ class Leaderboard extends Command {
 					};
 				}).sort((a,b) => b.value - a.value);
 			const table = new AsciiTable("LEADERBOARD");
-			table.setHeading("#", message.translate("common:USER"), message.translate("common:POINTS"));
+			table.setHeading("#", translate("common:USER"), translate("common:POINTS"));
 			if(usersLeaderboard.length > 20) usersLeaderboard.length = 20;
 			const newTable = await fetchUsers(usersLeaderboard, table, this.client);
-			message.channel.send("```\n"+newTable.toString()+"```");
+			interaction.reply("```\n"+newTable.toString()+"```");
 		}
 
 		if(isOnlyOnMobile){
-			interaction.reply({
+			// TODO: add a better way to answer here
+			interaction.channel.send({
 				content: translate("economy/leaderboard:MOBILE")
 			});
 		}

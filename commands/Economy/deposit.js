@@ -10,8 +10,7 @@ class Deposit extends Command {
 				{
 					name: "amount",
 					type: "INTEGER"
-				},
-				
+				}
 			],
 
 			enabled: true,
