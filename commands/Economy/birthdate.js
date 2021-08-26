@@ -13,17 +13,18 @@ class Birthdate extends Command {
 				}
 			],
 
-			dirname: __dirname,
 			enabled: true,
 			guildOnly: false,
 			memberPermissions: [],
 			botPermissions: [ "SEND_MESSAGES", "EMBED_LINKS" ],
 			nsfw: false,
-			ownerOnly: false
+			ownerOnly: false,
+
+			dirname: __dirname
 		});
 	}
 
-	async run (interaction, translate, data) {
+	async run (interaction, translate, { userData, guildData }) {
         
 		const date = interaction.options.getString("date");
 
@@ -69,11 +70,13 @@ class Birthdate extends Command {
 			});
 		}
 
-		data.userData.birthdate = d;
-		data.userData.save();
+		userData.birthdate = d;
+		userData.save();
         
-		message.success("economy/birthdate:SUCCESS", {
-			date: message.printDate(d)
+		interaction.reply({
+			content: translate("economy/birthdate:SUCCESS", {
+				date: this.client.printDate(d, null, guildData.language)
+			})
 		});
 
 	}
