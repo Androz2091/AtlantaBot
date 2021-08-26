@@ -6,15 +6,15 @@ module.exports = class extends Command {
 	constructor (client) {
 		super(client, {
 			name: "work",
-			dirname: __dirname,
+
 			enabled: true,
 			guildOnly: true,
-			
 			memberPermissions: [],
 			botPermissions: [ "SEND_MESSAGES", "EMBED_LINKS" ],
 			nsfw: false,
 			ownerOnly: false,
-			cooldown: 3000
+
+			dirname: __dirname
 		});
 	}
 
@@ -27,8 +27,11 @@ module.exports = class extends Command {
             when the member will be able to execute the order again 
             is greater than the current date, display an error message */
 			if(isInCooldown > Date.now()){
-				return message.error("economy/work:COOLDOWN", {
-					time: message.convertTime(isInCooldown, "to", true)
+				return interaction.reply({
+					content: translate("economy/work:COOLDOWN", {
+						time: this.client.convertTime(isInCooldown, "to", true, data.guildData.language)
+					}),
+					ephemeral: true
 				});
 			}
 		}
@@ -98,7 +101,7 @@ module.exports = class extends Command {
 		}
 
 		// Send the embed in the current channel
-		message.channel.send(messageOptions);
+		interaction.channel.send(messageOptions);
 
 	}
 
