@@ -5,35 +5,44 @@ class Birthdate extends Command {
 	constructor (client) {
 		super(client, {
 			name: "birthdate",
+
+			options: [
+				{
+					name: "date",
+					type: "STRING"
+				}
+			],
+
 			dirname: __dirname,
 			enabled: true,
 			guildOnly: false,
-			aliases: [ "anniversaire" ],
 			memberPermissions: [],
 			botPermissions: [ "SEND_MESSAGES", "EMBED_LINKS" ],
 			nsfw: false,
-			ownerOnly: false,
-			cooldown: 1000
+			ownerOnly: false
 		});
 	}
 
-	async run (message, args, data) {
+	async run (interaction, translate, data) {
         
-		const date = args[0];
-		if(!date){
-			return message.error("economy/birthdate:MISSING_DATE");
-		}
+		const date = interaction.options.getString("date");
 
 		const tArgs = date.split("/");
 		const [day, month, year] = tArgs;
 		if(!day || !month || !year){
-			return message.error("economy/birthdate:INVALID_DATE");
+			return interaction.reply({
+				content: "economy/birthdate:INVALID_DATE",
+				ephemeral: true
+			});
 		}
         
 		// Gets the string of the date
 		const match = date.match(/\d+/g);
 		if (!match){
-			return message.error("economy/birthdate:INVALID_DATE_FORMAT");
+			return interaction.reply({
+				content: "economy/birthdate:INVALID_DATE_FORMAT",
+				ephemeral: true
+			});
 		}
 		const tday = +match[0], tmonth = +match[1] - 1;
 		let tyear = +match[2];

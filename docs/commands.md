@@ -94,7 +94,7 @@ Here's the list of Atlanta commands. This one contains more than **120 commands*
 | Name             | Description                                                         | Usage                            | Cooldown    |
 | ---------------- | ------------------------------------------------------------------- | -------------------------------- | ----------- |
 | **achievements** | Shows your achievements list!                                       | achievements                     | NaN seconds |
-| **birthdate**    | Set the birthday date that appear on your profile                   | birthdate (date)                 | NaN seconds |
+| **birthdate**    | Set the birthday date that appear on your profile                   | USAGE                            | NaN seconds |
 | **deposit**      | Deposit your money in the bank                                      | deposit [amount]                 | NaN seconds |
 | **divorce**      | Divorce the person you are currently married to!                    | divorce                          | NaN seconds |
 | **leaderboard**  | Shows users who have the most credits, levels or reputation points! | leaderboard [rep/levels/credits] | NaN seconds |

@@ -41,15 +41,17 @@ const init = async () => {
 	}));
 
 	const slashCommands = client.commands.filter((c) => c.conf.options);
-	console.log(slashCommands.first());
 	synchronizeSlashCommands(client, slashCommands.map((command) => ({
 		name: command.help.name,
+		type: "CHAT_INPUT",
 		description: client.translations.get("en-US")(`${command.help.category.toLowerCase()}/${command.help.name}:DESCRIPTION`),
 		options: command.conf.options.map((opt) => ({
 			...opt,
+			type: opt.type,
 			description: client.translations.get("en-US")(`${command.help.category.toLowerCase()}/${command.help.name}:OPT_${opt.name.toUpperCase()}_DESCRIPTION`),
 			options: opt.options?.map((o) => ({
 				...o,
+				type: opt.type,
 				description: client.translations.get("en-US")(`${command.help.category.toLowerCase()}/${command.help.name}:OPT_${o.name.toUpperCase()}_DESCRIPTION`)
 			})
 			)
