@@ -1,5 +1,4 @@
 {
     "DESCRIPTION": "Show the servers list!",
-    "USAGE": "{{prefix}}servers-list",
     "EXAMPLES": "{{prefix}}servers-list"
 }

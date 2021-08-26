@@ -1,6 +1,5 @@
 {
     "DESCRIPTION": "Shows a player's Fortnite stats!",
-    "USAGE": "{{prefix}}fortnite [psn/xbl/pc] [pseudo]",
     "EXAMPLES": "{{prefix}}fortnite pc Ninja",
     "MISSING_PLATFORM": "Please specify a platform between `psn`, `pc` or `xbl`!",
     "MISSING_USERNAME": "Please enter a valid epic games username!",

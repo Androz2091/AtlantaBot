@@ -1,6 +1,5 @@
 {
     "DESCRIPTION": "Show commands list or specific command help.",
-    "USAGE": "{{prefix}}help (command)",
     "EXAMPLES": "{{prefix}}help\n{{prefix}}help ping",
     "CUSTOM": "A custom command doesn't have help page.",
     "NOT_FOUND": "`{{search}}` is not a valid command",

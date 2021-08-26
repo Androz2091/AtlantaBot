@@ -1,6 +1,5 @@
 {
     "DESCRIPTION": "Shows the number of people you have invited to the server!",
-    "USAGE": "{{prefix}}invitations (@member)",
     "EXAMPLES": "{{prefix}}invitations\n{{prefix}}invitations @Androz#2091",
     "NOBODY_AUTHOR": "You didn't invite anyone to the server!",
     "NOBODY_MEMBER": "{{member}} didn't invite anyone to the server!",

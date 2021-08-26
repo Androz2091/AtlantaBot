@@ -1,6 +1,5 @@
 {
     "DESCRIPTION": "Marry someone you love!",
-    "USAGE": "{{prefix}}marry [@member]",
     "EXAMPLES": "{{prefix}}marry @Androz#2091",
     "INVALID_MEMBER": "You must mention a valid member!",
     "ALREADY_MARRIED": "You are already married! First use `{{prefix}}divorce` to divorce.",
