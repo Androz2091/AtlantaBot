@@ -5,27 +5,34 @@ module.exports = class extends Command {
 	constructor (client) {
 		super(client, {
 			name: "pay",
-			dirname: __dirname,
+
+			options: [
+				{
+					name: "user",
+					type: "USER",
+					required: true
+				},
+				{
+					name: "amount",
+					type: "INTEGER",
+					required: true
+				}
+			],
+
 			enabled: true,
 			guildOnly: true,
-			,
 			memberPermissions: [],
 			botPermissions: [ "SEND_MESSAGES", "EMBED_LINKS" ],
 			nsfw: false,
 			ownerOnly: false,
-			cooldown: 10000
+
+			dirname: __dirname
 		});
 	}
 
 	async run (interaction, translate, data) {
 
-		const member = await this.client.resolveMember(args[0], message.guild);
-		if(!member){
-			return interaction.reply({
-				content: translate("economy/pay:INVALID_MEMBER"),
-				ephemeral: true
-			});
-		}
+		const member = interaction.options.getUser("user");
 		if(member.user.bot){
 			return interaction.reply({
 				content: translate("economy/pay:BOT_USER"),
@@ -38,19 +45,23 @@ module.exports = class extends Command {
 				ephemeral: true
 			});
 		}
-		const sentAmount = args[1];
-		if(!sentAmount || isNaN(sentAmount) || parseInt(sentAmount, 10) <= 0){
-			return message.error("economy/pay:INVALID_AMOUNT", {
-				username: member.user.tag
+		const sentAmount = interaction.options.getInteger("amount");
+		if(parseInt(sentAmount, 10) <= 0){
+			return interaction.reply({
+				content: translate("economy/pay:POSITIVE_INT_AMOUNT"),
+				ephemeral: true
 			});
 		}
 
 		const amount = Math.ceil(parseInt(sentAmount, 10));
 
 		if(amount > data.memberData.money){
-			return message.error("economy/pay:ENOUGH_MONEY", {
-				amount,
-				username: member.user.tag
+			return interaction.reply({
+				content: translate("economy/pay:ENOUGH_MONEY", {
+					amount,
+					username: member.user.tag
+				}),
+				ephemeral: true
 			});
 		}
 
@@ -63,9 +74,11 @@ module.exports = class extends Command {
 		memberData.save();
 
 		// Send a success message
-		message.success("economy/pay:SUCCESS", {
-			amount,
-			username: member.user.tag
+		interaction.reply({
+			content: translate("economy/pay:SUCCESS", {
+				amount,
+				username: member.user.tag
+			})
 		});
 
 	}
