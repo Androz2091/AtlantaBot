@@ -32,7 +32,7 @@ module.exports = class extends Command {
 		let i1=0,j1=0,k1=0,i2=1,j2=1,k2=1,i3=2,j3=2,k3=2;
 
 		// Gets three random fruits array
-		const colonnes = [
+		const columns = [
 			this.client.functions.shuffle(fruits),
 			this.client.functions.shuffle(fruits),
 			this.client.functions.shuffle(fruits)
@@ -87,11 +87,11 @@ module.exports = class extends Command {
 			k2 = (k2 < fruits.length - 1) ? k2 + 1 : 0;
 			k3 = (k3 < fruits.length - 1) ? k3 + 1 : 0;
         
-			msg += colonnes[0][i1] + " : " + colonnes[1][j1] + " : "+ colonnes[2][k1] + "\n";
-			msg += colonnes[0][i2] + " : " + colonnes[1][j2] + " : "+ colonnes[2][k2] + " **<**\n";
-			msg += colonnes[0][i3] + " : " + colonnes[1][j3] + " : "+ colonnes[2][k3] + "\n------------------\n";
+			msg += columns[0][i1] + " : " + columns[1][j1] + " : "+ columns[2][k1] + "\n";
+			msg += columns[0][i2] + " : " + columns[1][j2] + " : "+ columns[2][k2] + " **<**\n";
+			msg += columns[0][i3] + " : " + columns[1][j3] + " : "+ columns[2][k3] + "\n------------------\n";
             
-			if((colonnes[0][i2] == colonnes[1][j2]) && (colonnes[1][j2] == colonnes[2][k2])){
+			if((columns[0][i2] == columns[1][j2]) && (columns[1][j2] == columns[2][k2])){
 				msg += "| : : :  **"+(translate("common:VICTORY").toUpperCase())+"**  : : : |";
 				tmsg.edit(msg);
 				const credits = getCredits(amount, true);
@@ -115,7 +115,7 @@ module.exports = class extends Command {
 				return;
 			}
             
-			if(colonnes[0][i2] == colonnes[1][j2] || colonnes[1][j2] == colonnes[2][k2] || colonnes[0][i2] == colonnes[2][k2]){
+			if(columns[0][i2] == columns[1][j2] || columns[1][j2] == columns[2][k2] || columns[0][i2] == columns[2][k2]){
 				msg += "| : : :  **"+(translate("common:VICTORY").toUpperCase())+"**  : : : |";
 				tmsg.edit(msg);
 				const credits = getCredits(amount, false);
@@ -168,9 +168,9 @@ module.exports = class extends Command {
 			k2 = (k2 < fruits.length - 1) ? k2 + 1 : 0;
 			k3 = (k3 < fruits.length - 1) ? k3 + 1 : 0;
         
-			msg += colonnes[0][i1] + " : " + colonnes[1][j1] + " : "+ colonnes[2][k1] + "\n";
-			msg += colonnes[0][i2] + " : " + colonnes[1][j2] + " : "+ colonnes[2][k2] + " **<**\n";
-			msg += colonnes[0][i3] + " : " + colonnes[1][j3] + " : "+ colonnes[2][k3] + "\n";
+			msg += columns[0][i1] + " : " + columns[1][j1] + " : "+ columns[2][k1] + "\n";
+			msg += columns[0][i2] + " : " + columns[1][j2] + " : "+ columns[2][k2] + " **<**\n";
+			msg += columns[0][i3] + " : " + columns[1][j3] + " : "+ columns[2][k3] + "\n";
 
 			tmsg.edit(msg);
 		}
