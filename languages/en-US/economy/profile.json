@@ -1,6 +1,7 @@
 {
     "DESCRIPTION": "Shows the mentioned user or author profile",
     "EXAMPLES": "{{prefix}}profile Androz#2091",
+    "OPT_USER_DESCRIPTION": "The user you want to show the profile of",
     "TITLE": "{{username}}'s profile",
     "NO_BIO": "",
     "BOT_USER": "Bots don't have profile page!",
