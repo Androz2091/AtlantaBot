@@ -1,7 +1,7 @@
 {
     "DESCRIPTION": "Withdraw money!",
     "EXAMPLES": "{{prefix}}withdraw 400",
-    "MISSING_AMOUNT": "Please specify an amount to be withdrawn!",
+    "OPT_AMOUNT_DESCRIPTION": "The amount you want to widthdraw from the bank",
     "NO_CREDIT": "You don't have any credit in your bank!",
     "NOT_ENOUGH": "You need at least `{{money}}` credit(s)!",
     "SUCCESS": "**{{money}}** credit(s) withdrawn!"
