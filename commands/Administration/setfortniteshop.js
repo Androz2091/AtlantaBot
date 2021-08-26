@@ -19,7 +19,7 @@ class Setfortniteshop extends Command {
 		});
 	}
 
-	async run(message, args, data) {
+	async run(interaction, translate, data) {
 
 		if (!data.config.apiKeys.fortniteFNBR || data.config.apiKeys.fortniteFNBR.length === "") {
 			return interaction.reply({

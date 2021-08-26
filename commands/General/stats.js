@@ -18,7 +18,7 @@ class Stats extends Command {
 		});
 	}
 
-	async run (message, args, data) {
+	async run (interaction, translate, data) {
 
 		const statsEmbed = new Discord.MessageEmbed()
 			.setColor(data.config.embed.color)

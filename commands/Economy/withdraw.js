@@ -17,7 +17,7 @@ class Withdraw extends Command {
 		});
 	}
 
-	async run (message, args, data) {
+	async run (interaction, translate, data) {
         
 		let amount = args[0];
 

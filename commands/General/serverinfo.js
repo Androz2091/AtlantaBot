@@ -17,7 +17,7 @@ class Serverinfo extends Command {
 		});
 	}
 
-	async run (message, args, data) {
+	async run (interaction, translate, data) {
         
 		let guild = message.guild;
 

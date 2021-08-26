@@ -24,7 +24,7 @@ class Profile extends Command {
 		});
 	}
 
-	async run (message, args, data) {
+	async run (interaction, translate, data) {
 
 		const client = this.client;
 

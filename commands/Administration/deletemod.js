@@ -17,7 +17,7 @@ class Deletemod extends Command {
 		});
 	}
 
-	async run (message, args, data) {
+	async run (interaction, translate, data) {
 		const status = args[0];
 		if(!status || status !== "on" && status !== "off"){
 			return interaction.reply({

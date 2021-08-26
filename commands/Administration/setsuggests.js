@@ -18,7 +18,7 @@ class Setsuggests extends Command {
 		});
 	}
 
-	async run (message, args, data) {
+	async run (interaction, translate, data) {
         
 		const areSuggestsEnabled = Boolean(data.guild.plugins.suggestions);
 		const sentChannel = await Resolvers.resolveChannel({

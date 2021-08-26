@@ -17,7 +17,7 @@ class Unban extends Command {
 		});
 	}
 
-	async run (message, args) {
+	async run (interaction, translate) {
 
 		let user = null;
 

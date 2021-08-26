@@ -18,7 +18,7 @@ class Setreports extends Command {
 		});
 	}
 
-	async run (message, args, data) {
+	async run (interaction, translate, data) {
         
 		const areReportsEnabled = Boolean(data.guild.plugins.reports);
 		const sentChannel = await Resolvers.resolveChannel({

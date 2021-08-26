@@ -18,7 +18,7 @@ class ServersList extends Command {
 		});
 	}
 
-	async run (message, args, data) {
+	async run (interaction, translate, data) {
         
 		await message.delete();
 

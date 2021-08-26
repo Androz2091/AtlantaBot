@@ -17,7 +17,7 @@ class Rep extends Command {
 		});
 	}
 
-	async run (message, args, data) {
+	async run (interaction, translate, data) {
 
 		// if the member is already in the cooldown db
 		const isInCooldown = (data.userData.cooldowns || { rep: 0 }).rep;

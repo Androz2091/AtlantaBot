@@ -17,7 +17,7 @@ class Clear extends Command {
 		});
 	}
 
-	async run (message, args) {
+	async run (interaction, translate) {
 
 		if(args[0] === "all"){
 			interaction.reply({

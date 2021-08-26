@@ -18,7 +18,7 @@ class Configuration extends Command {
 		});
 	}
 
-	async run (message, args, data) {
+	async run (interaction, translate, data) {
 
 		const guildData = data.guild;
 

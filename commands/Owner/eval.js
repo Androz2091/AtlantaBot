@@ -18,7 +18,7 @@ class Eval extends Command {
 	}
 
 	// eslint-disable-next-line no-unused-vars
-	async run (message, args, data) {
+	async run (interaction, translate, data) {
 
 		// eslint-disable-next-line no-unused-vars
 		const usersData = this.client.usersData;

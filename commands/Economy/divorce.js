@@ -17,7 +17,7 @@ class Divorce extends Command {
 		});
 	}
 
-	async run (message, args, data) {
+	async run (interaction, translate, data) {
         
 		// Check if the message author is wedded
 		if(!data.userData.lover){

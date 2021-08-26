@@ -17,7 +17,7 @@ class Setlang extends Command {
 		});
 	}
 
-	async run (message, args, data) {
+	async run (interaction, translate, data) {
 
 		const language = this.client.languages.find((l) => l.name === args[0] || l.aliases.includes(args[0]));
 

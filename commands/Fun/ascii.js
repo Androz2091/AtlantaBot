@@ -20,7 +20,7 @@ class Ascii extends Command {
 		});
 	}
 
-	async run (message, args) {
+	async run (interaction, translate) {
 		const text = args.join(" ");
 		if (!text || text.length > 20) {
 			return interaction.reply({

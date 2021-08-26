@@ -17,7 +17,7 @@ class Setwarns extends Command {
 		});
 	}
 
-	async run (message, args, data) {
+	async run (interaction, translate, data) {
         
 		const sanction = args[0];
 		if(!sanction || (sanction !== "kick" && sanction !== "ban")){

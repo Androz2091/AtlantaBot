@@ -17,7 +17,7 @@ class Reload extends Command {
 		});
 	}
 
-	async run (message, args) {
+	async run (interaction, translate) {
 		const command = args[0];
 		const cmd = this.client.commands.get(command) || this.client.commands.get(this.client.aliases.get(command));
 		if(!cmd){

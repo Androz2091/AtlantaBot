@@ -18,7 +18,7 @@ class Quote extends Command {
 		});
 	}
 
-	async run (message, args, data) {
+	async run (interaction, translate, data) {
 
 		function embed(m){
 			const embed = new Discord.MessageEmbed()

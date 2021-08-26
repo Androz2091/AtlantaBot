@@ -17,7 +17,7 @@ class Delcommand extends Command {
 		});
 	}
 
-	async run (message, args, data) {
+	async run (interaction, translate, data) {
 
 		const name = args[0];
 		if(!name){

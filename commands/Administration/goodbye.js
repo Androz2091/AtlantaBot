@@ -18,7 +18,7 @@ class Goodbye extends Command {
 		});
 	}
 
-	async run (message, args, data) {
+	async run (interaction, translate, data) {
 
 		if (
 			args[0] === "test" &&

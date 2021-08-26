@@ -18,7 +18,7 @@ class Poll extends Command {
 		});
 	}
 
-	async run (message, args, data) {
+	async run (interaction, translate, data) {
         
 		const question = args.join(" ");
 		if(!question){

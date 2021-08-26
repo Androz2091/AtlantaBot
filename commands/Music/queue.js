@@ -19,7 +19,7 @@ class Queue extends Command {
 		});
 	}
 
-	async run (message, args, data) {
+	async run (interaction, translate, data) {
 
 		const voice = message.member.voice.channel;
 		if (!voice){

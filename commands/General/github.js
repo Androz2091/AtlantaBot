@@ -19,7 +19,7 @@ class Github extends Command {
 		});
 	}
 
-	async run (message, args, data) {
+	async run (interaction, translate, data) {
         
 		const res = await fetch("https://api.github.com/repos/Androz2091/AtlantaBot");
 		const json = await res.json();

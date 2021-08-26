@@ -24,7 +24,7 @@ class Credits extends Command {
 		});
 	}
 
-	async run (message, args, data) {
+	async run (interaction, translate, data) {
         
 		let member = await this.client.resolveMember(args[0], message.guild);
 		if(!member) member = message.member;

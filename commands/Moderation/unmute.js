@@ -17,7 +17,7 @@ class Unmute extends Command {
 		});
 	}
 
-	async run (message, args) {
+	async run (interaction, translate) {
 
 		const member = await this.client.resolveMember(args[0], message.guild);
 		if(!member){

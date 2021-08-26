@@ -18,7 +18,7 @@ class Work extends Command {
 		});
 	}
 
-	async run (message, args, data) {
+	async run (interaction, translate, data) {
 
 		// if the member is already in the cooldown db
 		const isInCooldown = data.memberData.cooldowns.work;

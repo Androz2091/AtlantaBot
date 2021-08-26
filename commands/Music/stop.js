@@ -18,7 +18,7 @@ class Stop extends Command {
 		});
 	}
 
-	async run (message, args, data) {
+	async run (interaction, translate, data) {
 
 		const queue = await this.client.player.getQueue(message);
 

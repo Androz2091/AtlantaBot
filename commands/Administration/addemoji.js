@@ -17,7 +17,7 @@ class Addemoji extends Command {
 		});
 	}
 
-	async run (message, args) {
+	async run (interaction, translate) {
 
 		const URL = args[0];
 		if (!URL) {

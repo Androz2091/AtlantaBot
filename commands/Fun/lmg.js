@@ -17,7 +17,7 @@ class Lmg extends Command {
 		});
 	}
 
-	async run (message, args) {
+	async run (interaction, translate) {
 		const question = args.join(" ");
 		if (!question) return interaction.reply({
 			content: translate("fun/lmg:MISSING"),

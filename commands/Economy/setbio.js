@@ -17,7 +17,7 @@ class Setbio extends Command {
 		});
 	}
 
-	async run (message, args, data) {
+	async run (interaction, translate, data) {
 		const newBio = args.join(" ");
 		if(!newBio){
 			return interaction.reply({

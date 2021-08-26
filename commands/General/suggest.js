@@ -18,7 +18,7 @@ class Suggest extends Command {
 		});
 	}
 
-	async run (message, args, data) {
+	async run (interaction, translate, data) {
 
 		const suggChannel = message.guild.channels.cache.get(data.guild.plugins.suggestions);
 		if(!suggChannel){

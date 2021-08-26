@@ -17,7 +17,7 @@ class Choice extends Command {
 		});
 	}
 
-	async run (message, args) {
+	async run (interaction, translate) {
 
 		// Gets the answers by spliting on "/"
 		const answers = args.join(" ").split("/");

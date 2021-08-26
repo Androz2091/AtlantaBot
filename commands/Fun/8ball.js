@@ -17,7 +17,7 @@ class Eightball extends Command {
 		});
 	}
 
-	async run (message, args) {
+	async run (interaction, translate) {
         
 		if (!args[0] || !message.content.endsWith("?")) {
 			return interaction.reply({

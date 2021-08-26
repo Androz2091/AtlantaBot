@@ -17,7 +17,7 @@ class Avatar extends Command {
 		});
 	}
 
-	async run (message, args) {
+	async run (interaction, translate) {
 
 		let user = await this.client.resolveUser(args[0]);
 		if(!user) user = message.author;

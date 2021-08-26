@@ -18,7 +18,7 @@ class Fortnite extends Command {
 		});
 	}
  
-	async run (message, args, data) {
+	async run (interaction, translate, data) {
 
 		if(!data.config.apiKeys.fortniteTRN || data.config.apiKeys.fortniteTRN.length === ""){
 			return interaction.reply({

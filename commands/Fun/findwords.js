@@ -20,7 +20,7 @@ class FindWords extends Command {
 		});
 	}
 
-	async run (message, args, data) {
+	async run (interaction, translate, data) {
 
 		if (currentGames[message.guild.id]) {
 			return interaction.reply({

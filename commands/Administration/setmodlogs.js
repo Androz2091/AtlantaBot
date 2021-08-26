@@ -18,7 +18,7 @@ class Setmodlogs extends Command {
 		});
 	}
 
-	async run (message, args, data) {
+	async run (interaction, translate, data) {
         
 		const areModLogsEnabled = Boolean(data.guild.plugins.modlogs);
 		const sentChannel = await Resolvers.resolveChannel({

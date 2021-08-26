@@ -18,7 +18,7 @@ class Seek extends Command {
 		});
 	}
 
-	async run (message, args) {
+	async run (interaction, translate) {
 
 		const queue = this.client.player.getQueue(message);
 

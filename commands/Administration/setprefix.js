@@ -17,7 +17,7 @@ class Setprefix extends Command {
 		});
 	}
 
-	async run (message, args, data) {
+	async run (interaction, translate, data) {
 
 		const prefix = args[0];
 		if(!prefix){

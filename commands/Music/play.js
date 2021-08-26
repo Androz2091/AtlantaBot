@@ -17,7 +17,7 @@ class Play extends Command {
 		});
 	}
 
-	async run (message, args) {
+	async run (interaction, translate) {
 
 		const name = args.join(" ");
 		if(!name){
@@ -44,7 +44,7 @@ class Play extends Command {
 			});
 		}
 
-		await this.client.player.play(message, args.join(" "));
+		await this.client.player.play(interaction, translate.join(" "));
 	}
 
 }

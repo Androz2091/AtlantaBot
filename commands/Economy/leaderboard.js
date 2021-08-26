@@ -18,7 +18,7 @@ class Leaderboard extends Command {
 		});
 	}
 
-	async run (message, args) {
+	async run (interaction, translate) {
         
 		const isOnlyOnMobile = (message.author.presence.clientStatus ? JSON.stringify(Object.keys(message.author.presence.clientStatus)) === JSON.stringify([ "mobile" ]) : false);
 

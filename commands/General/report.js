@@ -18,7 +18,7 @@ class Report extends Command {
 		});
 	}
 
-	async run (message, args, data) {
+	async run (interaction, translate, data) {
 
 		const repChannel = message.guild.channels.cache.get(data.guild.plugins.reports);
 		if(!repChannel){

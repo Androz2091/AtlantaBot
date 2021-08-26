@@ -18,7 +18,7 @@ class Tweet extends Command {
 		});
 	}
 
-	async run (message, args) {
+	async run (interaction, translate) {
 
 		const user = message.mentions.users.first() || message.author;
 		const text = args.slice(1).join(" ");

@@ -18,7 +18,7 @@ class Joke extends Command {
 		});
 	}
 
-	async run (message, args, data) {
+	async run (interaction, translate, data) {
 
 		if (!this.client.config.apiKeys.blagueXYZ)
 			return interaction.reply({
