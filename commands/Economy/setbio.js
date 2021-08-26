@@ -5,20 +5,27 @@ module.exports = class extends Command {
 	constructor (client) {
 		super(client, {
 			name: "setbio",
-			dirname: __dirname,
+
+			options: [
+				{
+					name: "bio",
+					type: "STRING"
+				}
+			],
+
 			enabled: true,
 			guildOnly: false,
-			
 			memberPermissions: [],
 			botPermissions: [ "SEND_MESSAGES", "EMBED_LINKS" ],
 			nsfw: false,
 			ownerOnly: false,
-			cooldown: 5000
+
+			dirname: __dirname
 		});
 	}
 
 	async run (interaction, translate, data) {
-		const newBio = args.join(" ");
+		const newBio = interaction.options.getString("bio");
 		if(!newBio){
 			return interaction.reply({
 				content: translate("economy/setbio:MISSING"),
