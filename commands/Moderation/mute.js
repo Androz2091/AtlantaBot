@@ -23,24 +23,36 @@ class Mute extends Command {
         
 		const member = await this.client.resolveMember(args[0], message.guild);
 		if(!member){
-			return message.error("moderation/mute:MISSING_MEMBER");
+			return interaction.reply({
+				content: translate("moderation/mute:MISSING_MEMBER"),
+				ephemeral: true
+			});
 		}
 
 		if(member.id === message.author.id){
-			return message.error("moderation/ban:YOURSELF");
+			return interaction.reply({
+				content: translate("moderation/ban:YOURSELF"),
+				ephemeral: true
+			});
 		}
 
 		const memberPosition = member.roles.highest.position;
 		const moderationPosition = message.member.roles.highest.position;
 		if(message.member.ownerID !== message.author.id && !(moderationPosition > memberPosition)){
-			return message.error("moderation/ban:SUPERIOR");
+			return interaction.reply({
+				content: translate("moderation/ban:SUPERIOR"),
+				ephemeral: true
+			});
 		}
 
 		const memberData = await this.client.findOrCreateMember({ id: member.id, guildID: message.guild.id });
 
 		const time = args[1];
 		if(!time || isNaN(ms(time))){
-			return message.error("misc:INVALID_TIME");
+			return interaction.reply({
+				content: translate("misc:INVALID_TIME"),
+				ephemeral: true
+			});
 		}
 
 		let reason = args.slice(2).join(" ");

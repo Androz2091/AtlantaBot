@@ -28,12 +28,18 @@ class Fortnite extends Command {
 
 		const platform = args[0];
 		if(!platform || (platform !== "pc" && platform !== "xbl" && platform !== "psn")){
-			return message.error("general/fortnite:MISSING_PLATFORM");
+			return interaction.reply({
+				content: translate("general/fortnite:MISSING_PLATFORM"),
+				ephemeral: true
+			});
 		}
 
 		const user = args.slice(1).join(" ");
 		if(!user){
-			return message.error("general/fortnite:MISSING_USERNAME");
+			return interaction.reply({
+				content: translate("general/fortnite:MISSING_USERNAME"),
+				ephemeral: true
+			});
 		}
 
 		const m = await message.sendT("misc:PLEASE_WAIT", null, {

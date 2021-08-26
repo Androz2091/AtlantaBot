@@ -24,15 +24,24 @@ class Skip extends Command {
 
 		const voice = message.member.voice.channel;
 		if (!voice){
-			return message.error("music/play:NO_VOICE_CHANNEL");
+			return interaction.reply({
+				content: translate("music/play:NO_VOICE_CHANNEL"),
+				ephemeral: true
+			});
 		}
 
 		if(!queue){
-			return message.error("music/play:NOT_PLAYING");
+			return interaction.reply({
+				content: translate("music/play:NOT_PLAYING"),
+				ephemeral: true
+			});
 		}
 
 		if(!queue.tracks[0]){
-			return message.error("music/skip:NO_NEXT_SONG");
+			return interaction.reply({
+				content: translate("music/skip:NO_NEXT_SONG"),
+				ephemeral: true
+			});
 		}
 
 		const members = voice.members.filter((m) => !m.user.bot);
@@ -89,7 +98,10 @@ class Skip extends Command {
 
 			collector.on("end", (collected, isDone) => {
 				if(!isDone){
-					return message.error("misc:TIMES_UP");
+					return interaction.reply({
+						content: translate("misc:TIMES_UP"),
+						ephemeral: true
+					});
 				}
 			});
 

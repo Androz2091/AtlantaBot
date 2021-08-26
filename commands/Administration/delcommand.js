@@ -21,7 +21,10 @@ class Delcommand extends Command {
 
 		const name = args[0];
 		if(!name){
-			return message.error("administration/delcommand:MISSING_NAME");
+			return interaction.reply({
+				content: translate("administration/delcommand:MISSING_NAME"),
+				ephemeral: true
+			});
 		}
 
 		if(!data.guild.customCommands.find((c) => c.name === name)){

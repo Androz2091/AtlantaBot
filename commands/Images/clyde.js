@@ -23,7 +23,10 @@ class Clyde extends Command {
 		const text = args.join(" ");
 
 		if(!text){
-			return message.error("images/clyde:MISSING_TEXT");
+			return interaction.reply({
+				content: translate("images/clyde:MISSING_TEXT"),
+				ephemeral: true
+			});
 		}
 
 		const m = await message.sendT("misc:PLEASE_WAIT", null, {

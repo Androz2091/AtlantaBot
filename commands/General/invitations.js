@@ -25,13 +25,19 @@ class Invitations extends Command {
 
 		// Gets the invites
 		const invites = await message.guild.fetchInvites().catch(() => {});
-		if (!invites) return message.error("misc:ERR_OCCURRED");
+		if (!invites) return interaction.reply({
+			content: translate("misc:ERR_OCCURRED"),
+			ephemeral: true
+		});
         
 		const memberInvites = invites.filter((i) => i.inviter && i.inviter.id === member.user.id);
 
 		if(memberInvites.size <= 0){
 			if(member === message.member){
-				return message.error("general/invitations:NOBODY_AUTHOR");
+				return interaction.reply({
+					content: translate("general/invitations:NOBODY_AUTHOR"),
+					ephemeral: true
+				});
 			} else {
 				return message.error("general/invitations:NOBODY_MEMBER", {
 					member: member.user.tag

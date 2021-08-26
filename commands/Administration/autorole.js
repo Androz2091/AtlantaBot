@@ -22,7 +22,10 @@ class Autorole extends Command {
 
 		const status = args[0];
 		if(status !== "on" && status !== "off"){
-			return message.error("administration/autorole:MISSING_STATUS");
+			return interaction.reply({
+				content: translate("administration/autorole:MISSING_STATUS"),
+				ephemeral: true
+			});
 		}
         
 		if(status === "on"){
@@ -32,7 +35,10 @@ class Autorole extends Command {
 				search: args.slice(1).join(" ")
 			});
 			if(!role){
-				return message.error("administration/autorole:MISSING_ROLE");
+				return interaction.reply({
+					content: translate("administration/autorole:MISSING_ROLE"),
+					ephemeral: true
+				});
 			}
 
 			data.guild.plugins.autorole = {

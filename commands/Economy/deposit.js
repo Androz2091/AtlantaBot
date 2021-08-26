@@ -22,14 +22,20 @@ class Deposit extends Command {
 		let amount = args[0];
 
 		if(!(parseInt(data.memberData.money, 10) > 0)) {
-			return message.error("economy/deposit:NO_CREDIT");
+			return interaction.reply({
+				content: translate("economy/deposit:NO_CREDIT"),
+				ephemeral: true
+			});
 		}
 
 		if(args[0] === "all"){
 			amount = parseInt(data.memberData.money, 10);
 		} else {
 			if(isNaN(amount) || parseInt(amount, 10) < 1){
-				return message.error("economy/deposit:MISSING_AMOUNT");
+				return interaction.reply({
+					content: translate("economy/deposit:MISSING_AMOUNT"),
+					ephemeral: true
+				});
 			}
 			amount = parseInt(amount, 10);
 		}

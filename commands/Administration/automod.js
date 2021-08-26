@@ -21,7 +21,10 @@ class Automod extends Command {
 
 		const status = args[0];
 		if(!status || (status !== "on" && status !== "off")){
-			return message.error("administration/automod:MISSING_STATUS");
+			return interaction.reply({
+				content: translate("administration/automod:MISSING_STATUS"),
+				ephemeral: true
+			});
 		}
 
 		if(status === "on"){

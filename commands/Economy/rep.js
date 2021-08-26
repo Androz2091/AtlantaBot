@@ -34,13 +34,22 @@ class Rep extends Command {
 
 		const user = await this.client.resolveUser(args[0]);
 		if(!user){
-			return message.error("economy/rep:INVALID_USER");
+			return interaction.reply({
+				content: translate("economy/rep:INVALID_USER"),
+				ephemeral: true
+			});
 		}
 		if(user.bot){
-			return message.error("economy/rep:BOT_USER");
+			return interaction.reply({
+				content: translate("economy/rep:BOT_USER"),
+				ephemeral: true
+			});
 		}
 		if(user.id === message.author.id){
-			return message.error("economy/rep:YOURSELF");
+			return interaction.reply({
+				content: translate("economy/rep:YOURSELF"),
+				ephemeral: true
+			});
 		}
 
 		// Records in the database the time when the member will be able to execute the command again (in 12 hours)

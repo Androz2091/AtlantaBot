@@ -32,7 +32,10 @@ class Welcome extends Command {
 			(!args[0] || !["edit", "off"].includes(args[0])) &&
             data.guild.plugins.welcome.enabled
 		)
-			return message.error("administration/welcome:MISSING_STATUS");
+			return interaction.reply({
+				content: translate("administration/welcome:MISSING_STATUS"),
+				ephemeral: true
+			});
 
 		if (args[0] === "off") {
 			data.guild.plugins.welcome = {
@@ -78,7 +81,10 @@ class Welcome extends Command {
 					) {
 						welcome.withImage = false;
 					} else {
-						return message.error("misc:INVALID_YES_NO");
+						return interaction.reply({
+							content: translate("misc:INVALID_YES_NO"),
+							ephemeral: true
+						});
 					}
 					data.guild.plugins.welcome = welcome;
 					data.guild.markModified("plugins.welcome");
@@ -96,7 +102,10 @@ class Welcome extends Command {
 						welcome.message = msg.content;
 						return message.sendT("administration/welcome:FORM_3");
 					}
-					return message.error("administration/goodbye:MAX_CHARACT");
+					return interaction.reply({
+						content: translate("administration/goodbye:MAX_CHARACT"),
+						ephemeral: true
+					});
 				}
 
 				// If the channel is not filled, it means the user sent it
@@ -106,7 +115,10 @@ class Welcome extends Command {
 						channelType: "text"
 					});
 					if (!channel) {
-						return message.error("misc:INVALID_CHANNEL");
+						return interaction.reply({
+							content: translate("misc:INVALID_CHANNEL"),
+							ephemeral: true
+						});
 					}
 					welcome.channel = channel.id;
 					message.sendT("administration/welcome:FORM_2", {
@@ -119,7 +131,10 @@ class Welcome extends Command {
 
 			collector.on("end", (_, reason) => {
 				if (reason === "time") {
-					return message.error("misc:TIMEOUT");
+					return interaction.reply({
+						content: translate("misc:TIMEOUT"),
+						ephemeral: true
+					});
 				}
 			});
 		}

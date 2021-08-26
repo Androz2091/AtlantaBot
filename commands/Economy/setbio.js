@@ -20,10 +20,16 @@ class Setbio extends Command {
 	async run (message, args, data) {
 		const newBio = args.join(" ");
 		if(!newBio){
-			return message.error("economy/setbio:MISSING");
+			return interaction.reply({
+				content: translate("economy/setbio:MISSING"),
+				ephemeral: true
+			});
 		}
 		if(newBio.length > 100){
-			return message.error("economy/setbio:MAX_CHARACT");
+			return interaction.reply({
+				content: translate("economy/setbio:MAX_CHARACT"),
+				ephemeral: true
+			});
 		}
 		data.userData.bio = newBio;
 		message.success("economy/setbio:SUCCESS");

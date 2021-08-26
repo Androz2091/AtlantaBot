@@ -22,7 +22,10 @@ class Unban extends Command {
 		let user = null;
 
 		if(!args[0]){
-			return message.error("moderation/unban:MISSING_ID");
+			return interaction.reply({
+				content: translate("moderation/unban:MISSING_ID"),
+				ephemeral: true
+			});
 		}
 
 		// Check if the arg is an ID or a username

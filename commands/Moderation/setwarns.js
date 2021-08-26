@@ -21,7 +21,10 @@ class Setwarns extends Command {
         
 		const sanction = args[0];
 		if(!sanction || (sanction !== "kick" && sanction !== "ban")){
-			return message.error("moderation/setwarns:MISSING_TYPE");
+			return interaction.reply({
+				content: translate("moderation/setwarns:MISSING_TYPE"),
+				ephemeral: true
+			});
 		}
 
 		const number = args[1];
@@ -48,10 +51,16 @@ class Setwarns extends Command {
 		}
 
 		if(!number || isNaN(number)){
-			return message.error("misc:INVALID_NUMBER");
+			return interaction.reply({
+				content: translate("misc:INVALID_NUMBER"),
+				ephemeral: true
+			});
 		}
 		if(number < 1 || number > 10){
-			return message.error("misc:INVALID_NUMBER_RANGE", 1, 10);
+			return interaction.reply({
+				content: translate("misc:INVALID_NUMBER_RANGE", 1, 10),
+				ephemeral: true
+			});
 		}
 
 		if(sanction === "kick"){

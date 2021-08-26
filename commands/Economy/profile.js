@@ -33,7 +33,10 @@ class Profile extends Command {
 
 		// Check if the user is a bot
 		if(member.user.bot){
-			return message.error("economy/profile:BOT_USER");
+			return interaction.reply({
+				content: translate("economy/profile:BOT_USER"),
+				ephemeral: true
+			});
 		}
 
 		// Gets the data of the user whose profile you want to display

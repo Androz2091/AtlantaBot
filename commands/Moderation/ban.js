@@ -22,13 +22,19 @@ class Ban extends Command {
         
 		const user = await this.client.resolveUser(args[0]);
 		if(!user){
-			return message.error("moderation/ban:MISSING_MEMBER");
+			return interaction.reply({
+				content: translate("moderation/ban:MISSING_MEMBER"),
+				ephemeral: true
+			});
 		}
         
 		const memberData = message.guild.members.cache.get(user.id) ? await this.client.findOrCreateMember({ id: user.id, guildID: message.guild.id }) : null;
 
 		if(user.id === message.author.id){
-			return message.error("moderation/ban:YOURSELF");
+			return interaction.reply({
+				content: translate("moderation/ban:YOURSELF"),
+				ephemeral: true
+			});
 		}
 
 		// If the user is already banned
@@ -50,10 +56,16 @@ class Ban extends Command {
 			const memberPosition = member.roles.highest.position;
 			const moderationPosition = message.member.roles.highest.position;
 			if(message.member.ownerID !== message.author.id && !(moderationPosition > memberPosition)){
-				return message.error("moderation/ban:SUPERIOR");
+				return interaction.reply({
+					content: translate("moderation/ban:SUPERIOR"),
+					ephemeral: true
+				});
 			}
 			if(!member.bannable) {
-				return message.error("moderation/ban:MISSING_PERM");
+				return interaction.reply({
+					content: translate("moderation/ban:MISSING_PERM"),
+					ephemeral: true
+				});
 			}
 		}
         
@@ -108,7 +120,10 @@ class Ban extends Command {
 
 		}).catch((err) => {
 			console.log(err);
-			return message.error("moderation/ban:MISSING_PERM");
+			return interaction.reply({
+				content: translate("moderation/ban:MISSING_PERM"),
+				ephemeral: true
+			});
 		});
 
 	}

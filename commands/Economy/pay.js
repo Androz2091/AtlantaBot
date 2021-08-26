@@ -21,13 +21,22 @@ class Pay extends Command {
 
 		const member = await this.client.resolveMember(args[0], message.guild);
 		if(!member){
-			return message.error("economy/pay:INVALID_MEMBER");
+			return interaction.reply({
+				content: translate("economy/pay:INVALID_MEMBER"),
+				ephemeral: true
+			});
 		}
 		if(member.user.bot){
-			return message.error("economy/pay:BOT_USER");
+			return interaction.reply({
+				content: translate("economy/pay:BOT_USER"),
+				ephemeral: true
+			});
 		}
 		if(member.id === message.author.id){
-			return message.error("economy/pay:YOURSELF");
+			return interaction.reply({
+				content: translate("economy/pay:YOURSELF"),
+				ephemeral: true
+			});
 		}
 		const sentAmount = args[1];
 		if(!sentAmount || isNaN(sentAmount) || parseInt(sentAmount, 10) <= 0){

@@ -22,10 +22,16 @@ class Announcement extends Command {
         
 		const text = args.join(" ");
 		if(!text){
-			return message.error("moderation/announcement:MISSING_TEXT");
+			return interaction.reply({
+				content: translate("moderation/announcement:MISSING_TEXT"),
+				ephemeral: true
+			});
 		}
 		if(text.length > 1030){
-			return message.error("moderation/announcement:TOO_LONG");
+			return interaction.reply({
+				content: translate("moderation/announcement:TOO_LONG"),
+				ephemeral: true
+			});
 		}
 
 		message.delete().catch(() => {});
@@ -66,7 +72,10 @@ class Announcement extends Command {
 				});
 				c.on("end", (collected, reason) => {
 					if(reason === "time"){
-						return message.error("misc:TIMES_UP");
+						return interaction.reply({
+							content: translate("misc:TIMES_UP"),
+							ephemeral: true
+						});
 					}
 				});
 			}
@@ -75,7 +84,10 @@ class Announcement extends Command {
 		collector.on("end", (collected, reason) => {
     
 			if(reason === "time"){
-				return message.error("misc:TIMES_UP");
+				return interaction.reply({
+					content: translate("misc:TIMES_UP"),
+					ephemeral: true
+				});
 			}
 
 			const embed = new Discord.MessageEmbed()

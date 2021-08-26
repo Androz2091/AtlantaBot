@@ -28,7 +28,10 @@ class Translate extends Command {
 			message.author.send(langsList).then(() => {
 				message.success("general/translate:LIST_SENT");
 			}).catch(() => {
-				message.error("misc:CANNOT_DM");
+				interaction.reply({
+					content: translate("misc:CANNOT_DM"),
+					ephemeral: true
+				});
 			});
 			return;
 		}

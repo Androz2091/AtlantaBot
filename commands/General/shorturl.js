@@ -23,14 +23,20 @@ class ShortURL extends Command {
     
 		const url = args[0];
 		if(!url){
-			return message.error("general/shorturl:MISSING_URL");
+			return interaction.reply({
+				content: translate("general/shorturl:MISSING_URL"),
+				ephemeral: true
+			});
 		}
 
 		const res = await fetch(`https://is.gd/create.php?format=simple&url=${encodeURI(url)}`);
 		const body = await res.text();
 
 		if(body === "Error: Please enter a valid URL to shorten"){
-			return message.error("general/shorturl:MISSING_URL");
+			return interaction.reply({
+				content: translate("general/shorturl:MISSING_URL"),
+				ephemeral: true
+			});
 		}
 
 		const embed = new Discord.MessageEmbed()

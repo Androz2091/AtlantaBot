@@ -21,7 +21,10 @@ class Fml extends Command {
 	async run (message, args, data) {
 
 		if (!this.client.config.apiKeys.blagueXYZ)
-			return message.error("misc:COMMAND_DISABLED");
+			return interaction.reply({
+				content: translate("misc:COMMAND_DISABLED"),
+				ephemeral: true
+			});
 
 		const fml = await this.client.joker.randomVDM(null, data.guild.language.substr(0, 2));
 

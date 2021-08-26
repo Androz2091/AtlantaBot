@@ -21,7 +21,10 @@ class Clearsanctions extends Command {
         
 		const member = await this.client.resolveMember(args[0], message.guild);
 		if(!member){
-			return message.error("moderation/clear-sanctions:MISSING_MEMBER");
+			return interaction.reply({
+				content: translate("moderation/clear-sanctions:MISSING_MEMBER"),
+				ephemeral: true
+			});
 		}
 		const memberData = await this.client.findOrCreateMember({ id: member.id, guildID: message.guild.id });
 		memberData.sanctions = [];

@@ -22,14 +22,20 @@ class Withdraw extends Command {
 		let amount = args[0];
 
 		if(!(parseInt(data.memberData.bankSold, 10) > 0)) {
-			return message.error("economy/withdraw:NO_CREDIT");
+			return interaction.reply({
+				content: translate("economy/withdraw:NO_CREDIT"),
+				ephemeral: true
+			});
 		}
 
 		if(args[0] === "all"){
 			amount = parseInt(data.memberData.bankSold, 10);
 		} else {
 			if(isNaN(amount) || parseInt(amount, 10) < 1){
-				return message.error("economy/withdraw:MISSING_AMOUNT");
+				return interaction.reply({
+					content: translate("economy/withdraw:MISSING_AMOUNT"),
+					ephemeral: true
+				});
 			}
 			amount = parseInt(amount, 10);
 		}

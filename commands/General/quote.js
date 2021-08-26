@@ -38,7 +38,10 @@ class Quote extends Command {
 			message.author.send(message.translate("general/quote:MISSING_ID")).then(() => {
 				message.delete();
 			}).catch(() => {
-				message.error("misc:CANNOT_DM");
+				interaction.reply({
+					content: translate("misc:CANNOT_DM"),
+					ephemeral: true
+				});
 			});
 			return;
 		}
@@ -50,7 +53,10 @@ class Quote extends Command {
 				message.author.send(message.translate("general/quote:NO_MESSAGE_ID")).then(() => {
 					message.delete();
 				}).catch(() => {
-					message.error("misc:CANNOT_DM");
+					interaction.reply({
+						content: translate("misc:CANNOT_DM"),
+						ephemeral: true
+					});
 				});
 				return;
 			}
@@ -61,7 +67,10 @@ class Quote extends Command {
 				message.author.send((message.translate("general/quote:NO_MESSAGE_ID"))).then(() => {
 					message.delete();
 				}).catch(() => {
-					message.error("misc:CANNOT_DM");
+					interaction.reply({
+						content: translate("misc:CANNOT_DM"),
+						ephemeral: true
+					});
 				});
 				return;
 			}).then((msg) => {
@@ -73,7 +82,10 @@ class Quote extends Command {
 				message.author.send(message.translate("general/quote:NO_MESSAGE_ID")).then(() => {
 					message.delete();
 				}).catch(() => {
-					message.error("misc:CANNOT_DM");
+					interaction.reply({
+						content: translate("misc:CANNOT_DM"),
+						ephemeral: true
+					});
 				});
 				return;
 			}).then((msg) => {

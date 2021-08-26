@@ -33,7 +33,10 @@ class Marry extends Command {
 		// Gets the first mentionned member
 		const member = await this.client.resolveMember(args[0], message.guild);
 		if(!member){
-			return message.error("economy/marry:INVALID_MEMBER");
+			return interaction.reply({
+				content: translate("economy/marry:INVALID_MEMBER"),
+				ephemeral: true
+			});
 		}
 
 		const userData = await this.client.findOrCreateUser({ id: member.id });
@@ -45,11 +48,17 @@ class Marry extends Command {
 		}
 
 		if(member.user.bot){
-			return message.error("economy/marry:BOT_USER");
+			return interaction.reply({
+				content: translate("economy/marry:BOT_USER"),
+				ephemeral: true
+			});
 		}
 
 		if(member.id === message.author.id){
-			return message.error("economy/marry:YOURSELF");
+			return interaction.reply({
+				content: translate("economy/marry:YOURSELF"),
+				ephemeral: true
+			});
 		}
 
 		for(const requester in pendings){
@@ -99,7 +108,10 @@ class Marry extends Command {
 			if(msg.content.toLowerCase() === message.translate("common:NO").toLowerCase()){
 				return collector.stop(false);
 			} else {
-				return message.error("misc:INVALID_YES_NO");
+				return interaction.reply({
+					content: translate("misc:INVALID_YES_NO"),
+					ephemeral: true
+				});
 			}
 		});
 

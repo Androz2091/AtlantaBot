@@ -22,14 +22,20 @@ class Lovecalc extends Command {
 	async run (message) {
 		const firstMember = message.mentions.members.filter(m => m.id !== message.author.id).first();
 		if (!firstMember)
-			return message.error("fun/lovecalc:MISSING");
+			return interaction.reply({
+				content: translate("fun/lovecalc:MISSING"),
+				ephemeral: true
+			});
 		const secondMember =
 			message.mentions.members
 				.filter(m => m.id !== firstMember.id)
 				.filter(m => m.id !== message.author.id)
 				.first() || message.member;
 		if (!secondMember)
-			return message.error("fun/lovecalc:MISSING");
+			return interaction.reply({
+				content: translate("fun/lovecalc:MISSING"),
+				ephemeral: true
+			});
 
 		const members = [firstMember, secondMember].sort(
 			(a, b) => parseInt(a.id, 10) - parseInt(b.id, 10)

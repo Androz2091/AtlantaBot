@@ -21,10 +21,16 @@ class Setprefix extends Command {
 
 		const prefix = args[0];
 		if(!prefix){
-			return message.error("administration/setprefix:MISSING_PREFIX");
+			return interaction.reply({
+				content: translate("administration/setprefix:MISSING_PREFIX"),
+				ephemeral: true
+			});
 		}
 		if(prefix.length > 5){
-			return message.error("administration/setprefix:TOO_LONG");
+			return interaction.reply({
+				content: translate("administration/setprefix:TOO_LONG"),
+				ephemeral: true
+			});
 		}
         
 		data.guild.prefix = prefix;

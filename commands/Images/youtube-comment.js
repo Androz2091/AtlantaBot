@@ -30,7 +30,10 @@ class YouTubeComment extends Command {
 		}
 
 		if(!text){
-			return message.error("images/phcomment:MISSING_TEXT"); // same text as phcomment
+			return interaction.reply({
+				content: translate("images/phcomment:MISSING_TEXT"),
+				ephemeral: true
+			}); // same text as phcomment
 		}
 
 		const m = await message.sendT("misc:PLEASE_WAIT", null, {

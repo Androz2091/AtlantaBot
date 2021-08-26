@@ -26,7 +26,10 @@ class Clear extends Command {
 				time: 20000,
 				errors: ["time"]
 			}).catch(() => {
-				return message.error("misc:TIMES_UP");
+				return interaction.reply({
+					content: translate("misc:TIMES_UP"),
+					ephemeral: true
+				});
 			});
 			const position = message.channel.position;
 			const newChannel = await message.channel.clone();
@@ -37,7 +40,10 @@ class Clear extends Command {
 
 		let amount = args[0];
 		if(!amount || isNaN(amount) || parseInt(amount) < 1){
-			return message.error("moderation/clear:MISSING_AMOUNT");
+			return interaction.reply({
+				content: translate("moderation/clear:MISSING_AMOUNT"),
+				ephemeral: true
+			});
 		}
 
 		await message.delete();

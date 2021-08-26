@@ -22,7 +22,10 @@ class Setfortniteshop extends Command {
 	async run(message, args, data) {
 
 		if (!data.config.apiKeys.fortniteFNBR || data.config.apiKeys.fortniteFNBR.length === "") {
-			return message.error("misc:COMMAND_DISABLED");
+			return interaction.reply({
+				content: translate("misc:COMMAND_DISABLED"),
+				ephemeral: true
+			});
 		}
 
 		if (data.guild.plugins.fortniteshop && !message.mentions.channels.first() || message.mentions.channels.first() && data.guild.plugins.fortniteshop === message.mentions.channels.first().id) {

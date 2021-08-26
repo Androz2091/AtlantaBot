@@ -22,13 +22,19 @@ class Giveaway extends Command {
         
 		const status = args[0];
 		if(!status){
-			return message.error("moderation/giveaway:MISSING_STATUS");
+			return interaction.reply({
+				content: translate("moderation/giveaway:MISSING_STATUS"),
+				ephemeral: true
+			});
 		}
 
 		if(status === "create"){
 			const currentGiveaways = this.client.giveawaysManager.giveaways.filter((g) => g.guildID === message.guild.id && !g.ended).length;
 			if(currentGiveaways > 3){
-				return message.error("moderation/giveaway:MAX_COUNT");
+				return interaction.reply({
+					content: translate("moderation/giveaway:MAX_COUNT"),
+					ephemeral: true
+				});
 			}
 			const time = args[1];
 			if(!time){
@@ -37,10 +43,16 @@ class Giveaway extends Command {
 				});
 			}
 			if(isNaN(ms(time))){
-				return message.error("misc:INVALID_TIME");
+				return interaction.reply({
+					content: translate("misc:INVALID_TIME"),
+					ephemeral: true
+				});
 			}
 			if(ms(time) > ms("15d")){
-				return message.error("moderation/giveaway:MAX_DURATION");
+				return interaction.reply({
+					content: translate("moderation/giveaway:MAX_DURATION"),
+					ephemeral: true
+				});
 			}
 			const winnersCount = args[2];
 			if(!winnersCount){
@@ -87,7 +99,10 @@ class Giveaway extends Command {
 		} else if(status === "reroll"){
 			const messageID = args[1];
 			if(!messageID){
-				return message.error("moderation/giveaway:MISSING_ID");
+				return interaction.reply({
+					content: translate("moderation/giveaway:MISSING_ID"),
+					ephemeral: true
+				});
 			}
 			this.client.giveawaysManager.reroll(messageID, {
 				congrat: message.translate("moderation/giveaway:REROLL_CONGRAT"),
@@ -102,7 +117,10 @@ class Giveaway extends Command {
 		} else if(status === "delete"){
 			const messageID = args[1];
 			if(!messageID){
-				return message.error("moderation/giveaway:MISSING_ID");
+				return interaction.reply({
+					content: translate("moderation/giveaway:MISSING_ID"),
+					ephemeral: true
+				});
 			}
 			this.client.giveawaysManager.delete(messageID).then(() => {
 				return message.success("moderation/giveaway:GIVEAWAY_DELETED");
@@ -114,7 +132,10 @@ class Giveaway extends Command {
 		} else if(status === "end"){
 			const messageID = args[1];
 			if(!messageID){
-				return message.error("moderation/giveaway:MISSING_ID");
+				return interaction.reply({
+					content: translate("moderation/giveaway:MISSING_ID"),
+					ephemeral: true
+				});
 			}
 			try {
 				this.client.giveawaysManager.edit(messageID, {
@@ -127,7 +148,10 @@ class Giveaway extends Command {
 				});
 			}
 		} else {
-			return message.error("moderation/giveaway:MISSING_STATUS");
+			return interaction.reply({
+				content: translate("moderation/giveaway:MISSING_STATUS"),
+				ephemeral: true
+			});
 		}
 
 	}

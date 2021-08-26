@@ -23,7 +23,10 @@ class Lyrics extends Command {
         
 		const [songName, artistName] = args.join(" ").split("|");
 		if(!songName){
-			return message.error("music/lyrics:MISSING_SONG_NAME");
+			return interaction.reply({
+				content: translate("music/lyrics:MISSING_SONG_NAME"),
+				ephemeral: true
+			});
 		}
         
 		const embed = new Discord.MessageEmbed()

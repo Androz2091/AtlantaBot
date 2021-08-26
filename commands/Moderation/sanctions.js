@@ -22,7 +22,10 @@ class Sanctions extends Command {
         
 		const user = await this.client.resolveUser(args[0]);
 		if(!user){
-			return message.error("moderation/sanctions:MISSING_MEMBER");
+			return interaction.reply({
+				content: translate("moderation/sanctions:MISSING_MEMBER"),
+				ephemeral: true
+			});
 		}
 		const memberData = await this.client.findOrCreateMember({ id: user.id, guildID: message.guild.id });
 

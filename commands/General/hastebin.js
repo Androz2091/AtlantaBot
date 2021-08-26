@@ -23,7 +23,10 @@ class Hastebin extends Command {
 
 		const content = args.join(" ");
 		if(!content){
-			return message.error("general/hastebin:MISSING_TEXT");
+			return interaction.reply({
+				content: translate("general/hastebin:MISSING_TEXT"),
+				ephemeral: true
+			});
 		}
 
 		try {
@@ -35,7 +38,10 @@ class Hastebin extends Command {
             
 			const json = await res.json();
 			if(!json.key){
-				return message.error("misc:ERR_OCCURRED");
+				return interaction.reply({
+					content: translate("misc:ERR_OCCURRED"),
+					ephemeral: true
+				});
 			}
 			const url = "https://hastebin.com/"+json.key+".js";
 
@@ -45,7 +51,10 @@ class Hastebin extends Command {
 				.setColor(data.config.embed.color);
 			message.channel.send({ embeds: [embed] });
 		} catch(e){
-			message.error("misc:ERR_OCCURRED");
+			interaction.reply({
+				content: translate("misc:ERR_OCCURRED"),
+				ephemeral: true
+			});
 		}
         
 	}

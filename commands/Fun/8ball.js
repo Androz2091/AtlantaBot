@@ -20,7 +20,10 @@ class Eightball extends Command {
 	async run (message, args) {
         
 		if (!args[0] || !message.content.endsWith("?")) {
-			return message.error("fun/8ball:ERR_QUESTION");
+			return interaction.reply({
+				content: translate("fun/8ball:ERR_QUESTION"),
+				ephemeral: true
+			});
 		}
 
 		const answerNO = parseInt(Math.floor(Math.random() * 10), 10);

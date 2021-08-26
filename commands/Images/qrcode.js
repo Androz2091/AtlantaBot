@@ -22,7 +22,10 @@ class Qrcode extends Command {
 
 		const text = args.join(" ");
 		if(!text){
-			return message.error("images/qrcode:MISSING_TEXT");
+			return interaction.reply({
+				content: translate("images/qrcode:MISSING_TEXT"),
+				ephemeral: true
+			});
 		}
     
 		const pleaseWait = await message.sendT("misc:PLEASE_WAIT", null, {

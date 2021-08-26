@@ -20,7 +20,10 @@ class Setafk extends Command {
 
 		const reason = args.join(" ");
 		if(!reason){
-			return message.error("general/setafk:MISSING_REASON");
+			return interaction.reply({
+				content: translate("general/setafk:MISSING_REASON"),
+				ephemeral: true
+			});
 		}
 
 		// Send success message

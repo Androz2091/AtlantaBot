@@ -21,12 +21,18 @@ class Remindme extends Command {
 
 		const time = args[0];
 		if(!time || isNaN(ms(time))){
-			return message.error("misc:INVALID_TIME");
+			return interaction.reply({
+				content: translate("misc:INVALID_TIME"),
+				ephemeral: true
+			});
 		}
 
 		const msg = args.slice(1).join(" ");
 		if(!msg){
-			return message.error("general/remindme:MISSING_MESSAGE");
+			return interaction.reply({
+				content: translate("general/remindme:MISSING_MESSAGE"),
+				ephemeral: true
+			});
 		}
         
 		const rData = {

@@ -23,11 +23,17 @@ class Resume extends Command {
 
 		const voice = message.member.voice.channel;
 		if (!voice){
-			return message.error("music/play:NO_VOICE_CHANNEL");
+			return interaction.reply({
+				content: translate("music/play:NO_VOICE_CHANNEL"),
+				ephemeral: true
+			});
 		}
 
 		if(!queue){
-			return message.error("music:play:NOT_PLAYING");
+			return interaction.reply({
+				content: translate("music:play:NOT_PLAYING"),
+				ephemeral: true
+			});
 		}
 
 		// Gets the current song

@@ -24,11 +24,17 @@ class Tweet extends Command {
 		const text = args.slice(1).join(" ");
 
 		if(!user){
-			return message.error("images/tweet:MISSING_USERNAME");
+			return interaction.reply({
+				content: translate("images/tweet:MISSING_USERNAME"),
+				ephemeral: true
+			});
 		}
 
 		if(!text){
-			return message.error("images/tweet:MISSING_TEXT");
+			return interaction.reply({
+				content: translate("images/tweet:MISSING_TEXT"),
+				ephemeral: true
+			});
 		}
 
 		const m = await message.sendT("misc:PLEASE_WAIT", null, {

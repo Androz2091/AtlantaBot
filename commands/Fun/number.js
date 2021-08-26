@@ -23,7 +23,10 @@ class Number extends Command {
 	async run (message) {
 
 		if (currentGames[message.guild.id]) {
-			return message.error("fun/number:GAME_RUNNING");
+			return interaction.reply({
+				content: translate("fun/number:GAME_RUNNING"),
+				ephemeral: true
+			});
 		}
 
 		const participants = [];
@@ -89,7 +92,10 @@ class Number extends Command {
 		collector.on("end", (_collected, reason) => {
 			delete currentGames[message.guild.id];
 			if (reason === "time") {
-				return message.error("fun/number:DEFEAT", { number });
+				return interaction.reply({
+					content: translate("fun/number:DEFEAT", { number }),
+					ephemeral: true
+				});
 			}
 		});
 	}

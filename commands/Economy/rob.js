@@ -21,11 +21,17 @@ class Rob extends Command {
 
 		const member = await this.client.resolveMember(args[0], message.guild);
 		if(!member){
-			return message.error("economy/rob:MISSING_MEMBER");
+			return interaction.reply({
+				content: translate("economy/rob:MISSING_MEMBER"),
+				ephemeral: true
+			});
 		}
 
 		if(member.id === message.author.id){
-			return message.error("economy/rob:YOURSELF");
+			return interaction.reply({
+				content: translate("economy/rob:YOURSELF"),
+				ephemeral: true
+			});
 		}
 
 		const memberData = await this.client.findOrCreateMember({ id: member.id, guildID: message.guild.id });

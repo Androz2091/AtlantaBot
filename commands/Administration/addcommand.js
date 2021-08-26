@@ -20,7 +20,10 @@ class Addcommand extends Command {
 	async run (message, args, data) {
         
 		if (!args[0])
-			return message.error("administration/addcommand:MISSING_NAME");
+			return interaction.reply({
+				content: translate("administration/addcommand:MISSING_NAME"),
+				ephemeral: true
+			});
 
 		const name = args[0].split("\n")[0];
 
@@ -36,7 +39,10 @@ class Addcommand extends Command {
 
 		const answer = (args[0].split("\n")[1] || "") + args.slice(1).join(" ");
 		if (!answer) {
-			return message.error("administration/addcommand:MISSING_ANSWER");
+			return interaction.reply({
+				content: translate("administration/addcommand:MISSING_ANSWER"),
+				ephemeral: true
+			});
 		}
 
 		data.guild.customCommands.push({

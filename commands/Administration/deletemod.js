@@ -20,7 +20,10 @@ class Deletemod extends Command {
 	async run (message, args, data) {
 		const status = args[0];
 		if(!status || status !== "on" && status !== "off"){
-			return message.error("administration/deletemod:MISSING_STATUS");
+			return interaction.reply({
+				content: translate("administration/deletemod:MISSING_STATUS"),
+				ephemeral: true
+			});
 		}
 		if(status === "on"){
 			data.guild.autoDeleteModCommands = true;

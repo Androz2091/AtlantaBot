@@ -19,7 +19,10 @@ class Lmg extends Command {
 
 	async run (message, args) {
 		const question = args.join(" ");
-		if (!question) return message.error("fun/lmg:MISSING");
+		if (!question) return interaction.reply({
+			content: translate("fun/lmg:MISSING"),
+			ephemeral: true
+		});
 		const encodedQuestion = question.replace(/[' '_]/g, "+");
 		await message.channel.send(`http://lmgtfy.com/?q=${encodedQuestion}`);
 		message.delete().catch(() => {});

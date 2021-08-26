@@ -21,9 +21,15 @@ class Choice extends Command {
 
 		// Gets the answers by spliting on "/"
 		const answers = args.join(" ").split("/");
-		if (answers.length < 2) return message.error("fun/choice:MISSING");
+		if (answers.length < 2) return interaction.reply({
+			content: translate("fun/choice:MISSING"),
+			ephemeral: true
+		});
 		if (answers.some(answer => !answer))
-			return message.error("fun/choice:EMPTY");
+			return interaction.reply({
+				content: translate("fun/choice:EMPTY"),
+				ephemeral: true
+			});
 
 		const m = await message.sendT(
 			"fun/choice:PROGRESS",

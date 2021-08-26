@@ -25,7 +25,10 @@ class Minecraft extends Command {
 
 		const ip = args[0];
 		if(!ip){
-			return message.error("general/minecraft:MISSING_IP");
+			return interaction.reply({
+				content: translate("general/minecraft:MISSING_IP"),
+				ephemeral: true
+			});
 		}
 
 		const favicon = `https://eu.mc-api.net/v3/server/favicon/${ip}`;

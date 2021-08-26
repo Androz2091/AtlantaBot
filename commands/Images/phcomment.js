@@ -30,7 +30,10 @@ class Phcomment extends Command {
 		}
 
 		if(!text){
-			return message.error("images/phcomment:MISSING_TEXT");
+			return interaction.reply({
+				content: translate("images/phcomment:MISSING_TEXT"),
+				ephemeral: true
+			});
 		}
 
 		const m = await message.sendT("misc:PLEASE_WAIT", null, {

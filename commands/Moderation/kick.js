@@ -22,11 +22,17 @@ class Kick extends Command {
 
 		const member = await this.client.resolveMember(args[0], message.guild);
 		if(!member){
-			return message.error("moderation/kick:MISSING_MEMBER");
+			return interaction.reply({
+				content: translate("moderation/kick:MISSING_MEMBER"),
+				ephemeral: true
+			});
 		}
 
 		if(member.id === message.author.id){
-			return message.error("moderation/ban:YOURSELF");
+			return interaction.reply({
+				content: translate("moderation/ban:YOURSELF"),
+				ephemeral: true
+			});
 		}
         
 		const memberData = await this.client.findOrCreateMember({ id: member.id, guildID: message.guild.id });
@@ -40,11 +46,17 @@ class Kick extends Command {
 		const memberPosition = member.roles.highest.position;
 		const moderationPosition = message.member.roles.highest.position;
 		if(message.member.ownerID !== message.author.id && !(moderationPosition > memberPosition)){
-			return message.error("moderation/ban:SUPERIOR");
+			return interaction.reply({
+				content: translate("moderation/ban:SUPERIOR"),
+				ephemeral: true
+			});
 		}
 
 		if(!member.kickable) {
-			return message.error("moderation/kick:MISSING_PERM");
+			return interaction.reply({
+				content: translate("moderation/kick:MISSING_PERM"),
+				ephemeral: true
+			});
 		}
 
 		await member.send(message.translate("moderation/kick:KICKED_DM", {
@@ -95,7 +107,10 @@ class Kick extends Command {
 			}
 
 		}).catch(() => {
-			return message.error("moderation/kick:MISSING_PERM");
+			return interaction.reply({
+				content: translate("moderation/kick:MISSING_PERM"),
+				ephemeral: true
+			});
 		});
 
 	}

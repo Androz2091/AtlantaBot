@@ -23,7 +23,10 @@ class Ascii extends Command {
 	async run (message, args) {
 		const text = args.join(" ");
 		if (!text || text.length > 20) {
-			return message.error("fun/ascii:TEXT_MISSING");
+			return interaction.reply({
+				content: translate("fun/ascii:TEXT_MISSING"),
+				ephemeral: true
+			});
 		}
 
 		const rendered = await figletAsync(text);

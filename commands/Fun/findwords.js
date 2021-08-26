@@ -23,7 +23,10 @@ class FindWords extends Command {
 	async run (message, args, data) {
 
 		if (currentGames[message.guild.id]) {
-			return message.error("fun/number:GAME_RUNNING");
+			return interaction.reply({
+				content: translate("fun/number:GAME_RUNNING"),
+				ephemeral: true
+			});
 		}
 		// Reads words file
 		const wordList = require("../../assets/json/words/"+message.guild.data.language+".json");
@@ -82,7 +85,10 @@ class FindWords extends Command {
     
 				collector.on("end", async (collected, reason) => {
 					if(reason === "time"){
-						message.error("fun/findwords:NO_WINNER");
+						interaction.reply({
+							content: translate("fun/findwords:NO_WINNER"),
+							ephemeral: true
+						});
 					} else {
 						message.success("fun/findwords:WORD_FOUND", {
 							winner: "<@"+reason+">"
@@ -95,7 +101,10 @@ class FindWords extends Command {
 					} else {
 						currentGames[message.guild.id] = false;
 						if(winners.length < 1){
-							return message.error("fun/findwords:NO_WINNER_ALL");
+							return interaction.reply({
+								content: translate("fun/findwords:NO_WINNER_ALL"),
+								ephemeral: true
+							});
 						}
 						const winnerID = await getWinner(winners);
 						const time = message.convertTime(createdAt, "from", true);

@@ -21,18 +21,27 @@ class Play extends Command {
 
 		const name = args.join(" ");
 		if(!name){
-			return message.error("music/play:MISSING_SONG_NAME");
+			return interaction.reply({
+				content: translate("music/play:MISSING_SONG_NAME"),
+				ephemeral: true
+			});
 		} 
 
 		const voice = message.member.voice.channel;
 		if(!voice){
-			return message.error("music/play:NO_VOICE_CHANNEL");
+			return interaction.reply({
+				content: translate("music/play:NO_VOICE_CHANNEL"),
+				ephemeral: true
+			});
 		}
 
 		// Check my permissions
 		const perms = voice.permissionsFor(this.client.user);
 		if(!perms.has("CONNECT") || !perms.has("SPEAK")){
-			return message.error("music/play:VOICE_CHANNEL_CONNECT");
+			return interaction.reply({
+				content: translate("music/play:VOICE_CHANNEL_CONNECT"),
+				ephemeral: true
+			});
 		}
 
 		await this.client.player.play(message, args.join(" "));

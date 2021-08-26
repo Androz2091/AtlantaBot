@@ -22,7 +22,10 @@ class Poll extends Command {
         
 		const question = args.join(" ");
 		if(!question){
-			return message.error("moderation/poll:MISSING_QUESTION");
+			return interaction.reply({
+				content: translate("moderation/poll:MISSING_QUESTION"),
+				ephemeral: true
+			});
 		}
 
 		message.delete().catch(() => {});
@@ -63,7 +66,10 @@ class Poll extends Command {
 				});
 				c.on("end", (collected, reason) => {
 					if(reason === "time"){
-						return message.error("misc:TIMES_UP");
+						return interaction.reply({
+							content: translate("misc:TIMES_UP"),
+							ephemeral: true
+						});
 					}
 				});
 			}
@@ -72,7 +78,10 @@ class Poll extends Command {
 		collector.on("end", (collected, reason) => {
     
 			if(reason === "time"){
-				return message.error("misc:TIMES_UP");
+				return interaction.reply({
+					content: translate("misc:TIMES_UP"),
+					ephemeral: true
+				});
 			}
     
 			const success = this.client.customEmojis.success.split(":")[1];

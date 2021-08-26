@@ -22,12 +22,18 @@ class Slowmode extends Command {
 
 		const channel = message.mentions.channels.filter((ch) => ch.type === "text" && ch.guild.id === message.guild.id).first();
 		if(!channel){
-			return message.error("misc:INVALID_CHANNEL");
+			return interaction.reply({
+				content: translate("misc:INVALID_CHANNEL"),
+				ephemeral: true
+			});
 		}
 		const time = args[1];
 		if(!time){
 			if(!data.guild.slowmode.channels.find((ch) => ch.id === channel.id)){
-				return message.error("misc:INVALID_TIME");
+				return interaction.reply({
+					content: translate("misc:INVALID_TIME"),
+					ephemeral: true
+				});
 			}
 			data.guild.slowmode.channels = data.guild.slowmode.channels.filter((ch) => ch.id !== channel.id);
 			data.guild.markModified("slowmode.channels");
@@ -38,7 +44,10 @@ class Slowmode extends Command {
 			});
 		} else {
 			if(isNaN(ms(time))){
-				return message.error("misc:INVALID_TIME");
+				return interaction.reply({
+					content: translate("misc:INVALID_TIME"),
+					ephemeral: true
+				});
 			}
 			if(data.guild.slowmode.channels.find((ch) => ch.id === channel.id)){
 				data.guild.slowmode.channels = data.guild.slowmode.channels.filter((ch) => ch.id !== channel.id);

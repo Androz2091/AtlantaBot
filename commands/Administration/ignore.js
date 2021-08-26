@@ -21,7 +21,10 @@ class Ignore extends Command {
 
 		const channel = message.mentions.channels.filter((ch) => ch.type === "text" && ch.guild.id === message.guild.id).first();
 		if(!channel){
-			return message.error("misc:INVALID_CHANNEL");
+			return interaction.reply({
+				content: translate("misc:INVALID_CHANNEL"),
+				ephemeral: true
+			});
 		}
 
 		const ignored = data.guild.ignoredChannels.includes(channel.id);

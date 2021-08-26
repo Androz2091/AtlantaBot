@@ -24,7 +24,10 @@ class Leaderboard extends Command {
 
 		const type = args[0];
 		if(!type || (type !== "credits" && type !== "level" && type !== "rep")){
-			return message.error("economy/leaderboard:MISSING_TYPE");
+			return interaction.reply({
+				content: translate("economy/leaderboard:MISSING_TYPE"),
+				ephemeral: true
+			});
 		}
 
 		if(type === "credits"){
