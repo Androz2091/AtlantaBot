@@ -38,5 +38,4 @@ module.exports = class extends Command {
 		await data.userData.save();
 	}
 
-}
-
+};

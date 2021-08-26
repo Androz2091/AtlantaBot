@@ -47,6 +47,6 @@ module.exports = class extends Command {
 		await this.client.player.play(interaction, translate.join(" "));
 	}
 
-}
+};
 
  

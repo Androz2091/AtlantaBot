@@ -88,5 +88,3 @@ module.exports = class extends Command {
 		m.delete();
 	}
 };
-
-

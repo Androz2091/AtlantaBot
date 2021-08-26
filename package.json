@@ -95,6 +95,10 @@
                 "error",
                 "always"
             ],
+            "eol-last": [
+                "error",
+                "always"
+            ],
             "linebreak-style": 0,
             "require-atomic-updates": 0
         }

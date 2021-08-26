@@ -90,5 +90,4 @@ module.exports = class extends Command {
 		message.channel.send({ embeds: [profileEmbed] }); // Send the embed in the current channel
 	}
 
-}
-
+};
