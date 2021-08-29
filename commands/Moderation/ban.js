@@ -6,29 +6,43 @@ module.exports = class extends Command {
 	constructor (client) {
 		super(client, {
 			name: "ban",
-			dirname: __dirname,
+
+			options: [
+				{
+					name: "user",
+					type: "USER",
+					required: true
+				},
+				{
+					name: "reason",
+					type: "STRING"
+				}
+			],
+
 			enabled: true,
 			guildOnly: true,
-			,
 			memberPermissions: [ "BAN_MEMBERS" ],
 			botPermissions: [ "SEND_MESSAGES", "EMBED_LINKS", "BAN_MEMBERS" ],
 			nsfw: false,
 			ownerOnly: false,
-			cooldown: 3000
+
+			dirname: __dirname
 		});
 	}
 
 	async run (interaction, translate, data) {
         
-		const user = await this.client.resolveUser(args[0]);
-		if(!user){
-			return interaction.reply({
-				content: translate("moderation/ban:MISSING_MEMBER"),
+		const user = interaction.options.getUser("user");
+		const member = interaction.guild.members.cache.get(user.id) ?? await interaction.guild.members.fetch(user.id).catch(() => {});
+		
+		if (!member) {
+			return void interaction.reply({
+				content: translate("misc:USER_NOT_SERVER"),
 				ephemeral: true
 			});
 		}
-        
-		const memberData = message.guild.members.cache.get(user.id) ? await this.client.findOrCreateMember({ id: user.id, guildID: interaction.guild.id }) : null;
+
+		const memberData = interaction.guild.members.cache.get(user.id) && await this.client.findOrCreateMember({ id: user.id, guildID: interaction.guild.id });
 
 		if(user.id === interaction.user.id){
 			return interaction.reply({
@@ -38,24 +52,22 @@ module.exports = class extends Command {
 		}
 
 		// If the user is already banned
-		const banned = await message.guild.fetchBans();
+		const banned = await interaction.guild.bans.fetch();
 		if(banned.some((m) => m.user.id === user.id)){
-			return message.error("moderation/ban:ALREADY_BANNED", {
-				username: user.tag
+			return interaction.reply({
+				content: translate("moderation/ban:ALREADY_BANNED", {
+					username: user.tag
+				})
 			});
 		}
         
 		// Gets the ban reason
-		let reason = args.slice(1).join(" ");
-		if(!reason){
-			reason = translate("misc:NO_REASON_PROVIDED");
-		}
+		const reason = interaction.options.getString("reason") ?? translate("misc:NO_REASON_PROVIDED");
 
-		const member = await message.guild.members.fetch(user.id).catch(() => {});
 		if(member){
 			const memberPosition = member.roles.highest.position;
-			const moderationPosition = message.member.roles.highest.position;
-			if(message.member.ownerID !== interaction.user.id && !(moderationPosition > memberPosition)){
+			const moderationPosition = interaction.member.roles.highest.position;
+			if(interaction.guild.ownerID !== interaction.user.id && !(moderationPosition > memberPosition)){
 				return interaction.reply({
 					content: translate("moderation/ban:SUPERIOR"),
 					ephemeral: true
@@ -71,28 +83,32 @@ module.exports = class extends Command {
         
 		await user.send(translate("moderation/ban:BANNED_DM", {
 			username: user.tag,
-			server: message.guild.name,
+			server: interaction.guild.name,
 			moderator: interaction.user.tag,
 			reason
 		})).catch(() => {});
 
 		// Ban the user
-		message.guild.members.ban(user, { reason } ).then(() => {
+		await interaction.guild.members.ban(user, {
+			reason
+		}).then(() => {
 
 			// Send a success message in the current channel
-			message.sendT("moderation/ban:BANNED", {
-				username: user.tag,
-				server: message.guild.name,
-				moderator: interaction.user.tag,
-				reason
+			interaction.reply({
+				content: translate("moderation/ban:BANNED", {
+					username: user.tag,
+					server: interaction.guild.name,
+					moderator: interaction.user.tag,
+					reason
+				})
 			});
 
 			const caseInfo = {
-				channel: message.channel.id,
+				channel: interaction.channel.id,
 				moderator: interaction.user.id,
 				date: Date.now(),
 				type: "ban",
-				case: data.guild.casesCount,
+				case: data.guildData.casesCount,
 				reason
 			};
 
@@ -101,15 +117,15 @@ module.exports = class extends Command {
 				memberData.save();
 			}
 
-			data.guild.casesCount++;
-			data.guild.save();
+			data.guildData.casesCount++;
+			data.guildData.save();
 
-			if(data.guild.plugins.modlogs){
-				const channel = message.guild.channels.cache.get(data.guild.plugins.modlogs);
+			if(data.guildData.plugins.modlogs){
+				const channel = interaction.guild.channels.cache.get(data.guildData.plugins.modlogs);
 				if(!channel) return;
 				const embed = new Discord.MessageEmbed()
 					.setAuthor(translate("moderation/ban:CASE", {
-						count: data.guild.casesCount
+						count: data.guildData.casesCount
 					}))
 					.addField(translate("common:USER"), `\`${user.tag}\` (${user.toString()})`, true)
 					.addField(translate("common:MODERATOR"), `\`${interaction.user.tag}\` (${interaction.user.toString()})`, true)

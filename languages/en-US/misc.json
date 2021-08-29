@@ -24,5 +24,6 @@
     "NSFW_COMMAND": "You must execute this command in a channel that allows NSFW!",
     "OWNER_ONLY": "Only the owner of Atlanta can do these commands!",
     "COOLDOWNED": "You must wait **{{seconds}}** second(s) to be able to run this command again!",
-    "CANNOT_DM": "I don't have permission to send you private messages... Please update your privacy settings!"
+    "CANNOT_DM": "I don't have permission to send you private messages... Please update your privacy settings!",
+    "USER_NOT_SERVER": "This user is not in the current server."
 }
