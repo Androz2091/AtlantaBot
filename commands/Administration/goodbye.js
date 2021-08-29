@@ -103,7 +103,7 @@ class Goodbye extends Command {
 				if (!goodbye.channel) {
 					const channel = await Resolvers.resolveChannel({
 						message: msg,
-						channelType: "text"
+						channelType: "GUILD_TEXT"
 					});
 					if (!channel) {
 						return message.error("misc:INVALID_CHANNEL");

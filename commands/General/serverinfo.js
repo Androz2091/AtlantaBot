@@ -48,9 +48,9 @@ class Serverinfo extends Command {
 			.addField(this.client.customEmojis.crown+message.translate("common:OWNER"), `<@${guild.ownerID}>`, true)
 			.addField(this.client.customEmojis.boost+message.translate("general/serverinfo:BOOSTS"), guild.premiumSubscriptionCount || 0, true)
 			.addField(this.client.customEmojis.channels+message.translate("common:CHANNELS"), message.translate("general/serverinfo:TEXT_CHANNELS", {
-				count: guild.channels.cache.filter(c => c.type === "text").size
+				count: guild.channels.cache.filter(c => c.type === "GUILD_TEXT").size
 			})+" | "+message.translate("general/serverinfo:VOICE_CHANNELS", {
-				count: guild.channels.cache.filter(c => c.type === "voice").size
+				count: guild.channels.cache.filter(c => c.type === "GUILD_VOICE").size
 			})+" | "+message.translate("general/serverinfo:CAT_CHANNELS", {
 				count: guild.channels.cache.filter(c => c.type === "category").size
 			}), true)
