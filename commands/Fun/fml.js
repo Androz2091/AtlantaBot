@@ -26,7 +26,7 @@ module.exports = class extends Command {
 				ephemeral: true
 			});
 
-		const fml = await this.client.joker.randomVDM(null, data.guild.language.substr(0, 2));
+		const fml = await this.client.joker.randomVDM(null, data.guildData.language.substr(0, 2));
 
 		const embed = new Discord.MessageEmbed()
 			.setDescription(fml.content)

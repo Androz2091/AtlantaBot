@@ -27,14 +27,14 @@ module.exports = class extends Command {
 			});
 		}
 
-		if(!data.guild.customCommands.find((c) => c.name === name)){
+		if(!data.guildData.customCommands.find((c) => c.name === name)){
 			return message.error("administration/delcommand:UNKNOWN_COMMAND", {
 				commandName: name
 			});
 		}
         
-		data.guild.customCommands = data.guild.customCommands.filter((c) => c.name !== name);
-		data.guild.save();
+		data.guildData.customCommands = data.guildData.customCommands.filter((c) => c.name !== name);
+		data.guildData.save();
 
 		message.success("administration/delcommand:SUCCESS", {
 			commandName: name

@@ -20,7 +20,7 @@ module.exports = class extends Command {
 
 	async run (interaction, translate, data) {
         
-		const areSuggestsEnabled = Boolean(data.guild.plugins.suggestions);
+		const areSuggestsEnabled = Boolean(data.guildData.plugins.suggestions);
 		const sentChannel = await Resolvers.resolveChannel({
 			message,
 			search: args.join(" "),
@@ -28,17 +28,17 @@ module.exports = class extends Command {
 		});
 
 		if (!sentChannel && areSuggestsEnabled) {
-			data.guild.plugins.suggestions = null;
-			data.guild.markModified("plugins.suggestions");
-			await data.guild.save();
+			data.guildData.plugins.suggestions = null;
+			data.guildData.markModified("plugins.suggestions");
+			await data.guildData.save();
 			return message.success(
 				"administration/setsuggests:SUCCESS_DISABLED"
 			);
 		} else {
 			const channel = sentChannel || message.channel;
-			data.guild.plugins.suggestions = channel.id;
-			data.guild.markModified("plugins.suggestions");
-			await data.guild.save();
+			data.guildData.plugins.suggestions = channel.id;
+			data.guildData.markModified("plugins.suggestions");
+			await data.guildData.save();
 			return message.success(
 				"administration/setsuggests:SUCCESS_ENABLED",
 				{

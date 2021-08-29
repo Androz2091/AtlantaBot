@@ -28,25 +28,25 @@ module.exports = class extends Command {
 		}
 
 		if(status === "on"){
-			data.guild.plugins.automod = { enabled: true, ignored: [] };
-			data.guild.markModified("plugins.automod");
-			data.guild.save();
+			data.guildData.plugins.automod = { enabled: true, ignored: [] };
+			data.guildData.markModified("plugins.automod");
+			data.guildData.save();
 			message.success("administration/automod:ENABLED", {
-				prefix: data.guild.prefix
+				prefix: data.guildData.prefix
 			});
 		} else if (status === "off"){
 			if(message.mentions.channels.filter((ch) => ch.type === "text" && ch.guild.id === interaction.guild.id).first()){
 				const channel = message.mentions.channels.first();
-				data.guild.plugins.automod.ignored.push(channel);
-				data.guild.markModified("plugins.automod");
-				data.guild.save();
+				data.guildData.plugins.automod.ignored.push(channel);
+				data.guildData.markModified("plugins.automod");
+				data.guildData.save();
 				message.success("administration/automod:DISABLED_CHANNEL", {
 					channel: channel.toString()
 				});
 			} else {
-				data.guild.plugins.automod = { enabled: false, ignored: [] };
-				data.guild.markModified("plugins.automod");
-				data.guild.save();
+				data.guildData.plugins.automod = { enabled: false, ignored: [] };
+				data.guildData.markModified("plugins.automod");
+				data.guildData.save();
 				interaction.reply({
 					content: translate("administration/automod:DISABLED")
 				});

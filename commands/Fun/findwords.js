@@ -117,7 +117,7 @@ module.exports = class extends Command {
 							participantCount: participants.length,
 							participantList: participants.map((p) => "<@"+p+">").join("\n")
 						});
-						if(participants.length > 1 && data.guild.disabledCategories && !data.guild.disabledCategories.includes("Economy")){
+						if(participants.length > 1 && data.guildData.disabledCategories && !data.guildData.disabledCategories.includes("Economy")){
 							message.sendT("fun/findwords:CREDITS", {
 								winner: user.username
 							});

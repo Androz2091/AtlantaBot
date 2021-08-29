@@ -36,7 +36,7 @@ module.exports = class extends Command {
 		if(data.userData.lover){
 			return interaction.reply({
 				content: translate("economy/marry:ALREADY_MARRIED", {
-					prefix: data.guild.prefix
+					prefix: data.guildData.prefix
 				}),
 				ephemeral: true
 			});

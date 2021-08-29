@@ -47,7 +47,7 @@ module.exports = class extends Command {
 
 		const list = new Discord.MessageEmbed()
 			.setDescription(translate("music/filters:CONTENT", {
-				prefix: data.guild.prefix
+				prefix: data.guildData.prefix
 			}))
 			.addField(translate("music/filters:TITLE"), filtersStatuses[0].join("\n"), true)
 			.addField("** **", filtersStatuses[1].join("\n"), true)

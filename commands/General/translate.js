@@ -44,7 +44,7 @@ module.exports = class extends Command {
         
 		if(!args[0]){
 			return pWait.error("general/translate:MISSING_LANGUAGE", {
-				prefix: data.guild.prefix
+				prefix: data.guildData.prefix
 			}, {
 				edit: true
 			});
@@ -62,7 +62,7 @@ module.exports = class extends Command {
         
 		if(!langs.includes(language)){
 			return pWait.error("general/translate:INVALID_LANGUAGE", {
-				prefix: data.guild.prefix,
+				prefix: data.guildData.prefix,
 				search: language
 			}, {
 				edit: true

@@ -29,17 +29,17 @@ module.exports = class extends Command {
 		}
 		const time = args[1];
 		if(!time){
-			if(!data.guild.slowmode.channels.find((ch) => ch.id === channel.id)){
+			if(!data.guildData.slowmode.channels.find((ch) => ch.id === channel.id)){
 				return interaction.reply({
 					content: translate("misc:INVALID_TIME"),
 					ephemeral: true
 				});
 			}
-			data.guild.slowmode.channels = data.guild.slowmode.channels.filter((ch) => ch.id !== channel.id);
-			data.guild.markModified("slowmode.channels");
-			data.guild.save();
+			data.guildData.slowmode.channels = data.guildData.slowmode.channels.filter((ch) => ch.id !== channel.id);
+			data.guildData.markModified("slowmode.channels");
+			data.guildData.save();
 			message.success("administration/slowmode:DISABLED", {
-				prefix: data.guild.prefix,
+				prefix: data.guildData.prefix,
 				channel: `#${channel.name}`
 			});
 		} else {
@@ -49,17 +49,17 @@ module.exports = class extends Command {
 					ephemeral: true
 				});
 			}
-			if(data.guild.slowmode.channels.find((ch) => ch.id === channel.id)){
-				data.guild.slowmode.channels = data.guild.slowmode.channels.filter((ch) => ch.id !== channel.id);
+			if(data.guildData.slowmode.channels.find((ch) => ch.id === channel.id)){
+				data.guildData.slowmode.channels = data.guildData.slowmode.channels.filter((ch) => ch.id !== channel.id);
 			}
-			data.guild.slowmode.channels.push({
+			data.guildData.slowmode.channels.push({
 				id: channel.id,
 				time: ms(time)
 			});
-			data.guild.markModified("slowmode.channels");
-			data.guild.save();
+			data.guildData.markModified("slowmode.channels");
+			data.guildData.save();
 			message.success("administration/slowmode:ENABLED", {
-				prefix: data.guild.prefix,
+				prefix: data.guildData.prefix,
 				channel: `#${channel.name}`,
 				time: this.client.functions.convertTime(message.guild, ms(time))
 			});

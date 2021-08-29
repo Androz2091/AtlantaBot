@@ -27,17 +27,17 @@ module.exports = class extends Command {
 			});
 		}
 
-		const ignored = data.guild.ignoredChannels.includes(channel.id);
+		const ignored = data.guildData.ignoredChannels.includes(channel.id);
 
 		if(ignored){
-			data.guild.ignoredChannels = data.guild.ignoredChannels.filter((ch) => ch !== channel.id);
-			data.guild.save();
+			data.guildData.ignoredChannels = data.guildData.ignoredChannels.filter((ch) => ch !== channel.id);
+			data.guildData.save();
 			return message.success("administration/ignore:ALLOWED", {
 				channel: channel.toString()
 			});
 		} else if(!ignored){
-			data.guild.ignoredChannels.push(channel.id);
-			data.guild.save();
+			data.guildData.ignoredChannels.push(channel.id);
+			data.guildData.save();
 			return message.success("administration/ignore:IGNORED", {
 				channel: channel.toString()
 			});

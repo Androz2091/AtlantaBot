@@ -39,13 +39,13 @@ module.exports = class extends Command {
 
 		const filter = args[0];
 		if(!filter) return message.error("music/filter:MISSING_FILTER", {
-			prefix: data.guild.prefix
+			prefix: data.guildData.prefix
 		});
     
 		const filterToUpdate = Object.values(FiltersList).find((f) => f.toLowerCase() === filter.toLowerCase());
     
 		if(!filterToUpdate) return message.error("music/filter:UNKNOWN_FILTER", {
-			prefix: data.guild.prefix
+			prefix: data.guildData.prefix
 		});
     
 		const filterRealName = Object.keys(FiltersList).find((f) => FiltersList[f] === filterToUpdate);

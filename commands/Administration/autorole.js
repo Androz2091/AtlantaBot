@@ -41,12 +41,12 @@ module.exports = class extends Command {
 				});
 			}
 
-			data.guild.plugins.autorole = {
+			data.guildData.plugins.autorole = {
 				enabled: true,
 				role: role.id
 			};
-			data.guild.markModified("plugins.autorole");
-			await data.guild.save();
+			data.guildData.markModified("plugins.autorole");
+			await data.guildData.save();
 
 			message.success("administration/autorole:SUCCESS_ENABLED", {
 				roleName: role.name
@@ -55,21 +55,21 @@ module.exports = class extends Command {
 
 		if(status === "off"){
 
-			if(!data.guild.plugins.autorole.enabled){
+			if(!data.guildData.plugins.autorole.enabled){
 				return message.success("administration/autorole:ALREADY_DISABLED", {
-					prefix: data.guild.prefix
+					prefix: data.guildData.prefix
 				});
 			}
 
-			data.guild.plugins.autorole = {
+			data.guildData.plugins.autorole = {
 				enabled: false,
 				role: null
 			};
-			data.guild.markModified("plugins.autorole");
-			await data.guild.save();
+			data.guildData.markModified("plugins.autorole");
+			await data.guildData.save();
             
 			message.success("administration/autorole:SUCCESS_DISABLED", {
-				prefix: data.guild.prefix
+				prefix: data.guildData.prefix
 			});
 
 		}

@@ -22,7 +22,7 @@ module.exports = class extends Command {
 
 		if (
 			args[0] === "test" &&
-            data.guild.plugins.welcome.enabled
+            data.guildData.plugins.welcome.enabled
 		) {
 			this.client.emit("guildMemberAdd", message.member);
 			return interaction.reply({
@@ -32,7 +32,7 @@ module.exports = class extends Command {
 
 		if (
 			(!args[0] || !["edit", "off"].includes(args[0])) &&
-            data.guild.plugins.welcome.enabled
+            data.guildData.plugins.welcome.enabled
 		)
 			return interaction.reply({
 				content: translate("administration/welcome:MISSING_STATUS"),
@@ -40,16 +40,16 @@ module.exports = class extends Command {
 			});
 
 		if (args[0] === "off") {
-			data.guild.plugins.welcome = {
+			data.guildData.plugins.welcome = {
 				enabled: false,
 				message: null,
 				channelID: null,
 				withImage: null
 			};
-			data.guild.markModified("plugins.welcome");
-			data.guild.save();
+			data.guildData.markModified("plugins.welcome");
+			data.guildData.save();
 			return message.error("administration/welcome:DISABLED", {
-				prefix: data.guild.prefix
+				prefix: data.guildData.prefix
 			});
 		} else {
 			const welcome = {
@@ -88,11 +88,11 @@ module.exports = class extends Command {
 							ephemeral: true
 						});
 					}
-					data.guild.plugins.welcome = welcome;
-					data.guild.markModified("plugins.welcome");
-					await data.guild.save();
+					data.guildData.plugins.welcome = welcome;
+					data.guildData.markModified("plugins.welcome");
+					await data.guildData.save();
 					message.sendT("administration/welcome:FORM_SUCCESS", {
-						prefix: data.guild.prefix,
+						prefix: data.guildData.prefix,
 						channel: `<#${welcome.channel}>`
 					});
 					return collector.stop();

@@ -61,18 +61,18 @@ module.exports = class extends Command {
 
 		// Gets current member sanctions
 		const sanctions = memberData.sanctions.filter((s) => s.type === "warn").length;
-		const banCount = data.guild.plugins.warnsSanctions.ban;
-		const kickCount = data.guild.plugins.warnsSanctions.kick;
+		const banCount = data.guildData.plugins.warnsSanctions.ban;
+		const kickCount = data.guildData.plugins.warnsSanctions.kick;
         
-		data.guild.casesCount++;
-		data.guild.save();
+		data.guildData.casesCount++;
+		data.guildData.save();
 
 		const caseInfo = {
 			channel: message.channel.id,
 			moderator: interaction.user.id,
 			date: Date.now(),
 			type: "warn",
-			case: data.guild.casesCount,
+			case: data.guildData.casesCount,
 			reason
 		};
 
@@ -91,7 +91,7 @@ module.exports = class extends Command {
 				}));
 				caseInfo.type = "ban";
 				embed.setAuthor(translate("moderation/ban:CASE", {
-					count: data.guild.casesCount
+					count: data.guildData.casesCount
 				}))
 					.setColor("#e02316");
 				message.guild.members.ban(member).catch(() => {});
@@ -112,7 +112,7 @@ module.exports = class extends Command {
 				}));
 				caseInfo.type = "kick";
 				embed.setAuthor(translate("moderation/kick:CASE", {
-					count: data.guild.casesCount
+					count: data.guildData.casesCount
 				}))
 					.setColor("#e88709");
 				member.kick().catch(() => {});
@@ -131,7 +131,7 @@ module.exports = class extends Command {
 		}));
 		caseInfo.type = "warn";
 		embed.setAuthor(translate("moderation/warn:CASE", {
-			caseNumber: data.guild.casesCount
+			caseNumber: data.guildData.casesCount
 		}))
 			.setColor("#8c14e2");
 		message.success("moderation/warn:WARNED", {
@@ -142,8 +142,8 @@ module.exports = class extends Command {
 		memberData.sanctions.push(caseInfo);
 		memberData.save();
 
-		if(data.guild.plugins.modlogs){
-			const channel = message.guild.channels.cache.get(data.guild.plugins.modlogs);
+		if(data.guildData.plugins.modlogs){
+			const channel = message.guild.channels.cache.get(data.guildData.plugins.modlogs);
 			if(!channel) return;
 			channel.send({ embeds: [embed] });
 		}

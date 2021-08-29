@@ -39,7 +39,7 @@ module.exports = class extends Command {
 			const time = args[1];
 			if(!time){
 				return message.error("moderation/giveaway:INVALID_CREATE", {
-					prefix: data.guild.prefix
+					prefix: data.guildData.prefix
 				});
 			}
 			if(isNaN(ms(time))){
@@ -57,7 +57,7 @@ module.exports = class extends Command {
 			const winnersCount = args[2];
 			if(!winnersCount){
 				return message.error("moderation/giveaway:INVALID_CREATE", {
-					prefix: data.guild.prefix
+					prefix: data.guildData.prefix
 				});
 			}
 			if(isNaN(winnersCount) || winnersCount > 10 || winnersCount < 1){
@@ -69,7 +69,7 @@ module.exports = class extends Command {
 			const prize = args.slice(3).join(" ");
 			if(!prize){
 				return message.error("moderation/giveaway:INVALID_CREATE", {
-					prefix: data.guild.prefix
+					prefix: data.guildData.prefix
 				});
 			}
 			this.client.giveawaysManager.start(message.channel, {

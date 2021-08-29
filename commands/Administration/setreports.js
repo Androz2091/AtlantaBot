@@ -20,7 +20,7 @@ module.exports = class extends Command {
 
 	async run (interaction, translate, data) {
         
-		const areReportsEnabled = Boolean(data.guild.plugins.reports);
+		const areReportsEnabled = Boolean(data.guildData.plugins.reports);
 		const sentChannel = await Resolvers.resolveChannel({
 			message,
 			search: args.join(" "),
@@ -28,17 +28,17 @@ module.exports = class extends Command {
 		});
 
 		if (!sentChannel && areReportsEnabled) {
-			data.guild.plugins.reports = null;
-			data.guild.markModified("plugins.reports");
-			await data.guild.save();
+			data.guildData.plugins.reports = null;
+			data.guildData.markModified("plugins.reports");
+			await data.guildData.save();
 			return message.success(
 				"administration/setreports:SUCCESS_DISABLED"
 			);
 		} else {
 			const channel = sentChannel || message.channel;
-			data.guild.plugins.reports = channel.id;
-			data.guild.markModified("plugins.reports");
-			await data.guild.save();
+			data.guildData.plugins.reports = channel.id;
+			data.guildData.markModified("plugins.reports");
+			await data.guildData.save();
 			return message.success(
 				"administration/setreports:SUCCESS_ENABLED",
 				{

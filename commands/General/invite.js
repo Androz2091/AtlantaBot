@@ -31,7 +31,7 @@ module.exports = class extends Command {
 		const embed = new Discord.MessageEmbed()
 			.setAuthor(translate("general/invite:LINKS"))
 			.setDescription(translate("general/invite:TIP", {
-				prefix: data.guild.prefix
+				prefix: data.guildData.prefix
 			}))
 			.addField(translate("general/invite:ADD"), inviteLink)
 			.addField(translate("general/invite:VOTE"), voteURL)

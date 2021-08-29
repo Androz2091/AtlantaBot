@@ -33,8 +33,8 @@ module.exports = class extends Command {
 			});
 		}
         
-		data.guild.prefix = prefix;
-		data.guild.save();
+		data.guildData.prefix = prefix;
+		data.guildData.save();
 
 		// Sucess
 		return message.success("administration/setprefix:SUCCESS", {

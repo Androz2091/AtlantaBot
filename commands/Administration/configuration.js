@@ -20,7 +20,7 @@ module.exports = class extends Command {
 
 	async run (interaction, translate, data) {
 
-		const guildData = data.guild;
+		const guildData = data.guildData;
 
 		const embed = new Discord.MessageEmbed()
 			.setAuthor(message.guild.name, message.guild.iconURL())

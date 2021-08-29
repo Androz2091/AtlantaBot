@@ -20,7 +20,7 @@ module.exports = class extends Command {
 
 	async run (interaction, translate, data) {
 
-		const suggChannel = message.guild.channels.cache.get(data.guild.plugins.suggestions);
+		const suggChannel = message.guild.channels.cache.get(data.guildData.plugins.suggestions);
 		if(!suggChannel){
 			return message.error("general/suggest:MISSING_CHANNEL");
 		}

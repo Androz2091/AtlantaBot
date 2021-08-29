@@ -84,37 +84,37 @@ module.exports = class extends Command {
 			reason
 		});
 
-		data.guild.casesCount++;
+		data.guildData.casesCount++;
 
 		const caseInfo = {
 			channel: message.channel.id,
 			moderator: interaction.user.id,
 			date: Date.now(),
 			type: "mute",
-			case: data.guild.casesCount,
+			case: data.guildData.casesCount,
 			reason,
 			time
 		};
 
 		memberData.mute.muted = true;
 		memberData.mute.endDate = Date.now()+ms(time);
-		memberData.mute.case = data.guild.casesCount;
+		memberData.mute.case = data.guildData.casesCount;
 		memberData.sanctions.push(caseInfo);
 
 		memberData.markModified("sanctions");
 		memberData.markModified("mute");
 		await memberData.save();
 
-		await data.guild.save();
+		await data.guildData.save();
 
 		this.client.databaseCache.mutedUsers.set(`${member.id}${interaction.guild.id}`, memberData);
 
-		if(data.guild.plugins.modlogs){
-			const channel = message.guild.channels.cache.get(data.guild.plugins.modlogs);
+		if(data.guildData.plugins.modlogs){
+			const channel = message.guild.channels.cache.get(data.guildData.plugins.modlogs);
 			if(!channel) return;
 			const embed = new Discord.MessageEmbed()
 				.setAuthor(translate("moderation/mute:CASE", {
-					count: data.guild.casesCount
+					count: data.guildData.casesCount
 				}))
 				.addField(translate("common:USER"), `\`${member.user.tag}\` (${member.user.toString()})`, true)
 				.addField(translate("common:MODERATOR"), `\`${interaction.user.tag}\` (${interaction.user.toString()})`, true)

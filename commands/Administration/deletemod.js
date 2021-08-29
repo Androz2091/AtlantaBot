@@ -26,14 +26,14 @@ module.exports = class extends Command {
 			});
 		}
 		if(status === "on"){
-			data.guild.autoDeleteModCommands = true;
-			data.guild.save();
+			data.guildData.autoDeleteModCommands = true;
+			data.guildData.save();
 			interaction.reply({
 				content: translate("administration/deletemod:ENABLED")
 			});
 		} else {
-			data.guild.autoDeleteModCommands = false;
-			data.guild.save();
+			data.guildData.autoDeleteModCommands = false;
+			data.guildData.save();
 			interaction.reply({
 				content: translate("administration/deletemod:DISABLED")
 			});

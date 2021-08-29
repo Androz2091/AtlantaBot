@@ -20,7 +20,7 @@ module.exports = class extends Command {
 
 	async run (interaction, translate, data) {
         
-		const areModLogsEnabled = Boolean(data.guild.plugins.modlogs);
+		const areModLogsEnabled = Boolean(data.guildData.plugins.modlogs);
 		const sentChannel = await Resolvers.resolveChannel({
 			message,
 			search: args.join(" "),
@@ -28,17 +28,17 @@ module.exports = class extends Command {
 		});
 
 		if (!sentChannel && areModLogsEnabled) {
-			data.guild.plugins.modlogs = null;
-			data.guild.markModified("plugins.modlogs");
-			await data.guild.save();
+			data.guildData.plugins.modlogs = null;
+			data.guildData.markModified("plugins.modlogs");
+			await data.guildData.save();
 			return message.success(
 				"administration/setmodlogs:SUCCESS_DISABLED"
 			);
 		} else {
 			const channel = sentChannel || message.channel;
-			data.guild.plugins.modlogs = channel.id;
-			data.guild.markModified("plugins.modlogs");
-			await data.guild.save();
+			data.guildData.plugins.modlogs = channel.id;
+			data.guildData.markModified("plugins.modlogs");
+			await data.guildData.save();
 			return message.success(
 				"administration/setmodlogs:SUCCESS_ENABLED",
 				{

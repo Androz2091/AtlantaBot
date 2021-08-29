@@ -20,7 +20,7 @@ module.exports = class extends Command {
 
 	async run (interaction, translate, data) {
 
-		const repChannel = message.guild.channels.cache.get(data.guild.plugins.reports);
+		const repChannel = message.guild.channels.cache.get(data.guildData.plugins.reports);
 		if(!repChannel){
 			return message.error("general/report:MISSING_CHANNEL");
 		}

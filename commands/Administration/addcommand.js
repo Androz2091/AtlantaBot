@@ -30,7 +30,7 @@ module.exports = class extends Command {
 		if (
 			this.client.commands.get(name) ||
             this.client.aliases.get(name) ||
-            data.guild.customCommands.find((c) => c.name === name)
+            data.guildData.customCommands.find((c) => c.name === name)
 		) {
 			return message.error(
 				"administration/addcommand:COMMAND_ALREADY_EXISTS"
@@ -45,15 +45,15 @@ module.exports = class extends Command {
 			});
 		}
 
-		data.guild.customCommands.push({
+		data.guildData.customCommands.push({
 			name: name.toLowerCase(),
 			answer: answer
 		});
-		data.guild.save();
+		data.guildData.save();
 
 		message.success("administration/addcommand:SUCCESS", {
 			commandName: name,
-			prefix: data.guild.prefix
+			prefix: data.guildData.prefix
 		});
 	}
     

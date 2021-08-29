@@ -22,7 +22,7 @@ module.exports = class extends Command {
 		// if a command is provided
 		if(args[0]){
 
-			const isCustom = (message.guild && data.guild.customCommands ? data.guild.customCommands.find((c) => c.name === args[0]) : false);
+			const isCustom = (message.guild && data.guildData.customCommands ? data.guildData.customCommands.find((c) => c.name === args[0]) : false);
             
 			// if the command doesn't exist, error message
 			const cmd = this.client.commands.get(args[0]) || this.client.commands.get(this.client.aliases.get(args[0]));
@@ -39,13 +39,13 @@ module.exports = class extends Command {
 			const description = translate(`${cmd.help.category.toLowerCase()}/${cmd.help.name}:DESCRIPTION`);
 			const usage = translate(`${cmd.help.category.toLowerCase()}/${cmd.help.name}:USAGE`, {
 				prefix: message.guild
-					? data.guild.prefix
+					? data.guildData.prefix
 					: ""
 			}
 			);
 			const examples = translate(`${cmd.help.category.toLowerCase()}/${cmd.help.name}:EXAMPLES`, {
 				prefix: message.guild
-					? data.guild.prefix
+					? data.guildData.prefix
 					: ""
 			}
 			);
@@ -55,7 +55,7 @@ module.exports = class extends Command {
 				.setAuthor(
 					translate("general/help:CMD_TITLE", {
 						prefix: message.guild
-							? data.guild.prefix
+							? data.guildData.prefix
 							: "",
 						cmd: cmd.help.name
 					})
@@ -105,7 +105,7 @@ module.exports = class extends Command {
 		const embed = new Discord.MessageEmbed()
 			.setDescription(translate("general/help:INFO", {
 				prefix: message.guild
-					? data.guild.prefix
+					? data.guildData.prefix
 					: ""
 			}))
 			.setColor(data.config.embed.color)
@@ -115,8 +115,8 @@ module.exports = class extends Command {
 			embed.addField(emojis.categories[cat.toLowerCase()]+" "+cat+" - ("+tCommands.size+")", tCommands.map((cmd) => "`"+cmd.help.name+"`").join(", "));
 		});
 		if(message.guild){
-			if(data.guild.customCommands.length > 0){
-				embed.addField(emojis.categories.custom+" "+message.guild.name+" | "+translate("general/help:CUSTOM_COMMANDS")+" - ("+data.guild.customCommands.length+")", data.guild.customCommands.map((cmd) => "`"+cmd.name+"`").join(", "));
+			if(data.guildData.customCommands.length > 0){
+				embed.addField(emojis.categories.custom+" "+message.guild.name+" | "+translate("general/help:CUSTOM_COMMANDS")+" - ("+data.guildData.customCommands.length+")", data.guildData.customCommands.map((cmd) => "`"+cmd.name+"`").join(", "));
 			}
 		}
         

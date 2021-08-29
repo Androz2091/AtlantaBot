@@ -28,25 +28,25 @@ module.exports = class extends Command {
 			});
 		}
 
-		if (data.guild.plugins.fortniteshop && !message.mentions.channels.first() || message.mentions.channels.first() && data.guild.plugins.fortniteshop === message.mentions.channels.first().id) {
-			data.guild.plugins.fortniteshop = false;
-			data.guild.markModified("plugins.fortniteshop");
-			data.guild.save();
+		if (data.guildData.plugins.fortniteshop && !message.mentions.channels.first() || message.mentions.channels.first() && data.guildData.plugins.fortniteshop === message.mentions.channels.first().id) {
+			data.guildData.plugins.fortniteshop = false;
+			data.guildData.markModified("plugins.fortniteshop");
+			data.guildData.save();
 			return interaction.reply({
 				content: translate("administration/setfortniteshop:DISABLED")
 			});
 		}
 
 		const channel = message.mentions.channels.first() || message.channel;
-		data.guild.plugins.fortniteshop = channel.id;
-		data.guild.markModified("plugins.fortniteshop");
-		data.guild.save();
+		data.guildData.plugins.fortniteshop = channel.id;
+		data.guildData.markModified("plugins.fortniteshop");
+		data.guildData.save();
 
 		message.success("administration/setfortniteshop:ENABLED", {
 			channel: channel.toString()
 		});
 
-		const momentName = this.client.languages.find((language) => language.name === data.guild.language || language.aliases.includes(data.guild.language)).moment;
+		const momentName = this.client.languages.find((language) => language.name === data.guildData.language || language.aliases.includes(data.guildData.language)).moment;
 		const shop = new Canvas.FortniteShop();
 		const image = await shop
 			.setToken(data.config.apiKeys.fortniteFNBR)

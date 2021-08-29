@@ -27,8 +27,8 @@ module.exports = class extends Command {
 			});
 		}
 
-		data.guild.language = language.name;
-		await data.guild.save();
+		data.guildData.language = language.name;
+		await data.guildData.save();
         
 		return interaction.reply({
 			content: translate("administration/setlang:SUCCESS")

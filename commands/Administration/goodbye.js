@@ -22,7 +22,7 @@ module.exports = class extends Command {
 
 		if (
 			args[0] === "test" &&
-            data.guild.plugins.goodbye.enabled
+            data.guildData.plugins.goodbye.enabled
 		) {
 			this.client.emit("guildMemberRemove", message.member);
 			return interaction.reply({
@@ -32,7 +32,7 @@ module.exports = class extends Command {
 
 		if (
 			(!args[0] || !["edit", "off"].includes(args[0])) &&
-            data.guild.plugins.goodbye.enabled
+            data.guildData.plugins.goodbye.enabled
 		)
 			return interaction.reply({
 				content: translate("administration/goodbye:MISSING_STATUS"),
@@ -40,16 +40,16 @@ module.exports = class extends Command {
 			});
 
 		if (args[0] === "off") {
-			data.guild.plugins.goodbye = {
+			data.guildData.plugins.goodbye = {
 				enabled: false,
 				message: null,
 				channelID: null,
 				withImage: null
 			};
-			data.guild.markModified("plugins.goodbye");
-			data.guild.save();
+			data.guildData.markModified("plugins.goodbye");
+			data.guildData.save();
 			return message.error("administration/goodbye:DISABLED", {
-				prefix: data.guild.prefix
+				prefix: data.guildData.prefix
 			});
 		} else {
 			const goodbye = {
@@ -88,11 +88,11 @@ module.exports = class extends Command {
 							ephemeral: true
 						});
 					}
-					data.guild.plugins.goodbye = goodbye;
-					data.guild.markModified("plugins.goodbye");
-					await data.guild.save();
+					data.guildData.plugins.goodbye = goodbye;
+					data.guildData.markModified("plugins.goodbye");
+					await data.guildData.save();
 					message.sendT("administration/goodbye:FORM_SUCCESS", {
-						prefix: data.guild.prefix,
+						prefix: data.guildData.prefix,
 						channel: `<#${goodbye.channel}>`
 					});
 					return collector.stop();

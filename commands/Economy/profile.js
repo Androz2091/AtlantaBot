@@ -87,7 +87,7 @@ module.exports = class extends Command {
 			.addField(translate("economy/profile:BIRTHDATE"), (!userData.birthdate ? translate("economy/profile:NO_BIRTHDATE"): this.client.printDate(new Date(userData.birthdate), null, data.guildData.language)), true)
 			.addField(translate("economy/profile:LOVER"), (!userData.lover ? translate("economy/profile:NO_LOVER") : this.client.users.cache.get(userData.lover).tag), true)
 			.addField(translate("economy/profile:ACHIEVEMENTS"), translate("economy/profile:ACHIEVEMENTS_CONTENT", {
-				prefix: data.guild.prefix
+				prefix: data.guildData.prefix
 			}))
 			.setColor(data.config.embed.color) // Sets the color of the embed
 			.setFooter(data.config.embed.footer) // Sets the footer of the embed

@@ -31,20 +31,20 @@ module.exports = class extends Command {
 
 		if(number === "reset"){
 			if(sanction === "kick"){
-				data.guild.plugins.warnsSanctions.kick = false;
-				data.guild.markModified("plugins.warnsSanctions");
-				data.guild.save();
+				data.guildData.plugins.warnsSanctions.kick = false;
+				data.guildData.markModified("plugins.warnsSanctions");
+				data.guildData.save();
 				return message.success("moderation/setwarns:SUCCESS_KICK_RESET", {
-					prefix: data.guild.prefix,
+					prefix: data.guildData.prefix,
 					count: number
 				});
 			}
 			if(sanction === "ban"){
-				data.guild.plugins.warnsSanctions.ban = false;
-				data.guild.markModified("plugins.warnsSanctions");
-				data.guild.save();
+				data.guildData.plugins.warnsSanctions.ban = false;
+				data.guildData.markModified("plugins.warnsSanctions");
+				data.guildData.save();
 				return message.success("moderation/setwarns:SUCCESS_BAN_RESET", {
-					prefix: data.guild.prefix,
+					prefix: data.guildData.prefix,
 					count: number
 				});
 			}
@@ -64,21 +64,21 @@ module.exports = class extends Command {
 		}
 
 		if(sanction === "kick"){
-			data.guild.plugins.warnsSanctions.kick = number;
-			data.guild.markModified("plugins.warnsSanctions");
-			data.guild.save();
+			data.guildData.plugins.warnsSanctions.kick = number;
+			data.guildData.markModified("plugins.warnsSanctions");
+			data.guildData.save();
 			return message.success("moderation/setwarns:SUCCESS_KICK", {
-				prefix: data.guild.prefix,
+				prefix: data.guildData.prefix,
 				count: number
 			});
 		}
 
 		if(sanction === "ban"){
-			data.guild.plugins.warnsSanctions.ban = number;
-			data.guild.markModified("plugins.warnsSanctions");
-			data.guild.save();
+			data.guildData.plugins.warnsSanctions.ban = number;
+			data.guildData.markModified("plugins.warnsSanctions");
+			data.guildData.save();
 			return message.success("moderation/setwarns:SUCCESS_BAN", {
-				prefix: data.guild.prefix,
+				prefix: data.guildData.prefix,
 				count: number
 			});
 		}

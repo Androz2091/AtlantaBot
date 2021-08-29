@@ -27,7 +27,7 @@ module.exports = class extends Command {
 			});
 
 		const joke = await this.client.joker.randomJoke(
-			data.guild.language.substr(0, 2)
+			data.guildData.language.substr(0, 2)
 		);
 
 		const embed = new Discord.MessageEmbed()
