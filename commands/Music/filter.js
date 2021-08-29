@@ -1,7 +1,7 @@
 const Command = require("../../base/Command.js"),
 	FiltersList = require("../../assets/json/filters.json");
 
-class Filter extends Command {
+module.exports = class extends Command {
 
 	constructor (client) {
 		super(client, {
@@ -9,7 +9,7 @@ class Filter extends Command {
 			dirname: __dirname,
 			enabled: true,
 			guildOnly: true,
-			aliases: [ "f" ],
+			
 			memberPermissions: [],
 			botPermissions: [ "SEND_MESSAGES", "EMBED_LINKS" ],
 			nsfw: false,
@@ -18,28 +18,34 @@ class Filter extends Command {
 		});
 	}
 
-	async run (message, args, data) {
+	async run (interaction, translate, data) {
 
 		const queue = this.client.player.getQueue(message);
 
 		const voice = message.member.voice.channel;
 		if (!voice){
-			return message.error("music/play:NO_VOICE_CHANNEL");
+			return interaction.reply({
+				content: translate("music/play:NO_VOICE_CHANNEL"),
+				ephemeral: true
+			});
 		}
 
 		if(!queue){
-			return message.error("music/play:NOT_PLAYING");
+			return interaction.reply({
+				content: translate("music/play:NOT_PLAYING"),
+				ephemeral: true
+			});
 		}
 
 		const filter = args[0];
 		if(!filter) return message.error("music/filter:MISSING_FILTER", {
-			prefix: data.guild.prefix
+			prefix: data.guildData.prefix
 		});
     
 		const filterToUpdate = Object.values(FiltersList).find((f) => f.toLowerCase() === filter.toLowerCase());
     
 		if(!filterToUpdate) return message.error("music/filter:UNKNOWN_FILTER", {
-			prefix: data.guild.prefix
+			prefix: data.guildData.prefix
 		});
     
 		const filterRealName = Object.keys(FiltersList).find((f) => FiltersList[f] === filterToUpdate);
@@ -49,10 +55,13 @@ class Filter extends Command {
 		filtersUpdated[filterRealName] = queueFilters[filterRealName] ? false : true;
 		this.client.player.setFilters(message, filtersUpdated);
     
-		if(filtersUpdated[filterRealName]) message.success("music/filter:ADDING_FILTER");
-		else message.success("music/filter:REMOVING_FILTER");
+		if(filtersUpdated[filterRealName]) interaction.reply({
+content: translate("music/filter:ADDING_FILTER")
+});;
+		else interaction.reply({
+content: translate("music/filter:REMOVING_FILTER")
+});;
 	}
 
 }
 
-module.exports = Filter;

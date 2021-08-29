@@ -1,6 +1,6 @@
 const Command = require("../../base/Command.js");
 
-class Setafk extends Command {
+module.exports = class extends Command {
 
 	constructor (client) {
 		super(client, {
@@ -8,7 +8,7 @@ class Setafk extends Command {
 			dirname: __dirname,
 			enabled: true,
 			guildOnly: false,
-			aliases: [ "afk" ],
+			
 			memberPermissions: [],
 			botPermissions: [ "SEND_MESSAGES", "EMBED_LINKS" ],
 			nsfw: false,
@@ -16,11 +16,14 @@ class Setafk extends Command {
 		});
 	}
 
-	async run (message, args, data) {
+	async run (interaction, translate, data) {
 
 		const reason = args.join(" ");
 		if(!reason){
-			return message.error("general/setafk:MISSING_REASON");
+			return interaction.reply({
+				content: translate("general/setafk:MISSING_REASON"),
+				ephemeral: true
+			});
 		}
 
 		// Send success message
@@ -33,6 +36,4 @@ class Setafk extends Command {
 
 	}
 
-}
-
-module.exports = Setafk;
+};

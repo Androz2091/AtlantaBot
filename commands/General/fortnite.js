@@ -2,14 +2,14 @@ const Command = require("../../base/Command.js"),
 	Canvas = require("discord-canvas"),
 	Discord = require("discord.js");
 
-class Fortnite extends Command {
+module.exports = class extends Command {
 	constructor (client) {
 		super(client, {
 			name: "fortnite",
 			dirname: __dirname,
 			enabled: true,
 			guildOnly: false,
-			aliases: [ "fn" ],
+			
 			memberPermissions: [],
 			botPermissions: [ "SEND_MESSAGES", "EMBED_LINKS" ],
 			nsfw: false,
@@ -18,22 +18,30 @@ class Fortnite extends Command {
 		});
 	}
  
-	async run (message, args, data) {
+	async run (interaction, translate, data) {
 
 		if(!data.config.apiKeys.fortniteTRN || data.config.apiKeys.fortniteTRN.length === ""){
-			return message.success("misc:COMMAND_DISABLED");
+			return interaction.reply({
+				content: translate("misc:COMMAND_DISABLED")
+			});
 		}
 
 		const stats = new Canvas.FortniteStats();
 
 		const platform = args[0];
 		if(!platform || (platform !== "pc" && platform !== "xbl" && platform !== "psn")){
-			return message.error("general/fortnite:MISSING_PLATFORM");
+			return interaction.reply({
+				content: translate("general/fortnite:MISSING_PLATFORM"),
+				ephemeral: true
+			});
 		}
 
 		const user = args.slice(1).join(" ");
 		if(!user){
-			return message.error("general/fortnite:MISSING_USERNAME");
+			return interaction.reply({
+				content: translate("general/fortnite:MISSING_USERNAME"),
+				ephemeral: true
+			});
 		}
 
 		const m = await message.sendT("misc:PLEASE_WAIT", null, {
@@ -44,18 +52,18 @@ class Fortnite extends Command {
 			.setToken(data.config.apiKeys.fortniteTRN)
 			.setUser(user)
 			.setPlatform(platform)
-			.setText("averageKills", message.translate("general/fortnite:AVERAGE_KILLS"))
-			.setText("averageKill", message.translate("general/fortnite:AVERAGE_KILL"))
-			.setText("wPercent", message.translate("general/fortnite:W_PERCENT"))
-			.setText("winPercent", message.translate("general/fortnite:WIN_PERCENT"))
-			.setText("kD", message.translate("general/fortnite:KD"))
-			.setText("wins", message.translate("general/fortnite:WINS"))
-			.setText("win", message.translate("general/fortnite:WIN"))
-			.setText("kills", message.translate("general/fortnite:KILLS"))
-			.setText("kill", message.translate("general/fortnite:KILL"))
-			.setText("matches", message.translate("general/fortnite:MATCHES"))
-			.setText("match", message.translate("general/fortnite:MATCH"))
-			.setText("footer", message.translate("general/fortnite:FOOTER"))
+			.setText("averageKills", translate("general/fortnite:AVERAGE_KILLS"))
+			.setText("averageKill", translate("general/fortnite:AVERAGE_KILL"))
+			.setText("wPercent", translate("general/fortnite:W_PERCENT"))
+			.setText("winPercent", translate("general/fortnite:WIN_PERCENT"))
+			.setText("kD", translate("general/fortnite:KD"))
+			.setText("wins", translate("general/fortnite:WINS"))
+			.setText("win", translate("general/fortnite:WIN"))
+			.setText("kills", translate("general/fortnite:KILLS"))
+			.setText("kill", translate("general/fortnite:KILL"))
+			.setText("matches", translate("general/fortnite:MATCHES"))
+			.setText("match", translate("general/fortnite:MATCH"))
+			.setText("footer", translate("general/fortnite:FOOTER"))
 			.toAttachment();
         
 		if(!statsImage){
@@ -69,7 +77,7 @@ class Fortnite extends Command {
 		// Send embed
 		const attachment = new Discord.MessageAttachment(statsImage.toBuffer(), "fortnite-stats-image.png"),
 			embed = new Discord.MessageEmbed()
-				.setDescription(message.translate("general/fortnite:TITLE", {
+				.setDescription(translate("general/fortnite:TITLE", {
 					username: `[${stats.data.username}](${stats.data.url.replace(new RegExp(" ", "g"), "%20")})`
 				}))
 				.attachFiles(attachment)
@@ -79,6 +87,4 @@ class Fortnite extends Command {
 		message.channel.send({ embeds: [embed] });
 		m.delete();
 	}
-}
-
-module.exports = Fortnite;
+};

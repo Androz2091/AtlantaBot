@@ -1,7 +1,7 @@
 const Command = require("../../base/Command.js"),
 	Discord = require("discord.js");
 
-class Joke extends Command {
+module.exports = class extends Command {
 
 	constructor (client) {
 		super(client, {
@@ -9,7 +9,7 @@ class Joke extends Command {
 			dirname: __dirname,
 			enabled: true,
 			guildOnly: false,
-			aliases: [ "blague" ],
+			
 			memberPermissions: [],
 			botPermissions: [ "SEND_MESSAGES", "EMBED_LINKS" ],
 			nsfw: false,
@@ -18,24 +18,25 @@ class Joke extends Command {
 		});
 	}
 
-	async run (message, args, data) {
+	async run (interaction, translate, data) {
 
 		if (!this.client.config.apiKeys.blagueXYZ)
-			return message.error("misc:COMMAND_DISABLED");
+			return interaction.reply({
+				content: translate("misc:COMMAND_DISABLED"),
+				ephemeral: true
+			});
 
 		const joke = await this.client.joker.randomJoke(
-			data.guild.language.substr(0, 2)
+			data.guildData.language.substr(0, 2)
 		);
 
 		const embed = new Discord.MessageEmbed()
 			.setDescription(joke.toDiscordSpoils())
-			.setFooter(message.translate("fun/joke:FOOTER"))
+			.setFooter(translate("fun/joke:FOOTER"))
 			.setColor(this.client.config.embed.color);
 
 		message.channel.send({ embeds: [embed] });
 
 	}
 
-}
-
-module.exports = Joke;
+};

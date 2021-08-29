@@ -1,7 +1,7 @@
 const Command = require("../../base/Command.js"),
 	Discord = require("discord.js");
 
-class Sanctions extends Command {
+module.exports = class extends Command {
 
 	constructor (client) {
 		super(client, {
@@ -9,7 +9,7 @@ class Sanctions extends Command {
 			dirname: __dirname,
 			enabled: true,
 			guildOnly: true,
-			aliases: [ "warns", "see-warns", "view-warns", "see-sanctions", "view-sanctions", "infractions", "view-infractions", "see-infractions" ],
+			
 			memberPermissions: [ "MANAGE_MESSAGES" ],
 			botPermissions: [ "SEND_MESSAGES", "EMBED_LINKS" ],
 			nsfw: false,
@@ -18,13 +18,16 @@ class Sanctions extends Command {
 		});
 	}
 
-	async run (message, args, data) {
+	async run (interaction, translate, data) {
         
 		const user = await this.client.resolveUser(args[0]);
 		if(!user){
-			return message.error("moderation/sanctions:MISSING_MEMBER");
+			return interaction.reply({
+				content: translate("moderation/sanctions:MISSING_MEMBER"),
+				ephemeral: true
+			});
 		}
-		const memberData = await this.client.findOrCreateMember({ id: user.id, guildID: message.guild.id });
+		const memberData = await this.client.findOrCreateMember({ id: user.id, guildID: interaction.guild.id });
 
 		const embed = new Discord.MessageEmbed()
 			.setAuthor(user.tag, user.displayAvatarURL({ size: 512, dynamic: true, format: "png" }))
@@ -32,19 +35,17 @@ class Sanctions extends Command {
 			.setFooter(data.config.embed.footer);
 
 		if(memberData.sanctions.length < 1){
-			embed.setDescription(message.translate("moderation/sanctions:NO_SANCTION", {
+			embed.setDescription(translate("moderation/sanctions:NO_SANCTION", {
 				username: user.tag
 			}));
 			return message.channel.send({ embeds: [embed] });
 		} else {
 			memberData.sanctions.forEach((s) => {
-				embed.addField(s.type+" | #"+s.case, `${message.translate("common:MODERATOR")}: <@${s.moderator}>\n${message.translate("common:REASON")}: ${s.reason}`, true);
+				embed.addField(s.type+" | #"+s.case, `${translate("common:MODERATOR")}: <@${s.moderator}>\n${translate("common:REASON")}: ${s.reason}`, true);
 			});
 		}
 
 		message.channel.send({ embeds: [embed] });
 	}
 
-}
-
-module.exports = Sanctions;
+};

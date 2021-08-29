@@ -1,6 +1,6 @@
 const Command = require("../../base/Command.js");
 
-class Setprefix extends Command {
+module.exports = class extends Command {
 
 	constructor (client) {
 		super(client, {
@@ -8,7 +8,7 @@ class Setprefix extends Command {
 			dirname: __dirname,
 			enabled: true,
 			guildOnly: true,
-			aliases: [],
+			,
 			memberPermissions: [ "MANAGE_GUILD" ],
 			botPermissions: [ "SEND_MESSAGES", "EMBED_LINKS" ],
 			nsfw: false,
@@ -17,18 +17,24 @@ class Setprefix extends Command {
 		});
 	}
 
-	async run (message, args, data) {
+	async run (interaction, translate, data) {
 
 		const prefix = args[0];
 		if(!prefix){
-			return message.error("administration/setprefix:MISSING_PREFIX");
+			return interaction.reply({
+				content: translate("administration/setprefix:MISSING_PREFIX"),
+				ephemeral: true
+			});
 		}
 		if(prefix.length > 5){
-			return message.error("administration/setprefix:TOO_LONG");
+			return interaction.reply({
+				content: translate("administration/setprefix:TOO_LONG"),
+				ephemeral: true
+			});
 		}
         
-		data.guild.prefix = prefix;
-		data.guild.save();
+		data.guildData.prefix = prefix;
+		data.guildData.save();
 
 		// Sucess
 		return message.success("administration/setprefix:SUCCESS", {
@@ -37,6 +43,4 @@ class Setprefix extends Command {
         
 	}
 
-}
-
-module.exports = Setprefix;
+};

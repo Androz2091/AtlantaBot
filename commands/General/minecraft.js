@@ -4,7 +4,7 @@ const Command = require("../../base/Command.js"),
 	gamedig = require("gamedig"),
 	Sentry = require("@sentry/node");
 
-class Minecraft extends Command {
+module.exports = class extends Command {
 
 	constructor (client) {
 		super(client, {
@@ -12,7 +12,7 @@ class Minecraft extends Command {
 			dirname: __dirname,
 			enabled: true,
 			guildOnly: false,
-			aliases: [ "mc" ],
+			
 			memberPermissions: [],
 			botPermissions: [ "SEND_MESSAGES", "EMBED_LINKS" ],
 			nsfw: false,
@@ -21,11 +21,14 @@ class Minecraft extends Command {
 		});
 	}
 
-	async run (message, args, data) {
+	async run (interaction, translate, data) {
 
 		const ip = args[0];
 		if(!ip){
-			return message.error("general/minecraft:MISSING_IP");
+			return interaction.reply({
+				content: translate("general/minecraft:MISSING_IP"),
+				ephemeral: true
+			});
 		}
 
 		const favicon = `https://eu.mc-api.net/v3/server/favicon/${ip}`;
@@ -73,24 +76,24 @@ class Minecraft extends Command {
 		const imgAttachment = new Discord.MessageAttachment(await imgRes.buffer(), "success.png");
 
 		const mcEmbed = new Discord.MessageEmbed()
-			.setAuthor(message.translate("general/minecraft:FIELD_NAME", {
+			.setAuthor(translate("general/minecraft:FIELD_NAME", {
 				ip: json.name
 			}))
-			.addField(message.translate("general/minecraft:FIELD_VERSION"),
+			.addField(translate("general/minecraft:FIELD_VERSION"),
 				json.raw.vanilla.raw.version.name
 			)
-			.addField(message.translate("general/minecraft:FIELD_CONNECTED"),
-				message.translate("general/minecraft:PLAYERS", {
+			.addField(translate("general/minecraft:FIELD_CONNECTED"),
+				translate("general/minecraft:PLAYERS", {
 					count: (json.raw.players ? json.raw.players.online : json.players.length)
 				})
 			)
-			.addField(message.translate("general/minecraft:FIELD_MAX"),
-				message.translate("general/minecraft:PLAYERS", {
+			.addField(translate("general/minecraft:FIELD_MAX"),
+				translate("general/minecraft:PLAYERS", {
 					count: (json.raw.players ? json.raw.players.max : json.maxplayers)
 				})
 			)
-			.addField(message.translate("general/minecraft:FIELD_STATUS"), message.translate("general/minecraft:ONLINE"))
-			.addField(message.translate("general/minecraft:FIELD_IP"), json.connect)
+			.addField(translate("general/minecraft:FIELD_STATUS"), translate("general/minecraft:ONLINE"))
+			.addField(translate("general/minecraft:FIELD_IP"), json.connect)
 			.setColor(data.config.embed.color)
 			.setThumbnail(favicon)
 			.setFooter(data.config.embed.footer);
@@ -99,6 +102,4 @@ class Minecraft extends Command {
 
 	}
 
-}
-
-module.exports = Minecraft;
+};

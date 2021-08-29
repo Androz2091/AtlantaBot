@@ -3,7 +3,7 @@ const Command = require("../../base/Command.js"),
 	util = require("util"),
 	figletAsync = util.promisify(figlet);
 
-class Ascii extends Command {
+module.exports = class extends Command {
 
 	constructor (client) {
 		super(client, {
@@ -11,7 +11,7 @@ class Ascii extends Command {
 			dirname: __dirname,
 			enabled: true,
 			guildOnly: false,
-			aliases: [],
+			,
 			memberPermissions: [],
 			botPermissions: [ "SEND_MESSAGES", "EMBED_LINKS" ],
 			nsfw: false,
@@ -20,10 +20,13 @@ class Ascii extends Command {
 		});
 	}
 
-	async run (message, args) {
+	async run (interaction, translate) {
 		const text = args.join(" ");
 		if (!text || text.length > 20) {
-			return message.error("fun/ascii:TEXT_MISSING");
+			return interaction.reply({
+				content: translate("fun/ascii:TEXT_MISSING"),
+				ephemeral: true
+			});
 		}
 
 		const rendered = await figletAsync(text);
@@ -31,6 +34,4 @@ class Ascii extends Command {
 
 	}
 
-}
-
-module.exports = Ascii;
+};

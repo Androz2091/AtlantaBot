@@ -1,7 +1,7 @@
 const Command = require("../../base/Command.js"),
 	ms = require("ms");
 
-class Remindme extends Command {
+module.exports = class extends Command {
 
 	constructor (client) {
 		super(client, {
@@ -9,7 +9,7 @@ class Remindme extends Command {
 			dirname: __dirname,
 			enabled: true,
 			guildOnly: false,
-			aliases: [ "reminder" ],
+			
 			memberPermissions: [],
 			botPermissions: [ "SEND_MESSAGES", "EMBED_LINKS" ],
 			nsfw: false,
@@ -17,16 +17,22 @@ class Remindme extends Command {
 		});
 	}
 
-	async run (message, args, data) {
+	async run (interaction, translate, data) {
 
 		const time = args[0];
 		if(!time || isNaN(ms(time))){
-			return message.error("misc:INVALID_TIME");
+			return interaction.reply({
+				content: translate("misc:INVALID_TIME"),
+				ephemeral: true
+			});
 		}
 
 		const msg = args.slice(1).join(" ");
 		if(!msg){
-			return message.error("general/remindme:MISSING_MESSAGE");
+			return interaction.reply({
+				content: translate("general/remindme:MISSING_MESSAGE"),
+				ephemeral: true
+			});
 		}
         
 		const rData = {
@@ -42,12 +48,12 @@ class Remindme extends Command {
 		data.userData.reminds.push(rData);
 		data.userData.markModified("reminds");
 		data.userData.save();
-		this.client.databaseCache.usersReminds.set(message.author.id, data.userData);
+		this.client.databaseCache.usersReminds.set(interaction.user.id, data.userData);
 
 		// Send success message
-		message.success("general/remindme:SAVED");
+		interaction.reply({
+			content: translate("general/remindme:SAVED")
+		});
 	}
 
-}
-
-module.exports = Remindme;
+};

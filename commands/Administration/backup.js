@@ -3,7 +3,7 @@ const Command = require("../../base/Command.js"),
 	backup = require("discord-backup"),
 	Sentry = require("@sentry/node");
 
-class Backup extends Command {
+module.exports = class extends Command {
 
 	constructor (client) {
 		super(client, {
@@ -11,7 +11,7 @@ class Backup extends Command {
 			dirname: __dirname,
 			enabled: true,
 			guildOnly: true,
-			aliases: [ "sauvegarde" ],
+			
 			memberPermissions: [ "MANAGE_GUILD" ],
 			botPermissions: [ "SEND_MESSAGES", "EMBED_LINKS", "ADMINISTRATOR" ],
 			nsfw: false,
@@ -20,11 +20,14 @@ class Backup extends Command {
 		});
 	}
 
-	async run (message, args, data) {
+	async run (interaction, translate, data) {
 
 		const status = args[0];
 		if(!status){
-			return message.error("administration/backup:MISSING_STATUS");
+			return interaction.reply({
+				content: translate("administration/backup:MISSING_STATUS"),
+				ephemeral: true
+			});
 		}
 
 		if(status === "create"){
@@ -33,43 +36,62 @@ class Backup extends Command {
 			});
 			backup.create(message.guild).then((backup) => {
 				m.delete();
-				message.success("administration/backup:SUCCESS_PUBLIC");
-				message.author.send(message.translate("administration/backup:SUCCESS_PRIVATE", {
+				interaction.reply({
+					content: translate("administration/backup:SUCCESS_PUBLIC")
+				});
+				interaction.user.send(translate("administration/backup:SUCCESS_PRIVATE", {
 					backupID: backup.id
 				})).catch(() => {
 					backup.remove(backup.id);
-					message.error("misc:CANNOT_DM");
+					interaction.reply({
+						content: translate("misc:CANNOT_DM"),
+						ephemeral: true
+					});
 				});
 			}).catch((err) => {
 				Sentry.captureException(err);
-				return message.error("misc:ERR_OCCURRED");
+				return interaction.reply({
+					content: translate("misc:ERR_OCCURRED"),
+					ephemeral: true
+				});
 			});
 		} else if (status === "load"){
 			const backupID = args[1];
 			if(!backupID){
-				return message.error("administration/backup:MISSING_BACKUP_ID");
+				return interaction.reply({
+					content: translate("administration/backup:MISSING_BACKUP_ID"),
+					ephemeral: true
+				});
 			}
 			backup.fetch(backupID).then(async () => {
-				message.sendT("administration/backup:CONFIRMATION");
-				await message.channel.awaitMessages(m => (m.author.id === message.author.id) && (m.content === "-confirm"), {
+				interaction.reply({
+					content: translate("administration/backup:CONFIRMATION")
+				});
+				await message.channel.awaitMessages(m => (m.author.id === interaction.user.id) && (m.content === "-confirm"), {
 					max: 1,
 					time: 20000,
 					errors: ["time"]
 				}).catch(() => {
 					// if the author of the commands does not confirm the backup loading
-					return message.error("administration/backup:TIMES_UP");
+					return interaction.reply({
+						content: translate("administration/backup:TIMES_UP"),
+						ephemeral: true
+					});
 				});
 				// When the author of the command has confirmed that he wants to load the backup on his server
-				message.author.send(message.translate("administration/backup:START_LOADING"));
+				interaction.user.send(translate("administration/backup:START_LOADING"));
 				// Load the backup
 				backup.load(backupID, message.guild).then(() => {
 					// When the backup is loaded, delete them from the server
 					backup.remove(backupID);
-					message.author.send(message.translate("administration/backup:LOAD_SUCCESS"));
+					interaction.user.send(translate("administration/backup:LOAD_SUCCESS"));
 				}).catch((err) => {
 					Sentry.captureException(err);
 					// If an error occurenced
-					return message.error("misc:ERR_OCCURRED");
+					return interaction.reply({
+						content: translate("misc:ERR_OCCURRED"),
+						ephemeral: true
+					});
 				});
 			}).catch(() => {
 				// if the backup wasn't found
@@ -80,19 +102,22 @@ class Backup extends Command {
 		} else if (status === "info"){
 			const backupID = args[1];
 			if(!backupID){
-				return message.error("administration/backup:MISSING_BACKUP_ID");
+				return interaction.reply({
+					content: translate("administration/backup:MISSING_BACKUP_ID"),
+					ephemeral: true
+				});
 			}
 			backup.fetch(backupID).then(async (backupInfos) => {
 				const embed = new Discord.MessageEmbed()
-					.setAuthor(message.translate("administration/backup:TITLE_INFOS"))
+					.setAuthor(translate("administration/backup:TITLE_INFOS"))
 					// Display the backup ID
-					.addField(message.translate("administration/backup:TITLE_ID"), backupInfos.id, true)
+					.addField(translate("administration/backup:TITLE_ID"), backupInfos.id, true)
 					// Displays the server from which this backup comes
-					.addField(message.translate("administration/backup:TITLE_SERVER_ID"), backupInfos.data.guildID, true)
+					.addField(translate("administration/backup:TITLE_SERVER_ID"), backupInfos.data.guildID, true)
 					// Display the size (in mb) of the backup
-					.addField(message.translate("administration/backup:TITLE_SIZE"), backupInfos.size+" mb", true)
+					.addField(translate("administration/backup:TITLE_SIZE"), backupInfos.size+" mb", true)
 					// Display when the backup was created
-					.addField(message.translate("administration/backup:TITLE_CREATED_AT"), message.printDate(new Date(backupInfos.data.createdTimestamp)), true)
+					.addField(translate("administration/backup:TITLE_CREATED_AT"), message.printDate(new Date(backupInfos.data.createdTimestamp)), true)
 					.setColor(data.config.embed.color)
 					.setFooter(data.config.embed.footer);
 				message.channel.send({ embeds: [embed] });
@@ -103,11 +128,12 @@ class Backup extends Command {
 				});
 			});
 		} else {
-			return message.error("administration/backup:MISSING_STATUS");
+			return interaction.reply({
+				content: translate("administration/backup:MISSING_STATUS"),
+				ephemeral: true
+			});
 		}
         
 	}
 
-}
-
-module.exports = Backup;
+};

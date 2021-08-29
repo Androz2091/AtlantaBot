@@ -1,6 +1,6 @@
 const Command = require("../../base/Command.js");
 
-class Ping extends Command {
+module.exports = class extends Command {
 
 	constructor (client) {
 		super(client, {
@@ -8,7 +8,7 @@ class Ping extends Command {
 			dirname: __dirname,
 			enabled: true,
 			guildOnly: false,
-			aliases: [ "pong", "latency" ],
+			
 			memberPermissions: [],
 			botPermissions: [ "SEND_MESSAGES" ],
 			nsfw: false,
@@ -29,6 +29,4 @@ class Ping extends Command {
 		});
 	}
 
-}
-
-module.exports = Ping;
+};

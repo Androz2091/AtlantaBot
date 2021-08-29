@@ -1,7 +1,7 @@
 const Command = require("../../base/Command.js"),
 	Discord = require("discord.js");
 
-class Warn extends Command {
+module.exports = class extends Command {
 
 	constructor (client) {
 		super(client, {
@@ -9,7 +9,7 @@ class Warn extends Command {
 			dirname: __dirname,
 			enabled: true,
 			guildOnly: true,
-			aliases: [],
+			,
 			memberPermissions: [ "MANAGE_MESSAGES" ],
 			botPermissions: [ "SEND_MESSAGES", "EMBED_LINKS" ],
 			nsfw: false,
@@ -18,65 +18,80 @@ class Warn extends Command {
 		});
 	}
 
-	async run (message, args, data) {
+	async run (interaction, translate, data) {
         
 		const member = await this.client.resolveMember(args[0], message.guild);
 		if(!member){
-			return message.error("moderation/warn:MISSING_MEMBER");
+			return interaction.reply({
+				content: translate("moderation/warn:MISSING_MEMBER"),
+				ephemeral: true
+			});
 		}
 		if(member.user.bot){
-			return message.error("misc:BOT_USER");
+			return interaction.reply({
+				content: translate("misc:BOT_USER"),
+				ephemeral: true
+			});
 		}
-		const memberData = await this.client.findOrCreateMember({ id: member.id, guildID: message.guild.id });
+		const memberData = await this.client.findOrCreateMember({ id: member.id, guildID: interaction.guild.id });
 
-		if(member.id === message.author.id){
-			return message.error("moderation/ban:YOURSELF");
+		if(member.id === interaction.user.id){
+			return interaction.reply({
+				content: translate("moderation/ban:YOURSELF"),
+				ephemeral: true
+			});
 		}
 
 		const memberPosition = member.roles.highest.position;
 		const moderationPosition = message.member.roles.highest.position;
-		if(message.member.ownerID !== message.author.id && !(moderationPosition > memberPosition)){
-			return message.error("moderation/ban:SUPERIOR");
+		if(message.member.ownerID !== interaction.user.id && !(moderationPosition > memberPosition)){
+			return interaction.reply({
+				content: translate("moderation/ban:SUPERIOR"),
+				ephemeral: true
+			});
 		}
 
 		const reason = args.slice(1).join(" ");
 		if(!reason){
-			return message.error("moderation/warn:MISSING_REASON");
+			return interaction.reply({
+				content: translate("moderation/warn:MISSING_REASON"),
+				ephemeral: true
+			});
 		}
 
 		// Gets current member sanctions
 		const sanctions = memberData.sanctions.filter((s) => s.type === "warn").length;
-		const banCount = data.guild.plugins.warnsSanctions.ban;
-		const kickCount = data.guild.plugins.warnsSanctions.kick;
+		const banCount = data.guildData.plugins.warnsSanctions.ban;
+		const kickCount = data.guildData.plugins.warnsSanctions.kick;
         
-		data.guild.casesCount++;
-		data.guild.save();
+		data.guildData.casesCount++;
+		data.guildData.save();
 
 		const caseInfo = {
 			channel: message.channel.id,
-			moderator: message.author.id,
+			moderator: interaction.user.id,
 			date: Date.now(),
 			type: "warn",
-			case: data.guild.casesCount,
+			case: data.guildData.casesCount,
 			reason
 		};
 
 		const embed = new Discord.MessageEmbed()
-			.addField(message.translate("common:USER"), `\`${member.user.tag}\` (${member.user.toString()})`)
-			.addField(message.translate("common:MODERATOR"), `\`${message.author.tag}\` (${message.author.toString()}`)
-			.addField(message.translate("common:REASON"), reason, true);
+			.addField(translate("common:USER"), `\`${member.user.tag}\` (${member.user.toString()})`)
+			.addField(translate("common:MODERATOR"), `\`${interaction.user.tag}\` (${interaction.user.toString()}`)
+			.addField(translate("common:REASON"), reason, true);
 
 		if(banCount){
 			if(sanctions >= banCount){
-				member.send(message.translate("moderation/ban:BANNED_DM", {
+				member.send(translate("moderation/ban:BANNED_DM", {
 					username: member.user,
-					moderator: message.author.tag,
+					moderator: interaction.user.tag,
 					server: message.guild.name,
 					reason
 				}));
 				caseInfo.type = "ban";
-				embed.setAuthor(message.translate("moderation/ban:CASE", {
-					count: data.guild.casesCount
+				embed.setAuthor(translate("moderation/ban:CASE", {
+					count: data.guildData.casesCount
 				}))
 					.setColor("#e02316");
 				message.guild.members.ban(member).catch(() => {});
@@ -89,15 +104,15 @@ class Warn extends Command {
 		
 		if(kickCount){
 			if(sanctions >= kickCount){
-				member.send(message.translate("moderation/kick:KICKED_DM", {
+				member.send(translate("moderation/kick:KICKED_DM", {
 					username: member.user,
-					moderator: message.author.tag,
+					moderator: interaction.user.tag,
 					server: message.guild.name,
 					reason
 				}));
 				caseInfo.type = "kick";
-				embed.setAuthor(message.translate("moderation/kick:CASE", {
-					count: data.guild.casesCount
+				embed.setAuthor(translate("moderation/kick:CASE", {
+					count: data.guildData.casesCount
 				}))
 					.setColor("#e88709");
 				member.kick().catch(() => {});
@@ -108,15 +123,15 @@ class Warn extends Command {
 			}
 		}
 
-		member.send(message.translate("moderation/warn:WARNED_DM", {
+		member.send(translate("moderation/warn:WARNED_DM", {
 			username: member.user.tag,
 			server: message.guild.name,
-			moderator: message.author.tag,
+			moderator: interaction.user.tag,
 			reason
 		}));
 		caseInfo.type = "warn";
-		embed.setAuthor(message.translate("moderation/warn:CASE", {
-			caseNumber: data.guild.casesCount
+		embed.setAuthor(translate("moderation/warn:CASE", {
+			caseNumber: data.guildData.casesCount
 		}))
 			.setColor("#8c14e2");
 		message.success("moderation/warn:WARNED", {
@@ -127,13 +142,11 @@ class Warn extends Command {
 		memberData.sanctions.push(caseInfo);
 		memberData.save();
 
-		if(data.guild.plugins.modlogs){
-			const channel = message.guild.channels.cache.get(data.guild.plugins.modlogs);
+		if(data.guildData.plugins.modlogs){
+			const channel = message.guild.channels.cache.get(data.guildData.plugins.modlogs);
 			if(!channel) return;
 			channel.send({ embeds: [embed] });
 		}
 	}
 
-}
-
-module.exports = Warn;
+};

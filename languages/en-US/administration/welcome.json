@@ -1,6 +1,5 @@
 {
     "DESCRIPTION": "Toggle welcome messages!",
-    "USAGE": "{{prefix}}welcome",
     "EXAMPLES": "{{prefix}}welcome",
     "MISSING_STATUS": "You must specify an action between `edit` and `off`",
     "DEFAULT_MESSAGE": "Welcome {user} in {server}, we're now {membercount}! Your account was created {createdat}.",

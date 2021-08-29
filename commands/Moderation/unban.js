@@ -1,6 +1,6 @@
 const Command = require("../../base/Command.js");
 
-class Unban extends Command {
+module.exports = class extends Command {
 
 	constructor (client) {
 		super(client, {
@@ -17,12 +17,15 @@ class Unban extends Command {
 		});
 	}
 
-	async run (message, args) {
+	async run (interaction, translate) {
 
 		let user = null;
 
 		if(!args[0]){
-			return message.error("moderation/unban:MISSING_ID");
+			return interaction.reply({
+				content: translate("moderation/unban:MISSING_ID"),
+				ephemeral: true
+			});
 		}
 
 		// Check if the arg is an ID or a username
@@ -69,6 +72,4 @@ class Unban extends Command {
 
 	}
 
-}
-
-module.exports = Unban;
+};

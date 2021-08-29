@@ -2,7 +2,7 @@ const Command = require("../../base/Command.js"),
 	Discord = require("discord.js"),
 	FiltersList = require("../../assets/json/filters.json");
 
-class Filters extends Command {
+module.exports = class extends Command {
 
 	constructor (client) {
 		super(client, {
@@ -10,7 +10,7 @@ class Filters extends Command {
 			dirname: __dirname,
 			enabled: true,
 			guildOnly: true,
-			aliases: [],
+			,
 			memberPermissions: [],
 			botPermissions: [ "SEND_MESSAGES", "EMBED_LINKS" ],
 			nsfw: false,
@@ -19,17 +19,23 @@ class Filters extends Command {
 		});
 	}
 
-	async run (message, args, data) {
+	async run (interaction, translate, data) {
 
 		const queue = this.client.player.getQueue(message);
 
 		const voice = message.member.voice.channel;
 		if (!voice){
-			return message.error("music/play:NO_VOICE_CHANNEL");
+			return interaction.reply({
+				content: translate("music/play:NO_VOICE_CHANNEL"),
+				ephemeral: true
+			});
 		}
 
 		if(!queue){
-			return message.error("music/play:NOT_PLAYING");
+			return interaction.reply({
+				content: translate("music/play:NOT_PLAYING"),
+				ephemeral: true
+			});
 		}
 
 		const filtersStatuses = [ [], [] ];
@@ -40,16 +46,14 @@ class Filters extends Command {
 		});
 
 		const list = new Discord.MessageEmbed()
-			.setDescription(message.translate("music/filters:CONTENT", {
-				prefix: data.guild.prefix
+			.setDescription(translate("music/filters:CONTENT", {
+				prefix: data.guildData.prefix
 			}))
-			.addField(message.translate("music/filters:TITLE"), filtersStatuses[0].join("\n"), true)
+			.addField(translate("music/filters:TITLE"), filtersStatuses[0].join("\n"), true)
 			.addField("** **", filtersStatuses[1].join("\n"), true)
 			.setColor(data.config.embed.color);
 
 		message.channel.send({ embeds: [list] });
 	}
 
-}
-
-module.exports = Filters;
+};

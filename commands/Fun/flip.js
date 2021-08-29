@@ -1,6 +1,6 @@
 const Command = require("../../base/Command.js");
 
-class Flip extends Command {
+module.exports = class extends Command {
 
 	constructor (client) {
 		super(client, {
@@ -8,7 +8,7 @@ class Flip extends Command {
 			dirname: __dirname,
 			enabled: true,
 			guildOnly: false,
-			aliases: [ "dice" ],
+			
 			memberPermissions: [],
 			botPermissions: [ "SEND_MESSAGES", "EMBED_LINKS" ],
 			nsfw: false,
@@ -20,10 +20,13 @@ class Flip extends Command {
 	async run (message) {
 		const isHeads = Math.random() > 0.5;
 		isHeads
-			? message.sendT("fun/flip:HEADS")
-			: message.sendT("fun/flip:TAILS");
+			? interaction.reply({
+content: translate("fun/flip:HEADS")
+});
+			: interaction.reply({
+content: translate("fun/flip:TAILS")
+});;
 	}
 
 }
 
-module.exports = Flip;

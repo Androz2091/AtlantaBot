@@ -1,6 +1,6 @@
 const Command = require("../../base/Command.js");
 
-class Eightball extends Command {
+module.exports = class extends Command {
 
 	constructor (client) {
 		super(client, {
@@ -8,7 +8,7 @@ class Eightball extends Command {
 			dirname: __dirname,
 			enabled: true,
 			guildOnly: false,
-			aliases: [ "eight-ball", "eightball" ],
+			
 			memberPermissions: [],
 			botPermissions: [ "SEND_MESSAGES", "EMBED_LINKS" ],
 			nsfw: false,
@@ -17,18 +17,19 @@ class Eightball extends Command {
 		});
 	}
 
-	async run (message, args) {
+	async run (interaction, translate) {
         
 		if (!args[0] || !message.content.endsWith("?")) {
-			return message.error("fun/8ball:ERR_QUESTION");
+			return interaction.reply({
+				content: translate("fun/8ball:ERR_QUESTION"),
+				ephemeral: true
+			});
 		}
 
 		const answerNO = parseInt(Math.floor(Math.random() * 10), 10);
-		const answer = message.translate(`fun/8ball:RESPONSE_${answerNO + 1}`);
+		const answer = translate(`fun/8ball:RESPONSE_${answerNO + 1}`);
 
-		message.channel.send(`${message.author.username}, ${answer}`);
+		message.channel.send(`${interaction.user.username}, ${answer}`);
 	}
 
-}
-
-module.exports = Eightball;
+};

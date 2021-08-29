@@ -1,7 +1,7 @@
 const Command = require("../../base/Command.js"),
 	Resolvers = require("../../helpers/resolvers");
 
-class Setsuggests extends Command {
+module.exports = class extends Command {
 
 	constructor (client) {
 		super(client, {
@@ -9,7 +9,7 @@ class Setsuggests extends Command {
 			dirname: __dirname,
 			enabled: true,
 			guildOnly: true,
-			aliases: [ "setsuggest", "setsuggestions", "setsuggestion" ],
+			
 			memberPermissions: [ "MANAGE_GUILD" ],
 			botPermissions: [ "SEND_MESSAGES", "EMBED_LINKS" ],
 			nsfw: false,
@@ -18,9 +18,9 @@ class Setsuggests extends Command {
 		});
 	}
 
-	async run (message, args, data) {
+	async run (interaction, translate, data) {
         
-		const areSuggestsEnabled = Boolean(data.guild.plugins.suggestions);
+		const areSuggestsEnabled = Boolean(data.guildData.plugins.suggestions);
 		const sentChannel = await Resolvers.resolveChannel({
 			message,
 			search: args.join(" "),
@@ -28,17 +28,17 @@ class Setsuggests extends Command {
 		});
 
 		if (!sentChannel && areSuggestsEnabled) {
-			data.guild.plugins.suggestions = null;
-			data.guild.markModified("plugins.suggestions");
-			await data.guild.save();
+			data.guildData.plugins.suggestions = null;
+			data.guildData.markModified("plugins.suggestions");
+			await data.guildData.save();
 			return message.success(
 				"administration/setsuggests:SUCCESS_DISABLED"
 			);
 		} else {
 			const channel = sentChannel || message.channel;
-			data.guild.plugins.suggestions = channel.id;
-			data.guild.markModified("plugins.suggestions");
-			await data.guild.save();
+			data.guildData.plugins.suggestions = channel.id;
+			data.guildData.markModified("plugins.suggestions");
+			await data.guildData.save();
 			return message.success(
 				"administration/setsuggests:SUCCESS_ENABLED",
 				{
@@ -49,6 +49,4 @@ class Setsuggests extends Command {
         
 	}
 
-}
-
-module.exports = Setsuggests;
+};

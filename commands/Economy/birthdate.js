@@ -1,39 +1,50 @@
 const Command = require("../../base/Command.js");
 
-class Birthdate extends Command {
+module.exports = class extends Command {
 
 	constructor (client) {
 		super(client, {
 			name: "birthdate",
-			dirname: __dirname,
+
+			options: [
+				{
+					name: "date",
+					type: "STRING",
+					required: true
+				}
+			],
+
 			enabled: true,
 			guildOnly: false,
-			aliases: [ "anniversaire" ],
 			memberPermissions: [],
 			botPermissions: [ "SEND_MESSAGES", "EMBED_LINKS" ],
 			nsfw: false,
 			ownerOnly: false,
-			cooldown: 1000
+
+			dirname: __dirname
 		});
 	}
 
-	async run (message, args, data) {
+	async run (interaction, translate, { userData, guildData }) {
         
-		const date = args[0];
-		if(!date){
-			return message.error("economy/birthdate:MISSING_DATE");
-		}
+		const date = interaction.options.getString("date");
 
 		const tArgs = date.split("/");
 		const [day, month, year] = tArgs;
 		if(!day || !month || !year){
-			return message.error("economy/birthdate:INVALID_DATE");
+			return interaction.reply({
+				content: "economy/birthdate:INVALID_DATE",
+				ephemeral: true
+			});
 		}
         
 		// Gets the string of the date
 		const match = date.match(/\d+/g);
 		if (!match){
-			return message.error("economy/birthdate:INVALID_DATE_FORMAT");
+			return interaction.reply({
+				content: "economy/birthdate:INVALID_DATE_FORMAT",
+				ephemeral: true
+			});
 		}
 		const tday = +match[0], tmonth = +match[1] - 1;
 		let tyear = +match[2];
@@ -42,24 +53,33 @@ class Birthdate extends Command {
 		}
 		const d = new Date(tyear, tmonth, tday);
 		if(!(tday == d.getDate() && tmonth == d.getMonth() && tyear == d.getFullYear())){
-			return message.error("economy/birthdate:INVALID_DATE_FORMAT");
+			return interaction.reply({
+				content: translate("economy/birthdate:INVALID_DATE_FORMAT"),
+				ephemeral: true
+			});
 		}
 		if(d.getTime() > Date.now()){
-			return message.error("economy/birthdate:DATE_TOO_HIGH");
+			return interaction.reply({
+				content: translate("economy/birthdate:DATE_TOO_HIGH"),
+				ephemeral: true
+			});
 		}
 		if(d.getTime() < (Date.now()-2.523e+12)){
-			return message.error("economy/birthdate:DATE_TOO_LOW");
+			return interaction.reply({
+				content: translate("economy/birthdate:DATE_TOO_LOW"),
+				ephemeral: true
+			});
 		}
 
-		data.userData.birthdate = d;
-		data.userData.save();
+		userData.birthdate = d;
+		userData.save();
         
-		message.success("economy/birthdate:SUCCESS", {
-			date: message.printDate(d)
+		interaction.reply({
+			content: translate("economy/birthdate:SUCCESS", {
+				date: this.client.printDate(d, null, guildData.language)
+			})
 		});
 
 	}
 
-}
-
-module.exports = Birthdate;
+};

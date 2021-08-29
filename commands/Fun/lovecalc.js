@@ -2,7 +2,7 @@ const Command = require("../../base/Command.js"),
 	Discord = require("discord.js"),
 	md5 = require("md5");
 
-class Lovecalc extends Command {
+module.exports = class extends Command {
 
 	constructor (client) {
 		super(client, {
@@ -20,16 +20,22 @@ class Lovecalc extends Command {
 	}
 
 	async run (message) {
-		const firstMember = message.mentions.members.filter(m => m.id !== message.author.id).first();
+		const firstMember = message.mentions.members.filter(m => m.id !== interaction.user.id).first();
 		if (!firstMember)
-			return message.error("fun/lovecalc:MISSING");
+			return interaction.reply({
+				content: translate("fun/lovecalc:MISSING"),
+				ephemeral: true
+			});
 		const secondMember =
 			message.mentions.members
 				.filter(m => m.id !== firstMember.id)
-				.filter(m => m.id !== message.author.id)
+				.filter(m => m.id !== interaction.user.id)
 				.first() || message.member;
 		if (!secondMember)
-			return message.error("fun/lovecalc:MISSING");
+			return interaction.reply({
+				content: translate("fun/lovecalc:MISSING"),
+				ephemeral: true
+			});
 
 		const members = [firstMember, secondMember].sort(
 			(a, b) => parseInt(a.id, 10) - parseInt(b.id, 10)
@@ -47,7 +53,7 @@ class Lovecalc extends Command {
 		const embed = new Discord.MessageEmbed()
 			.setAuthor("❤️ LoveCalc")
 			.setDescription(
-				message.translate("fun/lovecalc:CONTENT", {
+				translate("fun/lovecalc:CONTENT", {
 					percent,
 					firstUsername: firstMember.user.username,
 					secondUsername: secondMember.user.username
@@ -60,6 +66,4 @@ class Lovecalc extends Command {
         
 	}
 
-}
-
-module.exports = Lovecalc;
+};

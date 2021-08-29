@@ -1,23 +1,31 @@
 const Command = require("../../base/Command.js");
 
-class Rep extends Command {
+module.exports = class extends Command {
 
 	constructor (client) {
 		super(client, {
 			name: "rep",
-			dirname: __dirname,
+
+			options: [
+				{
+					name: "user",
+					type: "USER",
+					required: true
+				}
+			],
+
 			enabled: true,
 			guildOnly: true,
-			aliases: [ "reputation" ],
 			memberPermissions: [],
 			botPermissions: [ "SEND_MESSAGES", "EMBED_LINKS" ],
 			nsfw: false,
 			ownerOnly: false,
-			cooldown: 3000
+
+			dirname: __dirname
 		});
 	}
 
-	async run (message, args, data) {
+	async run (interaction, translate, data) {
 
 		// if the member is already in the cooldown db
 		const isInCooldown = (data.userData.cooldowns || { rep: 0 }).rep;
@@ -26,21 +34,32 @@ class Rep extends Command {
             when the member will be able to execute the order again 
             is greater than the current date, display an error message */
 			if(isInCooldown > Date.now()){
-				return message.error("economy/rep:COOLDOWN", {
-					time: message.convertTime(isInCooldown, "to", true)
+				return interaction.reply({
+					content: translate("economy/rep:COOLDOWN", {
+						time: this.client.convertTime(isInCooldown, "to", true, data.guildData.language)
+					})
 				});
 			}
 		}
 
-		const user = await this.client.resolveUser(args[0]);
+		const user = interaction.options.getUser("user");
 		if(!user){
-			return message.error("economy/rep:INVALID_USER");
+			return interaction.reply({
+				content: translate("economy/rep:INVALID_USER"),
+				ephemeral: true
+			});
 		}
 		if(user.bot){
-			return message.error("economy/rep:BOT_USER");
+			return interaction.reply({
+				content: translate("economy/rep:BOT_USER"),
+				ephemeral: true
+			});
 		}
-		if(user.id === message.author.id){
-			return message.error("economy/rep:YOURSELF");
+		if(user.id === interaction.user.id){
+			return interaction.reply({
+				content: translate("economy/rep:YOURSELF"),
+				ephemeral: true
+			});
 		}
 
 		// Records in the database the time when the member will be able to execute the command again (in 12 hours)
@@ -56,18 +75,18 @@ class Rep extends Command {
 			userData.achievements.rep.progress.now = (userData.rep > userData.achievements.rep.progress.total ? userData.achievements.rep.progress.total : userData.rep);
 			if(userData.achievements.rep.progress.now >= userData.achievements.rep.progress.total){
 				userData.achievements.rep.achieved = true;
-				message.channel.send({ files: [ { name: "unlocked.png", attachment: "./assets/img/achievements/achievement_unlocked6.png"}]});
+				interaction.channel.send({ files: [ { name: "unlocked.png", attachment: "./assets/img/achievements/achievement_unlocked6.png"}]});
 			}
 			userData.markModified("achievements.rep");
 		}
 		await userData.save();
 
-		message.success("economy/rep:SUCCESS", {
-			username: user.username
+		interaction.reply({
+			content: translate("economy/rep:SUCCESS", {
+				username: user.username
+			})
 		});
 
 	}
 
-}
-
-module.exports = Rep;
+};

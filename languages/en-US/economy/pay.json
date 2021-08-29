@@ -1,11 +1,11 @@
 {
     "DESCRIPTION": "Send money to someone!",
-    "USAGE": "{{prefix}}pay [@member] [amount]",
     "EXAMPLES": "{{prefix}}pay Androz#2091 100",
-    "INVALID_MEMBER": "You must mention a valid member!",
+    "OPT_USER_DESCRIPTION": "The user you want to pay",
+    "OPT_AMOUNT_DESCRIPTION": "The amount you want to pay",
     "BOT_USER": "Bots are already rich 💰!",
     "YOURSELF": "You can't pay yourself!",
-    "INVALID_AMOUNT": "You must specify a valid amount",
+    "POSITIVE_INT_AMOUNT": "The amount should be a positive integer",
     "ENOUGH_MONEY": "You can't afford **{{amount}}**",
     "SUCCESS": "You just paid **{{amount}}** to **{{username}}**!"
 }

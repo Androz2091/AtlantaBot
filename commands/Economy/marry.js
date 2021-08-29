@@ -4,120 +4,156 @@ const Command = require("../../base/Command.js"),
 // An object to store pending requests
 const pendings = {};
 
-class Marry extends Command {
+module.exports = class extends Command {
 
 	constructor (client) {
 		super(client, {
 			name: "marry",
-			dirname: __dirname,
+
+			options: [
+				{
+					name: "user",
+					type: "USER",
+					required: true
+				}
+			],
+
 			enabled: true,
 			guildOnly: true,
-			aliases: [ "mariage" ],
+			
 			memberPermissions: [],
 			botPermissions: [ "SEND_MESSAGES", "EMBED_LINKS" ],
 			nsfw: false,
 			ownerOnly: false,
-			cooldown: 10000
+
+			dirname: __dirname
 		});
 	}
 
-	async run (message, args, data) {
+	async run (interaction, translate, data) {
         
 		// if the message author is already wedded
 		if(data.userData.lover){
-			return message.error("economy/marry:ALREADY_MARRIED", {
-				prefix: data.guild.prefix
+			return interaction.reply({
+				content: translate("economy/marry:ALREADY_MARRIED", {
+					prefix: data.guildData.prefix
+				}),
+				ephemeral: true
 			});
 		}
 
-		// Gets the first mentionned member
-		const member = await this.client.resolveMember(args[0], message.guild);
-		if(!member){
-			return message.error("economy/marry:INVALID_MEMBER");
-		}
+		const user = interaction.options.getUser("user");
 
-		const userData = await this.client.findOrCreateUser({ id: member.id });
+		const userData = await this.client.findOrCreateUser({ id: user.id });
 		// if the member is already wedded
 		if(userData.lover){
-			return message.error("economy/marry:ALREADY_MARRIED_USER", {
-				username: member.user.tag
+			return interaction.reply({
+				content: translate("economy/marry:ALREADY_MARRIED_USER", {
+					username: user.tag
+				}),
+				ephemeral: true
 			});
 		}
 
-		if(member.user.bot){
-			return message.error("economy/marry:BOT_USER");
+		if(user.bot){
+			return interaction.reply({
+				content: translate("economy/marry:BOT_USER"),
+				ephemeral: true
+			});
 		}
 
-		if(member.id === message.author.id){
-			return message.error("economy/marry:YOURSELF");
+		if(user.id === interaction.user.id){
+			return interaction.reply({
+				content: translate("economy/marry:YOURSELF"),
+				ephemeral: true
+			});
 		}
 
 		for(const requester in pendings){
 			const receiver = pendings[requester];
 			// If the member already sent a request to someone
-			if(requester === message.author.id){
+			if(requester === interaction.user.id){
 				const user =  this.client.users.cache.get(receiver) || await this.client.users.fetch(receiver);
-				return message.error("economy/marry:REQUEST_AUTHOR_TO_AMEMBER", {
-					username: user.tag
+				return interaction.reply({
+					content: translate("economy/marry:REQUEST_AUTHOR_TO_AMEMBER", {
+						username: user.tag
+					}),
+					ephemeral: true
 				});
-			} else if (receiver === message.author.id){ // If there is a pending request for this member
-				const user =  this.client.users.cache.get(requester) || await this.client.users.fetch(requester);
-				return message.error("economy/marry:REQUEST_AMEMBER_TO_AUTHOR", {
-					username: user.tag
-				});
-			} else if(requester === member.id){ // If the asked member has sent pending request
-				const user = this.client.users.cache.get(receiver) || await this.client.users.fetch(receiver);
-				return message.error("economy/marry:REQUEST_AMEMBER_TO_MEMBER", {
-					firstUsername: member.user.tag,
-					secondUsername: user.tag
-				});
-			} else if (receiver === member.id){ // If there is a pending request for the asked member
+			} else if (receiver === interaction.user.id){ // If there is a pending request for this member
 				const user = this.client.users.cache.get(requester) || await this.client.users.fetch(requester);
-				return message.error("economy/marry:REQUEST_MEMBER_TO_AMEMBER", {
-					firstUsername: member.user.tag,
-					secondUsername: user.tag
+				return interaction.reply({
+					content: translate("economy/marry:REQUEST_AMEMBER_TO_AUTHOR", {
+						username: user.tag
+					}),
+					ephemeral: true
+				});
+			} else if(requester === user.id){ // If the asked member has sent pending request
+				const user = this.client.users.cache.get(receiver) || await this.client.users.fetch(receiver);
+				return interaction.reply({
+					content: translate("economy/marry:REQUEST_AMEMBER_TO_MEMBER", {
+						firstUsername: user.tag,
+						secondUsername: user.tag
+					}),
+					ephemeral: true
+				});
+			} else if (receiver === user.id){ // If there is a pending request for the asked member
+				const user = this.client.users.cache.get(requester) || await this.client.users.fetch(requester);
+				return interaction.reply({
+					content: translate("economy/marry:REQUEST_MEMBER_TO_AMEMBER", {
+						firstUsername: user.tag,
+						secondUsername: user.tag
+					}),
+					ephemeral: true
 				});
 			}
 		}
 
 		// Update pending requests
-		pendings[message.author.id] = member.id;
+		pendings[interaction.user.id] = user.id;
 
-		message.sendT("economy/marry:REQUEST", {
-			from: message.author.toString(),
-			to: member.user.toString()
+		interaction.channel.send({
+			content: translate("economy/marry:REQUEST", {
+				from: interaction.user.toString(),
+				to: user.toString()
+			})
 		});
 
-		const collector = new Discord.MessageCollector(message.channel, (m) => m.author.id === member.id, {
+		const collector = new Discord.MessageCollector(interaction.channel, (m) => m.author.id === user.id, {
 			time: 120000
 		});
         
 		collector.on("collect", (msg) => {
-			if(msg.content.toLowerCase() === message.translate("common:YES").toLowerCase()){
+			if(msg.content.toLowerCase() === translate("common:YES").toLowerCase()){
 				return collector.stop(true);
 			}
-			if(msg.content.toLowerCase() === message.translate("common:NO").toLowerCase()){
+			if(msg.content.toLowerCase() === translate("common:NO").toLowerCase()){
 				return collector.stop(false);
 			} else {
-				return message.error("misc:INVALID_YES_NO");
+				return interaction.channel.send({
+					content: translate("misc:INVALID_YES_NO"),
+					ephemeral: true
+				});
 			}
 		});
 
 		collector.on("end", async (_collected, reason) => {
 			// Delete pending request 
-			delete pendings[message.author.id];
+			delete pendings[interaction.user.id];
 			if(reason === "time"){
-				return message.error("economy/marry:TIMEOUT", {
-					username: member.user.toString()
+				return interaction.channel.send({
+					content: translate("economy/marry:TIMEOUT", {
+						username: user.toString()
+					})
 				});
 			}
 			if(reason){
-				data.userData.lover = member.id;
+				data.userData.lover = user.id;
 				await data.userData.save();
-				userData.lover = message.author.id;
+				userData.lover = interaction.user.id;
 				await userData.save();
 				const messageOptions = {
-					content: `${member.toString()} :heart: ${message.author.toString()}`,
+					content: `${user.toString()} :heart: ${interaction.user.toString()}`,
 					files: [
 						{
 							name: "unlocked.png",
@@ -127,7 +163,7 @@ class Marry extends Command {
 				};
 				let sent = false;
 				if(!userData.achievements.married.achieved){
-					message.channel.send(messageOptions);
+					interaction.channel.send(messageOptions);
 					sent = true;
 					userData.achievements.married.achieved = true;
 					userData.achievements.married.progress.now = 1;
@@ -135,26 +171,28 @@ class Marry extends Command {
 					userData.save();
 				}
 				if(!data.userData.achievements.married.achieved){
-					if(!sent) message.channel.send(messageOptions);
+					if(!sent) interaction.channel.send(messageOptions);
 					data.userData.achievements.married.achieved = true;
 					data.userData.achievements.married.progress.now = 1;
 					data.userData.markModified("achievements.married");
 					data.userData.save();
 				}
-				return message.success("economy/marry:SUCCESS", {
-					creator: message.author.toString(),
-					partner: member.user.toString()
+				return interaction.reply({
+					content: translate("economy/marry:SUCCESS", {
+						creator: interaction.user.toString(),
+						partner: user.toString()
+					})
 				});
 			} else {
-				return message.success("economy/marry:DENIED", {
-					creator: message.author.toString(),
-					partner: member.user.toString()
+				return interaction.reply({
+					content: translate("economy/marry:DENIED", {
+						creator: interaction.user.toString(),
+						partner: user.toString()
+					})
 				});
 			}
 
 		});
 	}
 
-}
-
-module.exports = Marry;
+};

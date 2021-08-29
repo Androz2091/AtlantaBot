@@ -1,7 +1,7 @@
 {
     "DESCRIPTION": "The Atlanta casino",
-    "USAGE": "{{prefix}}slots [amount]",
     "EXAMPLES": "{{prefix}}slots\n{{prefix}}slots 10",
+    "OPT_AMOUNT_DESCRIPTION": "The amount of money you want to play with",
     "DEFEAT": "**{{username}}** used {{money}} credit(s) and lost everything.",
     "VICTORY": "**{{username}}** used {{money}} credit(s) and won {{won}} credit(s)!",
     "NOT_ENOUGH": "You need at least **{{money}}** credit(s)."

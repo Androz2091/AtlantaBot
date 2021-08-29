@@ -1,7 +1,7 @@
 const Command = require("../../base/Command.js"),
 	Discord = require("discord.js");
 
-class Configuration extends Command {
+module.exports = class extends Command {
 
 	constructor (client) {
 		super(client, {
@@ -9,7 +9,7 @@ class Configuration extends Command {
 			dirname: __dirname,
 			enabled: true,
 			guildOnly: true,
-			aliases: [ "conf", "config" ],
+			
 			memberPermissions: [ "MANAGE_GUILD" ],
 			botPermissions: [ "SEND_MESSAGES", "EMBED_LINKS" ],
 			nsfw: false,
@@ -18,9 +18,9 @@ class Configuration extends Command {
 		});
 	}
 
-	async run (message, args, data) {
+	async run (interaction, translate, data) {
 
-		const guildData = data.guild;
+		const guildData = data.guildData;
 
 		const embed = new Discord.MessageEmbed()
 			.setAuthor(message.guild.name, message.guild.iconURL())
@@ -28,104 +28,102 @@ class Configuration extends Command {
 			.setFooter(this.client.config.embed.footer);
 
 		// Guild prefix
-		embed.addField(message.translate("administration/configuration:PREFIX_TITLE"), guildData.prefix);
+		embed.addField(translate("administration/configuration:PREFIX_TITLE"), guildData.prefix);
 
 		// Ignored channels
-		embed.addField(message.translate("administration/configuration:IGNORED_CHANNELS_TITLE"),
+		embed.addField(translate("administration/configuration:IGNORED_CHANNELS_TITLE"),
 			(guildData.ignoredChannels.length > 0) ?
 				guildData.ignoredChannels.map((ch) => `<#${ch}>`).join(", ")
-				:   message.translate("administration/configuration:NO_IGNORED_CHANNELS")
+				:   translate("administration/configuration:NO_IGNORED_CHANNELS")
 		);
     
 		// Autorole plugin
-		embed.addField(message.translate("administration/configuration:AUTOROLE_TITLE"), 
+		embed.addField(translate("administration/configuration:AUTOROLE_TITLE"), 
 			(guildData.plugins.autorole.enabled) ?
-				message.translate("administration/configuration:AUTOROLE_CONTENT", {
+				translate("administration/configuration:AUTOROLE_CONTENT", {
 					roleName: `<@&${guildData.plugins.autorole.role}>`
 				})
-				:   message.translate("administration/configuration:AUTOROLE_DISABLED")
+				:   translate("administration/configuration:AUTOROLE_DISABLED")
 		);
         
 		// Welcome plugin
-		embed.addField(message.translate("administration/configuration:WELCOME_TITLE"),
+		embed.addField(translate("administration/configuration:WELCOME_TITLE"),
 			(guildData.plugins.welcome.enabled) ?
-				message.translate("administration/configuration:WELCOME_CONTENT", {
+				translate("administration/configuration:WELCOME_CONTENT", {
 					channel: `<#${guildData.plugins.welcome.channel}>`,
-					withImage: guildData.plugins.welcome.withImage ? message.translate("common:YES") : message.translate("common:NO")
+					withImage: guildData.plugins.welcome.withImage ? translate("common:YES") : translate("common:NO")
 				})
-				:   message.translate("administration/configuration:WELCOME_DISABLED")
+				:   translate("administration/configuration:WELCOME_DISABLED")
 		);
             
 		// Goodbye plugin
-		embed.addField(message.translate("administration/configuration:GOODBYE_TITLE"),
+		embed.addField(translate("administration/configuration:GOODBYE_TITLE"),
 			(guildData.plugins.goodbye.enabled) ?
-				message.translate("administration/configuration:GOODBYE_CONTENT", {
+				translate("administration/configuration:GOODBYE_CONTENT", {
 					channel: `<#${guildData.plugins.goodbye.channelID}>`,
-					withImage: guildData.plugins.goodbye.withImage ? message.translate("common:YES") : message.translate("common:NO")
+					withImage: guildData.plugins.goodbye.withImage ? translate("common:YES") : translate("common:NO")
 				})
-				:   message.translate("administration/configuration:GOODBYE_DISABLED")
+				:   translate("administration/configuration:GOODBYE_DISABLED")
 		);
 
 		// Special channels
-		embed.addField(message.translate("administration/configuration:SPECIAL_CHANNELS"),
-			message.translate("administration/configuration:MODLOGS", {
+		embed.addField(translate("administration/configuration:SPECIAL_CHANNELS"),
+			translate("administration/configuration:MODLOGS", {
 				channel:    guildData.plugins.modlogs
 					? `<#${guildData.plugins.modlogs}>`
-					: message.translate("common:NOT_DEFINED")
+					: translate("common:NOT_DEFINED")
 			}) + "\n" +
-			message.translate("administration/configuration:FORTNITESHOP", {
+			translate("administration/configuration:FORTNITESHOP", {
 				channel:    guildData.plugins.fortniteshop
 					? `<#${guildData.plugins.fortniteshop}>`
-					: message.translate("common:NOT_DEFINED")
+					: translate("common:NOT_DEFINED")
 			}) + "\n" +
-			message.translate("administration/configuration:SUGGESTIONS", {
+			translate("administration/configuration:SUGGESTIONS", {
 				channel:    guildData.plugins.suggestions
 					? `<#${guildData.plugins.suggestions}>`
-					: message.translate("common:NOT_DEFINED")
+					: translate("common:NOT_DEFINED")
 			}) + "\n" +
-			message.translate("administration/configuration:REPORTS", {
+			translate("administration/configuration:REPORTS", {
 				channel:    guildData.plugins.reports
 					? `<#${guildData.plugins.reports}>`
-					: message.translate("common:NOT_DEFINED")
+					: translate("common:NOT_DEFINED")
 			})
 		);
         
 		// Auto sanctions
-		embed.addField(message.translate("administration/configuration:AUTO_SANCTIONS"),
+		embed.addField(translate("administration/configuration:AUTO_SANCTIONS"),
 			((guildData.plugins.warnsSanctions.kick) ?
-				message.translate("administration/configuration:KICK_CONTENT", {
+				translate("administration/configuration:KICK_CONTENT", {
 					count: guildData.plugins.warnsSanctions.kick
 				})
-				:   message.translate("administration/configuration:KICK_NOT_DEFINED")) + "\n" +
+				:   translate("administration/configuration:KICK_NOT_DEFINED")) + "\n" +
 			((guildData.plugins.warnsSanctions.ban) ?
-				message.translate("administration/configuration:BAN_CONTENT", {
+				translate("administration/configuration:BAN_CONTENT", {
 					count: guildData.plugins.warnsSanctions.ban
 				})
-				:   message.translate("administration/configuration:BAN_NOT_DEFINED"))
+				:   translate("administration/configuration:BAN_NOT_DEFINED"))
 		);
 
 		// Automod plugin
-		embed.addField(message.translate("administration/configuration:AUTOMOD_TITLE"),
+		embed.addField(translate("administration/configuration:AUTOMOD_TITLE"),
 			(guildData.plugins.automod.enabled) ?
-				message.translate("administration/configuration:AUTOMOD_CONTENT", {
+				translate("administration/configuration:AUTOMOD_CONTENT", {
 					channels: guildData.plugins.automod.ignored.map((ch) => `<#${ch}>`)
 				})
-				:   message.translate("administration/configuration:AUTOMOD_DISABLED")
+				:   translate("administration/configuration:AUTOMOD_DISABLED")
 		);
 
 		// Auto-delete mod commands
-		embed.addField(message.translate("administration/configuration:AUTODELETEMOD"),
+		embed.addField(translate("administration/configuration:AUTODELETEMOD"),
 			(!message.guild.autoDeleteModCommands) ?
-				message.translate("administration/configuration:AUTODELETEMOD_ENABLED")
-				:   message.translate("administration/configuration:AUTODELETEMOD_DISABLED")
+				translate("administration/configuration:AUTODELETEMOD_ENABLED")
+				:   translate("administration/configuration:AUTODELETEMOD_DISABLED")
 		);
 
 		// Dashboard link
-		embed.addField(message.translate("administration/configuration:DASHBOARD_TITLE"), `[${message.translate("administration/configuration:DASHBOARD_CONTENT")}](${this.client.config.supportURL})`);
+		embed.addField(translate("administration/configuration:DASHBOARD_TITLE"), `[${translate("administration/configuration:DASHBOARD_CONTENT")}](${this.client.config.supportURL})`);
 
 		message.channel.send({ embeds: [embed] });
 	}
 
-}
-
-module.exports = Configuration;
+};

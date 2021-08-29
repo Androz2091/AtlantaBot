@@ -1,6 +1,6 @@
 {
     "DESCRIPTION": "Shows your credits",
-    "USAGE": "{{prefix}}money (@member)",
     "EXAMPLES": "{{prefix}}money\n{{prefix}}money @user#0000",
+    "OPT_USER_DESCRIPTION": "The user you want to display the money of",
     "TITLE": "{{username}}'s money"
 }

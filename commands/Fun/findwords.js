@@ -3,7 +3,7 @@ const Command = require("../../base/Command.js"),
 
 const currentGames = {};
 
-class FindWords extends Command {
+module.exports = class extends Command {
 
 	constructor (client) {
 		super(client, {
@@ -11,7 +11,7 @@ class FindWords extends Command {
 			dirname: __dirname,
 			enabled: true,
 			guildOnly: true,
-			aliases: [],
+			,
 			memberPermissions: [],
 			botPermissions: [ "SEND_MESSAGES", "EMBED_LINKS" ],
 			nsfw: false,
@@ -20,10 +20,13 @@ class FindWords extends Command {
 		});
 	}
 
-	async run (message, args, data) {
+	async run (interaction, translate, data) {
 
-		if (currentGames[message.guild.id]) {
-			return message.error("fun/number:GAME_RUNNING");
+		if (currentGames[interaction.guild.id]) {
+			return interaction.reply({
+				content: translate("fun/number:GAME_RUNNING"),
+				ephemeral: true
+			});
 		}
 		// Reads words file
 		const wordList = require("../../assets/json/words/"+message.guild.data.language+".json");
@@ -43,7 +46,7 @@ class FindWords extends Command {
 		}
 
 		let i = 0; // Inits i variable to count games
-		currentGames[message.guild.id] = true; // Update current game variable
+		currentGames[interaction.guild.id] = true; // Update current game variable
 		generateGame.call(this, words[i]); // Generate a new round
     
 		function generateGame(word){
@@ -52,7 +55,9 @@ class FindWords extends Command {
 			// Launch timer
 			const delay = (i === 0) ? 10000 : 0;
 			if(i === 0){
-				message.sendT("fun/findwords:GAME_STARTING");
+				interaction.reply({
+					content: translate("fun/findwords:GAME_STARTING")
+				});
 			}
 
 			setTimeout(() => {
@@ -82,7 +87,10 @@ class FindWords extends Command {
     
 				collector.on("end", async (collected, reason) => {
 					if(reason === "time"){
-						message.error("fun/findwords:NO_WINNER");
+						interaction.reply({
+							content: translate("fun/findwords:NO_WINNER"),
+							ephemeral: true
+						});
 					} else {
 						message.success("fun/findwords:WORD_FOUND", {
 							winner: "<@"+reason+">"
@@ -93,9 +101,12 @@ class FindWords extends Command {
 						i++;
 						generateGame.call(this, words[i]);
 					} else {
-						currentGames[message.guild.id] = false;
+						currentGames[interaction.guild.id] = false;
 						if(winners.length < 1){
-							return message.error("fun/findwords:NO_WINNER_ALL");
+							return interaction.reply({
+								content: translate("fun/findwords:NO_WINNER_ALL"),
+								ephemeral: true
+							});
 						}
 						const winnerID = await getWinner(winners);
 						const time = message.convertTime(createdAt, "from", true);
@@ -106,11 +117,11 @@ class FindWords extends Command {
 							participantCount: participants.length,
 							participantList: participants.map((p) => "<@"+p+">").join("\n")
 						});
-						if(participants.length > 1 && data.guild.disabledCategories && !data.guild.disabledCategories.includes("Economy")){
+						if(participants.length > 1 && data.guildData.disabledCategories && !data.guildData.disabledCategories.includes("Economy")){
 							message.sendT("fun/findwords:CREDITS", {
 								winner: user.username
 							});
-							const userdata = await this.client.findOrCreateMember({ id: user.id, guildID: message.guild.id });
+							const userdata = await this.client.findOrCreateMember({ id: user.id, guildID: interaction.guild.id });
 							userdata.money = userdata.money + 15;
 							userdata.save();
 						}
@@ -141,6 +152,4 @@ class FindWords extends Command {
 		}
 	}
 
-}
-
-module.exports = FindWords;
+};

@@ -1,7 +1,7 @@
 const Command = require("../../base/Command.js"),
 	Resolvers = require("../../helpers/resolvers");
 
-class Autorole extends Command {
+module.exports = class extends Command {
 
 	constructor (client) {
 		super(client, {
@@ -9,7 +9,7 @@ class Autorole extends Command {
 			dirname: __dirname,
 			enabled: true,
 			guildOnly: true,
-			aliases: [ "ar" ],
+			
 			memberPermissions: [ "MANAGE_GUILD" ],
 			botPermissions: [ "SEND_MESSAGES", "EMBED_LINKS" ],
 			nsfw: false,
@@ -18,11 +18,14 @@ class Autorole extends Command {
 		});
 	}
 
-	async run (message, args, data) {
+	async run (interaction, translate, data) {
 
 		const status = args[0];
 		if(status !== "on" && status !== "off"){
-			return message.error("administration/autorole:MISSING_STATUS");
+			return interaction.reply({
+				content: translate("administration/autorole:MISSING_STATUS"),
+				ephemeral: true
+			});
 		}
         
 		if(status === "on"){
@@ -32,15 +35,18 @@ class Autorole extends Command {
 				search: args.slice(1).join(" ")
 			});
 			if(!role){
-				return message.error("administration/autorole:MISSING_ROLE");
+				return interaction.reply({
+					content: translate("administration/autorole:MISSING_ROLE"),
+					ephemeral: true
+				});
 			}
 
-			data.guild.plugins.autorole = {
+			data.guildData.plugins.autorole = {
 				enabled: true,
 				role: role.id
 			};
-			data.guild.markModified("plugins.autorole");
-			await data.guild.save();
+			data.guildData.markModified("plugins.autorole");
+			await data.guildData.save();
 
 			message.success("administration/autorole:SUCCESS_ENABLED", {
 				roleName: role.name
@@ -49,27 +55,25 @@ class Autorole extends Command {
 
 		if(status === "off"){
 
-			if(!data.guild.plugins.autorole.enabled){
+			if(!data.guildData.plugins.autorole.enabled){
 				return message.success("administration/autorole:ALREADY_DISABLED", {
-					prefix: data.guild.prefix
+					prefix: data.guildData.prefix
 				});
 			}
 
-			data.guild.plugins.autorole = {
+			data.guildData.plugins.autorole = {
 				enabled: false,
 				role: null
 			};
-			data.guild.markModified("plugins.autorole");
-			await data.guild.save();
+			data.guildData.markModified("plugins.autorole");
+			await data.guildData.save();
             
 			message.success("administration/autorole:SUCCESS_DISABLED", {
-				prefix: data.guild.prefix
+				prefix: data.guildData.prefix
 			});
 
 		}
         
 	}
 
-}
-
-module.exports = Autorole;
+};

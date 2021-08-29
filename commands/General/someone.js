@@ -1,7 +1,7 @@
 const Command = require("../../base/Command.js"),
 	Discord = require("discord.js");
 
-class Someone extends Command {
+module.exports = class extends Command {
 
 	constructor (client) {
 		super(client, {
@@ -9,7 +9,7 @@ class Someone extends Command {
 			dirname: __dirname,
 			enabled: true,
 			guildOnly: true,
-			aliases: [ "somebody", "something" ],
+			
 			memberPermissions: [],
 			botPermissions: [ "SEND_MESSAGES", "EMBED_LINKS" ],
 			nsfw: false,
@@ -18,20 +18,18 @@ class Someone extends Command {
 		});
 	}
 
-	async run (message, args, data) {
+	async run (interaction, translate, data) {
         
 		const member = message.guild.members.cache.random(1)[0];
         
 		const embed = new Discord.MessageEmbed()
-			.addField(message.translate("common:USERNAME"), member.user.username, true)
-			.addField(message.translate("common:DISCRIMINATOR"), member.user.discriminator, true)
-			.addField(message.translate("common:ID"), member.user.id, true)
-			.setThumbnail(member.user.displayAvatarURL({ size: 512, dynamic: true, format: 'png' }))
+			.addField(translate("common:USERNAME"), member.user.username, true)
+			.addField(translate("common:DISCRIMINATOR"), member.user.discriminator, true)
+			.addField(translate("common:ID"), member.user.id, true)
+			.setThumbnail(member.user.displayAvatarURL({ size: 512, dynamic: true, format: "png" }))
 			.setColor(data.config.embed.color);
 		message.channel.send({ embeds: [embed] });
         
 	}
 
-}
-
-module.exports = Someone;
+};

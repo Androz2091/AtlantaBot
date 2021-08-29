@@ -1,9 +1,8 @@
 {
     "DESCRIPTION": "Give a reputation point to someone!",
-    "USAGE": "{{prefix}}rep [user]",
     "EXAMPLES": "{{prefix}}rep @Androz#2091",
+    "OPT_USER_DESCRIPTION": "The user you want to give a reputation point to",
     "COOLDOWN": "You have to wait {{time}} before being able to `rep` someone!",
-    "INVALID_USER": "You must mention a valid user!",
     "BOT_USER": "Bots don't accept reputation points!",
     "YOURSELF": "You can't give yourself a reputation point!",
     "SUCCESS": "You just gave a reputation point to {{username}}!"

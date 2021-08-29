@@ -1,7 +1,7 @@
 const Command = require("../../base/Command.js"),
 	Resolvers = require("../../helpers/resolvers");
 
-class Setreports extends Command {
+module.exports = class extends Command {
 
 	constructor (client) {
 		super(client, {
@@ -18,9 +18,9 @@ class Setreports extends Command {
 		});
 	}
 
-	async run (message, args, data) {
+	async run (interaction, translate, data) {
         
-		const areReportsEnabled = Boolean(data.guild.plugins.reports);
+		const areReportsEnabled = Boolean(data.guildData.plugins.reports);
 		const sentChannel = await Resolvers.resolveChannel({
 			message,
 			search: args.join(" "),
@@ -28,17 +28,17 @@ class Setreports extends Command {
 		});
 
 		if (!sentChannel && areReportsEnabled) {
-			data.guild.plugins.reports = null;
-			data.guild.markModified("plugins.reports");
-			await data.guild.save();
+			data.guildData.plugins.reports = null;
+			data.guildData.markModified("plugins.reports");
+			await data.guildData.save();
 			return message.success(
 				"administration/setreports:SUCCESS_DISABLED"
 			);
 		} else {
 			const channel = sentChannel || message.channel;
-			data.guild.plugins.reports = channel.id;
-			data.guild.markModified("plugins.reports");
-			await data.guild.save();
+			data.guildData.plugins.reports = channel.id;
+			data.guildData.markModified("plugins.reports");
+			await data.guildData.save();
 			return message.success(
 				"administration/setreports:SUCCESS_ENABLED",
 				{
@@ -49,6 +49,4 @@ class Setreports extends Command {
         
 	}
 
-}
-
-module.exports = Setreports;
+};

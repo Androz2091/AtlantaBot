@@ -1,7 +1,7 @@
 const Command = require("../../base/Command.js"),
 	Discord = require("discord.js");
 
-class Invite extends Command {
+module.exports = class extends Command {
 
 	constructor (client) {
 		super(client, {
@@ -9,7 +9,7 @@ class Invite extends Command {
 			dirname: __dirname,
 			enabled: true,
 			guildOnly: false,
-			aliases: [ "i", "add", "vote" ],
+			
 			memberPermissions: [],
 			botPermissions: [ "SEND_MESSAGES", "EMBED_LINKS" ],
 			nsfw: false,
@@ -18,7 +18,7 @@ class Invite extends Command {
 		});
 	}
 
-	async run (message, args, data) {
+	async run (interaction, translate, data) {
 
 		const inviteLink = this.client.config.inviteURL || `https://discordapp.com/oauth2/authorize?client_id=${this.client.user.id}&scope=bot&permissions=2146958847`;
 		const voteURL = this.client.config.voteURL || `https://discordbots.org/bot/${this.client.user.id}/vote`;
@@ -29,13 +29,13 @@ class Invite extends Command {
 		}
         
 		const embed = new Discord.MessageEmbed()
-			.setAuthor(message.translate("general/invite:LINKS"))
-			.setDescription(message.translate("general/invite:TIP", {
-				prefix: data.guild.prefix
+			.setAuthor(translate("general/invite:LINKS"))
+			.setDescription(translate("general/invite:TIP", {
+				prefix: data.guildData.prefix
 			}))
-			.addField(message.translate("general/invite:ADD"), inviteLink)
-			.addField(message.translate("general/invite:VOTE"), voteURL)
-			.addField(message.translate("general/invite:SUPPORT"), supportURL)
+			.addField(translate("general/invite:ADD"), inviteLink)
+			.addField(translate("general/invite:VOTE"), voteURL)
+			.addField(translate("general/invite:SUPPORT"), supportURL)
 			.setColor(data.config.embed.color)
 			.setFooter(data.config.embed.footer);
         
@@ -43,6 +43,4 @@ class Invite extends Command {
            
 	}
 
-}
-
-module.exports = Invite;
+};

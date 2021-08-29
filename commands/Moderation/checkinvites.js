@@ -1,7 +1,7 @@
 const Command = require("../../base/Command.js"),
 	Discord = require("discord.js");
 
-class Checkinvites extends Command {
+module.exports = class extends Command {
 
 	constructor (client) {
 		super(client, {
@@ -9,7 +9,7 @@ class Checkinvites extends Command {
 			dirname: __dirname,
 			enabled: true,
 			guildOnly: true,
-			aliases: [ "checkinvite", "checki" ],
+			
 			memberPermissions: [],
 			botPermissions: [ "SEND_MESSAGES", "EMBED_LINKS" ],
 			nsfw: false,
@@ -18,7 +18,7 @@ class Checkinvites extends Command {
 		});
 	}
 
-	async run (message, args, data) {
+	async run (interaction, translate, data) {
         
 		const members = message.guild.members;
 
@@ -37,7 +37,7 @@ class Checkinvites extends Command {
 
 		const text = (withInvite.length > 0 ?
 			withInvite.map((m) => "`"+m.id+"` ("+m.tag+") : "+m.links).join("\n")
-			:   message.translate("moderation/checkinvites:NOBODY"));
+			:   translate("moderation/checkinvites:NOBODY"));
 
 		const embed = new Discord.MessageEmbed()
 			.setDescription(text)
@@ -47,6 +47,4 @@ class Checkinvites extends Command {
 		message.channel.send({ embeds: [embed] });
 	}
 
-}
-
-module.exports = Checkinvites;
+};

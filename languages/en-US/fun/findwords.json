@@ -1,6 +1,5 @@
 {
     "DESCRIPTION": "Start a Findwords party, a game where you have to find words!",
-    "USAGE": "{{prefix}}findwords",
     "EXAMPLES": "{{prefix}}findwords",
     "INVALID_WORD": "{{member}} | Your word is not valid!",
     "GAME_STARTING": ":timer: | The game starts in 10 seconds!",

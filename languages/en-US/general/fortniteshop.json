@@ -1,6 +1,5 @@
 {
     "DESCRIPTION": "Shows the daily fortnite items shop!",
-    "USAGE": "{{prefix}}fortniteshop",
     "EXAMPLES": "{{prefix}}fortniteshop",
     "HEADER": "FORTNITE ITEMS SHOP",
     "DAILY": "DAILY",

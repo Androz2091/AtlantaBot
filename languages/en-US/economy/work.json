@@ -1,6 +1,5 @@
 {
     "DESCRIPTION": "Claim your salary!",
-    "USAGE": "{{prefix}}work",
     "EXAMPLES": "{{prefix}}work",
     "COOLDOWN": "You have to wait {{time}} before working again!",
     "AWARD": "Complete the word AWARD to win 200 bonus credits!",

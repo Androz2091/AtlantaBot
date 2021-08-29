@@ -1,14 +1,14 @@
 const Command = require("../../base/Command.js"),
 	Discord = require("discord.js");
 
-class Approved extends Command {
+module.exports = class extends Command {
 	constructor (client) {
 		super(client, {
 			name: "approved",
 			dirname: __dirname,
 			enabled: true,
 			guildOnly: false,
-			aliases: [],
+			,
 			memberPermissions: [],
 			botPermissions: [ "SEND_MESSAGES", "EMBED_LINKS", "ATTACH_FILES" ],
 			nsfw: false,
@@ -17,9 +17,9 @@ class Approved extends Command {
 		});
 	}
 
-	async run (message, args) {
+	async run (interaction, translate) {
 
-		const user = await this.client.resolveUser(args[0]) || message.author;
+		const user = await this.client.resolveUser(args[0]) || interaction.user;
 		const m = await message.sendT("misc:PLEASE_WAIT", null, {
 			prefixEmoji: "loading"
 		});
@@ -30,6 +30,4 @@ class Approved extends Command {
 
 	}
 
-}
-
-module.exports = Approved;
+};

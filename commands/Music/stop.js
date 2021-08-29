@@ -1,7 +1,7 @@
 const Command = require("../../base/Command.js"),
 	Discord = require("discord.js");
 
-class Stop extends Command {
+module.exports = class extends Command {
 
 	constructor (client) {
 		super(client, {
@@ -9,7 +9,7 @@ class Stop extends Command {
 			dirname: __dirname,
 			enabled: true,
 			guildOnly: true,
-			aliases: [ "leave" ],
+			
 			memberPermissions: [],
 			botPermissions: [ "SEND_MESSAGES", "EMBED_LINKS" ],
 			nsfw: false,
@@ -18,23 +18,29 @@ class Stop extends Command {
 		});
 	}
 
-	async run (message, args, data) {
+	async run (interaction, translate, data) {
 
 		const queue = await this.client.player.getQueue(message);
 
 		const voice = message.member.voice.channel;
 		if(!voice){
-			return message.error("music/play:NO_VOICE_CHANNEL");
+			return interaction.reply({
+				content: translate("music/play:NO_VOICE_CHANNEL"),
+				ephemeral: true
+			});
 		}
 
 		if(!queue){
-			return message.error("music/play:NOT_PLAYING");
+			return interaction.reply({
+				content: translate("music/play:NOT_PLAYING"),
+				ephemeral: true
+			});
 		}
 
 		const members = voice.members.filter((m) => !m.user.bot);
 
 		const embed = new Discord.MessageEmbed()
-			.setAuthor(message.translate("music/stop:DESCRIPTION"))
+			.setAuthor(translate("music/stop:DESCRIPTION"))
 			.setFooter(data.config.embed.footer)
 			.setColor(data.config.embed.color);
 
@@ -46,7 +52,7 @@ class Stop extends Command {
 
 			const mustVote = Math.floor(members.size/2+1);
 
-			embed.setDescription(message.translate("music/stop:VOTE_CONTENT", {
+			embed.setDescription(translate("music/stop:VOTE_CONTENT", {
 				voteCount: 0,
 				requiredCount: mustVote
 			}));
@@ -68,11 +74,11 @@ class Stop extends Command {
 				const haveVoted = reaction.count-1;
 				if(haveVoted >= mustVote){
 					this.client.player.stop(message);
-					embed.setDescription(message.translate("music/stop:SUCCESS"));
+					embed.setDescription(translate("music/stop:SUCCESS"));
 					m.edit({ embeds: [embed] });
 					collector.stop(true);
 				} else {
-					embed.setDescription(message.translate("music/stop:VOTE_CONTENT", {
+					embed.setDescription(translate("music/stop:VOTE_CONTENT", {
 						voteCount: haveVoted,
 						requiredCount: mustVote
 					}));
@@ -82,18 +88,19 @@ class Stop extends Command {
 
 			collector.on("end", (collected, isDone) => {
 				if(!isDone){
-					return message.error("misc:TIMES_UP");
+					return interaction.reply({
+						content: translate("misc:TIMES_UP"),
+						ephemeral: true
+					});
 				}
 			});
 
 		} else {
 			this.client.player.stop(message);
-			embed.setDescription(message.translate("music/stop:SUCCESS"));
+			embed.setDescription(translate("music/stop:SUCCESS"));
 			m.edit({ embeds: [embed] });
 		}
         
 	}
 
-}
-
-module.exports = Stop;
+};

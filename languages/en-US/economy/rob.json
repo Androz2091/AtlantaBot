@@ -1,10 +1,9 @@
 {
     "DESCRIPTION": "Try to rob a member!",
-    "USAGE": "{{prefix}}rob [@member] [amount]",
     "EXAMPLES": "{{prefix}}rob @Androz#2091 100",
+    "OPT_USER_DESCRIPTION": "The user you want to rob",
+    "OPT_AMOUNT_DESCRIPTION": "The amount you want to try to rob",
     "YOURSELF": "You can't rob yourself!",
-    "MISSING_MEMBER": "You must specify a valid member to rob!",
-    "MISSING_AMOUNT": "Please enter a valid amount!",
     "NOT_ENOUGH_AUTHOR": "You must have more than **{{moneyMin}}** credits to attempt this robbery (you have **{{moneyCurrent}}** credits for now)!",
     "NOT_ENOUGH_MEMBER": "You can't try your robbery because **{{username}}** doesn't have as many credits in cash!",
     "COOLDOWN": "🕵️ **{{username}}** is on guard.... Wait a while and try again!",

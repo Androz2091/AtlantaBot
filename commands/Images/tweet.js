@@ -1,7 +1,7 @@
 const Command = require("../../base/Command.js"),
 	Discord = require("discord.js");
 
-class Tweet extends Command {
+module.exports = class extends Command {
 
 	constructor (client) {
 		super(client, {
@@ -9,7 +9,7 @@ class Tweet extends Command {
 			dirname: __dirname,
 			enabled: true,
 			guildOnly: false,
-			aliases: [ "twitter" ],
+			
 			memberPermissions: [],
 			botPermissions: [ "SEND_MESSAGES", "EMBED_LINKS" ],
 			nsfw: false,
@@ -18,17 +18,23 @@ class Tweet extends Command {
 		});
 	}
 
-	async run (message, args) {
+	async run (interaction, translate) {
 
-		const user = message.mentions.users.first() || message.author;
+		const user = message.mentions.users.first() || interaction.user;
 		const text = args.slice(1).join(" ");
 
 		if(!user){
-			return message.error("images/tweet:MISSING_USERNAME");
+			return interaction.reply({
+				content: translate("images/tweet:MISSING_USERNAME"),
+				ephemeral: true
+			});
 		}
 
 		if(!text){
-			return message.error("images/tweet:MISSING_TEXT");
+			return interaction.reply({
+				content: translate("images/tweet:MISSING_TEXT"),
+				ephemeral: true
+			});
 		}
 
 		const m = await message.sendT("misc:PLEASE_WAIT", null, {
@@ -51,6 +57,4 @@ class Tweet extends Command {
 
 	}
 
-}
-
-module.exports = Tweet;
+};

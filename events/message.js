@@ -26,7 +26,7 @@ module.exports = class {
 		if(message.guild){
 			// Gets guild data
 			const guild = await client.findOrCreateGuild({ id: message.guild.id });
-			message.guild.data = data.guild = guild;
+			message.guild.data = data.guildData = guild;
 		}
 
 		// Check if the bot was mentionned
@@ -34,7 +34,7 @@ module.exports = class {
 			if(message.guild){
 				return message.sendT("misc:HELLO_SERVER", {
 					username: message.author.username,
-					prefix: data.guild.prefix
+					prefix: data.guildData.prefix
 				});
 			} else {
 				return message.sendT("misc:HELLO_DM", {
@@ -61,9 +61,9 @@ module.exports = class {
 			await updateXp(message, data);
 
 			if(!message.channel.permissionsFor(message.member).has("MANAGE_MESSAGES") && !message.editedAt){
-				const channelSlowmode = data.guild.slowmode.channels.find((ch) => ch.id === message.channel.id);
+				const channelSlowmode = data.guildData.slowmode.channels.find((ch) => ch.id === message.channel.id);
 				if(channelSlowmode){
-					const uSlowmode = data.guild.slowmode.users.find((d) => d.id === (message.author.id+message.channel.id));
+					const uSlowmode = data.guildData.slowmode.users.find((d) => d.id === (message.author.id+message.channel.id));
 					if(uSlowmode){
 						if(uSlowmode.time > Date.now()){
 							message.delete();
@@ -76,17 +76,17 @@ module.exports = class {
 							uSlowmode.time = channelSlowmode.time+Date.now();
 						}
 					} else {
-						data.guild.slowmode.users.push({
+						data.guildData.slowmode.users.push({
 							id: message.author.id+message.channel.id,
 							time: channelSlowmode.time+Date.now()
 						});
 					}
-					data.guild.markModified("slowmode.users");
-					await data.guild.save();
+					data.guildData.markModified("slowmode.users");
+					await data.guildData.save();
 				}
 			}
 
-			if(data.guild.plugins.automod.enabled && !data.guild.plugins.automod.ignored.includes(message.channel.id)){
+			if(data.guildData.plugins.automod.enabled && !data.guildData.plugins.automod.ignored.includes(message.channel.id)){
 				if(/(discord\.(gg|io|me|li)\/.+|discordapp\.com\/invite\/.+)/i.test(message.content)){
 					if(!message.channel.permissionsFor(message.member).has("MANAGE_MESSAGES")){
 						message.delete();
@@ -129,7 +129,7 @@ module.exports = class {
 		const command = args.shift().toLowerCase();
 		const cmd = client.commands.get(command) || client.commands.get(client.aliases.get(command));
 		
-		const customCommand = message.guild ? data.guild.customCommands.find((c) => c.name === command) : null;
+		const customCommand = message.guild ? data.guildData.customCommands.find((c) => c.name === command) : null;
 		const customCommandAnswer = customCommand ? customCommand.answer : "";
 		
 		if(!cmd && !customCommandAnswer && message.guild) return;
@@ -139,7 +139,7 @@ module.exports = class {
 			});
 		}
 
-		if(message.guild && data.guild.ignoredChannels.includes(message.channel.id) && !message.member.permissions.has("MANAGE_MESSAGES")){
+		if(message.guild && data.guildData.ignoredChannels.includes(message.channel.id) && !message.member.permissions.has("MANAGE_MESSAGES")){
 			message.delete();
 			message.author.send(message.translate("misc:RESTRICTED_CHANNEL", {
 				channel: message.channel.toString()
@@ -234,7 +234,7 @@ module.exports = class {
 
 		try {
 			cmd.run(message, args, data);
-			if(cmd.help.category === "Moderation" && data.guild.autoDeleteModCommands){
+			if(cmd.help.category === "Moderation" && data.guildData.autoDeleteModCommands){
 				message.delete();
 			}
 		} catch(e){

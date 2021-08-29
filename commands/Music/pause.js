@@ -1,6 +1,6 @@
 const Command = require("../../base/Command.js");
 
-class Pause extends Command {
+module.exports = class extends Command {
 
 	constructor (client) {
 		super(client, {
@@ -8,7 +8,7 @@ class Pause extends Command {
 			dirname: __dirname,
 			enabled: true,
 			guildOnly: true,
-			aliases: [],
+			,
 			memberPermissions: [],
 			botPermissions: [ "SEND_MESSAGES", "EMBED_LINKS" ],
 			nsfw: false,
@@ -23,21 +23,27 @@ class Pause extends Command {
 
 		const voice = message.member.voice.channel;
 		if (!voice){
-			return message.error("music/play:NO_VOICE_CHANNEL");
+			return interaction.reply({
+				content: translate("music/play:NO_VOICE_CHANNEL"),
+				ephemeral: true
+			});
 		}
 
 		if(!queue){
-			return message.error("music:play:NOT_PLAYING");
+			return interaction.reply({
+				content: translate("music:play:NOT_PLAYING"),
+				ephemeral: true
+			});
 		}
 
 		// Gets the current song
 		await this.client.player.pause(message);
         
 		// Send the embed in the current channel
-		message.sendT("music/pause:SUCCESS");
+		interaction.reply({
+			content: translate("music/pause:SUCCESS")
+		});
         
 	}
 
-}
-
-module.exports = Pause;
+};

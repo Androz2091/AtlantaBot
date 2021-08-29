@@ -2,7 +2,7 @@ const Command = require("../../base/Command.js"),
 	Discord = require("discord.js"),
 	ms = require("ms");
 
-class Mute extends Command {
+module.exports = class extends Command {
 
 	constructor (client) {
 		super(client, {
@@ -10,7 +10,7 @@ class Mute extends Command {
 			dirname: __dirname,
 			enabled: true,
 			guildOnly: true,
-			aliases: [],
+			,
 			memberPermissions: [ "MANAGE_MESSAGES" ],
 			botPermissions: [ "SEND_MESSAGES", "EMBED_LINKS", "MANAGE_CHANNELS" ],
 			nsfw: false,
@@ -19,33 +19,45 @@ class Mute extends Command {
 		});
 	}
 
-	async run (message, args, data) {
+	async run (interaction, translate, data) {
         
 		const member = await this.client.resolveMember(args[0], message.guild);
 		if(!member){
-			return message.error("moderation/mute:MISSING_MEMBER");
+			return interaction.reply({
+				content: translate("moderation/mute:MISSING_MEMBER"),
+				ephemeral: true
+			});
 		}
 
-		if(member.id === message.author.id){
-			return message.error("moderation/ban:YOURSELF");
+		if(member.id === interaction.user.id){
+			return interaction.reply({
+				content: translate("moderation/ban:YOURSELF"),
+				ephemeral: true
+			});
 		}
 
 		const memberPosition = member.roles.highest.position;
 		const moderationPosition = message.member.roles.highest.position;
-		if(message.member.ownerID !== message.author.id && !(moderationPosition > memberPosition)){
-			return message.error("moderation/ban:SUPERIOR");
+		if(message.member.ownerID !== interaction.user.id && !(moderationPosition > memberPosition)){
+			return interaction.reply({
+				content: translate("moderation/ban:SUPERIOR"),
+				ephemeral: true
+			});
 		}
 
-		const memberData = await this.client.findOrCreateMember({ id: member.id, guildID: message.guild.id });
+		const memberData = await this.client.findOrCreateMember({ id: member.id, guildID: interaction.guild.id });
 
 		const time = args[1];
 		if(!time || isNaN(ms(time))){
-			return message.error("misc:INVALID_TIME");
+			return interaction.reply({
+				content: translate("misc:INVALID_TIME"),
+				ephemeral: true
+			});
 		}
 
 		let reason = args.slice(2).join(" ");
 		if(!reason){
-			reason = message.translate("misc:NO_REASON_PROVIDED");
+			reason = translate("misc:NO_REASON_PROVIDED");
 		}
 
 		message.guild.channels.cache.forEach((channel) => {
@@ -56,10 +68,10 @@ class Mute extends Command {
 			}).catch(() => {});
 		});
 
-		member.send(message.translate("moderation/mute:MUTED_DM", {
+		member.send(translate("moderation/mute:MUTED_DM", {
 			username: member.user.username,
 			server: message.guild.name,
-			moderator: message.author.tag,
+			moderator: interaction.user.tag,
 			time,
 			reason
 		}));
@@ -67,54 +79,52 @@ class Mute extends Command {
 		message.success("moderation/mute:MUTED", {
 			username: member.user.tag,
 			server: message.guild.name,
-			moderator: message.author.tag,
+			moderator: interaction.user.tag,
 			time,
 			reason
 		});
 
-		data.guild.casesCount++;
+		data.guildData.casesCount++;
 
 		const caseInfo = {
 			channel: message.channel.id,
-			moderator: message.author.id,
+			moderator: interaction.user.id,
 			date: Date.now(),
 			type: "mute",
-			case: data.guild.casesCount,
+			case: data.guildData.casesCount,
 			reason,
 			time
 		};
 
 		memberData.mute.muted = true;
 		memberData.mute.endDate = Date.now()+ms(time);
-		memberData.mute.case = data.guild.casesCount;
+		memberData.mute.case = data.guildData.casesCount;
 		memberData.sanctions.push(caseInfo);
 
 		memberData.markModified("sanctions");
 		memberData.markModified("mute");
 		await memberData.save();
 
-		await data.guild.save();
+		await data.guildData.save();
 
-		this.client.databaseCache.mutedUsers.set(`${member.id}${message.guild.id}`, memberData);
+		this.client.databaseCache.mutedUsers.set(`${member.id}${interaction.guild.id}`, memberData);
 
-		if(data.guild.plugins.modlogs){
-			const channel = message.guild.channels.cache.get(data.guild.plugins.modlogs);
+		if(data.guildData.plugins.modlogs){
+			const channel = message.guild.channels.cache.get(data.guildData.plugins.modlogs);
 			if(!channel) return;
 			const embed = new Discord.MessageEmbed()
-				.setAuthor(message.translate("moderation/mute:CASE", {
-					count: data.guild.casesCount
+				.setAuthor(translate("moderation/mute:CASE", {
+					count: data.guildData.casesCount
 				}))
-				.addField(message.translate("common:USER"), `\`${member.user.tag}\` (${member.user.toString()})`, true)
-				.addField(message.translate("common:MODERATOR"), `\`${message.author.tag}\` (${message.author.toString()})`, true)
-				.addField(message.translate("common:REASON"), reason, true)
-				.addField(message.translate("common:DURATION"), time, true)
-				.addField(message.translate("common:EXPIRY"), message.printDate(new Date(Date.now()+ms(time))), true)
+				.addField(translate("common:USER"), `\`${member.user.tag}\` (${member.user.toString()})`, true)
+				.addField(translate("common:MODERATOR"), `\`${interaction.user.tag}\` (${interaction.user.toString()})`, true)
+				.addField(translate("common:REASON"), reason, true)
+				.addField(translate("common:DURATION"), time, true)
+				.addField(translate("common:EXPIRY"), message.printDate(new Date(Date.now()+ms(time))), true)
 				.setColor("#f44271");
 			channel.send({ embeds: [embed] });
 		}
 
 	}
 
-}
-
-module.exports = Mute;
+};

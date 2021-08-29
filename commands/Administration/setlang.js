@@ -1,6 +1,6 @@
 const Command = require("../../base/Command.js");
 
-class Setlang extends Command {
+module.exports = class extends Command {
 
 	constructor (client) {
 		super(client, {
@@ -8,7 +8,7 @@ class Setlang extends Command {
 			dirname: __dirname,
 			enabled: true,
 			guildOnly: true,
-			aliases: [],
+			,
 			memberPermissions: [ "MANAGE_GUILD" ],
 			botPermissions: [ "SEND_MESSAGES", "EMBED_LINKS" ],
 			nsfw: false,
@@ -17,7 +17,7 @@ class Setlang extends Command {
 		});
 	}
 
-	async run (message, args, data) {
+	async run (interaction, translate, data) {
 
 		const language = this.client.languages.find((l) => l.name === args[0] || l.aliases.includes(args[0]));
 
@@ -27,13 +27,13 @@ class Setlang extends Command {
 			});
 		}
 
-		data.guild.language = language.name;
-		await data.guild.save();
+		data.guildData.language = language.name;
+		await data.guildData.save();
         
-		return message.sendT("administration/setlang:SUCCESS");
+		return interaction.reply({
+			content: translate("administration/setlang:SUCCESS")
+		});
         
 	}
 
-}
-
-module.exports = Setlang;
+};

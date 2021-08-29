@@ -1,7 +1,7 @@
 const Command = require("../../base/Command.js");
 const ms = require("ms");
 
-class Seek extends Command {
+module.exports = class extends Command {
 
 	constructor (client) {
 		super(client, {
@@ -9,7 +9,7 @@ class Seek extends Command {
 			dirname: __dirname,
 			enabled: true,
 			guildOnly: true,
-			aliases: [],
+			,
 			memberPermissions: [],
 			botPermissions: [ "SEND_MESSAGES", "EMBED_LINKS" ],
 			nsfw: false,
@@ -18,31 +18,40 @@ class Seek extends Command {
 		});
 	}
 
-	async run (message, args) {
+	async run (interaction, translate) {
 
 		const queue = this.client.player.getQueue(message);
 
 		const voice = message.member.voice.channel;
 		if (!voice){
-			return message.error("music/play:NO_VOICE_CHANNEL");
+			return interaction.reply({
+				content: translate("music/play:NO_VOICE_CHANNEL"),
+				ephemeral: true
+			});
 		}
 
 		if(!queue){
-			return message.error("music/play:NOT_PLAYING");
+			return interaction.reply({
+				content: translate("music/play:NOT_PLAYING"),
+				ephemeral: true
+			});
 		}
 
 		const time = ms(args[0]);
 		if (isNaN(time)) {
-			return message.error("music/seek:INVALID_TIME");
+			return interaction.reply({
+				content: translate("music/seek:INVALID_TIME"),
+				ephemeral: true
+			});
 		}
 
 		// Change the song position
 		await this.client.player.setPosition(message, queue.currentStreamTime + time);
         
 		// Send the embed in the current channel
-		message.sendT("music/seek:SUCCESS");
+		interaction.reply({
+			content: translate("music/seek:SUCCESS")
+		});
 	}
 
-}
-
-module.exports = Seek;
+};

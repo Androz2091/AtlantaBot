@@ -2,7 +2,7 @@
 	Discord = require("discord.js"),
 	Canvas = require("discord-canvas");
 
-class Setfortniteshop extends Command {
+module.exports = class extends Command {
 
 	constructor(client) {
 		super(client, {
@@ -19,39 +19,44 @@ class Setfortniteshop extends Command {
 		});
 	}
 
-	async run(message, args, data) {
+	async run(interaction, translate, data) {
 
 		if (!data.config.apiKeys.fortniteFNBR || data.config.apiKeys.fortniteFNBR.length === "") {
-			return message.error("misc:COMMAND_DISABLED");
+			return interaction.reply({
+				content: translate("misc:COMMAND_DISABLED"),
+				ephemeral: true
+			});
 		}
 
-		if (data.guild.plugins.fortniteshop && !message.mentions.channels.first() || message.mentions.channels.first() && data.guild.plugins.fortniteshop === message.mentions.channels.first().id) {
-			data.guild.plugins.fortniteshop = false;
-			data.guild.markModified("plugins.fortniteshop");
-			data.guild.save();
-			return message.success("administration/setfortniteshop:DISABLED");
+		if (data.guildData.plugins.fortniteshop && !message.mentions.channels.first() || message.mentions.channels.first() && data.guildData.plugins.fortniteshop === message.mentions.channels.first().id) {
+			data.guildData.plugins.fortniteshop = false;
+			data.guildData.markModified("plugins.fortniteshop");
+			data.guildData.save();
+			return interaction.reply({
+				content: translate("administration/setfortniteshop:DISABLED")
+			});
 		}
 
 		const channel = message.mentions.channels.first() || message.channel;
-		data.guild.plugins.fortniteshop = channel.id;
-		data.guild.markModified("plugins.fortniteshop");
-		data.guild.save();
+		data.guildData.plugins.fortniteshop = channel.id;
+		data.guildData.markModified("plugins.fortniteshop");
+		data.guildData.save();
 
 		message.success("administration/setfortniteshop:ENABLED", {
 			channel: channel.toString()
 		});
 
-		const momentName = this.client.languages.find((language) => language.name === data.guild.language || language.aliases.includes(data.guild.language)).moment;
+		const momentName = this.client.languages.find((language) => language.name === data.guildData.language || language.aliases.includes(data.guildData.language)).moment;
 		const shop = new Canvas.FortniteShop();
 		const image = await shop
 			.setToken(data.config.apiKeys.fortniteFNBR)
-			.setText("header", message.translate("general/fortniteshop:HEADER"))
-			.setText("daily", message.translate("general/fortniteshop:DAILY"))
-			.setText("featured", message.translate("general/fortniteshop:FEATURED"))
-			.setText("date", message.translate("general/fortniteshop:DATE", {
+			.setText("header", translate("general/fortniteshop:HEADER"))
+			.setText("daily", translate("general/fortniteshop:DAILY"))
+			.setText("featured", translate("general/fortniteshop:FEATURED"))
+			.setText("date", translate("general/fortniteshop:DATE", {
 				skipInterpolation: true
 			}).replace("{{date}}", "{date}"))
-			.setText("footer", message.translate("general/fortniteshop:FOOTER"))
+			.setText("footer", translate("general/fortniteshop:FOOTER"))
 			.lang(momentName)
 			.toAttachment();
 		const attachment = new Discord.MessageAttachment(image, "shop.png");
@@ -71,6 +76,4 @@ class Setfortniteshop extends Command {
 
 	}
 
-}
-
-module.exports = Setfortniteshop;
+};

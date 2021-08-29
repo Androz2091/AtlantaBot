@@ -1,7 +1,7 @@
 const Command = require("../../base/Command.js"),
 	Discord = require("discord.js");
 
-class Quote extends Command {
+module.exports = class extends Command {
 
 	constructor (client) {
 		super(client, {
@@ -9,7 +9,7 @@ class Quote extends Command {
 			dirname: __dirname,
 			enabled: true,
 			guildOnly: true,
-			aliases: [ "quoter" ],
+			
 			memberPermissions: [],
 			botPermissions: [ "SEND_MESSAGES", "EMBED_LINKS" ],
 			nsfw: false,
@@ -18,7 +18,7 @@ class Quote extends Command {
 		});
 	}
 
-	async run (message, args, data) {
+	async run (interaction, translate, data) {
 
 		function embed(m){
 			const embed = new Discord.MessageEmbed()
@@ -35,10 +35,13 @@ class Quote extends Command {
         
 		const msgID = args[0];
 		if(isNaN(msgID)){
-			message.author.send(message.translate("general/quote:MISSING_ID")).then(() => {
+			interaction.user.send(translate("general/quote:MISSING_ID")).then(() => {
 				message.delete();
 			}).catch(() => {
-				message.error("misc:CANNOT_DM");
+				interaction.reply({
+					content: translate("misc:CANNOT_DM"),
+					ephemeral: true
+				});
 			});
 			return;
 		}
@@ -47,10 +50,13 @@ class Quote extends Command {
 		if(args[1] && !channel){
 			channel = this.client.channels.cache.get(args[1]);
 			if(!channel){
-				message.author.send(message.translate("general/quote:NO_MESSAGE_ID")).then(() => {
+				interaction.user.send(translate("general/quote:NO_MESSAGE_ID")).then(() => {
 					message.delete();
 				}).catch(() => {
-					message.error("misc:CANNOT_DM");
+					interaction.reply({
+						content: translate("misc:CANNOT_DM"),
+						ephemeral: true
+					});
 				});
 				return;
 			}
@@ -58,10 +64,13 @@ class Quote extends Command {
 
 		if(!channel){
 			message.channel.messages.fetch(msgID).catch(() => {
-				message.author.send((message.translate("general/quote:NO_MESSAGE_ID"))).then(() => {
+				interaction.user.send((translate("general/quote:NO_MESSAGE_ID"))).then(() => {
 					message.delete();
 				}).catch(() => {
-					message.error("misc:CANNOT_DM");
+					interaction.reply({
+						content: translate("misc:CANNOT_DM"),
+						ephemeral: true
+					});
 				});
 				return;
 			}).then((msg) => {
@@ -70,10 +79,13 @@ class Quote extends Command {
 			});
 		} else {
 			channel.messages.fetch(msgID).catch(() => {
-				message.author.send(message.translate("general/quote:NO_MESSAGE_ID")).then(() => {
+				interaction.user.send(translate("general/quote:NO_MESSAGE_ID")).then(() => {
 					message.delete();
 				}).catch(() => {
-					message.error("misc:CANNOT_DM");
+					interaction.reply({
+						content: translate("misc:CANNOT_DM"),
+						ephemeral: true
+					});
 				});
 				return;
 			}).then((msg) => {
@@ -83,6 +95,4 @@ class Quote extends Command {
 		}
 	}
 
-}
-
-module.exports = Quote;
+};

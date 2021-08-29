@@ -1,6 +1,6 @@
 const Command = require("../../base/Command.js");
 
-class Reload extends Command {
+module.exports = class extends Command {
 
 	constructor (client) {
 		super(client, {
@@ -8,7 +8,7 @@ class Reload extends Command {
 			dirname: __dirname,
 			enabled: true,
 			guildOnly: false,
-			aliases: [],
+			,
 			memberPermissions: [],
 			botPermissions: [],
 			nsfw: false,
@@ -17,7 +17,7 @@ class Reload extends Command {
 		});
 	}
 
-	async run (message, args) {
+	async run (interaction, translate) {
 		const command = args[0];
 		const cmd = this.client.commands.get(command) || this.client.commands.get(this.client.aliases.get(command));
 		if(!cmd){
@@ -32,6 +32,4 @@ class Reload extends Command {
 		});
 	}
 
-}
-
-module.exports = Reload;
+};

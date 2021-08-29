@@ -1,6 +1,5 @@
 {
     "DESCRIPTION": "Pause the current song!",
-    "USAGE": "{{prefix}}pause",
     "EXAMPLES": "{{prefix}}pause",
     "SUCCESS": "⏸️ Music paused."
 }

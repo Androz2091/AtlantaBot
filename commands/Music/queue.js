@@ -2,7 +2,7 @@ const Command = require("../../base/Command.js"),
 	Discord = require("discord.js"),
 	Pagination = require("discord-paginationembed");
 
-class Queue extends Command {
+module.exports = class extends Command {
 
 	constructor (client) {
 		super(client, {
@@ -10,7 +10,7 @@ class Queue extends Command {
 			dirname: __dirname,
 			enabled: true,
 			guildOnly: true,
-			aliases: [ "playlist" ],
+			
 			memberPermissions: [],
 			botPermissions: [ "SEND_MESSAGES", "EMBED_LINKS" ],
 			nsfw: false,
@@ -19,24 +19,30 @@ class Queue extends Command {
 		});
 	}
 
-	async run (message, args, data) {
+	async run (interaction, translate, data) {
 
 		const voice = message.member.voice.channel;
 		if (!voice){
-			return message.error("music/play:NO_VOICE_CHANNEL");
+			return interaction.reply({
+				content: translate("music/play:NO_VOICE_CHANNEL"),
+				ephemeral: true
+			});
 		}
         
 		const queue = this.client.player.getQueue(message);
 
 		if(!queue){
-			return message.error("music/play:NOT_PLAYING");
+			return interaction.reply({
+				content: translate("music/play:NOT_PLAYING"),
+				ephemeral: true
+			});
 		}
 
 		if(queue.tracks.length === 1){
 			const embed = new Discord.MessageEmbed()
 				.setColor(data.config.embed.color)
-				.setAuthor(message.translate("music/queue:TITLE"), message.guild.iconURL({ dynamic: true }))
-				.addField(message.translate("music/np:CURRENTLY_PLAYING"), `[${queue.tracks[0].title}](${queue.tracks[0].url})\n*Requested by ${queue.tracks[0].requestedBy}*\n`);
+				.setAuthor(translate("music/queue:TITLE"), message.guild.iconURL({ dynamic: true }))
+				.addField(translate("music/np:CURRENTLY_PLAYING"), `[${queue.tracks[0].title}](${queue.tracks[0].url})\n*Requested by ${queue.tracks[0].requestedBy}*\n`);
 			return message.channel.send({ embeds: [embed] });
 		}
 		let i = 0;
@@ -45,11 +51,11 @@ class Queue extends Command {
 
 		FieldsEmbed.embed
 			.setColor(data.config.embed.color)
-			.setAuthor(message.translate("music/queue:TITLE"), message.guild.iconURL({ dynamic: true }))
-			.addField(message.translate("music/np:CURRENTLY_PLAYING"), `[${queue.tracks[0].title}](${queue.tracks[0].url})\n*Requested by ${queue.tracks[0].requestedBy}*\n`);
+			.setAuthor(translate("music/queue:TITLE"), message.guild.iconURL({ dynamic: true }))
+			.addField(translate("music/np:CURRENTLY_PLAYING"), `[${queue.tracks[0].title}](${queue.tracks[0].url})\n*Requested by ${queue.tracks[0].requestedBy}*\n`);
 		
 		FieldsEmbed.setArray(queue.tracks[1] ? queue.tracks.slice(1, queue.tracks.length) : [])
-			.setAuthorizedUsers([message.author.id])
+			.setAuthorizedUsers([interaction.user.id])
 			.setChannel(message.channel)
 			.setElementsPerPage(5)
 			.setPageIndicator(true)
@@ -59,6 +65,4 @@ class Queue extends Command {
         
 	}
 
-}
-
-module.exports = Queue;
+};

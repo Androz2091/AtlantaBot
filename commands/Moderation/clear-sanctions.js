@@ -1,6 +1,6 @@
 const Command = require("../../base/Command.js");
 
-class Clearsanctions extends Command {
+module.exports = class extends Command {
 
 	constructor (client) {
 		super(client, {
@@ -8,7 +8,7 @@ class Clearsanctions extends Command {
 			dirname: __dirname,
 			enabled: true,
 			guildOnly: true,
-			aliases: [],
+			,
 			memberPermissions: [ "MANAGE_MESSAGES" ],
 			botPermissions: [ "SEND_MESSAGES", "EMBED_LINKS" ],
 			nsfw: false,
@@ -17,13 +17,16 @@ class Clearsanctions extends Command {
 		});
 	}
 
-	async run (message, args) {
+	async run (interaction, translate) {
         
 		const member = await this.client.resolveMember(args[0], message.guild);
 		if(!member){
-			return message.error("moderation/clear-sanctions:MISSING_MEMBER");
+			return interaction.reply({
+				content: translate("moderation/clear-sanctions:MISSING_MEMBER"),
+				ephemeral: true
+			});
 		}
-		const memberData = await this.client.findOrCreateMember({ id: member.id, guildID: message.guild.id });
+		const memberData = await this.client.findOrCreateMember({ id: member.id, guildID: interaction.guild.id });
 		memberData.sanctions = [];
 		memberData.save();
 		message.success("moderation/clear-sanctions:SUCCESS", {
@@ -31,6 +34,4 @@ class Clearsanctions extends Command {
 		});
 	}
 
-}
-
-module.exports = Clearsanctions;
+};

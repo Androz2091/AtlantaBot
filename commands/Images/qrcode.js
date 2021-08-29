@@ -1,7 +1,7 @@
 const Command = require("../../base/Command.js"),
 	Discord = require("discord.js");
 
-class Qrcode extends Command {
+module.exports = class extends Command {
 
 	constructor (client) {
 		super(client, {
@@ -9,7 +9,7 @@ class Qrcode extends Command {
 			dirname: __dirname,
 			enabled: true,
 			guildOnly: false,
-			aliases: [ "qr" ],
+			
 			memberPermissions: [],
 			botPermissions: [ "SEND_MESSAGES", "EMBED_LINKS" ],
 			nsfw: false,
@@ -18,11 +18,14 @@ class Qrcode extends Command {
 		});
 	}
 
-	async run (message, args, data) {
+	async run (interaction, translate, data) {
 
 		const text = args.join(" ");
 		if(!text){
-			return message.error("images/qrcode:MISSING_TEXT");
+			return interaction.reply({
+				content: translate("images/qrcode:MISSING_TEXT"),
+				ephemeral: true
+			});
 		}
     
 		const pleaseWait = await message.sendT("misc:PLEASE_WAIT", null, {
@@ -33,10 +36,8 @@ class Qrcode extends Command {
 			.setImage(`https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${text.replace(new RegExp(" ", "g"), "%20")}`)
 			.setColor(data.config.embed.color);
 
-		pleaseWait.edit({ embeds: [embed], content: message.translate("images/qrcode:SUCCESS") });
+		pleaseWait.edit({ embeds: [embed], content: translate("images/qrcode:SUCCESS") });
     
 	}
 
-}
-
-module.exports = Qrcode;
+};

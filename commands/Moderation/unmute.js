@@ -1,6 +1,6 @@
 const Command = require("../../base/Command.js");
 
-class Unmute extends Command {
+module.exports = class extends Command {
 
 	constructor (client) {
 		super(client, {
@@ -8,7 +8,7 @@ class Unmute extends Command {
 			dirname: __dirname,
 			enabled: true,
 			guildOnly: true,
-			aliases: [],
+			,
 			memberPermissions: [ "MANAGE_MESSAGES" ],
 			botPermissions: [ "SEND_MESSAGES", "EMBED_LINKS", "MANAGE_CHANNELS" ],
 			nsfw: false,
@@ -17,20 +17,25 @@ class Unmute extends Command {
 		});
 	}
 
-	async run (message, args) {
+	async run (interaction, translate) {
 
 		const member = await this.client.resolveMember(args[0], message.guild);
 		if(!member){
-			return message.success("moderation/unmute:MISSING_MEMBER");
+			return interaction.reply({
+				content: translate("moderation/unmute:MISSING_MEMBER")
+			});
 		}
 
 		const memberPosition = member.roles.highest.position;
 		const moderationPosition = message.member.roles.highest.position;
-		if(message.member.ownerID !== message.author.id && !(moderationPosition > memberPosition)){
-			return message.error("moderation/ban:SUPERIOR");
+		if(message.member.ownerID !== interaction.user.id && !(moderationPosition > memberPosition)){
+			return interaction.reply({
+				content: translate("moderation/ban:SUPERIOR"),
+				ephemeral: true
+			});
 		}
 
-		const memberData = await this.client.findOrCreateMember({ id: member.id, guildID: message.guild.id });
+		const memberData = await this.client.findOrCreateMember({ id: member.id, guildID: interaction.guild.id });
 
 		if(memberData.mute.muted){
 			memberData.mute.endDate = Date.now();
@@ -48,6 +53,4 @@ class Unmute extends Command {
 
 	}
 
-}
-
-module.exports = Unmute;
+};

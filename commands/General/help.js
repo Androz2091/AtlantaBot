@@ -1,14 +1,14 @@
 const Command = require("../../base/Command.js"),
 	Discord = require("discord.js");
 
-class Help extends Command {
+module.exports = class extends Command {
 	constructor (client) {
 		super(client, {
 			name: "help",
 			dirname: __dirname,
 			enabled: true,
 			guildOnly: false,
-			aliases: [ "aide", "h", "commands" ],
+			
 			memberPermissions: [],
 			botPermissions: [ "SEND_MESSAGES", "EMBED_LINKS" ],
 			nsfw: false,
@@ -17,12 +17,12 @@ class Help extends Command {
 		});
 	}
 
-	async run (message, args, data) {
+	async run (interaction, translate, data) {
 
 		// if a command is provided
 		if(args[0]){
 
-			const isCustom = (message.guild && data.guild.customCommands ? data.guild.customCommands.find((c) => c.name === args[0]) : false);
+			const isCustom = (message.guild && data.guildData.customCommands ? data.guildData.customCommands.find((c) => c.name === args[0]) : false);
             
 			// if the command doesn't exist, error message
 			const cmd = this.client.commands.get(args[0]) || this.client.commands.get(this.client.aliases.get(args[0]));
@@ -36,16 +36,16 @@ class Help extends Command {
 				});
 			}
 
-			const description = message.translate(`${cmd.help.category.toLowerCase()}/${cmd.help.name}:DESCRIPTION`);
-			const usage = message.translate(`${cmd.help.category.toLowerCase()}/${cmd.help.name}:USAGE`, {
+			const description = translate(`${cmd.help.category.toLowerCase()}/${cmd.help.name}:DESCRIPTION`);
+			const usage = translate(`${cmd.help.category.toLowerCase()}/${cmd.help.name}:USAGE`, {
 				prefix: message.guild
-					? data.guild.prefix
+					? data.guildData.prefix
 					: ""
 			}
 			);
-			const examples = message.translate(`${cmd.help.category.toLowerCase()}/${cmd.help.name}:EXAMPLES`, {
+			const examples = translate(`${cmd.help.category.toLowerCase()}/${cmd.help.name}:EXAMPLES`, {
 				prefix: message.guild
-					? data.guild.prefix
+					? data.guildData.prefix
 					: ""
 			}
 			);
@@ -53,33 +53,33 @@ class Help extends Command {
 			// Creates the help embed
 			const groupEmbed = new Discord.MessageEmbed()
 				.setAuthor(
-					message.translate("general/help:CMD_TITLE", {
+					translate("general/help:CMD_TITLE", {
 						prefix: message.guild
-							? data.guild.prefix
+							? data.guildData.prefix
 							: "",
 						cmd: cmd.help.name
 					})
 				)
 				.addField(
-					message.translate("general/help:FIELD_DESCRIPTION"),
+					translate("general/help:FIELD_DESCRIPTION"),
 					description
 				)
-				.addField(message.translate("general/help:FIELD_USAGE"), usage)
+				.addField(translate("general/help:FIELD_USAGE"), usage)
 				.addField(
-					message.translate("general/help:FIELD_EXAMPLES"),
+					translate("general/help:FIELD_EXAMPLES"),
 					examples
 				)
 				.addField(
-					message.translate("general/help:FIELD_ALIASES"),
+					translate("general/help:FIELD_ALIASES"),
 					cmd.help.aliases.length > 0
 						? cmd.help.aliases.map(a => "`" + a + "`").join("\n")
-						: message.translate("general/help:NO_ALIAS")
+						: translate("general/help:NO_ALIAS")
 				)
 				.addField(
-					message.translate("general/help:FIELD_PERMISSIONS"),
+					translate("general/help:FIELD_PERMISSIONS"),
 					cmd.conf.memberPermissions.length > 0
 						? cmd.conf.memberPermissions.map((p) => "`"+p+"`").join("\n")
-						: message.translate("general/help:NO_REQUIRED_PERMISSION")
+						: translate("general/help:NO_REQUIRED_PERMISSION")
 				)
 				.setColor(this.client.config.embed.color)
 				.setFooter(this.client.config.embed.footer);
@@ -93,7 +93,7 @@ class Help extends Command {
 
 		commands.forEach((command) => {
 			if(!categories.includes(command.help.category)){
-				if(command.help.category === "Owner" && message.author.id !== this.client.config.owner.id){
+				if(command.help.category === "Owner" && interaction.user.id !== this.client.config.owner.id){
 					return;
 				}
 				categories.push(command.help.category);
@@ -103,9 +103,9 @@ class Help extends Command {
 		const emojis = this.client.customEmojis;
 
 		const embed = new Discord.MessageEmbed()
-			.setDescription(message.translate("general/help:INFO", {
+			.setDescription(translate("general/help:INFO", {
 				prefix: message.guild
-					? data.guild.prefix
+					? data.guildData.prefix
 					: ""
 			}))
 			.setColor(data.config.embed.color)
@@ -115,12 +115,12 @@ class Help extends Command {
 			embed.addField(emojis.categories[cat.toLowerCase()]+" "+cat+" - ("+tCommands.size+")", tCommands.map((cmd) => "`"+cmd.help.name+"`").join(", "));
 		});
 		if(message.guild){
-			if(data.guild.customCommands.length > 0){
-				embed.addField(emojis.categories.custom+" "+message.guild.name+" | "+message.translate("general/help:CUSTOM_COMMANDS")+" - ("+data.guild.customCommands.length+")", data.guild.customCommands.map((cmd) => "`"+cmd.name+"`").join(", "));
+			if(data.guildData.customCommands.length > 0){
+				embed.addField(emojis.categories.custom+" "+message.guild.name+" | "+translate("general/help:CUSTOM_COMMANDS")+" - ("+data.guildData.customCommands.length+")", data.guildData.customCommands.map((cmd) => "`"+cmd.name+"`").join(", "));
 			}
 		}
         
-		embed.addField("\u200B", message.translate("misc:STATS_FOOTER", {
+		embed.addField("\u200B", translate("misc:STATS_FOOTER", {
 			donateLink: "https://patreon.com/Androz2091",
 			dashboardLink: "https://dashboard.atlanta-bot.fr",
 			inviteLink: await this.client.generateInvite({
@@ -129,12 +129,10 @@ class Help extends Command {
 			githubLink: "https://github.com/Androz2091",
 			supportLink: "https://discord.gg/NPkySYKMkN"
 		}));
-		embed.setAuthor(message.translate("general/help:TITLE", {
+		embed.setAuthor(translate("general/help:TITLE", {
 			name: this.client.user.username
 		}), this.client.user.displayAvatarURL({ size: 512, dynamic: true, format: "png" }));
 		return message.channel.send({ embeds: [embed] });
 	}
 
-}
-
-module.exports = Help;
+};

@@ -3,7 +3,7 @@ const Command = require("../../base/Command.js"),
 
 const currentGames = {};
 
-class Number extends Command {
+module.exports = class extends Command {
 
 	constructor (client) {
 		super(client, {
@@ -11,7 +11,7 @@ class Number extends Command {
 			dirname: __dirname,
 			enabled: true,
 			guildOnly: true,
-			aliases: [],
+			,
 			memberPermissions: [],
 			botPermissions: [ "SEND_MESSAGES", "EMBED_LINKS" ],
 			nsfw: false,
@@ -22,14 +22,19 @@ class Number extends Command {
 
 	async run (message) {
 
-		if (currentGames[message.guild.id]) {
-			return message.error("fun/number:GAME_RUNNING");
+		if (currentGames[interaction.guild.id]) {
+			return interaction.reply({
+				content: translate("fun/number:GAME_RUNNING"),
+				ephemeral: true
+			});
 		}
 
 		const participants = [];
 		const number = Math.floor(Math.random() * 3000);
 
-		await message.sendT("fun/number:GAME_START");
+		await interaction.reply({
+			content: translate("fun/number:GAME_START")
+		});
 
 		// Store the date wich the game has started
 		const gameCreatedAt = Date.now();
@@ -41,7 +46,7 @@ class Number extends Command {
 				time: 480000 // 8 minutes
 			}
 		);
-		currentGames[message.guild.id] = true;
+		currentGames[interaction.guild.id] = true;
 
 		collector.on("collect", async msg => {
 			if (!participants.includes(msg.author.id)) {
@@ -67,7 +72,7 @@ class Number extends Command {
 				message.sendT("fun/number:WON", {
 					winner: msg.author.toString()
 				});
-				const userdata = await this.client.findOrCreateMember({ id: msg.author.id, guildID: message.guild.id });
+				const userdata = await this.client.findOrCreateMember({ id: msg.author.id, guildID: interaction.guild.id });
 				userdata.money = userdata.money + 10;
 				userdata.save();
 				collector.stop(msg.author.username);
@@ -87,13 +92,14 @@ class Number extends Command {
 		});
 
 		collector.on("end", (_collected, reason) => {
-			delete currentGames[message.guild.id];
+			delete currentGames[interaction.guild.id];
 			if (reason === "time") {
-				return message.error("fun/number:DEFEAT", { number });
+				return interaction.reply({
+					content: translate("fun/number:DEFEAT", { number }),
+					ephemeral: true
+				});
 			}
 		});
 	}
 
-}
-
-module.exports = Number;
+};

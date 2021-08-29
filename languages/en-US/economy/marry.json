@@ -1,8 +1,7 @@
 {
     "DESCRIPTION": "Marry someone you love!",
-    "USAGE": "{{prefix}}marry [@member]",
     "EXAMPLES": "{{prefix}}marry @Androz#2091",
-    "INVALID_MEMBER": "You must mention a valid member!",
+    "OPT_USER_DESCRIPTION": "The user you want to marry",
     "ALREADY_MARRIED": "You are already married! First use `{{prefix}}divorce` to divorce.",
     "ALREADY_MARRIED_USER": "The place is taken, companion! **{{username}}** is already married!",
     "YOURSELF": "You can't marry yourself!",

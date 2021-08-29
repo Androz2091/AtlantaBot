@@ -2,14 +2,14 @@ const Command = require("../../base/Command.js"),
 	Discord = require("discord.js"),
 	Canvas = require("discord-canvas");
 
-class Fortniteshop extends Command {
+module.exports = class extends Command {
 	constructor (client) {
 		super(client, {
 			name: "fortniteshop",
 			dirname: __dirname,
 			enabled: true,
 			guildOnly: false,
-			aliases: [ "fnshop" ],
+			
 			memberPermissions: [],
 			botPermissions: [ "SEND_MESSAGES", "EMBED_LINKS" ],
 			nsfw: false,
@@ -18,7 +18,7 @@ class Fortniteshop extends Command {
 		});
 	}
 
-	async run(message, args, data) {
+	async run(interaction, translate, data) {
 
 		if(!data.config.apiKeys.fortniteFNBR || data.config.apiKeys.fortniteFNBR.length === "") {
 			return message.error("misc:COMMAND_DISABLED");
@@ -28,25 +28,25 @@ class Fortniteshop extends Command {
 			prefixEmoji: "loading"
 		});
 
-		const momentName = this.client.languages.find((language) => language.name === data.guild.language || language.aliases.includes(data.guild.language)).moment;
+		const momentName = this.client.languages.find((language) => language.name === data.guildData.language || language.aliases.includes(data.guildData.language)).moment;
 		const shop = new Canvas.FortniteShop();
 		const image = await shop
 			.setToken(data.config.apiKeys.fortniteFNBR)
-			.setText("header", message.translate("general/fortniteshop:HEADER"))
-			.setText("daily", message.translate("general/fortniteshop:DAILY"))
-			.setText("featured", message.translate("general/fortniteshop:FEATURED"))
-			.setText("date", message.translate("general/fortniteshop:DATE", {
+			.setText("header", translate("general/fortniteshop:HEADER"))
+			.setText("daily", translate("general/fortniteshop:DAILY"))
+			.setText("featured", translate("general/fortniteshop:FEATURED"))
+			.setText("date", translate("general/fortniteshop:DATE", {
 				skipInterpolation: true
 			}).replace("{{date}}", "{date}"))
-			.setText("footer", message.translate("general/fortniteshop:FOOTER"))
+			.setText("footer", translate("general/fortniteshop:FOOTER"))
 			.lang(momentName)
 			.toAttachment();
 		const attachment = new Discord.MessageAttachment(image, "shop.png");
 
 		const embed = new Discord.MessageEmbed()
-			.setAuthor(message.translate("general/fortniteshop:HEADER", {
+			.setAuthor(translate("general/fortniteshop:HEADER", {
 				date: message.printDate(new Date(Date.now()))
-			}), this.client.user.displayAvatarURL({ size: 512, dynamic: true, format: 'png' }))
+			}), this.client.user.displayAvatarURL({ size: 512, dynamic: true, format: "png" }))
 			.attachFiles(attachment)
 			.setImage("attachment://shop.png")
 			.setColor(this.client.config.embed.color)
@@ -56,6 +56,4 @@ class Fortniteshop extends Command {
 		return;
         
 	}
-}
-
-module.exports = Fortniteshop;
+};

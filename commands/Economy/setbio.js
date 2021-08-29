@@ -1,35 +1,48 @@
 const Command = require("../../base/Command.js");
 
-class Setbio extends Command {
+module.exports = class extends Command {
 
 	constructor (client) {
 		super(client, {
 			name: "setbio",
-			dirname: __dirname,
+
+			options: [
+				{
+					name: "bio",
+					type: "STRING"
+				}
+			],
+
 			enabled: true,
 			guildOnly: false,
-			aliases: [ "biography", "setdesc" ],
 			memberPermissions: [],
 			botPermissions: [ "SEND_MESSAGES", "EMBED_LINKS" ],
 			nsfw: false,
 			ownerOnly: false,
-			cooldown: 5000
+
+			dirname: __dirname
 		});
 	}
 
-	async run (message, args, data) {
-		const newBio = args.join(" ");
+	async run (interaction, translate, data) {
+		const newBio = interaction.options.getString("bio");
 		if(!newBio){
-			return message.error("economy/setbio:MISSING");
+			return interaction.reply({
+				content: translate("economy/setbio:MISSING"),
+				ephemeral: true
+			});
 		}
 		if(newBio.length > 100){
-			return message.error("economy/setbio:MAX_CHARACT");
+			return interaction.reply({
+				content: translate("economy/setbio:MAX_CHARACT"),
+				ephemeral: true
+			});
 		}
 		data.userData.bio = newBio;
-		message.success("economy/setbio:SUCCESS");
+		interaction.reply({
+			content: translate("economy/setbio:SUCCESS")
+		});
 		await data.userData.save();
 	}
 
-}
-
-module.exports = Setbio;
+};

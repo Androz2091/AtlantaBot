@@ -1,6 +1,6 @@
 const Command = require("../../base/Command.js");
 
-class Eval extends Command {
+module.exports = class extends Command {
 
 	constructor (client) {
 		super(client, {
@@ -8,7 +8,7 @@ class Eval extends Command {
 			dirname: __dirname,
 			enabled: true,
 			guildOnly: false,
-			aliases: [],
+			,
 			memberPermissions: [],
 			botPermissions: [ "SEND_MESSAGES", "EMBED_LINKS" ],
 			nsfw: false,
@@ -18,7 +18,7 @@ class Eval extends Command {
 	}
 
 	// eslint-disable-next-line no-unused-vars
-	async run (message, args, data) {
+	async run (interaction, translate, data) {
 
 		// eslint-disable-next-line no-unused-vars
 		const usersData = this.client.usersData;
@@ -50,6 +50,4 @@ class Eval extends Command {
 
 	}
 
-}
-
-module.exports = Eval;
+};

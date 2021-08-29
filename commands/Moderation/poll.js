@@ -1,7 +1,7 @@
 const Command = require("../../base/Command.js"),
 	Discord = require("discord.js");
 
-class Poll extends Command {
+module.exports = class extends Command {
 
 	constructor (client) {
 		super(client, {
@@ -9,7 +9,7 @@ class Poll extends Command {
 			dirname: __dirname,
 			enabled: true,
 			guildOnly: true,
-			aliases: [],
+			,
 			memberPermissions: [ "MENTION_EVERYONE" ],
 			botPermissions: [ "SEND_MESSAGES", "EMBED_LINKS" ],
 			nsfw: false,
@@ -18,34 +18,41 @@ class Poll extends Command {
 		});
 	}
 
-	async run (message, args, data) {
+	async run (interaction, translate, data) {
         
 		const question = args.join(" ");
 		if(!question){
-			return message.error("moderation/poll:MISSING_QUESTION");
+			return interaction.reply({
+				content: translate("moderation/poll:MISSING_QUESTION"),
+				ephemeral: true
+			});
 		}
 
 		message.delete().catch(() => {});
 
 		let mention = "";
             
-		const msg = await message.sendT("moderation/announcement:MENTION_PROMPT");
+		const msg = await interaction.reply({
+			content: translate("moderation/announcement:MENTION_PROMPT")
+		});
 
-		const collector = new Discord.MessageCollector(message.channel, (m) => m.author.id === message.author.id, { time: 240000 });
+		const collector = new Discord.MessageCollector(message.channel, (m) => m.author.id === interaction.user.id, { time: 240000 });
             
 		collector.on("collect", async (tmsg) => {
     
-			if(tmsg.content.toLowerCase() === message.translate("common:NO").toLowerCase()){
+			if(tmsg.content.toLowerCase() === translate("common:NO").toLowerCase()){
 				tmsg.delete();
 				msg.delete();
 				collector.stop(true);
 			}
             
-			if(tmsg.content.toLowerCase() === message.translate("common:YES").toLowerCase()){
+			if(tmsg.content.toLowerCase() === translate("common:YES").toLowerCase()){
 				tmsg.delete();
 				msg.delete();
-				const tmsg1 = await message.sendT("moderation/announcement:MENTION_TYPE_PROMPT");
-				const c = new Discord.MessageCollector(message.channel, (m) => m.author.id === message.author.id, { time: 60000 });
+				const tmsg1 = await interaction.reply({
+					content: translate("moderation/announcement:MENTION_TYPE_PROMPT")
+				});
+				const c = new Discord.MessageCollector(message.channel, (m) => m.author.id === interaction.user.id, { time: 60000 });
 				c.on("collect", (m) => {
 					if(m.content.toLowerCase() === "here"){
 						mention = "@here";
@@ -63,7 +70,10 @@ class Poll extends Command {
 				});
 				c.on("end", (collected, reason) => {
 					if(reason === "time"){
-						return message.error("misc:TIMES_UP");
+						return interaction.reply({
+							content: translate("misc:TIMES_UP"),
+							ephemeral: true
+						});
 					}
 				});
 			}
@@ -72,7 +82,10 @@ class Poll extends Command {
 		collector.on("end", (collected, reason) => {
     
 			if(reason === "time"){
-				return message.error("misc:TIMES_UP");
+				return interaction.reply({
+					content: translate("misc:TIMES_UP"),
+					ephemeral: true
+				});
 			}
     
 			const success = this.client.customEmojis.success.split(":")[1];
@@ -84,9 +97,9 @@ class Poll extends Command {
 			];
 
 			const embed = new Discord.MessageEmbed()
-				.setAuthor(message.translate("moderation/poll:TITLE"))
+				.setAuthor(translate("moderation/poll:TITLE"))
 				.setColor(data.config.embed.color)
-				.addField(question, message.translate("moderation/poll:REACT", {
+				.addField(question, translate("moderation/poll:REACT", {
 					success: emojis[0].toString(),
 					error: emojis[1].toString()
 				}));
@@ -99,6 +112,4 @@ class Poll extends Command {
 
 	}
 
-}
-
-module.exports = Poll;
+};

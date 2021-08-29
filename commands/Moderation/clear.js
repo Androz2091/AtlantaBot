@@ -1,6 +1,6 @@
 const Command = require("../../base/Command.js");
 
-class Clear extends Command {
+module.exports = class extends Command {
 
 	constructor (client) {
 		super(client, {
@@ -8,7 +8,7 @@ class Clear extends Command {
 			dirname: __dirname,
 			enabled: true,
 			guildOnly: true,
-			aliases: [ "clear", "bulkdelete", "purge" ],
+			
 			memberPermissions: [ "MANAGE_MESSAGES" ],
 			botPermissions: [ "SEND_MESSAGES", "EMBED_LINKS", "MANAGE_MESSAGES" ],
 			nsfw: false,
@@ -17,27 +17,35 @@ class Clear extends Command {
 		});
 	}
 
-	async run (message, args) {
+	async run (interaction, translate) {
 
 		if(args[0] === "all"){
-			message.sendT("moderation/clear:ALL_CONFIRM");
-			await message.channel.awaitMessages((m) => (m.author.id === message.author.id) && (m.content === "-confirm"), {
+			interaction.reply({
+				content: translate("moderation/clear:ALL_CONFIRM")
+			});
+			await message.channel.awaitMessages((m) => (m.author.id === interaction.user.id) && (m.content === "-confirm"), {
 				max: 1,
 				time: 20000,
 				errors: ["time"]
 			}).catch(() => {
-				return message.error("misc:TIMES_UP");
+				return interaction.reply({
+					content: translate("misc:TIMES_UP"),
+					ephemeral: true
+				});
 			});
 			const position = message.channel.position;
 			const newChannel = await message.channel.clone();
 			await message.channel.delete();
 			newChannel.setPosition(position);
-			return newChannel.send(message.translate("moderation/clear:CHANNEL_CLEARED"));
+			return newChannel.send(translate("moderation/clear:CHANNEL_CLEARED"));
 		}
 
 		let amount = args[0];
 		if(!amount || isNaN(amount) || parseInt(amount) < 1){
-			return message.error("moderation/clear:MISSING_AMOUNT");
+			return interaction.reply({
+				content: translate("moderation/clear:MISSING_AMOUNT"),
+				ephemeral: true
+			});
 		}
 
 		await message.delete();
@@ -76,6 +84,4 @@ class Clear extends Command {
         
 	}
 
-}
-
-module.exports = Clear;
+};

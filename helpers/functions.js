@@ -16,7 +16,7 @@ module.exports = {
 				`<@!${message.client.user.id}> `,
 				`<@${message.client.user.id}> `,
 				message.client.user.username.toLowerCase(),
-				data.guild.prefix
+				data.guildData.prefix
 			];
 			let prefix = null;
 			prefixes.forEach((p) => {

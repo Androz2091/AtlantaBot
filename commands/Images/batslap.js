@@ -1,14 +1,14 @@
 const Command = require("../../base/Command.js"),
 	Discord = require("discord.js");
 
-class BatSlap extends Command {
+module.exports = class extends Command {
 	constructor (client) {
 		super(client, {
 			name: "batslap",
 			dirname: __dirname,
 			enabled: true,
 			guildOnly: false,
-			aliases: [],
+			,
 			memberPermissions: [],
 			botPermissions: [ "SEND_MESSAGES", "EMBED_LINKS", "ATTACH_FILES" ],
 			nsfw: false,
@@ -17,11 +17,11 @@ class BatSlap extends Command {
 		});
 	}
 
-	async run (message, args) {
+	async run (interaction, translate) {
 
 		const users = [
-			await this.client.resolveUser(args[0]) || message.author,
-			await this.client.resolveUser(args[1]) || message.author
+			await this.client.resolveUser(args[0]) || interaction.user,
+			await this.client.resolveUser(args[1]) || interaction.user
 		];
 		const m = await message.sendT("misc:PLEASE_WAIT", null, {
 			prefixEmoji: "loading"
@@ -33,6 +33,4 @@ class BatSlap extends Command {
 
 	}
 
-}
-
-module.exports = BatSlap;
+};

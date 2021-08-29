@@ -1,10 +1,10 @@
 const Command = require("../../base/Command.js"),
 	Discord = require("discord.js"),
-	translate = require("@k3rn31p4nic/google-translate-api");
+	translate = require("@iamtraction/google-translate");
 
 const langs = ["afrikaans", "albanian", "amharic", "arabic", "armenian", "azerbaijani", "bangla", "basque", "belarusian", "bengali", "bosnian", "bulgarian", "burmese", "catalan", "cebuano", "chichewa", "corsican", "croatian", "czech", "danish", "dutch", "english", "esperanto", "estonian", "filipino", "finnish", "french", "frisian", "galician", "georgian", "german", "greek", "gujarati", "haitian creole", "hausa", "hawaiian", "hebrew", "hindi", "hmong", "hungarian", "icelandic", "igbo", "indonesian", "irish", "italian", "japanese", "javanese", "kannada", "kazakh", "khmer", "korean", "kurdish (kurmanji)", "kyrgyz", "lao", "latin", "latvian", "lithuanian", "luxembourgish", "macedonian", "malagasy", "malay", "malayalam", "maltese", "maori", "marathi", "mongolian", "myanmar (burmese)", "nepali", "norwegian", "nyanja", "pashto", "persian", "polish", "portugese", "punjabi", "romanian", "russian", "samoan", "scottish gaelic", "serbian", "sesotho", "shona", "sindhi", "sinhala", "slovak", "slovenian", "somali", "spanish", "sundanese", "swahili", "swedish", "tajik", "tamil", "telugu", "thai", "turkish", "ukrainian", "urdu", "uzbek", "vietnamese", "welsh", "xhosa", "yiddish", "yoruba", "zulu"];
 
-class Translate extends Command {
+module.exports = class extends Command {
 
 	constructor (client) {
 		super(client, {
@@ -12,7 +12,7 @@ class Translate extends Command {
 			dirname: __dirname,
 			enabled: true,
 			guildOnly: false,
-			aliases: [ "traduction", "translation", "trad" ],
+			
 			memberPermissions: [],
 			botPermissions: [ "SEND_MESSAGES", "EMBED_LINKS" ],
 			nsfw: false,
@@ -21,14 +21,19 @@ class Translate extends Command {
 		});
 	}
 
-	async run (message, args, data) {
+	async run (interaction, translate, data) {
         
 		if(args[0] === "langs-list"){
 			const langsList = "```Css\n"+(langs.map((l, i) => `#${i+1} - ${l}`).join("\n"))+"```";
-			message.author.send(langsList).then(() => {
-				message.success("general/translate:LIST_SENT");
+			interaction.user.send(langsList).then(() => {
+				interaction.reply({
+					content: translate("general/translate:LIST_SENT")
+				});
 			}).catch(() => {
-				message.error("misc:CANNOT_DM");
+				interaction.reply({
+					content: translate("misc:CANNOT_DM"),
+					ephemeral: true
+				});
 			});
 			return;
 		}
@@ -39,7 +44,7 @@ class Translate extends Command {
         
 		if(!args[0]){
 			return pWait.error("general/translate:MISSING_LANGUAGE", {
-				prefix: data.guild.prefix
+				prefix: data.guildData.prefix
 			}, {
 				edit: true
 			});
@@ -57,7 +62,7 @@ class Translate extends Command {
         
 		if(!langs.includes(language)){
 			return pWait.error("general/translate:INVALID_LANGUAGE", {
-				prefix: data.guild.prefix,
+				prefix: data.guildData.prefix,
 				search: language
 			}, {
 				edit: true
@@ -77,6 +82,4 @@ class Translate extends Command {
         
 	}
 
-}
-
-module.exports = Translate;
+};

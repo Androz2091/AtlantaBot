@@ -2,14 +2,14 @@ const Command = require("../../base/Command.js"),
 	Canvas = require("canvas"),
 	Discord = require("discord.js");
 
-class Facepalm extends Command {
+module.exports = class extends Command {
 	constructor (client) {
 		super(client, {
 			name: "facepalm",
 			dirname: __dirname,
 			enabled: true,
 			guildOnly: false,
-			aliases: [ "palm" ],
+			
 			memberPermissions: [],
 			botPermissions: [ "SEND_MESSAGES", "EMBED_LINKS", "ATTACH_FILES" ],
 			nsfw: false,
@@ -18,9 +18,9 @@ class Facepalm extends Command {
 		});
 	}
 
-	async run (message, args) {
+	async run (interaction, translate) {
 
-		const user = await this.client.resolveUser(args[0]) || message.author,
+		const user = await this.client.resolveUser(args[0]) || interaction.user,
 			m = await message.sendT("misc:PLEASE_WAIT", null, {
 				prefixEmoji: "loading"
 			});
@@ -47,6 +47,4 @@ class Facepalm extends Command {
 
 	}
 
-}
-
-module.exports = Facepalm;
+};

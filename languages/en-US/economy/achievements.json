@@ -1,6 +1,5 @@
 {
     "DESCRIPTION": "Shows your achievements list!",
-    "USAGE": "{{prefix}}achievements",
     "EXAMPLES": "{{prefix}}achievements",
     "SEND_CMD": "Send your first command!",
     "CLAIM_SALARY": "Claim your salary 10 times!",

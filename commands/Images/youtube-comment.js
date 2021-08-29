@@ -2,14 +2,14 @@ const Command = require("../../base/Command.js"),
 	Discord = require("discord.js"),
 	canvacord = require("canvacord");
 
-class YouTubeComment extends Command {
+module.exports = class extends Command {
 	constructor (client) {
 		super(client, {
 			name: "youtube-comment",
 			dirname: __dirname,
 			enabled: true,
 			guildOnly: false,
-			aliases: [],
+			,
 			memberPermissions: [],
 			botPermissions: [ "SEND_MESSAGES", "EMBED_LINKS", "ATTACH_FILES" ],
 			nsfw: false,
@@ -18,7 +18,7 @@ class YouTubeComment extends Command {
 		});
 	}
 
-	async run (message, args) {
+	async run (interaction, translate) {
 
 		let user = await this.client.resolveUser(args[0]);
 		let text = args.join(" ");
@@ -26,11 +26,14 @@ class YouTubeComment extends Command {
 		if(user){
 			text = args.slice(1).join(" ");
 		} else {
-			user = message.author;
+			user = interaction.user;
 		}
 
 		if(!text){
-			return message.error("images/phcomment:MISSING_TEXT"); // same text as phcomment
+			return interaction.reply({
+				content: translate("images/phcomment:MISSING_TEXT"),
+				ephemeral: true
+			}); // same text as phcomment
 		}
 
 		const m = await message.sendT("misc:PLEASE_WAIT", null, {
@@ -47,6 +50,4 @@ class YouTubeComment extends Command {
 
 	}
 
-}
-
-module.exports = YouTubeComment;
+};

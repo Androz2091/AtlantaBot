@@ -1,7 +1,7 @@
 const Command = require("../../base/Command.js"),
 	Discord = require("discord.js");
 
-class Skip extends Command {
+module.exports = class extends Command {
 
 	constructor (client) {
 		super(client, {
@@ -9,7 +9,7 @@ class Skip extends Command {
 			dirname: __dirname,
 			enabled: true,
 			guildOnly: true,
-			aliases: [ "next" ],
+			
 			memberPermissions: [],
 			botPermissions: [ "SEND_MESSAGES", "EMBED_LINKS" ],
 			nsfw: false,
@@ -18,27 +18,36 @@ class Skip extends Command {
 		});
 	}
 
-	async run (message, args, data) {
+	async run (interaction, translate, data) {
         
 		const queue = this.client.player.getQueue(message);
 
 		const voice = message.member.voice.channel;
 		if (!voice){
-			return message.error("music/play:NO_VOICE_CHANNEL");
+			return interaction.reply({
+				content: translate("music/play:NO_VOICE_CHANNEL"),
+				ephemeral: true
+			});
 		}
 
 		if(!queue){
-			return message.error("music/play:NOT_PLAYING");
+			return interaction.reply({
+				content: translate("music/play:NOT_PLAYING"),
+				ephemeral: true
+			});
 		}
 
 		if(!queue.tracks[0]){
-			return message.error("music/skip:NO_NEXT_SONG");
+			return interaction.reply({
+				content: translate("music/skip:NO_NEXT_SONG"),
+				ephemeral: true
+			});
 		}
 
 		const members = voice.members.filter((m) => !m.user.bot);
 
 		const embed = new Discord.MessageEmbed()
-			.setAuthor(message.translate("music/skip:DESCRIPTION"))
+			.setAuthor(translate("music/skip:DESCRIPTION"))
 			.setThumbnail(queue.tracks[0].thumbnail)
 			.setFooter(data.config.embed.footer)
 			.setColor(data.config.embed.color);
@@ -51,7 +60,7 @@ class Skip extends Command {
 
 			const mustVote = Math.floor(members.size/2+1);
 
-			embed.setDescription(message.translate("music/skip:VOTE_CONTENT", {
+			embed.setDescription(translate("music/skip:VOTE_CONTENT", {
 				songName: queue.tracks[0].name,
 				voteCount: 0,
 				requiredCount: mustVote
@@ -74,11 +83,11 @@ class Skip extends Command {
 				const haveVoted = reaction.count-1;
 				if(haveVoted >= mustVote){
 					this.client.player.skip(message);
-					embed.setDescription(message.translate("music/skip:SUCCESS"));
+					embed.setDescription(translate("music/skip:SUCCESS"));
 					m.edit({ embeds: [embed] });
 					collector.stop(true);
 				} else {
-					embed.setDescription(message.translate("music/skip:VOTE_CONTENT", {
+					embed.setDescription(translate("music/skip:VOTE_CONTENT", {
 						songName: queue.tracks[0].title,
 						voteCount: haveVoted,
 						requiredCount: mustVote
@@ -89,18 +98,19 @@ class Skip extends Command {
 
 			collector.on("end", (collected, isDone) => {
 				if(!isDone){
-					return message.error("misc:TIMES_UP");
+					return interaction.reply({
+						content: translate("misc:TIMES_UP"),
+						ephemeral: true
+					});
 				}
 			});
 
 		} else {
 			this.client.player.skip(message);
-			embed.setDescription(message.translate("music/skip:SUCCESS"));
+			embed.setDescription(translate("music/skip:SUCCESS"));
 			m.edit({ embeds: [embed] });
 		}
         
 	}
 
-}
-
-module.exports = Skip;
+};

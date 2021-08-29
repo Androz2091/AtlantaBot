@@ -1,6 +1,6 @@
 const Command = require("../../base/Command.js");
 
-class Deletemod extends Command {
+module.exports = class extends Command {
 
 	constructor (client) {
 		super(client, {
@@ -8,7 +8,7 @@ class Deletemod extends Command {
 			dirname: __dirname,
 			enabled: true,
 			guildOnly: true,
-			aliases: [ "autodeletemodcommands" ],
+			
 			memberPermissions: [ "MANAGE_MESSAGES" ],
 			botPermissions: [ "SEND_MESSAGES", "EMBED_LINKS" ],
 			nsfw: false,
@@ -17,22 +17,27 @@ class Deletemod extends Command {
 		});
 	}
 
-	async run (message, args, data) {
+	async run (interaction, translate, data) {
 		const status = args[0];
 		if(!status || status !== "on" && status !== "off"){
-			return message.error("administration/deletemod:MISSING_STATUS");
+			return interaction.reply({
+				content: translate("administration/deletemod:MISSING_STATUS"),
+				ephemeral: true
+			});
 		}
 		if(status === "on"){
-			data.guild.autoDeleteModCommands = true;
-			data.guild.save();
-			message.success("administration/deletemod:ENABLED");
+			data.guildData.autoDeleteModCommands = true;
+			data.guildData.save();
+			interaction.reply({
+				content: translate("administration/deletemod:ENABLED")
+			});
 		} else {
-			data.guild.autoDeleteModCommands = false;
-			data.guild.save();
-			message.success("administration/deletemod:DISABLED");
+			data.guildData.autoDeleteModCommands = false;
+			data.guildData.save();
+			interaction.reply({
+				content: translate("administration/deletemod:DISABLED")
+			});
 		}
 	}
 
-}
-
-module.exports = Deletemod;
+};

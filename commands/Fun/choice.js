@@ -1,6 +1,6 @@
 const Command = require("../../base/Command.js");
 
-class Choice extends Command {
+module.exports = class extends Command {
 
 	constructor (client) {
 		super(client, {
@@ -8,7 +8,7 @@ class Choice extends Command {
 			dirname: __dirname,
 			enabled: true,
 			guildOnly: false,
-			aliases: [ "random" ],
+			
 			memberPermissions: [],
 			botPermissions: [ "SEND_MESSAGES", "EMBED_LINKS" ],
 			nsfw: false,
@@ -17,13 +17,19 @@ class Choice extends Command {
 		});
 	}
 
-	async run (message, args) {
+	async run (interaction, translate) {
 
 		// Gets the answers by spliting on "/"
 		const answers = args.join(" ").split("/");
-		if (answers.length < 2) return message.error("fun/choice:MISSING");
+		if (answers.length < 2) return interaction.reply({
+			content: translate("fun/choice:MISSING"),
+			ephemeral: true
+		});
 		if (answers.some(answer => !answer))
-			return message.error("fun/choice:EMPTY");
+			return interaction.reply({
+				content: translate("fun/choice:EMPTY"),
+				ephemeral: true
+			});
 
 		const m = await message.sendT(
 			"fun/choice:PROGRESS",
@@ -44,6 +50,4 @@ class Choice extends Command {
         
 	}
 
-}
-
-module.exports = Choice;
+};

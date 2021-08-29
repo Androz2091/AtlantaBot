@@ -2,14 +2,14 @@ const Command = require("../../base/Command.js"),
 	Discord = require("discord.js"),
 	fetch = require("node-fetch");
 
-class Clyde extends Command {
+module.exports = class extends Command {
 	constructor (client) {
 		super(client, {
 			name: "clyde",
 			dirname: __dirname,
 			enabled: true,
 			guildOnly: false,
-			aliases: [],
+			,
 			memberPermissions: [],
 			botPermissions: [ "SEND_MESSAGES", "EMBED_LINKS", "ATTACH_FILES" ],
 			nsfw: false,
@@ -18,12 +18,15 @@ class Clyde extends Command {
 		});
 	}
 
-	async run (message, args) {
+	async run (interaction, translate) {
 
 		const text = args.join(" ");
 
 		if(!text){
-			return message.error("images/clyde:MISSING_TEXT");
+			return interaction.reply({
+				content: translate("images/clyde:MISSING_TEXT"),
+				ephemeral: true
+			});
 		}
 
 		const m = await message.sendT("misc:PLEASE_WAIT", null, {
@@ -44,6 +47,4 @@ class Clyde extends Command {
 
 	}
 
-}
-
-module.exports = Clyde;
+};
