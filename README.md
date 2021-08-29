@@ -3,7 +3,7 @@
 # Atlanta
 
 [![](https://img.shields.io/discord/565048515357835264.svg?logo=discord&colorB=7289DA&label=Atlanta%20Support)](https://discord.gg/Za9zxTH)
-[![](https://img.shields.io/discord/568120814776614924.svg?logo=discord&colorB=00BFFF&label=Atlanta%20Emojis)](https://emojis.atlanta-bot.fr)
+[![](https://img.shields.io/discord/568120814776614924.svg?logo=discord&colorB=00BFFF&label=Atlanta%20Emojis)](https://discord.gg/NPkySYKMkN)
 [![](https://img.shields.io/badge/discord.js-v13.0.0--dev-blue.svg?logo=npm)](https://github.com/discordjs)
 [![](https://img.shields.io/badge/patreon-donate-orange.svg)](https://www.patreon.com/androz2091)
 [![](https://www.codefactor.io/repository/github/Androz2091/AtlantaBot/badge)](https://www.codefactor.io/repository/github/Androz2091/AtlantaBot)
@@ -70,7 +70,7 @@ You must follow the [installation guide](https://www.atlanta-bot.fr/installation
 *   [Commands List](https://www.atlanta-bot.fr/commands)
 *   [Installation Guide](https://www.atlanta-bot.fr/installation)
 *   [F.A.Q](https://www.atlanta-bot.fr/faq/)
-*   [Discord](https://discord.atlanta-bot.fr)
+*   [Discord](https://discord.gg/NPkySYKMkN)
 *   [Twitter](https://twitter.com/AtlantaBot)
 *   [Github](https://github.com/Androz2091/AtlantaBot/)
 *   [Dashboard](https://dashboard.atlanta-bot.fr)
@@ -78,7 +78,7 @@ You must follow the [installation guide](https://www.atlanta-bot.fr/installation
 ## Contributing
 
 Before **creating an issue**, please ensure that it hasn't already been reported/suggested, and double-check the [F.A.Q](https://www.atlanta-bot.fr/faq).   
-And if you have a question, please ask it in the [Discord server](https://discord.atlanta-bot.fr/) instead of opening an issue.
+And if you have a question, please ask it in the [Discord server](https://discord.gg/NPkySYKMkN) instead of opening an issue.
 If you wish to contribute to the Atlanta codebase or documentation, feel free to fork the repository and submit a pull request!
 
 ## License

@@ -127,7 +127,7 @@ class Help extends Command {
 				permissions: [Discord.Permissions.FLAGS.ADMINISTRATOR]
 			}),
 			githubLink: "https://github.com/Androz2091",
-			supportLink: "https://discord.atlanta-bot.fr"
+			supportLink: "https://discord.gg/NPkySYKMkN"
 		}));
 		embed.setAuthor(message.translate("general/help:TITLE", {
 			name: this.client.user.username
