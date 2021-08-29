@@ -1,6 +1,6 @@
 {
     "FIRST_LOGIN": "{{user}} kullanıcı kontrol paneline ilk defa girdi! :tada:",
-    "NOT_FOUND": "Hass! Sayfa yok.",
+    "NOT_FOUND": "Hass! Sayfa Bulunamadı.",
     "NOT_FOUND_CONTENT": "Biz bu sayfayı bulamadık, Kontrol paneline geri dönüp aramayı deneyebilirsin.",
     "ERR_OCCURRED": "Hass! Birşeyler ters gitti.",
     "ERR_OCCURRED_CONTENT": "Bunu hemen düzeltmeye çalışacağız. Bu arada seçiciye geri dönebilir veya arama formunu kullanmayı deneyebilirsiniz.",

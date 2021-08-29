@@ -77,7 +77,7 @@
     },
     {
         "name": "tr-TR",
-        "nativeName": "Türk",
+        "nativeName": "Türkçe",
         "defaultMomentFormat": "Do MMMM YYYY",
         "moment": "tr",
         "default": false,
