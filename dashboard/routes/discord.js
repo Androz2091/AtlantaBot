@@ -71,7 +71,7 @@ router.get("/callback", async (req, res) => {
 	// Update session
 	req.session.user = { ... userData.infos, ... { guilds } };
 	const user = await req.client.users.fetch(req.session.user.id);
-	const userDB = await req.client.findOrCreateUser(req.session.user.id);
+	const userDB = await req.client.findOrCreateUser({ id: req.session.user.id });
 	const logsChannel = req.client.channels.cache.get(req.client.config.dashboard.logs);
 	if(!userDB.logged && logsChannel && user){
 		const embed = new Discord.MessageEmbed()
