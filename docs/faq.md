@@ -40,6 +40,6 @@ If you have a salon dedicated to advertising, you have the possibility to disabl
 ### The bot does not respond after sending a command
 
 Check that the bot has the permissions to send messages and try again.  
-If it still doesn't work, it's a bug, join the [support server](https://discord.atlanta-bot.fr)!  
+If it still doesn't work, it's a bug, join the [support server](https://discord.gg/NPkySYKMkN)!  
 
-## Any more questions? Join the [support server](https://discord.atlanta-bot.fr)!
+## Any more questions? Join the [support server](https://discord.gg/NPkySYKMkN)!

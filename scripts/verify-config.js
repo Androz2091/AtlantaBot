@@ -32,7 +32,7 @@ const checks = [
 				success("should be a valid bot token");
 				await readyResolve();
 				if(!client.guilds.cache.has("568120814776614924")){
-					error("should be added to the emojis server", "please add your bot on this server: https://emojis.atlanta-bot.fr to make the emojis working");
+					error("should be added to the emojis server", "please add your bot on this server: https://discord.gg/NPkySYKMkN to make the emojis working");
 				} else {
 					success("should be added to the emojis server");
 				}
@@ -182,6 +182,6 @@ const checks = [
 	for(const check of checks){
 		await check();
 	}
-	console.log(chalk.yellow("\n\nThank you for using Atlanta. If you need more help, join our support server here: https://discord.atlanta-bot.fr"));
+	console.log(chalk.yellow("\n\nThank you for using Atlanta. If you need more help, join our support server here: https://discord.gg/NPkySYKMkN"));
 	process.exit(0);
 })();
