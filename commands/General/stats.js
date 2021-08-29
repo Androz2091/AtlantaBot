@@ -49,7 +49,7 @@ class Stats extends Command {
 				permissions: [Discord.Permissions.FLAGS.ADMINISTRATOR]
 			}),
 			githubLink: "https://github.com/Androz2091",
-			supportLink: "https://discord.gg/NPkySYKMkN"
+			supportLink: "https://discord.atlanta-bot.fr"
 		})
 		);
 		message.channel.send({ embeds: [statsEmbed] });
