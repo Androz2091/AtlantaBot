@@ -6,5 +6,5 @@
     "ENABLED": "**Les invitations vont être automatiquement supprimés !**\n\n:arrow_right_hook: *Envoyez `{{prefix}}automod off #channel` pour ignorer un salon !*",
     "DISABLED_CHANNEL": "L'auto-modération n'est maintenant plus active dans {{channel}} !",
     "DISABLED": "D'accord ! L'auto-modération n'est maintenant plus effective sur ce serveur !",
-    "DELETED": "Votre message vient d'être supprimé car les invitations Discord ne sont pas autorisé dans ce serveur !"
+    "DELETED": "Votre message vient d'être supprimé car les invitations Discord ne sont pas autorisé sur ce serveur !"
 }
