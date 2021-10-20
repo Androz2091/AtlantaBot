@@ -1,7 +1,7 @@
 {
-    "DESCRIPTION": "Enable or disable the autoplay feature",
+    "DESCRIPTION": "Activer ou désactiver la fonction de lecture automatique",
     "USAGE": "{{prefix}}autoplay",
     "EXAMPLES": "{{prefix}}autoplay",
-    "SUCCESS_ENABLED": "{{success}} Auto play is now enabled!",
-    "SUCCESS_DISABLED": "{{success}} Auto play is now disabled!"
+    "SUCCESS_ENABLED": "{{success}} La lecture automatique est maintenant activée!",
+    "SUCCESS_DISABLED": "{{success}} La lecture automatique est maintenant désactivé!"
 }
