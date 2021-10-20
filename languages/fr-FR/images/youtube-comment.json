@@ -1,5 +1,5 @@
 {
-    "DESCRIPTION": "Generates a \"youtube-comment\" image",
-    "USAGE": "{{prefix}}youtube-comment (@member) [text]",
-    "EXAMPLES": "{{prefix}}youtube-comment Hi!\n{{prefix}}youtube-comment @Androz#2091 Hi!"
+    "DESCRIPTION": "Génère une image \"youtube-comment\"",
+    "USAGE": "{{prefix}}youtube-comment (@membre) [text]",
+    "EXAMPLES": "{{prefix}}youtube-comment Salut!\n{{prefix}}youtube-comment @Androz#2091 Salut!"
 }
