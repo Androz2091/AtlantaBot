@@ -1,5 +1,5 @@
 {
-    "DESCRIPTION": "Generates a \"phcomment\" image",
+    "DESCRIPTION": "Génération d'une image \"phcomment\"",
     "USAGE": "{{prefix}}phcomment (@membre) [texte]",
     "EXAMPLES": "{{prefix}}phcomment Salut!\n{{prefix}}phcomment @Androz#2091 Salut!",
     "MISSING_TEXT": "Veuillez spécifier le texte du message !"
