@@ -1,5 +1,5 @@
 {
-    "DESCRIPTION": "Generates a \"batslap\" image",
+    "DESCRIPTION": "Génère une image \"batslap\"",
     "USAGE": "{{prefix}}batslap (@member1) (@member2)",
     "EXAMPLES": "{{prefix}}batslap\n{{prefix}}batslap @Androz#2091 @Androz#2091"
 }
