@@ -1,7 +1,7 @@
 {
-    "DESCRIPTION": "Enable or disable the autoplay feature",
+    "DESCRIPTION": "Otomatik oynatma özelliğini etkinleştirin veya devre dışı bırakın",
     "USAGE": "{{prefix}}autoplay",
     "EXAMPLES": "{{prefix}}autoplay",
-    "SUCCESS_ENABLED": "{{success}} Auto play is now enabled!",
-    "SUCCESS_DISABLED": "{{success}} Auto play is now disabled!"
+    "SUCCESS_ENABLED": "{{success}} Otomatik oynatma artık etkin!",
+    "SUCCESS_DISABLED": "{{success}} Otomatik oynatma artık devre dışı!"
 }
