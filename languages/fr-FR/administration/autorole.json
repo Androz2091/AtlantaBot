@@ -1,5 +1,5 @@
 {
-    "DESCRIPTION": "Activez/Désactivez l'autorole sur le serveur !",
+    "DESCRIPTION": "Activez/Désactivez l'Autorole sur le serveur !",
     "USAGE": "{{prefix}}autorole [on/off] (rôle)",
     "EXAMPLES": "{{prefix}}autorole on @Membres\n{{prefix}}autorole off",
     "MISSING_STATUS": "Veuillez indiquez une valeur valide `on` ou `off`",
