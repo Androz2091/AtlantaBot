@@ -2,6 +2,6 @@
     "DESCRIPTION": "Bir üye tarafından işlenen uyarıların listesini görüntüler!",
     "USAGE": "{{prefix}}sanctions [@üye]",
     "EXAMPLES": "{{prefix}}sanctions @Androz#2091",
-    "MISSING_MEMBER": "Lütfen uygun bir üye seç!",
+    "MISSING_MEMBER": "Bir üye belirtmelisin!",
     "NO_SANCTION": "**{{username}}** hiç uyarı almadı."
 }
