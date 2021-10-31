@@ -11,7 +11,7 @@
     "CONFIRMATION": ":warning: | **Loading a backup will replace the actual server with the saved one.**\n\n:arrow_right_hook: *Answer by sending `confirm` to confirm this action!*",
     "START_LOADING": "Backup loading started!",
     "LOAD_SUCCESS": "Back-up succesvol geladen!",
-    "TITLE_INFOS": "Backup Information",
+    "TITLE_INFOS": "Backup Informatie",
     "TITLE_ID": "ID",
     "TITLE_SERVER_ID": "Server ID",
     "TITLE_SIZE": "Grootte",
