@@ -1,9 +1,9 @@
 {
-    "DESCRIPTION": "Helps you choose between the given choices!",
+    "DESCRIPTION": "Helpt u te kiezen tussen de gekozen keuzes!",
     "USAGE": "{{prefix}}choice [keuze1/keuze2/etc...]",
     "EXAMPLES": "{{prefix}}choice Vuur/Wind/Water",
-    "MISSING": "You must enter more than two choices!\n(or use the `flip` command instead)",
+    "MISSING": "Je moet meer dan twee opties invoeren!\n(of in plaats daarvan het 'flip' command gebruiken)",
     "EMPTY": "Een van uw keuzes lijkt leeg te zijn... Probeer het opnieuw!",
     "PROGRESS": "Keuze gemaakt...",
-    "DONE": "Here's my choice:"
+    "DONE": "Hier is mijn keuze:"
 }
