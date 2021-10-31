@@ -1,8 +1,8 @@
 {
-    "DESCRIPTION": "Toggle moderation commands auto deletion!",
+    "DESCRIPTION": "Schakel moderatieopdrachten automatisch verwijderen!",
     "USAGE": "{{prefix}}deletemod [on/off]",
     "EXAMPLES": "{{prefix}}deletemod on",
-    "MISSING_STATUS": "You must specify `on` or `off`",
+    "MISSING_STATUS": "U moet `on` of `off` opgeven",
     "ENABLED": "Automatic moderation commands deletion!",
     "DISABLED": "Automatic moderation commands deletion disabled!"
 }
