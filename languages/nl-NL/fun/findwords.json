@@ -1,5 +1,5 @@
 {
-    "DESCRIPTION": "Start a Findwords party, a game where you have to find words!",
+    "DESCRIPTION": "Start een zoekwoordengroep, een spel waar je woorden moet vinden!",
     "USAGE": "{{prefix}}findwords",
     "EXAMPLES": "{{prefix}}findwords",
     "INVALID_WORD": "{{member}} | Uw woord is niet geldig!",
