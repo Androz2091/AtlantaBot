@@ -3,6 +3,6 @@
     "USAGE": "{{prefix}}deletemod [on/off]",
     "EXAMPLES": "{{prefix}}deletemod on",
     "MISSING_STATUS": "U moet `on` of `off` opgeven",
-    "ENABLED": "Automatic moderation commands deletion!",
-    "DISABLED": "Automatic moderation commands deletion disabled!"
+    "ENABLED": "Automatische moderatie commands verwijderen!",
+    "DISABLED": "Automatische moderatie commands verwijderen uitgeschakeld!"
 }
