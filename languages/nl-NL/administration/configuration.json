@@ -24,7 +24,7 @@
     "AUTOMOD_DISABLED": "Automatische moderatie uitgeschakeld.",
     "AUTODELETEMOD": "Mod-opdrachten automatisch verwijderen",
     "AUTODELETEMOD_ENABLED": "Automatische moderatie-opdrachten verwijderen.",
-    "AUTODELETEMOD_DISABLED": "Automatic moderation commands deletion disabled.",
+    "AUTODELETEMOD_DISABLED": "Automatische verwijdering van moderatie commands uitgeschakeld.",
     "DASHBOARD_TITLE": "Bewerk uw configuratie:",
     "DASHBOARD_CONTENT": "Klik hier om naar het dashboard te gaan!",
     "AUTO_SANCTIONS": "Automatische sancties",
