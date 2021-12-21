@@ -1,5 +1,5 @@
 {
-    "DESCRIPTION": "Go forward or backward a specific amount of time in the current song!!",
+    "DESCRIPTION": "¡¡Avanza o retrocede una cantidad específica de tiempo en la canción actual!!",
     "USAGE": "{{prefix}}seek [time]",
     "EXAMPLES": "{{prefix}}resume 10s",
     "INVALID_TIME": "You must specify a valid number of time!",
