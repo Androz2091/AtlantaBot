@@ -1,7 +1,7 @@
 {
-    "DESCRIPTION": "Enable or disable the autoplay feature",
-    "USAGE": "{{prefix}}autoplay",
-    "EXAMPLES": "{{prefix}}autoplay",
-    "SUCCESS_ENABLED": "{{success}} Auto play is now enabled!",
-    "SUCCESS_DISABLED": "{{success}} Auto play is now disabled!"
+    "DESCRIPTION": "Activar o desactivar la función de reproducción automática",
+    "USAGE": "{{prefix}}reproducción automática",
+    "EXAMPLES": "{{prefix}}reproducción automática",
+    "SUCCESS_ENABLED": "¡{{success}} reproducción automática está activada!",
+    "SUCCESS_DISABLED": "¡{{success}} reproducción automática está desactivada!"
 }
