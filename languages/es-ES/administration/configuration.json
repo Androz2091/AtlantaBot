@@ -23,13 +23,13 @@
     "AUTOMOD_CONTENT": "Moderación automática activada. Canales ignorados: {{channels}}*",
     "AUTOMOD_DISABLED": "Moderación automática deshabilitada.",
     "AUTODELETEMOD": "Eliminación automática de los comandos de moderación",
-    "AUTODELETEMOD_ENABLED": "Automatic moderation commands deletion.",
-    "AUTODELETEMOD_DISABLED": "Automatic moderation commands deletion disabled.",
-    "DASHBOARD_TITLE": "Edit your configuration:",
+    "AUTODELETEMOD_ENABLED": "Eliminación automática de comandos de moderación.",
+    "AUTODELETEMOD_DISABLED": "Se desactivo la eliminación automática de comandos de moderación.",
+    "DASHBOARD_TITLE": "Edite su configuración:",
     "DASHBOARD_CONTENT": "¡Haga clic aquí para ir al dashboard!",
     "AUTO_SANCTIONS": "Sanciones automáticas",
-    "KICK_CONTENT": "__Kick:__ After **{{count}}** warnings.",
-    "KICK_NOT_DEFINED": "__Kick:__ Not defined.",
-    "BAN_CONTENT": "__Ban:__ After **{{count}}** warnings.",
-    "BAN_NOT_DEFINED": "__Ban:__ Not defined."
+    "KICK_CONTENT": "__Sacar**__: después de **{{count}}** advertencias.",
+    "KICK_NOT_DEFINED": "__Sacar**:__ No definido.",
+    "BAN_CONTENT": "__Baneo**: después de **{{count}}** advertencias.",
+    "BAN_NOT_DEFINED": "__Baneo**: No definido."
 }
