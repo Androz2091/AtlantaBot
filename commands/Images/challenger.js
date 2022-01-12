@@ -26,7 +26,7 @@ class Challenger extends Command {
 		const buffer = await this.client.AmeAPI.generate("challenger", { url: user.displayAvatarURL({ format: "png", size: 512 }) });
 		const attachment = new Discord.MessageAttachment(buffer, "challenger.png");
 		m.delete();
-		message.channel.send(attachment);
+		message.channel.send({files: [attachment]});
 
 	}
 
