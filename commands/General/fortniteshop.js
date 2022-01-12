@@ -3,15 +3,15 @@ const Command = require("../../base/Command.js"),
 	Canvas = require("discord-canvas");
 
 class Fortniteshop extends Command {
-	constructor (client) {
+	constructor(client) {
 		super(client, {
 			name: "fortniteshop",
 			dirname: __dirname,
 			enabled: true,
 			guildOnly: false,
-			aliases: [ "fnshop" ],
+			aliases: ["fnshop"],
 			memberPermissions: [],
-			botPermissions: [ "SEND_MESSAGES", "EMBED_LINKS" ],
+			botPermissions: ["SEND_MESSAGES", "EMBED_LINKS"],
 			nsfw: false,
 			ownerOnly: false,
 			cooldown: 500
@@ -20,7 +20,7 @@ class Fortniteshop extends Command {
 
 	async run(message, args, data) {
 
-		if(!data.config.apiKeys.fortniteFNBR || data.config.apiKeys.fortniteFNBR.length === "") {
+		if (!data.config.apiKeys.fortniteFNBR || data.config.apiKeys.fortniteFNBR.length === "") {
 			return message.error("misc:COMMAND_DISABLED");
 		}
 
@@ -44,17 +44,19 @@ class Fortniteshop extends Command {
 		const attachment = new Discord.MessageAttachment(image, "shop.png");
 
 		const embed = new Discord.MessageEmbed()
-			.setAuthor(message.translate("general/fortniteshop:HEADER", {
-				date: message.printDate(new Date(Date.now()))
-			}), this.client.user.displayAvatarURL({ size: 512, dynamic: true, format: 'png' }))
+			.setAuthor({
+				name: message.translate("general/fortniteshop:HEADER", {
+					date: message.printDate(new Date(Date.now()))
+				}), iconUJRL: this.client.user.displayAvatarURL({ size: 512, dynamic: true, format: "png" })
+			})
 			.attachFiles(attachment)
 			.setImage("attachment://shop.png")
 			.setColor(this.client.config.embed.color)
-			.setFooter(this.client.config.embed.footer);
+			.setFooter({ text: this.client.config.embed.footer });
 		await message.channel.send({ embeds: [embed] });
 		await m.delete();
 		return;
-        
+
 	}
 }
 

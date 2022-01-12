@@ -52,14 +52,14 @@ class Help extends Command {
 
 			// Creates the help embed
 			const groupEmbed = new Discord.MessageEmbed()
-				.setAuthor(
-					message.translate("general/help:CMD_TITLE", {
+				.setAuthor({
+					name: message.translate("general/help:CMD_TITLE", {
 						prefix: message.guild
 							? data.guild.prefix
 							: "",
 						cmd: cmd.help.name
 					})
-				)
+				})
 				.addField(
 					message.translate("general/help:FIELD_DESCRIPTION"),
 					description
@@ -109,7 +109,7 @@ class Help extends Command {
 					: ""
 			}))
 			.setColor(data.config.embed.color)
-			.setFooter(data.config.embed.footer);
+			.setFooter({ text: data.config.embed.footer });
 		categories.sort().forEach((cat) => {
 			const tCommands = commands.filter((cmd) => cmd.help.category === cat);
 			embed.addField(emojis.categories[cat.toLowerCase()] + " " + cat + " - (" + tCommands.size + ")", tCommands.map((cmd) => "`" + cmd.help.name + "`").join(", "));
@@ -125,14 +125,16 @@ class Help extends Command {
 			dashboardLink: "https://dashboard.atlanta-bot.fr",
 			inviteLink: await this.client.generateInvite({
 				permissions: [Discord.Permissions.FLAGS.ADMINISTRATOR],
-				scopes: ['bot', 'applications.commands']
+				scopes: ["bot", "applications.commands"]
 			}),
 			githubLink: "https://github.com/Androz2091",
 			supportLink: "https://discord.gg/NPkySYKMkN"
 		}));
-		embed.setAuthor(message.translate("general/help:TITLE", {
-			name: this.client.user.username
-		}), this.client.user.displayAvatarURL({ size: 512, dynamic: true, format: "png" }));
+		embed.setAuthor({
+			name: message.translate("general/help:TITLE", {
+				name: this.client.user.username
+			}), iconURL: this.client.user.displayAvatarURL({ size: 512, dynamic: true, format: "png" })
+		});
 		return message.channel.send({ embeds: [embed] });
 	}
 

@@ -3,38 +3,38 @@ const Command = require("../../base/Command.js"),
 
 class Quote extends Command {
 
-	constructor (client) {
+	constructor(client) {
 		super(client, {
 			name: "quote",
 			dirname: __dirname,
 			enabled: true,
 			guildOnly: true,
-			aliases: [ "quoter" ],
+			aliases: ["quoter"],
 			memberPermissions: [],
-			botPermissions: [ "SEND_MESSAGES", "EMBED_LINKS" ],
+			botPermissions: ["SEND_MESSAGES", "EMBED_LINKS"],
 			nsfw: false,
 			ownerOnly: false,
 			cooldown: 5000
 		});
 	}
 
-	async run (message, args, data) {
+	async run(message, args, data) {
 
-		function embed(m){
+		function embed(m) {
 			const embed = new Discord.MessageEmbed()
-				.setAuthor(m.author.tag, m.author.displayAvatarURL({ size: 512, dynamic: true, format: "png" }))
+				.setAuthor({ name: m.author.tag, iconURL: m.author.displayAvatarURL({ size: 512, dynamic: true, format: "png" }) })
 				.setDescription(m.content)
 				.setColor(m.member ? m.member.roles.highest ? m.member.roles.highest.color : data.config.embed.color : data.config.embed.color)
-				.setFooter(m.guild.name+" | #"+m.channel.name)
+				.setFooter({ text: m.guild.name + " | #" + m.channel.name })
 				.setTimestamp(m.createdTimestamp);
-			if(m.attachments.size > 0){
+			if (m.attachments.size > 0) {
 				embed.setImage(m.attachments.first().url);
 			}
 			return embed;
 		}
-        
+
 		const msgID = args[0];
-		if(isNaN(msgID)){
+		if (isNaN(msgID)) {
 			message.author.send(message.translate("general/quote:MISSING_ID")).then(() => {
 				message.delete();
 			}).catch(() => {
@@ -44,9 +44,9 @@ class Quote extends Command {
 		}
 
 		let channel = message.mentions.channels.first();
-		if(args[1] && !channel){
+		if (args[1] && !channel) {
 			channel = this.client.channels.cache.get(args[1]);
-			if(!channel){
+			if (!channel) {
 				message.author.send(message.translate("general/quote:NO_MESSAGE_ID")).then(() => {
 					message.delete();
 				}).catch(() => {
@@ -56,7 +56,7 @@ class Quote extends Command {
 			}
 		}
 
-		if(!channel){
+		if (!channel) {
 			message.channel.messages.fetch(msgID).catch(() => {
 				message.author.send((message.translate("general/quote:NO_MESSAGE_ID"))).then(() => {
 					message.delete();

@@ -1,36 +1,39 @@
 const Command = require("../../base/Command.js"),
 	Discord = require("discord.js");
 const permissions = Object.keys(Discord.Permissions.FLAGS);
- 
+
 class Permissions extends Command {
-	constructor (client) {
+	constructor(client) {
 		super(client, {
 			name: "permissions",
 			dirname: __dirname,
 			enabled: true,
 			guildOnly: true,
-			aliases: [ "perms" ],
+			aliases: ["perms"],
 			memberPermissions: [],
-			botPermissions: [ "SEND_MESSAGES", "EMBED_LINKS" ],
+			botPermissions: ["SEND_MESSAGES", "EMBED_LINKS"],
 			nsfw: false,
 			ownerOnly: false,
 			cooldown: 500
 		});
 	}
- 
-	async run (message) {
+
+	async run(message, args, data) {
 		const member = message.mentions.members.first() || message.member;
-		let text = "```\n"+message.translate("general/permissions:TITLE", {
-			user: member.user.username,
-			channel: message.channel.name
-		})+"\n\n";
+		// let text = "```\n" + message.translate("general/permissions:TITLE", {
+		// 	user: member.user.username,
+		// 	channel: message.channel.name
+		// }) + "\n\n";
 		const mPermissions = message.channel.permissionsFor(member);
 		const total = {
 			denied: 0,
 			allowed: 0
 		};
+
+		let text = "";
+
 		permissions.forEach((perm) => {
-			if(!mPermissions.has(perm)){
+			if (!mPermissions.has(perm)) {
 				text += `${perm} ❌\n`;
 				total.denied++;
 			} else {
@@ -38,8 +41,20 @@ class Permissions extends Command {
 				total.allowed++;
 			}
 		});
-		text += `\n${total.allowed} ✅ | ${total.denied} ❌`+"\n```";
-		message.channel.send(text);
+		text += `\n${total.allowed} ✅ | ${total.denied} ❌` + "\n```";
+
+		const embed = new Discord.MessageEmbed()
+			.setColor(data.config.embed.color)
+			.setFooter({ text: data.config.embed.footer })
+			.setAuthor({
+				name: message.translate("general/permissions:TITLE", {
+					user: member.user.username,
+					channel: message.channel.name
+				})
+			})
+			.setDescription(text);
+		message.channel.send({ embeds: [embed] });
+		// message.channel.send(text);
 	}
 }
 
