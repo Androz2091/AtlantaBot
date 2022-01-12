@@ -2,35 +2,35 @@ const Command = require("../../base/Command.js"),
 	Discord = require("discord.js");
 
 class Help extends Command {
-	constructor (client) {
+	constructor(client) {
 		super(client, {
 			name: "help",
 			dirname: __dirname,
 			enabled: true,
 			guildOnly: false,
-			aliases: [ "aide", "h", "commands" ],
+			aliases: ["aide", "h", "commands"],
 			memberPermissions: [],
-			botPermissions: [ "SEND_MESSAGES", "EMBED_LINKS" ],
+			botPermissions: ["SEND_MESSAGES", "EMBED_LINKS"],
 			nsfw: false,
 			ownerOnly: false,
 			cooldown: 5000
 		});
 	}
 
-	async run (message, args, data) {
+	async run(message, args, data) {
 
 		// if a command is provided
-		if(args[0]){
+		if (args[0]) {
 
 			const isCustom = (message.guild && data.guild.customCommands ? data.guild.customCommands.find((c) => c.name === args[0]) : false);
-            
+
 			// if the command doesn't exist, error message
 			const cmd = this.client.commands.get(args[0]) || this.client.commands.get(this.client.aliases.get(args[0]));
-			if(!cmd && isCustom){
+			if (!cmd && isCustom) {
 				return message.error("general/help:CUSTOM", {
 					cmd: args[0]
 				});
-			} else if(!cmd){
+			} else if (!cmd) {
 				return message.error("general/help:NOT_FOUND", {
 					search: args[0]
 				});
@@ -78,11 +78,11 @@ class Help extends Command {
 				.addField(
 					message.translate("general/help:FIELD_PERMISSIONS"),
 					cmd.conf.memberPermissions.length > 0
-						? cmd.conf.memberPermissions.map((p) => "`"+p+"`").join("\n")
+						? cmd.conf.memberPermissions.map((p) => "`" + p + "`").join("\n")
 						: message.translate("general/help:NO_REQUIRED_PERMISSION")
 				)
 				.setColor(this.client.config.embed.color)
-				.setFooter(this.client.config.embed.footer);
+				.setFooter({ text: this.client.config.embed.footer });
 
 			// and send the embed in the current channel
 			return message.channel.send({ embeds: [groupEmbed] });
@@ -92,8 +92,8 @@ class Help extends Command {
 		const commands = this.client.commands.filter((c) => c.conf.enabled);
 
 		commands.forEach((command) => {
-			if(!categories.includes(command.help.category)){
-				if(command.help.category === "Owner" && message.author.id !== this.client.config.owner.id){
+			if (!categories.includes(command.help.category)) {
+				if (command.help.category === "Owner" && message.author.id !== this.client.config.owner.id) {
 					return;
 				}
 				categories.push(command.help.category);
@@ -112,19 +112,20 @@ class Help extends Command {
 			.setFooter(data.config.embed.footer);
 		categories.sort().forEach((cat) => {
 			const tCommands = commands.filter((cmd) => cmd.help.category === cat);
-			embed.addField(emojis.categories[cat.toLowerCase()]+" "+cat+" - ("+tCommands.size+")", tCommands.map((cmd) => "`"+cmd.help.name+"`").join(", "));
+			embed.addField(emojis.categories[cat.toLowerCase()] + " " + cat + " - (" + tCommands.size + ")", tCommands.map((cmd) => "`" + cmd.help.name + "`").join(", "));
 		});
-		if(message.guild){
-			if(data.guild.customCommands.length > 0){
-				embed.addField(emojis.categories.custom+" "+message.guild.name+" | "+message.translate("general/help:CUSTOM_COMMANDS")+" - ("+data.guild.customCommands.length+")", data.guild.customCommands.map((cmd) => "`"+cmd.name+"`").join(", "));
+		if (message.guild) {
+			if (data.guild.customCommands.length > 0) {
+				embed.addField(emojis.categories.custom + " " + message.guild.name + " | " + message.translate("general/help:CUSTOM_COMMANDS") + " - (" + data.guild.customCommands.length + ")", data.guild.customCommands.map((cmd) => "`" + cmd.name + "`").join(", "));
 			}
 		}
-        
+
 		embed.addField("\u200B", message.translate("misc:STATS_FOOTER", {
 			donateLink: "https://patreon.com/Androz2091",
 			dashboardLink: "https://dashboard.atlanta-bot.fr",
 			inviteLink: await this.client.generateInvite({
-				permissions: [Discord.Permissions.FLAGS.ADMINISTRATOR]
+				permissions: [Discord.Permissions.FLAGS.ADMINISTRATOR],
+				scopes: ['bot', 'applications.commands']
 			}),
 			githubLink: "https://github.com/Androz2091",
 			supportLink: "https://discord.gg/NPkySYKMkN"
