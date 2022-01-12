@@ -20,9 +20,9 @@ class Achievements extends Command {
 
 	async run (message, args, data) {
 		const embed = new Discord.MessageEmbed()
-			.setAuthor(message.translate("economy/achievements:TITLE"))
+			.setAuthor({name: message.translate("economy/achievements:TITLE")})
 			.setColor(data.config.embed.color)
-			.setFooter(data.config.embed.footer);
+			.setFooter({ text: data.config.embed.footer });
         
 		embed.addField(message.translate("economy/achievements:SEND_CMD"), message.translate("economy/achievements:PROGRESS", {
 			now: data.userData.achievements.firstCommand.progress.now,

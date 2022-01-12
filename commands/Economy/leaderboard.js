@@ -20,7 +20,11 @@ class Leaderboard extends Command {
 
 	async run (message, args) {
         
-		const isOnlyOnMobile = (message.author.presence.clientStatus ? JSON.stringify(Object.keys(message.author.presence.clientStatus)) === JSON.stringify([ "mobile" ]) : false);
+		let member = null;
+		if (message.guild)
+			member = await message.guild.members.fetch(message.author).catch(() => { });
+
+		const isOnlyOnMobile = (member && member.presence.clientStatus ? JSON.stringify(Object.keys(member.presence.clientStatus)) === JSON.stringify([ "mobile" ]) : false);
 
 		const type = args[0];
 		if(!type || (type !== "credits" && type !== "level" && type !== "rep")){
