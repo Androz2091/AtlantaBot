@@ -5,29 +5,29 @@ const Command = require("../../base/Command.js"),
 
 class Backup extends Command {
 
-	constructor (client) {
+	constructor(client) {
 		super(client, {
 			name: "backup",
 			dirname: __dirname,
 			enabled: true,
 			guildOnly: true,
-			aliases: [ "sauvegarde" ],
-			memberPermissions: [ "MANAGE_GUILD" ],
-			botPermissions: [ "SEND_MESSAGES", "EMBED_LINKS", "ADMINISTRATOR" ],
+			aliases: ["sauvegarde"],
+			memberPermissions: ["MANAGE_GUILD"],
+			botPermissions: ["SEND_MESSAGES", "EMBED_LINKS", "ADMINISTRATOR"],
 			nsfw: false,
 			ownerOnly: false,
 			cooldown: 30000
 		});
 	}
 
-	async run (message, args, data) {
+	async run(message, args, data) {
 
 		const status = args[0];
-		if(!status){
+		if (!status) {
 			return message.error("administration/backup:MISSING_STATUS");
 		}
 
-		if(status === "create"){
+		if (status === "create") {
 			const m = await message.sendT("misc:PLEASE_WAIT", null, {
 				prefixEmoji: "loading"
 			});
@@ -42,23 +42,22 @@ class Backup extends Command {
 				});
 			}).catch((err) => {
 				Sentry.captureException(err);
+				console.log(err);
 				return message.error("misc:ERR_OCCURRED");
 			});
-		} else if (status === "load"){
+		} else if (status === "load") {
 			const backupID = args[1];
-			if(!backupID){
+			if (!backupID) {
 				return message.error("administration/backup:MISSING_BACKUP_ID");
 			}
 			backup.fetch(backupID).then(async () => {
 				message.sendT("administration/backup:CONFIRMATION");
-				await message.channel.awaitMessages(m => (m.author.id === message.author.id) && (m.content === "-confirm"), {
-					max: 1,
-					time: 20000,
-					errors: ["time"]
-				}).catch(() => {
-					// if the author of the commands does not confirm the backup loading
-					return message.error("administration/backup:TIMES_UP");
-				});
+				const filter = (m) => m.author.id === message.author.id && (m.content === "confirm");
+				await message.channel.awaitMessages({ filter, max: 1, time: 20000 })
+					.catch(() => {
+						// if the author of the commands does not confirm the backup loading
+						return message.error("administration/backup:TIMES_UP");
+					});
 				// When the author of the command has confirmed that he wants to load the backup on his server
 				message.author.send(message.translate("administration/backup:START_LOADING"));
 				// Load the backup
@@ -77,9 +76,9 @@ class Backup extends Command {
 					backupID
 				});
 			});
-		} else if (status === "info"){
+		} else if (status === "info") {
 			const backupID = args[1];
-			if(!backupID){
+			if (!backupID) {
 				return message.error("administration/backup:MISSING_BACKUP_ID");
 			}
 			backup.fetch(backupID).then(async (backupInfos) => {
@@ -90,11 +89,11 @@ class Backup extends Command {
 					// Displays the server from which this backup comes
 					.addField(message.translate("administration/backup:TITLE_SERVER_ID"), backupInfos.data.guildID, true)
 					// Display the size (in mb) of the backup
-					.addField(message.translate("administration/backup:TITLE_SIZE"), backupInfos.size+" mb", true)
+					.addField(message.translate("administration/backup:TITLE_SIZE"), backupInfos.size + " mb", true)
 					// Display when the backup was created
 					.addField(message.translate("administration/backup:TITLE_CREATED_AT"), message.printDate(new Date(backupInfos.data.createdTimestamp)), true)
 					.setColor(data.config.embed.color)
-					.setFooter(data.config.embed.footer);
+					.setFooter({ text: data.config.embed.footer });
 				message.channel.send({ embeds: [embed] });
 			}).catch(() => {
 				// if the backup wasn't found
@@ -105,7 +104,7 @@ class Backup extends Command {
 		} else {
 			return message.error("administration/backup:MISSING_STATUS");
 		}
-        
+
 	}
 
 }
