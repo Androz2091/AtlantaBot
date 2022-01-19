@@ -27,7 +27,7 @@ class Trash extends Command {
 		const buffer = await canvacord.Canvas.trash(user.displayAvatarURL({ format: "png", size: 512 }));
 		const attachment = new Discord.MessageAttachment(buffer, "trash.png");
 		m.delete();
-		message.channel.send({files: [attachment]});
+		message.channel.send(attachment);
 
 	}
 

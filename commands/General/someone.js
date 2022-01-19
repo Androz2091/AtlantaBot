@@ -26,7 +26,7 @@ class Someone extends Command {
 			.addField(message.translate("common:USERNAME"), member.user.username, true)
 			.addField(message.translate("common:DISCRIMINATOR"), member.user.discriminator, true)
 			.addField(message.translate("common:ID"), member.user.id, true)
-			.setThumbnail(member.user.displayAvatarURL({ size: 512, dynamic: true, format: "png" }))
+			.setThumbnail(member.user.displayAvatarURL({ size: 512, dynamic: true, format: 'png' }))
 			.setColor(data.config.embed.color);
 		message.channel.send({ embeds: [embed] });
         

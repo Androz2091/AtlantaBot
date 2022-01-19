@@ -88,9 +88,7 @@ class Marry extends Command {
 			to: member.user.toString()
 		});
 
-		const filter = (m) => m.author.id === member.id;
-		const collector = new Discord.MessageCollector(message.channel, {
-			filter,
+		const collector = new Discord.MessageCollector(message.channel, (m) => m.author.id === member.id, {
 			time: 120000
 		});
         

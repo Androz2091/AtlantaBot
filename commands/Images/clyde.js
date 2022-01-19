@@ -33,7 +33,7 @@ class Clyde extends Command {
 			const res = await fetch(encodeURI(`https://nekobot.xyz/api/imagegen?type=clyde&text=${text}`));
 			const json = await res.json();
 			const attachment = new Discord.MessageAttachment(json.message, "clyde.png");
-			message.channel.send({files: [attachment]});
+			message.channel.send(attachment);
 			m.delete();
 		} catch(e){
 			console.log(e);

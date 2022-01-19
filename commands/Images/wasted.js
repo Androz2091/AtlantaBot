@@ -26,7 +26,7 @@ class Wasted extends Command {
 		const buffer = await this.client.AmeAPI.generate("wasted", { url: user.displayAvatarURL({ format: "png", size: 512 }) });
 		const attachment = new Discord.MessageAttachment(buffer, "wasted.png");
 		m.delete();
-		message.channel.send({files: [attachment]});
+		message.channel.send(attachment);
 
 	}
 

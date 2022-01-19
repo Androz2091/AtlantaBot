@@ -3,36 +3,36 @@ const Command = require("../../base/Command.js"),
 	Discord = require("discord.js");
 
 class Fortnite extends Command {
-	constructor(client) {
+	constructor (client) {
 		super(client, {
 			name: "fortnite",
 			dirname: __dirname,
 			enabled: true,
 			guildOnly: false,
-			aliases: ["fn"],
+			aliases: [ "fn" ],
 			memberPermissions: [],
-			botPermissions: ["SEND_MESSAGES", "EMBED_LINKS"],
+			botPermissions: [ "SEND_MESSAGES", "EMBED_LINKS" ],
 			nsfw: false,
 			ownerOnly: false,
 			cooldown: 500
 		});
 	}
+ 
+	async run (message, args, data) {
 
-	async run(message, args, data) {
-
-		if (!data.config.apiKeys.fortniteTRN || data.config.apiKeys.fortniteTRN.length === "") {
+		if(!data.config.apiKeys.fortniteTRN || data.config.apiKeys.fortniteTRN.length === ""){
 			return message.success("misc:COMMAND_DISABLED");
 		}
 
 		const stats = new Canvas.FortniteStats();
 
 		const platform = args[0];
-		if (!platform || (platform !== "pc" && platform !== "xbl" && platform !== "psn")) {
+		if(!platform || (platform !== "pc" && platform !== "xbl" && platform !== "psn")){
 			return message.error("general/fortnite:MISSING_PLATFORM");
 		}
 
 		const user = args.slice(1).join(" ");
-		if (!user) {
+		if(!user){
 			return message.error("general/fortnite:MISSING_USERNAME");
 		}
 
@@ -57,8 +57,8 @@ class Fortnite extends Command {
 			.setText("match", message.translate("general/fortnite:MATCH"))
 			.setText("footer", message.translate("general/fortnite:FOOTER"))
 			.toAttachment();
-
-		if (!statsImage) {
+        
+		if(!statsImage){
 			m.delete();
 			return message.error("general/fortnite:NOT_FOUND", {
 				platform,
@@ -72,10 +72,11 @@ class Fortnite extends Command {
 				.setDescription(message.translate("general/fortnite:TITLE", {
 					username: `[${stats.data.username}](${stats.data.url.replace(new RegExp(" ", "g"), "%20")})`
 				}))
+				.attachFiles(attachment)
 				.setImage("attachment://fortnite-stats-image.png")
 				.setColor(data.config.embed.color)
-				.setFooter({ text: data.config.embed.footer });
-		message.channel.send({ embeds: [embed], files: [attachment] });
+				.setFooter(data.config.embed.footer);
+		message.channel.send({ embeds: [embed] });
 		m.delete();
 	}
 }

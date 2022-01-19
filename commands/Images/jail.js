@@ -26,7 +26,7 @@ class Jail extends Command {
 		const buffer = await this.client.AmeAPI.generate("jail", { url: user.displayAvatarURL({ format: "png", size: 1024 }) });
 		const attachment = new Discord.MessageAttachment(buffer, "jail.png");
 		m.delete();
-		message.channel.send({files: [attachment]});
+		message.channel.send(attachment);
 
 	}
 

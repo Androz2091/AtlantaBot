@@ -26,7 +26,7 @@ class Burn extends Command {
 		const buffer = await this.client.AmeAPI.generate("burn", { url: user.displayAvatarURL({ format: "png", size: 512 }) });
 		const attachment = new Discord.MessageAttachment(buffer, "burn.png");
 		m.delete();
-		message.channel.send({files: [attachment]});
+		message.channel.send(attachment);
 
 	}
 

@@ -6,25 +6,25 @@ const Command = require("../../base/Command.js"),
 
 class Minecraft extends Command {
 
-	constructor(client) {
+	constructor (client) {
 		super(client, {
 			name: "minecraft",
 			dirname: __dirname,
 			enabled: true,
 			guildOnly: false,
-			aliases: ["mc"],
+			aliases: [ "mc" ],
 			memberPermissions: [],
-			botPermissions: ["SEND_MESSAGES", "EMBED_LINKS"],
+			botPermissions: [ "SEND_MESSAGES", "EMBED_LINKS" ],
 			nsfw: false,
 			ownerOnly: false,
 			cooldown: 3000
 		});
 	}
 
-	async run(message, args, data) {
+	async run (message, args, data) {
 
 		const ip = args[0];
-		if (!ip) {
+		if(!ip){
 			return message.error("general/minecraft:MISSING_IP");
 		}
 
@@ -34,7 +34,7 @@ class Minecraft extends Command {
 			host: ip
 		};
 
-		if (ip.split(":").length > 1) {
+		if(ip.split(":").length > 1){
 			options = {
 				type: "minecraft",
 				host: ip.split(":")[0],
@@ -47,14 +47,14 @@ class Minecraft extends Command {
 		});
 
 		let json = null;
-
+        
 		await gamedig.query(options).then((res) => {
 			json = res;
 		}).catch((err) => {
 			Sentry.captureException(err);
 		});
 
-		if (!json) {
+		if(!json){
 			options.type = "minecraftpe";
 			await gamedig.query(options).then((res) => {
 				json = res;
@@ -63,21 +63,19 @@ class Minecraft extends Command {
 			});
 		}
 
-		if (!json) {
+		if(!json){
 			return m.error("general/minecraft:FAILED", null, {
 				edit: true
 			});
 		}
 
-		const imgRes = await fetch("https://www.minecraftskinstealer.com/achievement/a.php?i=2&h=Success&t=" + ip);
+		const imgRes = await fetch("https://www.minecraftskinstealer.com/achievement/a.php?i=2&h=Success&t="+ip);
 		const imgAttachment = new Discord.MessageAttachment(await imgRes.buffer(), "success.png");
 
 		const mcEmbed = new Discord.MessageEmbed()
-			.setAuthor({
-				name: message.translate("general/minecraft:FIELD_NAME", {
-					ip: json.name
-				})
-			})
+			.setAuthor(message.translate("general/minecraft:FIELD_NAME", {
+				ip: json.name
+			}))
 			.addField(message.translate("general/minecraft:FIELD_VERSION"),
 				json.raw.vanilla.raw.version.name
 			)
@@ -95,7 +93,7 @@ class Minecraft extends Command {
 			.addField(message.translate("general/minecraft:FIELD_IP"), json.connect)
 			.setColor(data.config.embed.color)
 			.setThumbnail(favicon)
-			.setFooter({ text: data.config.embed.footer });
+			.setFooter(data.config.embed.footer);
 
 		m.edit({ embeds: [mcEmbed], files: [imgAttachment] });
 

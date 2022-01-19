@@ -26,7 +26,7 @@ class Brazzers extends Command {
 		const buffer = await this.client.AmeAPI.generate("brazzers", { url: user.displayAvatarURL({ format: "png", size: 512 }) });
 		const attachment = new Discord.MessageAttachment(buffer, "brazzers.png");
 		m.delete();
-		message.channel.send({files: [attachment]});
+		message.channel.send(attachment);
 
 	}
 

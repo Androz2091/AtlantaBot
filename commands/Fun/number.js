@@ -5,7 +5,7 @@ const currentGames = {};
 
 class Number extends Command {
 
-	constructor(client) {
+	constructor (client) {
 		super(client, {
 			name: "number",
 			dirname: __dirname,
@@ -13,14 +13,14 @@ class Number extends Command {
 			guildOnly: true,
 			aliases: [],
 			memberPermissions: [],
-			botPermissions: ["SEND_MESSAGES", "EMBED_LINKS"],
+			botPermissions: [ "SEND_MESSAGES", "EMBED_LINKS" ],
 			nsfw: false,
 			ownerOnly: false,
 			cooldown: 5000
 		});
 	}
 
-	async run(message) {
+	async run (message) {
 
 		if (currentGames[message.guild.id]) {
 			return message.error("fun/number:GAME_RUNNING");
@@ -34,11 +34,13 @@ class Number extends Command {
 		// Store the date wich the game has started
 		const gameCreatedAt = Date.now();
 
-		const filter = (m) => !m.author.bot;
-		const collector = new Discord.MessageCollector(message.channel, {
-			filter,
-			time: 480000 // 8 minutes
-		});
+		const collector = new Discord.MessageCollector(
+			message.channel,
+			m => !m.author.bot,
+			{
+				time: 480000 // 8 minutes
+			}
+		);
 		currentGames[message.guild.id] = true;
 
 		collector.on("collect", async msg => {
@@ -54,7 +56,7 @@ class Number extends Command {
 			const parsedNumber = parseInt(msg.content, 10);
 
 			if (parsedNumber === number) {
-				const time = this.client.functions.convertTime(message.guild, Date.now() - gameCreatedAt);
+				const time = this.client.functions.convertTime(message.guild, Date.now()-gameCreatedAt);
 				message.sendT("fun/number:GAME_STATS", {
 					winner: msg.author.toString(),
 					number,
