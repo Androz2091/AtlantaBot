@@ -6,25 +6,25 @@ const langs = ["afrikaans", "albanian", "amharic", "arabic", "armenian", "azerba
 
 class Translate extends Command {
 
-	constructor(client) {
+	constructor (client) {
 		super(client, {
 			name: "translate",
 			dirname: __dirname,
 			enabled: true,
 			guildOnly: false,
-			aliases: ["traduction", "translation", "trad"],
+			aliases: [ "traduction", "translation", "trad" ],
 			memberPermissions: [],
-			botPermissions: ["SEND_MESSAGES", "EMBED_LINKS"],
+			botPermissions: [ "SEND_MESSAGES", "EMBED_LINKS" ],
 			nsfw: false,
 			ownerOnly: false,
 			cooldown: 8000
 		});
 	}
 
-	async run(message, args, data) {
-
-		if (args[0] === "langs-list") {
-			const langsList = "```Css\n" + (langs.map((l, i) => `#${i + 1} - ${l}`).join("\n")) + "```";
+	async run (message, args, data) {
+        
+		if(args[0] === "langs-list"){
+			const langsList = "```Css\n"+(langs.map((l, i) => `#${i+1} - ${l}`).join("\n"))+"```";
 			message.author.send(langsList).then(() => {
 				message.success("general/translate:LIST_SENT");
 			}).catch(() => {
@@ -32,30 +32,30 @@ class Translate extends Command {
 			});
 			return;
 		}
-
+        
 		const pWait = await message.sendT("misc:PLEASE_WAIT", null, {
 			prefixEmoji: "loading"
 		});
-
-		if (!args[0]) {
+        
+		if(!args[0]){
 			return pWait.error("general/translate:MISSING_LANGUAGE", {
 				prefix: data.guild.prefix
 			}, {
 				edit: true
 			});
 		}
-
-		if (!args[1]) {
+    
+		if(!args[1]){
 			return pWait.error("general/translate:MISSING_CONTENT", null, {
 				edit: true
 			});
 		}
-
+        
 		// Gets different args
 		const language = args[0].toLowerCase();
 		const toTranslate = args.slice(1).join(" ");
-
-		if (!langs.includes(language)) {
+        
+		if(!langs.includes(language)){
 			return pWait.error("general/translate:INVALID_LANGUAGE", {
 				prefix: data.guild.prefix,
 				search: language
@@ -63,18 +63,18 @@ class Translate extends Command {
 				edit: true
 			});
 		}
-
+        
 		const translated = await translate(toTranslate, { to: language });
 
 		const resEmbed = new Discord.MessageEmbed()
-			.setAuthor({ name: "Translator", iconURL: this.client.user.displayAvatarURL({ size: 512, dynamic: true, format: "png" }) })
-			.addField(translated.from.language.iso, "```" + toTranslate + "```")
-			.addField(language, "```" + translated.text + "```")
+			.setAuthor("Translator", this.client.user.displayAvatarURL({ size: 512, dynamic: true, format: "png" }))
+			.addField(translated.from.language.iso, "```"+toTranslate+"```")
+			.addField(language, "```"+translated.text+"```")
 			.setColor(data.config.embed.color)
-			.setFooter({ text: data.config.embed.footer });
+			.setFooter(data.config.embed.footer);
 
-		return pWait.edit({ content: null, embeds: [resEmbed] });
-
+		return pWait.edit({ embeds: [resEmbed] });
+        
 	}
 
 }

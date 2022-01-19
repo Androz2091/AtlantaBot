@@ -26,7 +26,7 @@ class Scary extends Command {
 		const buffer = await this.client.AmeAPI.generate("scary", { url: user.displayAvatarURL({ format: "png", size: 512 }) });
 		const attachment = new Discord.MessageAttachment(buffer, "scary.png");
 		m.delete();
-		message.channel.send({files: [attachment]});
+		message.channel.send(attachment);
 
 	}
 

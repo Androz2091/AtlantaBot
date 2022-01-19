@@ -31,7 +31,7 @@ class Bed extends Command {
 		try {
 			const buffer = await canvacord.Canvas.bed(users[0].displayAvatarURL({ format: "png" }), users[1].displayAvatarURL({ format: "png" }));
 			const attachment = new Discord.MessageAttachment(buffer, "bed.png");
-			message.channel.send({files: [attachment]});
+			message.channel.send(attachment);
 			m.delete();
 		} catch(e){
 			console.log(e);

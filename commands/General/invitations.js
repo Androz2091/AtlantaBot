@@ -3,7 +3,7 @@ const Command = require("../../base/Command.js"),
 
 class Invitations extends Command {
 
-	constructor(client) {
+	constructor (client) {
 		super(client, {
 			name: "invitations",
 			dirname: __dirname,
@@ -11,26 +11,26 @@ class Invitations extends Command {
 			guildOnly: true,
 			aliases: [],
 			memberPermissions: [],
-			botPermissions: ["SEND_MESSAGES", "EMBED_LINKS", "MANAGE_GUILD"],
+			botPermissions: [ "SEND_MESSAGES", "EMBED_LINKS", "MANAGE_GUILD" ],
 			nsfw: false,
 			ownerOnly: false,
 			cooldown: 3000
 		});
 	}
 
-	async run(message, args, data) {
+	async run (message, args, data) {
 
 		let member = await this.client.resolveMember(args[0], message.guild);
 		if (!member) member = message.member;
 
 		// Gets the invites
-		const invites = await message.guild.invites.fetch().catch(() => { });
+		const invites = await message.guild.fetchInvites().catch(() => {});
 		if (!invites) return message.error("misc:ERR_OCCURRED");
-
+        
 		const memberInvites = invites.filter((i) => i.inviter && i.inviter.id === member.user.id);
 
-		if (memberInvites.size <= 0) {
-			if (member === message.member) {
+		if(memberInvites.size <= 0){
+			if(member === message.member){
 				return message.error("general/invitations:NOBODY_AUTHOR");
 			} else {
 				return message.error("general/invitations:NOBODY_MEMBER", {
@@ -48,11 +48,11 @@ class Invitations extends Command {
 		}).join("\n");
 		let index = 0;
 		memberInvites.forEach((invite) => index += invite.uses);
-
+        
 		const embed = new Discord.MessageEmbed()
 			.setColor(data.config.embed.color)
-			.setFooter({ text: data.config.embed.footer })
-			.setAuthor({ name: message.translate("general/invitations:TRACKER") })
+			.setFooter(data.config.embed.footer)
+			.setAuthor(message.translate("general/invitations:TRACKER"))
 			.setDescription(message.translate("general/invitations:TITLE", {
 				member: member.user.tag,
 				guild: message.guild.name

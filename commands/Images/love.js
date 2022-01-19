@@ -32,7 +32,7 @@ class Love extends Command {
 			const res = await fetch(encodeURI(`https://nekobot.xyz/api/imagegen?type=ship&user1=${users[0].displayAvatarURL({ format: "png", size: 512 })}&user2=${users[1].displayAvatarURL({ format: "png", size: 512 })}`));
 			const json = await res.json();
 			const attachment = new Discord.MessageAttachment(json.message, "love.png");
-			message.channel.send({files: [attachment]});
+			message.channel.send(attachment);
 			m.delete();
 		} catch(e){
 			console.log(e);

@@ -26,7 +26,7 @@ class Approved extends Command {
 		const buffer = await this.client.AmeAPI.generate("approved", { url: user.displayAvatarURL({ format: "png", size: 512 }) });
 		const attachment = new Discord.MessageAttachment(buffer, "approved.png");
 		m.delete();
-		message.channel.send({files: [attachment]});
+		message.channel.send(attachment);
 
 	}
 
