@@ -43,7 +43,7 @@ class Phcomment extends Command {
 				message: text
 			});
 			const attachment = new Discord.MessageAttachment(buffer, "phcomment.png");
-			message.channel.send(attachment);
+			message.channel.send({files: [attachment]});
 			m.delete();
 		} catch(e){
 			console.log(e);

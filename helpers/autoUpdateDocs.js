@@ -18,8 +18,8 @@ module.exports = {
 		let text = `# Commands  \nHere's the list of Atlanta commands. This one contains more than **${Math.floor(commands.size/10)}0 commands** in **${categories.length} categories**!  \n\n#### Contents of the table  \n**Name**: The name of the command  \n**Description**: A brief explanation of the purpose of the command  \n**Usage**: The arguments/options that the command takes in parameters  \n**Cooldown**: The time that must elapse between each command so that it can be executed again by the user\n\n`;
 
 		categories.sort(function(a, b){
-			const aCmdsLength = commands.filter((cmd) => cmd.help.category === a).array().length;
-			const bCmdsLength = commands.filter((cmd) => cmd.help.category === b).array().length;
+			const aCmdsLength = commands.filter((cmd) => cmd.help.category === a).length;
+			const bCmdsLength = commands.filter((cmd) => cmd.help.category === b).length;
 			if(aCmdsLength > bCmdsLength){
 				return -1;
 			} else {
@@ -29,7 +29,7 @@ module.exports = {
 			const arrCat = [
 				[ "Name", "Description", "Usage", "Cooldown" ]
 			];
-			const cmds = commands.filter((cmd) => cmd.help.category === cat).array();
+			const cmds = commands.filter((cmd) => cmd.help.category === cat);
 			text += `### ${cat} (${cmds.length} commands)\n\n`;
 			cmds.sort(function(a, b){
 				if(a.help.name < b.help.name) {

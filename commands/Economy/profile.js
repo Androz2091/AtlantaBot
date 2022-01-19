@@ -9,55 +9,56 @@ const asyncForEach = async (array, callback) => {
 
 class Profile extends Command {
 
-	constructor (client) {
+	constructor(client) {
 		super(client, {
 			name: "profile",
 			dirname: __dirname,
 			enabled: true,
 			guildOnly: true,
-			aliases: [ "profil" ],
+			aliases: ["profil"],
 			memberPermissions: [],
-			botPermissions: [ "SEND_MESSAGES", "EMBED_LINKS" ],
+			botPermissions: ["SEND_MESSAGES", "EMBED_LINKS"],
 			nsfw: false,
 			ownerOnly: false,
 			cooldown: 3000
 		});
 	}
 
-	async run (message, args, data) {
+	async run(message, args, data) {
 
 		const client = this.client;
 
 		let member = await client.resolveMember(args[0], message.guild);
-		if(!member) member = message.member;
+		if (!member) member = message.member;
 
 		// Check if the user is a bot
-		if(member.user.bot){
+		if (member.user.bot) {
 			return message.error("economy/profile:BOT_USER");
 		}
 
 		// Gets the data of the user whose profile you want to display
-		const memberData = (member.id === message.author.id ? data.memberData : await client.findOrCreateMember({ id: member.id, guildID: message.guild.id}));
+		const memberData = (member.id === message.author.id ? data.memberData : await client.findOrCreateMember({ id: member.id, guildID: message.guild.id }));
 		const userData = (member.id === message.author.id ? data.userData : await client.findOrCreateUser({ id: member.id }));
 
 		// Check if the lover is cached 
-		if(userData.lover && !this.client.users.cache.get(userData.lover)){
+		if (userData.lover && !this.client.users.cache.get(userData.lover)) {
 			await this.client.users.fetch(userData.lover, true);
 		}
 
 		const commonsGuilds = client.guilds.cache.filter((g) => g.members.cache.get(member.id));
 		let globalMoney = 0;
-		await asyncForEach(commonsGuilds.array(), async (guild) => {
+		await asyncForEach(commonsGuilds, async (guild) => {
 			const memberData = await client.findOrCreateMember({ id: member.id, guildID: guild.id });
-			globalMoney+=memberData.money;
-			globalMoney+=memberData.bankSold;
+			globalMoney += memberData.money;
+			globalMoney += memberData.bankSold;
 		});
 
 		const profileEmbed = new Discord.MessageEmbed()
-			.setAuthor(message.translate("economy/profile:TITLE", {
-				username: member.user.tag
-			}), member.user.displayAvatarURL({ size: 512, dynamic: true, format: "png" }))
-			.attachFiles([{ attachment: await userData.getAchievements(), name: "achievements.png" }])
+			.setAuthor({
+				name: message.translate("economy/profile:TITLE", {
+					username: member.user.tag
+				}), iconURL: member.user.displayAvatarURL({ size: 512, dynamic: true, format: "png" })
+			})
 			.setImage("attachment://achievements.png")
 			.setDescription(userData.bio ? userData.bio : message.translate("economy/profile:NO_BIO"))
 			.addField(message.translate("economy/profile:CASH"), message.translate("economy/profile:MONEY", {
@@ -75,16 +76,16 @@ class Profile extends Command {
 			.addField(message.translate("economy/profile:LEVEL"), `**${memberData.level}**`, true)
 			.addField(message.translate("economy/profile:EXP"), `**${memberData.exp}** xp`, true)
 			.addField(message.translate("economy/profile:REGISTERED"), message.printDate(new Date(memberData.registeredAt)), true)
-			.addField(message.translate("economy/profile:BIRTHDATE"), (!userData.birthdate ? message.translate("economy/profile:NO_BIRTHDATE"): message.printDate(new Date(userData.birthdate))), true)
+			.addField(message.translate("economy/profile:BIRTHDATE"), (!userData.birthdate ? message.translate("economy/profile:NO_BIRTHDATE") : message.printDate(new Date(userData.birthdate))), true)
 			.addField(message.translate("economy/profile:LOVER"), (!userData.lover ? message.translate("economy/profile:NO_LOVER") : this.client.users.cache.get(userData.lover).tag), true)
 			.addField(message.translate("economy/profile:ACHIEVEMENTS"), message.translate("economy/profile:ACHIEVEMENTS_CONTENT", {
 				prefix: data.guild.prefix
 			}))
 			.setColor(data.config.embed.color) // Sets the color of the embed
-			.setFooter(data.config.embed.footer) // Sets the footer of the embed
+			.setFooter({ text: data.config.embed.footer }) // Sets the footer of the embed
 			.setTimestamp();
 
-		message.channel.send({ embeds: [profileEmbed] }); // Send the embed in the current channel
+		message.channel.send({ embeds: [profileEmbed], files: [{ attachment: await userData.getAchievements(), name: "achievements.png" }] }); // Send the embed in the current channel
 	}
 
 }

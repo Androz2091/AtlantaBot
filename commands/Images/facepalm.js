@@ -43,7 +43,7 @@ class Facepalm extends Command {
 		const attachment = new Discord.MessageAttachment(canvas.toBuffer(), "facepalm.png");
 
 		m.delete();
-		message.channel.send(attachment);
+		message.channel.send({files: [attachment]});
 
 	}
 

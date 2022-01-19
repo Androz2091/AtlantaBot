@@ -4,7 +4,7 @@ const Command = require("../../base/Command.js"),
 
 class Lovecalc extends Command {
 
-	constructor (client) {
+	constructor(client) {
 		super(client, {
 			name: "lovecalc",
 			dirname: __dirname,
@@ -12,14 +12,14 @@ class Lovecalc extends Command {
 			guildOnly: true,
 			aliases: ["lc"],
 			memberPermissions: [],
-			botPermissions: [ "SEND_MESSAGES", "EMBED_LINKS" ],
+			botPermissions: ["SEND_MESSAGES", "EMBED_LINKS"],
 			nsfw: false,
 			ownerOnly: false,
 			cooldown: 1000
 		});
 	}
 
-	async run (message) {
+	async run(message) {
 		const firstMember = message.mentions.members.filter(m => m.id !== message.author.id).first();
 		if (!firstMember)
 			return message.error("fun/lovecalc:MISSING");
@@ -45,7 +45,7 @@ class Lovecalc extends Command {
 		const percent = parseInt(string.substr(0, 2), 10);
 
 		const embed = new Discord.MessageEmbed()
-			.setAuthor("❤️ LoveCalc")
+			.setAuthor({ name: "❤️ LoveCalc" })
 			.setDescription(
 				message.translate("fun/lovecalc:CONTENT", {
 					percent,
@@ -54,10 +54,10 @@ class Lovecalc extends Command {
 				})
 			)
 			.setColor(this.client.config.embed.color)
-			.setFooter(this.client.config.embed.footer);
+			.setFooter({ text: this.client.config.embed.footer });
 
 		message.channel.send({ embeds: [embed] });
-        
+
 	}
 
 }

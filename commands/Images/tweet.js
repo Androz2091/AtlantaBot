@@ -47,7 +47,7 @@ class Tweet extends Command {
 		});
 		const attachment = new Discord.MessageAttachment(buffer, "twitter.png");
 		m.delete();
-		message.channel.send(attachment);
+		message.channel.send({files: [attachment]});
 
 	}
 

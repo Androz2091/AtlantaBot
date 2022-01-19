@@ -26,7 +26,7 @@ class Fire extends Command {
 		const buffer = await this.client.AmeAPI.generate("fire", { url: user.displayAvatarURL({ format: "png", size: 512 }) });
 		const attachment = new Discord.MessageAttachment(buffer, "fire.png");
 		m.delete();
-		message.channel.send(attachment);
+		message.channel.send({files: [attachment]});
 
 	}
 

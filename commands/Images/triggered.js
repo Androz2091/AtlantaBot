@@ -26,7 +26,7 @@ class Triggered extends Command {
 		const buffer = await this.client.AmeAPI.generate("triggered", { url: user.displayAvatarURL({ format: "png", size: 512 }), sepia: "true", invert: "true" });
 		const attachment = new Discord.MessageAttachment(buffer, "triggered.gif");
 		m.delete();
-		message.channel.send(attachment);
+		message.channel.send({files: [attachment]});
 
 	}
 

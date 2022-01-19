@@ -26,7 +26,7 @@ class Mission extends Command {
 		const buffer = await this.client.AmeAPI.generate("missionpassed", { url: user.displayAvatarURL({ format: "png", size: 2048 }) });
 		const attachment = new Discord.MessageAttachment(buffer, "mission.png");
 		m.delete();
-		message.channel.send(attachment);
+		message.channel.send({files: [attachment]});
 
 	}
 
