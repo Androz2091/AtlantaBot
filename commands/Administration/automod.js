@@ -32,7 +32,7 @@ class Automod extends Command {
 				prefix: data.guild.prefix
 			});
 		} else if (status === "off"){
-			if(message.mentions.channels.filter((ch) => ch.type === "text" && ch.guild.id === message.guild.id).first()){
+			if(message.mentions.channels.filter((ch) => ch.type === "GUILD_TEXT" && ch.guild.id === message.guild.id).first()){
 				const channel = message.mentions.channels.first();
 				data.guild.plugins.automod.ignored.push(channel);
 				data.guild.markModified("plugins.automod");

@@ -24,7 +24,7 @@ class Setsuggests extends Command {
 		const sentChannel = await Resolvers.resolveChannel({
 			message,
 			search: args.join(" "),
-			channelType: "text"
+			channelType: "GUILD_TEXT"
 		});
 
 		if (!sentChannel && areSuggestsEnabled) {
