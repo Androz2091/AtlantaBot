@@ -1,22 +1,22 @@
 module.exports = {
 	/* The token of your Discord Bot */
-	token: "XXXXXXXXXXX",
+	token: "NzczNTUxNzIxNDgxMzcxNjU4.X6K4Lg.1ApN5qW9tUDdiHiCuzbtmtwshOY",
 	/* For the support server */
 	support: {
-		id: "XXXXXXXXXXX", // The ID of the support server
-		logs: "XXXXXXXXXXX", // And the ID of the logs channel of your server (new servers for example)
+		id: "851802512368992276", // The ID of the support server
+		logs: "852829710626586634", // And the ID of the logs channel of your server (new servers for example)
 	},
 	/* Dashboard configuration */
 	dashboard: {
 		enabled: false, // whether the dashboard is enabled or not
-		secret: "XXXXXXXXXXX", // Your discord client secret
+		secret: "", // Your discord client secret
 		baseURL: "https://dashboard.atlanta-bot.fr", // The base URl of the dashboard
 		logs: "XXXXXXXXXXX", // The channel ID of logs
 		port: 8080, // Dashboard port
 		expressSessionPassword: "XXXXXXXXXXX", // Express session password (it can be what you want)
 		failureURL: "https://www.atlanta-bot.fr" // url on which users will be redirected if they click the cancel button (discord authentication)
 	},
-	mongoDB: "mongodb://localhost:27017/AtlantaBot", // The URl of the mongodb database
+	mongoDB: "mongodb+srv://ahmad_kamal:ahmaddya1@cluster0.9u0x0.mongodb.net/myFirstDatabase?retryWrites=true&w=majority", // The URl of the mongodb database
 	prefix: "*", // The default prefix for the bot
 	/* For the embeds (embeded messages) */
 	embed: {
@@ -25,13 +25,13 @@ module.exports = {
 	},
 	/* Bot's owner informations */
 	owner: {
-		id: "XXXXXXXXXXX", // The ID of the bot's owner
-		name: "Androz#2091" // And the name of the bot's owner
+		id: "639145405476503552", // The ID of the bot's owner
+		name: "! ZANGANAᵇˡᵃᶜᵏ ʰᵃᵗ#0001" // And the name of the bot's owner
 	},
 	/* DBL votes webhook (optional) */
 	votes: {
 		port: 5000, // The port for the server
-		password: "XXXXXXXXXXX", // The webhook auth that you have defined on discordbots.org
+		password: "XXXXXXXXXXX, // The webhook auth that you have defined on discordbots.org
 		channel: "XXXXXXXXXXX" // The ID of the channel that in you want the votes logs
 	},
 	/* The API keys that are required for certain commands */
