@@ -3,6 +3,8 @@ const { GiveawaysManager } = require("discord-giveaways");
 const { Player } = require("discord-player");
 const { Client: Joker } = require("blague.xyz");
 const { readdir } = require("fs/promises");
+const { REST } = require("@discordjs/rest");
+const { Routes } = require("discord-api-types/v9");
 
 const util = require("util"),
 	AmeClient = require("amethyste-api"),
@@ -168,6 +170,28 @@ class Atlanta extends Client {
 		});
 		this.translations = await languages();
 		autoUpdateDocs.update(this);
+
+
+		//Deploy commands
+		if (this.config.deployCommands) {
+			const rest = new REST({ version: "9" }).setToken(this.config.token);
+
+			const commands = this.commands.map(c => c.commandBody);
+
+
+			try {
+				this.logger.log("Started refreshing application (/) commands.", "log");
+
+				await rest.put(
+					Routes.applicationCommands(this.user.id),
+					{ body: commands },
+				);
+
+				this.logger.log("Successfully reloaded application (/) commands.", "log");
+			} catch (error) {
+				console.error(error);
+			}
+		}
 	}
 
 	get defaultLanguage(){
