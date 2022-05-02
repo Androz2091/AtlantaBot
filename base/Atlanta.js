@@ -2,11 +2,16 @@ const { MessageEmbed, Util, Client, Collection, Intents } = require("discord.js"
 const { GiveawaysManager } = require("discord-giveaways");
 const { Player } = require("discord-player");
 const { Client: Joker } = require("blague.xyz");
+const { readdir } = require("fs/promises");
 
 const util = require("util"),
 	AmeClient = require("amethyste-api"),
 	path = require("path"),
 	moment = require("moment");
+const {sep} = require("path");
+const mongoose = require("mongoose");
+const languages = require("../helpers/languages");
+const autoUpdateDocs = require("../helpers/autoUpdateDocs");
 
 moment.relativeTimeThreshold("s", 60);
 moment.relativeTimeThreshold("ss", 5);
@@ -40,22 +45,12 @@ class Atlanta extends Client {
 		this.logger = require("../helpers/logger"); // Load the logger file
 		this.wait = util.promisify(setTimeout); // client.wait(1000) - Wait 1 second
 		this.functions = require("../helpers/functions"); // Load the functions file
-		this.guildsData = require("../base/Guild"); // Guild mongoose model
-		this.usersData = require("../base/User"); // User mongoose model
-		this.membersData = require("../base/Member"); // Member mongoose model
 		this.logs = require("../base/Log"); // Log mongoose model
 		this.dashboard = require("../dashboard/app"); // Dashboard app
 		this.queues = new Collection(); // This collection will be used for the music
 		this.states = {}; // Used for the dashboard
 		this.knownGuilds = [];
 
-		this.databaseCache = {};
-		this.databaseCache.users = new Collection();
-		this.databaseCache.guilds = new Collection();
-		this.databaseCache.members = new Collection();
-
-		this.databaseCache.usersReminds = new Collection(); // members with active reminds
-		this.databaseCache.mutedUsers = new Collection(); // members who are currently muted
 
 		if(this.config.apiKeys.amethyste){
 			this.AmeAPI = new AmeClient(this.config.apiKeys.amethyste);
@@ -162,6 +157,19 @@ class Atlanta extends Client {
 		});
 	}
 
+	async init() {
+		await this.loadCommands();
+		await this.loadEvents();
+		await this.login(this.config.token);
+		mongoose.connect(this.config.mongoDB, { useNewUrlParser: true, useUnifiedTopology: true }).then(() => {
+			this.logger.log("Connected to the Mongodb database.", "log");
+		}).catch((err) => {
+			this.logger.log("Unable to connect to the Mongodb database. Error:"+err, "error");
+		});
+		this.translations = await languages();
+		autoUpdateDocs.update(this);
+	}
+
 	get defaultLanguage(){
 		return this.languages.find((language) => language.default).name;
 	}
@@ -192,23 +200,56 @@ class Atlanta extends Client {
 	}
 
 	// This function is used to load a command and add it to the collection
-	loadCommand (commandPath, commandName) {
-		try {
-			const props = new (require(`.${commandPath}${path.sep}${commandName}`))(this);
-			this.logger.log(`Loading Command: ${props.help.name}. 👌`, "log");
-			props.conf.location = commandPath;
-			if (props.init){
-				props.init(this);
-			}
-			this.commands.set(props.help.name, props);
-			props.help.aliases.forEach((alias) => {
-				this.aliases.set(alias, props.help.name);
+	async loadCommands () {
+		const content = await readdir("./commands/").catch(console.error);
+		if (!content || !content.length) return console.error("Please create folder in \"commands\" folder.");
+		const groups = [];
+		content.forEach(element => {
+			if (!element.includes(".")) groups.push(element);
+		});
+		for (const folder of groups) {
+			const files = await readdir(`./commands/${folder}`).catch(console.error);
+			if (!files || !files.length) return console.error(`Please create files in "${folder}" folder.`);
+			files.filter((file) => file.split(".").pop() === "js").forEach(element => {
+				try {
+					const command = new (require(`./commands/${folder}${sep}${element}`))(this);
+					this.logger.log(`Loading Command: ${command.help.name}. 👌`, "log");
+					if (command.init) {
+						command.init(this);
+					}
+					this.commands.set(command.help.name, command);
+					command.help.aliases.forEach((alias) => {
+						this.aliases.set(alias, command.help.name);
+					});
+				} catch (e) {
+					console.error(`Unable to load command ${element}: ${e}`);
+				}
 			});
-			return false;
-		} catch (e) {
-			return `Unable to load command ${commandName}: ${e}`;
 		}
 	}
+
+	// This function is used to load an event and add it to the collection
+	async loadEvents () {
+		const folders = await readdir("./events/").catch(console.error);
+		if (!folders || !folders.length) return console.error("Please create folder in \"commands\" folder.");
+		const groups = [];
+		folders.forEach(element => {
+			if (!element.includes(".")) groups.push(element);
+		});
+		for (const directory of groups) {
+			const files = await readdir(`./events/${directory}`).catch(console.error);
+			files.filter((file) => file.split(".").pop() === "js").forEach(file => {
+				try {
+					const event = new (require(`../events/${directory}/${file}`))(this);
+					this.logger.log(`Loading Event: ${file.split(".")[0]}`);
+					this.on(file.split(".")[0], (...args) => event.run(...args));
+				} catch (e) {
+					console.error(`Unable to load event ${file.split(".")[0]}: ${e}`);
+				}
+			});
+		}
+	}
+
 
 	// This function is used to unload a command (you need to load them again)
 	async unloadCommand (commandPath, commandName) {
@@ -228,66 +269,6 @@ class Atlanta extends Client {
 		return false;
 	}
 
-	// This function is used to find a user data or create it
-	async findOrCreateUser({ id: userID }, isLean){
-		if(this.databaseCache.users.get(userID)){
-			return isLean ? this.databaseCache.users.get(userID).toJSON() : this.databaseCache.users.get(userID);
-		} else {
-			let userData = (isLean ? await this.usersData.findOne({ id: userID }).lean() : await this.usersData.findOne({ id: userID }));
-			if(userData){
-				if(!isLean) this.databaseCache.users.set(userID, userData);
-				return userData;
-			} else {
-				userData = new this.usersData({ id: userID });
-				await userData.save();
-				this.databaseCache.users.set(userID, userData);
-				return isLean ? userData.toJSON() : userData;
-			}
-		}
-	}
-
-	// This function is used to find a member data or create it
-	async findOrCreateMember({ id: memberID, guildID }, isLean){
-		if(this.databaseCache.members.get(`${memberID}${guildID}`)){
-			return isLean ? this.databaseCache.members.get(`${memberID}${guildID}`).toJSON() : this.databaseCache.members.get(`${memberID}${guildID}`);
-		} else {
-			let memberData = (isLean ? await this.membersData.findOne({ guildID, id: memberID }).lean() : await this.membersData.findOne({ guildID, id: memberID }));
-			if(memberData){
-				if(!isLean) this.databaseCache.members.set(`${memberID}${guildID}`, memberData);
-				return memberData;
-			} else {
-				memberData = new this.membersData({ id: memberID, guildID: guildID });
-				await memberData.save();
-				const guild = await this.findOrCreateGuild({ id: guildID });
-				if(guild){
-					guild.members.push(memberData._id);
-					await guild.save();
-				}
-				this.databaseCache.members.set(`${memberID}${guildID}`, memberData);
-				return isLean ? memberData.toJSON() : memberData;
-			}
-		}
-	}
-
-	// This function is used to find a guild data or create it
-	async findOrCreateGuild({ id: guildID }, isLean){
-		if(this.databaseCache.guilds.get(guildID)){
-			return isLean ? this.databaseCache.guilds.get(guildID).toJSON() : this.databaseCache.guilds.get(guildID);
-		} else {
-			let guildData = (isLean ? await this.guildsData.findOne({ id: guildID }).populate("members").lean() : await this.guildsData.findOne({ id: guildID }).populate("members"));
-			if(guildData){
-				if(!isLean) this.databaseCache.guilds.set(guildID, guildData);
-				return guildData;
-			} else {
-				guildData = new this.guildsData({ id: guildID });
-				await guildData.save();
-				this.databaseCache.guilds.set(guildID, guildData);
-				return isLean ? guildData.toJSON() : guildData;
-			}
-		}
-	}
-
-    
 	// This function is used to resolve a user from a string
 	async resolveUser(search){
 		let user = null;
@@ -302,7 +283,7 @@ class Atlanta extends Client {
 		if(search.match(/^!?(\w+)#(\d+)$/)){
 			const username = search.match(/^!?(\w+)#(\d+)$/)[0];
 			const discriminator = search.match(/^!?(\w+)#(\d+)$/)[1];
-			user = this.users.find((u) => u.username === username && u.discriminator === discriminator);
+			user = this.users.cache.find((u) => u.username === username && u.discriminator === discriminator);
 			if(user) return user;
 		}
 		user = await this.users.fetch(search).catch(() => {});
