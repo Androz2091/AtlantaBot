@@ -14,9 +14,11 @@ module.exports = class {
 		client.logger.log(`Loading a total of ${client.commands.size} command(s).`, "log");
 		client.logger.log(`${client.user.tag}, ready to serve ${client.users.cache.size} users in ${client.guilds.cache.size} servers.`, "ready");
 
-		/* DiscordBots.org STATS */
+		/*
+		// DiscordBots.org STATS
 		const discordbotsorg = require("../../helpers/discordbots.org.js");
 		discordbotsorg.init(client);
+		*/
 
 		/* UNMUTE USERS */
 		const checkUnmutes = require("../../helpers/checkUnmutes.js");
@@ -31,8 +33,10 @@ module.exports = class {
 		fortniteShop.init(client);
 
 		// Start the dashboard
+
+
 		if(client.config.dashboard.enabled){
-			client.dashboard.load(client);
+			await client.dashboard.load(client);
 		}
 
 		// Update the game every 20s
