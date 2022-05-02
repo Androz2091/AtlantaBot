@@ -22,7 +22,7 @@
         "@discord-player/extractor": "^3.0.0",
         "@discordjs/opus": "^0.5.0",
         "@k3rn31p4nic/google-translate-api": "github:k3rn31p4nic/google-translate-api",
-        "@sentry/node": "6.3.6",
+        "@sentry/node": "6.19.7",
         "@sindresorhus/slugify": "^1.1.0",
         "amethyste-api": "github:Androz2091/amethyste-api",
         "ascii-table": "0.0.9",
