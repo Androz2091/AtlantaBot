@@ -15,19 +15,19 @@ module.exports = class {
 		client.logger.log(`${client.user.tag}, ready to serve ${client.users.cache.size} users in ${client.guilds.cache.size} servers.`, "ready");
 
 		/* DiscordBots.org STATS */
-		const discordbotsorg = require("../helpers/discordbots.org.js");
+		const discordbotsorg = require("../../helpers/discordbots.org.js");
 		discordbotsorg.init(client);
 
 		/* UNMUTE USERS */
-		const checkUnmutes = require("../helpers/checkUnmutes.js");
+		const checkUnmutes = require("../../helpers/checkUnmutes.js");
 		checkUnmutes.init(client);
 
 		/* SEND REMINDS */
-		const checkReminds = require("../helpers/checkReminds.js");
+		const checkReminds = require("../../helpers/checkReminds.js");
 		checkReminds.init(client);
 
 		/* DAILY SHOP FORTNITE */
-		const fortniteShop = require("../helpers/fortniteShop.js");
+		const fortniteShop = require("../../helpers/fortniteShop.js");
 		fortniteShop.init(client);
 
 		// Start the dashboard
@@ -36,8 +36,8 @@ module.exports = class {
 		}
 
 		// Update the game every 20s
-		const status = require("../config.js").status,
-			version = require("../package.json").version;
+		const status = require("../../config.js").status,
+			version = require("../../package.json").version;
 		let i = 0;
 		setInterval(function(){
 			const toDisplay = status[parseInt(i, 10)].name.replace("{serversCount}", client.guilds.cache.size)+" | v"+version;
