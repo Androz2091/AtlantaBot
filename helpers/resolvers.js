@@ -26,7 +26,7 @@ const resolveChannel = async ({ message, search, channelType }) => {
 		if (channelFound && channelType && channelFound.type === channelType)
 			return channelFound;
 	}
-	return;
+	return undefined;
 };
 
 const resolveMember = async ({ message, search, useMessageContent = true }) => {
@@ -60,7 +60,7 @@ const resolveMember = async ({ message, search, useMessageContent = true }) => {
 		if (memberFound)
 			return memberFound;
 	}
-	return;
+	return undefined;
 };
 
 const resolveRole = async ({ message, search }) => {
@@ -91,7 +91,7 @@ const resolveRole = async ({ message, search }) => {
 		if (roleFound)
 			return roleFound;
 	}
-	return;
+	return undefined;
 };
 
 module.exports = {

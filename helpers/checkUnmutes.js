@@ -11,11 +11,12 @@ module.exports = {
 	async init(client){
 		client.membersData.find({ "mute.muted": true }).then((members) => {
 			members.forEach((member) => {
-				client.databaseCache.mutedUsers.set(`${member.id}${member.guildID}`, member);
+				client.database.cache.mutedUsers.set(`${member.id}${member.guildID}`, member);
 			});
 		});
 		setInterval(async () => {
-			client.databaseCache.mutedUsers.array().filter((m) => m.mute.endDate <= Date.now()).forEach(async (memberData) => {
+			const mutedUsersArray = client.database.cache.mutedUsers.array().filter((m) => m.mute.endDate <= Date.now());
+			for (const memberData of mutedUsersArray) {
 				const guild = client.guilds.cache.get(memberData.guildID);
 				if(!guild) return;
 				const member = guild.members.cache.get(memberData.id) || await guild.members.fetch(memberData.id).catch(() => {
@@ -54,9 +55,10 @@ module.exports = {
 					endDate: null,
 					case: null
 				};
-				client.databaseCache.mutedUsers.delete(`${memberData.id}${memberData.guildID}`);
+				client.database.cache.mutedUsers.delete(`${memberData.id}${memberData.guildID}`);
 				await memberData.save();
-			});
+			}
+
 		}, 1000);
 	}
 
