@@ -51,6 +51,7 @@ class Atlanta extends Client {
 		this.queues = new Collection(); // This collection will be used for the music
 		this.states = {}; // Used for the dashboard
 		this.knownGuilds = [];
+		this.database = new (require("./database"))(this); // Load the database file
 
 
 		if(this.config.apiKeys.amethyste){
@@ -175,7 +176,7 @@ class Atlanta extends Client {
 		if (this.config.deployCommands) {
 			const rest = new REST({ version: "9" }).setToken(this.config.token);
 
-			const commands = this.commands.map(c => c.commandBody);
+			const commands = this.commands.map(c => c.applicationCommandBody);
 
 
 			try {
@@ -235,7 +236,7 @@ class Atlanta extends Client {
 			if (!files || !files.length) return console.error(`Please create files in "${folder}" folder.`);
 			files.filter((file) => file.split(".").pop() === "js").forEach(element => {
 				try {
-					const command = new (require(`./commands/${folder}${sep}${element}`))(this);
+					const command = new (require(`../commands/${folder}${sep}${element}`))(this);
 					this.logger.log(`Loading Command: ${command.help.name}. 👌`, "log");
 					if (command.init) {
 						command.init(this);
