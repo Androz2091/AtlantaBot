@@ -43,7 +43,6 @@ class Atlanta extends Client {
 		this.customEmojis = require("../emojis.json"); // load the bot's emojis
 		this.languages = require("../languages/language-meta.json"); // Load the bot's languages
 		this.commands = new Collection(); // Creates new commands collection
-		this.aliases = new Collection(); // Creates new command aliases collection
 		this.logger = require("../helpers/logger"); // Load the logger file
 		this.wait = util.promisify(setTimeout); // client.wait(1000) - Wait 1 second
 		this.functions = require("../helpers/functions"); // Load the functions file
@@ -242,9 +241,6 @@ class Atlanta extends Client {
 						command.init(this);
 					}
 					this.commands.set(command.help.name, command);
-					command.help.aliases.forEach((alias) => {
-						this.aliases.set(alias, command.help.name);
-					});
 				} catch (e) {
 					console.error(`Unable to load command ${element}: ${e}`);
 				}

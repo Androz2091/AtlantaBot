@@ -6,7 +6,6 @@ module.exports = class Command {
 		dirname = false,
 		enabled = true,
 		guildOnly = false,
-		aliases = [],
 		botPermissions = [],
 		memberPermissions = [],
 		nsfw = false,
@@ -18,7 +17,7 @@ module.exports = class Command {
 		const category = (dirname ? dirname.split(path.sep)[parseInt(dirname.split(path.sep).length-1, 10)] : "Other");
 		this.client = client;
 		this.conf = { enabled, guildOnly, memberPermissions, botPermissions, nsfw, ownerOnly, cooldown};
-		this.help = { name, category, aliases };
+		this.help = { name, category };
 		this.applicationCommandBody = commandBody;
 	}
 };
