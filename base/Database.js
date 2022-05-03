@@ -51,4 +51,27 @@ module.exports = class Database {
 			}
 		}
 	}
+
+	// This function is used to find a member data or create it
+	async findOrCreateMember({ id: memberID, guildID }, isLean){
+		if(this.cache.members.get(`${memberID}${guildID}`)) {
+			return isLean ? this.cache.members.get(`${memberID}${guildID}`).toJSON() : this.cache.members.get(`${memberID}${guildID}`);
+		} else {
+			let memberData = (isLean ? await this.membersData.findOne({ guildID, id: memberID }).lean() : await this.membersData.findOne({ guildID, id: memberID }));
+			if(memberData){
+				if(!isLean) this.cache.members.set(`${memberID}${guildID}`, memberData);
+				return memberData;
+			} else {
+				memberData = new this.membersData({ id: memberID, guildID: guildID });
+				await memberData.save();
+				const guild = await this.findOrCreateGuild({ id: guildID });
+				if(guild){
+					guild.members.push(memberData._id);
+					await guild.save();
+				}
+				this.cache.members.set(`${memberID}${guildID}`, memberData);
+				return isLean ? memberData.toJSON() : memberData;
+			}
+		}
+	}
 };
