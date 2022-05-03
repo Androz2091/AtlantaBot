@@ -17,7 +17,7 @@ module.exports = class Database {
 	}
 
 	// This function is used to find a user data or create it
-	async findOrCreateUser({ id: userID }, isLean){
+	async findOrCreateUser({ id: userID }, isLean = false){
 		if(this.cache.users.get(userID)){
 			return isLean ? this.cache.users.get(userID).toJSON() : this.cache.users.get(userID);
 		} else {
@@ -35,7 +35,7 @@ module.exports = class Database {
 	}
 
 	// This function is used to find a guild data or create it
-	async findOrCreateGuild({ id: guildID }, isLean){
+	async findOrCreateGuild({ id: guildID }, isLean = false){
 		if(this.cache.guilds.get(guildID)){
 			return isLean ? this.cache.guilds.get(guildID).toJSON() : this.cache.guilds.get(guildID);
 		} else {
@@ -53,7 +53,7 @@ module.exports = class Database {
 	}
 
 	// This function is used to find a member data or create it
-	async findOrCreateMember({ id: memberID, guildID }, isLean){
+	async findOrCreateMember({ id: memberID, guildID }, isLean = false){
 		if(this.cache.members.get(`${memberID}${guildID}`)) {
 			return isLean ? this.cache.members.get(`${memberID}${guildID}`).toJSON() : this.cache.members.get(`${memberID}${guildID}`);
 		} else {
