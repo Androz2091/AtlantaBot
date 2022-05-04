@@ -55,6 +55,7 @@
         "mathjs": "^9.0.0",
         "md5": "^2.2.1",
         "moment": "^2.26.0",
+        "mongodb": "^4.5.0",
         "mongoose": "^5.9.25",
         "ms": "^2.1.3",
         "string-sanitizer": "^1.1.1"
