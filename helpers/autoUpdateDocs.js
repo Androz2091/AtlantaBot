@@ -29,7 +29,7 @@ module.exports = {
 			const arrCat = [
 				[ "Name", "Description", "Usage", "Cooldown" ]
 			];
-			const cmds = commands.filter((cmd) => cmd.help.category === cat).array();
+			const cmds = commands.filter((cmd) => cmd.help.category === cat).toJSON();
 			text += `### ${cat} (${cmds.length} commands)\n\n`;
 			cmds.sort(function(a, b){
 				if(a.help.name < b.help.name) {

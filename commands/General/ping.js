@@ -1,34 +1,33 @@
 const Command = require("../../base/Command.js");
-
 class Ping extends Command {
-
 	constructor (client) {
 		super(client, {
 			name: "ping",
+			description: "Get the ping of the bot",
 			dirname: __dirname,
 			enabled: true,
 			guildOnly: false,
-			aliases: [ "pong", "latency" ],
 			memberPermissions: [],
-			botPermissions: [ "SEND_MESSAGES" ],
+			botPermissions: [ "MANAGE_MESSAGES" ],
 			nsfw: false,
 			ownerOnly: false,
-			cooldown: 1000
+			cooldown: 3000,
 		});
 	}
-
-	async run (message) {
-		message.sendT("general/ping:CONTENT", {
+	async run (interaction) {
+		interaction.replyT("general/ping:CONTENT", {
 			ping: "..."
-		}).then((m) => {
-			m.sendT("general/ping:CONTENT", {
-				ping: m.createdTimestamp - message.createdTimestamp
+		}, {
+			ephemeral: true
+		}).then(() => {
+			const date = Date.now();
+			interaction.replyT("general/ping:CONTENT", {
+				ping: date - interaction.createdTimestamp
 			}, {
-				edit: true
+				edit: true,
 			});
 		});
+
 	}
-
 }
-
 module.exports = Ping;

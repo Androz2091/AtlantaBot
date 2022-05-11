@@ -1,6 +1,8 @@
 module.exports = {
 	/* The token of your Discord Bot */
 	token: "XXXXXXXXXXX",
+	/* Deploy application commands or no */
+	deployCommands: true,
 	/* For the support server */
 	support: {
 		id: "XXXXXXXXXXX", // The ID of the support server
@@ -17,7 +19,7 @@ module.exports = {
 		failureURL: "https://www.atlanta-bot.fr" // url on which users will be redirected if they click the cancel button (discord authentication)
 	},
 	mongoDB: "mongodb://localhost:27017/AtlantaBot", // The URl of the mongodb database
-	prefix: "*", // The default prefix for the bot
+	prefix: "/", // The default prefix for the bot
 	/* For the embeds (embeded messages) */
 	embed: {
 		color: "#0091fc", // The default color for the embeds

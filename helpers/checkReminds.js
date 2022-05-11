@@ -11,12 +11,12 @@ module.exports = {
 		client.usersData.find({ reminds: { $gt : [] } }).then((users) => {
 			for(const user of users){
 				if(!client.users.cache.has(user.id)) client.users.fetch(user.id);
-				client.databaseCache.usersReminds.set(user.id, user);
+				client.database.cache.usersReminds.set(user.id, user);
 			}
 		});
 		setInterval(async function(){
 			const dateNow = Date.now();
-			client.databaseCache.usersReminds.forEach(async (user) => {
+			client.database.cache.usersReminds.forEach((user) => {
 				const dUser = client.users.cache.get(user.id);
 				if(dUser){
 					const reminds = user.reminds;
@@ -36,7 +36,7 @@ module.exports = {
 						user.reminds = user.reminds.filter((r) => r.sendAt >= dateNow);
 						user.save();
 						if(user.reminds.length === 0){
-							client.databaseCache.usersReminds.delete(user.id);
+							client.database.cache.usersReminds.delete(user.id);
 						}
 					}
 				}
