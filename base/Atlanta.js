@@ -52,13 +52,14 @@ class Atlanta extends Client {
 		this.states = {}; // Used for the dashboard
 		this.knownGuilds = [];
 		this.database = new (require("./database"))(this); // Load the database file
+		this.cmdCooldown = new Map(); // Used for the command cooldown
 
 
-		if(this.config.apiKeys.amethyste){
+		if(this.config.apiKeys.amethyste) {
 			this.AmeAPI = new AmeClient(this.config.apiKeys.amethyste);
 		}
 
-		if(this.config.apiKeys.blagueXYZ){
+		if(this.config.apiKeys.blagueXYZ) {
 			this.joker = new Joker(this.config.apiKeys.blagueXYZ, {
 				defaultLanguage: "en"
 			});
@@ -163,34 +164,20 @@ class Atlanta extends Client {
 		await this.loadCommands();
 		await this.loadEvents();
 		await this.login(this.config.token);
-		mongoose.connect(this.config.mongoDB, { useNewUrlParser: true, useUnifiedTopology: true }).then(() => {
-			this.logger.log("Connected to the Mongodb database.", "log");
-		}).catch((err) => {
-			this.logger.log("Unable to connect to the Mongodb database. Error:"+err, "error");
+		mongoose.connect(this.config.mongoDB,(err) => {
+			if (err) {
+				this.logger.log("Unable to connect to the Mongodb database. Error:"+err, "error");
+			}
+			else {
+				this.logger.log("Connected to the Mongodb database.", "log");
+
+			}
 		});
 		this.translations = await languages();
 		autoUpdateDocs.update(this);
-
-
 		//Deploy commands
 		if (this.config.deployCommands) {
-			const rest = new REST({ version: "9" }).setToken(this.config.token);
-
-			const commands = this.commands.map(c => c.applicationCommandBody);
-
-
-			try {
-				this.logger.log("Started refreshing application (/) commands.", "log");
-
-				await rest.put(
-					Routes.applicationCommands(this.user.id),
-					{ body: commands },
-				);
-
-				this.logger.log("Successfully reloaded application (/) commands.", "log");
-			} catch (error) {
-				console.error(error);
-			}
+			await this.registerCommands();
 		}
 	}
 
@@ -246,6 +233,22 @@ class Atlanta extends Client {
 					console.error(`Unable to load command ${element}: ${e}`);
 				}
 			});
+		}
+	}
+
+	async registerCommands() {
+		const rest = new REST({ version: "9" }).setToken(this.config.token);
+		const commands = this.commands.map(c => c.applicationCommandBody);
+		try {
+			this.logger.log("Started refreshing application (/) commands.", "log");
+
+			await rest.put(
+				Routes.applicationCommands(this.user.id),
+				{ body: commands },
+			);
+			this.logger.log("Successfully reloaded application (/) commands.", "log");
+		} catch (error) {
+			console.error(error);
 		}
 	}
 
