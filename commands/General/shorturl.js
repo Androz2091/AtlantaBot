@@ -26,7 +26,7 @@ class ShortURL extends Command {
 			return message.error("general/shorturl:MISSING_URL");
 		}
 
-		const res = await fetch(`https://is.gd/create.php?format=simple&url=${encodeURI(url)}`);
+		const res = await fetch(`https://is.gd/create.php?format=simple&url=${encodeURIComponent(url)}`);
 		const body = await res.text();
 
 		if(body === "Error: Please enter a valid URL to shorten"){
