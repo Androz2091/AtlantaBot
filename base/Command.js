@@ -1,4 +1,9 @@
-const path = require("path");
+const path = require('path');
+
+/**
+ * Command structure
+ * @abstract
+ */
 
 module.exports = class Command {
 	constructor(client, {
