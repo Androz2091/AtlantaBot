@@ -15,7 +15,7 @@ module.exports = {
 			});
 		});
 		setInterval(async () => {
-			const mutedUsersArray = client.database.cache.mutedUsers.array().filter((m) => m.mute.endDate <= Date.now());
+			const mutedUsersArray = Array.from(client.database.cache.mutedUsers).filter((m) => m.mute.endDate <= Date.now());
 			for (const memberData of mutedUsersArray) {
 				const guild = client.guilds.cache.get(memberData.guildID);
 				if(!guild) return;
