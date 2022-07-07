@@ -265,7 +265,7 @@ class Atlanta extends Client {
 			files.filter((file) => file.split(".").pop() === "js").forEach(file => {
 				try {
 					const event = new (require(`../events/${directory}/${file}`))(this);
-					this.logger.log(`Loading Event: ${file.split(".")[0]}`);
+					this.logger.log(`Loading Event: ${file.split(".")[0]}`, "log");
 					this.on(file.split(".")[0], (...args) => event.run(...args));
 				} catch (e) {
 					console.error(`Unable to load event ${file.split(".")[0]}: ${e}`);
