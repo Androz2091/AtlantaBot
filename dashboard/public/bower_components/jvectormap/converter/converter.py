@@ -75,13 +75,12 @@ class Converter:
 
     # spatial reference to convert to
     self.spatialRef = osr.SpatialReference()
-    self.spatialRef.ImportFromProj4('+proj='+self.projection+' +a=6381372 +b=6381372 +lat_0=0 +lon_0='+str(self.longitude0))
+    self.spatialRef.ImportFromProj4(
+        f'+proj={self.projection} +a=6381372 +b=6381372 +lat_0=0 +lon_0={str(self.longitude0)}'
+    )
 
     # handle map insets
-    if args.get('insets'):
-      self.insets = json.loads(args.get('insets'))
-    else:
-      self.insets = []
+    self.insets = json.loads(args.get('insets')) if args.get('insets') else []
 
   def loadData(self):
     for sourceConfig in self.sources:
@@ -113,7 +112,7 @@ class Converter:
       for feature in layer:
         code = feature.GetFieldAsString(sourceConfig.get('country_code_index'))
         if code == '-99':
-          code = '_'+str(nextCode)
+          code = f'_{str(nextCode)}'
           nextCode += 1
         name = feature.GetFieldAsString(sourceConfig.get('country_name_index')).decode(sourceConfig.get('input_file_encoding'))
         codes[name] = code
@@ -124,19 +123,17 @@ class Converter:
       geometry = feature.GetGeometryRef()
       geometryType = geometry.GetGeometryType()
 
-      if geometryType == ogr.wkbPolygon or geometryType == ogr.wkbMultiPolygon:
-        geometry.TransformTo( self.spatialRef )
-        shapelyGeometry = shapely.wkb.loads( geometry.ExportToWkb() )
-        if not shapelyGeometry.is_valid:
-          #buffer to fix selfcrosses
-          shapelyGeometry = shapelyGeometry.buffer(0, 1)
-        shapelyGeometry = self.applyFilters(shapelyGeometry)
-        if shapelyGeometry:
-          name = feature.GetFieldAsString(sourceConfig.get('country_name_index')).decode(sourceConfig.get('input_file_encoding'))
-          code = codes[name]
-          self.features[code] = {"geometry": shapelyGeometry, "name": name, "code": code}
-      else:
-        raise Exception, "Wrong geometry type: "+geometryType
+      if geometryType not in [ogr.wkbPolygon, ogr.wkbMultiPolygon]:
+        raise (Exception, f"Wrong geometry type: {geometryType}")
+      geometry.TransformTo( self.spatialRef )
+      shapelyGeometry = shapely.wkb.loads( geometry.ExportToWkb() )
+      if not shapelyGeometry.is_valid:
+        #buffer to fix selfcrosses
+        shapelyGeometry = shapelyGeometry.buffer(0, 1)
+      if shapelyGeometry := self.applyFilters(shapelyGeometry):
+        name = feature.GetFieldAsString(sourceConfig.get('country_name_index')).decode(sourceConfig.get('input_file_encoding'))
+        code = codes[name]
+        self.features[code] = {"geometry": shapelyGeometry, "name": name, "code": code}
 
 
   def convert(self, outputFile):
@@ -184,10 +181,7 @@ class Converter:
 
 
   def renderMapInset(self, codes, left, top, width):
-    envelope = []
-    for code in codes:
-      envelope.append( self.features[code]['geometry'].envelope )
-
+    envelope = [self.features[code]['geometry'].envelope for code in codes]
     bbox = shapely.geometry.MultiPolygon( envelope ).bounds
 
     scale = (bbox[2]-bbox[0]) / width
@@ -208,18 +202,17 @@ class Converter:
         polygons = [geometry]
       path = ''
       for polygon in polygons:
-        rings = []
-        rings.append(polygon.exterior)
+        rings = [polygon.exterior]
         rings.extend(polygon.interiors)
         for ring in rings:
           for pointIndex in range( len(ring.coords) ):
             point = ring.coords[pointIndex]
             if pointIndex == 0:
-              path += 'M'+str( round( (point[0]-bbox[0]) / scale + left, self.precision) )
-              path += ','+str( round( (bbox[3] - point[1]) / scale + top, self.precision) )
+              path += f'M{str(round( (point[0]-bbox[0]) / scale + left, self.precision))}'
+              path += f',{str(round( (bbox[3] - point[1]) / scale + top, self.precision))}'
             else:
-              path += 'l' + str( round(point[0]/scale - ring.coords[pointIndex-1][0]/scale, self.precision) )
-              path += ',' + str( round(ring.coords[pointIndex-1][1]/scale - point[1]/scale, self.precision) )
+              path += f'l{str(round(point[0]/scale - ring.coords[pointIndex-1][0]/scale, self.precision))}'
+              path += f',{str(round(ring.coords[pointIndex-1][1]/scale - point[1]/scale, self.precision))}'
           path += 'Z'
       self.map.addPath(path, feature['code'], feature['name'])
     return bbox
@@ -285,7 +278,7 @@ default_args = {
 }
 
 if args['input_file'][-4:] == 'json':
-  args.update( json.loads( open(args['input_file'], 'r').read() ) )
+  args |= json.loads( open(args['input_file'], 'r').read() )
 
 for key in default_args:
   if default_args.get(key) and args.get(key) is None:
