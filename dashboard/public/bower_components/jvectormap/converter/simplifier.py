@@ -45,12 +45,8 @@ for feature in in_layer:
   geometry = feature.GetGeometryRef()
   geometryType = geometry.GetGeometryType()
 
-  if geometryType == ogr.wkbPolygon or geometryType == ogr.wkbMultiPolygon:
-    shapelyGeometry = shapely.wkb.loads( geometry.ExportToWkb() )
-    #if not shapelyGeometry.is_valid:
-      #buffer to fix selfcrosses
-      #shapelyGeometry = shapelyGeometry.buffer(0)
-    if shapelyGeometry:
+  if geometryType in [ogr.wkbPolygon, ogr.wkbMultiPolygon]:
+    if shapelyGeometry := shapely.wkb.loads(geometry.ExportToWkb()):
       geometries.append(shapelyGeometry)
 in_layer.ResetReading()
 
@@ -58,24 +54,17 @@ start = int(round(time.time() * 1000))
 # Simplification
 points = []
 connections = {}
-counter = 0
 for geom in geometries:
-  counter += 1
   polygons = []
 
   if isinstance(geom, shapely.geometry.Polygon):
     polygons.append(geom)
   else:
-    for polygon in geom:
-      polygons.append(polygon)
-
+    polygons.extend(iter(geom))
   for polygon in polygons:
     if polygon.area > 0:
-      lines = []
-      lines.append(polygon.exterior)
-      for line in polygon.interiors:
-        lines.append(line)
-
+      lines = [polygon.exterior]
+      lines.extend(iter(polygon.interiors))
       for line in lines:
         for i in range(len(line.coords)-1):
           indexFrom = i
@@ -84,42 +73,40 @@ for geom in geometries:
           pointTo = format % line.coords[indexTo]
           if pointFrom == pointTo:
             continue
-          if not (pointFrom in connections):
+          if pointFrom not in connections:
             connections[pointFrom] = {}
           connections[pointFrom][pointTo] = 1
-          if not (pointTo in connections):
+          if pointTo not in connections:
             connections[pointTo] = {}
           connections[pointTo][pointFrom] = 1
-print int(round(time.time() * 1000)) - start
-
+import argparse
 simplifiedLines = {}
 pivotPoints = {}
 def simplifyRing(ring):
-  coords = list(ring.coords)[0:-1]
-  simpleCoords = []
-
+  coords = list(ring.coords)[:-1]
   isPivot = False
   pointIndex = 0
   while not isPivot and pointIndex < len(coords):
     pointStr = format % coords[pointIndex]
     pointIndex += 1
     isPivot = ((len(connections[pointStr]) > 2) or (pointStr in pivotPoints))
-  pointIndex = pointIndex - 1
+  pointIndex -= 1
 
   if not isPivot:
     simpleRing = shapely.geometry.LineString(coords).simplify(tolerance)
     if len(simpleRing.coords) <= 2:
       return None
-    else:
-      pivotPoints[format % coords[0]] = True
-      pivotPoints[format % coords[-1]] = True
-      simpleLineKey = format % coords[0]+':'+format % coords[1]+':'+format % coords[-1]
-      simplifiedLines[simpleLineKey] = simpleRing.coords
-      return simpleRing
+    pivotPoints[format % coords[0]] = True
+    pivotPoints[format % coords[-1]] = True
+    simpleLineKey = format % coords[0]+':'+format % coords[1]+':'+format % coords[-1]
+    simplifiedLines[simpleLineKey] = simpleRing.coords
+    return simpleRing
   else:
-    points = coords[pointIndex:len(coords)]
-    points.extend(coords[0:pointIndex+1])
+    points = coords[pointIndex:]
+    points.extend(coords[:pointIndex+1])
     iFrom = 0
+    simpleCoords = []
+
     for i in range(1, len(points)):
       pointStr = format % points[i]
       if ((len(connections[pointStr]) > 2) or (pointStr in pivotPoints)):
@@ -132,7 +119,7 @@ def simplifyRing(ring):
           simpleLine = shapely.geometry.LineString(line).simplify(tolerance).coords
           lineKey = format % line[0]+':'+format % line[1]+':'+format % line[-1]
           simplifiedLines[lineKey] = simpleLine
-        simpleCoords.extend( simpleLine[0:-1] )
+        simpleCoords.extend(simpleLine[:-1])
         iFrom = i
     if len(simpleCoords) <= 2:
       return None
