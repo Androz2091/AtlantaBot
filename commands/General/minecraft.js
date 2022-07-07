@@ -1,8 +1,8 @@
-const Command = require("../../base/Command.js"),
+/* const Command = require("../../base/Command.js"),
 	Discord = require("discord.js"),
 	fetch = require("node-fetch"),
-	gamedig = require("gamedig"),
-	Sentry = require("@sentry/node");
+	// Sentry = require("@sentry/node"),
+	gamedig = require("gamedig");
 
 class Minecraft extends Command {
 
@@ -51,7 +51,8 @@ class Minecraft extends Command {
 		await gamedig.query(options).then((res) => {
 			json = res;
 		}).catch((err) => {
-			Sentry.captureException(err);
+			// Sentry.captureException(err);
+			console.error(err);
 		});
 
 		if(!json){
@@ -59,7 +60,8 @@ class Minecraft extends Command {
 			await gamedig.query(options).then((res) => {
 				json = res;
 			}).catch((err) => {
-				Sentry.captureException(err);
+				// Sentry.captureException(err);
+				console.error(err);
 			});
 		}
 
@@ -101,4 +103,4 @@ class Minecraft extends Command {
 
 }
 
-module.exports = Minecraft;
+module.exports = Minecraft; */

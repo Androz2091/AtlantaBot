@@ -1,13 +1,13 @@
 /* eslint-disable no-async-promise-executor */
 const config = require("../config.js");
-const fetch = require("node-fetch");
+// const fetch = require("node-fetch");
 
 const chalk = require("chalk");
 const success = (message) => console.log(`   ${chalk.green("✓")} ${message}`);
 const error = (message, howToFix) => console.log(`   ${chalk.red("✗")} ${message}${howToFix ? ` : ${howToFix}` : ""}`);
 const ignore = (message) => console.log(`   ${chalk.yellow("~")} ${message}`);
 
-const delay = (ms) => new Promise((r) => setTimeout(r, ms));
+// const delay = (ms) => new Promise((r) => setTimeout(r, ms));
 
 const checks = [
 	() => {
@@ -62,7 +62,7 @@ const checks = [
 			});
 		});
 	},
-	() => {
+	/* () => {
 		console.log("\n\nAPI keys");
 		return new Promise(async (resolve) => {
 			if(!config.apiKeys.amethyste){
@@ -141,7 +141,7 @@ const checks = [
 			}
 			resolve();
 		});
-	},
+	}, */
 	() => {
 		console.log("\n\nDashboard");
 		return new Promise(async (resolve) => {

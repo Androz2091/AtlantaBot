@@ -1,7 +1,7 @@
 const Command = require("../../base/Command.js"),
 	Discord = require("discord.js"),
-	backup = require("discord-backup"),
-	Sentry = require("@sentry/node");
+	// Sentry = require("@sentry/node"),
+	backup = require("discord-backup");
 
 class Backup extends Command {
 
@@ -41,7 +41,8 @@ class Backup extends Command {
 					message.error("misc:CANNOT_DM");
 				});
 			}).catch((err) => {
-				Sentry.captureException(err);
+				// Sentry.captureException(err);
+				console.error(err);
 				return message.error("misc:ERR_OCCURRED");
 			});
 		} else if (status === "load"){
@@ -67,8 +68,9 @@ class Backup extends Command {
 					backup.remove(backupID);
 					message.author.send(message.translate("administration/backup:LOAD_SUCCESS"));
 				}).catch((err) => {
-					Sentry.captureException(err);
+					// Sentry.captureException(err);
 					// If an error occurenced
+					console.error(err);
 					return message.error("misc:ERR_OCCURRED");
 				});
 			}).catch(() => {

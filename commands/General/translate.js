@@ -1,4 +1,4 @@
-const Command = require("../../base/Command.js"),
+/* const Command = require("../../base/Command.js"),
 	Discord = require("discord.js"),
 	translate = require("@k3rn31p4nic/google-translate-api");
 
@@ -79,4 +79,4 @@ class Translate extends Command {
 
 }
 
-module.exports = Translate;
+module.exports = Translate; */

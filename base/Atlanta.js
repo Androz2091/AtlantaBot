@@ -1,13 +1,13 @@
 const { MessageEmbed, Util, Client, Collection, Intents } = require("discord.js");
 const { GiveawaysManager } = require("discord-giveaways");
 const { Player } = require("discord-player");
-const { Client: Joker } = require("blague.xyz");
+// const { Client: Joker } = require("blague.xyz");
 const { readdir } = require("fs/promises");
 const { REST } = require("@discordjs/rest");
 const { Routes } = require("discord-api-types/v9");
 
 const util = require("util"),
-	AmeClient = require("amethyste-api"),
+	// AmeClient = require("amethyste-api"),
 	path = require("path"),
 	moment = require("moment");
 const {sep} = require("path");
@@ -55,7 +55,7 @@ class Atlanta extends Client {
 		this.cmdCooldown = new Map(); // Used for the command cooldown
 
 
-		if(this.config.apiKeys.amethyste) {
+		/* if(this.config.apiKeys.amethyste) {
 			this.AmeAPI = new AmeClient(this.config.apiKeys.amethyste);
 		}
 
@@ -63,7 +63,7 @@ class Atlanta extends Client {
 			this.joker = new Joker(this.config.apiKeys.blagueXYZ, {
 				defaultLanguage: "en"
 			});
-		}
+		} */
 
 		this.player = new Player(this, {
 			leaveOnEmpty: false,

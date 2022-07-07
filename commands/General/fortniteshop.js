@@ -1,4 +1,4 @@
-const Command = require("../../base/Command.js"),
+/* const Command = require("../../base/Command.js"),
 	Discord = require("discord.js"),
 	Canvas = require("discord-canvas");
 
@@ -58,4 +58,4 @@ class Fortniteshop extends Command {
 	}
 }
 
-module.exports = Fortniteshop;
+module.exports = Fortniteshop; */

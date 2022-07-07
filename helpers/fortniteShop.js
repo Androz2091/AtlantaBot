@@ -1,4 +1,4 @@
-const Canvas = require("discord-canvas"),
+/* const Canvas = require("discord-canvas"),
 	CronJob = require("cron").CronJob,
 	Discord = require("discord.js");
 
@@ -42,4 +42,4 @@ async function init(client) {
 	}, null, true, "Europe/Paris");
 }
 
-module.exports = { init };
+module.exports = { init }; */

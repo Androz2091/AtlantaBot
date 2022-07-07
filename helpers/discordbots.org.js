@@ -1,4 +1,4 @@
-/* THIS POSTS STATS TO DISCORDBOTS.ORG */
+/* THIS POSTS STATS TO DISCORDBOTS.ORG
 const DBL = require("dblapi.js");
 
 module.exports = {
@@ -7,7 +7,7 @@ module.exports = {
      * Starts to post stats to DBL
      * @param {object} client The Discord Client instance
      */
-	init(client){
+	/* init(client){
 		if(client.config.apiKeys.dbl && client.config.apiKeys.dbl !== ""){
 			const stats = new DBL(client.config.apiKeys.dbl, client);
 			setInterval(function(){
@@ -33,4 +33,4 @@ module.exports = {
 		}
 	}
 
-};
+}; */

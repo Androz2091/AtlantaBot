@@ -30,13 +30,13 @@ module.exports = {
 		id: "XXXXXXXXXXX", // The ID of the bot's owner
 		name: "Androz#2091" // And the name of the bot's owner
 	},
-	/* DBL votes webhook (optional) */
+	/* DBL votes webhook (optional)
 	votes: {
 		port: 5000, // The port for the server
 		password: "XXXXXXXXXXX", // The webhook auth that you have defined on discordbots.org
 		channel: "XXXXXXXXXXX" // The ID of the channel that in you want the votes logs
-	},
-	/* The API keys that are required for certain commands */
+	}, */
+	/* The API keys that are required for certain commands
 	apiKeys: {
 		// BLAGUE.XYZ: https://blague.xyz/
 		blagueXYZ: "XXXXXXXXXXX",
@@ -50,7 +50,7 @@ module.exports = {
 		amethyste: "XXXXXXXXXXX",
 		// SENTRY: https://sentry.io (this is not required and not recommended - you can delete the field)
 		sentryDSN: "XXXXXXXXXXX"
-	},
+	}, */
 	/* The others utils links */
 	others: {
 		github: "https://github.com/Androz2091", // Founder's github account
