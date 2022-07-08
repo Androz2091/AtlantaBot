@@ -3,6 +3,7 @@ module.exports = {
 	token: "XXXXXXXXXXX",
 	/* Deploy application commands or no */
 	deployCommands: true,
+	clientId: "XXXXXXXXXXX",
 	/* For the support server */
 	support: {
 		id: "XXXXXXXXXXX", // The ID of the support server
