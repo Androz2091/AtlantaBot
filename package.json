@@ -19,6 +19,7 @@
     "homepage": "https://github.com/Androz2091/AtlantaBot#readme",
     "dependencies": {
         "@discord-player/extractor": "^3.0.0",
+        "@discordjs/builders": "^0.15.0",
         "@discordjs/opus": "github:discordjs/opus",
         "@discordjs/rest": "^0.4.1",
         "@sindresorhus/slugify": "^1.1.0",
