@@ -8,24 +8,36 @@ class Choice extends Command {
 			dirname: __dirname,
 			enabled: true,
 			guildOnly: false,
-			aliases: [ "random" ],
 			memberPermissions: [],
 			botPermissions: [ "SEND_MESSAGES", "EMBED_LINKS" ],
 			nsfw: false,
 			ownerOnly: false,
-			cooldown: 5000
+			cooldown: 5000,
+			options: [
+				{
+					name: "answer1",
+					description: "the first answer",
+					type: "STRING",
+					required: true
+				},
+				{
+					name: "answer2",
+					description: "the second answer",
+					type: "STRING",
+					required: true
+				}
+			]
 		});
 	}
 
-	async run (message, args) {
+	async run (interaction) {
 
 		// Gets the answers by spliting on "/"
-		const answers = args.join(" ").split("/");
-		if (answers.length < 2) return message.error("fun/choice:MISSING");
-		if (answers.some(answer => !answer))
-			return message.error("fun/choice:EMPTY");
-
-		const m = await message.sendT(
+		const answers = [
+			interaction.options.getString("answer1"),
+			interaction.options.getString("answer2")
+		] 
+		const i = await interaction.replyT(
 			"fun/choice:PROGRESS",
 			null,
 			false,
@@ -34,12 +46,12 @@ class Choice extends Command {
 		);
 
 		setTimeout(() => {
-			m.success("fun/choice:DONE", null, {
+			i.success("fun/choice:DONE", null, {
 				edit: true
 			});
 			const result =
                 answers[parseInt(Math.floor(Math.random() * answers.length))];
-			message.channel.send("```" + result + "```");
+			interaction.reply("```" + result + "```");
 		}, 1500);
         
 	}

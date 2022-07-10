@@ -11,23 +11,30 @@ class Ascii extends Command {
 			dirname: __dirname,
 			enabled: true,
 			guildOnly: false,
-			aliases: [],
 			memberPermissions: [],
 			botPermissions: [ "SEND_MESSAGES", "EMBED_LINKS" ],
 			nsfw: false,
 			ownerOnly: false,
-			cooldown: 5000
+			cooldown: 5000,
+			options: [
+				{
+					name: "text",
+					description: "the text you want to render in ascii",
+					type: "STRING",
+					required: true
+				}
+			]
 		});
 	}
 
-	async run (message, args) {
-		const text = args.join(" ");
-		if (!text || text.length > 20) {
-			return message.error("fun/ascii:TEXT_MISSING");
+	async run (interaction) {
+		const text = interaction.options.getString("text")
+		if (text.length > 20) {
+			return interaction.error("fun/ascii:TEXT_MISSING");
 		}
 
 		const rendered = await figletAsync(text);
-		message.channel.send("```" + rendered + "```");
+		interaction.reply("```" + rendered + "```");
 
 	}
 

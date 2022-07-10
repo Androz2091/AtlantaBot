@@ -10,26 +10,31 @@ class Lovecalc extends Command {
 			dirname: __dirname,
 			enabled: true,
 			guildOnly: true,
-			aliases: ["lc"],
 			memberPermissions: [],
 			botPermissions: [ "SEND_MESSAGES", "EMBED_LINKS" ],
 			nsfw: false,
 			ownerOnly: false,
-			cooldown: 1000
+			cooldown: 1000,
+			options: [
+				{
+					name: "firstMember",
+					description: "the first member",
+					type: "MEMBER",
+					required: true
+				},
+				{
+					name: "secondMember",
+					description: "the second member",
+					type: "MEMBER",
+					required: true
+				}
+			]
 		});
 	}
 
-	async run (message) {
-		const firstMember = message.mentions.members.filter(m => m.id !== message.author.id).first();
-		if (!firstMember)
-			return message.error("fun/lovecalc:MISSING");
-		const secondMember =
-			message.mentions.members
-				.filter(m => m.id !== firstMember.id)
-				.filter(m => m.id !== message.author.id)
-				.first() || message.member;
-		if (!secondMember)
-			return message.error("fun/lovecalc:MISSING");
+	async run (interaction) {
+		const firstMember = interaction.options.getMember("firstMember")
+		const secondMember = interaction.options.getMember("secondMember")
 
 		const members = [firstMember, secondMember].sort(
 			(a, b) => parseInt(a.id, 10) - parseInt(b.id, 10)
@@ -47,7 +52,7 @@ class Lovecalc extends Command {
 		const embed = new Discord.MessageEmbed()
 			.setAuthor("❤️ LoveCalc")
 			.setDescription(
-				message.translate("fun/lovecalc:CONTENT", {
+				interaction.translate("fun/lovecalc:CONTENT", {
 					percent,
 					firstUsername: firstMember.user.username,
 					secondUsername: secondMember.user.username
@@ -56,7 +61,7 @@ class Lovecalc extends Command {
 			.setColor(this.client.config.embed.color)
 			.setFooter(this.client.config.embed.footer);
 
-		message.channel.send({ embeds: [embed] });
+		interaction.reply({ embeds: [embed] });
         
 	}
 

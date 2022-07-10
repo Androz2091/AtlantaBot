@@ -1,4 +1,4 @@
-const Command = require("../../base/Command.js"),
+/* const Command = require("../../base/Command.js"),
 	Discord = require("discord.js");
 
 const currentGames = {};
@@ -96,4 +96,4 @@ class Number extends Command {
 
 }
 
-module.exports = Number;
+module.exports = Number; */

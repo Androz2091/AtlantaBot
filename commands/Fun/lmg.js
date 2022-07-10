@@ -8,21 +8,26 @@ class Lmg extends Command {
 			dirname: __dirname,
 			enabled: true,
 			guildOnly: false,
-			aliases: [ "lmgtfy" ],
 			memberPermissions: [],
 			botPermissions: [ "SEND_MESSAGES", "EMBED_LINKS" ],
 			nsfw: false,
 			ownerOnly: false,
-			cooldown: 1000
+			cooldown: 1000,
+			options: [
+				{
+					name: "question",
+					description: "the question you want to encode",
+					type: "STRING",
+					required: true
+				}
+			]
 		});
 	}
 
-	async run (message, args) {
-		const question = args.join(" ");
-		if (!question) return message.error("fun/lmg:MISSING");
+	async run (interaction) {
+		const question = interaction.options.getString("question")
 		const encodedQuestion = question.replace(/[' '_]/g, "+");
-		await message.channel.send(`http://lmgtfy.com/?q=${encodedQuestion}`);
-		message.delete().catch(() => {});
+		await interaction.reply(`http://lmgtfy.com/?q=${encodedQuestion}`);
 	}
 
 }

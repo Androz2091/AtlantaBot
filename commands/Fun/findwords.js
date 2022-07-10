@@ -1,4 +1,4 @@
-const Command = require("../../base/Command.js"),
+/* const Command = require("../../base/Command.js"),
 	Discord = require("discord.js");
 
 const currentGames = {};
@@ -143,4 +143,4 @@ class FindWords extends Command {
 
 }
 
-module.exports = FindWords;
+module.exports = FindWords; */
