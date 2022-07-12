@@ -9,22 +9,27 @@ class Sanctions extends Command {
 			dirname: __dirname,
 			enabled: true,
 			guildOnly: true,
-			aliases: [ "warns", "see-warns", "view-warns", "see-sanctions", "view-sanctions", "infractions", "view-infractions", "see-infractions" ],
 			memberPermissions: [ "MANAGE_MESSAGES" ],
 			botPermissions: [ "SEND_MESSAGES", "EMBED_LINKS" ],
 			nsfw: false,
 			ownerOnly: false,
-			cooldown: 3000
+			cooldown: 3000,
+			options: [
+				{
+					name: "user",
+					description: "the user you want to see the sanctions",
+					type: "USER",
+					required: true
+				}
+			]
 		});
 	}
 
-	async run (message, args, data) {
+	async run (interaction, data) {
         
-		const user = await this.client.resolveUser(args[0]);
-		if(!user){
-			return message.error("moderation/sanctions:MISSING_MEMBER");
-		}
-		const memberData = await this.client.findOrCreateMember({ id: user.id, guildID: message.guild.id });
+		const user = await interaction.options.getMember("user")
+
+		const memberData = await this.client.database.findOrCreateMember({ id: user.id, guildID: interaction.guild.id });
 
 		const embed = new Discord.MessageEmbed()
 			.setAuthor(user.tag, user.displayAvatarURL({ size: 512, dynamic: true, format: "png" }))
@@ -32,17 +37,17 @@ class Sanctions extends Command {
 			.setFooter(data.config.embed.footer);
 
 		if(memberData.sanctions.length < 1){
-			embed.setDescription(message.translate("moderation/sanctions:NO_SANCTION", {
+			embed.setDescription(interaction.translate("moderation/sanctions:NO_SANCTION", {
 				username: user.tag
 			}));
-			return message.channel.send({ embeds: [embed] });
+			return interaction.reply({ embeds: [embed] });
 		} else {
 			memberData.sanctions.forEach((s) => {
-				embed.addField(s.type+" | #"+s.case, `${message.translate("common:MODERATOR")}: <@${s.moderator}>\n${message.translate("common:REASON")}: ${s.reason}`, true);
+				embed.addField(s.type+" | #"+s.case, `${interaction.translate("common:MODERATOR")}: <@${s.moderator}>\n${interaction.translate("common:REASON")}: ${s.reason}`, true);
 			});
 		}
 
-		message.channel.send({ embeds: [embed] });
+		interaction.reply({ embeds: [embed] });
 	}
 
 }

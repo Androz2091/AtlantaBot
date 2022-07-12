@@ -10,45 +10,58 @@ class Mute extends Command {
 			dirname: __dirname,
 			enabled: true,
 			guildOnly: true,
-			aliases: [],
 			memberPermissions: [ "MANAGE_MESSAGES" ],
 			botPermissions: [ "SEND_MESSAGES", "EMBED_LINKS", "MANAGE_CHANNELS" ],
 			nsfw: false,
 			ownerOnly: false,
-			cooldown: 3000
+			cooldown: 3000,
+			options: [
+				{
+					name: "member",
+					description: "the member you want to mute",
+					type: "USER",
+					required: true
+				},
+				{
+					name: "duration",
+					description: "the duration of the mute",
+					type: "NUMBER",
+					required: true
+				},
+				{
+					name: "reason",
+					description: "the reason of the mute",
+					type: "STRING",
+					required: true
+				}
+			]
 		});
 	}
 
-	async run (message, args, data) {
+	async run (interaction, data) {
         
-		const member = await this.client.resolveMember(args[0], message.guild);
-		if(!member){
-			return message.error("moderation/mute:MISSING_MEMBER");
-		}
+		const member = await interaction.options.getMember("member")
 
-		if(member.id === message.author.id){
-			return message.error("moderation/ban:YOURSELF");
+		if(member.id === interaction.member.id){
+			return interaction.error("moderation/ban:YOURSELF");
 		}
 
 		const memberPosition = member.roles.highest.position;
-		const moderationPosition = message.member.roles.highest.position;
-		if(message.member.ownerID !== message.author.id && !(moderationPosition > memberPosition)){
-			return message.error("moderation/ban:SUPERIOR");
+		const moderationPosition = interaction.member.roles.highest.position;
+		if(!(moderationPosition > memberPosition)){
+			return interaction.error("moderation/ban:SUPERIOR");
 		}
 
-		const memberData = await this.client.findOrCreateMember({ id: member.id, guildID: message.guild.id });
+		const memberData = await this.client.database.findOrCreateMember({ id: member.id, guildID: interaction.guild.id });
 
-		const time = args[1];
-		if(!time || isNaN(ms(time))){
-			return message.error("misc:INVALID_TIME");
+		const time = interaction.options.getNumber("duration")
+		if(isNaN(ms(time))){
+			return interaction.error("misc:INVALID_TIME");
 		}
 
-		let reason = args.slice(2).join(" ");
-		if(!reason){
-			reason = message.translate("misc:NO_REASON_PROVIDED");
-		}
+		let reason = interaction.options.getString("reason")
 
-		message.guild.channels.cache.forEach((channel) => {
+		interaction.guild.channels.cache.forEach((channel) => {
 			channel.updateOverwrite(member.id, {
 				SEND_MESSAGES: false,
 				ADD_REACTIONS: false,
@@ -56,18 +69,18 @@ class Mute extends Command {
 			}).catch(() => {});
 		});
 
-		member.send(message.translate("moderation/mute:MUTED_DM", {
+		interaction.reply(interaction.translate("moderation/mute:MUTED_DM", {
 			username: member.user.username,
-			server: message.guild.name,
-			moderator: message.author.tag,
+			server: interaction.guild.name,
+			moderator: interaction.member.tag,
 			time,
 			reason
 		}));
 
-		message.success("moderation/mute:MUTED", {
+		interaction.success("moderation/mute:MUTED", {
 			username: member.user.tag,
-			server: message.guild.name,
-			moderator: message.author.tag,
+			server: interaction.guild.name,
+			moderator: interaction.member.tag,
 			time,
 			reason
 		});
@@ -75,8 +88,8 @@ class Mute extends Command {
 		data.guild.casesCount++;
 
 		const caseInfo = {
-			channel: message.channel.id,
-			moderator: message.author.id,
+			channel: interaction.channel.id,
+			moderator: interaction.member.id,
 			date: Date.now(),
 			type: "mute",
 			case: data.guild.casesCount,
@@ -95,22 +108,22 @@ class Mute extends Command {
 
 		await data.guild.save();
 
-		this.client.databaseCache.mutedUsers.set(`${member.id}${message.guild.id}`, memberData);
+		this.client.database.mutedUsers.set(`${member.id}${interaction.guild.id}`, memberData);
 
 		if(data.guild.plugins.modlogs){
-			const channel = message.guild.channels.cache.get(data.guild.plugins.modlogs);
+			const channel = interaction.guild.channels.cache.get(data.guild.plugins.modlogs);
 			if(!channel) return;
 			const embed = new Discord.MessageEmbed()
-				.setAuthor(message.translate("moderation/mute:CASE", {
+				.setAuthor(interaction.translate("moderation/mute:CASE", {
 					count: data.guild.casesCount
 				}))
-				.addField(message.translate("common:USER"), `\`${member.user.tag}\` (${member.user.toString()})`, true)
-				.addField(message.translate("common:MODERATOR"), `\`${message.author.tag}\` (${message.author.toString()})`, true)
-				.addField(message.translate("common:REASON"), reason, true)
-				.addField(message.translate("common:DURATION"), time, true)
-				.addField(message.translate("common:EXPIRY"), message.printDate(new Date(Date.now()+ms(time))), true)
+				.addField(interaction.translate("common:USER"), `\`${member.user.tag}\` (${member.user.toString()})`, true)
+				.addField(interaction.translate("common:MODERATOR"), `\`${interaction.member.tag}\` (${interaction.memer.toString()})`, true)
+				.addField(interaction.translate("common:REASON"), reason, true)
+				.addField(interaction.translate("common:DURATION"), time, true)
+				.addField(interaction.translate("common:EXPIRY"), interaction.printDate(new Date(Date.now()+ms(time))), true)
 				.setColor("#f44271");
-			channel.send({ embeds: [embed] });
+			interaction.reply({ embeds: [embed] });
 		}
 
 	}

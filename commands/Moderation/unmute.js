@@ -8,39 +8,43 @@ class Unmute extends Command {
 			dirname: __dirname,
 			enabled: true,
 			guildOnly: true,
-			aliases: [],
 			memberPermissions: [ "MANAGE_MESSAGES" ],
 			botPermissions: [ "SEND_MESSAGES", "EMBED_LINKS", "MANAGE_CHANNELS" ],
 			nsfw: false,
 			ownerOnly: false,
-			cooldown: 3000
+			cooldown: 3000,
+			options: [
+				{
+					name: "member",
+					description: "the member you want to unmute",
+					type: "USER",
+					required: true
+				}
+			]
 		});
 	}
 
-	async run (message, args) {
+	async run (interaction) {
 
-		const member = await this.client.resolveMember(args[0], message.guild);
-		if(!member){
-			return message.success("moderation/unmute:MISSING_MEMBER");
-		}
+		const member = await interaction.options.getMember("member")
 
 		const memberPosition = member.roles.highest.position;
-		const moderationPosition = message.member.roles.highest.position;
-		if(message.member.ownerID !== message.author.id && !(moderationPosition > memberPosition)){
-			return message.error("moderation/ban:SUPERIOR");
+		const moderationPosition = interaction.member.roles.highest.position;
+		if(!(moderationPosition > memberPosition)){
+			return interaction.error("moderation/ban:SUPERIOR");
 		}
 
-		const memberData = await this.client.findOrCreateMember({ id: member.id, guildID: message.guild.id });
+		const memberData = await this.client.database.findOrCreateMember({ id: member.id, guildID: interaction.guild.id });
 
 		if(memberData.mute.muted){
 			memberData.mute.endDate = Date.now();
 			memberData.markModified("mute");
 			memberData.save();
-			message.success("moderation/unmute:SUCCESS", {
+			interaction.success("moderation/unmute:SUCCESS", {
 				username: member.user.tag
 			});
 		} else {
-			message.error("moderation/unmute:NOT_MUTED", {
+			interaction.error("moderation/unmute:NOT_MUTED", {
 				username: member.user.tag
 			});
 		}

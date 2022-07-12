@@ -9,48 +9,54 @@ class Kick extends Command {
 			dirname: __dirname,
 			enabled: true,
 			guildOnly: true,
-			aliases: [],
 			memberPermissions: [ "KICK_MEMBERS" ],
 			botPermissions: [ "SEND_MESSAGES", "EMBED_LINKS", "KICK_MEMBERS" ],
 			nsfw: false,
 			ownerOnly: false,
-			cooldown: 3000
+			cooldown: 3000,
+			options: [
+				{
+					name: "user",
+					description: "the user you want to kick",
+					type: "MEMBER",
+					required: true
+				},
+				{
+					name: "reason",
+					description: "the reason for the kick",
+					type: "STRING",
+					required: false
+				}
+			]
 		});
 	}
 
-	async run (message, args, data) {
+	async run (interaction, data) {
 
-		const member = await this.client.resolveMember(args[0], message.guild);
-		if(!member){
-			return message.error("moderation/kick:MISSING_MEMBER");
-		}
-
-		if(member.id === message.author.id){
-			return message.error("moderation/ban:YOURSELF");
-		}
+		const member = interaction.options.getMember("user")
         
-		const memberData = await this.client.findOrCreateMember({ id: member.id, guildID: message.guild.id });
+		const memberData = await this.client.database.findOrCreateMember({ id: member.id, guildID: interaction.guild.id });
         
 		// Gets the kcik reason
-		let reason = args.slice(1).join(" ");
+		let reason = interaction.options.getString("reason")
 		if(!reason){
-			reason = message.translate("misc:NO_REASON_PROVIDED");
+			reason = interaction.translate("misc:NO_REASON_PROVIDED");
 		}
         
 		const memberPosition = member.roles.highest.position;
-		const moderationPosition = message.member.roles.highest.position;
-		if(message.member.ownerID !== message.author.id && !(moderationPosition > memberPosition)){
-			return message.error("moderation/ban:SUPERIOR");
+		const moderationPosition = interaction.member.roles.highest.position;
+		if(!(moderationPosition > memberPosition)){
+			return interaction.error("moderation/ban:SUPERIOR");
 		}
 
 		if(!member.kickable) {
-			return message.error("moderation/kick:MISSING_PERM");
+			return interaction.error("moderation/kick:MISSING_PERM");
 		}
 
-		await member.send(message.translate("moderation/kick:KICKED_DM", {
+		await member.send(interaction.translate("moderation/kick:KICKED_DM", {
 			username: member.user.tag,
-			server: message.guild.name,
-			moderator: message.author.tag,
+			server: interaction.guild.name,
+			moderator: interaction.member.tag,
 			reason
 		})).catch(() => {});
 
@@ -58,10 +64,10 @@ class Kick extends Command {
 		member.kick(reason).then(() => {
 
 			// Send a success message in the current channel
-			message.sendT("moderation/kick:KICKED", {
+			interaction.replyT("moderation/kick:KICKED", {
 				username: member.user.tag,
-				server: message.guild.name,
-				moderator: message.author.tag,
+				server: interaction.guild.name,
+				moderator: interaction.member.tag,
 				reason
 			});
 
@@ -69,8 +75,8 @@ class Kick extends Command {
 			data.guild.save();
 
 			const caseInfo = {
-				channel: message.channel.id,
-				moderator: message.author.id,
+				channel: interaction.channel.id,
+				moderator: interaction.member.id,
 				date: Date.now(),
 				type: "kick",
 				case: data.guild.casesCount,
@@ -81,21 +87,21 @@ class Kick extends Command {
 			memberData.save();
             
 			if(data.guild.plugins.modlogs){
-				const channel = message.guild.channels.cache.get(data.guild.plugins.modlogs);
+				const channel = interaction.guild.channels.cache.get(data.guild.plugins.modlogs);
 				if(!channel) return;
 				const embed = new Discord.MessageEmbed()
-					.setAuthor(message.translate("moderation/kick:CASE", {
+					.setAuthor(interaction.translate("moderation/kick:CASE", {
 						count: data.guild.casesCount
 					}))
-					.addField(message.translate("common:USER"), `\`${member.user.tag}\` (${member.user.toString()})`, true)
-					.addField(message.translate("common:MODERATOR"), `\`${message.author.tag}\` (${message.author.toString()})`, true)
-					.addField(message.translate("common:REASON"), reason, true)
+					.addField(interaction.translate("common:USER"), `\`${member.user.tag}\` (${member.user.toString()})`, true)
+					.addField(interaction.translate("common:MODERATOR"), `\`${interaction.author.tag}\` (${interaction.member.name.toString()})`, true)
+					.addField(interaction.translate("common:REASON"), reason, true)
 					.setColor("#e88709");
-				channel.send({ embeds: [embed] });
+				interaction.reply({ embeds: [embed] });
 			}
 
 		}).catch(() => {
-			return message.error("moderation/kick:MISSING_PERM");
+			return interaction.error("moderation/kick:MISSING_PERM");
 		});
 
 	}

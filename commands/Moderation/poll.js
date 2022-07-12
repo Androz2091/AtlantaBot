@@ -1,4 +1,4 @@
-const Command = require("../../base/Command.js"),
+/* const Command = require("../../base/Command.js"),
 	Discord = require("discord.js");
 
 class Poll extends Command {
@@ -101,4 +101,4 @@ class Poll extends Command {
 
 }
 
-module.exports = Poll;
+module.exports = Poll;*/

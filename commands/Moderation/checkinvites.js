@@ -9,7 +9,6 @@ class Checkinvites extends Command {
 			dirname: __dirname,
 			enabled: true,
 			guildOnly: true,
-			aliases: [ "checkinvite", "checki" ],
 			memberPermissions: [],
 			botPermissions: [ "SEND_MESSAGES", "EMBED_LINKS" ],
 			nsfw: false,
@@ -18,9 +17,9 @@ class Checkinvites extends Command {
 		});
 	}
 
-	async run (message, args, data) {
+	async run (interaction, data) {
         
-		const members = message.guild.members;
+		const members = interaction.guild.members;
 
 		const withInvite = [];
 		members.cache.forEach((m) => {
@@ -37,14 +36,14 @@ class Checkinvites extends Command {
 
 		const text = (withInvite.length > 0 ?
 			withInvite.map((m) => "`"+m.id+"` ("+m.tag+") : "+m.links).join("\n")
-			:   message.translate("moderation/checkinvites:NOBODY"));
+			:   interaction.translate("moderation/checkinvites:NOBODY"));
 
 		const embed = new Discord.MessageEmbed()
 			.setDescription(text)
 			.setColor(data.config.embed.color)
 			.setFooter(data.config.embed.footer);
             
-		message.channel.send({ embeds: [embed] });
+		interaction.reply({ embeds: [embed] });
 	}
 
 }
