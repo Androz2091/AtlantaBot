@@ -9,25 +9,35 @@ class Remindme extends Command {
 			dirname: __dirname,
 			enabled: true,
 			guildOnly: false,
-			aliases: [ "reminder" ],
 			memberPermissions: [],
 			botPermissions: [ "SEND_MESSAGES", "EMBED_LINKS" ],
 			nsfw: false,
-			ownerOnly: false
+			ownerOnly: false,
+			options: [
+				{
+					name: "time",
+					description: "the amount of time when the bot will remind you",
+					type: "NUMBER",
+					required: true
+				},
+				{
+					name: "message",
+					description: "the message you want the bot remind you",
+					type: "STRING",
+					required: true
+				}
+			]
 		});
 	}
 
-	async run (message, args, data) {
+	async run (interaction, data) {
 
-		const time = args[0];
-		if(!time || isNaN(ms(time))){
-			return message.error("misc:INVALID_TIME");
+		const time = interaction.options.getNumber("time")
+		if(isNaN(ms(time))){
+			return interaction.error("misc:INVALID_TIME");
 		}
 
-		const msg = args.slice(1).join(" ");
-		if(!msg){
-			return message.error("general/remindme:MISSING_MESSAGE");
-		}
+		const msg = interaction.options.getString("message")
         
 		const rData = {
 			message: msg,
@@ -42,10 +52,10 @@ class Remindme extends Command {
 		data.userData.reminds.push(rData);
 		data.userData.markModified("reminds");
 		data.userData.save();
-		this.client.databaseCache.usersReminds.set(message.author.id, data.userData);
+		this.client.database.usersReminds.set(interaction.member.user.id, data.userData);
 
 		// Send success message
-		message.success("general/remindme:SAVED");
+		interaction.success("general/remindme:SAVED");
 	}
 
 }

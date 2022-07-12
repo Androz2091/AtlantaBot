@@ -10,21 +10,25 @@ class Hastebin extends Command {
 			dirname: __dirname,
 			enabled: true,
 			guildOnly: false,
-			aliases: [ "pastebin" ],
 			memberPermissions: [],
 			botPermissions: [ "SEND_MESSAGES", "EMBED_LINKS" ],
 			nsfw: false,
 			ownerOnly: false,
-			cooldown: 5000
+			cooldown: 5000,
+			options: [
+				{
+					name: "content",
+					description: "the content you want to paste",
+					type: "STRING",
+					required: true
+				}
+			]
 		});
 	}
 
-	async run (message, args, data) {
+	async run (interaction, data) {
 
-		const content = args.join(" ");
-		if(!content){
-			return message.error("general/hastebin:MISSING_TEXT");
-		}
+		const content = interaction.options.getString("content")
 
 		try {
 			const res = await fetch("https://hastebin.com/documents", {
@@ -35,17 +39,17 @@ class Hastebin extends Command {
             
 			const json = await res.json();
 			if(!json.key){
-				return message.error("misc:ERR_OCCURRED");
+				return interaction.error("misc:ERR_OCCURRED");
 			}
 			const url = "https://hastebin.com/"+json.key+".js";
 
 			const embed = new Discord.MessageEmbed()
-				.setAuthor(message.translate("general/hastebin:SUCCESS"))
+				.setAuthor(interaction.translate("general/hastebin:SUCCESS"))
 				.setDescription(url)
 				.setColor(data.config.embed.color);
-			message.channel.send({ embeds: [embed] });
+			interaction.reply({ embeds: [embed] });
 		} catch(e){
-			message.error("misc:ERR_OCCURRED");
+			interaction.error("misc:ERR_OCCURRED");
 		}
         
 	}

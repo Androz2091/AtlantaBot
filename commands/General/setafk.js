@@ -8,23 +8,26 @@ class Setafk extends Command {
 			dirname: __dirname,
 			enabled: true,
 			guildOnly: false,
-			aliases: [ "afk" ],
 			memberPermissions: [],
 			botPermissions: [ "SEND_MESSAGES", "EMBED_LINKS" ],
 			nsfw: false,
-			ownerOnly: false
+			ownerOnly: false,
+			options: [
+				{
+					name: "reason",
+					description: "the reason of the afk",
+					type: "STRING",
+					required: true
+				}
+			]
 		});
 	}
 
-	async run (message, args, data) {
-
-		const reason = args.join(" ");
-		if(!reason){
-			return message.error("general/setafk:MISSING_REASON");
-		}
+	async run (interaction, data) {
+		const reason = interaction.options.getString("reason");
 
 		// Send success message
-		message.success("general/setafk:SUCCESS", {
+		interaction.success("general/setafk:SUCCESS", {
 			reason
 		});
 

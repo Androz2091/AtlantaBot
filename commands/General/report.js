@@ -9,44 +9,50 @@ class Report extends Command {
 			dirname: __dirname,
 			enabled: true,
 			guildOnly: true,
-			aliases: [],
 			memberPermissions: [],
 			botPermissions: [ "SEND_MESSAGES", "EMBED_LINKS" ],
 			nsfw: false,
 			ownerOnly: false,
-			cooldown: 5000
+			cooldown: 5000,
+			options: [
+				{
+					name: "member",
+					description: "the member you want to report",
+					type: "USER",
+					required: true
+				},
+				{
+					name: "report",
+					description: "the report you want to submit",
+					type: "STRING",
+					required: true
+				}
+			]
 		});
 	}
 
-	async run (message, args, data) {
-
-		const repChannel = message.guild.channels.cache.get(data.guild.plugins.reports);
+	async run (interaction, data) {
+		const repChannel = interaction.guild.channels.cache.get(data.guild.plugins.reports);
 		if(!repChannel){
-			return message.error("general/report:MISSING_CHANNEL");
+			return interaction.error("general/report:MISSING_CHANNEL");
 		}
 
-		const member = await this.client.resolveMember(args[0], message.guild);
-		if(!member){
-			return message.error("general/report:MISSING_USER");
+		const member = await interaction.options.getMember("member")
+
+		if(member.id === interaction.member.user.id){
+			return interaction.error("general/report:INVALID_USER");
 		}
 
-		if(member.id === message.author.id){
-			return message.error("general/report:INVALID_USER");
-		}
-
-		const rep = args.slice(1).join(" ");
-		if(!rep){
-			return message.error("general/report:MISSING_REASON");
-		}
+		const rep = interaction.options.getString("report")
 
 		const embed = new Discord.MessageEmbed()
-			.setAuthor(message.translate("general/report:TITLE", {
+			.setAuthor(interaction.translate("general/report:TITLE", {
 				user: member.user.tag
-			}), message.author.displayAvatarURL({ size: 512, dynamic: true, format: 'png' }))
-			.addField(message.translate("common:AUTHOR"), message.author.tag, true)
-			.addField(message.translate("common:DATE"), message.printDate(new Date(Date.now())), true)
-			.addField(message.translate("common:REASON"), "**"+rep+"**", true)
-			.addField(message.translate("common:USER"), `\`${member.user.tag}\` (${member.user.toString()})`, true)
+			}), interaction.member.user.displayAvatarURL({ size: 512, dynamic: true, format: 'png' }))
+			.addField(interaction.translate("common:AUTHOR"), interaction.member.user.tag, true)
+			.addField(interaction.translate("common:DATE"), interaction.printDate(new Date(Date.now())), true)
+			.addField(interaction.translate("common:REASON"), "**"+rep+"**", true)
+			.addField(interaction.translate("common:USER"), `\`${interaction.member.user.tag}\` (${member.user.toString()})`, true)
 			.setColor(data.config.embed.color)
 			.setFooter(data.config.embed.footer);
 
@@ -58,7 +64,7 @@ class Report extends Command {
 			await m.react(error);
 		});
 
-		message.success("general/report:SUCCESS", {
+		interaction.success("general/report:SUCCESS", {
 			channel: repChannel.toString()
 		});
 	}

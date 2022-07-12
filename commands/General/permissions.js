@@ -9,22 +9,29 @@ class Permissions extends Command {
 			dirname: __dirname,
 			enabled: true,
 			guildOnly: true,
-			aliases: [ "perms" ],
 			memberPermissions: [],
 			botPermissions: [ "SEND_MESSAGES", "EMBED_LINKS" ],
 			nsfw: false,
 			ownerOnly: false,
-			cooldown: 500
+			cooldown: 500,
+			options: [
+				{
+					name: "member",
+					description: "the member you want to check the permissions",
+					type: "USER",
+					required: true
+				}
+			]
 		});
 	}
  
-	async run (message) {
-		const member = message.mentions.members.first() || message.member;
-		let text = "```\n"+message.translate("general/permissions:TITLE", {
+	async run (interaction) {
+		const member = interaction.options.getMember("member")
+		let text = "```\n"+interaction.translate("general/permissions:TITLE", {
 			user: member.user.username,
-			channel: message.channel.name
+			channel: interaction.channel.name
 		})+"\n\n";
-		const mPermissions = message.channel.permissionsFor(member);
+		const mPermissions = interaction.channel.permissionsFor(member);
 		const total = {
 			denied: 0,
 			allowed: 0
@@ -39,7 +46,7 @@ class Permissions extends Command {
 			}
 		});
 		text += `\n${total.allowed} ✅ | ${total.denied} ❌`+"\n```";
-		message.channel.send(text);
+		interaction.reply(text);
 	}
 }
 

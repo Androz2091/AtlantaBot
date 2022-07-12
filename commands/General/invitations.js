@@ -9,38 +9,44 @@ class Invitations extends Command {
 			dirname: __dirname,
 			enabled: true,
 			guildOnly: true,
-			aliases: [],
 			memberPermissions: [],
 			botPermissions: [ "SEND_MESSAGES", "EMBED_LINKS", "MANAGE_GUILD" ],
 			nsfw: false,
 			ownerOnly: false,
-			cooldown: 3000
+			cooldown: 3000,
+			options: [
+				{
+					name: "member",
+					description: "the member you want to check the invite",
+					type: "USER",
+					required: true
+				}
+			]
 		});
 	}
 
-	async run (message, args, data) {
+	async run (interaction, data) {
 
-		let member = await this.client.resolveMember(args[0], message.guild);
-		if (!member) member = message.member;
+		let member = await interaction.options.getMember("member")
 
 		// Gets the invites
-		const invites = await message.guild.fetchInvites().catch(() => {});
-		if (!invites) return message.error("misc:ERR_OCCURRED");
+		const invites = await interaction.guild.fetchInvites().catch(() => {});
+		if (!invites) return interaction.error("misc:ERR_OCCURRED");
         
-		const memberInvites = invites.filter((i) => i.inviter && i.inviter.id === member.user.id);
+		const memberInvites = invites.filter((i) => i.inviter && i.inviter.id === interaction.member.user.id);
 
 		if(memberInvites.size <= 0){
-			if(member === message.member){
-				return message.error("general/invitations:NOBODY_AUTHOR");
+			if(member === interaction.member){
+				return interaction.error("general/invitations:NOBODY_AUTHOR");
 			} else {
-				return message.error("general/invitations:NOBODY_MEMBER", {
-					member: member.user.tag
+				return interaction.error("general/invitations:NOBODY_MEMBER", {
+					member: interaction.member.user.tag
 				});
 			}
 		}
 
 		const content = memberInvites.map((i) => {
-			return message.translate("general/invitations:CODE", {
+			return interaction.translate("general/invitations:CODE", {
 				uses: i.uses,
 				code: i.code,
 				channel: i.channel.toString()
@@ -52,17 +58,17 @@ class Invitations extends Command {
 		const embed = new Discord.MessageEmbed()
 			.setColor(data.config.embed.color)
 			.setFooter(data.config.embed.footer)
-			.setAuthor(message.translate("general/invitations:TRACKER"))
-			.setDescription(message.translate("general/invitations:TITLE", {
+			.setAuthor(interaction.translate("general/invitations:TRACKER"))
+			.setDescription(interaction.translate("general/invitations:TITLE", {
 				member: member.user.tag,
-				guild: message.guild.name
+				guild: interaction.guild.name
 			}))
-			.addField(message.translate("general/invitations:FIELD_INVITED"), message.translate("general/invitations:FIELD_MEMBERS", {
+			.addField(interaction.translate("general/invitations:FIELD_INVITED"), interaction.translate("general/invitations:FIELD_MEMBERS", {
 				total: index
 			}))
-			.addField(message.translate("general/invitations:FIELD_CODES"), content);
+			.addField(interaction.translate("general/invitations:FIELD_CODES"), content);
 
-		message.channel.send({ embeds: [embed] });
+		interaction.reply({ embeds: [embed] });
 	}
 
 }
