@@ -9,7 +9,6 @@ class Someone extends Command {
 			dirname: __dirname,
 			enabled: true,
 			guildOnly: true,
-			aliases: [ "somebody", "something" ],
 			memberPermissions: [],
 			botPermissions: [ "SEND_MESSAGES", "EMBED_LINKS" ],
 			nsfw: false,
@@ -18,17 +17,17 @@ class Someone extends Command {
 		});
 	}
 
-	async run (message, args, data) {
+	async run (interaction, data) {
         
-		const member = message.guild.members.cache.random(1)[0];
+		const member = interaction.guild.members.cache.random(1)[0];
         
 		const embed = new Discord.MessageEmbed()
-			.addField(message.translate("common:USERNAME"), member.user.username, true)
-			.addField(message.translate("common:DISCRIMINATOR"), member.user.discriminator, true)
-			.addField(message.translate("common:ID"), member.user.id, true)
+			.addField(interaction.translate("common:USERNAME"), member.user.username, true)
+			.addField(interaction.translate("common:DISCRIMINATOR"), member.user.discriminator, true)
+			.addField(interaction.translate("common:ID"), member.user.id, true)
 			.setThumbnail(member.user.displayAvatarURL({ size: 512, dynamic: true, format: 'png' }))
 			.setColor(data.config.embed.color);
-		message.channel.send({ embeds: [embed] });
+		interaction.reply({ embeds: [embed] });
         
 	}
 

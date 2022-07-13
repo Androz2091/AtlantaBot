@@ -9,34 +9,41 @@ class Suggest extends Command {
 			dirname: __dirname,
 			enabled: true,
 			guildOnly: true,
-			aliases: [ "suggestion", "sugg" ],
 			memberPermissions: [],
 			botPermissions: [ "SEND_MESSAGES", "EMBED_LINKS" ],
 			nsfw: false,
 			ownerOnly: false,
-			cooldown: 5000
+			cooldown: 5000,
+			options: [
+				{
+					name: "suggestion",
+					description: "Your suggestion",
+					type: "STRING",
+					required: true
+				}
+			]
 		});
 	}
 
-	async run (message, args, data) {
+	async run (interaction, data) {
 
-		const suggChannel = message.guild.channels.cache.get(data.guild.plugins.suggestions);
+		const suggChannel = interaction.guild.channels.cache.get(data.guild.plugins.suggestions);
 		if(!suggChannel){
-			return message.error("general/suggest:MISSING_CHANNEL");
+			return interaction.error("general/suggest:MISSING_CHANNEL");
 		}
 
-		const sugg = args.join(" ");
+		const sugg = interaction.options.getString("suggestion")
 		if(!sugg){
-			return message.error("general/suggest:MISSING_CONTENT");
+			return interaction.error("general/suggest:MISSING_CONTENT");
 		}
 
 		const embed = new Discord.MessageEmbed()
-			.setAuthor(message.translate("general/suggest:TITLE", {
-				user: message.author.username
-			}), message.author.displayAvatarURL({ size: 512, dynamic: true, format: 'png' }))
-			.addField(message.translate("common:AUTHOR"), `\`${message.author.username}#${message.author.discriminator}\``, true)
-			.addField(message.translate("common:DATE"), message.printDate(new Date(Date.now())), true)
-			.addField(message.translate("common:CONTENT"), "**"+sugg+"**")
+			.setAuthor(interaction.translate("general/suggest:TITLE", {
+				user: interaction.member.user.username
+			}), interaction.member.user.displayAvatarURL({ size: 512, dynamic: true, format: 'png' }))
+			.addField(interaction.translate("common:AUTHOR"), `\`${interaction.member.user.username}#${interaction.member.user.discriminator}\``, true)
+			.addField(interaction.translate("common:DATE"), interaction.printDate(new Date(Date.now())), true)
+			.addField(interaction.translate("common:CONTENT"), "**"+sugg+"**")
 			.setColor(data.config.embed.color)
 			.setFooter(data.config.embed.footer);
 
@@ -48,7 +55,7 @@ class Suggest extends Command {
 			await m.react(error);
 		});
 
-		message.success("general/suggest:SUCCESS", {
+		interaction.success("general/suggest:SUCCESS", {
 			channel: suggChannel.toString()
 		});
 	}

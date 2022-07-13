@@ -9,7 +9,6 @@ class Staff extends Command {
 			dirname: __dirname,
 			enabled: true,
 			guildOnly: true,
-			aliases: [ "stafflist", "staffliste" ],
 			memberPermissions: [],
 			botPermissions: [ "SEND_MESSAGES", "EMBED_LINKS" ],
 			nsfw: false,
@@ -18,19 +17,19 @@ class Staff extends Command {
 		});
 	}
 
-	async run (message, args, data) {
-		await message.guild.members.fetch();
-		const administrators = message.guild.members.cache.filter((m) => m.permissions.has("ADMINISTRATOR") && !m.user.bot);
-		const moderators = message.guild.members.cache.filter((m) => !administrators.has(m.id) && m.permissions.has("MANAGE_MESSAGES") && !m.user.bot);
+	async run (interaction, data) {
+		await interaction.guild.members.fetch();
+		const administrators = interaction.guild.members.cache.filter((m) => m.permissions.has("ADMINISTRATOR") && !m.user.bot);
+		const moderators = interaction.guild.members.cache.filter((m) => !administrators.has(m.id) && m.permissions.has("MANAGE_MESSAGES") && !m.user.bot);
 		const embed = new Discord.MessageEmbed()
-			.setAuthor(message.translate("general/staff:TITLE", {
-				guild: message.guild.name
+			.setAuthor(interaction.translate("general/staff:TITLE", {
+				guild: interaction.guild.name
 			}))
-			.addField(message.translate("general/staff:ADMINS"), (administrators.size > 0 ? administrators.map((a) => `${this.client.customEmojis.status[a.presence.status]} | ${a.user.tag}`).join("\n") :message.translate("general/staff:NO_ADMINS")))
-			.addField(message.translate("general/staff:MODS"), (moderators.size > 0 ? moderators.map((m) => `${this.client.customEmojis.status[m.presence.status]} | ${m.user.tag}`).join("\n") : message.translate("general/staff:NO_MODS")))
+			.addField(interaction.translate("general/staff:ADMINS"), (administrators.size > 0 ? administrators.map((a) => `${this.client.customEmojis.status[a.presence.status]} | ${a.user.tag}`).join("\n") :interaction.translate("general/staff:NO_ADMINS")))
+			.addField(interaction.translate("general/staff:MODS"), (moderators.size > 0 ? moderators.map((m) => `${this.client.customEmojis.status[m.presence.status]} | ${m.user.tag}`).join("\n") : interaction.translate("general/staff:NO_MODS")))
 			.setColor(data.config.embed.color)
 			.setFooter(data.config.embed.footer);
-		message.channel.send({ embeds: [embed] });
+		interaction.reply({ embeds: [embed] });
 	}
 
 }
