@@ -1,4 +1,4 @@
-const Command = require("../../base/Command.js"),
+/* const Command = require("../../base/Command.js"),
 	Discord = require("discord.js"),
 	Pagination = require("discord-paginationembed");
 
@@ -61,4 +61,4 @@ class Queue extends Command {
 
 }
 
-module.exports = Queue;
+module.exports = Queue; */

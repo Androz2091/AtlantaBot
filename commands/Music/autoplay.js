@@ -8,7 +8,6 @@ class AutoPlay extends Command {
 			dirname: __dirname,
 			enabled: true,
 			guildOnly: true,
-			aliases: [],
 			memberPermissions: [],
 			botPermissions: [ "SEND_MESSAGES", "EMBED_LINKS" ],
 			nsfw: false,
@@ -17,24 +16,24 @@ class AutoPlay extends Command {
 		});
 	}
 
-	async run (message) {
+	async run (interaction) {
 
-		const queue = this.client.player.getQueue(message);
+		const queue = this.client.player.getQueue(interaction);
 
-		const voice = message.member.voice.channel;
+		const voice = interaction.member.voice.channel;
 		if (!voice){
-			return message.error("music/play:NO_VOICE_CHANNEL");
+			return interaction.error("music/play:NO_VOICE_CHANNEL");
 		}
 
 		if(!queue){
-			return message.error("music:play:NOT_PLAYING");
+			return interaction.error("music:play:NOT_PLAYING");
 		}
 
 		// Gets the current song
-		await this.client.player.setAutoPlay(message, !queue.autoPlay);
+		await this.client.player.setAutoPlay(interaction, !queue.autoPlay);
         
 		// Send the embed in the current channel
-		message.sendT(`music/autoplay:SUCCESS_${queue.autoPlay ? "ENABLED" : "DISABLED"}`);
+		interaction.replyT(`music/autoplay:SUCCESS_${queue.autoPlay ? "ENABLED" : "DISABLED"}`);
         
 	}
 

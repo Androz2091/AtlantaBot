@@ -9,38 +9,45 @@ class Seek extends Command {
 			dirname: __dirname,
 			enabled: true,
 			guildOnly: true,
-			aliases: [],
 			memberPermissions: [],
 			botPermissions: [ "SEND_MESSAGES", "EMBED_LINKS" ],
 			nsfw: false,
 			ownerOnly: false,
-			cooldown: 5000
+			cooldown: 5000,
+			options: [
+				{
+					name: "time",
+					description: "the amount of time",
+					type: "STRING",
+					required: true
+				}
+			]
 		});
 	}
 
-	async run (message, args) {
+	async run (interaction) {
 
-		const queue = this.client.player.getQueue(message);
+		const queue = this.client.player.getQueue(interaction);
 
-		const voice = message.member.voice.channel;
+		const voice = interaction.member.voice.channel;
 		if (!voice){
-			return message.error("music/play:NO_VOICE_CHANNEL");
+			return interaction.error("music/play:NO_VOICE_CHANNEL");
 		}
 
 		if(!queue){
-			return message.error("music/play:NOT_PLAYING");
+			return interaction.error("music/play:NOT_PLAYING");
 		}
 
-		const time = ms(args[0]);
+		const time = ms(interaction.options.getString("time"));
 		if (isNaN(time)) {
-			return message.error("music/seek:INVALID_TIME");
+			return interaction.error("music/seek:INVALID_TIME");
 		}
 
 		// Change the song position
-		await this.client.player.setPosition(message, queue.currentStreamTime + time);
+		await this.client.player.setPosition(interaction, queue.currentStreamTime + time);
         
 		// Send the embed in the current channel
-		message.sendT("music/seek:SUCCESS");
+		interaction.replyT("music/seek:SUCCESS");
 	}
 
 }

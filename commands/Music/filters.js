@@ -10,7 +10,6 @@ class Filters extends Command {
 			dirname: __dirname,
 			enabled: true,
 			guildOnly: true,
-			aliases: [],
 			memberPermissions: [],
 			botPermissions: [ "SEND_MESSAGES", "EMBED_LINKS" ],
 			nsfw: false,
@@ -19,35 +18,35 @@ class Filters extends Command {
 		});
 	}
 
-	async run (message, args, data) {
+	async run (interaction, data) {
 
-		const queue = this.client.player.getQueue(message);
+		const queue = this.client.player.getQueue(interaction);
 
-		const voice = message.member.voice.channel;
+		const voice = interaction.member.voice.channel;
 		if (!voice){
-			return message.error("music/play:NO_VOICE_CHANNEL");
+			return interaction.error("music/play:NO_VOICE_CHANNEL");
 		}
 
 		if(!queue){
-			return message.error("music/play:NOT_PLAYING");
+			return interaction.error("music/play:NOT_PLAYING");
 		}
 
 		const filtersStatuses = [ [], [] ];
 
 		Object.keys(FiltersList).forEach((filterName) => {
 			const array = filtersStatuses[0].length > filtersStatuses[1].length ? filtersStatuses[1] : filtersStatuses[0];
-			array.push(FiltersList[filterName] + " : " + (this.client.player.getQueue(message).filters[filterName] ? this.client.customEmojis.success : this.client.customEmojis.error));
+			array.push(FiltersList[filterName] + " : " + (this.client.player.getQueue(interù).filters[filterName] ? this.client.customEmojis.success : this.client.customEmojis.error));
 		});
 
 		const list = new Discord.MessageEmbed()
-			.setDescription(message.translate("music/filters:CONTENT", {
+			.setDescription(interaction.translate("music/filters:CONTENT", {
 				prefix: data.guild.prefix
 			}))
-			.addField(message.translate("music/filters:TITLE"), filtersStatuses[0].join("\n"), true)
+			.addField(interaction.translate("music/filters:TITLE"), filtersStatuses[0].join("\n"), true)
 			.addField("** **", filtersStatuses[1].join("\n"), true)
 			.setColor(data.config.embed.color);
 
-		message.channel.send({ embeds: [list] });
+		interaction.reply({ embeds: [list] });
 	}
 
 }

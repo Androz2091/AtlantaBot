@@ -15,19 +15,33 @@ class Lyrics extends Command {
 			botPermissions: [ "SEND_MESSAGES", "EMBED_LINKS" ],
 			nsfw: false,
 			ownerOnly: false,
-			cooldown: 5000
+			cooldown: 5000,
+			options: [
+				{
+					name: "songname",
+					description: "the name of the song",
+					type: "STRING",
+					required: true
+				},
+				{
+					name: "artistname",
+					description: "the name of the artist",
+					type: "STRING",
+					required: true
+				}
+			]
 		});
 	}
 
-	async run (message, args, data) {
-        
-		const [songName, artistName] = args.join(" ").split("|");
+	async run (interaction, data) {
+		const songName = interaction.options.getString("songname")
+		const artistName = interaction.options.getString("artistname")
 		if(!songName){
 			return message.error("music/lyrics:MISSING_SONG_NAME");
 		}
         
 		const embed = new Discord.MessageEmbed()
-			.setAuthor(message.translate("music/lyrics:LYRICS_OF", {
+			.setAuthor(interaction.translate("music/lyrics:LYRICS_OF", {
 				songName
 			}))
 			.setColor(data.config.embed.color)
@@ -43,19 +57,19 @@ class Lyrics extends Command {
 			let lyrics = await lyricsParse(songNameFormated, artistName) || "Not Found!";
 
 			if(lyrics.length > 2040) {
-				lyrics = lyrics.substr(0, 2000) + message.translate("music/lyrics:AND_MORE") + " ["+message.translate("music/lyrics:CLICK_HERE")+"]"+`https://www.musixmatch.com/search/${songName}`;
+				lyrics = lyrics.substr(0, 2000) + interaction.translate("music/lyrics:AND_MORE") + " ["+interaction.translate("music/lyrics:CLICK_HERE")+"]"+`https://www.musixmatch.com/search/${songName}`;
 			} else if(!lyrics.length) {
-				return message.error("music/lyrics:NO_LYRICS_FOUND", {
+				return interaction.error("music/lyrics:NO_LYRICS_FOUND", {
 					songName
 				});
 			}
 
 			embed.setDescription(lyrics);
-			message.channel.send({ embeds: [embed] });
+			interaction.reply({ embeds: [embed] });
 
 		} catch(e){
 			console.log(e);
-			message.error("music/lyrics:NO_LYRICS_FOUND", {
+			interaction.error("music/lyrics:NO_LYRICS_FOUND", {
 				songName
 			});
 		}

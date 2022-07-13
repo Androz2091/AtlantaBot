@@ -8,34 +8,41 @@ class Play extends Command {
 			dirname: __dirname,
 			enabled: true,
 			guildOnly: true,
-			aliases: [ "joue" ],
 			memberPermissions: [],
 			botPermissions: [ "SEND_MESSAGES", "EMBED_LINKS" ],
 			nsfw: false,
 			ownerOnly: false,
-			cooldown: 5000
+			cooldown: 5000,
+			options: [
+				{
+					name: "name",
+					description: "the name of the song",
+					type: "STRING",
+					required: true
+				}
+			]
 		});
 	}
 
-	async run (message, args) {
+	async run (interaction) {
 
-		const name = args.join(" ");
+		const name = interaction.options.getString("name")
 		if(!name){
-			return message.error("music/play:MISSING_SONG_NAME");
+			return interaction.error("music/play:MISSING_SONG_NAME");
 		} 
 
-		const voice = message.member.voice.channel;
+		const voice = interaction.member.voice.channel;
 		if(!voice){
-			return message.error("music/play:NO_VOICE_CHANNEL");
+			return interaction.error("music/play:NO_VOICE_CHANNEL");
 		}
 
 		// Check my permissions
 		const perms = voice.permissionsFor(this.client.user);
 		if(!perms.has("CONNECT") || !perms.has("SPEAK")){
-			return message.error("music/play:VOICE_CHANNEL_CONNECT");
+			return interaction.error("music/play:VOICE_CHANNEL_CONNECT");
 		}
 
-		await this.client.player.play(message, args.join(" "));
+		await this.client.player.play(interaction, name);
 	}
 
 }
