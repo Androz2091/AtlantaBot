@@ -9,19 +9,26 @@ class Facepalm extends Command {
 			dirname: __dirname,
 			enabled: true,
 			guildOnly: false,
-			aliases: [ "palm" ],
 			memberPermissions: [],
 			botPermissions: [ "SEND_MESSAGES", "EMBED_LINKS", "ATTACH_FILES" ],
 			nsfw: false,
 			ownerOnly: false,
-			cooldown: 5000
+			cooldown: 5000,
+			options: [
+				{
+					name: "user",
+					description: "the user you want to facepalm",
+					required: true,
+					type: "USER"
+				}
+			]
 		});
 	}
 
-	async run (message, args) {
+	async run (interaction) {
 
-		const user = await this.client.resolveUser(args[0]) || message.author,
-			m = await message.sendT("misc:PLEASE_WAIT", null, {
+		const user = await interaction.options.getMember("user"),
+			m = await interaction.replyT("misc:PLEASE_WAIT", null, {
 				prefixEmoji: "loading"
 			});
 
@@ -42,8 +49,8 @@ class Facepalm extends Command {
 
 		const attachment = new Discord.MessageAttachment(canvas.toBuffer(), "facepalm.png");
 
-		m.delete();
-		message.channel.send(attachment);
+		m.deleteReply();
+		interaction.reply(attachment);
 
 	}
 

@@ -8,23 +8,30 @@ class Avatar extends Command {
 			dirname: __dirname,
 			enabled: true,
 			guildOnly: false,
-			aliases: [],
 			memberPermissions: [],
 			botPermissions: [ "SEND_MESSAGES", "EMBED_LINKS", "ATTACH_FILES" ],
 			nsfw: false,
 			ownerOnly: false,
-			cooldown: 5000
+			cooldown: 5000,
+			options: [
+				{
+					name: "user",
+					description: "the user you want the avatar",
+					type: "USER",
+					required: true
+				}
+			]
 		});
 	}
 
-	async run (message, args) {
+	async run (interaction) {
 
-		let user = await this.client.resolveUser(args[0]);
-		if(!user) user = message.author;
+		let user = await interaction.options.getMember("user")
+		if(!user) user = interaction.member;
 		const avatarURL = user.displayAvatarURL({ size: 512, dynamic: true, format: 'png' });
-		if(message.content.includes("-v")) message.channel.send("<"+avatarURL+">");
+		if(interaction.content.includes("-v")) interaction.reply("<"+avatarURL+">");
 		const attachment = new Discord.MessageAttachment(avatarURL, `avatar.${avatarURL.split(".").pop().split("?")[0]}`);
-		message.channel.send(attachment);
+		interaction.reply(attachment);
 
 	}
 

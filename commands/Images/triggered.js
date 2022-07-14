@@ -1,4 +1,4 @@
-const Command = require("../../base/Command.js"),
+/* const Command = require("../../base/Command.js"),
 	Discord = require("discord.js");
 
 class Triggered extends Command {
@@ -32,4 +32,4 @@ class Triggered extends Command {
 
 }
 
-module.exports = Triggered;
+module.exports = Triggered;*/

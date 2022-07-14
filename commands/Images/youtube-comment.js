@@ -14,26 +14,34 @@ class YouTubeComment extends Command {
 			botPermissions: [ "SEND_MESSAGES", "EMBED_LINKS", "ATTACH_FILES" ],
 			nsfw: false,
 			ownerOnly: false,
-			cooldown: 5000
+			cooldown: 5000,
+			options: [
+				{
+					name: "user",
+					description: "the user that sends the text",
+					required: true,
+					type: "USER"
+				},
+				{
+					name: "text",
+					description: "the text that the user has to send",
+					required: true,
+					type: "STRING"
+				}
+			]
 		});
 	}
 
-	async run (message, args) {
+	async run (interaction) {
 
-		let user = await this.client.resolveUser(args[0]);
-		let text = args.join(" ");
-
-		if(user){
-			text = args.slice(1).join(" ");
-		} else {
-			user = message.author;
-		}
+		let user = await interaction.options.getMember("user");
+		let text = interaction.options.getString("text");
 
 		if(!text){
-			return message.error("images/phcomment:MISSING_TEXT"); // same text as phcomment
+			return interaction.error("images/phcomment:MISSING_TEXT"); // same text as phcomment
 		}
 
-		const m = await message.sendT("misc:PLEASE_WAIT", null, {
+		const m = await interaction.replyT("misc:PLEASE_WAIT", null, {
 			prefixEmoji: "loading"
 		});
 		const image = await canvacord.Canvas.youtube({
@@ -42,8 +50,8 @@ class YouTubeComment extends Command {
 			content: text
 		});
 		const attachment = new Discord.MessageAttachment(image, "ytb-comment.png");
-		m.delete();
-		message.channel.send(attachment);
+		m.deleteReply();
+		interaction.reply(attachment);
 
 	}
 

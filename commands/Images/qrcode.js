@@ -9,23 +9,30 @@ class Qrcode extends Command {
 			dirname: __dirname,
 			enabled: true,
 			guildOnly: false,
-			aliases: [ "qr" ],
 			memberPermissions: [],
 			botPermissions: [ "SEND_MESSAGES", "EMBED_LINKS" ],
 			nsfw: false,
 			ownerOnly: false,
-			cooldown: 3000
+			cooldown: 3000,
+			options: [
+				{
+					name: "text",
+					description: "the text you want to qrcode",
+					required: true,
+					type: "STRING"
+				}
+			]
 		});
 	}
 
-	async run (message, args, data) {
+	async run (interaction, data) {
 
-		const text = args.join(" ");
+		const text = interaction.options.getString("text")
 		if(!text){
-			return message.error("images/qrcode:MISSING_TEXT");
+			return interaction.error("images/qrcode:MISSING_TEXT");
 		}
     
-		const pleaseWait = await message.sendT("misc:PLEASE_WAIT", null, {
+		const pleaseWait = await interaction.replyT("misc:PLEASE_WAIT", null, {
 			prefixEmoji: "loading"
 		});
         
@@ -33,7 +40,7 @@ class Qrcode extends Command {
 			.setImage(`https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${text.replace(new RegExp(" ", "g"), "%20")}`)
 			.setColor(data.config.embed.color);
 
-		pleaseWait.edit({ embeds: [embed], content: message.translate("images/qrcode:SUCCESS") });
+		pleaseWait.editReply({ embeds: [embed], content: interaction.translate("images/qrcode:SUCCESS") });
     
 	}
 
