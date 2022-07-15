@@ -70,77 +70,77 @@ class Atlanta extends Client {
 			enableLive: true
 		});
 		this.player
-			.on("trackStart", (message, track) => {
-				message.success("music/play:NOW_PLAYING", {
+			.on("trackStart", (interaction, track) => {
+				interaction.success("music/play:NOW_PLAYING", {
 					songName: track.title
 				});
 			})
-			.on("playlistStart", (message, queue, playlist, track) => {
-				message.channel.send(this.customEmojis.success+" | "+message.translate("music/play:PLAYING_PLAYLIST", {
+			.on("playlistStart", (interaction, playlist, track) => {
+				interaction.reply(this.customEmojis.success+" | "+interaction.translate("music/play:PLAYING_PLAYLIST", {
 					playlistTitle: playlist.title,
 					playlistEmoji: this.customEmojis.playlist,
 					songName: track.title
 				}));
 			})
-			.on("searchResults", (message, query, tracks) => {
+			.on("searchResults", (interaction, tracks) => {
 				if (tracks.length > 10) tracks = tracks.slice(0, 10);
 				const embed = new MessageEmbed()
 					.setDescription(Util.escapeSpoiler(tracks.map((t, i) => `**${++i} -** ${t.title}`).join("\n")))
-					.setFooter(message.translate("music/play:RESULTS_FOOTER"))
+					.setFooter(interaction.translate("music/play:RESULTS_FOOTER"))
 					.setColor(this.config.embed.color);
-				message.channel.send({ embeds: [embed] });
+				interaction.reply({ embeds: [embed] });
 			})
-			.on("searchInvalidResponse", (message, query, tracks, content, collector) => {
+			.on("searchInvalidResponse", (interaction, tracks, content, collector) => {
 				if (content === "cancel") {
 					collector.stop();
-					return message.success("music/play:RESULTS_CANCEL");
+					return interaction.success("music/play:RESULTS_CANCEL");
 				}
-				message.error("misc:INVALID_NUMBER_RANGE", {
+				interaction.error("misc:INVALID_NUMBER_RANGE", {
 					min: 1,
 					max: tracks.length
 				});
 			})
-			.on("searchCancel", (message) => {
-				message.error("misc:TIMES_UP");
+			.on("searchCancel", (interaction) => {
+				interaction.error("misc:TIMES_UP");
 			})
-			.on("botDisconnect", (message) => {
-				message.error("music/play:STOP_DISCONNECTED");
+			.on("botDisconnect", (interaction) => {
+				interaction.error("music/play:STOP_DISCONNECTED");
 			})
-			.on("noResults", (message) => {
-				message.error("music/play:NO_RESULT");
+			.on("noResults", (interaction) => {
+				interaction.error("music/play:NO_RESULT");
 			})
-			.on("queueEnd", (message) => {
-				message.success("music/play:QUEUE_ENDED");
+			.on("queueEnd", (interaction) => {
+				interaction.success("music/play:QUEUE_ENDED");
 			})
-			.on("playlistAdd", (message, queue, playlist) => {
-				message.success("music/play:ADDED_QUEUE_COUNT", {
+			.on("playlistAdd", (interaction, playlist) => {
+				interaction.success("music/play:ADDED_QUEUE_COUNT", {
 					songCount: playlist.items.length
 				});
 			})
-			.on("trackAdd", (message, queue, track) => {
-				message.success("music/play:ADDED_QUEUE", {
+			.on("trackAdd", (interaction, track) => {
+				interaction.success("music/play:ADDED_QUEUE", {
 					songName: track.title
 				});
 			})
 			.on("channelEmpty", () => {
 				// do nothing, leaveOnEmpty is not enabled
 			})
-			.on("error", (error, message) => {
+			.on("error", (error, interaction) => {
 				switch (error) {
 					case "NotConnected":
-						message.error("music/play:NO_VOICE_CHANNEL");
+						interaction.error("music/play:NO_VOICE_CHANNEL");
 						break;
 					case "UnableToJoin":
-						message.error("music/play:VOICE_CHANNEL_CONNECT");
+						interaction.error("music/play:VOICE_CHANNEL_CONNECT");
 						break;
 					case "NotPlaying":
-						message.error("music/play:NOT_PLAYING");
+						interaction.error("music/play:NOT_PLAYING");
 						break;
 					case "LiveVideo":
-						message.error("music/play:LIVE_VIDEO");
+						interaction.error("music/play:LIVE_VIDEO");
 						break;
 					default:
-						message.error("music/play:ERR_OCCURRED", {
+						interaction.error("music/play:ERR_OCCURRED", {
 							error
 						});
 						break;

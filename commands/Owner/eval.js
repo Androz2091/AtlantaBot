@@ -25,9 +25,9 @@ class Eval extends Command {
 	}
 	async run (interaction, data) {
 
-		const usersData = this.client.usersData;
+		const usersData = this.client.database.usersData;
 
-		const guildsData = this.client.guildsData;
+		const guildsData = this.client.database.guildsData;
         
 		const content = interaction.options.getString("content").split(" ").slice(1).join(" ");
 		const result = new Promise((resolve) => resolve(eval(content)));
