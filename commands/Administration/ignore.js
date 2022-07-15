@@ -8,7 +8,6 @@ class Ignore extends Command {
 			dirname: __dirname,
 			enabled: true,
 			guildOnly: true,
-			aliases: [ "disableChannel" ],
 			memberPermissions: [ "MANAGE_GUILD" ],
 			botPermissions: [ "SEND_MESSAGES", "EMBED_LINKS" ],
 			nsfw: false,
@@ -17,11 +16,11 @@ class Ignore extends Command {
 		});
 	}
 
-	async run (message, args, data) {
+	async run (interaction, data) {
 
-		const channel = message.mentions.channels.filter((ch) => ch.type === "text" && ch.guild.id === message.guild.id).first();
+		const channel = interaction.mentions.channels.filter((ch) => ch.type === "text" && ch.guild.id === interaction.guild.id).first();
 		if(!channel){
-			return message.error("misc:INVALID_CHANNEL");
+			return interaction.error("misc:INVALID_CHANNEL");
 		}
 
 		const ignored = data.guild.ignoredChannels.includes(channel.id);
@@ -29,13 +28,13 @@ class Ignore extends Command {
 		if(ignored){
 			data.guild.ignoredChannels = data.guild.ignoredChannels.filter((ch) => ch !== channel.id);
 			data.guild.save();
-			return message.success("administration/ignore:ALLOWED", {
+			return interaction.success("administration/ignore:ALLOWED", {
 				channel: channel.toString()
 			});
 		} else if(!ignored){
 			data.guild.ignoredChannels.push(channel.id);
 			data.guild.save();
-			return message.success("administration/ignore:IGNORED", {
+			return interaction.success("administration/ignore:IGNORED", {
 				channel: channel.toString()
 			});
 		}

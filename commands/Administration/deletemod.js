@@ -8,28 +8,35 @@ class Deletemod extends Command {
 			dirname: __dirname,
 			enabled: true,
 			guildOnly: true,
-			aliases: [ "autodeletemodcommands" ],
 			memberPermissions: [ "MANAGE_MESSAGES" ],
 			botPermissions: [ "SEND_MESSAGES", "EMBED_LINKS" ],
 			nsfw: false,
 			ownerOnly: false,
-			cooldown: 3000
+			cooldown: 3000,
+			options: [
+				{
+					name: "status",
+					required: true,
+					description: "the status (on/off)",
+					type: "STRING"
+				}
+			]
 		});
 	}
 
-	async run (message, args, data) {
-		const status = args[0];
+	async run (interaction, data) {
+		const status = interaction.options.getString("status");
 		if(!status || status !== "on" && status !== "off"){
-			return message.error("administration/deletemod:MISSING_STATUS");
+			return interaction.error("administration/deletemod:MISSING_STATUS");
 		}
 		if(status === "on"){
 			data.guild.autoDeleteModCommands = true;
 			data.guild.save();
-			message.success("administration/deletemod:ENABLED");
+			interaction.success("administration/deletemod:ENABLED");
 		} else {
 			data.guild.autoDeleteModCommands = false;
 			data.guild.save();
-			message.success("administration/deletemod:DISABLED");
+			interaction.success("administration/deletemod:DISABLED");
 		}
 	}
 

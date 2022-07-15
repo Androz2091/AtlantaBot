@@ -9,32 +9,39 @@ class Goodbye extends Command {
 			dirname: __dirname,
 			enabled: true,
 			guildOnly: true,
-			aliases: [ "au-revoir" ],
 			memberPermissions: [ "MANAGE_GUILD" ],
 			botPermissions: [ "SEND_MESSAGES", "EMBED_LINKS" ],
 			nsfw: false,
 			ownerOnly: false,
-			cooldown: 3000
+			cooldown: 3000,
+			options: [
+				{
+					name: "status",
+					required: true,
+					description: "the status (test/edit/off)",
+					type: "STRING"
+				}
+			]
 		});
 	}
 
-	async run (message, args, data) {
-
+	async run (interaction, data) {
+		let status = interaction.options.getString("status")
 		if (
-			args[0] === "test" &&
+			status === "test" &&
             data.guild.plugins.goodbye.enabled
 		) {
-			this.client.emit("guildMemberRemove", message.member);
-			return message.success("administration/goodbye:TEST_SUCCESS");
+			this.client.emit("guildMemberRemove", interaction.member);
+			return interaction.success("administration/goodbye:TEST_SUCCESS");
 		}
 
 		if (
-			(!args[0] || !["edit", "off"].includes(args[0])) &&
+			(!status || !["edit", "off"].includes(status)) &&
             data.guild.plugins.goodbye.enabled
 		)
-			return message.error("administration/goodbye:MISSING_STATUS");
+			return interaction.error("administration/goodbye:MISSING_STATUS");
 
-		if (args[0] === "off") {
+		if (status === "off") {
 			data.guild.plugins.goodbye = {
 				enabled: false,
 				message: null,
@@ -43,7 +50,7 @@ class Goodbye extends Command {
 			};
 			data.guild.markModified("plugins.goodbye");
 			data.guild.save();
-			return message.error("administration/goodbye:DISABLED", {
+			return interaction.error("administration/goodbye:DISABLED", {
 				prefix: data.guild.prefix
 			});
 		} else {
@@ -54,11 +61,11 @@ class Goodbye extends Command {
 				withImage: null,
 			};
 
-			message.sendT("administration/goodbye:FORM_1", {
-				author: message.author.toString()
+			interaction.replyT("administration/goodbye:FORM_1", {
+				author: interaction.member.user.toString()
 			});
-			const collector = message.channel.createMessageCollector(
-				m => m.author.id === message.author.id,
+			const collector = interaction.channel.createMessageCollector(
+				m => m.author.id === interaction.member.user.id,
 				{
 					time: 120000 // 2 minutes
 				}
@@ -69,21 +76,21 @@ class Goodbye extends Command {
 				if (goodbye.message) {
 					if (
 						msg.content.toLowerCase() ===
-                        message.translate("common:YES").toLowerCase()
+                        interaction.translate("common:YES").toLowerCase()
 					) {
 						goodbye.withImage = true;
 					} else if (
 						msg.content.toLowerCase() ===
-                        message.translate("common:NO").toLowerCase()
+                        interaction.translate("common:NO").toLowerCase()
 					) {
 						goodbye.withImage = false;
 					} else {
-						return message.error("misc:INVALID_YES_NO");
+						return interaction.error("misc:INVALID_YES_NO");
 					}
 					data.guild.plugins.goodbye = goodbye;
 					data.guild.markModified("plugins.goodbye");
 					await data.guild.save();
-					message.sendT("administration/goodbye:FORM_SUCCESS", {
+					interaction.replyT("administration/goodbye:FORM_SUCCESS", {
 						prefix: data.guild.prefix,
 						channel: `<#${goodbye.channel}>`
 					});
@@ -94,9 +101,9 @@ class Goodbye extends Command {
 				if (goodbye.channel && !goodbye.message) {
 					if (msg.content.length < 1800) {
 						goodbye.message = msg.content;
-						return message.sendT("administration/goodbye:FORM_3");
+						return interaction.replyT("administration/goodbye:FORM_3");
 					}
-					return message.error("administration/goodbye:MAX_CHARACT");
+					return interaction.error("administration/goodbye:MAX_CHARACT");
 				}
 
 				// If the channel is not filled, it means the user sent it
@@ -106,10 +113,10 @@ class Goodbye extends Command {
 						channelType: "text"
 					});
 					if (!channel) {
-						return message.error("misc:INVALID_CHANNEL");
+						return interaction.error("misc:INVALID_CHANNEL");
 					}
 					goodbye.channel = channel.id;
-					message.sendT("administration/goodbye:FORM_2", {
+					interaction.replyT("administration/goodbye:FORM_2", {
 						channel: channel.toString(),
 						author: msg.author.tag,
 						memberCount: msg.guild.memberCount
@@ -119,7 +126,7 @@ class Goodbye extends Command {
 
 			collector.on("end", (_, reason) => {
 				if (reason === "time") {
-					return message.error("misc:TIMEOUT");
+					return interaction.error("misc:TIMEOUT");
 				}
 			});
 		}

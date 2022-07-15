@@ -9,30 +9,37 @@ class Autorole extends Command {
 			dirname: __dirname,
 			enabled: true,
 			guildOnly: true,
-			aliases: [ "ar" ],
 			memberPermissions: [ "MANAGE_GUILD" ],
 			botPermissions: [ "SEND_MESSAGES", "EMBED_LINKS" ],
 			nsfw: false,
 			ownerOnly: false,
-			cooldown: 5000
+			cooldown: 5000,
+			options: [
+				{
+					name: "status",
+					required: true,
+					description: "the status (on/off)",
+					type: "STRING"
+				}
+			]
 		});
 	}
 
-	async run (message, args, data) {
+	async run (interaction, data) {
 
-		const status = args[0];
+		const status = interaction.options.getString("status");
 		if(status !== "on" && status !== "off"){
-			return message.error("administration/autorole:MISSING_STATUS");
+			return interaction.error("administration/autorole:MISSING_STATUS");
 		}
         
 		if(status === "on"){
 
 			const role = await Resolvers.resolveRole({
-				message,
-				search: args.slice(1).join(" ")
+				interaction,
+				search: status.slice(1).join(" ")
 			});
 			if(!role){
-				return message.error("administration/autorole:MISSING_ROLE");
+				return interaction.error("administration/autorole:MISSING_ROLE");
 			}
 
 			data.guild.plugins.autorole = {
@@ -42,7 +49,7 @@ class Autorole extends Command {
 			data.guild.markModified("plugins.autorole");
 			await data.guild.save();
 
-			message.success("administration/autorole:SUCCESS_ENABLED", {
+			interaction.success("administration/autorole:SUCCESS_ENABLED", {
 				roleName: role.name
 			});
 		}
@@ -50,7 +57,7 @@ class Autorole extends Command {
 		if(status === "off"){
 
 			if(!data.guild.plugins.autorole.enabled){
-				return message.success("administration/autorole:ALREADY_DISABLED", {
+				return interaction.success("administration/autorole:ALREADY_DISABLED", {
 					prefix: data.guild.prefix
 				});
 			}
@@ -62,7 +69,7 @@ class Autorole extends Command {
 			data.guild.markModified("plugins.autorole");
 			await data.guild.save();
             
-			message.success("administration/autorole:SUCCESS_DISABLED", {
+			interaction.success("administration/autorole:SUCCESS_DISABLED", {
 				prefix: data.guild.prefix
 			});
 

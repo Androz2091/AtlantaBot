@@ -9,32 +9,39 @@ class Welcome extends Command {
 			dirname: __dirname,
 			enabled: true,
 			guildOnly: true,
-			aliases: [ "bienvenue" ],
 			memberPermissions: [ "MANAGE_GUILD" ],
 			botPermissions: [ "SEND_MESSAGES", "EMBED_LINKS" ],
 			nsfw: false,
 			ownerOnly: false,
-			cooldown: 3000
+			cooldown: 3000,
+			options: [
+				{
+					name: "status",
+					required: true,
+					description: "the status (test/edit/off)",
+					type: "STRING"
+				}
+			]
 		});
 	}
 
-	async run (message, args, data) {
-
+	async run (interaction, data) {
+		const status = interaction.options.getString("status")
 		if (
-			args[0] === "test" &&
+			status === "test" &&
             data.guild.plugins.welcome.enabled
 		) {
-			this.client.emit("guildMemberAdd", message.member);
-			return message.success("administration/welcome:TEST_SUCCESS");
+			this.client.emit("guildMemberAdd", interaction.member);
+			return interaction.success("administration/welcome:TEST_SUCCESS");
 		}
 
 		if (
-			(!args[0] || !["edit", "off"].includes(args[0])) &&
+			(!status || !["edit", "off"].includes(status)) &&
             data.guild.plugins.welcome.enabled
 		)
-			return message.error("administration/welcome:MISSING_STATUS");
+			return interaction.error("administration/welcome:MISSING_STATUS");
 
-		if (args[0] === "off") {
+		if (status === "off") {
 			data.guild.plugins.welcome = {
 				enabled: false,
 				message: null,
@@ -43,7 +50,7 @@ class Welcome extends Command {
 			};
 			data.guild.markModified("plugins.welcome");
 			data.guild.save();
-			return message.error("administration/welcome:DISABLED", {
+			return interaction.error("administration/welcome:DISABLED", {
 				prefix: data.guild.prefix
 			});
 		} else {
@@ -54,11 +61,11 @@ class Welcome extends Command {
 				withImage: null,
 			};
 
-			message.sendT("administration/welcome:FORM_1", {
-				author: message.author.toString()
+			interaction.replyT("administration/welcome:FORM_1", {
+				author: interaction.member.user.toString()
 			});
-			const collector = message.channel.createMessageCollector(
-				m => m.author.id === message.author.id,
+			const collector = interaction.channel.createMessageCollector(
+				m => m.author.id === interaction.member.user.id,
 				{
 					time: 120000 // 2 minutes
 				}
@@ -69,21 +76,21 @@ class Welcome extends Command {
 				if (welcome.message) {
 					if (
 						msg.content.toLowerCase() ===
-                        message.translate("common:YES").toLowerCase()
+                        interaction.translate("common:YES").toLowerCase()
 					) {
 						welcome.withImage = true;
 					} else if (
 						msg.content.toLowerCase() ===
-                        message.translate("common:NO").toLowerCase()
+                        interaction.translate("common:NO").toLowerCase()
 					) {
 						welcome.withImage = false;
 					} else {
-						return message.error("misc:INVALID_YES_NO");
+						return interaction.error("misc:INVALID_YES_NO");
 					}
 					data.guild.plugins.welcome = welcome;
 					data.guild.markModified("plugins.welcome");
 					await data.guild.save();
-					message.sendT("administration/welcome:FORM_SUCCESS", {
+					interaction.replyT("administration/welcome:FORM_SUCCESS", {
 						prefix: data.guild.prefix,
 						channel: `<#${welcome.channel}>`
 					});
@@ -94,9 +101,9 @@ class Welcome extends Command {
 				if (welcome.channel && !welcome.message) {
 					if (msg.content.length < 1800) {
 						welcome.message = msg.content;
-						return message.sendT("administration/welcome:FORM_3");
+						return interaction.replyT("administration/welcome:FORM_3");
 					}
-					return message.error("administration/goodbye:MAX_CHARACT");
+					return interaction.error("administration/goodbye:MAX_CHARACT");
 				}
 
 				// If the channel is not filled, it means the user sent it
@@ -109,17 +116,17 @@ class Welcome extends Command {
 						return message.error("misc:INVALID_CHANNEL");
 					}
 					welcome.channel = channel.id;
-					message.sendT("administration/welcome:FORM_2", {
-						guildName: message.guild.name,
-						author: msg.author.tag,
-						memberCount: msg.guild.memberCount
+					interaction.replyT("administration/welcome:FORM_2", {
+						guildName: interaction.guild.name,
+						author: interaction.member.user.tag,
+						memberCount: interaction.guild.memberCount
 					});
 				}
 			});
 
 			collector.on("end", (_, reason) => {
 				if (reason === "time") {
-					return message.error("misc:TIMEOUT");
+					return interaction.error("misc:TIMEOUT");
 				}
 			});
 		}

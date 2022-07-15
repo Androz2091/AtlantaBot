@@ -8,30 +8,37 @@ class Setprefix extends Command {
 			dirname: __dirname,
 			enabled: true,
 			guildOnly: true,
-			aliases: [],
 			memberPermissions: [ "MANAGE_GUILD" ],
 			botPermissions: [ "SEND_MESSAGES", "EMBED_LINKS" ],
 			nsfw: false,
 			ownerOnly: false,
-			cooldown: 3000
+			cooldown: 3000,
+			options: [
+				{
+					name: "prefix",
+					required: true,
+					description: "the new prefix",
+					type: "STRING"
+				}
+			]
 		});
 	}
 
-	async run (message, args, data) {
+	async run (interaction, data) {
 
-		const prefix = args[0];
+		const prefix = interaction.options.getString("prefix")
 		if(!prefix){
-			return message.error("administration/setprefix:MISSING_PREFIX");
+			return interaction.error("administration/setprefix:MISSING_PREFIX");
 		}
 		if(prefix.length > 5){
-			return message.error("administration/setprefix:TOO_LONG");
+			return interaction.error("administration/setprefix:TOO_LONG");
 		}
         
 		data.guild.prefix = prefix;
 		data.guild.save();
 
 		// Sucess
-		return message.success("administration/setprefix:SUCCESS", {
+		return interaction.success("administration/setprefix:SUCCESS", {
 			prefix
 		});
         

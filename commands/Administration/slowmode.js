@@ -9,36 +9,43 @@ class Slowmode extends Command {
 			dirname: __dirname,
 			enabled: true,
 			guildOnly: true,
-			aliases: [ "slowmotion" ],
 			memberPermissions: [ "MANAGE_GUILD" ],
 			botPermissions: [ "SEND_MESSAGES", "EMBED_LINKS" ],
 			nsfw: false,
 			ownerOnly: false,
-			cooldown: 3000
+			cooldown: 3000,
+			options: [
+				{
+					name: "duration",
+					required: true,
+					description: "the duration of the slowmode",
+					type: "STRING"
+				}
+			]
 		});
 	}
 
-	async run (message, args, data) {
+	async run (interaction, data) {
 
-		const channel = message.mentions.channels.filter((ch) => ch.type === "text" && ch.guild.id === message.guild.id).first();
+		const channel = interaction.mentions.channels.filter((ch) => ch.type === "text" && ch.guild.id === interaction.guild.id).first();
 		if(!channel){
-			return message.error("misc:INVALID_CHANNEL");
+			return interaction.error("misc:INVALID_CHANNEL");
 		}
-		const time = args[1];
+		const time = interaction.options.getString("duration");
 		if(!time){
 			if(!data.guild.slowmode.channels.find((ch) => ch.id === channel.id)){
-				return message.error("misc:INVALID_TIME");
+				return interaction.error("misc:INVALID_TIME");
 			}
 			data.guild.slowmode.channels = data.guild.slowmode.channels.filter((ch) => ch.id !== channel.id);
 			data.guild.markModified("slowmode.channels");
 			data.guild.save();
-			message.success("administration/slowmode:DISABLED", {
+			interaction.success("administration/slowmode:DISABLED", {
 				prefix: data.guild.prefix,
 				channel: `#${channel.name}`
 			});
 		} else {
 			if(isNaN(ms(time))){
-				return message.error("misc:INVALID_TIME");
+				return interaction.error("misc:INVALID_TIME");
 			}
 			if(data.guild.slowmode.channels.find((ch) => ch.id === channel.id)){
 				data.guild.slowmode.channels = data.guild.slowmode.channels.filter((ch) => ch.id !== channel.id);
@@ -49,10 +56,10 @@ class Slowmode extends Command {
 			});
 			data.guild.markModified("slowmode.channels");
 			data.guild.save();
-			message.success("administration/slowmode:ENABLED", {
+			interaction.success("administration/slowmode:ENABLED", {
 				prefix: data.guild.prefix,
 				channel: `#${channel.name}`,
-				time: this.client.functions.convertTime(message.guild, ms(time))
+				time: this.client.functions.convertTime(interaction.guild, ms(time))
 			});
 		}
 	}

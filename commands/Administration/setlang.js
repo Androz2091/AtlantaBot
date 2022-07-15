@@ -8,21 +8,28 @@ class Setlang extends Command {
 			dirname: __dirname,
 			enabled: true,
 			guildOnly: true,
-			aliases: [],
 			memberPermissions: [ "MANAGE_GUILD" ],
 			botPermissions: [ "SEND_MESSAGES", "EMBED_LINKS" ],
 			nsfw: false,
 			ownerOnly: false,
-			cooldown: 3000
+			cooldown: 3000,
+			options: [
+				{
+					name: "lang",
+					required: true,
+					description: "the lang you want for the bot",
+					type: "STRING"
+				}
+			]
 		});
 	}
 
-	async run (message, args, data) {
+	async run (interaction, data) {
+		const lang = interaction.options.getString("lang")
+		const language = this.client.languages.find((l) => l.name === lang || l.aliases.includes(lang));
 
-		const language = this.client.languages.find((l) => l.name === args[0] || l.aliases.includes(args[0]));
-
-		if(!args[0] || !language){
-			return message.error("administration/setlang:MISSING_LANG", {
+		if(!lang || !language){
+			return interaction.error("administration/setlang:MISSING_LANG", {
 				list: this.client.languages.map((l) => "`"+l.name+"`").join(", ")
 			});
 		}
@@ -30,7 +37,7 @@ class Setlang extends Command {
 		data.guild.language = language.name;
 		await data.guild.save();
         
-		return message.sendT("administration/setlang:SUCCESS");
+		return interaction.replyT("administration/setlang:SUCCESS");
         
 	}
 

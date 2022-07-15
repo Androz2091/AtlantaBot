@@ -13,19 +13,27 @@ class Delcommand extends Command {
 			botPermissions: [ "SEND_MESSAGES", "EMBED_LINKS" ],
 			nsfw: false,
 			ownerOnly: false,
-			cooldown: 3000
+			cooldown: 3000,
+			options: [
+				{
+					name: "name",
+					description: "the name of the command to delete",
+					required: true,
+					type: "STRING"
+				}
+			]
 		});
 	}
 
-	async run (message, args, data) {
+	async run (interaction, data) {
 
-		const name = args[0];
+		const name = interaction.options.getString("name");
 		if(!name){
-			return message.error("administration/delcommand:MISSING_NAME");
+			return interaction.error("administration/delcommand:MISSING_NAME");
 		}
 
 		if(!data.guild.customCommands.find((c) => c.name === name)){
-			return message.error("administration/delcommand:UNKNOWN_COMMAND", {
+			return interaction.error("administration/delcommand:UNKNOWN_COMMAND", {
 				commandName: name
 			});
 		}
@@ -33,7 +41,7 @@ class Delcommand extends Command {
 		data.guild.customCommands = data.guild.customCommands.filter((c) => c.name !== name);
 		data.guild.save();
 
-		message.success("administration/delcommand:SUCCESS", {
+		interaction.success("administration/delcommand:SUCCESS", {
 			commandName: name
 		});
 	}

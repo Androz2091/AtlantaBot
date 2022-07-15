@@ -8,39 +8,52 @@ class Addemoji extends Command {
 			dirname: __dirname,
 			enabled: true,
 			guildOnly: true,
-			aliases: [],
 			memberPermissions: [ "MANAGE_GUILD" ],
 			botPermissions: [ "SEND_MESSAGES", "EMBED_LINKS" ],
 			nsfw: false,
 			ownerOnly: false,
-			cooldown: 5000
+			cooldown: 5000,
+			options: [
+				{
+					name: "url",
+					description: "the url of the emoji",
+					required: true,
+					type: "STRING"
+				},
+				{
+					name: "name",
+					description: "the name of the emoji",
+					required: true,
+					type: "STRING"
+				}
+			]
 		});
 	}
 
-	async run (message, args) {
+	async run (interaction) {
 
-		const URL = args[0];
+		const URL = interaction.options.getString("url");
 		if (!URL) {
-			return message.error("administration/addemoji:MISSING_URL");
+			return interaction.error("administration/addemoji:MISSING_URL");
 		}
 
-		const name = args[1] ? args[1].replace(/[^a-z0-9]/gi, "") : null;
+		const name = interaction.options.getString("url").replace(/[^a-z0-9]/gi, "");
 		if (!name) {
-			return message.error("administration/addemoji:MISSING_NAME");
+			return interaction.error("administration/addemoji:MISSING_NAME");
 		}
 		if (name.length < 2 || name > 32) {
-			return message.error("administration/addemoji:INVALID_NAME");
+			return interaction.error("administration/addemoji:INVALID_NAME");
 		}
 
-		message.guild.emojis
+		interaction.guild.emojis
 			.create(URL, name)
 			.then(emoji => {
-				message.success("administration/addemoji:SUCCESS", {
+				interaction.success("administration/addemoji:SUCCESS", {
 					emojiName: emoji.name
 				});
 			})
 			.catch(() => {
-				message.error("administration/addemoji:ERROR", {
+				interaction.error("administration/addemoji:ERROR", {
 					emojiName: name
 				});
 			});
