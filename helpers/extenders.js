@@ -44,6 +44,16 @@ Interaction.prototype.success = function(key, args, options = {}) {
 	return this.replyT(key, args, Object.assign(options, { prefixEmoji: "success" }));
 };
 
+// Format a date
+Interaction.prototype.printDate = function(date, format) {
+	return this.client.printDate(date, format, this.guild.data.language);
+};
+
+// Convert time
+Interaction.prototype.convertTime = function(time, type, noPrefix) {
+	return this.client.convertTime(time, type, noPrefix, (this.guild && this.guild.data) ? this.guild.data.language : null);
+};
+
 //Messages Prototypes
 Message.prototype.translate = function(key, args) {
 	const language = this.client.translations.get(
