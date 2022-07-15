@@ -9,7 +9,6 @@ class Achievements extends Command {
 			dirname: __dirname,
 			enabled: true,
 			guildOnly: false,
-			aliases: [ "ac" ],
 			memberPermissions: [],
 			botPermissions: [ "SEND_MESSAGES", "EMBED_LINKS" ],
 			nsfw: false,
@@ -18,49 +17,49 @@ class Achievements extends Command {
 		});
 	}
 
-	async run (message, args, data) {
+	async run (interaction, data) {
 		const embed = new Discord.MessageEmbed()
-			.setAuthor(message.translate("economy/achievements:TITLE"))
+			.setAuthor(interaction.translate("economy/achievements:TITLE"))
 			.setColor(data.config.embed.color)
 			.setFooter(data.config.embed.footer);
         
-		embed.addField(message.translate("economy/achievements:SEND_CMD"), message.translate("economy/achievements:PROGRESS", {
+		embed.addField(interaction.translate("economy/achievements:SEND_CMD"), interaction.translate("economy/achievements:PROGRESS", {
 			now: data.userData.achievements.firstCommand.progress.now,
 			total: data.userData.achievements.firstCommand.progress.total,
 			percent: Math.round(100 * (data.userData.achievements.firstCommand.progress.now/data.userData.achievements.firstCommand.progress.total))
 		}));
-		embed.addField(message.translate("economy/achievements:CLAIM_SALARY"), message.translate("economy/achievements:PROGRESS", {
+		embed.addField(interaction.translate("economy/achievements:CLAIM_SALARY"), interaction.translate("economy/achievements:PROGRESS", {
 			now: data.userData.achievements.work.progress.now,
 			total: data.userData.achievements.work.progress.total,
 			percent: Math.round(100 * (data.userData.achievements.work.progress.now/data.userData.achievements.work.progress.total))
 		}));
-		embed.addField(message.translate("economy/achievements:MARRY"), message.translate("economy/achievements:PROGRESS", {
+		embed.addField(interaction.translate("economy/achievements:MARRY"), interaction.translate("economy/achievements:PROGRESS", {
 			now: data.userData.achievements.married.progress.now,
 			total: data.userData.achievements.married.progress.total,
 			percent: Math.round(100 * (data.userData.achievements.married.progress.now/data.userData.achievements.married.progress.total))
 		}));
-		embed.addField(message.translate("economy/achievements:SLOTS"), message.translate("economy/achievements:PROGRESS", {
+		embed.addField(interaction.translate("economy/achievements:SLOTS"), interaction.translate("economy/achievements:PROGRESS", {
 			now: data.userData.achievements.slots.progress.now,
 			total: data.userData.achievements.slots.progress.total,
 			percent: Math.round(100 * (data.userData.achievements.slots.progress.now/data.userData.achievements.slots.progress.total))
 		}));
-		embed.addField(message.translate("economy/achievements:TIP"), message.translate("economy/achievements:PROGRESS", {
+		embed.addField(interaction.translate("economy/achievements:TIP"), interaction.translate("economy/achievements:PROGRESS", {
 			now: data.userData.achievements.tip.progress.now,
 			total: data.userData.achievements.tip.progress.total,
 			percent: Math.round(100 * (data.userData.achievements.tip.progress.now/data.userData.achievements.tip.progress.total))
 		}));
-		embed.addField(message.translate("economy/achievements:REP"), message.translate("economy/achievements:PROGRESS", {
+		embed.addField(interaction.translate("economy/achievements:REP"), interaction.translate("economy/achievements:PROGRESS", {
 			now: data.userData.achievements.rep.progress.now,
 			total: data.userData.achievements.rep.progress.total,
 			percent: Math.round(100 * (data.userData.achievements.rep.progress.now/data.userData.achievements.rep.progress.total))
 		}));
-		embed.addField(message.translate("economy/achievements:INVITE"), message.translate("economy/achievements:PROGRESS", {
+		embed.addField(interaction.translate("economy/achievements:INVITE"), interaction.translate("economy/achievements:PROGRESS", {
 			now: data.userData.achievements.invite.progress.now,
 			total: data.userData.achievements.invite.progress.total,
 			percent: Math.round(100 * (data.userData.achievements.invite.progress.now/data.userData.achievements.invite.progress.total))
 		}));
 
-		message.channel.send({ embeds: [embed] });
+		interaction.reply({ embeds: [embed] });
 
 	}
 

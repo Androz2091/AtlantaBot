@@ -8,7 +8,6 @@ class Divorce extends Command {
 			dirname: __dirname,
 			enabled: true,
 			guildOnly: false,
-			aliases: [ "profil" ],
 			memberPermissions: [],
 			botPermissions: [ "SEND_MESSAGES", "EMBED_LINKS" ],
 			nsfw: false,
@@ -17,11 +16,11 @@ class Divorce extends Command {
 		});
 	}
 
-	async run (message, args, data) {
+	async run (interaction, data) {
         
 		// Check if the message author is wedded
 		if(!data.userData.lover){
-			return message.error("economy/divorce:NOT_MARRIED");
+			return interaction.error("economy/divorce:NOT_MARRIED");
 		}
 
 		// Updates db
@@ -31,12 +30,12 @@ class Divorce extends Command {
 		data.userData.lover = null;
 		data.userData.save();
 
-		const oldLover = await this.client.findOrCreateUser({ id:user.id });
+		const oldLover = await this.client.database.findOrCreateUser({ id:user.id });
 		oldLover.lover = null;
 		oldLover.save();
 
 		// Send success message 
-		message.success("economy/divorce:SUCCESS", {
+		interaction.success("economy/divorce:SUCCESS", {
 			username: user.username
 		});
 

@@ -9,7 +9,6 @@ class Work extends Command {
 			dirname: __dirname,
 			enabled: true,
 			guildOnly: true,
-			aliases: [ "salaire", "salary", "travail", "daily", "dailies" ],
 			memberPermissions: [],
 			botPermissions: [ "SEND_MESSAGES", "EMBED_LINKS" ],
 			nsfw: false,
@@ -18,7 +17,7 @@ class Work extends Command {
 		});
 	}
 
-	async run (message, args, data) {
+	async run (interaction, data) {
 
 		// if the member is already in the cooldown db
 		const isInCooldown = data.memberData.cooldowns.work;
@@ -27,8 +26,8 @@ class Work extends Command {
             when the member will be able to execute the order again 
             is greater than the current date, display an error message */
 			if(isInCooldown > Date.now()){
-				return message.error("economy/work:COOLDOWN", {
-					time: message.convertTime(isInCooldown, "to", true)
+				return interaction.error("economy/work:COOLDOWN", {
+					time: interaction.convertTime(isInCooldown, "to", true)
 				});
 			}
 		}
@@ -46,7 +45,7 @@ class Work extends Command {
 		await data.memberData.save();
 
 		const embed = new Discord.MessageEmbed()
-			.setFooter(message.translate("economy/work:AWARD"), message.author.displayAvatarURL({ size: 512, dynamic: true, format: "png" }))
+			.setFooter(interaction.translate("economy/work:AWARD"), interaction.member.user.displayAvatarURL({ size: 512, dynamic: true, format: "png" }))
 			.setColor(data.config.embed.color);
         
 		const award = [
@@ -60,10 +59,10 @@ class Work extends Command {
 
 		if(data.memberData.workStreak >= 5){
 			won += 200;
-			embed.addField(message.translate("economy/work:SALARY"), message.translate("economy/work:SALARY_CONTENT", {
+			embed.addField(interaction.translate("economy/work:SALARY"), interaction.translate("economy/work:SALARY_CONTENT", {
 				won
 			}))
-				.addField(message.translate("economy/work:STREAK"), message.translate("economy/work:STREAK_CONTENT"));
+				.addField(interaction.translate("economy/work:STREAK"), interaction.translate("economy/work:STREAK_CONTENT"));
 			data.memberData.workStreak = 0;
 		} else {
 			for(let i = 0; i < award.length; i++){
@@ -72,10 +71,10 @@ class Work extends Command {
 					award[i] = `:regional_indicator_${letter.toLowerCase()}:`;
 				}
 			}
-			embed.addField(message.translate("economy/work:SALARY"), message.translate("economy/work:SALARY_CONTENT", {
+			embed.addField(interaction.translate("economy/work:SALARY"), interaction.translate("economy/work:SALARY_CONTENT", {
 				won
 			}))
-				.addField(message.translate("economy/work:STREAK"), award.join(""));
+				.addField(interaction.translate("economy/work:STREAK"), award.join(""));
 		}
 
 		data.memberData.money = data.memberData.money + won;
@@ -98,7 +97,7 @@ class Work extends Command {
 		}
 
 		// Send the embed in the current channel
-		message.channel.send(messageOptions);
+		interaction.reply(messageOptions);
 
 	}
 

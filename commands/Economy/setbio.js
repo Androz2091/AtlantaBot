@@ -8,25 +8,32 @@ class Setbio extends Command {
 			dirname: __dirname,
 			enabled: true,
 			guildOnly: false,
-			aliases: [ "biography", "setdesc" ],
 			memberPermissions: [],
 			botPermissions: [ "SEND_MESSAGES", "EMBED_LINKS" ],
 			nsfw: false,
 			ownerOnly: false,
-			cooldown: 5000
+			cooldown: 5000,
+			options: [
+				{
+					name: "bio",
+					description: "the bio that you want to set",
+					required: true,
+					type: "STRING"
+				}
+			]
 		});
 	}
 
-	async run (message, args, data) {
-		const newBio = args.join(" ");
+	async run (interaction, data) {
+		const newBio = interaction.options.getString("bio")
 		if(!newBio){
-			return message.error("economy/setbio:MISSING");
+			return interaction.error("economy/setbio:MISSING");
 		}
 		if(newBio.length > 100){
-			return message.error("economy/setbio:MAX_CHARACT");
+			return interaction.error("economy/setbio:MAX_CHARACT");
 		}
 		data.userData.bio = newBio;
-		message.success("economy/setbio:SUCCESS");
+		interaction.success("economy/setbio:SUCCESS");
 		await data.userData.save();
 	}
 

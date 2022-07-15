@@ -8,46 +8,59 @@ class Rob extends Command {
 			dirname: __dirname,
 			enabled: true,
 			guildOnly: true,
-			aliases: [ "steal" ],
 			memberPermissions: [],
 			botPermissions: [ "SEND_MESSAGES", "EMBED_LINKS" ],
 			nsfw: false,
 			ownerOnly: false,
-			cooldown: 1000
+			cooldown: 1000,
+			options: [
+				{
+					name: "member",
+					description: "the member that you want to rob",
+					required: true,
+					type: "USER"
+				},
+				{
+					name: "amount",
+					description: "the amount to rob",
+					required: true,
+					type: "NUMBER"
+				}
+			]
 		});
 	}
 
-	async run (message, args, data) {
+	async run (interaction, data) {
 
-		const member = await this.client.resolveMember(args[0], message.guild);
+		const member = await interaction.options.getMember("member");
 		if(!member){
-			return message.error("economy/rob:MISSING_MEMBER");
+			return interaction.error("economy/rob:MISSING_MEMBER");
 		}
 
-		if(member.id === message.author.id){
-			return message.error("economy/rob:YOURSELF");
+		if(member.id === interaction.member.user.id){
+			return interaction.error("economy/rob:YOURSELF");
 		}
 
-		const memberData = await this.client.findOrCreateMember({ id: member.id, guildID: message.guild.id });
+		const memberData = await this.client.database.findOrCreateMember({ id: member.id, guildID: interaction.guild.id });
 		const isInCooldown = memberData.cooldowns.rob || 0;
 		if(isInCooldown){
 			if(isInCooldown > Date.now()){
-				return message.error("economy/rob:COOLDOWN", {
+				return interaction.error("economy/rob:COOLDOWN", {
 					username: member.user.tag
 				});
 			}
 		}
 
-		let amountToRob = args[1];
+		let amountToRob = interaction.options.getNumber("amount")
 		if(!amountToRob || isNaN(amountToRob) || parseInt(amountToRob, 10) <= 0){
-			return message.error("economy/rob:MISSING_AMOUNT", {
+			return interaction.error("economy/rob:MISSING_AMOUNT", {
 				username: member.user.username
 			});
 		}
 		amountToRob = Math.floor(parseInt(amountToRob, 10));
 
 		if(amountToRob > memberData.money){
-			return message.error("economy/rob:NOT_ENOUGH_MEMBER", {
+			return interaction.error("economy/rob:NOT_ENOUGH_MEMBER", {
 				username: member.user.username,
 				money: amountToRob
 			});
@@ -55,7 +68,7 @@ class Rob extends Command {
 
 		const potentiallyLose = Math.floor(amountToRob*1.5);
 		if(potentiallyLose > data.memberData.money){
-			return message.error("economy/rob:NOT_ENOUGH_AUTHOR", {
+			return interaction.error("economy/rob:NOT_ENOUGH_AUTHOR", {
 				moneyMin: potentiallyLose,
 				moneyCurrent: data.memberData.money
 			});
@@ -69,7 +82,7 @@ class Rob extends Command {
 			memberData.markModified("cooldowns");
 			await memberData.save();
 			const randomNum = Math.floor(this.client.functions.randomNum(1, 3));
-			message.sendT("economy/rob:ROB_WON_"+randomNum, {
+			interaction.replyT("economy/rob:ROB_WON_"+randomNum, {
 				money: amountToRob,
 				username: member.user.username
 			});
@@ -80,7 +93,7 @@ class Rob extends Command {
 		} else {
 			const won = Math.floor(0.9*amountToRob);
 			const randomNum = Math.floor(this.client.functions.randomNum(1, 3));
-			message.sendT("economy/rob:ROB_LOSE_"+randomNum, {
+			interaction.replyT("economy/rob:ROB_LOSE_"+randomNum, {
 				fine: potentiallyLose,
 				offset: won,
 				username: member.user.username

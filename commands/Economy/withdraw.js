@@ -8,34 +8,41 @@ class Withdraw extends Command {
 			dirname: __dirname,
 			enabled: true,
 			guildOnly: true,
-			aliases: [ "wd" ],
 			memberPermissions: [],
 			botPermissions: [ "SEND_MESSAGES", "EMBED_LINKS" ],
 			nsfw: false,
 			ownerOnly: false,
-			cooldown: 1000
+			cooldown: 1000,
+			options: [
+				{
+					name: "amount",
+					description: "the amount to withdraw",
+					required: true,
+					type: "STRING"
+				}
+			]
 		});
 	}
 
-	async run (message, args, data) {
+	async run (interaction, data) {
         
-		let amount = args[0];
+		let amount = interaction.options.getString("amount");
 
 		if(!(parseInt(data.memberData.bankSold, 10) > 0)) {
-			return message.error("economy/withdraw:NO_CREDIT");
+			return interaction.error("economy/withdraw:NO_CREDIT");
 		}
 
-		if(args[0] === "all"){
+		if(amount === "all"){
 			amount = parseInt(data.memberData.bankSold, 10);
 		} else {
 			if(isNaN(amount) || parseInt(amount, 10) < 1){
-				return message.error("economy/withdraw:MISSING_AMOUNT");
+				return interaction.error("economy/withdraw:MISSING_AMOUNT");
 			}
 			amount = parseInt(amount, 10);
 		}
         
 		if(data.memberData.bankSold < amount){
-			return message.error("economy/withdraw:NOT_ENOUGH", {
+			return interaction.error("economy/withdraw:NOT_ENOUGH", {
 				money: amount
 			});
 		}
@@ -44,7 +51,7 @@ class Withdraw extends Command {
 		data.memberData.bankSold = data.memberData.bankSold - amount;
 		data.memberData.save();
 
-		message.success("economy/withdraw:SUCCESS", {
+		interaction.success("economy/withdraw:SUCCESS", {
 			money: amount
 		});
 	}

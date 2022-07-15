@@ -8,34 +8,41 @@ class Deposit extends Command {
 			dirname: __dirname,
 			enabled: true,
 			guildOnly: true,
-			aliases: [ "bank", "banque", "dep" ],
 			memberPermissions: [],
 			botPermissions: [ "SEND_MESSAGES", "EMBED_LINKS" ],
 			nsfw: false,
 			ownerOnly: false,
-			cooldown: 1000
+			cooldown: 1000,
+			options: [
+				{
+					name: "amount",
+					description: "the amount you want to deposit",
+					type: "STRING",
+					required: true
+				}
+			]
 		});
 	}
 
-	async run (message, args, data) {
+	async run (interaction, data) {
         
-		let amount = args[0];
+		let amount = interaction.options.getString("amount")
 
 		if(!(parseInt(data.memberData.money, 10) > 0)) {
-			return message.error("economy/deposit:NO_CREDIT");
+			return interaction.error("economy/deposit:NO_CREDIT");
 		}
 
-		if(args[0] === "all"){
+		if(amount === "all"){
 			amount = parseInt(data.memberData.money, 10);
 		} else {
 			if(isNaN(amount) || parseInt(amount, 10) < 1){
-				return message.error("economy/deposit:MISSING_AMOUNT");
+				return interaction.error("economy/deposit:MISSING_AMOUNT");
 			}
 			amount = parseInt(amount, 10);
 		}
         
 		if(data.memberData.money < amount){
-			return message.error("economy/deposit:NOT_ENOUGH_CREDIT", {
+			return interaction.error("economy/deposit:NOT_ENOUGH_CREDIT", {
 				money: amount
 			});
 		}
@@ -44,7 +51,7 @@ class Deposit extends Command {
 		data.memberData.bankSold = data.memberData.bankSold + amount;
 		data.memberData.save();
 
-		message.success("economy/deposit:SUCCESS", {
+		interaction.success("economy/deposit:SUCCESS", {
 			money: amount
 		});
 	}

@@ -8,16 +8,23 @@ class Slots extends Command {
 			dirname: __dirname,
 			enabled: true,
 			guildOnly: true,
-			aliases: [ "casino", "slot" ],
 			memberPermissions: [],
 			botPermissions: [ "SEND_MESSAGES", "EMBED_LINKS" ],
 			nsfw: false,
 			ownerOnly: false,
-			cooldown: 3000
+			cooldown: 3000,
+			options: [
+				{
+					name: "amount",
+					required: true,
+					description: "the amount of slots",
+					type: "NUMBER"
+				}
+			]
 		});
 	}
 
-	async run (message, args, data) {
+	async run (interaction, data) {
         
 		const fruits = [ "🍎", "🍐", "🍌", "🍇", "🍉", "🍒", "🍓" ];
 
@@ -31,12 +38,12 @@ class Slots extends Command {
 		];
 
 		// Gets the amount provided
-		let amount = args[0];
+		let amount = interaction.options.getNumber("amount");
 		if(!amount || isNaN(amount) || amount < 1){
 			amount = 1;
 		}
 		if(amount > data.memberData.money){
-			return message.error("economy/slots:NOT_ENOUGH", {
+			return interaction.error("economy/slots:NOT_ENOUGH", {
 				money: amount
 			});
 		}
@@ -52,7 +59,7 @@ class Slots extends Command {
 			return Math.round(number);
 		}
 
-		const tmsg = await message.sendT("misc:loading", null, {
+		const tmsg = await interaction.replyT("misc:loading", null, {
 			prefixEmoji: "loading"
 		});
 		editMsg();
@@ -81,13 +88,13 @@ class Slots extends Command {
 			msg += colonnes[0][i3] + " : " + colonnes[1][j3] + " : "+ colonnes[2][k3] + "\n------------------\n";
             
 			if((colonnes[0][i2] == colonnes[1][j2]) && (colonnes[1][j2] == colonnes[2][k2])){
-				msg += "| : : :  **"+(message.translate("common:VICTORY").toUpperCase())+"**  : : : |";
-				tmsg.edit(msg);
+				msg += "| : : :  **"+(interaction.translate("common:VICTORY").toUpperCase())+"**  : : : |";
+				tmsg.editReply(msg);
 				const credits = getCredits(amount, true);
-				message.channel.send("**!! JACKPOT !!**\n"+message.translate("economy/slots:VICTORY", {
+				interaction.reply("**!! JACKPOT !!**\n"+interaction.translate("economy/slots:VICTORY", {
 					money: amount,
 					won: credits,
-					username: message.author.username
+					username: interaction.member.user.username
 				}));
 				const toAdd = credits - amount;
 				data.memberData.money = data.memberData.money + toAdd;
@@ -95,7 +102,7 @@ class Slots extends Command {
 					data.userData.achievements.slots.progress.now += 1;
 					if(data.userData.achievements.slots.progress.now === data.userData.achievements.slots.progress.total){
 						data.userData.achievements.slots.achieved = true;
-						message.channel.send({ files: [ { name: "unlocked.png", attachment: "./assets/img/achievements/achievement_unlocked4.png" } ] });
+						interaction.reply({ files: [ { name: "unlocked.png", attachment: "./assets/img/achievements/achievement_unlocked4.png" } ] });
 					}
 					data.userData.markModified("achievements.slots");
 					await data.userData.save();
@@ -105,13 +112,13 @@ class Slots extends Command {
 			}
             
 			if(colonnes[0][i2] == colonnes[1][j2] || colonnes[1][j2] == colonnes[2][k2] || colonnes[0][i2] == colonnes[2][k2]){
-				msg += "| : : :  **"+(message.translate("common:VICTORY").toUpperCase())+"**  : : : |";
-				tmsg.edit(msg);
+				msg += "| : : :  **"+(interaction.translate("common:VICTORY").toUpperCase())+"**  : : : |";
+				tmsg.editReply(msg);
 				const credits = getCredits(amount, false);
-				message.channel.send(message.translate("economy/slots:VICTORY", {
+				interaction.reply(interaction.translate("economy/slots:VICTORY", {
 					money: amount,
 					won: credits,
-					username: message.author.username
+					username: interaction.member.user.username
 				}));
 				const toAdd = credits - amount;
 				data.memberData.money = data.memberData.money + toAdd;
@@ -119,7 +126,7 @@ class Slots extends Command {
 					data.userData.achievements.slots.progress.now += 1;
 					if(data.userData.achievements.slots.progress.now === data.userData.achievements.slots.progress.total){
 						data.userData.achievements.slots.achieved = true;
-						message.channel.send({ files: [ { name: "unlocked.png", attachment: "./assets/img/achievements/achievement_unlocked4.png" } ] });
+						interaction.reply({ files: [ { name: "unlocked.png", attachment: "./assets/img/achievements/achievement_unlocked4.png" } ] });
 					}
 					data.userData.markModified("achievements.slots");
 					await data.userData.save();
@@ -128,10 +135,10 @@ class Slots extends Command {
 				return;
 			}
             
-			msg += "| : : :  **"+(message.translate("common:DEFEAT").toUpperCase())+"**  : : : |";
-			message.channel.send(message.translate("economy/slots:DEFEAT", {
+			msg += "| : : :  **"+(interaction.translate("common:DEFEAT").toUpperCase())+"**  : : : |";
+			interaction.reply(interaction.translate("economy/slots:DEFEAT", {
 				money: amount,
-				username: message.author.username
+				username: interaction.member.user.username
 			}));
 			data.memberData.money = data.memberData.money - amount;
 			if(!data.userData.achievements.slots.achieved){
@@ -161,7 +168,7 @@ class Slots extends Command {
 			msg += colonnes[0][i2] + " : " + colonnes[1][j2] + " : "+ colonnes[2][k2] + " **<**\n";
 			msg += colonnes[0][i3] + " : " + colonnes[1][j3] + " : "+ colonnes[2][k3] + "\n";
 
-			tmsg.edit(msg);
+			tmsg.editReply(msg);
 		}
 	}
 

@@ -13,27 +13,35 @@ class Birthdate extends Command {
 			botPermissions: [ "SEND_MESSAGES", "EMBED_LINKS" ],
 			nsfw: false,
 			ownerOnly: false,
-			cooldown: 1000
+			cooldown: 1000,
+			options: [
+				{
+					name: "date",
+					description: "your birthdate as DD/MM/YYYY",
+					required: true,
+					type: "STRING"
+				}
+			]
 		});
 	}
 
-	async run (message, args, data) {
+	async run (interaction, data) {
         
-		const date = args[0];
+		const date = interaction.options.getString("date");
 		if(!date){
-			return message.error("economy/birthdate:MISSING_DATE");
+			return interaction.error("economy/birthdate:MISSING_DATE");
 		}
 
 		const tArgs = date.split("/");
 		const [day, month, year] = tArgs;
 		if(!day || !month || !year){
-			return message.error("economy/birthdate:INVALID_DATE");
+			return interaction.error("economy/birthdate:INVALID_DATE");
 		}
         
 		// Gets the string of the date
 		const match = date.match(/\d+/g);
 		if (!match){
-			return message.error("economy/birthdate:INVALID_DATE_FORMAT");
+			return interaction.error("economy/birthdate:INVALID_DATE_FORMAT");
 		}
 		const tday = +match[0], tmonth = +match[1] - 1;
 		let tyear = +match[2];
@@ -42,20 +50,20 @@ class Birthdate extends Command {
 		}
 		const d = new Date(tyear, tmonth, tday);
 		if(!(tday == d.getDate() && tmonth == d.getMonth() && tyear == d.getFullYear())){
-			return message.error("economy/birthdate:INVALID_DATE_FORMAT");
+			return interaction.error("economy/birthdate:INVALID_DATE_FORMAT");
 		}
 		if(d.getTime() > Date.now()){
-			return message.error("economy/birthdate:DATE_TOO_HIGH");
+			return interaction.error("economy/birthdate:DATE_TOO_HIGH");
 		}
 		if(d.getTime() < (Date.now()-2.523e+12)){
-			return message.error("economy/birthdate:DATE_TOO_LOW");
+			return interaction.error("economy/birthdate:DATE_TOO_LOW");
 		}
 
 		data.userData.birthdate = d;
 		data.userData.save();
         
-		message.success("economy/birthdate:SUCCESS", {
-			date: message.printDate(d)
+		interaction.success("economy/birthdate:SUCCESS", {
+			date: interaction.printDate(d)
 		});
 
 	}

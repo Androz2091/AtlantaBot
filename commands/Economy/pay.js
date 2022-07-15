@@ -8,30 +8,43 @@ class Pay extends Command {
 			dirname: __dirname,
 			enabled: true,
 			guildOnly: true,
-			aliases: [],
 			memberPermissions: [],
 			botPermissions: [ "SEND_MESSAGES", "EMBED_LINKS" ],
 			nsfw: false,
 			ownerOnly: false,
-			cooldown: 10000
+			cooldown: 10000,
+			options: [
+				{
+					name: "member",
+					description: "the member you want to pay",
+					required: true,
+					type: "USER"
+				},
+				{
+					name: "amount",
+					description: "the amount you want to pay",
+					required: true,
+					type: "NUMBER"
+				}
+			]
 		});
 	}
 
-	async run (message, args, data) {
+	async run (interaction, data) {
 
-		const member = await this.client.resolveMember(args[0], message.guild);
+		const member = await interaction.options.getMember("member");
 		if(!member){
-			return message.error("economy/pay:INVALID_MEMBER");
+			return interaction.error("economy/pay:INVALID_MEMBER");
 		}
 		if(member.user.bot){
-			return message.error("economy/pay:BOT_USER");
+			return interaction.error("economy/pay:BOT_USER");
 		}
-		if(member.id === message.author.id){
-			return message.error("economy/pay:YOURSELF");
+		if(member.id === interaction.member.user.id){
+			return interaction.error("economy/pay:YOURSELF");
 		}
-		const sentAmount = args[1];
+		const sentAmount = interaction.options.getNumber("member");
 		if(!sentAmount || isNaN(sentAmount) || parseInt(sentAmount, 10) <= 0){
-			return message.error("economy/pay:INVALID_AMOUNT", {
+			return interaction.error("economy/pay:INVALID_AMOUNT", {
 				username: member.user.tag
 			});
 		}
@@ -39,13 +52,13 @@ class Pay extends Command {
 		const amount = Math.ceil(parseInt(sentAmount, 10));
 
 		if(amount > data.memberData.money){
-			return message.error("economy/pay:ENOUGH_MONEY", {
+			return interaction.error("economy/pay:ENOUGH_MONEY", {
 				amount,
 				username: member.user.tag
 			});
 		}
 
-		const memberData = await this.client.findOrCreateMember({ id: member.id, guildID: message.guild.id });
+		const memberData = await this.client.database.findOrCreateMember({ id: member.id, guildID: interaction.guild.id });
 
 		data.memberData.money = data.memberData.money - parseInt(amount, 10);
 		data.memberData.save();
@@ -54,7 +67,7 @@ class Pay extends Command {
 		memberData.save();
 
 		// Send a success message
-		message.success("economy/pay:SUCCESS", {
+		interaction.success("economy/pay:SUCCESS", {
 			amount,
 			username: member.user.tag
 		});
