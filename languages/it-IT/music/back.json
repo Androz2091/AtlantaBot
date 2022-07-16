@@ -1,8 +1,8 @@
 {
-    "DESCRIPTION": "Play back the previous song",
+    "DESCRIPTION": "Riproduci il brano precedente",
     "USAGE": "{{prefix}}back",
     "EXAMPLES": "{{prefix}}back",
-    "NO_PREV_SONG": "There was no song before this one!",
-    "VOTE_CONTENT": "Previous song: {{songName}}\nReact with 👍 to play the previous song! {{requiredCount}} more votes are required.",
-    "SUCCESS": "Playing previous song!"
+    "NO_PREV_SONG": "Non c'era nessuna canzone prima di questa!",
+    "VOTE_CONTENT": "Brano precedente: {{songName}}\nReagisci con 👍 per riprodurre la canzone precedente! {{requiredCount}} altri voti sono richiesti.",
+    "SUCCESS": "Riproducendo la canzone precedente!"
 }
