@@ -24,7 +24,7 @@ module.exports = class {
 
 		await member.guild.members.fetch();
 
-		const guildData = await this.client.findOrCreateGuild({ id: member.guild.id });
+		const guildData = await this.client.database.findOrCreateGuild({ id: member.guild.id });
 		member.guild.data = guildData;
 
 		// Check if goodbye message is enabled

@@ -24,10 +24,10 @@ module.exports = class {
     
 		await member.guild.members.fetch();
 
-		const guildData = await this.client.findOrCreateGuild({ id: member.guild.id });
+		const guildData = await this.client.database.findOrCreateGuild({ id: member.guild.id });
 		member.guild.data = guildData;
 
-		const memberData = await this.client.findOrCreateMember({ id: member.id, guildID: member.guild.id });
+		const memberData = await this.client.database.findOrCreateMember({ id: member.id, guildID: member.guild.id });
 		if(memberData.mute.muted && memberData.mute.endDate > Date.now()){
 			member.guild.channels.cache.forEach((channel) => {
 				channel.updateOverwrite(member.id, {

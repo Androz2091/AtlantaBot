@@ -79,7 +79,7 @@ module.exports = class {
 				data.user.achievements.firstCommand.achieved = true;
 				data.user.markModified("achievements.firstCommand");
 				await data.user.save();
-				await interaction.channel.send({ files: [
+				await interaction.reply({ files: [
 					{
 						name: "unlocked.png",
 						attachment: "./assets/img/achievements/achievement_unlocked2.png"
