@@ -1,9 +1,9 @@
 {
-    "DESCRIPTION": "Enable or disable a filter!",
-    "USAGE": "{{prefix}}filter [filter]",
-    "EXAMPLES": "{{prefix}}filter vaporwave",
-    "MISSING_FILTER": "Please specify a valid filter to enable or disable! (or send `{{prefix}}filters` to get the statuses of the filters)",
-    "UNKNOWN_FILTER": "This filter doesn't exist! Send `{{prefix}}filters` to get the list!",
-    "ADDING_FILTER": "I'm adding the filter to the music, please wait... Note: the shorter the music, the faster it will be.",
-    "REMOVING_FILTER": "I'm removing the filter to the music, please wait... Note: the shorter the music, the faster it will be."
+    "DESCRIPTION": "Attiva o disattiva un filtro!",
+    "USAGE": "{{prefix}}filtro [filter]",
+    "EXAMPLES": "{{prefix}}filtro vaporwave",
+    "MISSING_FILTER": "Si prega di specificare un filtro valido da attivare o disattivare! (o invia `{{prefix}}filters` per visualizzare gli stati dei filtri)",
+    "UNKNOWN_FILTER": "Questo filtro non esiste! Invia `{{prefix}}filters` per visualizzare la lista!",
+    "ADDING_FILTER": "Sto aggiungendo il filtro alla musica, si prega di attendere... Nota: più breve è la musica, più veloce sarà.",
+    "REMOVING_FILTER": "Sto rimuovendo il filtro alla musica, si prega di attendere... Nota: più breve è la musica, più veloce sarà."
 }
