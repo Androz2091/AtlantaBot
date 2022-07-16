@@ -1,5 +1,11 @@
 require("./helpers/extenders");
 
+const { ShardingManager } = require('discord.js');
+const { REST } = require('@discordjs/rest');
+const { Routes } = require('discord-api-types/v9');
+const { token, clientId } = require('./config.js');
+const fs = require('node:fs');
+
 /* const Sentry = require("@sentry/node");
 const chalk = require("chalk");
 
@@ -20,11 +26,6 @@ const Atlanta = require("./base/Atlanta"),
 client.init().catch(console.error);
 
 // sometimes, application commands don't load when the client is initialized, so we'll try again
-const { REST } = require('@discordjs/rest');
-const { Routes } = require('discord-api-types/v9');
-const { token, clientId } = require('./config.js');
-const fs = require('node:fs');
-
 const commands = [];
 const commandFiles = fs.readdirSync('./slash').filter(file => file.endsWith('.js'));
 
@@ -50,6 +51,11 @@ const rest = new REST({ version: '9' }).setToken(token);
 	}
 })();
 
+const manager = new ShardingManager('./atlanta.js', { token: token });
+
+manager.on('shardCreate', shard => console.log(`New Shard Launched: Shard ${shard.id}`));
+
+manager.spawn();
 
 // if there are errors, log them
 client.on("disconnect", () => client.logger.log("Bot is disconnecting...", "warn"))
