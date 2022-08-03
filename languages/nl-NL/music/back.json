@@ -1,8 +1,8 @@
 {
-    "DESCRIPTION": "Play back the previous song",
-    "USAGE": "{{prefix}}back",
-    "EXAMPLES": "{{prefix}}back",
-    "NO_PREV_SONG": "There was no song before this one!",
-    "VOTE_CONTENT": "Previous song: {{songName}}\nReact with 👍 to play the previous song! {{requiredCount}} more votes are required.",
-    "SUCCESS": "Playing previous song!"
+    "DESCRIPTION": "Speel het vorige nummer af",
+    "USAGE": "{{prefix}}terug",
+    "EXAMPLES": "{{prefix}}terug",
+    "NO_PREV_SONG": "Er was geen liedje voor dit liedje!",
+    "VOTE_CONTENT": "Vorige liedje: {{songName}}\nReageer met 👍 om het vorige liedje af te spelen! {{requiredCount}} meer stemmen zijn nodig.",
+    "SUCCESS": "Vorige liedje aan het afspelen!"
 }
