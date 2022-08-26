@@ -22,6 +22,7 @@ const Atlanta = require("./base/Atlanta"),
 
 client.init().catch(console.error);
 
+["CommandUtil", "ButtonUtil", "SelectUtil"].forEach(handler => { require(`./utils/handlers/${handler}`)(client) });
 
 const manager = new ShardingManager('./atlanta.js', { token: token });
 

@@ -2,8 +2,6 @@ const { Client, Collection, Intents } = require("discord.js");
 const { GiveawaysManager } = require("discord-giveaways");
 // const { Client: Joker } = require("blague.xyz");
 const { readdir } = require("fs/promises");
-const { REST } = require("@discordjs/rest");
-const { Routes } = require("discord-api-types/v9");
 
 const util = require("util"),
 	// AmeClient = require("amethyste-api"),
@@ -12,7 +10,6 @@ const util = require("util"),
 const {sep} = require("path");
 const mongoose = require("mongoose");
 const languages = require("../helpers/languages");
-const autoUpdateDocs = require("../helpers/autoUpdateDocs");
 
 moment.relativeTimeThreshold("s", 60);
 moment.relativeTimeThreshold("ss", 5);
@@ -176,11 +173,6 @@ class Atlanta extends Client {
 			}
 		});
 		this.translations = await languages();
-		autoUpdateDocs.update(this);
-		//Deploy commands
-		if (this.config.deployCommands) {
-			await this.registerCommands();
-		}
 	}
 
 	get defaultLanguage(){
@@ -235,22 +227,6 @@ class Atlanta extends Client {
 					console.error(`Unable to load command ${element}: ${e}`);
 				}
 			});
-		}
-	}
-
-	async registerCommands() {
-		const rest = new REST({ version: "9" }).setToken(this.config.token);
-		const commands = this.commands.map(c => c.applicationCommandBody);
-		try {
-			this.logger.log("Started refreshing application (/) commands.", "log");
-
-			await rest.put(
-				Routes.applicationCommands(this.user.id),
-				{ body: commands },
-			);
-			this.logger.log("Successfully reloaded application (/) commands.", "log");
-		} catch (error) {
-			console.error(error);
 		}
 	}
 
