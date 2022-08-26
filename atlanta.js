@@ -1,10 +1,7 @@
 require("./helpers/extenders");
 
 const { ShardingManager } = require('discord.js');
-const { REST } = require('@discordjs/rest');
-const { Routes } = require('discord-api-types/v9');
-const { token, clientId } = require('./config.js');
-const fs = require('node:fs');
+const { token } = require('./config.js');
 
 /* const Sentry = require("@sentry/node");
 const chalk = require("chalk");
@@ -25,31 +22,6 @@ const Atlanta = require("./base/Atlanta"),
 
 client.init().catch(console.error);
 
-// sometimes, application commands don't load when the client is initialized, so we'll try again
-const commands = [];
-const commandFiles = fs.readdirSync('./slash').filter(file => file.endsWith('.js'));
-
-for (const file of commandFiles) {
-	const command = require(`./slash/${file}`);
-	commands.push(command.data.toJSON());
-}
-
-const rest = new REST({ version: '9' }).setToken(token);
-
-(async () => {
-	try {
-		console.log('Started refreshing application (/) commands.');
-
-		await rest.put(
-			Routes.applicationCommands(clientId),
-			{ body: commands }
-		);
-
-		console.log('Successfully reloaded application (/) commands.');
-	} catch (error) {
-		console.error(error);
-	}
-})();
 
 const manager = new ShardingManager('./atlanta.js', { token: token });
 

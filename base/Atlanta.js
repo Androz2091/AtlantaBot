@@ -1,6 +1,5 @@
-const { MessageEmbed, Util, Client, Collection, Intents } = require("discord.js");
+const { Client, Collection, Intents } = require("discord.js");
 const { GiveawaysManager } = require("discord-giveaways");
-const { Player } = require("discord-player");
 // const { Client: Joker } = require("blague.xyz");
 const { readdir } = require("fs/promises");
 const { REST } = require("@discordjs/rest");
@@ -51,7 +50,7 @@ class Atlanta extends Client {
 		this.functions = require("../helpers/functions"); // Load the functions file
 		this.logs = require("../base/Log"); // Log mongoose model
 		this.dashboard = require("../dashboard/app"); // Dashboard app
-		this.queues = new Collection(); // This collection will be used for the music
+		// this.queues = new Collection(); // This collection will be used for the music
 		this.states = {}; // Used for the dashboard
 		this.knownGuilds = [];
 		this.database = new (require("./database"))(this); // Load the database file
@@ -68,7 +67,7 @@ class Atlanta extends Client {
 			});
 		} */
 
-		this.player = new Player(this, {
+		/* this.player = new Player(this, {
 			leaveOnEmpty: false,
 			enableLive: true
 		});
@@ -148,7 +147,7 @@ class Atlanta extends Client {
 						});
 						break;
 				}
-			});
+			}); */
 
 
 		this.giveawaysManager = new GiveawaysManager(this, {

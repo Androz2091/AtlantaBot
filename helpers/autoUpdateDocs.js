@@ -1,11 +1,7 @@
-/* THIS CHECK IF THE DOCS NEED TO BE UPDATED */
+/* THIS CHECK IF THE DOCS NEED TO BE UPDATED
 
 module.exports = {
-    
-	/**
-     * Update the doc
-     * @param {object} client The Discord Client instance
-     */
+
 	update(client){
 		const table = require("markdown-table");
 		const commands = client.commands;
@@ -54,4 +50,4 @@ module.exports = {
 		}
 	}
 
-};
+}; */
