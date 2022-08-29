@@ -7,15 +7,15 @@
     "MISSING_SONG_NAME": "Si prega di specificare il nome di una canzone o un link!",
     "RESULTS_FOOTER": "Seleziona un brano inviando un numero compreso tra 1 e 10.",
     "NO_RESULT": "Non è possibile trovare su Youtube!",
-    "NOW_PLAYING": "Now playing **{{songName}}** :musical_note:",
-    "PLAYING_PLAYLIST": "Starting playlist **{{playlistTitle}}**. {{playlistEmoji}}\nPlaying the first song, **{{songName}}**! :musical_note:",
+    "NOW_PLAYING": "In riproduzione **{{songName}}** :musical_note:",
+    "PLAYING_PLAYLIST": "Avvio playlist **{{playlistTitle}}**. {{playlistEmoji}}\nRiproduzione della prima canzone, **{{songName}}**! :musical_note:",
     "CANCELLED": "Selezione annullata",
     "NOT_PLAYING": "Nessun brano è attualmente in riproduzione su questo server.",
     "QUEUE_ENDED": "La coda è terminata. Niente più musica da riprodurre...",
     "ADDED_QUEUE": "{{songName}} è stata aggiunta alla coda!",
     "ADDED_QUEUE_COUNT": "{{songCount}} brani aggiunti alla coda!",
-    "STOP_DISCONNECTED": "I've just stopped the music as I have been disconnected from the channel.",
-    "RESULTS_CANCEL": "Search cancelled!",
-    "LIVE_VIDEO": "Lives are not yet supported!",
-    "ERR_OCCURRED": "An error occurred... Code: `{{error}}`"
+    "STOP_DISCONNECTED": "Ho appena fermato la musica perché sono stato disconnesso dal canale.",
+    "RESULTS_CANCEL": "Ricerca annullata!",
+    "LIVE_VIDEO": "Le dirette non sono ancora supportate!",
+    "ERR_OCCURRED": "Si è verificato un errore... Codice: `{{error}}`"
 }
