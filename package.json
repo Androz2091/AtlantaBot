@@ -59,7 +59,7 @@
         "string-sanitizer": "^1.1.1"
     },
     "devDependencies": {
-        "eslint": "^7.5.0"
+        "eslint": "^8.23.1"
     },
     "eslintConfig": {
         "env": {
