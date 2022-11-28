@@ -54,7 +54,7 @@
         "mathjs": "^9.0.0",
         "md5": "^2.2.1",
         "moment": "^2.26.0",
-        "mongoose": "^5.9.25",
+        "mongoose": "^6.7.3",
         "ms": "^2.1.3",
         "string-sanitizer": "^1.1.1"
     },
