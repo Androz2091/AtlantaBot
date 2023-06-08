@@ -2,7 +2,7 @@
     "DESCRIPTION": "Activez/désactivez les messages d'Au revoir !",
     "USAGE": "{{prefix}}goodbye",
     "EXAMPLES": "{{prefix}}goodbye",
-    "DEFAULT_MESSAGE": "Au revoir {user} ! Nous sommes maintenant {membercount} sans vous... :'(",
+    "DEFAULT_MESSAGE": "Au revoir {user} ! Nous sommes maintenant {membercount} sans toi... :'(",
     "TEST_SUCCESS": "Test exécuté !",
     "FORM_1": "**Dans quel salon les messages d'adieu doivent-ils être envoyés ?**\n\n:arrow_right_hook: *Répondez en mentionnant un salon !*",
     "FORM_2": "**Veuillez saisir votre message d'adieu souhaité.**\n**Si vous souhaitez:**\n*-* __Mention de l'utilisateur__: {user}\n*-* __Obtenir le nombre de membres__: {memberCount}\n*-* __Obtenir le nom du serveur__: {server}\n**Exemple d'utilisation:**\nAu revoir {user}, vous nous manquerez! Nous sommes maintenant {memberCount}.\n:fast_forward:\n Au revoir {{author}}, vous nous nous manquer! Nous sommes maintenant {{memberCount}}.",
