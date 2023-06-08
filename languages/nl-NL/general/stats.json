@@ -11,7 +11,7 @@
     "MUSIC_TITLE": "• __Music__",
     "MUSIC_CONTENT": "Muziek op `{{count}}` servers aan het afspelen",
     "CREDITS_TITLE": ":heart: • __Thanks & Credits__",
-    "CREDITS_CONTENT": "Thanks to [Icons8](https://icons8.com/) for almost all the emojis!\n__**Donators**__:\n{{donators}}\n__**Translators**__:\n{{translators}}",
+    "CREDITS_CONTENT": "Bedankt naar [Icons8](https://icons8.com/) voor bijna alle emoji's!\n__**Donateurs**__:\n{{donators}}\n__**Vertalers**__:\n{{translators}}",
     "LINKS_TITLE": "• __Links__",
     "MADE": "Atlanta is een open source bot ontwikkeld door Androz#2091!"
 }

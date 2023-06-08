@@ -1,7 +1,7 @@
 {
-    "DESCRIPTION": "Go forward or backward a specific amount of time in the current song!!",
-    "USAGE": "{{prefix}}seek [time]",
-    "EXAMPLES": "{{prefix}}resume 10s",
-    "INVALID_TIME": "You must specify a valid number of time!",
-    "SUCCESS": "▶️ Music sought!"
+    "DESCRIPTION": "¡¡Avanza o retrocede una cantidad específica de tiempo en la canción actual!!",
+    "USAGE": "{{prefix}}buscar [time]",
+    "EXAMPLES": "{{prefix}}retroceder 10 s",
+    "INVALID_TIME": "¡Debes especificar un numero válido de tiempo!",
+    "SUCCESS": "▶️ Música buscada!"
 }

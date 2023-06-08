@@ -1,8 +1,8 @@
 {
-    "DESCRIPTION": "Play back the previous song",
+    "DESCRIPTION": "Önceki şarkıyı oynat",
     "USAGE": "{{prefix}}back",
     "EXAMPLES": "{{prefix}}back",
-    "NO_PREV_SONG": "There was no song before this one!",
-    "VOTE_CONTENT": "Previous song: {{songName}}\nReact with 👍 to play the previous song! {{requiredCount}} more votes are required.",
-    "SUCCESS": "Playing previous song!"
+    "NO_PREV_SONG": "Bu şarkıdan önce şarkı yoktu!",
+    "VOTE_CONTENT": "Önceki şarkı: {{songName}}\nÖnceki şarkıyı oynatmak için 👍 ile tepki verin!\n{{requiredCount}} tepki daha gereklidir.",
+    "SUCCESS": "Önceki şarkı oynatılıyor!"
 }

@@ -1,5 +1,5 @@
 {
-    "DESCRIPTION": "Show bot's ping",
+    "DESCRIPTION": "Bot Ping anzeigen",
     "USAGE": "{{prefix}}ping",
     "EXAMPLES": "{{prefix}}ping",
     "CONTENT": "Pong! My ping is `{{ping}}` ms."

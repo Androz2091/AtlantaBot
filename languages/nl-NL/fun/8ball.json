@@ -2,7 +2,7 @@
     "DESCRIPTION": "Ik vertel je de waarheid!",
     "USAGE": "{{prefix}}8ball [question]",
     "EXAMPLES": "{{prefix}}8ball Is GLXY de beste Discord bot?",
-    "ERR_QUESTION": "You must enter a question!",
+    "ERR_QUESTION": "Je moet een vraag invoeren!",
     "RESPONSE_1": "Ik ben er zeker van.",
     "RESPONSE_2": "Het is absoluut veilig.",
     "RESPONSE_3": "Ja absoluut.",

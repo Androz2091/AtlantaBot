@@ -12,5 +12,5 @@
     "DISABLED": "**Goodbye-Nachrichten wurden gerade deaktiviert!**\n\n:arrow_right_hook: *Antworte, indem du `{{prefix}}configuration schickst, um die aktualisierte Serverkonfiguration zu sehen!*",
     "IMG_GOODBYE": "Verlasse {{server}}!",
     "IMG_NB": "- {{memberCount}}. Mitglied!",
-    "TITLE": "GOODBYE"
+    "TITLE": "AUF WIEDERSEHEN"
 }

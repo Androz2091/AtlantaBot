@@ -1,13 +1,13 @@
 {
-    "DESCRIPTION": "Ban the mentioned member!",
+    "DESCRIPTION": "Bannt den erwähnten Benutzer!",
     "USAGE": "{{prefix}}ban [@user] (reason)",
     "EXAMPLES": "{{prefix}}ban @Androz#2091 Spam",
-    "MISSING_MEMBER": "Please specify a valid member to ban!",
-    "YOURSELF": "You can't sanction yourself!",
-    "SUPERIOR": "You can't sanction or update a sanction for a member who has an higher or equal role hierarchy to yours!",
-    "ALREADY_BANNED": "**{{username}}** is already banned!",
-    "MISSING_PERM": "An error has occurred... Please check that I have the permission to ban this specific member and try again!",
-    "BANNED_DM": "Hello {{username}},\nYou have just been banned from **{{server}}** by **{{moderator}}** because of **{{reason}}**!",
-    "BANNED": "**{{username}}** has just been banned from **{{server}}** by **{{moderator}}** because of **{{reason}}**!",
-    "CASE": "Ban | Case #{{count}}"
+    "MISSING_MEMBER": "Bitte geben Sie ein gültigen Benutzer zum Bannen an!",
+    "YOURSELF": "Du kannst dich nicht selbst bannen!",
+    "SUPERIOR": "Du kannst keine Sanktion für ein Mitglied sanktionieren oder aktualisieren, das eine höhere oder gleiche Hierarchie für deine Rolle hat!",
+    "ALREADY_BANNED": "**{{username}}** ist bereits gesperrt!",
+    "MISSING_PERM": "Ein Fehler ist aufgetreten... Bitte überprüfen Sie, ob ich die Berechtigungen habe, diesen bestimmten Benutzer zu bannen und dann erneut zu versuchen!",
+    "BANNED_DM": "Hallo {{username}},\nDu wurdest soeben von **{{moderator}}** auf dem Server **{{server}}** wegen **{{reason}} ** gebannt!",
+    "BANNED": "{{username}} wurde soeben von **{{moderator}}** auf dem Server **{{server}}** wegen **{{reason}} ** gebannt!",
+    "CASE": "Sperrung | Fallnummer #{{count}}"
 }

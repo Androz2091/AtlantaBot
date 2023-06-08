@@ -1,5 +1,5 @@
 {
-    "DESCRIPTION": "Generates a \"burn\" image",
-    "USAGE": "{{prefix}}burn (@member)",
+    "DESCRIPTION": "Genera un'immagine \"burn\"",
+    "USAGE": "{{prefix}}burn (@membro)",
     "EXAMPLES": "{{prefix}}burn\n{{prefix}}burn @Androz#2091"
 }

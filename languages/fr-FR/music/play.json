@@ -15,7 +15,7 @@
     "ADDED_QUEUE": "{{songName}} a été ajoutée à la file d'attente !",
     "ADDED_QUEUE_COUNT": "{{songCount}} chanons ajoutées à la queue !",
     "STOP_DISCONNECTED": "Je viens d'arrêter la musique car j'ai été déconnecté de la chaîne.",
-    "RESULTS_CANCEL": "Search cancelled!",
-    "LIVE_VIDEO": "Lives are not yet supported!",
-    "ERR_OCCURRED": "An error occurred... Code: `{{error}}`"
+    "RESULTS_CANCEL": "Recherche annulée!",
+    "LIVE_VIDEO": "Les vies ne sont pas encore prises en charge !",
+    "ERR_OCCURRED": "Une erreur c'est produite... Code: `{{error}}`"
 }

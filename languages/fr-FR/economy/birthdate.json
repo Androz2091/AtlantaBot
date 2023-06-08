@@ -3,9 +3,9 @@
     "USAGE": "{{prefix}}birthdate (date)",
     "EXAMPLES": "{{prefix}}birthdate 01/12/2000",
     "MISSING_DATE": "Veuillez entrer une date valide ! Par exemple, 01/12/2000",
-    "INVALID_DATE": "Vous devez suivre ce format: DD/MM/YYY. Par exemple, `1 décembre 2000` sera `01/12/2000`.",
-    "INVALID_DATE_FORMAT": "Vous devez suivre ce format: DD/MM/YYY. Par exemple, `1 décembre 2000` sera `01/12/2000`.",
+    "INVALID_DATE": "Vous devez suivre ce format: DD/MM/YYY. Par exemple, 1 décembre 2000` sera \"01/12/2000\".",
+    "INVALID_DATE_FORMAT": "Vous devez suivre ce format: DD/MM/YYY. Par exemple, 1 décembre 2000` sera \"01/12/2000\".",
     "DATE_TOO_HIGH": "Plus de 80 ans ? :eyes:",
-    "DATE_TOO_LOW": "Humm, nop ! Tu dois être vivant !",
+    "DATE_TOO_LOW": "Humm, non! Tu dois être né!",
     "SUCCESS": "Votre anniversaire a été définie à cette date : {{date}} !"
 }

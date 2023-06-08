@@ -1,10 +1,10 @@
 {
-    "DESCRIPTION": "Send an announcement in the current channel!",
-    "USAGE": "{{prefix}}announcement [text]",
-    "EXAMPLES": "{{prefix}}announcement New staff member!",
-    "MISSING_TEXT": "You must enter the announcement text!",
-    "TOO_LONG": "Your text should be shorter than 1030 characters!",
-    "MENTION_PROMPT": "Would you like to add a mention to your message?\nAnswer by sending `yes` or `no`!",
-    "MENTION_TYPE_PROMPT": "Choose to mention `@`everyone by typing `every` or to mention `@`here by typing `here`!",
-    "TITLE": "📢 Announcement:"
+    "DESCRIPTION": "Sende eine Ankündigung im aktuellen Kanal!",
+    "USAGE": "{{prefix}}Ankündigung [text]",
+    "EXAMPLES": "{{prefix}}Ankündigung neuer Server Mitarbeiter!",
+    "MISSING_TEXT": "Sie müssen den Ankündigungstext eingeben!",
+    "TOO_LONG": "Der Text ist zu lang. Er sollte maximal 1030 Zeichen umfassen!",
+    "MENTION_PROMPT": "Möchtest du eine Erwähnung zu deiner Nachricht hinzufügen?\nAntwort durch das Senden von `yes` oder `no`!",
+    "MENTION_TYPE_PROMPT": "Geben Sie `@`everyone an, indem Sie `every` eingeben oder `@`hier angeben, indem Sie `hier` eingeben!",
+    "TITLE": "📢 Ankündigung:"
 }
