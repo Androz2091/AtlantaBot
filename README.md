@@ -38,7 +38,7 @@ Atlanta has a lot of features, with **7 main categories**:
 *   🖨️ **General**: `minimize`, `setafk`, `translate`, `remindme`, `hastebin`, `fortnite`, `minecraft` and **10** more! 
 *   👑 **Owner**: `eval`, `getinvite`, `servers-list` and **2** more!
 
-[See the full commands list](https://www.atlanta-bot.fr/commands)
+[See the full commands list]
 
 ### A powerful Dashboard
 
@@ -63,17 +63,17 @@ If you don't want to edit the code of the bot, a permanent online version is ava
 ### Customized version
 
 If you want to edit the bot's code and host it on your machine, it's possible!  
-You must follow the [installation guide](https://www.atlanta-bot.fr/installation/) to properly install it! Don't worry, it's fast and simple if you follow the guide!
+You must follow the [installation guide] to properly install it! Don't worry, it's fast and simple if you follow the guide!
 
 ## Links
 
-*   [Commands List](https://www.atlanta-bot.fr/commands)
-*   [Installation Guide](https://www.atlanta-bot.fr/installation)
-*   [F.A.Q](https://www.atlanta-bot.fr/faq/)
+*   [Commands List]
+*   [Installation Guide]
+*   [F.A.Q]
 *   [Discord](https://discord.gg/NPkySYKMkN)
 *   [Twitter](https://twitter.com/AtlantaBot)
 *   [Github](https://github.com/Androz2091/AtlantaBot/)
-*   [Dashboard](https://dashboard.atlanta-bot.fr)
+*   [Dashboard]
 
 ## Contributing
 
