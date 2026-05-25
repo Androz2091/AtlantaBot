@@ -47,7 +47,7 @@
         "i18next-fs-backend": "^2.6.0",
         "lyrics-finder": "^21.7.0",
         "markdown-table": "2.0.0",
-        "mathjs": "^14.0.1",
+        "mathjs": "^15.2.0",
         "md5": "^2.3.0",
         "mongoose": "^8.12.1",
         "ms": "^2.1.3",
