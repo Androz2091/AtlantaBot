@@ -39,7 +39,7 @@
         "discord-sync-commands": "^0.5.2",
         "discord.js": "^14.18.0",
         "ejs": "^3.1.10",
-        "express": "^4.21.2",
+        "express": "^5.2.1",
         "express-session": "^1.18.1",
         "figlet": "^1.8.0",
         "gamedig": "^5.1.4",
