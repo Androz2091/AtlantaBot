@@ -43,7 +43,7 @@
         "express-session": "^1.18.1",
         "figlet": "^1.8.0",
         "gamedig": "^5.1.4",
-        "i18next": "^24.2.2",
+        "i18next": "^26.2.0",
         "i18next-fs-backend": "^2.6.0",
         "lyrics-finder": "^21.7.0",
         "markdown-table": "2.0.0",
