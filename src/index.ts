@@ -3,6 +3,7 @@ import mongoose from "mongoose";
 import chalk from "chalk";
 import fs from "fs/promises";
 import path from "path";
+import { DefaultExtractors } from "@discord-player/extractor";
 
 import { config } from "./config.js";
 import Atlanta from "./base/Atlanta.js";
@@ -75,6 +76,11 @@ async function init(): Promise<void> {
 		const event = new EventClass(client);
 		client.on(eventName, (...args: unknown[]) => event.run(...args));
 	}
+
+	// discord-player v7 no longer auto-loads extractors; register the default set
+	// so the music commands can resolve and stream sources.
+	await client.player.extractors.loadMulti(DefaultExtractors);
+	client.logger.log("Loaded discord-player default extractors.", "log");
 
 	await client.login(config.token);
 

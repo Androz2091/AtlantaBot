@@ -21,6 +21,7 @@
     },
     "homepage": "https://github.com/Androz2091/AtlantaBot#readme",
     "dependencies": {
+        "@discord-player/extractor": "^7.2.0",
         "@discordjs/opus": "^0.10.0",
         "@dotenvx/dotenvx": "^1.34.0",
         "@sentry/node": "^9.0.0",
@@ -59,8 +60,8 @@
         "@types/express-session": "^1.18.1",
         "@types/ms": "^2.1.0",
         "@types/node": "^22.13.0",
-        "@typescript-eslint/eslint-plugin": "^8.24.0",
-        "@typescript-eslint/parser": "^8.24.0",
+        "@typescript-eslint/eslint-plugin": "^8.60.0",
+        "@typescript-eslint/parser": "^8.60.0",
         "eslint": "^8.57.0",
         "tsx": "^4.19.0",
         "typescript": "^6.0.3"
