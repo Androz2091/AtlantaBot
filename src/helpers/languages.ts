@@ -44,7 +44,7 @@ export default async function loadLanguages(): Promise<Map<string, TFunction>> {
 		backend: { loadPath },
 		debug: false,
 		fallbackLng: "en-US",
-		initImmediate: false,
+		initAsync: false,
 		interpolation: { escapeValue: false },
 		load: "all",
 		ns: namespaces,
