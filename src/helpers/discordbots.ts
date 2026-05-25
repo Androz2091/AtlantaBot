@@ -1,10 +1,10 @@
+import { Api } from "@top-gg/sdk";
 import type Atlanta from "../base/Atlanta.js";
 
 export function initDBLStats(client: Atlanta): void {
 	if (!client.config.apiKeys.dbl) return;
 
 	try {
-		const { Api } = require("@top-gg/sdk") as typeof import("@top-gg/sdk");
 		const api = new Api(client.config.apiKeys.dbl);
 
 		setInterval(() => {
