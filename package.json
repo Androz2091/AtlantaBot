@@ -38,7 +38,7 @@
         "discord-player": "^6.7.1",
         "discord-sync-commands": "^0.5.2",
         "discord.js": "^14.18.0",
-        "ejs": "^3.1.10",
+        "ejs": "^5.0.2",
         "express": "^4.21.2",
         "express-session": "^1.18.1",
         "figlet": "^1.8.0",
