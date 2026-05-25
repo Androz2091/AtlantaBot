@@ -21,7 +21,7 @@
     },
     "homepage": "https://github.com/Androz2091/AtlantaBot#readme",
     "dependencies": {
-        "@discordjs/opus": "^0.9.0",
+        "@discordjs/opus": "^0.10.0",
         "@dotenvx/dotenvx": "^1.34.0",
         "@sentry/node": "^9.0.0",
         "@sindresorhus/slugify": "^2.2.1",
