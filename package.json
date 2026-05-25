@@ -35,7 +35,7 @@
         "dayjs": "^1.11.13",
         "discord-backup": "^3.4.0",
         "discord-giveaways": "^6.0.1",
-        "discord-player": "^6.7.1",
+        "discord-player": "^7.2.0",
         "discord-sync-commands": "^0.5.2",
         "discord.js": "^14.18.0",
         "ejs": "^3.1.10",
