@@ -23,7 +23,7 @@
     "dependencies": {
         "@discord-player/extractor": "^7.2.0",
         "@discordjs/opus": "^0.10.0",
-        "@dotenvx/dotenvx": "^1.34.0",
+        "@dotenvx/dotenvx": "^2.21.0",
         "@sentry/node": "^9.0.0",
         "@sindresorhus/slugify": "^3.0.0",
         "@top-gg/sdk": "^3.1.6",
